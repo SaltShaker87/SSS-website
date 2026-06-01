@@ -3,7 +3,19 @@
     "allow": [
       "WebFetch(domain:saltshakerstudio.carrd.co)",
       "Bash(start \"\" \"C:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\\\\index.html\")",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(git -C \"c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\" status)",
+      "Bash(git -C \"c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\" diff)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\" -Recurse -File)",
+      "Bash(Select-Object -Property FullName, Extension)",
+      "Bash(Sort-Object FullName)",
+      "Bash(git -C \"c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\" log --oneline -5)",
+      "Bash(git -C \"c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\" add index.html)",
+      "Bash(git -C 'c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1' commit -m ' *)",
+      "Bash(git -C \"c:\\\\Users\\\\yalci\\\\OneDrive\\\\Documents\\\\SSS logos and files and stuff\\\\Website test 1\" push)"
     ]
   }
 }
