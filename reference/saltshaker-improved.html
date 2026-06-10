@@ -51,15 +51,6 @@
   a{color:#000080}
   :focus-visible{outline:2px dotted var(--ink);outline-offset:2px}
 
-  /* skip link (accessibility) */
-  .skip-link{
-    position:absolute;left:-9999px;top:0;z-index:200;
-    background:var(--salt);color:var(--ink);font-weight:bold;
-    padding:8px 14px;text-decoration:none;
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
-  }
-  .skip-link:focus{left:8px;top:8px}
-
   /* ============ WIN95 BEVELS ============ */
   .raised{
     background:var(--face);
@@ -259,7 +250,6 @@
   .about-text{flex:1;min-width:240px;font-size:13px;line-height:1.55}
   .about-text h3{margin-bottom:2px}
   .about-text .role{color:var(--shadow);margin-bottom:10px;font-size:12px}
-  .about-text p{margin-bottom:10px}
   table.props{border-collapse:collapse;margin-top:12px;font-size:12px;width:100%}
   table.props td{border:1px solid var(--shadow);padding:5px 9px}
   table.props td:first-child{background:var(--face);font-weight:bold;width:90px}
@@ -334,10 +324,7 @@
 </head>
 <body>
 
-<!-- Skip Link -->
-<a href="#main" class="skip-link">Skip to content</a>
-
-<div class="wrap" id="main" tabindex="-1">
+<div class="wrap" id="top">
 
   <!-- ============ HERO ============ -->
   <section class="window hero" id="hero" aria-label="Welcome">
@@ -347,11 +334,11 @@
       <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
     </div>
     <div class="win-body">
-      <img class="logo" src="images/sss-logo.png" alt="Salt Shaker Studio logo">
+      <img class="logo" src="https://www.saltshakerstudio.net/images/sss-logo.png" alt="Salt Shaker Studio logo">
       <h1>SALT SHAKER STUDIO</h1>
-      <p class="tagline">Because nobody ever really learns  from a PowerPoint</p>
+      <p class="tagline">Making medical education fun since 2025</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="/abg/">▶ Play ABG Now</a>
+        <a class="btn btn-primary" href="https://www.saltshakerstudio.net/abg/">▶ Play ABG Now</a>
         <a class="btn" href="#portfolio">Browse All Games</a>
         <a class="btn" href="https://discord.gg/b4jsEnW2jZ">Join the Discord</a>
       </div>
@@ -373,7 +360,7 @@
       </div>
       <div class="win-body">
         <div class="game-top">
-          <img src="images/abg-logo.jpg" alt="ABG logo">
+          <img src="https://www.saltshakerstudio.net/images/abg-logo.jpg" alt="ABG logo">
           <div>
             <span class="badge live">● PLAYABLE NOW</span>
             <h3>ABG: The Acid-Base Learning App</h3>
@@ -381,13 +368,13 @@
         </div>
         <p>Master blood gas interpretation through interactive cases and instant feedback — from step-by-step tutoring all the way to the new no-hints Expert Mode.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Beta — 90%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 90 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Beta — 75%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 75 percent">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
         <div class="btn-row">
-          <a class="btn btn-primary" href="/abg/">▶ Play Free</a>
+          <a class="btn btn-primary" href="https://www.saltshakerstudio.net/abg/">▶ Play Free</a>
           <a class="btn" href="#devblog">Latest Update</a>
         </div>
       </div>
@@ -401,7 +388,7 @@
       </div>
       <div class="win-body">
         <div class="game-top">
-          <img src="images/sal-logo.png" alt="SAL logo">
+          <img src="https://www.saltshakerstudio.net/images/sal-logo.png" alt="SAL logo">
           <div>
             <span class="badge proto">◐ PROTOTYPE</span>
             <h3>SAL: Hyponatremia Learning App</h3>
@@ -409,13 +396,13 @@
         </div>
         <p>Navigate sodium and fluid management through guided clinical cases and decision-tree algorithms. Infinite generated questions for medicine's most confusing electrolyte.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Prototype — 50%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 50 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Prototype — 40%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 40 percent">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
         <div class="btn-row">
-          <a class="btn btn-primary" href="/sal/">▶ Try Prototype</a>
+          <a class="btn btn-primary" href="https://www.saltshakerstudio.net/sal/">▶ Try Prototype</a>
         </div>
       </div>
     </section>
@@ -428,7 +415,7 @@
       </div>
       <div class="win-body">
         <div class="game-top">
-          <img src="images/abx-logo.png" alt="ABX logo">
+          <img src="https://www.saltshakerstudio.net/images/abx-logo.png" alt="ABX logo">
           <div>
             <span class="badge dev">◔ IN DEVELOPMENT</span>
             <h3>ABX: The Antibiotic Teaching Game</h3>
@@ -436,9 +423,9 @@
         </div>
         <p>Learn antibiotic prescribing through gamified clinical scenarios. Match the right drug to the right bug. Built in Godot — alpha prototype in internal testing.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Alpha — 30%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 30 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Alpha — 25%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 25 percent">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
         <div class="btn-row">
@@ -455,17 +442,17 @@
       </div>
       <div class="win-body">
         <div class="game-top">
-          <img src="images/crm-logo.png" alt="CRM logo">
+          <img src="https://www.saltshakerstudio.net/images/crm-logo.png" alt="CRM logo">
           <div>
-            <span class="badge live">● COMPLETE</span>
+            <span class="badge proto">◐ EXPERIMENT</span>
             <h3>CRM: Clinical Reasoning Model</h3>
           </div>
         </div>
         <p>A fine-tuned small language model trained on 511 physician-annotated clinical cases. Walks through differential diagnosis step by step — with fewer hallucinations than the base model.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Complete — 100%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 100 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          <div class="p-label"><span>Development</span><span>Proof of concept — 30%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 30 percent">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
         <div class="btn-row">
@@ -482,7 +469,7 @@
       </div>
       <div class="win-body">
         <div class="game-top">
-          <img src="images/auc-logo.png" alt="AUC logo">
+          <img src="https://www.saltshakerstudio.net/images/auc-logo.png" alt="AUC logo">
           <div>
             <span class="badge dev">◔ IN DEVELOPMENT</span>
             <h3>AUC: Assessments Under Curve</h3>
@@ -490,9 +477,9 @@
         </div>
         <p>A private, locally-hosted tool for residency programs: track resident performance, log CCC feedback, query AI-generated summaries, and integrate MedHub data — no cloud, no third-party sharing.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Early build — 50%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 50 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Early build — 20%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 20 percent">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
         <div class="btn-row">
@@ -509,7 +496,7 @@
       </div>
       <div class="win-body">
         <div class="game-top">
-          <img src="images/gas-logo.jpg" alt="GAS logo">
+          <img src="https://www.saltshakerstudio.net/images/gas-logo.jpg" alt="GAS logo">
           <div>
             <span class="badge concept">○ CONCEPT</span>
             <h3>GAS: Anesthesiology Simulation</h3>
@@ -517,9 +504,9 @@
         </div>
         <p>Make critical anesthesia decisions in a simulated operating room. Handle inductions, complications, and emergencies. Currently in the ideation stage.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Ideation — 15%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 15 percent">
-            <i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Ideation — 5%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 5 percent">
+            <i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
         <div class="btn-row">
@@ -539,112 +526,60 @@
     <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Search</span><span>Help</span></div>
     <div class="win-body">
 
-      <!-- =============================================
-           DEV BLOG: To add a new post, copy a
-           <details class="post"> block below and paste
-           it ABOVE the existing posts. Fill in the date,
-           title, and body paragraphs.
-
-           TEMPLATE (copy this block):
-           <details class="post">
-             <summary><span class="post-date">Month DD, YYYY</span><span class="post-title">Your Title Here</span></summary>
-             <div class="post-body">
-               <p>Your content here. Add more &lt;p&gt; tags for more paragraphs.</p>
-             </div>
-           </details>
-           ============================================= -->
-
       <details class="post" open>
         <summary><span class="post-date">Apr 29, 2026</span><span class="post-title">ABG Now Has an Expert Mode</span></summary>
         <div class="post-body">
-          <p>If you've been using ABG for a while and the step-by-step guidance has started to feel like training wheels, this update is for you.</p>
-          <p><strong>What Expert Mode Is</strong><br>
-          Expert Mode strips everything back. You get a blood gas. No steps. No hints. No hand-holding. Just the numbers and a text field. Interpret it correctly and move on. Get it wrong and you'll find out. It's designed for people who already understand the logic and want to test themselves against real-world-style cases without the scaffolding.</p>
-          <p><strong>Why We Added It</strong><br>
-          The core ABG app was always built around teaching the process — walking you through pH, PaCO2, HCO3, compensation, one step at a time. That's still there and it still works. But we kept hearing from more advanced users that they wanted something closer to what it actually feels like on the wards: ABG in hand, attending waiting, no prompts. Expert Mode is that.</p>
-          <p>Give it a try and let us know how it goes. The bar is high — no pun intended.</p>
+          <p>If the step-by-step guidance has started to feel like training wheels, this update is for you.</p>
+          <p><strong>What Expert Mode is:</strong> You get a blood gas. No steps. No hints. Just the numbers and a text field. Interpret it correctly and move on. Get it wrong and you'll find out.</p>
+          <p><strong>Why we added it:</strong> Advanced users wanted something closer to what it feels like on the wards — ABG in hand, attending waiting, no prompts. Expert Mode is that. The bar is high. No pun intended.</p>
         </div>
       </details>
 
       <details class="post">
         <summary><span class="post-date">Apr 14, 2026</span><span class="post-title">I Fine-Tuned a Language Model on Medical Cases. Here's What Happened.</span></summary>
         <div class="post-body">
-          <p>Quick background: I've been building teaching tools for medical trainees for a while. At some point I got curious — what if instead of hard-coding decision trees, I just trained a small language model to reason through clinical cases the way a physician would? Reader, I tried it.</p>
-          <p><strong>1. What I Actually Did</strong><br>
-          Took Llama 3.2 3B Instruct — a small, open-source model — and fine-tuned it on 511 physician-annotated cases from the DiReCT dataset using LoRA. Ran it on a Google Colab T4 GPU for 3 training epochs. The loss dropped from 22 to 3.7, which sounds like a lot because it is. I did not invent any of the underlying technology here. I just pointed existing tools at a medical dataset and let it cook.</p>
-          <p><strong>2. Does It Actually Work?</strong><br>
-          Yes, actually. I gave both the base model and my fine-tuned version the same clinical vignette — a classic hypothyroidism presentation. The base model confidently stated that cold intolerance is caused by <em>too much</em> thyroid hormone. Which is the opposite of true. It also said the patient had weight <em>loss</em>. Hypothyroidism causes weight <em>gain</em>. These are not subtle errors. These are the kind of errors that would make an attending physically wince.<br>
-          The fine-tuned model correctly identified hypothyroidism, flagged Hashimoto's as a likely cause, and walked through a logical flow: symptoms → testing → treatment. Basic? Sure. But correct. That's not nothing.</p>
-          <p><strong>3. This Is a Proof of Concept, Not a Product</strong><br>
-          To be very clear: this is early and experimental. Training data is limited to 511 cases, the base model is 3B parameters, and there's a long road ahead. What I wanted to know was whether this direction was even worth pursuing. The answer seems to be yes. Next steps include expanding the dataset, upgrading the base model, and cleaning up the hedging language the outputs love to pepper in. Nobody needs a model that qualifies every sentence with "however, it is important to note that I am an AI."</p>
-          <p>Model is live on HuggingFace if you want to poke at it: <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1" target="_blank" rel="noopener">huggingface.co/ploppy2/Clinical-Reasoning-Test1</a></p>
+          <p>What if instead of hard-coding decision trees, I trained a small language model to reason through clinical cases the way a physician would? Reader, I tried it.</p>
+          <p><strong>What I did:</strong> Took Llama 3.2 3B Instruct and fine-tuned it on 511 physician-annotated cases from the DiReCT dataset using LoRA, on a free Colab GPU. The loss dropped from 22 to 3.7.</p>
+          <p><strong>Does it work?</strong> The base model confidently claimed cold intolerance comes from <em>too much</em> thyroid hormone. The fine-tuned one correctly identified hypothyroidism, flagged Hashimoto's, and walked symptoms → testing → treatment. Basic, but correct. That's not nothing.</p>
+          <p>Model is live on <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">HuggingFace</a> if you want to poke at it.</p>
         </div>
       </details>
 
       <details class="post">
         <summary><span class="post-date">Mar 31, 2026</span><span class="post-title">SAL Is Here, ABX Has a Prototype, and Yes the Logos Look Different</span></summary>
         <div class="post-body">
-          <p>Three things happened. Not all of them are huge. All of them are worth knowing about.</p>
-          <p><strong>1. SAL: A New App for Learning About Hyponatremia</strong><br>
-          I decided to create SAL, working title, don't @ me. It's a teaching tool for hyponatremia, one of the most annoying electrolyte disorders in medicine. Study it 100 times and still get confused. Good thing this app generates infinite questions. The app is in early development, but the core concept is the same as ABG: walk you through the logic step by step until it clicks. More updates soon.</p>
-          <p><strong>2. ABX Alpha Prototype Is a Thing That Exists Now</strong><br>
-          We've put together an alpha prototype for ABX — the antibiotic decision-making tool — and this one is built in Godot. It is rough. It is very much a prototype. The entire point right now is to get something in front of people and see if the core concept holds up before we build the real thing around it. </p>
-          <p><strong>3. Logos Got Updated</strong><br>
-          The SSS and ABX logos have been updated. They look better now. I forgot to add "SAL" to the SAL logo... oops.</p>
+          <p><strong>SAL:</strong> a new teaching tool for hyponatremia, one of the most annoying electrolyte disorders in medicine. Infinite generated questions, same step-by-step philosophy as ABG.</p>
+          <p><strong>ABX:</strong> an alpha prototype now exists, built in Godot. It is rough. That's the point — get it in front of people before building the real thing.</p>
+          <p><strong>Logos:</strong> updated. They look better now. I forgot to add "SAL" to the SAL logo... oops.</p>
         </div>
       </details>
 
       <details class="post">
         <summary><span class="post-date">Mar 10, 2026</span><span class="post-title">ABG Prototype Is Live: You Can Now Break It From Your Phone</span></summary>
         <div class="post-body">
-          <p>The ABG prototype is officially deployed to saltshakerstudio.net/abg. No app store. No "enable unknown sources" deep in your Android settings. Just a link. Click it. It works on your phone. We're living in the future, bro.</p>
-          <p><strong>1. What's Actually There Right Now</strong><br>
-          The prototype has the core ABG interpreter engine, the random case generator, and the foundational and beginner teaching modes. It is not finished. It is not polished. There are almost certainly bugs. That is the point. If you wait until something is perfect to share it, you will be sharing it never.</p>
-          <p><strong>2. Why Web Instead of a Native App</strong><br>
-          Short answer: because deploying a Flutter web build to GitHub Pages takes one terminal command and zero App Store review cycles. Long answer: same as the short answer. Native builds are coming, but getting the core learning experience in front of real residents now is more useful than spending two weeks fighting Xcode provisioning profiles.</p>
-          <p><strong>3. What I Actually Want From You</strong><br>
-          Use it. Break it. Tell me what feels wrong. Specifically: does the stepwise logic make sense the way a real attending would walk you through it? Are the cases realistic? Is there a disorder pattern you keep seeing on rounds that the generator never seems to produce? Yell at my on twitter or email - links at the bottom of the page.</p>
-          <p><strong>4. What's Next</strong><br>
-          Planning to add a pro mode for you giga-chads out there that dont need no tutoring so you can practice solving ABGs without any help. At some point will also add a leaderboard so you can be a gunner secretly. Don't pretend you wouldn't want to flex on the OTHER medical school in your area.</p>
-          <p>Go break something: saltshakerstudio.net/abg</p>
+          <p>Deployed to <a href="https://www.saltshakerstudio.net/abg/">saltshakerstudio.net/abg</a>. No app store. Just a link. It works on your phone. We're living in the future.</p>
+          <p><strong>What I want from you:</strong> Use it. Break it. Tell me what feels wrong. Does the stepwise logic make sense the way a real attending would walk you through it?</p>
         </div>
       </details>
 
       <details class="post">
-        <summary><span class="post-date">Feb 25, 2026</span><span class="post-title">ABG Tutor Update: Because "Vibes" is Not a Valid Acid-Base Diagnosis</span></summary>
+        <summary><span class="post-date">Feb 25, 2026</span><span class="post-title">ABG Tutor Update: Because "Vibes" Is Not a Valid Acid-Base Diagnosis</span></summary>
         <div class="post-body">
-          <p>I've just pushed a massive update to the ABG Tutor. My goal was simple: make every case feel less like a guessing game and more like a clinical reasoning script—basically, a digital version of your attending staring at you until you remember Winter's formula.</p>
-          <p><strong>1. Hand-Holding for Simple Disorders</strong><br>
-          I've built dedicated, stepwise flows for all seven "simple" patterns. Instead of just hitting "reveal" and seeing a diagnosis you don't understand, the Tutor now walks you through a 5-step scaffold. It'll nudge you through pH, primary processes, and the "acute vs. chronic" bicarbonate hint until you reach the right answer. It's like training wheels, but for people who carry pagers.</p>
-          <p><strong>2. Mixed Disorders (The "Where Am I?" Phase)</strong><br>
-          Mixed metabolic and respiratory issues are usually where the panic sets in. I've added structured 6-step paths that force you to actually use the formulas. The Catch: For things like Winter's formula, I'm giving you numeric multiple-choice options without showing the equation. You actually have to know it. (I know, I'm a monster.)</p>
-          <p><strong>3. Triple Disorders: Now With Actual Logic</strong><br>
-          The triple-disorder engine used to be a bit... "random-ish." You might have seen an explanation for HAGMA + Met Alk while the numbers were clearly screaming NAGMA. I've rewritten the logic from the ground up. The generator now picks a logical pattern first, then forces the math to obey the laws of physics. Whether it's Delta-Gaps or expected PCO&#8322;, the numbers will actually make sense now.</p>
-          <p><strong>4. The New 7-Step Triple-Disorder Flow</strong><br>
-          Triple cases are now a full 7-step journey through: anion gap status, the Delta-Gap interpretation (the "hidden" stuff), Winter's formula (the math stuff), and the final, glorious, multi-hyphenated diagnosis. Everything is computed dynamically, so the explanation will finally match the numbers on your screen. No more gaslighting from the software.</p>
+          <p>Massive update: dedicated stepwise flows for all seven simple patterns, structured 6-step paths for mixed disorders, and a rewritten triple-disorder engine where the generator picks a logical pattern first and forces the math to obey. No more gaslighting from the software.</p>
         </div>
       </details>
 
       <details class="post">
         <summary><span class="post-date">Feb 13, 2026</span><span class="post-title">New Website Launch!</span></summary>
         <div class="post-body">
-          <p>Welcome to the new Salt Shaker Studio website! We've gone full retro with a modern functional design. This site will be our home for development updates, game announcements, and behind-the-scenes looks at how we build medical education games.</p>
-          <p>Stay tuned for regular dev updates as we continue building ABG, ABX, and GAS.</p>
-        </div>
-      </details>
-
-      <details class="post">
-        <summary><span class="post-date">Jan 28, 2026</span><span class="post-title">ABG Alpha Build Progress</span></summary>
-        <div class="post-body">
-          <p>We've completed the core blood gas parser engine and the random ABG generator engine; as well as foundational and beginner modes. We are now building out the stepwise teaching mode. After that the plan is to move forward with either a more advanced teaching mode and then expert mode.</p>
-          <p>Should I add a leaderboard so you can mog your classmates? Let me know!</p>
+          <p>Welcome to the new Salt Shaker Studio website! Full retro with a modern functional design. This is home for dev updates, announcements, and behind-the-scenes looks at how we build medical education games.</p>
         </div>
       </details>
 
       <details class="post">
         <summary><span class="post-date">Jan 10, 2026</span><span class="post-title">Welcome to Salt Shaker Studio!</span></summary>
         <div class="post-body">
-          <p>Arman here. I'm thrilled to officially launch Salt Shaker Studio. As a medical educator, I've seen firsthand how traditional medical education can fall short. Lets be real, nobody likes to learn by being read a PowerPoint presentation by someone who didn't even make it! My mission is to create engaging, interactive games and apps that make learning medicine genuinely fun and actually effective so you don't waste your precious time. Theres a reason it's easy to remember the names of 151 Pokemon but hard to remember the functions of 151 antibiotics!!</p>
+          <p>Arman here. Nobody likes learning from a PowerPoint read aloud by someone who didn't even make it. My mission: engaging, interactive games that make learning medicine genuinely fun. There's a reason it's easy to remember 151 Pokémon but hard to remember 151 antibiotics!</p>
         </div>
       </details>
 
@@ -670,7 +605,6 @@
       <div class="quarter">
         <h3>📁 Q2 2026</h3>
         <div class="task"><span class="chk done">✓</span> ABX Prototype <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk done">✓</span> CRM Proof of Concept <span class="tag t-done">DONE</span></div>
         <div class="task"><span class="chk wip">▸</span> ABG Beta Testing <span class="tag t-wip">IN PROGRESS</span></div>
         <div class="task"><span class="chk"></span> Medical Advisor Board <span class="tag t-plan">PLANNED</span></div>
       </div>
@@ -692,12 +626,11 @@
     </div>
     <div class="win-body">
       <div class="about-flex">
-        <img src="images/arman-photo.png" alt="Dr. Arman Yalcin, founder of Salt Shaker Studio">
+        <img src="https://www.saltshakerstudio.net/images/arman-photo.png" alt="Dr. Arman Yalcin, founder of Salt Shaker Studio">
         <div class="about-text">
           <h3>Dr. Arman Yalcin, MD</h3>
           <p class="role">Infectious Disease Physician • Founder, Game Designer, and Fellow Nerd</p>
-          <p>Dr. Yalcin is an infectious disease physician based in Boston who founded Salt Shaker Studio to bridge the gap between traditional medical education and modern interactive learning.</p>
-          <p>With firsthand experience teaching medical trainees, he recognized that engaging, game-based approaches could transform how physicians learn complex clinical concepts like blood gas interpretation and antibiotic prescribing.</p>
+          <p>Dr. Yalcin is an infectious disease physician based in Boston who founded Salt Shaker Studio to bridge the gap between traditional medical education and modern interactive learning. With firsthand experience teaching medical trainees, he recognized that engaging, game-based approaches could transform how physicians learn complex clinical concepts.</p>
           <table class="props">
             <tr><td>Title:</td><td>Founder &amp; Game Designer</td></tr>
             <tr><td>Specialty:</td><td>Infectious Disease</td></tr>
@@ -715,8 +648,7 @@
       <a class="btn" href="https://twitter.com/">𝕏 / Twitter</a>
       <a class="btn" href="https://discord.gg/b4jsEnW2jZ">Discord</a>
       <a class="btn" href="https://www.linkedin.com/in/arman8514581">LinkedIn</a>
-      <a class="btn" href="https://store.steampowered.com/">Steam</a>
-      <a class="btn" href="mailto:saltshakerstudio@protonmail.com">✉ Email</a>
+      <a class="btn" href="mailto:saltshakerstudio@gmail.com">✉ Email</a>
     </div>
     <div class="badges">
       <span>🌐 Best viewed in Netscape Navigator 4.0</span>
@@ -724,7 +656,7 @@
       <span>✅ Valid HTML</span>
       <span>✍ Made with Notepad</span>
     </div>
-    <div>You are visitor <span class="counter" id="hit-counter">00000001</span></div>
+    <div>You are visitor <span class="counter">№ 00000001</span></div>
     <p style="margin-top:12px">© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
     Educational content for medical professionals. Not for medical advice.</p>
   </footer>
@@ -740,7 +672,7 @@
     <a href="#roadmap">📅 Roadmap</a>
     <a href="#about">👤 About</a>
     <a href="https://discord.gg/b4jsEnW2jZ">💬 Discord</a>
-    <a href="/abg/">▶ Play ABG</a>
+    <a href="https://www.saltshakerstudio.net/abg/">▶ Play ABG</a>
   </div>
 </nav>
 
@@ -759,7 +691,7 @@
 </div>
 
 <script>
-  /* === Start menu open/close === */
+  // Start menu open/close
   const startBtn = document.getElementById('startBtn');
   const startMenu = document.getElementById('startMenu');
   startBtn.addEventListener('click', (e) => {
@@ -780,7 +712,7 @@
     }
   });
 
-  /* === Live taskbar clock === */
+  // Live taskbar clock
   function tickClock(){
     const now = new Date();
     let h = now.getHours(), m = now.getMinutes();
@@ -791,118 +723,6 @@
   }
   tickClock();
   setInterval(tickClock, 30000);
-
-  /* === Faux Hit Counter (localStorage) === */
-  (function () {
-    var hitCounter = document.getElementById('hit-counter');
-    if (hitCounter) {
-      var visits = parseInt(localStorage.getItem('sss-visits') || '0', 10);
-      visits++;
-      localStorage.setItem('sss-visits', visits.toString());
-      hitCounter.textContent = visits.toString().padStart(8, '0');
-    }
-  })();
-
-  /* === Konami Code Easter Egg === */
-  (function () {
-    var konamiCode = [
-      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-      'b', 'a'
-    ];
-    var konamiIndex = 0;
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === konamiCode[konamiIndex]) {
-        konamiIndex++;
-        if (konamiIndex === konamiCode.length) {
-          activateKonamiMode();
-          konamiIndex = 0;
-        }
-      } else {
-        konamiIndex = 0;
-      }
-    });
-
-    function activateKonamiMode() {
-      document.body.classList.toggle('konami-mode');
-
-      var overlay = document.createElement('div');
-      overlay.style.cssText =
-        'position:fixed;top:0;left:0;right:0;bottom:0;' +
-        'background:rgba(0,0,0,0.6);z-index:9999;padding:16px;' +
-        'display:flex;align-items:flex-start;justify-content:center;';
-      overlay.innerHTML =
-        '<div class="window" style="max-width:400px;width:100%;margin-top:20vh;">' +
-        '  <div class="titlebar">' +
-        '    <span class="t-icon">🌟</span><span class="t-text">Secret!</span>' +
-        '    <span class="t-btns"><span class="t-btn">×</span></span>' +
-        '  </div>' +
-        '  <div class="win-body" style="text-align:center;padding:24px;">' +
-        '    <p style="font-family:var(--font-display);font-size:18px;margin-bottom:16px;line-height:1.3;">' +
-        '      🌟 KONAMI CODE ACTIVATED! 🌟' +
-        '    </p>' +
-        '    <p style="font-size:14px;margin-bottom:16px;">You found the secret! Enjoy the extra retro vibes.</p>' +
-        '    <button class="btn btn-primary konami-close">OK</button>' +
-        '  </div>' +
-        '</div>';
-
-      document.body.appendChild(overlay);
-
-      overlay.querySelector('.konami-close').addEventListener('click', function () {
-        overlay.remove();
-      });
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) overlay.remove();
-      });
-    }
-  })();
-
-  /* === Window Close Button Fun (× → "not responding" dialog) === */
-  (function () {
-    document.querySelectorAll('.t-btn').forEach(function (btn) {
-      if (btn.textContent.trim() === '×') {
-        btn.style.cursor = 'pointer';
-        btn.addEventListener('click', function () {
-          var win = this.closest('.window');
-          if (!win) return;
-
-          var dialog = document.createElement('div');
-          dialog.style.cssText =
-            'position:fixed;top:0;left:0;right:0;bottom:0;' +
-            'background:rgba(0,0,0,0.4);z-index:9999;padding:16px;' +
-            'display:flex;align-items:center;justify-content:center;';
-          dialog.innerHTML =
-            '<div class="window" style="max-width:340px;width:100%;margin-bottom:0;">' +
-            '  <div class="titlebar">' +
-            '    <span class="t-icon">🧂</span><span class="t-text">Salt Shaker Studio</span>' +
-            '    <span class="t-btns"><span class="t-btn">×</span></span>' +
-            '  </div>' +
-            '  <div class="win-body" style="text-align:center;padding:20px;">' +
-            '    <p style="margin-bottom:16px;">⚠ This program is not responding.</p>' +
-            '    <p style="font-size:13px;margin-bottom:16px;color:var(--shadow);">If you close it, you might lose unsaved data.</p>' +
-            '    <div style="display:flex;gap:8px;justify-content:center;">' +
-            '      <button class="btn dialog-close">End Now</button>' +
-            '      <button class="btn dialog-cancel">Cancel</button>' +
-            '    </div>' +
-            '  </div>' +
-            '</div>';
-
-          document.body.appendChild(dialog);
-
-          dialog.querySelector('.dialog-cancel').addEventListener('click', function () {
-            dialog.remove();
-          });
-          dialog.querySelector('.dialog-close').addEventListener('click', function () {
-            dialog.remove();
-          });
-          dialog.addEventListener('click', function (e) {
-            if (e.target === dialog) dialog.remove();
-          });
-        });
-      }
-    });
-  })();
 </script>
 </body>
 </html>

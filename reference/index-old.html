@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt Shaker Studio — Medical Education Games</title>
+    <meta name="description" content="Salt Shaker Studio creates interactive educational games for medical trainees. Learn acid-base interpretation, antibiotic prescribing, and more through play.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/retro.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ==========================================
+     NAVIGATION BAR
+     ========================================== -->
+<nav class="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+        <a href="#hero" class="nav-logo">Salt Shaker Studio</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            &#9776;
+        </button>
+        <div class="nav-links" id="nav-menu" role="menubar">
+            <a href="#hero" role="menuitem">Home</a>
+            <span class="nav-divider" aria-hidden="true">|</span>
+            <a href="#portfolio" role="menuitem">Games</a>
+            <span class="nav-divider" aria-hidden="true">|</span>
+            <a href="#devblog" role="menuitem">Dev Blog</a>
+            <span class="nav-divider" aria-hidden="true">|</span>
+            <a href="#roadmap" role="menuitem">Roadmap</a>
+            <span class="nav-divider" aria-hidden="true">|</span>
+            <a href="#news" role="menuitem">News</a>
+            <span class="nav-divider" aria-hidden="true">|</span>
+            <a href="#about" role="menuitem">About</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ==========================================
+     MAIN CONTENT
+     ========================================== -->
+<main id="main">
+
+    <!-- ======================================
+         HERO SECTION
+         ====================================== -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-logo-area">
+                <div class="hero-logo-placeholder retro-sunken">
+                    <img src="images/sss-logo.png" alt="Salt Shaker Studio Logo">
+                </div>
+            </div>
+            <h1 class="hero-title">Salt Shaker Studio</h1>
+            <p class="hero-tagline">Making Medical Education Fun Since 2025</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="retro-button">Explore Our Games</a>
+                <a href="https://discord.gg/b4jsEnW2jZ" class="retro-button" target="_blank" rel="noopener">Join Discord</a>
+            </div>
+        </div>
+        <!-- Marquee Ticker -->
+        <div class="ticker retro-sunken" aria-hidden="true">
+            <div class="ticker__content">
+                &#9733; Now developing: ABG Mentor &nbsp;&nbsp;|&nbsp;&nbsp; ABX prototype under development! &nbsp;&nbsp;|&nbsp;&nbsp; Join our Discord to meet fellow nerds! &nbsp;&nbsp;|&nbsp;&nbsp; GAS prototype in ideation stage  &nbsp;&nbsp;&#9733;
+            </div>
+        </div>
+    </section>
+
+    <div class="construction-stripe" aria-hidden="true"></div>
+
+    <!-- ======================================
+         PORTFOLIO SECTION
+         ====================================== -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="retro-section-title">&#128190; Our Software</h2>
+
+            <div class="portfolio-grid">
+
+                <!-- Game 1: ABG -->
+                <div class="retro-window portfolio-card">
+                    <div class="retro-window__titlebar">
+                        <span class="retro-window__title">ABG - Acid Base Game</span>
+                        <div class="retro-window__controls" aria-hidden="true">
+                            <span class="retro-window__control">_</span>
+                            <span class="retro-window__control">&#9633;</span>
+                            <span class="retro-window__control">&times;</span>
+                        </div>
+                    </div>
+                    <div class="retro-window__body">
+                        <div class="portfolio-screenshot retro-sunken">
+                            <a href="/abg/" target="_blank" rel="noopener">
+                                <img src="images/abg-logo.jpg" alt="ABG - Acid Base Game logo">
+                            </a>
+                        </div>
+                        <h3 class="portfolio-card__title">ABG: The Acid-Base Learning App</h3>
+                        <p class="portfolio-card__desc">Master blood gas interpretation through interactive cases and instant feedback. Practice with real-world scenarios.</p>
+                        <div class="portfolio-card__status">
+                            <span class="portfolio-card__status-label">Development:</span>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 90%;" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="portfolio-card__actions">
+                            <a href="/abg/" class="retro-button" target="_blank" rel="noopener">Try Demo</a>
+                            <a href="#" class="retro-button">Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 2: ABX -->
+                <div class="retro-window portfolio-card">
+                    <div class="retro-window__titlebar">
+                        <span class="retro-window__title">ABX - Antibiotic Game</span>
+                        <div class="retro-window__controls" aria-hidden="true">
+                            <span class="retro-window__control">_</span>
+                            <span class="retro-window__control">&#9633;</span>
+                            <span class="retro-window__control">&times;</span>
+                        </div>
+                    </div>
+                    <div class="retro-window__body">
+                        <div class="portfolio-screenshot retro-sunken">
+                            <img src="images/abx-logo.png" alt="ABX - Antibiotic Game logo">
+                        </div>
+                        <h3 class="portfolio-card__title">ABX: The Antibiotic Teaching Game</h3>
+                        <p class="portfolio-card__desc">Learn antibiotic prescribing through gamified clinical scenarios. Match the right drug to the right bug.</p>
+                        <div class="portfolio-card__status">
+                            <span class="portfolio-card__status-label">Development:</span>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 30%;" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="portfolio-card__actions">
+                            <a href="#" class="retro-button">Learn More</a>
+                            <a href="#" class="retro-button">Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 3: GAS -->
+                <div class="retro-window portfolio-card">
+                    <div class="retro-window__titlebar">
+                        <span class="retro-window__title">GAS - Anesthesiology Sim</span>
+                        <div class="retro-window__controls" aria-hidden="true">
+                            <span class="retro-window__control">_</span>
+                            <span class="retro-window__control">&#9633;</span>
+                            <span class="retro-window__control">&times;</span>
+                        </div>
+                    </div>
+                    <div class="retro-window__body">
+                        <div class="portfolio-screenshot retro-sunken">
+                            <img src="images/gas-logo.jpg" alt="GAS - Anesthesiology Simulation logo">
+                        </div>
+                        <h3 class="portfolio-card__title">GAS: Anesthesiology Simulation</h3>
+                        <p class="portfolio-card__desc">Make critical anesthesia decisions in a simulated operating room. Handle inductions, complications, and emergencies.</p>
+                        <div class="portfolio-card__status">
+                            <span class="portfolio-card__status-label">Development:</span>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 15%;" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="portfolio-card__actions">
+                            <a href="#" class="retro-button">Learn More</a>
+                            <a href="#" class="retro-button">Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 4: SAL -->
+                <div class="retro-window portfolio-card">
+                    <div class="retro-window__titlebar">
+                        <span class="retro-window__title">SAL - Hyponatremia Learning App</span>
+                        <div class="retro-window__controls" aria-hidden="true">
+                            <span class="retro-window__control">_</span>
+                            <span class="retro-window__control">&#9633;</span>
+                            <span class="retro-window__control">&times;</span>
+                        </div>
+                    </div>
+                    <div class="retro-window__body">
+                        <div class="portfolio-screenshot retro-sunken">
+                            <a href="/sal/" target="_blank" rel="noopener">
+                                <img src="images/sal-logo.png" alt="SAL - Hyponatremia Learning App logo">
+                            </a>
+                        </div>
+                        <h3 class="portfolio-card__title">SAL: Hyponatremia Learning App</h3>
+                        <p class="portfolio-card__desc">Navigate the complexities of sodium and fluid management through guided clinical cases and decision-tree algorithms.</p>
+                        <div class="portfolio-card__status">
+                            <span class="portfolio-card__status-label">Development:</span>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 50%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="portfolio-card__actions">
+                            <a href="/sal/" class="retro-button" target="_blank" rel="noopener">Try Prototype</a>
+                            <a href="#" class="retro-button">Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Game 5: CRM -->
+                <div class="retro-window portfolio-card">
+                    <div class="retro-window__titlebar">
+                        <span class="retro-window__title">CRM - Clinical Reasoning Model</span>
+                        <div class="retro-window__controls" aria-hidden="true">
+                            <span class="retro-window__control">_</span>
+                            <span class="retro-window__control">&#9633;</span>
+                            <span class="retro-window__control">&times;</span>
+                        </div>
+                    </div>
+                    <div class="retro-window__body">
+                        <div class="portfolio-screenshot retro-sunken">
+                            <img src="images/crm-logo.png" alt="CRM - Clinical Reasoning Model logo">
+                        </div>
+                        <h3 class="portfolio-card__title">CRM: Clinical Reasoning Model</h3>
+                        <p class="portfolio-card__desc">A fine-tuned small language model trained on 511 physician-annotated clinical cases. Walks through differential diagnosis step by step — symptoms to workup to treatment — with fewer hallucinations than the base model.</p>
+                        <div class="portfolio-card__status">
+                            <span class="portfolio-card__status-label">Development:</span>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 20%;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="portfolio-card__actions">
+                            <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1" class="retro-button" target="_blank" rel="noopener">Learn More</a>
+                            <a href="#" class="retro-button">Try It! (Coming Soon)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game 6: AUC -->
+                <div class="retro-window portfolio-card">
+                    <div class="retro-window__titlebar">
+                        <span class="retro-window__title">AUC - Assessments Under Curve</span>
+                        <div class="retro-window__controls" aria-hidden="true">
+                            <span class="retro-window__control">_</span>
+                            <span class="retro-window__control">&#9633;</span>
+                            <span class="retro-window__control">&times;</span>
+                        </div>
+                    </div>
+                    <div class="retro-window__body">
+                        <div class="portfolio-screenshot retro-sunken">
+                            <img src="images/auc-logo.png" alt="AUC - Assessments Under Curve logo">
+                        </div>
+                        <h3 class="portfolio-card__title">AUC: Assessments Under Curve</h3>
+                        <p class="portfolio-card__desc">A private, locally-hosted tool for internal medicine residency programs to track resident performance, log feedback from CCC meetings, query AI-generated summaries of individual residents, and integrate MedHub evaluation data — all without any cloud storage or third-party data sharing.</p>
+                        <div class="portfolio-card__status">
+                            <span class="portfolio-card__status-label">Development:</span>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 50%;" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="portfolio-card__actions">
+                            <a href="#" class="retro-button">Learn More</a>
+                            <a href="#" class="retro-button">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="retro-hr container">
+
+    <!-- ======================================
+         DEV BLOG SECTION
+         ====================================== -->
+    <section id="devblog">
+        <div class="container">
+            <h2 class="retro-section-title">&#128221; Dev Blog</h2>
+
+            <div class="retro-window devblog-window">
+                <div class="retro-window__titlebar">
+                    <span class="retro-window__title">devblog.txt - Notepad</span>
+                    <div class="retro-window__controls" aria-hidden="true">
+                        <span class="retro-window__control">_</span>
+                        <span class="retro-window__control">&#9633;</span>
+                        <span class="retro-window__control">&times;</span>
+                    </div>
+                </div>
+                <div class="retro-window__menubar" aria-hidden="true">
+                    <span>File</span>
+                    <span>Edit</span>
+                    <span>Search</span>
+                    <span>Help</span>
+                </div>
+                <div class="retro-window__body retro-window__body--white">
+
+                    <!-- =============================================
+                         DEV BLOG: To add a new post, copy the
+                         template below and paste it ABOVE the
+                         existing posts. Fill in date, title, body.
+                         =============================================
+
+                         TEMPLATE (copy this block):
+                         <article class="blog-post">
+                             <div class="blog-post__date">Month DD, YYYY</div>
+                             <h3 class="blog-post__title">Your Title Here</h3>
+                             <p>Your content here. You can use multiple paragraphs.</p>
+                             <p>Just add more &lt;p&gt; tags for more paragraphs.</p>
+                         </article>
+                         ============================================= -->
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Apr 29, 2026</div>
+                        <h3 class="blog-post__title">ABG Now Has an Expert Mode</h3>
+                        <p>If you've been using ABG for a while and the step-by-step guidance has started to feel like training wheels, this update is for you.</p>
+                        <p><strong>What Expert Mode Is</strong><br>
+                        Expert Mode strips everything back. You get a blood gas. No steps. No hints. No hand-holding. Just the numbers and a text field. Interpret it correctly and move on. Get it wrong and you'll find out. It's designed for people who already understand the logic and want to test themselves against real-world-style cases without the scaffolding.</p>
+                        <p><strong>Why We Added It</strong><br>
+                        The core ABG app was always built around teaching the process — walking you through pH, PaCO2, HCO3, compensation, one step at a time. That's still there and it still works. But we kept hearing from more advanced users that they wanted something closer to what it actually feels like on the wards: ABG in hand, attending waiting, no prompts. Expert Mode is that.</p>
+                        <p>Give it a try and let us know how it goes. The bar is high — no pun intended.</p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Apr 14, 2026</div>
+                        <h3 class="blog-post__title">I Fine-Tuned a Language Model on Medical Cases. Here's What Happened.</h3>
+                        <p>Quick background: I've been building teaching tools for medical trainees for a while. At some point I got curious — what if instead of hard-coding decision trees, I just trained a small language model to reason through clinical cases the way a physician would? Reader, I tried it.</p>
+                        <p><strong>1. What I Actually Did</strong><br>
+                        Took Llama 3.2 3B Instruct — a small, open-source model — and fine-tuned it on 511 physician-annotated cases from the DiReCT dataset using LoRA. Ran it on a Google Colab T4 GPU for 3 training epochs. The loss dropped from 22 to 3.7, which sounds like a lot because it is. I did not invent any of the underlying technology here. I just pointed existing tools at a medical dataset and let it cook.</p>
+                        <p><strong>2. Does It Actually Work?</strong><br>
+                        Yes, actually. I gave both the base model and my fine-tuned version the same clinical vignette — a classic hypothyroidism presentation. The base model confidently stated that cold intolerance is caused by <em>too much</em> thyroid hormone. Which is the opposite of true. It also said the patient had weight <em>loss</em>. Hypothyroidism causes weight <em>gain</em>. These are not subtle errors. These are the kind of errors that would make an attending physically wince.<br>
+                        The fine-tuned model correctly identified hypothyroidism, flagged Hashimoto's as a likely cause, and walked through a logical flow: symptoms → testing → treatment. Basic? Sure. But correct. That's not nothing.</p>
+                        <p><strong>3. This Is a Proof of Concept, Not a Product</strong><br>
+                        To be very clear: this is early and experimental. Training data is limited to 511 cases, the base model is 3B parameters, and there's a long road ahead. What I wanted to know was whether this direction was even worth pursuing. The answer seems to be yes. Next steps include expanding the dataset, upgrading the base model, and cleaning up the hedging language the outputs love to pepper in. Nobody needs a model that qualifies every sentence with "however, it is important to note that I am an AI."</p>
+                        <p>Model is live on HuggingFace if you want to poke at it: <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1" target="_blank" rel="noopener">huggingface.co/ploppy2/Clinical-Reasoning-Test1</a></p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Mar 31, 2026</div>
+                        <h3 class="blog-post__title">SAL Is Here, ABX Has a Prototype, and Yes the Logos Look Different</h3>
+                        <p>Three things happened. Not all of them are huge. All of them are worth knowing about.</p>
+                        <p><strong>1. SAL: A New App for Learning About Hyponatremia</strong><br>
+                        I decided to create SAL, working title, don't @ me. It's a teaching tool for hyponatremia, one of the most annoying electrolyte disorders in medicine. Study it 100 times and still get confused. Good thing this app generates infinite questions. The app is in early development, but the core concept is the same as ABG: walk you through the logic step by step until it clicks. More updates soon.</p>
+                        <p><strong>2. ABX Alpha Prototype Is a Thing That Exists Now</strong><br>
+                        We've put together an alpha prototype for ABX — the antibiotic decision-making tool — and this one is built in Godot. It is rough. It is very much a prototype. The entire point right now is to get something in front of people and see if the core concept holds up before we build the real thing around it. </p>
+                        <p><strong>3. Logos Got Updated</strong><br>
+                        The SSS and ABX logos have been updated. They look better now. I forgot to add "SAL" to the SAL logo... oops.</p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Mar 10, 2026</div>
+                        <h3 class="blog-post__title">ABG Prototype Is Live: You Can Now Break It From Your Phone</h3>
+                        <p>The ABG prototype is officially deployed to saltshakerstudio.net/abg. No app store. No "enable unknown sources" deep in your Android settings. Just a link. Click it. It works on your phone. We're living in the future, bro.</p>
+                        <p><strong>1. What's Actually There Right Now</strong><br>
+                        The prototype has the core ABG interpreter engine, the random case generator, and the foundational and beginner teaching modes. It is not finished. It is not polished. There are almost certainly bugs. That is the point. If you wait until something is perfect to share it, you will be sharing it never.</p>
+                        <p><strong>2. Why Web Instead of a Native App</strong><br>
+                        Short answer: because deploying a Flutter web build to GitHub Pages takes one terminal command and zero App Store review cycles. Long answer: same as the short answer. Native builds are coming, but getting the core learning experience in front of real residents now is more useful than spending two weeks fighting Xcode provisioning profiles.</p>
+                        <p><strong>3. What I Actually Want From You</strong><br>
+                        Use it. Break it. Tell me what feels wrong. Specifically: does the stepwise logic make sense the way a real attending would walk you through it? Are the cases realistic? Is there a disorder pattern you keep seeing on rounds that the generator never seems to produce? Yell at my on twitter or email - links at the bottom of the page.</p>
+                        <p><strong>4. What's Next</strong><br>
+                        Planning to add a pro mode for you giga-chads out there that dont need no tutoring so you can practice solving ABGs without any help. At some point will also add a leaderboard so you can be a gunner secretly. Don't pretend you wouldn't want to flex on the OTHER medical school in your area.</p>
+                        <p>Go break something: saltshakerstudio.net/abg</p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Feb 25, 2026</div>
+                        <h3 class="blog-post__title">ABG Tutor Update: Because "Vibes" is Not a Valid Acid-Base Diagnosis</h3>
+                        <p>I've just pushed a massive update to the ABG Tutor. My goal was simple: make every case feel less like a guessing game and more like a clinical reasoning script—basically, a digital version of your attending staring at you until you remember Winter's formula.</p>
+                        <p><strong>1. Hand-Holding for Simple Disorders</strong><br>
+                        I've built dedicated, stepwise flows for all seven "simple" patterns. Instead of just hitting "reveal" and seeing a diagnosis you don't understand, the Tutor now walks you through a 5-step scaffold. It'll nudge you through pH, primary processes, and the "acute vs. chronic" bicarbonate hint until you reach the right answer. It's like training wheels, but for people who carry pagers.</p>
+                        <p><strong>2. Mixed Disorders (The "Where Am I?" Phase)</strong><br>
+                        Mixed metabolic and respiratory issues are usually where the panic sets in. I've added structured 6-step paths that force you to actually use the formulas. The Catch: For things like Winter's formula, I'm giving you numeric multiple-choice options without showing the equation. You actually have to know it. (I know, I'm a monster.)</p>
+                        <p><strong>3. Triple Disorders: Now With Actual Logic</strong><br>
+                        The triple-disorder engine used to be a bit... "random-ish." You might have seen an explanation for HAGMA + Met Alk while the numbers were clearly screaming NAGMA. I've rewritten the logic from the ground up. The generator now picks a logical pattern first, then forces the math to obey the laws of physics. Whether it's Delta-Gaps or expected PCO&#8322;, the numbers will actually make sense now.</p>
+                        <p><strong>4. The New 7-Step Triple-Disorder Flow</strong><br>
+                        Triple cases are now a full 7-step journey through: anion gap status, the Delta-Gap interpretation (the "hidden" stuff), Winter's formula (the math stuff), and the final, glorious, multi-hyphenated diagnosis. Everything is computed dynamically, so the explanation will finally match the numbers on your screen. No more gaslighting from the software.</p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Feb 13, 2026</div>
+                        <h3 class="blog-post__title">New Website Launch!</h3>
+                        <p>Welcome to the new Salt Shaker Studio website! We've gone full retro with a modern functional design. This site will be our home for development updates, game announcements, and behind-the-scenes looks at how we build medical education games.</p>
+                        <p>Stay tuned for regular dev updates as we continue building ABG, ABX, and GAS.</p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Jan 28, 2026</div>
+                        <h3 class="blog-post__title">ABG Alpha Build Progress</h3>
+                        <p>We've completed the core blood gas parser engine and the random ABG generator engine; as well as foundational and beginner modes. We are now building out the stepwise teaching mode. After that the plan is to move forward with either a more advanced teaching mode and then expert mode.</p>
+                        <p>Should I add a leaderboard so you can mog your classmates? Let me know!</p>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="blog-post__date">Jan 10, 2026</div>
+                        <h3 class="blog-post__title">Welcome to Salt Shaker Studio!</h3>
+                        <p>Arman here. I'm thrilled to officially launch Salt Shaker Studio. As a medical educator, I've seen firsthand how traditional medical education can fall short. Lets be real, nobody likes to learn by being read a PowerPoint presentation by someone who didn't even make it! My mission is to create engaging, interactive games and apps that make learning medicine genuinely fun and actually effective so you don't waste your precious time. Theres a reason it's easy to remember the names of 151 Pokemon but hard to remember the functions of 151 antibiotics!!</p>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="retro-hr container">
+
+    <!-- ======================================
+         ROADMAP SECTION
+         ====================================== -->
+    <section id="roadmap">
+        <div class="container">
+            <h2 class="retro-section-title">&#128197; Roadmap</h2>
+
+            <div class="retro-window">
+                <div class="retro-window__titlebar">
+                    <span class="retro-window__title">Roadmap - Explorer</span>
+                    <div class="retro-window__controls" aria-hidden="true">
+                        <span class="retro-window__control">_</span>
+                        <span class="retro-window__control">&#9633;</span>
+                        <span class="retro-window__control">&times;</span>
+                    </div>
+                </div>
+                <div class="retro-window__menubar" aria-hidden="true">
+                    <span>File</span>
+                    <span>Edit</span>
+                    <span>View</span>
+                    <span>Help</span>
+                </div>
+                <div class="retro-window__body">
+
+                    <!-- =============================================
+                         ROADMAP: To add a new item, add a new <li>
+                         inside the appropriate quarter's <ul>.
+                         To add a new quarter, copy a roadmap-quarter
+                         block and update the title.
+
+                         Status classes:
+                           status-tag--done    = completed (green)
+                           status-tag--wip     = in progress (yellow)
+                           status-tag--planned = planned (gray)
+                         ============================================= -->
+
+                    <div class="roadmap-quarter">
+                        <div class="roadmap-quarter__title">&#128193; Q1 2026</div>
+                        <ul class="roadmap-tree">
+                            <li>
+                                <span>ABG Alpha Release</span>
+                                <span class="status-tag status-tag--wip">IN PROGRESS</span>
+                            </li>
+                            <li>
+                                <span>Steam Page Launch</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                            <li>
+                                <span>Discord Community Setup</span>
+                                <span class="status-tag status-tag--done">DONE</span>
+                            </li>
+                            <li>
+                                <span>Website Launch</span>
+                                <span class="status-tag status-tag--done">DONE</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="roadmap-quarter">
+                        <div class="roadmap-quarter__title">&#128193; Q2 2026</div>
+                        <ul class="roadmap-tree">
+                            <li>
+                                <span>ABX Prototype</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                            <li>
+                                <span>ABG Beta Testing</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                            <li>
+                                <span>Medical Advisor Board</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="roadmap-quarter">
+                        <div class="roadmap-quarter__title">&#128193; Q3-Q4 2026</div>
+                        <ul class="roadmap-tree">
+                            <li>
+                                <span>GAS Development Kickoff</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                            <li>
+                                <span>ABG Full Release</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                            <li>
+                                <span>ABX Alpha Release</span>
+                                <span class="status-tag status-tag--planned">PLANNED</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="retro-hr container">
+
+    <!-- ======================================
+         NEWS SECTION
+         ====================================== -->
+    <section id="news">
+        <div class="container">
+            <h2 class="retro-section-title">&#128227; News</h2>
+
+            <div class="retro-raised news-board">
+
+                <!-- =============================================
+                     NEWS: To add a new item, copy the template
+                     below and paste it at the TOP of the list.
+
+                     TEMPLATE:
+                     <div class="news-item retro-sunken">
+                         <div class="news-item__date">Month DD, YYYY</div>
+                         <div class="news-item__text">Your announcement here.</div>
+                     </div>
+                     ============================================= -->
+
+                <div class="news-item retro-sunken">
+                    <div class="news-item__date">Feb 13, 2026 <span class="blink new-badge">NEW!</span></div>
+                    <div class="news-item__text">Salt Shaker Studio website launched! Check out our new retro-styled home.</div>
+                </div>
+
+                <div class="news-item retro-sunken">
+                    <div class="news-item__date">Jan 15, 2026</div>
+                    <div class="news-item__text">ABG prototype showcased at the Medical Education Innovation Conference. Positive feedback from residents and attending physicians!</div>
+                </div>
+
+                <div class="news-item retro-sunken">
+                    <div class="news-item__date">Dec 20, 2025</div>
+                    <div class="news-item__text">Salt Shaker Studio officially founded. Our mission: making medical education fun through interactive games.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="retro-hr container">
+
+    <!-- ======================================
+         ABOUT SECTION
+         ====================================== -->
+    <section id="about">
+        <div class="container">
+            <h2 class="retro-section-title">&#128100; About</h2>
+
+            <div class="retro-window">
+                <div class="retro-window__titlebar">
+                    <span class="retro-window__title">About Salt Shaker Studio</span>
+                    <div class="retro-window__controls" aria-hidden="true">
+                        <span class="retro-window__control">_</span>
+                        <span class="retro-window__control">&#9633;</span>
+                        <span class="retro-window__control">&times;</span>
+                    </div>
+                </div>
+                <div class="retro-window__body">
+                    <div class="about-content">
+                        <div class="about-photo retro-sunken">
+                            <img src="images/arman-photo.png" alt="Dr. Arman Yalcin - Founder of Salt Shaker Studio">
+                        </div>
+                        <div class="about-bio">
+                            <h3>Dr. Arman Yalcin, MD</h3>
+                            <p class="subtitle">Infectious Disease Physician &bull; Founder, Game Designer, and Fellow Nerd</p>
+                            <p>Dr. Yalcin is an infectious disease physician based in Boston who founded Salt Shaker Studio to bridge the gap between traditional medical education and modern interactive learning.</p>
+                            <p>With firsthand experience teaching medical trainees, he recognized that engaging, game-based approaches could transform how physicians learn complex clinical concepts like blood gas interpretation and antibiotic prescribing.</p>
+                        </div>
+                    </div>
+
+                    <hr class="retro-hr">
+
+                    <div class="retro-sunken" style="padding: var(--space-sm);">
+                        <table class="about-info-table">
+                            <tr>
+                                <td>Title:</td>
+                                <td>Founder &amp; Game Designer</td>
+                            </tr>
+                            <tr>
+                                <td>Specialty:</td>
+                                <td>Infectious Disease</td>
+                            </tr>
+                            <tr>
+                                <td>Location:</td>
+                                <td>Boston, MA</td>
+                            </tr>
+                            <tr>
+                                <td>Mission:</td>
+                                <td>Making medical education not suck</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="text-align: right; margin-top: var(--space-md);">
+                        <a href="#hero" class="retro-button">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="retro-hr container">
+
+    <!-- ======================================
+         SOCIAL LINKS SECTION
+         ====================================== -->
+    <section id="social">
+        <div class="container" style="text-align: center;">
+            <h2 class="retro-section-title">&#127760; Connect</h2>
+            <div class="social-links">
+                <a href="https://twitter.com/" class="retro-button" target="_blank" rel="noopener">&#120143;&#47;Twitter</a>
+                <a href="https://discord.gg/b4jsEnW2jZ" class="retro-button" target="https://discord.gg/3XPGmgy6" rel="noopener">Discord</a>
+                <a href="https://store.steampowered.com/" class="retro-button" target="_blank" rel="noopener">Steam</a>
+                <a href="www.linkedin.com/in/arman8514581" class="retro-button" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==========================================
+     FOOTER
+     ========================================== -->
+<footer class="site-footer">
+    <div class="construction-stripe" aria-hidden="true"></div>
+    <div class="container">
+        <div class="footer-logo">
+            <!-- Replace with grayscale logo: <img src="images/logo-gray.png" alt="" width="60"> -->
+            <div style="font-family: var(--font-pixel); font-size: 24px; margin: var(--space-md) 0;">Salt Shaker Studio</div>
+        </div>
+
+        <p>&copy; 2025&ndash;2026 Salt Shaker Studio. All rights reserved.</p>
+
+        <div class="footer-badges">
+            <span class="retro-badge">&#127760; Best viewed in Netscape Navigator 4.0</span>
+            <span class="retro-badge">&#128187; 800&times;600</span>
+            <span class="retro-badge">&#9989; Valid HTML</span>
+            <span class="retro-badge">&#9997; Made with Notepad</span>
+        </div>
+
+        <p>You are visitor #<span class="hit-counter" id="hit-counter">00000001</span></p>
+
+        <p style="margin-top: var(--space-md);">
+            <a href="mailto:saltshakerstudio@protonmail.com">&#9993; saltshakerstudio email</a>
+        </p>
+
+        <p style="margin-top: var(--space-sm); font-size: 11px; color: var(--win-dark);">
+            Made with &#10084; and HTML
+        </p>
+        <p>Educational content for medical professionals. Not for medical advice.</p>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="js/main.js"></script>
+</body>
+</html>
