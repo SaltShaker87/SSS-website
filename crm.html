@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CRM: Clinical Reasoning Model — a fine-tuned small language model trained on physician-annotated clinical cases. Learn more about how it works.">
+<title>CRM: Clinical Reasoning Model — Salt Shaker Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ WIN95 DESIGN TOKENS ============ */
+  :root{
+    --desktop:#0d7c7c;
+    --face:#c0c0c0;
+    --face-light:#dfdfdf;
+    --shadow:#808080;
+    --shadow-dark:#0a0a0a;
+    --title-a:#000080;
+    --title-b:#1084d0;
+    --paper:#ffffff;
+    --ink:#111111;
+    --salt:#ffd23f;
+    --live:#1ca31c;
+    --font-ui:Tahoma,"MS Sans Serif",Geneva,sans-serif;
+    --font-display:"Silkscreen",Tahoma,sans-serif;
+    --font-mono:"Courier New",Courier,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--font-ui);font-size:14px;color:var(--ink);
+    background:var(--desktop);
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:6px 6px;
+  }
+  img{max-width:100%;display:block}
+  a{color:#000080}
+  :focus-visible{outline:2px dotted var(--ink);outline-offset:2px}
+
+  /* ============ WINDOW CHROME ============ */
+  .window{
+    background:var(--face);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--shadow), inset 2px 2px #fff,
+               4px 4px 0 rgba(0,0,0,.35);
+    margin-bottom:28px;
+  }
+  .titlebar{
+    display:flex;align-items:center;gap:6px;
+    background:linear-gradient(90deg,var(--title-a),var(--title-b));
+    color:#fff;padding:3px 4px 3px 8px;font-weight:bold;font-size:13px;
+    user-select:none;
+  }
+  .titlebar .t-icon{font-size:13px}
+  .titlebar .t-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .t-btns{display:flex;gap:2px}
+  .t-btn{
+    width:18px;height:16px;font-size:10px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--face);color:var(--ink);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+    font-family:var(--font-ui);
+  }
+  .win-body{padding:18px}
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    display:inline-block;font-family:var(--font-ui);font-size:13px;color:var(--ink);
+    text-decoration:none;cursor:pointer;padding:6px 14px;background:var(--face);border:0;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+  }
+  .btn:active{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+    transform:translate(1px,1px);
+  }
+  .btn-primary{font-weight:bold;background:var(--salt)}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:820px;margin:0 auto;padding:24px 16px 40px}
+
+  .detail-top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .detail-top img{
+    width:96px;height:96px;flex:none;object-fit:cover;background:#fff;padding:3px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .detail-top h1{
+    font-family:var(--font-display);font-size:clamp(18px,4vw,28px);
+    color:var(--title-a);text-shadow:2px 2px 0 var(--salt);
+    line-height:1.2;margin-bottom:8px;
+  }
+  .badge{
+    display:inline-block;font-size:10px;font-weight:bold;letter-spacing:.5px;
+    color:#fff;padding:2px 7px;margin-bottom:6px;background:var(--live);
+    box-shadow:inset -1px -1px rgba(0,0,0,.4), inset 1px 1px rgba(255,255,255,.4);
+  }
+  .detail-body{margin-top:20px;font-size:14px;line-height:1.6}
+  .detail-body h2{
+    font-family:var(--font-display);font-size:15px;color:var(--title-a);
+    margin:22px 0 8px;
+  }
+  .detail-body p{margin-bottom:12px;max-width:68ch}
+
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+  /* ============ DETAIL SECTIONS ============ */
+  /* tech tag chips */
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .tags span,.tags a{
+    display:inline-block;font-size:11px;padding:3px 9px;background:var(--face);
+    color:var(--ink);text-decoration:none;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+  }
+  .tags a:hover{text-decoration:underline}
+  .tags a:active{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+    transform:translate(1px,1px);
+  }
+
+  /* training-overview stat boxes */
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:10px}
+  .stat{
+    text-align:center;padding:16px 10px;background:#fff;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .stat b{display:block;font-family:var(--font-display);font-size:24px;color:var(--title-a);margin-bottom:6px}
+  .stat small{font-size:11px;color:var(--shadow)}
+
+  /* test-case quote */
+  .quote{
+    margin-top:10px;padding:14px 16px;background:#fff;font-style:italic;line-height:1.55;
+    border-left:6px solid var(--salt);
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light);
+  }
+
+  /* two-column comparison / side-by-side */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+  .col{padding:12px 14px;font-size:13px;line-height:1.5}
+  .col h4{font-size:12px;font-weight:bold;margin-bottom:8px;letter-spacing:.3px}
+  .col.bad{background:#fbeaea}
+  .col.bad h4{color:#a32020}
+  .col.good{background:#e6f6ec}
+  .col.good h4{color:#157a37}
+  .col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .col li{padding-left:14px;position:relative}
+  .col li::before{content:"•";position:absolute;left:0}
+  .col.out{background:#fff;font-family:var(--font-mono);font-size:12px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light);}
+  .col.out.good{background:#f0fbf4}
+
+  /* conclusion callout */
+  .callout{
+    margin-top:10px;padding:16px;background:#ecebfb;line-height:1.6;
+    border-left:6px solid var(--title-b);
+  }
+
+  /* numbered next steps */
+  ol.steps{margin-top:10px;padding-left:0;list-style:none;counter-reset:step}
+  ol.steps li{
+    counter-increment:step;display:flex;gap:12px;align-items:baseline;
+    padding:7px 0;border-bottom:1px dashed #aaa;
+  }
+  ol.steps li::before{
+    content:counter(step);flex:none;font-family:var(--font-display);
+    font-size:13px;color:var(--title-a);min-width:18px;
+  }
+
+  @media(max-width:640px){
+    .compare{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="window">
+      <div class="titlebar">
+        <span class="t-icon">🧠</span><span class="t-text">CRM.exe — Details</span>
+        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
+      </div>
+      <div class="win-body">
+        <div class="detail-top">
+          <img src="images/crm-logo.png" alt="CRM logo">
+          <div>
+            <span class="badge">● COMPLETE</span>
+            <h1>CRM: Clinical Reasoning Model</h1>
+            <p>A fine-tuned small language model trained on 511 physician-annotated clinical cases. Walks through differential diagnosis step by step — with fewer hallucinations than the base model.</p>
+            <br>
+            <p>Why did I do this? Because I initially used the base model and found it was too dumb to understand medical terminology. This made it say stupid stuff. So, I learned how to fine-tune it. This means I just took the already completed model and taught it further using the DiReCT dataset. I used that dataset because it was free and easily accessible. Admittedly, it is a small dataset, as far as fine-tuning goes - but it worked for my purposes. The data below shows the result of this fine-tuning: it understood medical terminology much better, and was able to actually function inside the AUC app like I wanted. Reasonably well at least. It's still only a 3 billion parameter model, so its still suboptimal.</p>
+            <br>
+            <p>Below is a test case example to show how it improved:</p>
+            <div class="tags">
+              <a href="https://huggingface.co/meta-llama/Llama-3.2-3B" target="_blank" rel="noopener">Llama 3.2 3B Instruct</a>
+              <a href="https://huggingface.co/docs/peft/main/en/conceptual_guides/lora" target="_blank" rel="noopener">LoRA fine-tuning</a>
+              <a href="https://physionet.org/content/mimic-iv-ext-direct/1.0.0/" target="_blank" rel="noopener">DiReCT dataset</a>
+              <span>Google Colab T4 GPU</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-body">
+          <h2>Training Overview</h2>
+          <div class="stat-grid">
+            <div class="stat"><b>511</b><small>Clinical cases used</small></div>
+            <div class="stat"><b>3</b><small>Training epochs</small></div>
+            <div class="stat"><b>22 → 3.7</b><small>Loss (start to end)</small></div>
+          </div>
+
+          <h2>Test Case</h2>
+          <div class="quote">
+            “A 32-year-old woman presents with fatigue, weight gain, cold intolerance, and constipation for 6 months. She also notes her hair has been falling out.”
+          </div>
+
+          <h2>Model Outputs — Side by Side</h2>
+          <div class="compare">
+            <div class="col out">
+              <h4>Base Llama 3.2 3B (no fine-tuning)</h4>
+              <p>Step 1: The primary complaint is related to the endocrine system. Step 2: Fatigue can be caused by anemia or hypothyroidism... but in most cases it is due to iron deficiency anaemia... Step 3: Weight loss may occur if there was significant reduction in appetite... Step 4: Cold intolerance occurs when your body produces too much thyroxine hormone; you feel hot even after being indoors... Step 5: Constipation could result from low estrogen, medications, poor diet, dehydration, stress and anxiety... Potential diagnosis: HypoThyroidism. Further testing required.</p>
+            </div>
+            <div class="col out good">
+              <h4>Fine-tuned model (ploppy2/Clinical-Reasoning-Test1)</h4>
+              <p>Step 1: The most likely underlying cause is hypothyroidism. The primary symptom that led to this conclusion was cold intolerance, which suggests decreased thyroid hormone production. Step 2: There may be an autoimmune process involved — Hashimoto's disease is a common cause of hypothyroidism. Step 3: Thyroid function tests will confirm whether she suffers from low TSH levels indicating underactive thyroid gland. Step 4: If confirmed by lab testing, treatment should start immediately. Options include synthetic replacement medication (levothyroxine) daily.</p>
+            </div>
+          </div>
+
+          <h2>What Changed</h2>
+          <div class="compare">
+            <div class="col bad">
+              <h4>Base model problems</h4>
+              <ul>
+                <li>States cold intolerance = too much thyroid hormone (factually wrong)</li>
+                <li>Claims weight loss occurs (wrong — hypothyroidism causes weight gain)</li>
+                <li>TSH description devolves into unrelated topics (bone health, memory, immunity)</li>
+                <li>Disorganized and clinically unfocused</li>
+              </ul>
+            </div>
+            <div class="col good">
+              <h4>Fine-tuned model improvements</h4>
+              <ul>
+                <li>Correctly identifies hypothyroidism from symptom pattern</li>
+                <li>Appropriately mentions Hashimoto's as autoimmune cause</li>
+                <li>Logical flow: symptoms → diagnosis → testing → treatment</li>
+                <li>Stays clinically relevant throughout</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Conclusion</h2>
+          <div class="callout">
+            Fine-tuning was successful. The model trained on 511 physician-annotated DiReCT cases demonstrably improved diagnostic reasoning structure and reduced clinical hallucinations compared to the base model. This serves as a proof of concept for using fine-tuned small language models in clinical medical education.
+          </div>
+
+          <h2>Potential Next Steps</h2>
+          <ol class="steps">
+            <li>Expand training data beyond 511 cases for broader clinical coverage</li>
+            <li>Upgrade to Llama 3.2 8B with a more powerful GPU for better baseline capability</li>
+            <li>Clean up training data to reduce disclaimer and hedging language in outputs</li>
+            <li>Evaluate systematically across a held-out test set of cases</li>
+          </ol>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">View on HuggingFace</a>
+          <a class="btn" href="index.html">← Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
