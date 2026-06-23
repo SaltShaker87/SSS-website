@@ -210,6 +210,54 @@
   .p-track i.on{background:var(--title-a)}
   .game .btn-row{display:flex;gap:8px;flex-wrap:wrap}
 
+  /* ============ TESTIMONIALS ============ */
+  .reviews-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:18px;
+  }
+  .review{
+    position:relative;display:flex;flex-direction:column;gap:9px;
+    margin:0;padding:14px 14px 14px 17px;background:var(--paper);
+    /* sunken Win95 panel */
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  /* modern accent: salt-yellow gradient bar down the left edge */
+  .review::before{
+    content:"";position:absolute;top:3px;bottom:3px;left:3px;width:4px;
+    background:linear-gradient(180deg,var(--salt),var(--proto));
+    border-radius:2px;
+  }
+  .review:hover{
+    transform:translateY(-3px);
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff,
+               5px 7px 0 rgba(0,0,0,.28);
+  }
+  .review-head{display:flex;gap:11px;align-items:center}
+  /* modern circular gradient avatar — deliberate contrast to the boxy UI */
+  .avatar{
+    width:44px;height:44px;flex:none;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;line-height:1;
+    background:linear-gradient(135deg,var(--a,#1084d0),var(--b,#000080));
+    box-shadow:0 2px 5px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.55);
+  }
+  .rv-name{font-size:13px;font-weight:bold;line-height:1.3;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .rv-role{color:var(--shadow);font-size:11px}
+  /* modern verified pill */
+  .verified{
+    font-family:var(--font-ui);font-size:9px;font-weight:bold;letter-spacing:.3px;
+    color:#fff;background:var(--live);padding:1px 7px;border-radius:9px;
+    box-shadow:0 1px 2px rgba(0,0,0,.3);white-space:nowrap;
+  }
+  .stars{color:var(--salt);font-size:14px;letter-spacing:2px;text-shadow:1px 1px 0 rgba(0,0,0,.35)}
+  .review blockquote{margin:0;font-size:13px;line-height:1.5}
+  @media (prefers-reduced-motion:reduce){
+    .review,.review:hover{transition:none;transform:none}
+  }
+
   /* ============ DEV BLOG (NOTEPAD) ============ */
   .notepad .win-body{background:#fff;font-family:var(--font-mono);padding:0;
     box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
@@ -697,6 +745,80 @@
     </div>
   </section>
 
+  <!-- ============ TESTIMONIALS ============ -->
+  <h2 class="section-h" id="testimonials">💬 Testimonials</h2>
+  <section class="window" aria-label="Testimonials">
+    <div class="titlebar">
+      <span class="t-icon">💬</span><span class="t-text">Testimonials - Guestbook</span>
+      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
+    </div>
+    <div class="win-body">
+      <div class="reviews-grid">
+
+        <figure class="review">
+          <div class="review-head">
+            <span class="avatar" style="--a:#1084d0;--b:#000080">👨‍⚕️</span>
+            <div>
+              <figcaption class="rv-name">Dr. Miguel “Pip-Tazo” Reyes <span class="verified">✔ Verified</span></figcaption>
+              <span class="rv-role">PGY-3 Internal Medicine</span>
+            </div>
+          </div>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“I used to interpret ABGs purely on vibes. After a week with ABG I now interpret them on vibes <em>and</em> a fully compensated respiratory alkalosis. My attending hasn't noticed, but my pH has never been happier.”</blockquote>
+        </figure>
+
+        <figure class="review">
+          <div class="review-head">
+            <span class="avatar" style="--a:#d97b00;--b:#a33">👩‍⚕️</span>
+            <div>
+              <figcaption class="rv-name">Dr. Priya Anand <span class="verified">✔ Verified</span></figcaption>
+              <span class="rv-role">Infectious Disease Fellow</span>
+            </div>
+          </div>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“ABX finally taught me the full spectrum of piperacillin-tazobactam. The pharmacist cried. With joy. Probably. Or maybe because I asked how much dalbavancin costs? TBD.”</blockquote>
+        </figure>
+
+        <figure class="review">
+          <div class="review-head">
+            <span class="avatar" style="--a:#1ca31c;--b:#0d7c7c">🧪</span>
+            <div>
+              <figcaption class="rv-name">Henderson Hasselbalch <span class="verified">✔ Verified</span></figcaption>
+              <span class="rv-role">Independent Buffer Enthusiast</span>
+            </div>
+          </div>
+          <div class="stars" aria-label="4 and a half out of 5 stars">★★★★½</div>
+          <blockquote>“The pH of this website is perfectly compensated: 7.40 / 7.40, no anion gap. I would acquire a metabolic alkalosis here again. 11 mEq/L out of 10.”</blockquote>
+        </figure>
+
+        <figure class="review">
+          <div class="review-head">
+            <span class="avatar" style="--a:#7b7b7b;--b:#0a0a0a">👴</span>
+            <div>
+              <figcaption class="rv-name">Gerald Pebkac, Age 71 <span class="verified">✔ Verified</span></figcaption>
+              <span class="rv-role">Survivor of 3 Windows Reinstalls</span>
+            </div>
+          </div>
+          <div class="stars" aria-label="5 out of 5 stars">★oooo</div>
+          <blockquote>“I keep double-clicking the start menu and it does nothing! I've been using computers for decades and I still don't understand why these never work. There is no way this can be my fault.”</blockquote>
+        </figure>
+
+        <figure class="review">
+          <div class="review-head">
+            <span class="avatar" style="--a:#1062c4;--b:#7b2fb5">👩‍💻</span>
+            <div>
+              <figcaption class="rv-name">Dr. Sam Okafor <span class="verified">✔ Verified</span></figcaption>
+              <span class="rv-role">Night-Float Survivor</span>
+            </div>
+          </div>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“Sensitivity 100%, specificity 100% — this site rules in fun and rules out boredom. The little salt-shaker mascot is now my emergency contact.”</blockquote>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ============ ABOUT ============ -->
   <h2 class="section-h" id="about">👤 About</h2>
   <section class="window" aria-label="About">
@@ -752,6 +874,7 @@
     <a href="#portfolio">💾 Games</a>
     <a href="#devblog">📝 Dev Blog</a>
     <a href="#roadmap">📅 Roadmap</a>
+    <a href="#testimonials">💬 Testimonials</a>
     <a href="#about">👤 About</a>
     <a href="https://discord.gg/b4jsEnW2jZ">💬 Discord</a>
     <a href="/abg/">▶ Play ABG</a>
@@ -767,6 +890,7 @@
     <a class="raised" href="#portfolio">💾 Games</a>
     <a class="raised" href="#devblog">📝 Dev Blog</a>
     <a class="raised optional" href="#roadmap">📅 Roadmap</a>
+    <a class="raised optional" href="#testimonials">💬 Testimonials</a>
     <a class="raised optional" href="#about">👤 About</a>
   </div>
   <div class="clock" id="clock" aria-label="Current time">--:--</div>
