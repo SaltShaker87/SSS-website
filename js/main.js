@@ -179,4 +179,78 @@
         }
     });
 
+/* --- Rotating Taglines --- */
+(function () {
+    const tagline = document.getElementById('rotating-tagline');
+    if (!tagline) return;
+
+    const taglines = [
+        "Because learning by osmosis is still a myth",
+        "Because your brain doesn't have a save button",
+        "Because staring at something isn't the same as understanding it",
+        "Because hope is not a study strategy",
+        "Because your brain doesn't run on Wi-Fi",
+        "Because 'I'll figure it out later' is a bold strategy",
+        "Because your brain isn't a hard drive",
+        "Because pretending to pay attention doesn't work",
+        "Because watching someone else do it doesn't count",
+        "Because 'follow along on the slides' is a nightmare",
+        "Because real learning doesn't come from a deck",
+        "Because your brain doesn't have a download button",
+        "Because watching slides isn't learning",
+        "Because brains aren't USB ports",
+        "Because someone reading slides to you? Not a thing.",
+    ];
+
+    let currentIndex = 0;
+    let interval;
+    let isPaused = false;
+
+    function showNextTagline() {
+        tagline.classList.add('fading');
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % taglines.length;
+            tagline.textContent = taglines[currentIndex];
+            tagline.classList.remove('fading');
+        }, 300);
+    }
+
+    interval = setInterval(showNextTagline, 10000);
+
+    /* Pause when hero is out of view */
+    const heroSection = document.querySelector('.hero');
+    if (heroSection && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (!isPaused) {
+                        tagline.style.opacity = '1';
+                        tagline.classList.remove('fading');
+                        interval = setInterval(showNextTagline, 10000);
+                    }
+                } else {
+                    isPaused = true;
+                    clearInterval(interval);
+                    tagline.style.opacity = '1';
+                    tagline.classList.remove('fading');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(heroSection);
+    }
+
+    /* Pause on hover */
+    tagline.addEventListener('mouseenter', () => {
+        isPaused = true;
+        clearInterval(interval);
+        tagline.style.opacity = '1';
+        tagline.classList.remove('fading');
+    });
+
+    tagline.addEventListener('mouseleave', () => {
+        isPaused = false;
+        interval = setInterval(showNextTagline, 10000);
+    });
 })();

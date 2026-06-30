@@ -147,7 +147,8 @@
     text-shadow:2px 2px 0 var(--salt);
     margin-bottom:8px;
   }
-  .hero .tagline{font-size:15px;margin-bottom:20px}
+  .hero .tagline{font-size:15px;margin-bottom:20px;transition:opacity 0.3s ease-in-out}
+  .hero .tagline.fading{opacity:0}
   .hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
   /* news ticker */
@@ -399,7 +400,7 @@
     <div class="win-body">
       <img class="logo" src="images/sss-logo.png" alt="Salt Shaker Studio logo">
       <h1>SALT SHAKER STUDIO</h1>
-      <p class="tagline">Because nobody ever really learns  from a PowerPoint</p>
+      <p class="tagline" id="rotating-tagline">Because nobody ever really learns from a PowerPoint</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="/abg/">▶ Play ABG Now</a>
         <a class="btn" href="#portfolio">Browse All Games</a>
@@ -1041,6 +1042,80 @@
           });
         });
       }
+    });
+  })();
+
+  /* === Rotating Taglines === */
+  (function () {
+    var tagline = document.getElementById('rotating-tagline');
+    if (!tagline) return;
+
+    var taglines = [
+      "Because learning by osmosis is still a myth",
+      "Because your brain doesn't have a save button",
+      "Because staring at something isn't the same as understanding it",
+      "Because hope is not a study strategy",
+      "Because your brain doesn't run on Wi-Fi",
+      "Because 'I'll figure it out later' is a bold strategy",
+      "Because your brain isn't a hard drive",
+      "Because pretending to pay attention doesn't work",
+      "Because watching someone else do it doesn't count",
+      "Because 'follow along on the slides' is a nightmare",
+      "Because real learning doesn't come from a deck",
+      "Because your brain doesn't have a download button",
+      "Because watching slides isn't learning",
+      "Because brains aren't USB ports",
+      "Because someone reading slides to you? Not a thing.",
+    ];
+
+    var currentIndex = 0;
+    var interval;
+    var isPaused = false;
+
+    function showNextTagline() {
+      tagline.classList.add('fading');
+      setTimeout(function () {
+        currentIndex = (currentIndex + 1) % taglines.length;
+        tagline.textContent = taglines[currentIndex];
+        tagline.classList.remove('fading');
+      }, 300);
+    }
+
+    interval = setInterval(showNextTagline, 10000);
+
+    /* Pause when hero is out of view */
+    var heroSection = document.querySelector('.hero');
+    if (heroSection && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!isPaused) {
+              tagline.style.opacity = '1';
+              tagline.classList.remove('fading');
+              interval = setInterval(showNextTagline, 10000);
+            }
+          } else {
+            isPaused = true;
+            clearInterval(interval);
+            tagline.style.opacity = '1';
+            tagline.classList.remove('fading');
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(heroSection);
+    }
+
+    /* Pause on hover */
+    tagline.addEventListener('mouseenter', function () {
+      isPaused = true;
+      clearInterval(interval);
+      tagline.style.opacity = '1';
+      tagline.classList.remove('fading');
+    });
+
+    tagline.addEventListener('mouseleave', function () {
+      isPaused = false;
+      interval = setInterval(showNextTagline, 10000);
     });
   })();
 </script>
