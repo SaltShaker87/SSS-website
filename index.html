@@ -937,10 +937,15 @@
   (function () {
     var hitCounter = document.getElementById('hit-counter');
     if (hitCounter) {
-      var visits = parseInt(localStorage.getItem('sss-visits') || '0', 10);
-      visits++;
-      localStorage.setItem('sss-visits', visits.toString());
-      hitCounter.textContent = visits.toString().padStart(8, '0');
+      try {
+        var visits = parseInt(localStorage.getItem('sss-visits') || '0', 10);
+        visits++;
+        localStorage.setItem('sss-visits', visits.toString());
+        hitCounter.textContent = visits.toString().padStart(8, '0');
+      } catch (e) {
+        /* private browsing / storage blocked — fail gracefully */
+        hitCounter.textContent = '00000001';
+      }
     }
   })();
 
@@ -1069,7 +1074,7 @@
     ];
 
     var currentIndex = 0;
-    var interval;
+    var interval = null;
     var isPaused = false;
 
     function showNextTagline() {
@@ -1081,24 +1086,31 @@
       }, 300);
     }
 
-    interval = setInterval(showNextTagline, 10000);
+    function startRotation() {
+      if (interval !== null) return;   /* guard: never stack intervals */
+      interval = setInterval(showNextTagline, 10000);
+    }
+
+    function stopRotation() {
+      if (interval !== null) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }
+
+    startRotation();
 
     /* Pause when hero is out of view */
     var heroSection = document.querySelector('.hero');
     if (heroSection && 'IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
+          tagline.style.opacity = '1';
+          tagline.classList.remove('fading');
           if (entry.isIntersecting) {
-            if (!isPaused) {
-              tagline.style.opacity = '1';
-              tagline.classList.remove('fading');
-              interval = setInterval(showNextTagline, 10000);
-            }
+            if (!isPaused) startRotation();
           } else {
-            isPaused = true;
-            clearInterval(interval);
-            tagline.style.opacity = '1';
-            tagline.classList.remove('fading');
+            stopRotation();   /* off-screen: pause without touching isPaused */
           }
         });
       }, { threshold: 0.3 });
@@ -1108,14 +1120,14 @@
     /* Pause on hover */
     tagline.addEventListener('mouseenter', function () {
       isPaused = true;
-      clearInterval(interval);
+      stopRotation();
       tagline.style.opacity = '1';
       tagline.classList.remove('fading');
     });
 
     tagline.addEventListener('mouseleave', function () {
       isPaused = false;
-      interval = setInterval(showNextTagline, 10000);
+      startRotation();
     });
   })();
 </script>
