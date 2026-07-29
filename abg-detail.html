@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ABG: The Acid-Base Learning App — Master blood gas interpretation through interactive cases and instant feedback.">
+<title>ABG: The Acid-Base Learning App — Salt Shaker Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ WIN95 DESIGN TOKENS ============ */
+  :root{
+    --desktop:#0d7c7c;
+    --face:#c0c0c0;
+    --face-light:#dfdfdf;
+    --shadow:#808080;
+    --shadow-dark:#0a0a0a;
+    --title-a:#000080;
+    --title-b:#1084d0;
+    --title-inactive:#7b7b7b;
+    --paper:#ffffff;
+    --ink:#111111;
+    --salt:#ffd23f;
+    --live:#1ca31c;
+    --proto:#d97b00;
+    --dev:#1062c4;
+    --concept:#7b7b7b;
+    --beta:#7b3fb5;
+    --font-ui:Tahoma,"MS Sans Serif",Geneva,sans-serif;
+    --font-display:"Silkscreen",Tahoma,sans-serif;
+    --font-mono:"Courier New",Courier,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--font-ui);font-size:14px;color:var(--ink);
+    background:var(--desktop);
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:6px 6px;
+    padding-bottom:40px;
+  }
+  img{max-width:100%;display:block}
+  a{color:#000080}
+  :focus-visible{outline:2px dotted var(--ink);outline-offset:2px}
+
+  .skip-link{
+    position:absolute;left:-9999px;top:0;z-index:200;
+    background:var(--salt);color:var(--ink);font-weight:bold;
+    padding:8px 14px;text-decoration:none;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
+  }
+  .skip-link:focus{left:8px;top:8px}
+
+  .raised{
+    background:var(--face);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--shadow), inset 2px 2px #fff;
+  }
+  .sunken{
+    background:var(--paper);
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+
+  .window{
+    background:var(--face);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--shadow), inset 2px 2px #fff,
+               4px 4px 0 rgba(0,0,0,.35);
+    margin-bottom:28px;
+  }
+  .titlebar{
+    display:flex;align-items:center;gap:6px;
+    background:linear-gradient(90deg,var(--title-a),var(--title-b));
+    color:#fff;padding:3px 4px 3px 8px;
+    font-weight:bold;font-size:13px;
+    user-select:none;
+  }
+  .titlebar .t-icon{font-size:13px}
+  .titlebar .t-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .t-btns{display:flex;gap:2px}
+  .t-btn{
+    width:18px;height:16px;font-size:10px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--face);color:var(--ink);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+    font-family:var(--font-ui);
+  }
+  .menubar{
+    display:flex;gap:14px;padding:3px 8px;font-size:13px;
+    border-bottom:1px solid var(--shadow);
+    box-shadow:0 1px 0 #fff;
+  }
+  .menubar span{cursor:default}
+  .menubar span:hover{background:var(--title-a);color:#fff}
+  .win-body{padding:18px}
+
+  .btn{
+    display:inline-block;
+    font-family:var(--font-ui);font-size:13px;color:var(--ink);
+    text-decoration:none;cursor:pointer;
+    padding:6px 14px;background:var(--face);border:0;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+  }
+  .btn:active{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+    transform:translate(1px,1px);
+  }
+  .btn-primary{font-weight:bold;background:var(--salt)}
+  .btn[aria-disabled="true"]{
+    color:var(--shadow);text-shadow:1px 1px 0 #fff;cursor:not-allowed;
+  }
+  .btn[aria-disabled="true"]:active{transform:none}
+
+  .wrap{max-width:820px;margin:0 auto;padding:24px 16px 40px}
+
+  .detail-top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .detail-top img{
+    width:96px;height:96px;flex:none;object-fit:cover;background:#fff;padding:3px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .detail-top h1{
+    font-family:var(--font-display);font-size:clamp(18px,4vw,28px);
+    color:var(--title-a);text-shadow:2px 2px 0 var(--salt);
+    line-height:1.2;margin-bottom:8px;
+  }
+  .badge{
+    display:inline-block;font-size:10px;font-weight:bold;letter-spacing:.5px;
+    color:#fff;padding:2px 7px;margin-bottom:6px;
+    box-shadow:inset -1px -1px rgba(0,0,0,.4), inset 1px 1px rgba(255,255,255,.4);
+  }
+  .badge.live{background:var(--live)}
+  .badge.proto{background:var(--proto)}
+  .detail-body{margin-top:20px;font-size:14px;line-height:1.6}
+  .detail-body h2{
+    font-family:var(--font-display);font-size:15px;color:var(--title-a);
+    margin:22px 0 8px;
+    text-shadow:2px 2px 0 var(--salt);
+  }
+  .detail-body p{margin-bottom:12px;max-width:68ch}
+
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+  /* Feature grid */
+  .features-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;margin-top:10px
+  }
+  .feature{
+    background:#fff;padding:16px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .feature h3{
+    font-family:var(--font-display);font-size:13px;color:var(--title-a);
+    margin-bottom:6px;display:flex;align-items:center;gap:6px;
+  }
+  .feature p{font-size:12px;line-height:1.5;color:var(--ink)}
+
+  /* Screenshots gallery */
+  .screenshots-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:14px;margin-top:10px
+  }
+  .screenshot-frame{
+    background:#fff;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+    padding:4px;
+  }
+  .screenshot-frame img{
+    width:100%;aspect-ratio:9/19.5;object-fit:cover;background:#e0e0e0;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light);
+  }
+  .screenshot-caption{
+    font-size:11px;color:var(--shadow);text-align:center;padding-top:6px;
+    font-family:var(--font-mono);
+  }
+
+  /* App store buttons */
+  .store-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+  .store-btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 18px;
+    background:var(--face);text-decoration:none;color:var(--ink);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+    font-family:var(--font-ui);font-size:13px;min-width:200px;
+  }
+  .store-btn:active{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+    transform:translate(1px,1px);
+  }
+  .store-btn[aria-disabled="true"]{color:var(--shadow);text-shadow:1px 1px 0 #fff;cursor:not-allowed}
+  .store-btn[aria-disabled="true"]:active{transform:none}
+  .store-btn img{width:28px;height:28px;flex:none}
+  .store-btn span{display:flex;flex-direction:column;line-height:1.2}
+  .store-btn small{font-size:10px;font-weight:normal;opacity:.8}
+  .store-btn strong{font-size:13px}
+
+  /* Divider */
+  .divider{height:1px;background:var(--shadow);margin:18px 0;border:none;box-shadow:0 1px 0 #fff}
+
+  footer{
+    text-align:center;color:#dff;font-size:12px;padding:8px 12px 20px;
+  }
+  footer .badges{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+  footer .badges span{
+    background:var(--face);color:var(--ink);padding:3px 9px;font-size:11px;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
+  }
+  .counter{
+    display:inline-block;font-family:var(--font-mono);letter-spacing:3px;
+    background:#000;color:#3f3;padding:3px 9px;margin-top:6px;
+    box-shadow:inset 1px 1px var(--shadow-dark);
+  }
+
+  @media(max-width:640px){
+    .detail-top{flex-direction:column;align-items:center;text-align:center}
+    .detail-top img{margin:0 auto}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<main class="wrap" id="main" tabindex="-1">
+
+  <!-- ============ ABG DETAIL WINDOW ============ -->
+  <section class="window" aria-label="ABG App Details">
+    <div class="titlebar">
+      <span class="t-icon">🩸</span>
+      <span class="t-text">ABG.exe — Details</span>
+      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
+    </div>
+    <div class="menubar" aria-hidden="true"><span>File</span><span>View</span><span>Help</span></div>
+    <div class="win-body">
+
+      <!-- Hero -->
+      <div class="detail-top">
+        <img src="images/abg-logo.png" alt="ABG logo">
+        <div>
+          <span class="badge live">● PLAYABLE NOW</span>
+          <h1>ABG: The Acid-Base Learning App</h1>
+          <p>Master blood gas interpretation through interactive cases and instant feedback — from step-by-step tutoring all the way to no-hints Expert Mode.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/abg/">▶ Play Free in Browser</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- App Store Links -->
+      <h2>Download</h2>
+      <p style="margin-bottom:10px;color:var(--shadow);font-size:13px">Native mobile apps coming soon. For now, play instantly in your browser above.</p>
+      <div class="store-buttons">
+        <a class="store-btn" aria-disabled="true" href="#" tabindex="-1">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233DDC84'%3E%3Cpath d='M12.54 0C5.63 0 .46 5.17.46 12.07 0 18.4 4.63 23.34 10.77 23.61v-8.44H8.74v-3.33h2.03V15.03c0-2.01.6-3.86 3.74-3.86 1.07 0 2 .06 2.27.09v2.46h-1.55c-1.2 0-1.48.57-1.48 1.4v1.96h2.97l-.45 3.33H13.56V24c6.46-.31 11.16-5.44 11.16-11.93C23.54 5.17 18.37 0 12.54 0z'/%3E%3C/svg%3E" alt="Google Play">
+          <span><small>GET IT ON</small><strong>Google Play</strong></span>
+        </a>
+        <a class="store-btn" aria-disabled="true" href="#" tabindex="-1">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Cpath d='M18.6 1.9c-2.8.6-5.4 1.9-7.8 4-2.8-2.5-5.8-3.9-9-3.9C2.4 2 0 4.3 0 7.3v5.2c0 3.2 2.9 5.7 6.9 6 1.3-.1 2.6-.2 3.9-.3V12c0-2.3 1.8-3.1 2.9-3.3 1-.2 2.2-.2 3.4-.2 2.8 0 4.5 2.4 4.5 5.5v5.2c-.9.8-1.8 1.4-2.8 1.9-2.6-.6-5.2-1.9-7.6-3.9-1.8 1.4-3.5 3-4.8 4.8 3.2 2.6 7 4.2 11.2 4.2 6.6 0 11-4.2 11-10.5V7.3c0-3.3-2.6-5.7-5.9-6z'/%3E%3C/svg%3E" alt="App Store">
+          <span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span>
+        </a>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Features -->
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <h3>📚 Stepwise Tutoring</h3>
+          <p>Guided 5–7 step flows walk you through pH, primary process, compensation, and diagnosis — just like an attending at the bedside.</p>
+        </div>
+        <div class="feature">
+          <h3>🎯 Expert Mode</h3>
+          <p>No hints. No steps. Just the numbers and a text field. Designed for residents who want to test raw interpretation speed.</p>
+        </div>
+        <div class="feature">
+          <h3>🎲 Infinite Cases</h3>
+          <p>Procedural generator creates realistic ABGs across all disorder types — simple, mixed, and triple — with physiologically valid numbers.</p>
+        </div>
+        <div class="feature">
+          <h3>⚡ Instant Feedback</h3>
+          <p>Real-time validation on every step. Wrong answers explain why, not just what. Delta-gap, Winter's formula, anion gap — all computed live.</p>
+        </div>
+        <div class="feature">
+          <h3>📱 Offline-Capable PWA</h3>
+          <p>Installable web app works offline. No app store required — just open the link on your phone and add to home screen.</p>
+        </div>
+        <div class="feature">
+          <h3>🔒 No Login, No Data</h3>
+          <p>Zero accounts, zero tracking, zero analytics. Your practice sessions stay on your device. Privacy by default — not as an afterthought.</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Screenshots -->
+      <h2>Screenshots</h2>
+      <div class="screenshots-grid">
+        <figure class="screenshot-frame">
+          <img src="images/abg-screen1.png" alt="ABG app screenshot - Main menu with mode selection">
+          <figcaption class="screenshot-caption">Mode Selection</figcaption>
+        </figure>
+        <figure class="screenshot-frame">
+          <img src="images/abg-screen2.png" alt="ABG app screenshot - Stepwise tutoring flow">
+          <figcaption class="screenshot-caption">Stepwise Tutoring</figcaption>
+        </figure>
+        <figure class="screenshot-frame">
+          <img src="images/abg-screen3.png" alt="ABG app screenshot - Expert mode interface">
+          <figcaption class="screenshot-caption">Expert Mode</figcaption>
+        </figure>
+        <figure class="screenshot-frame">
+          <img src="images/abg-screen4.png" alt="ABG app screenshot - Results and explanation">
+          <figcaption class="screenshot-caption">Case Explanation</figcaption>
+        </figure>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Back navigation -->
+      <div class="btn-row">
+        <a class="btn" href="index.html">← Back to Home</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="badges">
+    <span>🌐 Best viewed in Netscape Navigator 4.0</span>
+    <span>💻 800×600</span>
+    <span>✅ Valid HTML</span>
+    <span>✍ Made with Notepad</span>
+  </div>
+  <div>You are visitor <span class="counter">00000001</span></div>
+  <p style="margin-top:12px">© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
+  Educational content for medical professionals. Not for medical advice.</p>
+</footer>
+
+</body>
+</html>
