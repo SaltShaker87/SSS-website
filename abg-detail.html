@@ -167,24 +167,64 @@
   }
   .feature p{font-size:12px;line-height:1.5;color:var(--ink)}
 
-  /* Screenshots gallery */
-  .screenshots-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:14px;margin-top:10px
+  /* Screenshots slider */
+  .shot-slider{
+    display:grid;grid-template-columns:minmax(0,1fr) 240px;
+    gap:16px;margin-top:10px;
   }
-  .screenshot-frame{
-    background:#fff;
+  .shot-side{display:flex;flex-direction:column}
+  /* Tall stage: the 6 portrait shots are height-limited, so height drives how
+     big they render. The one landscape shot is width-limited either way. */
+  .shot-stage{
+    position:relative;height:clamp(440px,60vw,560px);
+    background:var(--shadow);  /* matte: screenshots are near-white, they need separation */
     box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
                inset 2px 2px var(--shadow), inset -2px -2px #fff;
-    padding:4px;
   }
-  .screenshot-frame img{
-    width:100%;aspect-ratio:9/19.5;object-fit:cover;background:#e0e0e0;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light);
+  /* width/height must be explicit: an absolutely positioned replaced element
+     resolves width:auto to its intrinsic size, not to its offsets. */
+  .shot{
+    position:absolute;top:6px;left:6px;
+    width:calc(100% - 12px);height:calc(100% - 12px);max-width:none;
+    object-fit:contain;
+    opacity:0;transition:opacity .35s ease;pointer-events:none;
   }
-  .screenshot-caption{
-    font-size:11px;color:var(--shadow);text-align:center;padding-top:6px;
-    font-family:var(--font-mono);
+  .shot.is-active{opacity:1}
+
+  .shot-nav{
+    flex:1;                     /* fill the stage height, like a Win95 list pane */
+    display:flex;flex-direction:column;
+    background:var(--paper);padding:3px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .shot-nav-item{
+    display:block;width:100%;text-align:left;
+    font-family:var(--font-ui);font-size:12px;color:var(--ink);
+    background:transparent;border:0;cursor:pointer;
+    padding:6px 8px 5px;
+  }
+  .shot-nav-item.is-active{background:var(--title-a);color:#fff}
+  .shot-nav-title{display:block}
+  .shot-progress{
+    display:block;height:4px;margin-top:5px;background:var(--face);
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff;
+  }
+  .shot-nav-item:not(.is-active) .shot-progress{visibility:hidden}
+  /* No autoplay under reduced motion, so the track would never fill — hide it. */
+  @media (prefers-reduced-motion:reduce){ .shot-progress{display:none} }
+  .shot-progress-fill{
+    display:block;height:100%;width:0;background:var(--salt);
+    transition:width .1s linear;
+  }
+
+  .shot-bar{display:flex;gap:8px;align-items:center;margin-top:10px}
+  .shot-bar .btn{padding:4px 12px;font-size:14px;line-height:1}
+  .shot-counter{
+    margin-left:auto;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:2px;
+    background:#000;color:#3f3;padding:3px 8px;
+    box-shadow:inset 1px 1px var(--shadow-dark);
   }
 
   /* App store buttons */
@@ -228,6 +268,7 @@
   @media(max-width:640px){
     .detail-top{flex-direction:column;align-items:center;text-align:center}
     .detail-top img{margin:0 auto}
+    .shot-slider{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -311,23 +352,63 @@
 
       <!-- Screenshots -->
       <h2>Screenshots</h2>
-      <div class="screenshots-grid">
-        <figure class="screenshot-frame">
-          <img src="images/abg-screen1.png" alt="ABG app screenshot - Main menu with mode selection">
-          <figcaption class="screenshot-caption">Mode Selection</figcaption>
-        </figure>
-        <figure class="screenshot-frame">
-          <img src="images/abg-screen2.png" alt="ABG app screenshot - Stepwise tutoring flow">
-          <figcaption class="screenshot-caption">Stepwise Tutoring</figcaption>
-        </figure>
-        <figure class="screenshot-frame">
-          <img src="images/abg-screen3.png" alt="ABG app screenshot - Expert mode interface">
-          <figcaption class="screenshot-caption">Expert Mode</figcaption>
-        </figure>
-        <figure class="screenshot-frame">
-          <img src="images/abg-screen4.png" alt="ABG app screenshot - Results and explanation">
-          <figcaption class="screenshot-caption">Case Explanation</figcaption>
-        </figure>
+      <div class="shot-slider" id="shotSlider">
+
+        <div class="shot-stage" role="tabpanel" id="shotPanel" aria-label="Screenshot">
+          <img class="shot is-active" id="shot-0" src="images/abg-shot-home.png" decoding="async"
+               alt="ABG app home screen with practice modes and tools listed">
+          <img class="shot" id="shot-1" src="images/abg-shot-setup.png" decoding="async"
+               alt="Session setup screen: choose number of questions and difficulty">
+          <img class="shot" id="shot-2" src="images/abg-shot-tutor.png" decoding="async"
+               alt="Stepwise tutoring: step 1 of 4 asking for the pH status, with the correct answer selected">
+          <img class="shot" id="shot-3" src="images/abg-shot-result.png" decoding="async"
+               alt="Case explanation showing a Normal ABG diagnosis with a written rationale">
+          <img class="shot" id="shot-4" src="images/abg-shot-expert.png" decoding="async"
+               alt="Expert mode: a missed mixed-disorder case with the correct answer and full explanation">
+          <img class="shot" id="shot-5" src="images/abg-shot-stats.png" decoding="async"
+               alt="Stats and history screen with accuracy per mode and a list of missed cases">
+          <img class="shot" id="shot-6" src="images/abg-shot-reference.png" decoding="async"
+               alt="Reference sheet listing normal ABG values, the anion gap formula and compensation formulas">
+        </div>
+
+        <div class="shot-side">
+          <div class="shot-nav" id="shotNav" role="tablist" aria-orientation="vertical" aria-label="Screenshots" aria-controls="shotPanel">
+            <button type="button" class="shot-nav-item is-active" role="tab" aria-selected="true" data-i="0">
+              <span class="shot-nav-title">Home &amp; modes</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+            <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="1">
+              <span class="shot-nav-title">Session setup</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+            <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="2">
+              <span class="shot-nav-title">Stepwise tutoring</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+            <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="3">
+              <span class="shot-nav-title">Case explanation</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+            <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="4">
+              <span class="shot-nav-title">Expert mode</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+            <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="5">
+              <span class="shot-nav-title">Stats &amp; history</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+            <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="6">
+              <span class="shot-nav-title">Reference sheet</span>
+              <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+            </button>
+          </div>
+          <div class="shot-bar">
+            <button type="button" class="btn" id="shotPrev" aria-label="Previous screenshot">&lsaquo;</button>
+            <button type="button" class="btn" id="shotNext" aria-label="Next screenshot">&rsaquo;</button>
+            <span class="shot-counter" id="shotCounter">01 / 07</span>
+          </div>
+        </div>
+
       </div>
 
       <hr class="divider">
@@ -353,6 +434,115 @@
   <p style="margin-top:12px">© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
   Educational content for medical professionals. Not for medical advice.</p>
 </footer>
+
+<script>
+/* ============ SCREENSHOT SLIDER ============ */
+(function(){
+  var root = document.getElementById('shotSlider');
+  if (!root) return;
+
+  var shots   = root.querySelectorAll('.shot');
+  var items   = root.querySelectorAll('.shot-nav-item');
+  var counter = document.getElementById('shotCounter');
+  var nav     = document.getElementById('shotNav');
+  if (!shots.length || shots.length !== items.length) return;
+
+  var SLIDE_MS = 5000, TICK = 50, FADE_MS = 350;
+  var reduced  = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var index = 0, interval = null, elapsed = 0;
+  var isPaused = false, isVisible = true, isAnimating = false, lockTimer = null;
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function setFill(i, pct){
+    var fill = items[i].querySelector('.shot-progress-fill');
+    if (fill) fill.style.width = pct + '%';
+  }
+
+  function goTo(n, moveFocus){
+    n = (n % shots.length + shots.length) % shots.length;
+    if (isAnimating || n === index) return;
+
+    isAnimating = true;
+    if (lockTimer) clearTimeout(lockTimer);
+    lockTimer = setTimeout(function(){ isAnimating = false; }, FADE_MS);
+
+    setFill(index, 0);
+    shots[index].classList.remove('is-active');
+    items[index].classList.remove('is-active');
+    items[index].setAttribute('aria-selected', 'false');
+    items[index].tabIndex = -1;
+
+    index = n;
+    elapsed = 0;
+
+    shots[index].classList.add('is-active');
+    items[index].classList.add('is-active');
+    items[index].setAttribute('aria-selected', 'true');
+    items[index].tabIndex = 0;
+    setFill(index, 0);
+    if (counter) counter.textContent = pad(index + 1) + ' / ' + pad(shots.length);
+    if (moveFocus) items[index].focus();
+  }
+
+  function tick(){
+    if (isPaused) return;
+    elapsed += TICK;
+    setFill(index, Math.min(100, elapsed / SLIDE_MS * 100));
+    if (elapsed >= SLIDE_MS) goTo(index + 1);
+  }
+
+  function start(){
+    if (reduced) return;
+    if (interval !== null) return;          /* guard: never stack intervals */
+    interval = setInterval(tick, TICK);
+  }
+  function stop(){
+    if (interval !== null){ clearInterval(interval); interval = null; }
+  }
+
+  /* Manual navigation — restarts the dwell timer on the new slide */
+  nav.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.shot-nav-item') : null;
+    if (!btn) return;
+    goTo(parseInt(btn.getAttribute('data-i'), 10), false);
+  });
+  document.getElementById('shotPrev').addEventListener('click', function(){ goTo(index - 1, false); });
+  document.getElementById('shotNext').addEventListener('click', function(){ goTo(index + 1, false); });
+
+  /* Roving-tabindex keyboard support for the tablist */
+  nav.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown')      goTo(index + 1, true);
+    else if (k === 'ArrowLeft' || k === 'ArrowUp')    goTo(index - 1, true);
+    else if (k === 'Home')                            goTo(0, true);
+    else if (k === 'End')                             goTo(shots.length - 1, true);
+    else return;
+    e.preventDefault();
+  });
+
+  /* Pause on hover and while focus is inside — independent of the visibility flag */
+  root.addEventListener('mouseenter', function(){ isPaused = true; });
+  root.addEventListener('mouseleave', function(){ isPaused = false; });
+  root.addEventListener('focusin',    function(){ isPaused = true; });
+  root.addEventListener('focusout',   function(){ isPaused = false; });
+
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) stop();
+    else if (isVisible) start();
+  });
+
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) start(); else stop();
+    }, { threshold: 0.3 }).observe(root);
+  } else {
+    start();
+  }
+})();
+</script>
 
 </body>
 </html>
