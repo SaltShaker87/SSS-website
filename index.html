@@ -128,6 +128,35 @@
   }
   .btn[aria-disabled="true"]:active{transform:none}
 
+  /* ---- Social buttons: official brand mark in a coloured square, Win95 label
+     alongside. Same bevel and press as .btn — only the icon block is branded. ---- */
+  .sbtn{
+    display:inline-flex;align-items:stretch;height:34px;
+    font-family:var(--font-ui);font-size:13px;color:var(--ink);
+    text-decoration:none;cursor:pointer;background:var(--face);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+  }
+  .sbtn:active{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+    transform:translate(1px,1px);
+  }
+  .sbtn-i{
+    flex:none;width:30px;margin:2px 0 2px 2px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;line-height:1;
+  }
+  /* object-fit keeps the four marks optically even despite differing aspect
+     ratios (X is square, the Discord symbol is wide, the [in] bug is neither). */
+  .sbtn-i img{width:17px;height:17px;object-fit:contain}
+  .sbtn-t{display:flex;align-items:center;padding:0 12px 0 9px}
+  .sbtn-x .sbtn-i{background:#000}
+  .sbtn-discord .sbtn-i{background:#5865F2}
+  .sbtn-linkedin .sbtn-i{background:#0A66C2}
+  .sbtn-steam .sbtn-i{background:#1b2838}
+  .sbtn-email .sbtn-i{background:var(--salt);color:var(--ink)}
+
   /* ============ LAYOUT ============ */
   .wrap{max-width:980px;margin:0 auto;padding:24px 16px 40px}
 
@@ -320,11 +349,35 @@
   footer{
     text-align:center;color:#dff;font-size:12px;padding:8px 12px 20px;
   }
-  footer .badges{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:10px 0}
-  footer .badges span{
-    background:var(--face);color:var(--ink);padding:3px 9px;font-size:11px;
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
+  /* ---- 88×31 buttons: the 1990s web-button format, 1px outline and a two-tone
+     split. Homage artwork — no real vendor logos or trademarks. ---- */
+  footer .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .b88{
+    display:flex;flex:none;width:88px;height:31px;
+    border:1px solid #000;overflow:hidden;user-select:none;
+    font-family:var(--font-ui);font-size:7px;line-height:1.1;
+    letter-spacing:.2px;text-transform:uppercase;
+    color:#fff;background:#000;
+    box-shadow:inset -1px -1px rgba(0,0,0,.55), inset 1px 1px rgba(255,255,255,.3);
   }
+  .b88-l{
+    flex:none;width:29px;font-size:14px;background:rgba(0,0,0,.25);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .b88-r{
+    flex:1;display:flex;flex-direction:column;justify-content:center;gap:2px;
+    padding:0 3px;text-align:center;
+  }
+  .b88 b{font-size:8px}
+  .b88 i{font-style:normal;opacity:.9}
+  .b88-net{background:linear-gradient(180deg,#1084d0,#000080)}
+  .b88-net i{color:var(--salt);animation:b88blink 1.1s steps(1,end) infinite}
+  @keyframes b88blink{50%{opacity:.2}}
+  .b88-res{background:#101010;color:#3f3}
+  .b88-html{background:linear-gradient(180deg,#fff,#c8c8c8);color:#000}
+  .b88-note{background:var(--face);color:#000}
+  .b88-y2k{background:linear-gradient(180deg,#7b3fb5,#2d0f4d)}
+  .b88-caf{background:linear-gradient(180deg,#7a4a1e,#3a2109)}
   .counter{
     display:inline-block;font-family:var(--font-mono);letter-spacing:3px;
     background:#000;color:#3f3;padding:3px 9px;margin-top:6px;
@@ -408,7 +461,7 @@
       </div>
     </div>
     <div class="ticker" role="status">
-      <span>★ NOW PLAYABLE: ABG Expert Mode is live ★ SAL prototype deployed — break it from your phone ★ ABX Godot prototype in testing ★ CRM fine-tuned model on HuggingFace ★ Join the Discord to meet fellow nerds ★</span>
+      <span>★ OUT NOW: ABG is live on Google Play — download it free on Android ★ ABG Expert Mode is live in the browser too ★ SAL prototype deployed — break it from your phone ★ ABX Godot prototype in testing ★ CRM fine-tuned model on HuggingFace ★ Join the Discord to meet fellow nerds ★</span>
     </div>
   </section>
 
@@ -434,15 +487,15 @@
         </div>
         <p>Master blood gas interpretation through interactive cases and instant feedback — from step-by-step tutoring all the way to the new no-hints Expert Mode.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Beta — 90%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 90 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Released — 100%</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 100 percent, released">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
           </div>
         </div>
 <div class="btn-row">
            <a class="btn btn-primary" href="/abg/">▶ Play Free</a>
            <a class="btn" href="abg-detail.html">Details</a>
-           <a class="btn" href="#devblog">📱 Android Coming Soon</a>
+           <a class="btn" href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">📱 Get it on Google Play</a>
          </div>
       </div>
     </section>
@@ -854,21 +907,47 @@
   <!-- ============ FOOTER ============ -->
   <footer>
     <div class="connect">
-      <a class="btn" href="https://twitter.com/">𝕏 / Twitter</a>
-      <a class="btn" href="https://discord.gg/b4jsEnW2jZ">Discord</a>
-      <a class="btn" href="https://www.linkedin.com/in/arman8514581">LinkedIn</a>
-      <a class="btn" href="https://store.steampowered.com/">Steam</a>
-      <a class="btn" href="mailto:saltshakerstudio@protonmail.com">✉ Email</a>
+      <a class="sbtn sbtn-x" href="https://x.com/SalShakerStudio">
+        <span class="sbtn-i"><img src="images/social/x.svg" alt=""></span><span class="sbtn-t">X</span>
+      </a>
+      <a class="sbtn sbtn-discord" href="https://discord.gg/b4jsEnW2jZ">
+        <span class="sbtn-i"><img src="images/social/discord.svg" alt=""></span><span class="sbtn-t">Discord</span>
+      </a>
+      <a class="sbtn sbtn-linkedin" href="https://www.linkedin.com/in/arman8514581">
+        <span class="sbtn-i"><img src="images/social/linkedin.png" alt=""></span><span class="sbtn-t">LinkedIn</span>
+      </a>
+      <!-- TODO: placeholder — swap in the real Steam store page URL -->
+      <a class="sbtn sbtn-steam" href="https://store.steampowered.com/">
+        <span class="sbtn-i"><img src="images/social/steam.svg" alt=""></span><span class="sbtn-t">Steam<sup>®</sup></span>
+      </a>
+      <a class="sbtn sbtn-email" href="mailto:saltshakerstudio@protonmail.com">
+        <span class="sbtn-i">✉</span><span class="sbtn-t">Email</span>
+      </a>
     </div>
     <div class="badges">
-      <span>🌐 Best viewed in Netscape Navigator 4.0</span>
-      <span>💻 800×600</span>
-      <span>✅ Valid HTML</span>
-      <span>✍ Made with Notepad</span>
+      <span class="b88 b88-net" title="Best viewed with Netscape Navigator 4.0">
+        <span class="b88-l">🌐</span><span class="b88-r"><b>Netscape</b><i>Now!</i></span>
+      </span>
+      <span class="b88 b88-res" title="Optimized for 800×600">
+        <span class="b88-l">🖥</span><span class="b88-r"><b>800×600</b><i>optimized</i></span>
+      </span>
+      <span class="b88 b88-html" title="Valid HTML 4.01">
+        <span class="b88-l">✅</span><span class="b88-r"><b>Valid</b><i>HTML 4.01</i></span>
+      </span>
+      <span class="b88 b88-note" title="Made with Notepad">
+        <span class="b88-l">✍</span><span class="b88-r"><b>Made with</b><i>Notepad</i></span>
+      </span>
+      <span class="b88 b88-y2k" title="Y2K compliant">
+        <span class="b88-l">🕛</span><span class="b88-r"><b>Y2K</b><i>compliant</i></span>
+      </span>
+      <span class="b88 b88-caf" title="Powered by caffeine">
+        <span class="b88-l">☕</span><span class="b88-r"><b>Powered by</b><i>caffeine</i></span>
+      </span>
     </div>
     <div>You are visitor <span class="counter" id="hit-counter">00000001</span></div>
     <p style="margin-top:12px">© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
-    Educational content for medical professionals. Not for medical advice.</p>
+    Educational content for medical professionals. Not for medical advice.<br>
+    <span style="font-size:11px;opacity:.75">Steam and the Steam logo are trademarks of Valve Corporation. All other marks are property of their respective owners.</span></p>
   </footer>
 </div>
 
