@@ -644,11 +644,11 @@
 
   <!-- ============ FOOTER ============ -->
   <footer>
-    <div class="connect">
+    <div class="connect" id="connect">
       <a class="btn" href="https://twitter.com/">𝕏 / Twitter</a>
       <a class="btn" href="https://discord.gg/b4jsEnW2jZ">Discord</a>
       <a class="btn" href="https://www.linkedin.com/in/arman8514581">LinkedIn</a>
-      <a class="btn" href="mailto:saltshakerstudio@gmail.com">✉ Email</a>
+      <a class="btn" id="sss-email" href="#connect" data-email-user="saltshakerstudio" data-email-domain="gmail.com">✉ Email</a>
     </div>
     <div class="badges">
       <span>🌐 Best viewed in Netscape Navigator 4.0</span>
@@ -691,6 +691,18 @@
 </div>
 
 <script>
+  /* Assemble mailto so Cloudflare does not rewrite it into /cdn-cgi/l/email-protection */
+  (function () {
+    var links = document.querySelectorAll('a[data-email-user][data-email-domain]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      a.setAttribute(
+        'href',
+        'mailto:' + a.getAttribute('data-email-user') + '@' + a.getAttribute('data-email-domain')
+      );
+    }
+  })();
+
   // Start menu open/close
   const startBtn = document.getElementById('startBtn');
   const startMenu = document.getElementById('startMenu');

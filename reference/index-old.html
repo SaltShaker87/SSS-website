@@ -620,7 +620,7 @@
                 <a href="https://twitter.com/" class="retro-button" target="_blank" rel="noopener">&#120143;&#47;Twitter</a>
                 <a href="https://discord.gg/b4jsEnW2jZ" class="retro-button" target="https://discord.gg/3XPGmgy6" rel="noopener">Discord</a>
                 <a href="https://store.steampowered.com/" class="retro-button" target="_blank" rel="noopener">Steam</a>
-                <a href="www.linkedin.com/in/arman8514581" class="retro-button" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/arman8514581" class="retro-button" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
     </section>
@@ -650,7 +650,7 @@
         <p>You are visitor #<span class="hit-counter" id="hit-counter">00000001</span></p>
 
         <p style="margin-top: var(--space-md);">
-            <a href="mailto:saltshakerstudio@protonmail.com">&#9993; saltshakerstudio email</a>
+            <a id="sss-email" href="#social" data-email-user="saltshakerstudio" data-email-domain="protonmail.com">&#9993; saltshakerstudio email</a>
         </p>
 
         <p style="margin-top: var(--space-sm); font-size: 11px; color: var(--win-dark);">
@@ -662,5 +662,18 @@
 
 <!-- JavaScript -->
 <script src="js/main.js"></script>
+<script>
+  /* Assemble mailto so Cloudflare does not rewrite it into /cdn-cgi/l/email-protection */
+  (function () {
+    var links = document.querySelectorAll('a[data-email-user][data-email-domain]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      a.setAttribute(
+        'href',
+        'mailto:' + a.getAttribute('data-email-user') + '@' + a.getAttribute('data-email-domain')
+      );
+    }
+  })();
+</script>
 </body>
 </html>
