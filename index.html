@@ -906,7 +906,7 @@
 
   <!-- ============ FOOTER ============ -->
   <footer>
-    <div class="connect">
+    <div class="connect" id="connect">
       <a class="sbtn sbtn-x" href="https://x.com/SalShakerStudio">
         <span class="sbtn-i"><img src="images/social/x.svg" alt=""></span><span class="sbtn-t">X</span>
       </a>
@@ -920,7 +920,9 @@
       <a class="sbtn sbtn-steam" href="https://store.steampowered.com/">
         <span class="sbtn-i"><img src="images/social/steam.svg" alt=""></span><span class="sbtn-t">Steam<sup>®</sup></span>
       </a>
-      <a class="sbtn sbtn-email" href="mailto:saltshakerstudio@protonmail.com">
+      <!-- Email is assembled in JS (no @ in the HTML) so Cloudflare cannot
+           rewrite this into /cdn-cgi/l/email-protection, a 404 Google was crawling. -->
+      <a class="sbtn sbtn-email" id="sss-email" href="#connect" data-email-user="saltshakerstudio" data-email-domain="protonmail.com">
         <span class="sbtn-i">✉</span><span class="sbtn-t">Email</span>
       </a>
     </div>
@@ -982,6 +984,19 @@
 </div>
 
 <script>
+  /* === Email link (assembled here so Cloudflare email obfuscation never
+         injects a crawlable /cdn-cgi/l/email-protection URL) === */
+  (function () {
+    var links = document.querySelectorAll('a[data-email-user][data-email-domain]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      a.setAttribute(
+        'href',
+        'mailto:' + a.getAttribute('data-email-user') + '@' + a.getAttribute('data-email-domain')
+      );
+    }
+  })();
+
   /* === Start menu open/close === */
   const startBtn = document.getElementById('startBtn');
   const startMenu = document.getElementById('startMenu');
