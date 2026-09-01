@@ -39,6 +39,7 @@
       font-size:12px;line-height:1.4;color:#111;
       background:#c0c0c0;padding:6px 10px;
       box-shadow:inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+      position:fixed;left:0;right:0;bottom:0;z-index:2147483647;
     }
     .sss-more a{color:#000080}
   </style>
@@ -52,5 +53,23 @@
     <a href="/crm.html">CRM: clinical reasoning model</a>
   </nav>
   <script src="flutter_bootstrap.js" async></script>
+  <!-- Flutter's compiled app sets document.title to "ABG Prototype" after boot.
+       This repo cannot rebuild main.dart.js; keep the public title in place. -->
+  <script>
+    (function () {
+      var TITLE = "ABG: The Acid-Base Learning App — Salt Shaker Studio";
+      function keepTitle() {
+        if (document.title !== TITLE) document.title = TITLE;
+      }
+      keepTitle();
+      var titleEl = document.querySelector("title");
+      if (titleEl && window.MutationObserver) {
+        new MutationObserver(keepTitle).observe(titleEl, {childList: true, characterData: true, subtree: true});
+      }
+      window.addEventListener("load", keepTitle);
+      setTimeout(keepTitle, 500);
+      setTimeout(keepTitle, 2000);
+    })();
+  </script>
 </body>
 </html>
