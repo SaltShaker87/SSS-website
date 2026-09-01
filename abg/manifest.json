@@ -1,11 +1,11 @@
 {
-    "name": "abgprototype",
-    "short_name": "abgprototype",
+    "name": "ABG: The Acid-Base Learning App",
+    "short_name": "ABG",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Play ABG from Salt Shaker Studio. Interpret blood gases through interactive cases, stepwise tutoring, and a no-hints Expert Mode.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

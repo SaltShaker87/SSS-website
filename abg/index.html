@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,21 +18,58 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play ABG from Salt Shaker Studio. Interpret blood gases through interactive cases, stepwise tutoring, and a no-hints Expert Mode.">
+  <link rel="canonical" href="https://www.saltshakerstudio.net/abg/">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="abgprototype">
+  <meta name="apple-mobile-web-app-title" content="ABG">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>abgprototype</title>
+  <title>ABG: The Acid-Base Learning App — Salt Shaker Studio</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    .sss-more{
+      font-family:Tahoma,"MS Sans Serif",Geneva,sans-serif;
+      font-size:12px;line-height:1.4;color:#111;
+      background:#c0c0c0;padding:6px 10px;
+      box-shadow:inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+      position:fixed;left:0;right:0;bottom:0;z-index:2147483647;
+    }
+    .sss-more a{color:#000080}
+  </style>
 </head>
 <body>
+  <nav class="sss-more" aria-label="More from Salt Shaker Studio">
+    More from Salt Shaker Studio:
+    <a href="/">studio home</a> ·
+    <a href="/abg-detail.html">ABG details</a> ·
+    <a href="/sal/">SAL: hyponatremia prototype</a> ·
+    <a href="/crm.html">CRM: clinical reasoning model</a>
+  </nav>
   <script src="flutter_bootstrap.js" async></script>
+  <!-- Flutter's compiled app sets document.title to "ABG Prototype" after boot.
+       This repo cannot rebuild main.dart.js; keep the public title in place. -->
+  <script>
+    (function () {
+      var TITLE = "ABG: The Acid-Base Learning App — Salt Shaker Studio";
+      function keepTitle() {
+        if (document.title !== TITLE) document.title = TITLE;
+      }
+      keepTitle();
+      var titleEl = document.querySelector("title");
+      if (titleEl && window.MutationObserver) {
+        new MutationObserver(keepTitle).observe(titleEl, {childList: true, characterData: true, subtree: true});
+      }
+      window.addEventListener("load", keepTitle);
+      setTimeout(keepTitle, 500);
+      setTimeout(keepTitle, 2000);
+    })();
+  </script>
 </body>
 </html>
