@@ -591,21 +591,25 @@
       </div>
       <div class="win-body">
         <div class="game-top">
+          <a href="auc-detail.html" style="text-decoration:none;color:inherit">
           <img src="images/auc-logo.png" alt="AUC logo">
+          </a>
           <div>
-            <span class="badge beta">◕ BETA COMPLETE</span>
+            <span class="badge live">● RELEASED · PGY-1</span>
             <h3>AUC: Assessments Under Curve</h3>
           </div>
         </div>
-        <p>A private, locally-hosted tool for residency programs: track resident performance, log CCC feedback, query AI-generated summaries, and integrate MedHub data — no cloud, no third-party sharing.</p>
+        <p>A private, locally-hosted tool for residency programs: log CCC feedback, import MedHub evaluations from CSV, and draft ACGME milestone summaries with an on-device AI whose every quote is checked against your notes. No cloud, no third-party sharing.</p>
         <div class="progress">
-          <div class="p-label"><span>Development</span><span>Beta — 90%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 90 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+          <div class="p-label"><span>Development</span><span>Released — v1.0</span></div>
+          <div class="p-track" role="img" aria-label="Development progress: 100 percent, released">
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
           </div>
         </div>
         <div class="btn-row">
-          <span class="btn" aria-disabled="true">Coming Soon</span>
+          <a class="btn btn-primary" href="auc-detail.html#download">⬇ Download</a>
+          <a class="btn" href="auc-detail.html">Details</a>
+          <a class="btn" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
@@ -664,6 +668,22 @@
            ============================================= -->
 
       <details class="post" open>
+        <summary><span class="post-date">Sep 14, 2026</span><span class="post-title">AUC v1.0 Is Out. Your CCC Notes Can Stop Living in a Word Doc.</span></summary>
+        <div class="post-body">
+          <p>AUC is officially at version 1.0, codename PGY-1 (technically a doctor now, still needs supervision). You can download it right now from the new <a href="auc-detail.html">AUC page</a>.</p>
+          <p><strong>1. What It Is</strong><br>
+          If you've ever sat in a Clinical Competency Committee meeting, you know the drill: a room full of residents, 21 sub-competencies each, a pile of evaluations, and someone asking "wait, what did we say about this person last time?" AUC is where those notes live. Import your MedHub evaluations from a CSV export, jot observations during the meeting, tag them to ACGME domains, and keep a follow-up checklist for every resident.</p>
+          <p><strong>2. The AI Part (And Why It Can't Make Things Up)</strong><br>
+          Press a button and a local model drafts a summary across all 21 ACGME sub-competencies, with a suggested milestone level and supporting quotes. The catch: every quote gets checked word-for-word against your actual notes before you see it. If the model "remembers" something nobody wrote, that section gets withheld. Suggested levels are drafts for the committee to argue about, not final answers.</p>
+          <p><strong>3. Nothing Leaves the Building</strong><br>
+          Everything runs on your own machine. No cloud, no third-party accounts, no resident comments sitting on someone else's server. It runs best on an NVIDIA DGX Spark, but a regular Ubuntu PC works too.</p>
+          <p><strong>4. There's an Installer Now</strong><br>
+          Installing AUC used to mean opening a terminal and typing commands, which is a great way to lose a program coordinator. Now you download one file, double-click it, answer three questions, and you're done. It even brings its own Python. Linux only for now; Mac and Windows are on the list. It's also free and open source (MIT License), so your IT department can read the code before they say no.</p>
+          <p>Grab it here: <a href="auc-detail.html#download">AUC details &amp; download</a>. If you run a program and want to try it, or if it breaks, yell at me — links at the bottom of the page.</p>
+        </div>
+      </details>
+
+      <details class="post">
         <summary><span class="post-date">Jun 23, 2026</span><span class="post-title">ABG Beta Is Done. App Store Submission Is Next. A Few Things.</span></summary>
         <div class="post-body">
           <p>It's been a couple months. Not because nothing happened — but because im lazy with writing posts. Here's the update:</p>
@@ -794,10 +814,11 @@
         <div class="task"><span class="chk done">✓</span> CRM Proof of Concept <span class="tag t-done">DONE</span></div>
         <div class="task"><span class="chk done">✓</span> AUC App Beta <span class="tag t-done">DONE</span></div>
         <div class="task"><span class="chk wip">▸</span> ABG Beta Testing <span class="tag t-wip">IN PROGRESS</span></div>
-        <div class="task"><span class="chk"></span> AUC App Study Collection Begins <span class="tag t-plan">PLANNED</span></div>
       </div>
       <div class="quarter">
         <h3>📁 Q3–Q4 2026</h3>
+        <div class="task"><span class="chk done">✓</span> AUC v1.0 Release <span class="tag t-done">DONE</span></div>
+        <div class="task"><span class="chk wip">▸</span> AUC QI Study Data Collection <span class="tag t-wip">IN PROGRESS</span></div>
         <div class="task"><span class="chk"></span> ABG Full Release <span class="tag t-plan">PLANNED</span></div>
         <div class="task"><span class="chk"></span> ABX Alpha Release <span class="tag t-plan">PLANNED</span></div>
         <div class="task"><span class="chk"></span> ABX Steam Page Launch <span class="tag t-plan">PLANNED</span></div>

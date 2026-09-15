@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AUC from Salt Shaker Studio: a local-first CCC feedback tool for internal medicine residencies, with evidence-checked AI milestone summaries. Linux installer for Ubuntu and NVIDIA DGX Spark.">
+<link rel="canonical" href="https://www.saltshakerstudio.net/auc-detail.html">
+<title>AUC: Assessments Under Curve — Salt Shaker Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ WIN95 DESIGN TOKENS ============ */
+  :root{
+    --desktop:#0d7c7c;
+    --face:#c0c0c0;
+    --face-light:#dfdfdf;
+    --shadow:#808080;
+    --shadow-dark:#0a0a0a;
+    --title-a:#000080;
+    --title-b:#1084d0;
+    --title-inactive:#7b7b7b;
+    --paper:#ffffff;
+    --ink:#111111;
+    --salt:#ffd23f;
+    --live:#1ca31c;
+    --proto:#d97b00;
+    --dev:#1062c4;
+    --concept:#7b7b7b;
+    --beta:#7b3fb5;
+    --font-ui:Tahoma,"MS Sans Serif",Geneva,sans-serif;
+    --font-display:"Silkscreen",Tahoma,sans-serif;
+    --font-mono:"Courier New",Courier,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--font-ui);font-size:14px;color:var(--ink);
+    background:var(--desktop);
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:6px 6px;
+    padding-bottom:40px;
+  }
+  img{max-width:100%;display:block}
+  a{color:#000080}
+  :focus-visible{outline:2px dotted var(--ink);outline-offset:2px}
+
+  .skip-link{
+    position:absolute;left:-9999px;top:0;z-index:200;
+    background:var(--salt);color:var(--ink);font-weight:bold;
+    padding:8px 14px;text-decoration:none;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
+  }
+  .skip-link:focus{left:8px;top:8px}
+
+  .window{
+    background:var(--face);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--shadow), inset 2px 2px #fff,
+               4px 4px 0 rgba(0,0,0,.35);
+    margin-bottom:28px;
+  }
+  .titlebar{
+    display:flex;align-items:center;gap:6px;
+    background:linear-gradient(90deg,var(--title-a),var(--title-b));
+    color:#fff;padding:3px 4px 3px 8px;
+    font-weight:bold;font-size:13px;
+    user-select:none;
+  }
+  .titlebar .t-icon{font-size:13px}
+  .titlebar .t-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .t-btns{display:flex;gap:2px}
+  .t-btn{
+    width:18px;height:16px;font-size:10px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--face);color:var(--ink);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+    font-family:var(--font-ui);
+  }
+  .menubar{
+    display:flex;gap:14px;padding:3px 8px;font-size:13px;
+    border-bottom:1px solid var(--shadow);
+    box-shadow:0 1px 0 #fff;
+  }
+  .menubar span{cursor:default}
+  .menubar span:hover{background:var(--title-a);color:#fff}
+  .win-body{padding:18px}
+
+  .btn{
+    display:inline-block;
+    font-family:var(--font-ui);font-size:13px;color:var(--ink);
+    text-decoration:none;cursor:pointer;
+    padding:6px 14px;background:var(--face);border:0;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+  }
+  .btn:active{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+    transform:translate(1px,1px);
+  }
+  .btn-primary{font-weight:bold;background:var(--salt)}
+
+  .wrap{max-width:820px;margin:0 auto;padding:24px 16px 40px}
+
+  .detail-top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .detail-top > div{flex:1;min-width:0}
+  .detail-top img{
+    width:96px;height:96px;flex:none;object-fit:cover;background:#fff;padding:3px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .detail-top h1{
+    font-family:var(--font-display);font-size:clamp(18px,4vw,28px);
+    color:var(--title-a);text-shadow:2px 2px 0 var(--salt);
+    line-height:1.2;margin-bottom:8px;
+  }
+  .badge{
+    display:inline-block;font-size:10px;font-weight:bold;letter-spacing:.5px;
+    color:#fff;padding:2px 7px;margin-bottom:6px;
+    box-shadow:inset -1px -1px rgba(0,0,0,.4), inset 1px 1px rgba(255,255,255,.4);
+  }
+  .badge.live{background:var(--live)}
+  .detail-body{margin-top:20px;font-size:14px;line-height:1.6}
+  .detail-body h2{
+    font-family:var(--font-display);font-size:15px;color:var(--title-a);
+    margin:22px 0 8px;
+    text-shadow:2px 2px 0 var(--salt);
+    scroll-margin-top:16px;
+  }
+  .detail-body p{margin-bottom:12px;max-width:68ch}
+  .muted{color:var(--shadow);font-size:13px}
+
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+  /* ---- Download panel ---- */
+  .dl-panel{
+    background:var(--paper);padding:16px;margin-top:10px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .dl-status{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+  .dl-status .ico{font-size:26px;line-height:1;flex:none}
+  .dl-status p{margin:0 0 4px;max-width:none}
+  .dl-main{display:flex;flex-wrap:wrap;gap:10px}
+  .btn-dl{padding:10px 16px;font-size:14px;text-align:left}
+  .btn-dl small{display:block;font-size:11px;font-weight:normal;margin-top:3px}
+  .rec-tag{
+    display:block;width:max-content;font-size:9px;font-weight:bold;letter-spacing:.5px;
+    color:#fff;background:var(--live);padding:1px 6px;margin-bottom:5px;
+  }
+  .dl-alt{margin-top:12px;margin-bottom:0!important}
+
+  /* Win95 "tooltip yellow" info box */
+  .notice{
+    background:#ffffe1;border:1px solid var(--ink);
+    padding:10px 12px;font-size:13px;margin:12px 0;max-width:68ch;
+  }
+
+  /* ---- File table ---- */
+  .table-wrap{
+    overflow-x:auto;margin-top:12px;background:var(--paper);
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+    padding:2px;
+  }
+  table.files{border-collapse:collapse;width:100%;font-size:12px}
+  table.files th{
+    background:var(--face);text-align:left;padding:5px 8px;font-weight:bold;white-space:nowrap;
+    box-shadow:inset -1px -1px var(--shadow), inset 1px 1px #fff;
+  }
+  table.files td{padding:7px 8px;border-top:1px solid var(--face);vertical-align:top}
+  table.files td.file a{font-family:var(--font-mono);white-space:nowrap}
+  table.files td.size{white-space:nowrap;text-align:right}
+
+  pre.term{
+    background:#000;color:#3f3;font-family:var(--font-mono);font-size:12px;line-height:1.5;
+    padding:10px 12px;margin:8px 0 14px;overflow-x:auto;white-space:pre;
+    box-shadow:inset 1px 1px var(--shadow-dark);
+  }
+  code{font-family:var(--font-mono);font-size:13px;background:var(--face-light);padding:0 3px}
+
+  ol.steps, ul.reqs{margin:0 0 12px 22px;max-width:68ch}
+  ol.steps li, ul.reqs li{margin-bottom:6px}
+
+  details.adv{margin-top:14px}
+  details.adv summary{cursor:pointer;font-weight:bold;padding:4px 0}
+  details.adv[open] summary{margin-bottom:8px}
+
+  /* Feature grid */
+  .features-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;margin-top:10px
+  }
+  .feature{
+    background:#fff;padding:16px;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  .feature h3{
+    font-family:var(--font-display);font-size:13px;color:var(--title-a);
+    margin-bottom:6px;display:flex;align-items:center;gap:6px;
+  }
+  .feature p{font-size:12px;line-height:1.5;color:var(--ink);margin:0}
+
+  /* Divider */
+  .divider{height:1px;background:var(--shadow);margin:18px 0;border:none;box-shadow:0 1px 0 #fff}
+
+  footer{
+    text-align:center;color:#dff;font-size:12px;padding:8px 12px 20px;
+  }
+  /* ---- 88×31 buttons: the 1990s web-button format, 1px outline and a two-tone
+     split. Homage artwork — no real vendor logos or trademarks. ---- */
+  footer .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .b88{
+    display:flex;flex:none;width:88px;height:31px;
+    border:1px solid #000;overflow:hidden;user-select:none;
+    font-family:var(--font-ui);font-size:7px;line-height:1.1;
+    letter-spacing:.2px;text-transform:uppercase;
+    color:#fff;background:#000;
+    box-shadow:inset -1px -1px rgba(0,0,0,.55), inset 1px 1px rgba(255,255,255,.3);
+  }
+  .b88-l{
+    flex:none;width:29px;font-size:14px;background:rgba(0,0,0,.25);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .b88-r{
+    flex:1;display:flex;flex-direction:column;justify-content:center;gap:2px;
+    padding:0 3px;text-align:center;
+  }
+  .b88 b{font-size:8px}
+  .b88 i{font-style:normal;opacity:.9}
+  .b88-net{background:linear-gradient(180deg,#1084d0,#000080)}
+  .b88-net i{color:var(--salt);animation:b88blink 1.1s steps(1,end) infinite}
+  @keyframes b88blink{50%{opacity:.2}}
+  .b88-res{background:#101010;color:#3f3}
+  .b88-html{background:linear-gradient(180deg,#fff,#c8c8c8);color:#000}
+  .b88-note{background:var(--face);color:#000}
+  .b88-y2k{background:linear-gradient(180deg,#7b3fb5,#2d0f4d)}
+  .b88-caf{background:linear-gradient(180deg,#7a4a1e,#3a2109)}
+  .counter{
+    display:inline-block;font-family:var(--font-mono);letter-spacing:3px;
+    background:#000;color:#3f3;padding:3px 9px;margin-top:6px;
+    box-shadow:inset 1px 1px var(--shadow-dark);
+  }
+
+  @media(max-width:640px){
+    .detail-top{flex-direction:column;align-items:center;text-align:center}
+    .detail-top img{margin:0 auto}
+    .detail-top .btn-row{justify-content:center}
+    .btn-dl{flex:1 1 100%}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<main class="wrap" id="main" tabindex="-1">
+
+  <!-- ============ AUC DETAIL WINDOW ============ -->
+  <section class="window" aria-label="AUC App Details">
+    <div class="titlebar">
+      <span class="t-icon">📊</span>
+      <span class="t-text">AUC.exe — Details</span>
+      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
+    </div>
+    <div class="menubar" aria-hidden="true"><span>File</span><span>View</span><span>Help</span></div>
+    <div class="win-body">
+
+      <!-- Hero -->
+      <div class="detail-top">
+        <img src="images/auc-logo.png" alt="AUC logo">
+        <div>
+          <span class="badge live">● RELEASED · PGY-1</span>
+          <h1>AUC: Assessments Under Curve</h1>
+          <p>A local-first feedback tool for internal medicine residency programs. Log CCC observations, track follow-ups, and draft ACGME milestone summaries with an AI that runs on your own machine and has to quote your notes word-for-word.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#download">⬇ Download for Linux</a>
+            <a class="btn" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-body">
+
+      <hr class="divider">
+
+      <!-- ============ DOWNLOAD ============
+           Links below are the v1.0.1 release, so they work without JavaScript.
+           The script at the bottom swaps in the newest release from GitHub and
+           marks the file that matches this visitor's computer. -->
+      <h2 id="download">Download</h2>
+      <p class="muted">Version <span data-version>1.0.1</span><span data-codename-wrap> · <span data-codename>PGY-1</span></span> · <a data-release-link href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/tag/v1.0.1" target="_blank" rel="noopener">Release notes</a> · <a href="https://github.com/SaltShaker87/resident-evaluations-auc/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></p>
+
+      <div class="dl-panel" id="dlPanel">
+        <div class="dl-status">
+          <span class="ico" aria-hidden="true" id="dlIcon">🐧</span>
+          <div aria-live="polite">
+            <p id="dlHeadline"><strong>AUC installs on Linux.</strong></p>
+            <p id="dlDetail" class="muted">Choose the file for the computer that will run AUC.</p>
+          </div>
+        </div>
+        <div class="dl-main" id="dlMain">
+          <a class="btn btn-primary btn-dl" id="dlArm" data-asset="deb-aarch64"
+             href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.deb">
+            ⬇ DGX Spark / HP ZGX Nano
+            <small>ARM · .deb · <span data-size="deb-aarch64">3.2 MB</span></small>
+          </a>
+          <a class="btn btn-primary btn-dl" id="dlX86" data-asset="deb-x86_64"
+             href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.deb">
+            ⬇ Ubuntu PC
+            <small>Intel or AMD · .deb · <span data-size="deb-x86_64">3.3 MB</span></small>
+          </a>
+        </div>
+        <p class="muted dl-alt">Not on Ubuntu, or the .deb won't open? Use the AppImage instead:
+          <a data-asset="appimage-aarch64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.AppImage">ARM</a> ·
+          <a data-asset="appimage-x86_64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.AppImage">Intel/AMD</a>.
+        </p>
+      </div>
+
+      <p class="notice" id="dlOtherOs" hidden></p>
+
+      <h3 style="font-size:13px;margin-top:18px">Which file do I need?</h3>
+      <div class="table-wrap">
+        <table class="files">
+          <thead><tr><th scope="col">Your machine</th><th scope="col">File</th><th scope="col" style="text-align:right">Size</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>NVIDIA DGX Spark or HP ZGX Nano (ARM)</td>
+              <td class="file"><a data-asset="deb-aarch64" data-name="deb-aarch64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.deb">AUC-Installer-1.0.1-linux-aarch64.deb</a></td>
+              <td class="size" data-size="deb-aarch64">3.2 MB</td>
+            </tr>
+            <tr>
+              <td>Ubuntu PC (Intel or AMD)</td>
+              <td class="file"><a data-asset="deb-x86_64" data-name="deb-x86_64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.deb">AUC-Installer-1.0.1-linux-x86_64.deb</a></td>
+              <td class="size" data-size="deb-x86_64">3.3 MB</td>
+            </tr>
+            <tr>
+              <td>Other Linux, or if the .deb won't open (ARM)</td>
+              <td class="file"><a data-asset="appimage-aarch64" data-name="appimage-aarch64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.AppImage">AUC-Installer-1.0.1-linux-aarch64.AppImage</a></td>
+              <td class="size" data-size="appimage-aarch64">73 MB</td>
+            </tr>
+            <tr>
+              <td>Other Linux, or if the .deb won't open (Intel or AMD)</td>
+              <td class="file"><a data-asset="appimage-x86_64" data-name="appimage-x86_64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.AppImage">AUC-Installer-1.0.1-linux-x86_64.AppImage</a></td>
+              <td class="size" data-size="appimage-x86_64">75 MB</td>
+            </tr>
+            <tr>
+              <td>Server or scripted install (no installer)</td>
+              <td class="file"><a data-asset="tarball" data-name="tarball" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/auc-1.0.1.tar.gz">auc-1.0.1.tar.gz</a><br>
+                <a data-asset="sha256" data-name="sha256" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/auc-1.0.1.tar.gz.sha256">auc-1.0.1.tar.gz.sha256</a></td>
+              <td class="size" data-size="tarball">1.8 MB</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:13px;margin-top:18px">Opening the installer</h3>
+      <ol class="steps">
+        <li><strong>.deb:</strong> double-click it to install, then open <strong>AUC Installer</strong> from your apps. From a terminal: <code>sudo apt install ./AUC-Installer-*.deb</code></li>
+        <li><strong>.AppImage:</strong> right-click → Properties → allow it to run as a program, then double-click. From a terminal: <code>chmod +x AUC-Installer-*.AppImage</code> and run it.</li>
+      </ol>
+
+      <details class="adv">
+        <summary>Installing over SSH, or on a server</summary>
+        <p>The installer also runs without a window, which is handy for a DGX Spark you reach over SSH:</p>
+        <pre class="term">wget <span data-url="deb-aarch64">https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.deb</span>
+sudo apt install ./AUC-Installer-*-linux-aarch64.deb
+auc-installer --headless install --model qwen3.5:9b --network local
+auc-installer --headless status</pre>
+        <p>Pick the <code>--model</code> that suits your graphics memory (see <a href="#requirements">What you need</a>). Later, <code>auc-installer --headless update</code> updates AUC and <code>uninstall</code> removes it but keeps your data.</p>
+        <p>To skip the installer entirely, download the <code>.tar.gz</code> and its <code>.sha256</code>, check the archive, then follow the manual setup in the <a href="https://github.com/SaltShaker87/resident-evaluations-auc#readme" target="_blank" rel="noopener">README</a>:</p>
+        <pre class="term">sha256sum -c auc-*.tar.gz.sha256</pre>
+      </details>
+
+      <hr class="divider">
+
+      <!-- ============ FEATURES ============ -->
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <h3>📝 Quick-Add Notes</h3>
+          <p>Jot observations during CCC meetings, tagged with ACGME domain, strength or concern, and priority.</p>
+        </div>
+        <div class="feature">
+          <h3>✅ Follow-Ups</h3>
+          <p>A checklist of action items for each resident, plus a dashboard of everything still open.</p>
+        </div>
+        <div class="feature">
+          <h3>🤖 AI Summaries</h3>
+          <p>One click drafts all 21 ACGME sub-competencies, each with a suggested milestone level and supporting quotes, using a model on your own machine.</p>
+        </div>
+        <div class="feature">
+          <h3>🔍 Evidence-Checked</h3>
+          <p>Every quote is verified word-for-word against your notes before you see it. A section whose quotes don't check out is withheld, not shown.</p>
+        </div>
+        <div class="feature">
+          <h3>🎯 Milestone-Grounded</h3>
+          <p>Each note is matched to the sub-competencies it's about, by keyword or by searching the ACGME reference material. On a DGX Spark, NVIDIA Nemotron does the searching.</p>
+        </div>
+        <div class="feature">
+          <h3>✏️ Edit &amp; Approve</h3>
+          <p>Review each section, adjust the narrative or level, and save the final version.</p>
+        </div>
+        <div class="feature">
+          <h3>📋 Meeting Capture</h3>
+          <p>Record what the committee recalled unprompted, what you had to surface, and what it changed, then export de-identified CSVs for study.</p>
+        </div>
+        <div class="feature">
+          <h3>📥 MedHub CSV Import</h3>
+          <p>Bring in evaluation comments from a MedHub CSV export. They're matched to sub-competencies and summarized alongside your own notes.</p>
+        </div>
+        <div class="feature">
+          <h3>🔑 Password &amp; Backups</h3>
+          <p>A shared password guards all resident data. Download a full backup in one click, and a scheduled backup runs on its own.</p>
+        </div>
+      </div>
+
+      <p class="notice"><strong>Suggested levels are drafts.</strong> They are for Clinical Competency Committee discussion, not final determinations.</p>
+
+      <hr class="divider">
+
+      <!-- ============ PRIVACY ============ -->
+      <h2>Stays on Your Machine</h2>
+      <p>AUC runs entirely on the computer you install it on. Resident notes, photos and summaries live in one local database, and the AI models run locally too. Nothing is sent to a cloud service.</p>
+      <p>The installer holds to this: it refuses to point AUC's AI services at anything other than the machine itself. Other computers on your network can connect only if you allow it during setup, and updates never touch your data.</p>
+      <p>AUC is free and open source under the <a href="https://github.com/SaltShaker87/resident-evaluations-auc/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>, so your IT team can read every line of <a href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">the code</a> before it goes anywhere near resident data.</p>
+
+      <hr class="divider">
+
+      <!-- ============ REQUIREMENTS ============ -->
+      <h2 id="requirements">What You Need</h2>
+      <ul class="reqs">
+        <li><strong>Linux:</strong> Ubuntu 22.04 or newer, or an NVIDIA DGX Spark / HP ZGX Nano. On other distributions, use the AppImage. macOS and Windows support is planned.</li>
+        <li><strong>An internet connection while installing.</strong> The installer downloads AUC, Ollama and the AI models.</li>
+        <li><strong>For AI summaries (optional):</strong> a graphics card. The installer picks a model by its memory: 8–15 GB <code>qwen3.5:4b</code>, 16–32 GB <code>qwen3.5:9b</code>, over 32 GB NVIDIA Nemotron 3.5 Lightning. Everything else in AUC works without it.</li>
+        <li><strong>On a DGX Spark:</strong> a free NVIDIA NGC account key, used once to download the Nemotron models.</li>
+        <li><strong>Not needed:</strong> Python or Node.js. The installer brings its own.</li>
+      </ul>
+
+      <h2>How the Installer Works</h2>
+      <ol class="steps">
+        <li><strong>Checks your computer</strong>: processor, graphics card, free disk space, internet, and whether AUC is already installed. If something doesn't fit, it says so before changing anything.</li>
+        <li><strong>Asks three questions</strong>: AI summaries on or off (and which model), whether other computers on your network may connect, and on a Spark, your NGC key.</li>
+        <li><strong>Installs everything</strong>, starts AUC and opens it in your browser at <code>localhost:3000</code>. AUC starts with the computer from then on.</li>
+        <li><strong>Open the installer again</strong> any time to update, repair or remove AUC.</li>
+      </ol>
+
+      <hr class="divider">
+
+      <!-- Related -->
+      <h2>More from Salt Shaker Studio</h2>
+      <div class="btn-row" style="margin-top:10px">
+        <a class="btn" href="index.html">Salt Shaker Studio home</a>
+        <a class="btn" href="abg-detail.html">ABG: acid-base learning app</a>
+        <a class="btn" href="crm.html">CRM: clinical reasoning model</a>
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="badges">
+    <span class="b88 b88-net" title="Best viewed with Netscape Navigator 4.0">
+      <span class="b88-l">🌐</span><span class="b88-r"><b>Netscape</b><i>Now!</i></span>
+    </span>
+    <span class="b88 b88-res" title="Optimized for 800×600">
+      <span class="b88-l">🖥</span><span class="b88-r"><b>800×600</b><i>optimized</i></span>
+    </span>
+    <span class="b88 b88-html" title="Valid HTML 4.01">
+      <span class="b88-l">✅</span><span class="b88-r"><b>Valid</b><i>HTML 4.01</i></span>
+    </span>
+    <span class="b88 b88-note" title="Made with Notepad">
+      <span class="b88-l">✍</span><span class="b88-r"><b>Made with</b><i>Notepad</i></span>
+    </span>
+    <span class="b88 b88-y2k" title="Y2K compliant">
+      <span class="b88-l">🕛</span><span class="b88-r"><b>Y2K</b><i>compliant</i></span>
+    </span>
+    <span class="b88 b88-caf" title="Powered by caffeine">
+      <span class="b88-l">☕</span><span class="b88-r"><b>Powered by</b><i>caffeine</i></span>
+    </span>
+  </div>
+
+  <div>You are visitor <span class="counter">00000001</span></div>
+  <p style="margin-top:12px">© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
+  Educational content for medical professionals. Not for medical advice.</p>
+</footer>
+
+<script>
+/* ============ DOWNLOADS ============ */
+(function(){
+  var REPO = 'SaltShaker87/resident-evaluations-auc';
+  var DL_PREFIX = 'https://github.com/' + REPO + '/releases/download/';
+
+  function each(sel, fn){ Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+
+  /* ---- 1. Swap in the newest release. On any failure the baked-in links stay. ---- */
+  var PATTERNS = {
+    'deb-x86_64':       /^AUC-Installer-[\w.\-]+-linux-x86_64\.deb$/,
+    'deb-aarch64':      /^AUC-Installer-[\w.\-]+-linux-aarch64\.deb$/,
+    'appimage-x86_64':  /^AUC-Installer-[\w.\-]+-linux-x86_64\.AppImage$/,
+    'appimage-aarch64': /^AUC-Installer-[\w.\-]+-linux-aarch64\.AppImage$/,
+    'tarball':          /^auc-[\w.\-]+\.tar\.gz$/,
+    'sha256':           /^auc-[\w.\-]+\.tar\.gz\.sha256$/
+  };
+
+  function fmtSize(bytes){
+    var mb = bytes / 1048576;
+    return (mb >= 10 ? Math.round(mb) : mb.toFixed(1)) + ' MB';
+  }
+
+  function applyRelease(rel){
+    var found = {}, k;
+    (rel.assets || []).forEach(function(a){
+      if (String(a.browser_download_url).indexOf(DL_PREFIX) !== 0) return;
+      for (var key in PATTERNS) if (PATTERNS[key].test(a.name)) found[key] = a;
+    });
+    /* All or nothing: a release missing a file must not mix versions on the page. */
+    for (k in PATTERNS) if (!found[k]) return;
+
+    for (k in found) (function(k, a){
+      each('[data-asset="' + k + '"]', function(el){ el.href = a.browser_download_url; });
+      each('[data-name="' + k + '"]',  function(el){ el.textContent = a.name; });
+      each('[data-url="' + k + '"]',   function(el){ el.textContent = a.browser_download_url; });
+      each('[data-size="' + k + '"]',  function(el){ el.textContent = fmtSize(a.size); });
+    })(k, found[k]);
+
+    var version = String(rel.tag_name || '').replace(/^v/, '');
+    if (version) each('[data-version]', function(el){ el.textContent = version; });
+
+    /* Release names read "AUC 1.0.1 — PGY-1"; the part after the spaced dash is the codename. */
+    var m = /\s[—–-]\s(.+)$/.exec(rel.name || '');
+    each('[data-codename]', function(el){ if (m) el.textContent = m[1].trim(); });
+    each('[data-codename-wrap]', function(el){ el.hidden = !m; });
+
+    if (String(rel.html_url).indexOf('https://github.com/' + REPO + '/releases/') === 0)
+      each('[data-release-link]', function(el){ el.href = rel.html_url; });
+  }
+
+  if (window.fetch){
+    fetch('https://api.github.com/repos/' + REPO + '/releases/latest', {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    })
+      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(applyRelease)
+      .catch(function(){ /* rate-limited or offline: keep the baked-in release */ });
+  }
+
+  /* ---- 2. Recommend the file for this computer. Never hide the others:
+     people often download on a laptop and copy the file to the Spark. ---- */
+  function detect(){
+    var ua = navigator.userAgent || '';
+    var p = { os: 'unknown', arch: null };
+    if (/Android|iPhone|iPad|iPod/i.test(ua)) p.os = 'mobile';
+    else if (/CrOS/.test(ua))                 p.os = 'chromeos';
+    else if (/Windows/.test(ua))              p.os = 'windows';
+    else if (/Macintosh|Mac OS X/.test(ua))   p.os = navigator.maxTouchPoints > 1 ? 'mobile' : 'mac'; /* iPadOS says "Macintosh" */
+    else if (/Linux|X11/.test(ua))            p.os = 'linux';
+    if (p.os !== 'linux') return Promise.resolve(p);
+
+    if (/aarch64|arm64/i.test(ua))      p.arch = 'arm';
+    else if (/armv[67]|i[3-6]86/i.test(ua)) p.arch = '32bit';
+    else if (/x86_64|amd64/i.test(ua))  p.arch = 'x86';
+
+    /* Chrome reports "Linux x86_64" even on ARM machines like the DGX Spark.
+       Its client-hints API reports the real processor; Firefox's UA is already honest. */
+    var uad = navigator.userAgentData;
+    if (!uad || !uad.getHighEntropyValues) return Promise.resolve(p);
+    return uad.getHighEntropyValues(['architecture', 'bitness']).then(function(h){
+      if (h.architecture === 'arm' || h.architecture === 'x86')
+        p.arch = h.bitness === '32' ? '32bit' : h.architecture;
+      else if (p.arch === 'x86') p.arch = null;
+      return p;
+    }, function(){
+      if (p.arch === 'x86') p.arch = null;
+      return p;
+    });
+  }
+
+  var OS_NAMES = { mac: 'a Mac', windows: 'Windows', chromeos: 'ChromeOS', mobile: 'a phone or tablet' };
+
+  function show(p){
+    var headline = document.getElementById('dlHeadline');
+    var detail   = document.getElementById('dlDetail');
+    var icon     = document.getElementById('dlIcon');
+    var other    = document.getElementById('dlOtherOs');
+    var main     = document.getElementById('dlMain');
+    var arm      = document.getElementById('dlArm');
+    var x86      = document.getElementById('dlX86');
+
+    function recommend(btn, demote){
+      var tag = document.createElement('span');
+      tag.className = 'rec-tag';
+      tag.textContent = 'RECOMMENDED FOR THIS COMPUTER';
+      btn.insertBefore(tag, btn.firstChild);
+      main.insertBefore(btn, main.firstChild);
+      demote.classList.remove('btn-primary');
+    }
+
+    if (p.os === 'linux' && (p.arch === 'arm' || p.arch === 'x86')){
+      icon.textContent = '✔';
+      if (p.arch === 'arm'){
+        headline.innerHTML = '<strong>This computer runs Linux on ARM</strong>, like a DGX Spark or HP ZGX Nano.';
+        recommend(arm, x86);
+      } else {
+        headline.innerHTML = '<strong>This computer runs Linux on Intel/AMD.</strong>';
+        recommend(x86, arm);
+      }
+      detail.textContent = 'On Ubuntu or DGX OS, use the .deb. On another Linux distribution, use the AppImage.';
+    } else if (p.os === 'linux' && p.arch === '32bit'){
+      icon.textContent = '⚠';
+      headline.innerHTML = '<strong>AUC needs a 64-bit processor.</strong>';
+      detail.textContent = 'This computer looks 32-bit. If you are downloading for a different machine, choose it below.';
+    } else if (p.os === 'linux'){
+      headline.innerHTML = '<strong>This computer runs Linux.</strong>';
+      detail.textContent = 'Choose the file that matches its processor: ARM for a DGX Spark or HP ZGX Nano, Intel/AMD for most PCs.';
+    } else if (OS_NAMES[p.os]){
+      icon.textContent = 'ℹ';
+      headline.innerHTML = '<strong>The AUC installer runs on Linux only for now.</strong>';
+      detail.textContent = 'Downloading for a Linux machine, such as a DGX Spark? Choose it below.';
+      other.textContent = 'You are on ' + OS_NAMES[p.os] + '. macOS and Windows support is planned. Until then, AUC needs an Ubuntu PC or an NVIDIA DGX Spark / HP ZGX Nano.';
+      other.hidden = false;
+    }
+  }
+
+  detect().then(show, function(){});
+})();
+</script>
+
+</body>
+</html>
