@@ -2,1299 +2,920 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Salt Shaker Studio creates interactive educational games for medical trainees. Learn acid-base interpretation, antibiotic prescribing, and more through play.">
 <link rel="canonical" href="https://www.saltshakerstudio.net/">
 <title>Salt Shaker Studio — Medical Education Games</title>
+<link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/web/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
+<meta name="theme-color" content="#0a4650">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 <style>
-  /* ============ WIN95 DESIGN TOKENS ============ */
-  :root{
-    --desktop:#0d7c7c;            /* classic teal desktop, slightly deepened */
-    --face:#c0c0c0;               /* window face gray */
-    --face-light:#dfdfdf;
-    --shadow:#808080;
-    --shadow-dark:#0a0a0a;
-    --title-a:#000080;            /* navy title bar gradient */
-    --title-b:#1084d0;
-    --title-inactive:#7b7b7b;
-    --paper:#ffffff;
-    --ink:#111111;
-    --salt:#ffd23f;               /* salt-shaker yellow accent */
-    --live:#1ca31c;               /* green = playable */
-    --proto:#d97b00;              /* orange = prototype */
-    --dev:#1062c4;                /* blue = in development */
-    --concept:#7b7b7b;            /* gray = concept */
-    --beta:#7b3fb5;               /* purple = beta complete */
-    --font-ui:Tahoma,"MS Sans Serif",Geneva,sans-serif;
-    --font-display:"Silkscreen",Tahoma,sans-serif;
-    --font-mono:"Courier New",Courier,monospace;
-  }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:16px}
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{animation:none!important;transition:none!important}
-  }
-  body{
-    font-family:var(--font-ui);
-    font-size:14px;
-    color:var(--ink);
-    background:var(--desktop);
-    /* subtle desktop pattern */
-    background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
-    background-size:6px 6px;
-    padding-bottom:56px; /* room for taskbar */
-  }
-  img{max-width:100%;display:block}
-  a{color:#000080}
-  :focus-visible{outline:2px dotted var(--ink);outline-offset:2px}
-
-  /* skip link (accessibility) */
-  .skip-link{
-    position:absolute;left:-9999px;top:0;z-index:200;
-    background:var(--salt);color:var(--ink);font-weight:bold;
-    padding:8px 14px;text-decoration:none;
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
-  }
-  .skip-link:focus{left:8px;top:8px}
-
-  /* ============ WIN95 BEVELS ============ */
-  .raised{
-    background:var(--face);
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
-               inset -2px -2px var(--shadow), inset 2px 2px #fff;
-  }
-  .sunken{
-    background:var(--paper);
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff;
-  }
-
-  /* ============ WINDOW CHROME ============ */
-  .window{
-    background:var(--face);
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
-               inset -2px -2px var(--shadow), inset 2px 2px #fff,
-               4px 4px 0 rgba(0,0,0,.35);
-    margin-bottom:28px;
-  }
-  .titlebar{
-    display:flex;align-items:center;gap:6px;
-    background:linear-gradient(90deg,var(--title-a),var(--title-b));
-    color:#fff;padding:3px 4px 3px 8px;
-    font-weight:bold;font-size:13px;
-    user-select:none;
-  }
-  .titlebar .t-icon{font-size:13px}
-  .titlebar .t-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .t-btns{display:flex;gap:2px}
-  .t-btn{
-    width:18px;height:16px;font-size:10px;line-height:1;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--face);color:var(--ink);
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
-               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
-    font-family:var(--font-ui);
-  }
-  .menubar{
-    display:flex;gap:14px;padding:3px 8px;font-size:13px;
-    border-bottom:1px solid var(--shadow);
-    box-shadow:0 1px 0 #fff;
-  }
-  .menubar span{cursor:default}
-  .menubar span:hover{background:var(--title-a);color:#fff}
-  .win-body{padding:14px}
-
-  /* ============ BUTTONS ============ */
-  .btn{
-    display:inline-block;
-    font-family:var(--font-ui);font-size:13px;color:var(--ink);
-    text-decoration:none;cursor:pointer;
-    padding:6px 14px;background:var(--face);border:0;
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
-               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
-  }
-  .btn:active{
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
-               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
-    transform:translate(1px,1px);
-  }
-  .btn-primary{font-weight:bold;background:var(--salt)}
-  .btn[aria-disabled="true"]{
-    color:var(--shadow);text-shadow:1px 1px 0 #fff;cursor:not-allowed;
-  }
-  .btn[aria-disabled="true"]:active{transform:none}
-
-  /* ---- Social buttons: official brand mark in a coloured square, Win95 label
-     alongside. Same bevel and press as .btn — only the icon block is branded. ---- */
-  .sbtn{
-    display:inline-flex;align-items:stretch;height:34px;
-    font-family:var(--font-ui);font-size:13px;color:var(--ink);
-    text-decoration:none;cursor:pointer;background:var(--face);
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
-               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
-  }
-  .sbtn:active{
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
-               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
-    transform:translate(1px,1px);
-  }
-  .sbtn-i{
-    flex:none;width:30px;margin:2px 0 2px 2px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:15px;line-height:1;
-  }
-  /* object-fit keeps the four marks optically even despite differing aspect
-     ratios (X is square, the Discord symbol is wide, the [in] bug is neither). */
-  .sbtn-i img{width:17px;height:17px;object-fit:contain}
-  .sbtn-t{display:flex;align-items:center;padding:0 12px 0 9px}
-  .sbtn-x .sbtn-i{background:#000}
-  .sbtn-discord .sbtn-i{background:#5865F2}
-  .sbtn-linkedin .sbtn-i{background:#0A66C2}
-  .sbtn-steam .sbtn-i{background:#1b2838}
-  .sbtn-email .sbtn-i{background:var(--salt);color:var(--ink)}
-
-  /* ============ LAYOUT ============ */
-  .wrap{max-width:980px;margin:0 auto;padding:24px 16px 40px}
+  section.block{padding-block:40px}
 
   /* ============ HERO ============ */
-  .hero .win-body{
-    text-align:center;padding:34px 18px 30px;
-    background:
-      linear-gradient(rgba(13,124,124,.06),rgba(13,124,124,.06)),
-      var(--face);
-  }
-  .hero img.logo{width:110px;height:110px;margin:0 auto 14px;image-rendering:pixelated}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:48px 36px}
+  .hero-copy{display:flex;flex-direction:column;align-items:flex-start}
+  .hero-logo{width:210px;transform:rotate(-2.5deg);margin:0 0 30px 4px}
+  .hero-logo .titlebar{height:30px;font-size:12px}
+  .hero-logo .win-body{padding:8px;background:#fff}
+  .hero-logo img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px}
   .hero h1{
-    font-family:var(--font-display);
-    font-size:clamp(22px,5vw,40px);
-    letter-spacing:1px;line-height:1.15;
-    color:var(--title-a);
-    text-shadow:2px 2px 0 var(--salt);
-    margin-bottom:8px;
+    font:700 clamp(44px,6.2vw,76px)/.98 var(--font-display);color:#fff;letter-spacing:.5px;
+    text-shadow:4px 4px 0 var(--edge);text-wrap:balance;margin-bottom:18px;
   }
-  .hero .tagline{font-size:15px;margin-bottom:20px;transition:opacity 0.3s ease-in-out}
-  .hero .tagline.fading{opacity:0}
-  .hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .hero h1 em{font-style:normal;color:var(--salt)}
+  .tagline{font-size:19px;color:#e6f3f3;max-width:34ch;min-height:2.6em;transition:opacity .3s}
+  .tagline.fading{opacity:0}
+  .hero .btn-row{margin-top:24px;gap:12px}
 
-  /* news ticker */
-  .ticker{
-    overflow:hidden;white-space:nowrap;
-    background:var(--shadow-dark);color:var(--salt);
-    font-family:var(--font-mono);font-size:13px;
-    padding:5px 0;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light);
+  /* the playable ABG case */
+  .quiz .win-body{gap:14px}
+  .case-line{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:500 12px var(--font-mono);color:var(--muted)}
+  .labs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .lab{background:#fff;border:1.5px solid #cfd4dc;border-radius:8px;padding:8px 10px}
+  .lab-name{display:block;font:500 11px var(--font-mono);color:var(--muted);letter-spacing:.5px}
+  .lab-val{font:700 26px/1.1 var(--font-display);font-variant-numeric:tabular-nums}
+  .lab-unit{font:500 11px var(--font-mono);color:var(--muted)}
+  .lab.is-abnormal .lab-val{color:#c2410c}
+  .quiz-q{font-weight:600}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{
+    min-height:42px;padding:6px 12px;border-radius:8px;border:2px solid var(--edge);background:#fff;
+    box-shadow:0 3px 0 var(--edge);font:500 14px/1.25 var(--font-body);text-align:left;cursor:pointer;
+    transition:transform .08s,box-shadow .08s;
   }
-  .ticker span{display:inline-block;padding-left:100%;animation:tick 28s linear infinite}
-  @keyframes tick{to{transform:translateX(-100%)}}
-  @media (prefers-reduced-motion:reduce){
-    .ticker{white-space:normal;text-align:center;padding:5px 10px}
-    .ticker span{padding-left:0}
-  }
+  .opt:hover:not(:disabled){background:#f7f8fa}
+  .opt:active:not(:disabled){transform:translateY(3px);box-shadow:none}
+  .opt:disabled{cursor:default}
+  .opt.is-right{background:#dcfce7;border-color:#15803d;box-shadow:0 3px 0 #15803d;color:#0f5132}
+  .opt.is-wrong{background:#fee2e2;border-color:var(--danger);box-shadow:0 3px 0 var(--danger);color:#7f1d1d}
+  .feedback{font-size:14px;line-height:1.55;border-radius:8px;padding:10px 12px;background:#fff;border:1.5px dashed #cfd4dc;min-height:48px}
+  .feedback.is-right{border:1.5px solid #15803d;background:#f0fdf4}
+  .feedback.is-wrong{border:1.5px solid var(--danger);background:#fef2f2}
+  .feedback code{background:rgba(0,0,0,.06)}
+  .quiz-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .quiz-foot a{font:600 14px var(--font-body)}
 
-  /* ============ SECTION HEADERS ============ */
-  h2.section-h{
-    font-family:var(--font-display);
-    font-size:clamp(16px,3.5vw,22px);
-    color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.45);
-    margin:34px 0 14px;letter-spacing:1px;
+  /* ============ SOFTWARE ============ */
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;position:relative;z-index:1}
+  .tabs button{
+    border:2px solid var(--edge);border-radius:8px 8px 0 0;margin-bottom:-2px;cursor:pointer;
+    background:rgba(238,240,243,.72);padding:7px 14px;font:600 14px var(--font-body);
   }
+  .tabs button:hover{background:rgba(238,240,243,.9)}
+  .tabs button[aria-selected="true"]{background:var(--face);border-bottom-color:var(--face)}
+  .tabs .n{font:500 12px var(--font-mono);color:var(--muted);margin-left:6px}
+  .shelf{background:var(--face);border:2px solid var(--edge);border-radius:0 var(--r) var(--r) var(--r);padding:20px;box-shadow:var(--lift)}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .card{
+    display:flex;flex-direction:column;overflow:hidden;background:#fff;
+    border:2px solid var(--edge);border-radius:var(--r);box-shadow:0 4px 0 var(--edge);
+    transition:transform .15s,box-shadow .15s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 7px 0 var(--edge)}
+  .card .titlebar{height:30px;font-size:12px}
+  .card .win-body{gap:12px;padding:16px}
+  .card-head{display:flex;gap:14px;align-items:center}
+  .card-head > a{flex:none;border-radius:12px}
+  .card-logo{width:60px;height:60px;border-radius:12px;object-fit:cover;border:1.5px solid var(--hairline);flex:none;background:#fff}
+  .card h3{font:700 17px/1.2 var(--font-body);margin-top:6px;text-wrap:balance}
+  .card p{font-size:14px;color:var(--ink-2)}
+  .meter{margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:4px 10px;font:500 11px var(--font-mono);color:var(--muted)}
+  .meter-track{grid-column:1/-1;height:9px;border-radius:99px;background:#e6e9ee;border:1px solid var(--hairline);overflow:hidden}
+  .meter-track i{
+    display:block;height:100%;width:var(--p);border-radius:99px;
+    background:repeating-linear-gradient(90deg,var(--c) 0 10px,color-mix(in srgb,var(--c) 78%,#fff) 10px 12px);
+  }
+  .card.feature-card{grid-column:span 2}
+  .feature-card .win-body{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 22px;align-content:start}
+  .feature-card .card-logo{width:112px;height:112px;border-radius:20px}
+  .feature-card .card-head{grid-row:1 / span 4;align-self:start}
+  .feature-card h3{font-size:24px}
+  .feature-card p{font-size:15px;max-width:54ch}
+  .feature-card .meter,.feature-card .btn-row{grid-column:2}
+  .feature-card .meter{margin-top:6px}
+  .card.idea{grid-column:span 2;border-style:dashed;box-shadow:none;background:transparent}
+  .card.idea:hover{transform:none}
+  .card.idea .win-body{flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px}
+  .card.idea img{width:52px;height:52px;border-radius:10px;object-fit:cover;filter:grayscale(.6)}
+  .card.idea p{flex:1;min-width:220px}
+  .card[hidden]{display:none}
 
-  /* ============ GAME CARDS ============ */
-  .games-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
-    gap:22px;
+  /* ============ DEV BLOG ============ */
+  .blog-body{display:grid;grid-template-columns:1fr;background:#fff}
+  .blog-body.is-enhanced{grid-template-columns:300px minmax(0,1fr)}
+  .post-list{display:none}
+  .is-enhanced .post-list{
+    display:flex;flex-direction:column;gap:4px;padding:10px;max-height:600px;overflow:auto;
+    background:var(--face-2);border-right:2px solid var(--edge);
   }
-  .game .win-body{display:flex;flex-direction:column;gap:10px;height:100%}
-  .game-top{display:flex;gap:12px;align-items:flex-start}
-  .game-top img{
-    width:72px;height:72px;flex:none;object-fit:cover;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff;
-    padding:3px;background:#fff;
+  .post-list button{
+    border:0;background:none;text-align:left;border-radius:8px;padding:10px 12px;cursor:pointer;
+    display:flex;flex-direction:column;gap:2px;
   }
-  .game h3{font-size:15px;margin-bottom:4px}
-  .game p{font-size:13px;line-height:1.45}
+  .post-list button:hover{background:rgba(255,255,255,.75)}
+  .post-list button[aria-selected="true"]{background:#fff;box-shadow:0 0 0 2px var(--edge),0 3px 0 2px var(--edge);margin-bottom:3px}
+  .post-list time{font:500 11px var(--font-mono);color:var(--muted);letter-spacing:.3px}
+  .post-list b{font-size:14px;line-height:1.35}
+  .reader{padding:30px 36px 34px;max-height:none}
+  .is-enhanced .reader{max-height:600px;overflow:auto}
+  .post + .post{margin-top:36px;padding-top:30px;border-top:1.5px dashed #cfd4dc}
+  .is-enhanced .post + .post{margin-top:0;padding-top:0;border-top:0}
+  .post time{font:500 12px var(--font-mono);color:var(--muted)}
+  .post h3{font:700 26px/1.2 var(--font-body);margin:6px 0 16px;max-width:30ch;text-wrap:balance}
+  .post p{max-width:64ch;margin-bottom:14px;font-size:16px;line-height:1.7}
+  .post p > strong:first-child{display:block;font:700 16px var(--font-display);letter-spacing:.3px;color:var(--title-a);margin-top:20px}
+  .post p > strong:first-child + br{display:none}
 
-  .badge{
-    display:inline-block;font-size:10px;font-weight:bold;letter-spacing:.5px;
-    color:#fff;padding:2px 7px;margin-bottom:5px;font-family:var(--font-ui);
-    box-shadow:inset -1px -1px rgba(0,0,0,.4), inset 1px 1px rgba(255,255,255,.4);
-  }
-  .badge.live{background:var(--live)}
-  .badge.proto{background:var(--proto)}
-  .badge.dev{background:var(--dev)}
-  .badge.concept{background:var(--concept)}
-  .badge.beta{background:var(--beta)}
+  /* ============ ROADMAP ============ */
+  .road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+  .quarter .win-body{gap:0;padding:10px 16px 12px}
+  .quarter.is-now{outline:3px solid var(--salt);outline-offset:3px}
+  .now-tag{font:600 11px/1.6 var(--font-mono);background:var(--salt);color:var(--edge);border:1.5px solid var(--edge);border-radius:99px;padding:0 8px}
+  .task{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed #d5dae2;font-size:14px}
+  .task:last-child{border-bottom:0}
+  .box{width:18px;height:18px;border-radius:5px;border:2px solid var(--edge);display:grid;place-items:center;flex:none;background:#fff}
+  .task.done .box{background:var(--live);border-color:#0f6b34}
+  .task.done .box::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+  .task.done .t{color:var(--muted)}
+  .task.wip .box{background:var(--salt)}
+  .task.wip .box::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--edge)}
+  .task .state{margin-left:auto;font:500 11px var(--font-mono);color:var(--muted);white-space:nowrap}
 
-  /* segmented Win95 progress bar */
-  .progress{margin-top:auto}
-  .progress .p-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
-  .p-track{
-    height:18px;padding:2px;display:flex;gap:2px;background:#fff;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff;
-  }
-  .p-track i{flex:1}
-  .p-track i.on{background:var(--title-a)}
-  .game .btn-row{display:flex;gap:8px;flex-wrap:wrap}
-
-  /* ============ TESTIMONIALS ============ */
-  .reviews-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:18px;
-  }
-  .review{
-    position:relative;display:flex;flex-direction:column;gap:9px;
-    margin:0;padding:14px 14px 14px 17px;background:var(--paper);
-    /* sunken Win95 panel */
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff;
-    transition:transform .12s ease, box-shadow .12s ease;
-  }
-  /* modern accent: salt-yellow gradient bar down the left edge */
-  .review::before{
-    content:"";position:absolute;top:3px;bottom:3px;left:3px;width:4px;
-    background:linear-gradient(180deg,var(--salt),var(--proto));
-    border-radius:2px;
-  }
-  .review:hover{
-    transform:translateY(-3px);
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff,
-               5px 7px 0 rgba(0,0,0,.28);
-  }
-  .review-head{display:flex;gap:11px;align-items:center}
-  /* modern circular gradient avatar — deliberate contrast to the boxy UI */
-  .avatar{
-    width:44px;height:44px;flex:none;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:22px;line-height:1;
-    background:linear-gradient(135deg,var(--a,#1084d0),var(--b,#000080));
-    box-shadow:0 2px 5px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.55);
-  }
-  .rv-name{font-size:13px;font-weight:bold;line-height:1.3;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-  .rv-role{color:var(--shadow);font-size:11px}
-  /* modern verified pill */
-  .verified{
-    font-family:var(--font-ui);font-size:9px;font-weight:bold;letter-spacing:.3px;
-    color:#fff;background:var(--live);padding:1px 7px;border-radius:9px;
-    box-shadow:0 1px 2px rgba(0,0,0,.3);white-space:nowrap;
-  }
-  .stars{color:var(--salt);font-size:14px;letter-spacing:2px;text-shadow:1px 1px 0 rgba(0,0,0,.35)}
-  .review blockquote{margin:0;font-size:13px;line-height:1.5}
-  @media (prefers-reduced-motion:reduce){
-    .review,.review:hover{transition:none;transform:none}
-  }
-
-  /* ============ DEV BLOG (NOTEPAD) ============ */
-  .notepad .win-body{background:#fff;font-family:var(--font-mono);padding:0;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff;
-    margin:4px;max-height:560px;overflow-y:auto;
-  }
-  details.post{border-bottom:1px dashed #aaa}
-  details.post summary{
-    list-style:none;cursor:pointer;padding:11px 14px;
-    display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
-    font-size:13px;
-  }
-  details.post summary::-webkit-details-marker{display:none}
-  details.post summary::before{content:"[+]";color:var(--title-a);font-weight:bold;flex:none}
-  details.post[open] summary::before{content:"[–]"}
-  details.post summary:hover{background:#e8f0ff}
-  .post-date{color:#777;font-size:12px;flex:none}
-  .post-title{font-weight:bold}
-  .post-body{padding:0 16px 16px 42px;font-size:13px;line-height:1.6;max-width:72ch}
-  .post-body p{margin-bottom:10px}
-  .post-body strong{background:var(--salt);padding:0 3px}
-
-  /* ============ ROADMAP (EXPLORER) ============ */
-  .roadmap .win-body{font-size:13px}
-  .quarter{margin-bottom:14px}
-  .quarter h3{font-size:13px;margin-bottom:6px}
-  .task{display:flex;align-items:center;gap:8px;padding:3px 0 3px 22px}
-  .chk{
-    width:14px;height:14px;flex:none;background:#fff;text-align:center;
-    line-height:13px;font-size:11px;font-weight:bold;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light);
-  }
-  .chk.done{color:var(--live)}
-  .chk.wip{color:var(--proto)}
-  .task .tag{font-size:10px;font-weight:bold;margin-left:auto;padding:1px 6px;color:#fff}
-  .tag.t-done{background:var(--live)}
-  .tag.t-wip{background:var(--proto)}
-  .tag.t-plan{background:var(--concept)}
+  /* ============ GUESTBOOK ============ */
+  .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .entry .win-body{gap:12px}
+  .stars{color:var(--salt-deep);letter-spacing:2px;font-size:15px}
+  .entry blockquote{font-size:15px;line-height:1.6}
+  .who{display:flex;gap:12px;align-items:center;margin-top:auto;padding-top:12px;border-top:1px dashed #cfd4dc}
+  .av{width:40px;height:40px;flex:none;border-radius:10px;border:2px solid var(--edge);display:grid;place-items:center;font:700 15px var(--font-display);color:#fff;background:var(--c)}
+  .who-name{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:600;font-size:14px;line-height:1.3}
+  .who-role{display:block;font-size:12px;color:var(--muted)}
+  .verified{font:600 10px/1.6 var(--font-mono);color:#fff;background:var(--live);border-radius:99px;padding:0 7px;letter-spacing:.3px}
+  .sign .win-body{justify-content:center;align-items:flex-start;gap:12px}
+  .sign p{font-size:15px}
 
   /* ============ ABOUT ============ */
-  .about-flex{display:flex;gap:18px;flex-wrap:wrap}
-  .about-flex img{
-    width:140px;height:140px;object-fit:cover;flex:none;background:#fff;padding:4px;
-    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
-               inset 2px 2px var(--shadow), inset -2px -2px #fff;
-  }
-  .about-text{flex:1;min-width:240px;font-size:13px;line-height:1.55}
-  .about-text h3{margin-bottom:2px}
-  .about-text .role{color:var(--shadow);margin-bottom:10px;font-size:12px}
-  .about-text p{margin-bottom:10px}
-  table.props{border-collapse:collapse;margin-top:12px;font-size:12px;width:100%}
-  table.props td{border:1px solid var(--shadow);padding:5px 9px}
-  table.props td:first-child{background:var(--face);font-weight:bold;width:90px}
-  table.props td:last-child{background:#fff}
+  .about .win-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;padding:26px}
+  .about-photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;border:2px solid var(--edge)}
+  .about h3{font:700 24px/1.2 var(--font-body)}
+  .about .role{color:var(--muted);margin:2px 0 14px}
+  .about p{max-width:62ch;margin-bottom:12px;font-size:16px;line-height:1.65}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .chips span{font:500 12px var(--font-mono);border:1.5px solid #cfd4dc;background:#fff;border-radius:99px;padding:3px 10px}
+  .chips b{color:var(--muted);font-weight:500;margin-right:4px}
 
-  /* ============ FOOTER ============ */
-  footer{
-    text-align:center;color:#dff;font-size:12px;padding:8px 12px 20px;
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;gap:36px;padding-top:32px}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card.feature-card{grid-column:1 / -1}
+    .card.idea{grid-column:auto}
+    .road{grid-template-columns:1fr}
+    .quotes{grid-template-columns:1fr 1fr}
   }
-  /* ---- 88×31 buttons: the 1990s web-button format, 1px outline and a two-tone
-     split. Homage artwork — no real vendor logos or trademarks. ---- */
-  footer .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .b88{
-    display:flex;flex:none;width:88px;height:31px;
-    border:1px solid #000;overflow:hidden;user-select:none;
-    font-family:var(--font-ui);font-size:7px;line-height:1.1;
-    letter-spacing:.2px;text-transform:uppercase;
-    color:#fff;background:#000;
-    box-shadow:inset -1px -1px rgba(0,0,0,.55), inset 1px 1px rgba(255,255,255,.3);
+  @media (max-width:760px){
+    .blog-body.is-enhanced{grid-template-columns:1fr}
+    .is-enhanced .post-list{flex-direction:row;overflow-x:auto;max-height:none;border-right:0;border-bottom:2px solid var(--edge)}
+    .post-list button{min-width:220px}
+    .post-list button[aria-selected="true"]{margin-bottom:0;margin-right:3px}
+    .reader,.is-enhanced .reader{padding:22px 18px;max-height:none}
+    .post h3{font-size:22px}
   }
-  .b88-l{
-    flex:none;width:29px;font-size:14px;background:rgba(0,0,0,.25);
-    display:flex;align-items:center;justify-content:center;
+  @media (max-width:640px){
+    section.block{padding-block:28px}
+    .hero-logo{width:150px;margin-bottom:24px}
+    .tagline{font-size:17px}
+    .grid,.quotes{grid-template-columns:1fr}
+    .shelf{padding:12px}
+    .tabs button{padding:6px 10px;font-size:13px}
+    .feature-card .win-body{grid-template-columns:1fr}
+    .feature-card .card-head{grid-row:auto}
+    .feature-card .meter,.feature-card .btn-row{grid-column:auto}
+    .feature-card .card-logo{width:72px;height:72px;border-radius:14px}
+    .feature-card h3{font-size:20px}
+    .about .win-body{grid-template-columns:1fr;padding:18px}
+    .about-photo{width:140px}
+    .opts{grid-template-columns:1fr}
+    .lab-val{font-size:22px}
   }
-  .b88-r{
-    flex:1;display:flex;flex-direction:column;justify-content:center;gap:2px;
-    padding:0 3px;text-align:center;
-  }
-  .b88 b{font-size:8px}
-  .b88 i{font-style:normal;opacity:.9}
-  .b88-net{background:linear-gradient(180deg,#1084d0,#000080)}
-  .b88-net i{color:var(--salt);animation:b88blink 1.1s steps(1,end) infinite}
-  @keyframes b88blink{50%{opacity:.2}}
-  .b88-res{background:#101010;color:#3f3}
-  .b88-html{background:linear-gradient(180deg,#fff,#c8c8c8);color:#000}
-  .b88-note{background:var(--face);color:#000}
-  .b88-y2k{background:linear-gradient(180deg,#7b3fb5,#2d0f4d)}
-  .b88-caf{background:linear-gradient(180deg,#7a4a1e,#3a2109)}
-  .counter{
-    display:inline-block;font-family:var(--font-mono);letter-spacing:3px;
-    background:#000;color:#3f3;padding:3px 9px;margin-top:6px;
-    box-shadow:inset 1px 1px var(--shadow-dark);
-  }
-  footer .connect{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:12px 0}
-
-  /* ============ TASKBAR (SIGNATURE) ============ */
-  .taskbar{
-    position:fixed;left:0;right:0;bottom:0;z-index:100;
-    height:44px;display:flex;align-items:center;gap:6px;padding:4px 6px;
-    background:var(--face);
-    box-shadow:inset 0 1px #fff, inset 0 2px var(--face-light), 0 -1px var(--shadow-dark);
-  }
-  .start-btn{
-    font-weight:bold;display:flex;align-items:center;gap:6px;
-    padding:5px 12px;
-  }
-  .start-btn .s-ico{color:var(--title-a)}
-  .task-links{display:flex;gap:4px;flex:1;overflow-x:auto}
-  .task-links a{
-    text-decoration:none;color:var(--ink);font-size:12px;
-    padding:5px 12px;white-space:nowrap;
-  }
-  .clock{
-    font-size:12px;padding:5px 10px;min-width:74px;text-align:center;
-    background:var(--face);
-    box-shadow:inset 1px 1px var(--shadow), inset -1px -1px #fff;
-  }
-  @media(max-width:640px){
-    .task-links a.optional{display:none}
-  }
-
-  /* start menu */
-  .start-menu{
-    position:fixed;left:6px;bottom:50px;z-index:101;width:230px;
-    display:none;flex-direction:row;
-    background:var(--face);
-    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
-               inset -2px -2px var(--shadow), inset 2px 2px #fff,
-               4px 4px 0 rgba(0,0,0,.35);
-  }
-  .start-menu.open{display:flex}
-  .sm-stripe{
-    width:26px;background:linear-gradient(180deg,var(--title-a),var(--title-b));
-    color:#fff;font-family:var(--font-display);font-size:13px;
-    writing-mode:vertical-rl;transform:rotate(180deg);
-    display:flex;align-items:center;justify-content:flex-start;
-    padding:10px 0;letter-spacing:2px;
-  }
-  .sm-items{flex:1;padding:4px}
-  .sm-items a{
-    display:flex;gap:10px;align-items:center;
-    padding:9px 10px;font-size:13px;color:var(--ink);text-decoration:none;
-  }
-  .sm-items a:hover,.sm-items a:focus-visible{background:var(--title-a);color:#fff}
 </style>
 </head>
 <body>
 
-<!-- Skip Link -->
 <a href="#main" class="skip-link">Skip to content</a>
 
 <div class="wrap" id="main" tabindex="-1">
 
   <!-- ============ HERO ============ -->
-  <section class="window hero" id="hero" aria-label="Welcome">
-    <div class="titlebar">
-      <span class="t-icon">🧂</span>
-      <span class="t-text">Salt Shaker Studio — Welcome.exe</span>
-      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-    </div>
-    <div class="win-body">
-      <img class="logo" src="images/sss-logo.png" alt="Salt Shaker Studio logo">
-      <h1>SALT SHAKER STUDIO</h1>
-      <p class="tagline" id="rotating-tagline">Because nobody ever really learns from a PowerPoint</p>
-      <div class="cta-row">
+  <header class="hero" id="hero">
+    <div class="hero-copy">
+      <figure class="window hero-logo">
+        <div class="titlebar"><span class="pix t-icon" data-pix="shaker"></span><span class="t-text">logo.jpg</span></div>
+        <div class="win-body"><img src="images/web/sss-logo.jpg" width="480" height="480" alt="Salt Shaker Studio logo: a glass salt shaker pouring microbes into a clay bowl"></div>
+      </figure>
+      <h1>Salt Shaker <em>Studio</em></h1>
+      <p class="tagline" id="rotating-tagline" aria-live="off">Because nobody ever really learns from a PowerPoint</p>
+      <div class="btn-row">
         <a class="btn btn-primary" href="/abg/">▶ Play ABG Now</a>
-        <a class="btn" href="#portfolio">Browse All Games</a>
-        <a class="btn" href="https://discord.gg/b4jsEnW2jZ">Join the Discord</a>
+        <a class="btn btn-ghost" href="#portfolio">Browse All Software</a>
+        <a class="btn btn-ghost" href="https://discord.gg/b4jsEnW2jZ">Join the Discord</a>
       </div>
     </div>
-    <div class="ticker" role="status">
-      <span>★ OUT NOW: ABG is live on Google Play — download it free on Android ★ ABG Expert Mode is live in the browser too ★ SAL prototype deployed — break it from your phone ★ ABX Godot prototype in testing ★ CRM fine-tuned model on HuggingFace ★ Join the Discord to meet fellow nerds ★</span>
+
+    <!-- Playable ABG case. Cases live in the script at the bottom; every one is
+         internally consistent (Henderson-Hasselbalch, Winter's, anion gap). -->
+    <section class="window quiz" aria-labelledby="quizTitle">
+      <div class="titlebar">
+        <img class="t-icon" src="images/web/abg-logo.jpg" alt="">
+        <span class="t-text" id="quizTitle">ABG.exe · Quick case</span>
+        <span class="t-btns" aria-hidden="true"><span class="t-btn t-min"></span><span class="t-btn t-max"></span></span>
+      </div>
+      <div class="win-body">
+        <div class="case-line"><span id="caseLabel">Case 1 of 4 · ED, breathing fast</span><span id="caseLytes">Na 138 · Cl 102</span></div>
+        <div class="labs" id="labs">
+          <div class="lab"><span class="lab-name">pH</span><span class="lab-val">7.29</span></div>
+          <div class="lab"><span class="lab-name">PaCO₂</span><span class="lab-val">26</span> <span class="lab-unit">mmHg</span></div>
+          <div class="lab"><span class="lab-name">HCO₃⁻</span><span class="lab-val">12</span> <span class="lab-unit">mEq/L</span></div>
+        </div>
+        <p class="quiz-q" id="quizQ">What is the primary disorder?</p>
+        <div class="opts" id="opts" role="group" aria-labelledby="quizQ">
+          <button type="button" class="opt" data-a="ma">Metabolic acidosis</button>
+          <button type="button" class="opt" data-a="ra">Respiratory acidosis</button>
+          <button type="button" class="opt" data-a="mk">Metabolic alkalosis</button>
+          <button type="button" class="opt" data-a="rk">Respiratory alkalosis</button>
+        </div>
+        <div class="feedback" id="feedback" aria-live="polite">Pick an answer. You get feedback right away, the same way the app does.</div>
+        <div class="quiz-foot">
+          <a href="/abg/">Full cases in ABG ▶</a>
+          <button type="button" class="btn btn-sm" id="nextCase">Next case ▸</button>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <!-- ============ SOFTWARE ============ -->
+  <section class="block" id="portfolio" aria-labelledby="h-software">
+    <h2 class="sec-h" id="h-software"><span class="pix" data-pix="floppy"></span>Our Software</h2>
+    <div class="tabs" role="tablist" aria-label="Filter software" id="filterTabs">
+      <button type="button" role="tab" aria-selected="true" data-f="all">All<span class="n">7</span></button>
+      <button type="button" role="tab" aria-selected="false" data-f="live">Released<span class="n">3</span></button>
+      <button type="button" role="tab" aria-selected="false" data-f="dev">In development<span class="n">3</span></button>
+      <button type="button" role="tab" aria-selected="false" data-f="idea">Ideas<span class="n">1</span></button>
+    </div>
+    <div class="shelf">
+      <div class="grid" id="softwareGrid">
+
+        <!-- ABG -->
+        <article class="card feature-card" data-status="live">
+          <div class="titlebar"><img class="t-icon" src="images/web/abg-logo.jpg" alt=""><span class="t-text">ABG.exe</span></div>
+          <div class="win-body">
+            <div class="card-head"><a href="abg-detail.html" aria-label="ABG details"><img class="card-logo" src="images/web/abg-logo.jpg" width="256" height="256" alt="ABG logo"></a></div>
+            <div><span class="badge live">Playable now</span><h3>ABG: The Acid-Base Learning App</h3></div>
+            <p>Master blood gas interpretation through interactive cases and instant feedback, from step-by-step tutoring all the way to the no-hints Expert Mode.</p>
+            <div class="meter" style="--c:var(--live)"><span>Released · web + Android</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent, released"><i style="--p:100%"></i></span></div>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="/abg/">▶ Play Free</a>
+              <a class="btn" href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">Get it on Google Play</a>
+              <a class="btn" href="abg-detail.html">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- AUC -->
+        <article class="card" data-status="live">
+          <div class="titlebar"><img class="t-icon" src="images/web/auc-logo.png" alt=""><span class="t-text">AUC.exe</span></div>
+          <div class="win-body">
+            <div class="card-head">
+              <a href="auc-detail.html" aria-label="AUC details"><img class="card-logo" src="images/web/auc-logo.png" width="256" height="256" alt="AUC logo"></a>
+              <div><span class="badge live">Released · PGY-1</span><h3>AUC: Assessments Under Curve</h3></div>
+            </div>
+            <p>A private, locally hosted tool for residency programs: log CCC feedback, import MedHub evaluations, and draft ACGME milestone summaries with an on-device AI whose every quote is checked against your notes.</p>
+            <div class="meter" style="--c:var(--live)"><span>Released · Linux</span><span>v1.0</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent, released"><i style="--p:100%"></i></span></div>
+            <div class="btn-row">
+              <a class="btn btn-sm btn-primary" href="auc-detail.html#download">⬇ Download</a>
+              <a class="btn btn-sm" href="auc-detail.html">Details</a>
+              <a class="btn btn-sm" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CRM -->
+        <article class="card" data-status="live">
+          <div class="titlebar"><img class="t-icon" src="images/web/crm-logo.jpg" alt=""><span class="t-text">CRM.gguf</span></div>
+          <div class="win-body">
+            <div class="card-head">
+              <a href="crm.html" aria-label="CRM details"><img class="card-logo" src="images/web/crm-logo.jpg" width="256" height="256" alt="CRM logo"></a>
+              <div><span class="badge live">Complete</span><h3>CRM: Clinical Reasoning Model</h3></div>
+            </div>
+            <p>A small language model fine-tuned on 511 physician-annotated clinical cases. Walks through a differential step by step, with fewer hallucinations than the base model.</p>
+            <div class="meter" style="--c:var(--live)"><span>Proof of concept</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent"><i style="--p:100%"></i></span></div>
+            <div class="btn-row">
+              <a class="btn btn-sm btn-primary" href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">HuggingFace</a>
+              <a class="btn btn-sm" href="crm.html">Learn More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- SCRUBBOARD -->
+        <article class="card" data-status="dev">
+          <div class="titlebar"><img class="t-icon" src="images/web/scrubboard-logo.png" alt=""><span class="t-text">Scrubboard.exe</span></div>
+          <div class="win-body">
+            <div class="card-head">
+              <a href="scrubboard.html" aria-label="Scrubboard details"><img class="card-logo" src="images/web/scrubboard-logo.png" width="256" height="256" alt="Scrubboard logo"></a>
+              <div><span class="badge dev">In development · v0.1</span><h3>Scrubboard: Copy Without Patient Info</h3></div>
+            </div>
+            <p>Copy part of a note, click once, and paste it without the patient's name, date of birth, record number, phone or address. Diagnoses and meds stay. Runs offline on Windows, Mac and Ubuntu.</p>
+            <div class="meter" style="--c:var(--dev)"><span>Pre-release</span><span>60%</span><span class="meter-track" role="img" aria-label="Development progress: 60 percent"><i style="--p:60%"></i></span></div>
+            <div class="btn-row">
+              <a class="btn btn-sm btn-primary" href="scrubboard.html">Details</a>
+              <span class="btn btn-sm" aria-disabled="true">⬇ Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- SAL -->
+        <article class="card" data-status="dev">
+          <div class="titlebar"><img class="t-icon" src="images/web/sal-logo.jpg" alt=""><span class="t-text">SAL.exe</span></div>
+          <div class="win-body">
+            <div class="card-head">
+              <img class="card-logo" src="images/web/sal-logo.jpg" width="256" height="256" alt="SAL logo">
+              <div><span class="badge proto">Prototype</span><h3>SAL: Hyponatremia Learning App</h3></div>
+            </div>
+            <p>Navigate sodium and fluid management through guided clinical cases and decision trees. Infinite generated questions for medicine's most confusing electrolyte.</p>
+            <div class="meter" style="--c:var(--proto)"><span>Prototype</span><span>50%</span><span class="meter-track" role="img" aria-label="Development progress: 50 percent"><i style="--p:50%"></i></span></div>
+            <div class="btn-row">
+              <a class="btn btn-sm btn-primary" href="/sal/">▶ Try Prototype</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ABX -->
+        <article class="card" data-status="dev">
+          <div class="titlebar"><img class="t-icon" src="images/web/abx-logo.jpg" alt=""><span class="t-text">ABX.exe</span></div>
+          <div class="win-body">
+            <div class="card-head">
+              <img class="card-logo" src="images/web/abx-logo.jpg" width="256" height="256" alt="ABX logo">
+              <div><span class="badge dev">In development</span><h3>ABX: The Antibiotic Teaching Game</h3></div>
+            </div>
+            <p>Learn antibiotic prescribing through gamified clinical scenarios. Match the right drug to the right bug. Built in Godot, with an alpha prototype in internal testing.</p>
+            <div class="meter" style="--c:var(--dev)"><span>Alpha</span><span>30%</span><span class="meter-track" role="img" aria-label="Development progress: 30 percent"><i style="--p:30%"></i></span></div>
+            <div class="btn-row">
+              <a class="btn btn-sm" href="https://discord.gg/b4jsEnW2jZ">Get Notified on Discord</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- GAS -->
+        <article class="card idea" data-status="idea">
+          <div class="win-body">
+            <img src="images/web/gas-logo.jpg" width="256" height="256" alt="GAS logo">
+            <p><b>GAS: Anesthesiology Simulation.</b> Make critical anesthesia decisions in a simulated operating room: inductions, complications and emergencies. Still in the ideation stage.</p>
+            <span class="badge concept">Concept · 15%</span>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
-  <!-- ============ GAMES ============ -->
-  <h2 class="section-h" id="portfolio">💾 Our Software</h2>
-  <div class="games-grid">
-
-    <!-- ABG -->
-    <section class="window game">
-      <div class="titlebar">
-        <span class="t-icon">🩸</span><span class="t-text">ABG.exe</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-<div class="game-top">
-           <a href="abg-detail.html" style="text-decoration:none;color:inherit">
-           <img src="images/abg-logo.png" alt="ABG logo">
-           </a>
-           <div>
-            <span class="badge live">● PLAYABLE NOW</span>
-            <h3>ABG: The Acid-Base Learning App</h3>
-          </div>
-        </div>
-        <p>Master blood gas interpretation through interactive cases and instant feedback — from step-by-step tutoring all the way to the new no-hints Expert Mode.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Released — 100%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 100 percent, released">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
-          </div>
-        </div>
-<div class="btn-row">
-           <a class="btn btn-primary" href="/abg/">▶ Play Free</a>
-           <a class="btn" href="abg-detail.html">Details</a>
-           <a class="btn" href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">📱 Get it on Google Play</a>
-         </div>
-      </div>
-    </section>
-
-    <!-- SAL -->
-    <section class="window game">
-      <div class="titlebar">
-        <span class="t-icon">🧃</span><span class="t-text">SAL.exe</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-        <div class="game-top">
-          <img src="images/sal-logo.png" alt="SAL logo">
-          <div>
-            <span class="badge proto">◐ PROTOTYPE</span>
-            <h3>SAL: Hyponatremia Learning App</h3>
-          </div>
-        </div>
-        <p>Navigate sodium and fluid management through guided clinical cases and decision-tree algorithms. Infinite generated questions for medicine's most confusing electrolyte.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Prototype — 50%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 50 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/sal/">▶ Try Prototype</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABX -->
-    <section class="window game">
-      <div class="titlebar">
-        <span class="t-icon">💊</span><span class="t-text">ABX.exe</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-        <div class="game-top">
-          <img src="images/abx-logo.png" alt="ABX logo">
-          <div>
-            <span class="badge dev">◔ IN DEVELOPMENT</span>
-            <h3>ABX: The Antibiotic Teaching Game</h3>
-          </div>
-        </div>
-        <p>Learn antibiotic prescribing through gamified clinical scenarios. Match the right drug to the right bug. Built in Godot — alpha prototype in internal testing.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Alpha — 30%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 30 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-        </div>
-        <div class="btn-row">
-          <a class="btn" href="https://discord.gg/b4jsEnW2jZ">Get Notified on Discord</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CRM -->
-    <section class="window game">
-      <div class="titlebar">
-        <span class="t-icon">🧠</span><span class="t-text">CRM.gguf</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-        <div class="game-top">
-          <img src="images/crm-logo.png" alt="CRM logo">
-          <div>
-            <span class="badge live">● COMPLETE</span>
-            <h3>CRM: Clinical Reasoning Model</h3>
-          </div>
-        </div>
-        <p>A fine-tuned small language model trained on 511 physician-annotated clinical cases. Walks through differential diagnosis step by step — with fewer hallucinations than the base model.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Complete — 100%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 100 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
-          </div>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">View on HuggingFace</a>
-          <a class="btn" href="crm.html">Learn More</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- AUC -->
-    <section class="window game">
-      <div class="titlebar">
-        <span class="t-icon">📊</span><span class="t-text">AUC.exe</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-        <div class="game-top">
-          <a href="auc-detail.html" style="text-decoration:none;color:inherit">
-          <img src="images/auc-logo.png" alt="AUC logo">
-          </a>
-          <div>
-            <span class="badge live">● RELEASED · PGY-1</span>
-            <h3>AUC: Assessments Under Curve</h3>
-          </div>
-        </div>
-        <p>A private, locally-hosted tool for residency programs: log CCC feedback, import MedHub evaluations from CSV, and draft ACGME milestone summaries with an on-device AI whose every quote is checked against your notes. No cloud, no third-party sharing.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Released — v1.0</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 100 percent, released">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
-          </div>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="auc-detail.html#download">⬇ Download</a>
-          <a class="btn" href="auc-detail.html">Details</a>
-          <a class="btn" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SCRUBBOARD -->
-    <section class="window game">
-      <div class="titlebar">
-        <span class="t-icon">🧼</span><span class="t-text">Scrubboard.exe</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-        <div class="game-top">
-          <a href="scrubboard.html" style="text-decoration:none;color:inherit">
-          <img src="images/scrubboard-logo.png" alt="Scrubboard logo">
-          </a>
-          <div>
-            <span class="badge dev">◔ IN DEVELOPMENT · v0.1</span>
-            <h3>Scrubboard: Copy Without Patient Info</h3>
-          </div>
-        </div>
-        <p>Copy part of a note, click once, and paste it into an AI tool or email without the patient's name, date of birth, record number, phone or address. Diagnoses and meds stay. Runs offline on your own computer, for Windows, Mac and Ubuntu.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Pre-release — 60%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 60 percent">
-            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="scrubboard.html">Details</a>
-          <span class="btn" aria-disabled="true">⬇ Coming Soon</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- GAS -->
-    <section class="window game">
-      <div class="titlebar" style="background:var(--title-inactive)">
-        <span class="t-icon">😮‍💨</span><span class="t-text">GAS.exe</span>
-        <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-      </div>
-      <div class="win-body">
-        <div class="game-top">
-          <img src="images/gas-logo.jpg" alt="GAS logo">
-          <div>
-            <span class="badge concept">○ CONCEPT</span>
-            <h3>GAS: Anesthesiology Simulation</h3>
-          </div>
-        </div>
-        <p>Make critical anesthesia decisions in a simulated operating room. Handle inductions, complications, and emergencies. Currently in the ideation stage.</p>
-        <div class="progress">
-          <div class="p-label"><span>Development</span><span>Ideation — 15%</span></div>
-          <div class="p-track" role="img" aria-label="Development progress: 15 percent">
-            <i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-        </div>
-        <div class="btn-row">
-          <span class="btn" aria-disabled="true">In Ideation</span>
-        </div>
-      </div>
-    </section>
-  </div>
-
   <!-- ============ DEV BLOG ============ -->
-  <h2 class="section-h" id="devblog">📝 Dev Blog</h2>
-  <section class="window notepad" aria-label="Dev blog">
-    <div class="titlebar">
-      <span class="t-icon">📄</span><span class="t-text">devblog.txt - Notepad</span>
-      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-    </div>
-    <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Search</span><span>Help</span></div>
-    <div class="win-body">
+  <section class="block" id="devblog" aria-labelledby="h-blog">
+    <h2 class="sec-h" id="h-blog"><span class="pix" data-pix="notepad"></span>Dev Blog</h2>
+    <div class="window">
+      <div class="titlebar">
+        <span class="pix t-icon" data-pix="notepad"></span><span class="t-text">devblog.txt</span>
+        <span class="t-btns" aria-hidden="true"><span class="t-btn t-min"></span><span class="t-btn t-max"></span></span>
+      </div>
+      <div class="blog-body" id="blogBody">
+        <div class="post-list" id="postList" role="tablist" aria-label="Posts"></div>
+        <div class="reader" id="reader">
 
       <!-- =============================================
-           DEV BLOG: To add a new post, copy a
-           <details class="post"> block below and paste
-           it ABOVE the existing posts. Fill in the date,
-           title, and body paragraphs.
+           DEV BLOG: to add a new post, copy the template
+           below and paste it ABOVE the newest post.
+           The list of posts on the left builds itself
+           from the date and title.
 
            TEMPLATE (copy this block):
-           <details class="post">
-             <summary><span class="post-date">Month DD, YYYY</span><span class="post-title">Your Title Here</span></summary>
-             <div class="post-body">
-               <p>Your content here. Add more &lt;p&gt; tags for more paragraphs.</p>
-             </div>
-           </details>
+           <article class="post" id="post-YYYY-MM-DD">
+             <time datetime="YYYY-MM-DD">Mon DD, YYYY</time>
+             <h3>Your Title Here</h3>
+             <p>Your content here. Add more &lt;p&gt; tags for more paragraphs.</p>
+             <p><strong>1. A Section Label</strong><br>
+             Section text. A bold label at the start of a paragraph becomes a small heading.</p>
+           </article>
            ============================================= -->
 
-      <details class="post" open>
-        <summary><span class="post-date">Sep 23, 2026</span><span class="post-title">Sneak Peek: Scrubboard, a Lint Roller for Patient Info</span></summary>
-        <div class="post-body">
-          <p>New thing in the workshop. It's called Scrubboard, and it's not out yet, but there's a <a href="scrubboard.html">preview page</a> now.</p>
-          <p><strong>1. The Problem</strong><br>
-          AI assistants are free and one click away. Patient notes are also one click away. You can see where this is going. It is very easy to paste "Pt John Smith, DOB 03/14/1950" into a chatbot at 2 a.m. without thinking about it.</p>
-          <p><strong>2. The Fix</strong><br>
-          Copy the text, click the Scrubboard icon, paste. Names, birthdays, record numbers, phones and addresses get swapped for labels like [NAME] and [MRN]. The diabetes and the metformin stay, so the AI still has something to work with. It runs on your own computer, doesn't need the internet, and never sends your text anywhere.</p>
-          <p><strong>3. The Fine Print</strong><br>
-          It's a helper, not a force field. It can miss things, so you still read the text before you send it. The installer makes you tick a box promising exactly that.</p>
-          <p>Windows, Mac and Ubuntu installers are coming. Screenshots and details: <a href="scrubboard.html">Scrubboard preview</a>.</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-09-23">
+            <time datetime="2026-09-23">Sep 23, 2026</time>
+            <h3>Sneak Peek: Scrubboard, a Lint Roller for Patient Info</h3>
+            <p>New thing in the workshop. It's called Scrubboard, and it's not out yet, but there's a <a href="scrubboard.html">preview page</a> now.</p>
+            <p><strong>1. The Problem</strong><br>
+            AI assistants are free and one click away. Patient notes are also one click away. You can see where this is going. It is very easy to paste "Pt John Smith, DOB 03/14/1950" into a chatbot at 2 a.m. without thinking about it.</p>
+            <p><strong>2. The Fix</strong><br>
+            Copy the text, click the Scrubboard icon, paste. Names, birthdays, record numbers, phones and addresses get swapped for labels like [NAME] and [MRN]. The diabetes and the metformin stay, so the AI still has something to work with. It runs on your own computer, doesn't need the internet, and never sends your text anywhere.</p>
+            <p><strong>3. The Fine Print</strong><br>
+            It's a helper, not a force field. It can miss things, so you still read the text before you send it. The installer makes you tick a box promising exactly that.</p>
+            <p>Windows, Mac and Ubuntu installers are coming. Screenshots and details: <a href="scrubboard.html">Scrubboard preview</a>.</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Sep 14, 2026</span><span class="post-title">AUC v1.0 Is Out. Your CCC Notes Can Stop Living in a Word Doc.</span></summary>
-        <div class="post-body">
-          <p>AUC is officially at version 1.0, codename PGY-1 (technically a doctor now, still needs supervision). You can download it right now from the new <a href="auc-detail.html">AUC page</a>.</p>
-          <p><strong>1. What It Is</strong><br>
-          If you've ever sat in a Clinical Competency Committee meeting, you know the drill: a room full of residents, 21 sub-competencies each, a pile of evaluations, and someone asking "wait, what did we say about this person last time?" AUC is where those notes live. Import your MedHub evaluations from a CSV export, jot observations during the meeting, tag them to ACGME domains, and keep a follow-up checklist for every resident.</p>
-          <p><strong>2. The AI Part (And Why It Can't Make Things Up)</strong><br>
-          Press a button and a local model drafts a summary across all 21 ACGME sub-competencies, with a suggested milestone level and supporting quotes. The catch: every quote gets checked word-for-word against your actual notes before you see it. If the model "remembers" something nobody wrote, that section gets withheld. Suggested levels are drafts for the committee to argue about, not final answers.</p>
-          <p><strong>3. Nothing Leaves the Building</strong><br>
-          Everything runs on your own machine. No cloud, no third-party accounts, no resident comments sitting on someone else's server. It runs best on an NVIDIA DGX Spark, but a regular Ubuntu PC works too.</p>
-          <p><strong>4. There's an Installer Now</strong><br>
-          Installing AUC used to mean opening a terminal and typing commands, which is a great way to lose a program coordinator. Now you download one file, double-click it, answer three questions, and you're done. It even brings its own Python. Linux only for now; Mac and Windows are on the list. It's also free and open source (MIT License), so your IT department can read the code before they say no.</p>
-          <p>Grab it here: <a href="auc-detail.html#download">AUC details &amp; download</a>. If you run a program and want to try it, or if it breaks, yell at me — links at the bottom of the page.</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-09-14">
+            <time datetime="2026-09-14">Sep 14, 2026</time>
+            <h3>AUC v1.0 Is Out. Your CCC Notes Can Stop Living in a Word Doc.</h3>
+            <p>AUC is officially at version 1.0, codename PGY-1 (technically a doctor now, still needs supervision). You can download it right now from the new <a href="auc-detail.html">AUC page</a>.</p>
+            <p><strong>1. What It Is</strong><br>
+            If you've ever sat in a Clinical Competency Committee meeting, you know the drill: a room full of residents, 21 sub-competencies each, a pile of evaluations, and someone asking "wait, what did we say about this person last time?" AUC is where those notes live. Import your MedHub evaluations from a CSV export, jot observations during the meeting, tag them to ACGME domains, and keep a follow-up checklist for every resident.</p>
+            <p><strong>2. The AI Part (And Why It Can't Make Things Up)</strong><br>
+            Press a button and a local model drafts a summary across all 21 ACGME sub-competencies, with a suggested milestone level and supporting quotes. The catch: every quote gets checked word-for-word against your actual notes before you see it. If the model "remembers" something nobody wrote, that section gets withheld. Suggested levels are drafts for the committee to argue about, not final answers.</p>
+            <p><strong>3. Nothing Leaves the Building</strong><br>
+            Everything runs on your own machine. No cloud, no third-party accounts, no resident comments sitting on someone else's server. It runs best on an NVIDIA DGX Spark, but a regular Ubuntu PC works too.</p>
+            <p><strong>4. There's an Installer Now</strong><br>
+            Installing AUC used to mean opening a terminal and typing commands, which is a great way to lose a program coordinator. Now you download one file, double-click it, answer three questions, and you're done. It even brings its own Python. Linux only for now; Mac and Windows are on the list. It's also free and open source (MIT License), so your IT department can read the code before they say no.</p>
+            <p>Grab it here: <a href="auc-detail.html#download">AUC details &amp; download</a>. If you run a program and want to try it, or if it breaks, yell at me — links at the bottom of the page.</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Jun 23, 2026</span><span class="post-title">ABG Beta Is Done. App Store Submission Is Next. A Few Things.</span></summary>
-        <div class="post-body">
-          <p>It's been a couple months. Not because nothing happened — but because im lazy with writing posts. Here's the update:</p>
-          <p><strong>1. ABG Beta: Feature Complete</strong><br>
-          All four modes are built: Foundational, Beginner, Stepwise, and Expert. The logic is solid, the cases are solid, and the beta build is done. The frontend UI is totally refreshed and fancy (thanks Fable, RIP). I apparently have to wait for some ID number to submit to the app store (??), so thats what I'm doing. Also waiting for a pulm/crit attending review of the app (looking at you, Harman). C'mon bro.</p>
-          <p><strong>2. About the Version on the Site</strong><br>
-          You're probably thinking: wtf, the ABG app on this site is the exact same.... That is true, the newer shiny app with the glorious and beautiful UI will be available on the app store. Everything functions the same otherwise, so if you don't mind risking some eyeball cancer, give it a shot.</p>
-          <p><strong>3. Also, the Website Looks Different Now</strong><br>
-          If you haven't been here in a while, yes, it's intentional. We went from full Windows 95 (never go full windows) to full Windows 98 update. We all know Linux is better but this is nostalgic. (Protip: try the start menu at the bottom left).</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-06-23">
+            <time datetime="2026-06-23">Jun 23, 2026</time>
+            <h3>ABG Beta Is Done. App Store Submission Is Next. A Few Things.</h3>
+            <p>It's been a couple months. Not because nothing happened — but because im lazy with writing posts. Here's the update:</p>
+            <p><strong>1. ABG Beta: Feature Complete</strong><br>
+            All four modes are built: Foundational, Beginner, Stepwise, and Expert. The logic is solid, the cases are solid, and the beta build is done. The frontend UI is totally refreshed and fancy (thanks Fable, RIP). I apparently have to wait for some ID number to submit to the app store (??), so thats what I'm doing. Also waiting for a pulm/crit attending review of the app (looking at you, Harman). C'mon bro.</p>
+            <p><strong>2. About the Version on the Site</strong><br>
+            You're probably thinking: wtf, the ABG app on this site is the exact same.... That is true, the newer shiny app with the glorious and beautiful UI will be available on the app store. Everything functions the same otherwise, so if you don't mind risking some eyeball cancer, give it a shot.</p>
+            <p><strong>3. Also, the Website Looks Different Now</strong><br>
+            If you haven't been here in a while, yes, it's intentional. We went from full Windows 95 (never go full windows) to full Windows 98 update. We all know Linux is better but this is nostalgic. (Protip: try the start menu at the bottom left).</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Apr 29, 2026</span><span class="post-title">ABG Now Has an Expert Mode</span></summary>
-        <div class="post-body">
-          <p>If you've been using ABG for a while and the step-by-step guidance has started to feel like training wheels, this update is for you.</p>
-          <p><strong>What Expert Mode Is</strong><br>
-          Expert Mode strips everything back. You get a blood gas. No steps. No hints. No hand-holding. Just the numbers and a text field. Interpret it correctly and move on. Get it wrong and you'll find out. It's designed for people who already understand the logic and want to test themselves against real-world-style cases without the scaffolding.</p>
-          <p><strong>Why We Added It</strong><br>
-          The core ABG app was always built around teaching the process — walking you through pH, PaCO2, HCO3, compensation, one step at a time. That's still there and it still works. But we kept hearing from more advanced users that they wanted something closer to what it actually feels like on the wards: ABG in hand, attending waiting, no prompts. Expert Mode is that.</p>
-          <p>Give it a try and let us know how it goes. The bar is high — no pun intended.</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-04-29">
+            <time datetime="2026-04-29">Apr 29, 2026</time>
+            <h3>ABG Now Has an Expert Mode</h3>
+            <p>If you've been using ABG for a while and the step-by-step guidance has started to feel like training wheels, this update is for you.</p>
+            <p><strong>What Expert Mode Is</strong><br>
+            Expert Mode strips everything back. You get a blood gas. No steps. No hints. No hand-holding. Just the numbers and a text field. Interpret it correctly and move on. Get it wrong and you'll find out. It's designed for people who already understand the logic and want to test themselves against real-world-style cases without the scaffolding.</p>
+            <p><strong>Why We Added It</strong><br>
+            The core ABG app was always built around teaching the process — walking you through pH, PaCO2, HCO3, compensation, one step at a time. That's still there and it still works. But we kept hearing from more advanced users that they wanted something closer to what it actually feels like on the wards: ABG in hand, attending waiting, no prompts. Expert Mode is that.</p>
+            <p>Give it a try and let us know how it goes. The bar is high — no pun intended.</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Apr 14, 2026</span><span class="post-title">I Fine-Tuned a Language Model on Medical Cases. Here's What Happened.</span></summary>
-        <div class="post-body">
-          <p>Quick background: I've been building teaching tools for medical trainees for a while. At some point I got curious — what if instead of hard-coding decision trees, I just trained a small language model to reason through clinical cases the way a physician would? Reader, I tried it.</p>
-          <p><strong>1. What I Actually Did</strong><br>
-          Took Llama 3.2 3B Instruct — a small, open-source model — and fine-tuned it on 511 physician-annotated cases from the DiReCT dataset using LoRA. Ran it on a Google Colab T4 GPU for 3 training epochs. The loss dropped from 22 to 3.7, which sounds like a lot because it is. I did not invent any of the underlying technology here. I just pointed existing tools at a medical dataset and let it cook.</p>
-          <p><strong>2. Does It Actually Work?</strong><br>
-          Yes, actually. I gave both the base model and my fine-tuned version the same clinical vignette — a classic hypothyroidism presentation. The base model confidently stated that cold intolerance is caused by <em>too much</em> thyroid hormone. Which is the opposite of true. It also said the patient had weight <em>loss</em>. Hypothyroidism causes weight <em>gain</em>. These are not subtle errors. These are the kind of errors that would make an attending physically wince.<br>
-          The fine-tuned model correctly identified hypothyroidism, flagged Hashimoto's as a likely cause, and walked through a logical flow: symptoms → testing → treatment. Basic? Sure. But correct. That's not nothing.</p>
-          <p><strong>3. This Is a Proof of Concept, Not a Product</strong><br>
-          To be very clear: this is early and experimental. Training data is limited to 511 cases, the base model is 3B parameters, and there's a long road ahead. What I wanted to know was whether this direction was even worth pursuing. The answer seems to be yes. Next steps include expanding the dataset, upgrading the base model, and cleaning up the hedging language the outputs love to pepper in. Nobody needs a model that qualifies every sentence with "however, it is important to note that I am an AI."</p>
-          <p>Model is live on HuggingFace if you want to poke at it: <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1" target="_blank" rel="noopener">huggingface.co/ploppy2/Clinical-Reasoning-Test1</a></p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-04-14">
+            <time datetime="2026-04-14">Apr 14, 2026</time>
+            <h3>I Fine-Tuned a Language Model on Medical Cases. Here's What Happened.</h3>
+            <p>Quick background: I've been building teaching tools for medical trainees for a while. At some point I got curious — what if instead of hard-coding decision trees, I just trained a small language model to reason through clinical cases the way a physician would? Reader, I tried it.</p>
+            <p><strong>1. What I Actually Did</strong><br>
+            Took Llama 3.2 3B Instruct — a small, open-source model — and fine-tuned it on 511 physician-annotated cases from the DiReCT dataset using LoRA. Ran it on a Google Colab T4 GPU for 3 training epochs. The loss dropped from 22 to 3.7, which sounds like a lot because it is. I did not invent any of the underlying technology here. I just pointed existing tools at a medical dataset and let it cook.</p>
+            <p><strong>2. Does It Actually Work?</strong><br>
+            Yes, actually. I gave both the base model and my fine-tuned version the same clinical vignette — a classic hypothyroidism presentation. The base model confidently stated that cold intolerance is caused by <em>too much</em> thyroid hormone. Which is the opposite of true. It also said the patient had weight <em>loss</em>. Hypothyroidism causes weight <em>gain</em>. These are not subtle errors. These are the kind of errors that would make an attending physically wince.<br>
+            The fine-tuned model correctly identified hypothyroidism, flagged Hashimoto's as a likely cause, and walked through a logical flow: symptoms → testing → treatment. Basic? Sure. But correct. That's not nothing.</p>
+            <p><strong>3. This Is a Proof of Concept, Not a Product</strong><br>
+            To be very clear: this is early and experimental. Training data is limited to 511 cases, the base model is 3B parameters, and there's a long road ahead. What I wanted to know was whether this direction was even worth pursuing. The answer seems to be yes. Next steps include expanding the dataset, upgrading the base model, and cleaning up the hedging language the outputs love to pepper in. Nobody needs a model that qualifies every sentence with "however, it is important to note that I am an AI."</p>
+            <p>Model is live on HuggingFace if you want to poke at it: <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1" target="_blank" rel="noopener">huggingface.co/ploppy2/Clinical-Reasoning-Test1</a></p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Mar 31, 2026</span><span class="post-title">SAL Is Here, ABX Has a Prototype, and Yes the Logos Look Different</span></summary>
-        <div class="post-body">
-          <p>Three things happened. Not all of them are huge. All of them are worth knowing about.</p>
-          <p><strong>1. SAL: A New App for Learning About Hyponatremia</strong><br>
-          I decided to create SAL, working title, don't @ me. It's a teaching tool for hyponatremia, one of the most annoying electrolyte disorders in medicine. Study it 100 times and still get confused. Good thing this app generates infinite questions. The app is in early development, but the core concept is the same as ABG: walk you through the logic step by step until it clicks. More updates soon.</p>
-          <p><strong>2. ABX Alpha Prototype Is a Thing That Exists Now</strong><br>
-          We've put together an alpha prototype for ABX — the antibiotic decision-making tool — and this one is built in Godot. It is rough. It is very much a prototype. The entire point right now is to get something in front of people and see if the core concept holds up before we build the real thing around it. </p>
-          <p><strong>3. Logos Got Updated</strong><br>
-          The SSS and ABX logos have been updated. They look better now. I forgot to add "SAL" to the SAL logo... oops.</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-03-31">
+            <time datetime="2026-03-31">Mar 31, 2026</time>
+            <h3>SAL Is Here, ABX Has a Prototype, and Yes the Logos Look Different</h3>
+            <p>Three things happened. Not all of them are huge. All of them are worth knowing about.</p>
+            <p><strong>1. SAL: A New App for Learning About Hyponatremia</strong><br>
+            I decided to create SAL, working title, don't @ me. It's a teaching tool for hyponatremia, one of the most annoying electrolyte disorders in medicine. Study it 100 times and still get confused. Good thing this app generates infinite questions. The app is in early development, but the core concept is the same as ABG: walk you through the logic step by step until it clicks. More updates soon.</p>
+            <p><strong>2. ABX Alpha Prototype Is a Thing That Exists Now</strong><br>
+            We've put together an alpha prototype for ABX — the antibiotic decision-making tool — and this one is built in Godot. It is rough. It is very much a prototype. The entire point right now is to get something in front of people and see if the core concept holds up before we build the real thing around it.</p>
+            <p><strong>3. Logos Got Updated</strong><br>
+            The SSS and ABX logos have been updated. They look better now. I forgot to add "SAL" to the SAL logo... oops.</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Mar 10, 2026</span><span class="post-title">ABG Prototype Is Live: You Can Now Break It From Your Phone</span></summary>
-        <div class="post-body">
-          <p>The ABG prototype is officially deployed to saltshakerstudio.net/abg. No app store. No "enable unknown sources" deep in your Android settings. Just a link. Click it. It works on your phone. We're living in the future, bro.</p>
-          <p><strong>1. What's Actually There Right Now</strong><br>
-          The prototype has the core ABG interpreter engine, the random case generator, and the foundational and beginner teaching modes. It is not finished. It is not polished. There are almost certainly bugs. That is the point. If you wait until something is perfect to share it, you will be sharing it never.</p>
-          <p><strong>2. Why Web Instead of a Native App</strong><br>
-          Short answer: because deploying a Flutter web build to GitHub Pages takes one terminal command and zero App Store review cycles. Long answer: same as the short answer. Native builds are coming, but getting the core learning experience in front of real residents now is more useful than spending two weeks fighting Xcode provisioning profiles.</p>
-          <p><strong>3. What I Actually Want From You</strong><br>
-          Use it. Break it. Tell me what feels wrong. Specifically: does the stepwise logic make sense the way a real attending would walk you through it? Are the cases realistic? Is there a disorder pattern you keep seeing on rounds that the generator never seems to produce? Yell at my on twitter or email - links at the bottom of the page.</p>
-          <p><strong>4. What's Next</strong><br>
-          Planning to add a pro mode for you giga-chads out there that dont need no tutoring so you can practice solving ABGs without any help. At some point will also add a leaderboard so you can be a gunner secretly. Don't pretend you wouldn't want to flex on the OTHER medical school in your area.</p>
-          <p>Go break something: saltshakerstudio.net/abg</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-03-10">
+            <time datetime="2026-03-10">Mar 10, 2026</time>
+            <h3>ABG Prototype Is Live: You Can Now Break It From Your Phone</h3>
+            <p>The ABG prototype is officially deployed to saltshakerstudio.net/abg. No app store. No "enable unknown sources" deep in your Android settings. Just a link. Click it. It works on your phone. We're living in the future, bro.</p>
+            <p><strong>1. What's Actually There Right Now</strong><br>
+            The prototype has the core ABG interpreter engine, the random case generator, and the foundational and beginner teaching modes. It is not finished. It is not polished. There are almost certainly bugs. That is the point. If you wait until something is perfect to share it, you will be sharing it never.</p>
+            <p><strong>2. Why Web Instead of a Native App</strong><br>
+            Short answer: because deploying a Flutter web build to GitHub Pages takes one terminal command and zero App Store review cycles. Long answer: same as the short answer. Native builds are coming, but getting the core learning experience in front of real residents now is more useful than spending two weeks fighting Xcode provisioning profiles.</p>
+            <p><strong>3. What I Actually Want From You</strong><br>
+            Use it. Break it. Tell me what feels wrong. Specifically: does the stepwise logic make sense the way a real attending would walk you through it? Are the cases realistic? Is there a disorder pattern you keep seeing on rounds that the generator never seems to produce? Yell at my on twitter or email - links at the bottom of the page.</p>
+            <p><strong>4. What's Next</strong><br>
+            Planning to add a pro mode for you giga-chads out there that dont need no tutoring so you can practice solving ABGs without any help. At some point will also add a leaderboard so you can be a gunner secretly. Don't pretend you wouldn't want to flex on the OTHER medical school in your area.</p>
+            <p>Go break something: <a href="/abg/">saltshakerstudio.net/abg</a></p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Feb 25, 2026</span><span class="post-title">ABG Tutor Update: Because "Vibes" is Not a Valid Acid-Base Diagnosis</span></summary>
-        <div class="post-body">
-          <p>I've just pushed a massive update to the ABG Tutor. My goal was simple: make every case feel less like a guessing game and more like a clinical reasoning script—basically, a digital version of your attending staring at you until you remember Winter's formula.</p>
-          <p><strong>1. Hand-Holding for Simple Disorders</strong><br>
-          I've built dedicated, stepwise flows for all seven "simple" patterns. Instead of just hitting "reveal" and seeing a diagnosis you don't understand, the Tutor now walks you through a 5-step scaffold. It'll nudge you through pH, primary processes, and the "acute vs. chronic" bicarbonate hint until you reach the right answer. It's like training wheels, but for people who carry pagers.</p>
-          <p><strong>2. Mixed Disorders (The "Where Am I?" Phase)</strong><br>
-          Mixed metabolic and respiratory issues are usually where the panic sets in. I've added structured 6-step paths that force you to actually use the formulas. The Catch: For things like Winter's formula, I'm giving you numeric multiple-choice options without showing the equation. You actually have to know it. (I know, I'm a monster.)</p>
-          <p><strong>3. Triple Disorders: Now With Actual Logic</strong><br>
-          The triple-disorder engine used to be a bit... "random-ish." You might have seen an explanation for HAGMA + Met Alk while the numbers were clearly screaming NAGMA. I've rewritten the logic from the ground up. The generator now picks a logical pattern first, then forces the math to obey the laws of physics. Whether it's Delta-Gaps or expected PCO&#8322;, the numbers will actually make sense now.</p>
-          <p><strong>4. The New 7-Step Triple-Disorder Flow</strong><br>
-          Triple cases are now a full 7-step journey through: anion gap status, the Delta-Gap interpretation (the "hidden" stuff), Winter's formula (the math stuff), and the final, glorious, multi-hyphenated diagnosis. Everything is computed dynamically, so the explanation will finally match the numbers on your screen. No more gaslighting from the software.</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-02-25">
+            <time datetime="2026-02-25">Feb 25, 2026</time>
+            <h3>ABG Tutor Update: Because "Vibes" is Not a Valid Acid-Base Diagnosis</h3>
+            <p>I've just pushed a massive update to the ABG Tutor. My goal was simple: make every case feel less like a guessing game and more like a clinical reasoning script—basically, a digital version of your attending staring at you until you remember Winter's formula.</p>
+            <p><strong>1. Hand-Holding for Simple Disorders</strong><br>
+            I've built dedicated, stepwise flows for all seven "simple" patterns. Instead of just hitting "reveal" and seeing a diagnosis you don't understand, the Tutor now walks you through a 5-step scaffold. It'll nudge you through pH, primary processes, and the "acute vs. chronic" bicarbonate hint until you reach the right answer. It's like training wheels, but for people who carry pagers.</p>
+            <p><strong>2. Mixed Disorders (The "Where Am I?" Phase)</strong><br>
+            Mixed metabolic and respiratory issues are usually where the panic sets in. I've added structured 6-step paths that force you to actually use the formulas. The Catch: For things like Winter's formula, I'm giving you numeric multiple-choice options without showing the equation. You actually have to know it. (I know, I'm a monster.)</p>
+            <p><strong>3. Triple Disorders: Now With Actual Logic</strong><br>
+            The triple-disorder engine used to be a bit... "random-ish." You might have seen an explanation for HAGMA + Met Alk while the numbers were clearly screaming NAGMA. I've rewritten the logic from the ground up. The generator now picks a logical pattern first, then forces the math to obey the laws of physics. Whether it's Delta-Gaps or expected PCO&#8322;, the numbers will actually make sense now.</p>
+            <p><strong>4. The New 7-Step Triple-Disorder Flow</strong><br>
+            Triple cases are now a full 7-step journey through: anion gap status, the Delta-Gap interpretation (the "hidden" stuff), Winter's formula (the math stuff), and the final, glorious, multi-hyphenated diagnosis. Everything is computed dynamically, so the explanation will finally match the numbers on your screen. No more gaslighting from the software.</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Feb 13, 2026</span><span class="post-title">New Website Launch!</span></summary>
-        <div class="post-body">
-          <p>Welcome to the new Salt Shaker Studio website! We've gone full retro with a modern functional design. This site will be our home for development updates, game announcements, and behind-the-scenes looks at how we build medical education games.</p>
-          <p>Stay tuned for regular dev updates as we continue building ABG, ABX, and GAS.</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-02-13">
+            <time datetime="2026-02-13">Feb 13, 2026</time>
+            <h3>New Website Launch!</h3>
+            <p>Welcome to the new Salt Shaker Studio website! We've gone full retro with a modern functional design. This site will be our home for development updates, game announcements, and behind-the-scenes looks at how we build medical education games.</p>
+            <p>Stay tuned for regular dev updates as we continue building ABG, ABX, and GAS.</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Jan 28, 2026</span><span class="post-title">ABG Alpha Build Progress</span></summary>
-        <div class="post-body">
-          <p>We've completed the core blood gas parser engine and the random ABG generator engine; as well as foundational and beginner modes. We are now building out the stepwise teaching mode. After that the plan is to move forward with either a more advanced teaching mode and then expert mode.</p>
-          <p>Should I add a leaderboard so you can mog your classmates? Let me know!</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-01-28">
+            <time datetime="2026-01-28">Jan 28, 2026</time>
+            <h3>ABG Alpha Build Progress</h3>
+            <p>We've completed the core blood gas parser engine and the random ABG generator engine; as well as foundational and beginner modes. We are now building out the stepwise teaching mode. After that the plan is to move forward with either a more advanced teaching mode and then expert mode.</p>
+            <p>Should I add a leaderboard so you can mog your classmates? Let me know!</p>
+          </article>
 
-      <details class="post">
-        <summary><span class="post-date">Jan 10, 2026</span><span class="post-title">Welcome to Salt Shaker Studio!</span></summary>
-        <div class="post-body">
-          <p>Arman here. I'm thrilled to officially launch Salt Shaker Studio. As a medical educator, I've seen firsthand how traditional medical education can fall short. Lets be real, nobody likes to learn by being read a PowerPoint presentation by someone who didn't even make it! My mission is to create engaging, interactive games and apps that make learning medicine genuinely fun and actually effective so you don't waste your precious time. Theres a reason it's easy to remember the names of 151 Pokemon but hard to remember the functions of 151 antibiotics!!</p>
-        </div>
-      </details>
+          <article class="post" id="post-2026-01-10">
+            <time datetime="2026-01-10">Jan 10, 2026</time>
+            <h3>Welcome to Salt Shaker Studio!</h3>
+            <p>Arman here. I'm thrilled to officially launch Salt Shaker Studio. As a medical educator, I've seen firsthand how traditional medical education can fall short. Lets be real, nobody likes to learn by being read a PowerPoint presentation by someone who didn't even make it! My mission is to create engaging, interactive games and apps that make learning medicine genuinely fun and actually effective so you don't waste your precious time. Theres a reason it's easy to remember the names of 151 Pokemon but hard to remember the functions of 151 antibiotics!!</p>
+          </article>
 
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============ ROADMAP ============ -->
-  <h2 class="section-h" id="roadmap">📅 Roadmap</h2>
-  <section class="window roadmap" aria-label="Roadmap">
-    <div class="titlebar">
-      <span class="t-icon">🗂️</span><span class="t-text">Roadmap - Explorer</span>
-      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-    </div>
-    <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
-    <div class="win-body">
-      <div class="quarter">
-        <h3>📁 Q1 2026</h3>
-        <div class="task"><span class="chk done">✓</span> Website Launch <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk done">✓</span> Discord Community Setup <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk done">✓</span> ABG Alpha Release <span class="tag t-done">DONE</span></div>
+  <section class="block" id="roadmap" aria-labelledby="h-roadmap">
+    <h2 class="sec-h" id="h-roadmap"><span class="pix" data-pix="calendar"></span>Roadmap</h2>
+    <div class="road">
+      <div class="window quarter">
+        <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">Q1 2026</span></div>
+        <div class="win-body">
+          <div class="task done"><span class="box"></span><span class="t">Website Launch</span></div>
+          <div class="task done"><span class="box"></span><span class="t">Discord Community Setup</span></div>
+          <div class="task done"><span class="box"></span><span class="t">ABG Alpha Release</span></div>
+        </div>
       </div>
-      <div class="quarter">
-        <h3>📁 Q2 2026</h3>
-        <div class="task"><span class="chk done">✓</span> ABX Prototype <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk done">✓</span> CRM Proof of Concept <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk done">✓</span> AUC App Beta <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk wip">▸</span> ABG Beta Testing <span class="tag t-wip">IN PROGRESS</span></div>
+      <div class="window quarter">
+        <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">Q2 2026</span></div>
+        <div class="win-body">
+          <div class="task done"><span class="box"></span><span class="t">ABX Prototype</span></div>
+          <div class="task done"><span class="box"></span><span class="t">CRM Proof of Concept</span></div>
+          <div class="task done"><span class="box"></span><span class="t">AUC App Beta</span></div>
+          <div class="task wip"><span class="box"></span><span class="t">ABG Beta Testing</span><span class="state">in progress</span></div>
+        </div>
       </div>
-      <div class="quarter">
-        <h3>📁 Q3–Q4 2026</h3>
-        <div class="task"><span class="chk done">✓</span> AUC v1.0 Release <span class="tag t-done">DONE</span></div>
-        <div class="task"><span class="chk wip">▸</span> AUC QI Study Data Collection <span class="tag t-wip">IN PROGRESS</span></div>
-        <div class="task"><span class="chk wip">▸</span> Scrubboard v0.1 Pre-release <span class="tag t-wip">IN PROGRESS</span></div>
-        <div class="task"><span class="chk"></span> Scrubboard Public Release <span class="tag t-plan">PLANNED</span></div>
-        <div class="task"><span class="chk"></span> ABG Full Release <span class="tag t-plan">PLANNED</span></div>
-        <div class="task"><span class="chk"></span> ABX Alpha Release <span class="tag t-plan">PLANNED</span></div>
-        <div class="task"><span class="chk"></span> ABX Steam Page Launch <span class="tag t-plan">PLANNED</span></div>
+      <div class="window quarter is-now">
+        <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">Q3–Q4 2026</span><span class="now-tag">now</span></div>
+        <div class="win-body">
+          <div class="task done"><span class="box"></span><span class="t">AUC v1.0 Release</span></div>
+          <div class="task wip"><span class="box"></span><span class="t">AUC QI Study Data Collection</span><span class="state">in progress</span></div>
+          <div class="task wip"><span class="box"></span><span class="t">Scrubboard v0.1 Pre-release</span><span class="state">in progress</span></div>
+          <div class="task"><span class="box"></span><span class="t">Scrubboard Public Release</span><span class="state">planned</span></div>
+          <div class="task"><span class="box"></span><span class="t">ABG Full Release</span><span class="state">planned</span></div>
+          <div class="task"><span class="box"></span><span class="t">ABX Alpha Release</span><span class="state">planned</span></div>
+          <div class="task"><span class="box"></span><span class="t">ABX Steam Page Launch</span><span class="state">planned</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============ TESTIMONIALS ============ -->
-  <h2 class="section-h" id="testimonials">💬 Testimonials</h2>
-  <section class="window" aria-label="Testimonials">
-    <div class="titlebar">
-      <span class="t-icon">💬</span><span class="t-text">Testimonials - Guestbook</span>
-      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-    </div>
-    <div class="win-body">
-      <div class="reviews-grid">
-
-        <figure class="review">
-          <div class="review-head">
-            <span class="avatar" style="--a:#1084d0;--b:#000080">👨‍⚕️</span>
-            <div>
-              <figcaption class="rv-name">Dr. Miguel “Pip-Tazo” Reyes <span class="verified">✔ Verified</span></figcaption>
-              <span class="rv-role">PGY-3 Internal Medicine</span>
-            </div>
-          </div>
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+  <section class="block" id="testimonials" aria-labelledby="h-guestbook">
+    <h2 class="sec-h" id="h-guestbook"><span class="pix" data-pix="chat"></span>Guestbook</h2>
+    <div class="quotes">
+      <div class="window entry">
+        <div class="titlebar"><span class="pix t-icon" data-pix="mail"></span><span class="t-text">entry_001.txt</span></div>
+        <figure class="win-body">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote>“I used to interpret ABGs purely on vibes. After a week with ABG I now interpret them on vibes <em>and</em> a fully compensated respiratory alkalosis. My attending hasn't noticed, but my pH has never been happier.”</blockquote>
+          <figcaption class="who"><span class="av" style="--c:#1f5fd0" aria-hidden="true">MR</span><div><span class="who-name">Dr. Miguel “Pip-Tazo” Reyes <span class="verified">✔ Verified</span></span><span class="who-role">PGY-3 Internal Medicine</span></div></figcaption>
         </figure>
-
-        <figure class="review">
-          <div class="review-head">
-            <span class="avatar" style="--a:#d97b00;--b:#a33">👩‍⚕️</span>
-            <div>
-              <figcaption class="rv-name">Dr. Priya Anand <span class="verified">✔ Verified</span></figcaption>
-              <span class="rv-role">Infectious Disease Fellow</span>
-            </div>
-          </div>
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+      </div>
+      <div class="window entry">
+        <div class="titlebar"><span class="pix t-icon" data-pix="mail"></span><span class="t-text">entry_002.txt</span></div>
+        <figure class="win-body">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote>“ABX finally taught me the full spectrum of piperacillin-tazobactam. The pharmacist cried. With joy. Probably. Or maybe because I asked how much dalbavancin costs? TBD.”</blockquote>
+          <figcaption class="who"><span class="av" style="--c:#c2410c" aria-hidden="true">PA</span><div><span class="who-name">Dr. Priya Anand <span class="verified">✔ Verified</span></span><span class="who-role">Infectious Disease Fellow</span></div></figcaption>
         </figure>
-
-        <figure class="review">
-          <div class="review-head">
-            <span class="avatar" style="--a:#1ca31c;--b:#0d7c7c">🧪</span>
-            <div>
-              <figcaption class="rv-name">Henderson Hasselbalch <span class="verified">✔ Verified</span></figcaption>
-              <span class="rv-role">Independent Buffer Enthusiast</span>
-            </div>
-          </div>
-          <div class="stars" aria-label="4 and a half out of 5 stars">★★★★½</div>
+      </div>
+      <div class="window entry">
+        <div class="titlebar"><span class="pix t-icon" data-pix="mail"></span><span class="t-text">entry_003.txt</span></div>
+        <figure class="win-body">
+          <div class="stars" role="img" aria-label="4 and a half out of 5 stars">★★★★½</div>
           <blockquote>“The pH of this website is perfectly compensated: 7.40 / 7.40, no anion gap. I would acquire a metabolic alkalosis here again. 11 mEq/L out of 10.”</blockquote>
+          <figcaption class="who"><span class="av" style="--c:#15803d" aria-hidden="true">HH</span><div><span class="who-name">Henderson Hasselbalch <span class="verified">✔ Verified</span></span><span class="who-role">Independent Buffer Enthusiast</span></div></figcaption>
         </figure>
-
-        <figure class="review">
-          <div class="review-head">
-            <span class="avatar" style="--a:#7b7b7b;--b:#0a0a0a">👴</span>
-            <div>
-              <figcaption class="rv-name">Gerald Pebkac, Age 71 <span class="verified">✔ Verified</span></figcaption>
-              <span class="rv-role">Survivor of 3 Windows Reinstalls</span>
-            </div>
-          </div>
-          <div class="stars" aria-label="5 out of 5 stars">★oooo</div>
+      </div>
+      <div class="window entry">
+        <div class="titlebar"><span class="pix t-icon" data-pix="mail"></span><span class="t-text">entry_004.txt</span></div>
+        <figure class="win-body">
+          <div class="stars" role="img" aria-label="1 out of 5 stars">★☆☆☆☆</div>
           <blockquote>“I keep double-clicking the start menu and it does nothing! I've been using computers for decades and I still don't understand why these never work. There is no way this can be my fault.”</blockquote>
+          <figcaption class="who"><span class="av" style="--c:#4b5563" aria-hidden="true">GP</span><div><span class="who-name">Gerald Pebkac, Age 71 <span class="verified">✔ Verified</span></span><span class="who-role">Survivor of 3 Windows Reinstalls</span></div></figcaption>
         </figure>
-
-        <figure class="review">
-          <div class="review-head">
-            <span class="avatar" style="--a:#1062c4;--b:#7b2fb5">👩‍💻</span>
-            <div>
-              <figcaption class="rv-name">Dr. Sam Okafor <span class="verified">✔ Verified</span></figcaption>
-              <span class="rv-role">Night-Float Survivor</span>
-            </div>
-          </div>
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+      </div>
+      <div class="window entry">
+        <div class="titlebar"><span class="pix t-icon" data-pix="mail"></span><span class="t-text">entry_005.txt</span></div>
+        <figure class="win-body">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote>“Sensitivity 100%, specificity 100% — this site rules in fun and rules out boredom. The little salt-shaker mascot is now my emergency contact.”</blockquote>
+          <figcaption class="who"><span class="av" style="--c:#7b3fb5" aria-hidden="true">SO</span><div><span class="who-name">Dr. Sam Okafor <span class="verified">✔ Verified</span></span><span class="who-role">Night-Float Survivor</span></div></figcaption>
         </figure>
-
+      </div>
+      <div class="window entry sign">
+        <div class="titlebar"><span class="pix t-icon" data-pix="notepad"></span><span class="t-text">new_entry.txt</span></div>
+        <div class="win-body">
+          <p><b>Sign the guestbook.</b> Tried ABG on rounds? Broke SAL? Tell us on Discord.</p>
+          <a class="btn btn-primary" href="https://discord.gg/b4jsEnW2jZ">Join the Discord</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <h2 class="section-h" id="about">👤 About</h2>
-  <section class="window" aria-label="About">
-    <div class="titlebar">
-      <span class="t-icon">🧑‍⚕️</span><span class="t-text">About Salt Shaker Studio - Properties</span>
-      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
-    </div>
-    <div class="win-body">
-      <div class="about-flex">
-        <img src="images/arman-photo.png" alt="Dr. Arman Yalcin, founder of Salt Shaker Studio">
-        <div class="about-text">
+  <section class="block" id="about" aria-labelledby="h-about">
+    <h2 class="sec-h" id="h-about"><span class="pix" data-pix="person"></span>About</h2>
+    <div class="window about">
+      <div class="titlebar">
+        <span class="pix t-icon" data-pix="person"></span><span class="t-text">About Salt Shaker Studio · Properties</span>
+        <span class="t-btns"><button type="button" class="t-btn t-close" aria-label="Close"></button></span>
+      </div>
+      <div class="win-body">
+        <img class="about-photo" src="images/web/arman-photo.jpg" width="400" height="400" alt="Dr. Arman Yalcin, founder of Salt Shaker Studio">
+        <div>
           <h3>Dr. Arman Yalcin, MD</h3>
-          <p class="role">Infectious Disease Physician • Founder, Game Designer, and Fellow Nerd</p>
+          <p class="role">Infectious Disease Physician · Founder, Game Designer, and Fellow Nerd</p>
           <p>Dr. Yalcin is an infectious disease physician based in Boston who founded Salt Shaker Studio to bridge the gap between traditional medical education and modern interactive learning.</p>
           <p>With firsthand experience teaching medical trainees, he recognized that engaging, game-based approaches could transform how physicians learn complex clinical concepts like blood gas interpretation and antibiotic prescribing.</p>
-          <table class="props">
-            <tr><td>Title:</td><td>Founder &amp; Game Designer</td></tr>
-            <tr><td>Specialty:</td><td>Infectious Disease</td></tr>
-            <tr><td>Location:</td><td>Boston, MA</td></tr>
-            <tr><td>Mission:</td><td>Making medical education not suck</td></tr>
-          </table>
+          <div class="chips">
+            <span><b>Title</b>Founder &amp; Game Designer</span>
+            <span><b>Specialty</b>Infectious Disease</span>
+            <span><b>Location</b>Boston, MA</span>
+            <span><b>Mission</b>Making medical education not suck</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="connect" id="connect">
-      <a class="sbtn sbtn-x" href="https://x.com/SalShakerStudio">
-        <span class="sbtn-i"><img src="images/social/x.svg" alt=""></span><span class="sbtn-t">X</span>
-      </a>
-      <a class="sbtn sbtn-discord" href="https://discord.gg/b4jsEnW2jZ">
-        <span class="sbtn-i"><img src="images/social/discord.svg" alt=""></span><span class="sbtn-t">Discord</span>
-      </a>
-      <a class="sbtn sbtn-linkedin" href="https://www.linkedin.com/in/arman8514581">
-        <span class="sbtn-i"><img src="images/social/linkedin.png" alt=""></span><span class="sbtn-t">LinkedIn</span>
-      </a>
+  <footer class="site-footer" id="connect">
+    <div class="connect">
+      <a class="btn btn-sm" href="https://x.com/SalShakerStudio"><span class="brand-ico" style="--bg:#000"><img src="images/social/x.svg" alt=""></span>X</a>
+      <a class="btn btn-sm" href="https://discord.gg/b4jsEnW2jZ"><span class="brand-ico" style="--bg:#5865F2"><img src="images/social/discord.svg" alt=""></span>Discord</a>
+      <a class="btn btn-sm" href="https://www.linkedin.com/in/arman8514581"><span class="brand-ico" style="--bg:#0A66C2"><img src="images/social/linkedin.png" alt=""></span>LinkedIn</a>
       <!-- TODO: placeholder — swap in the real Steam store page URL -->
-      <a class="sbtn sbtn-steam" href="https://store.steampowered.com/">
-        <span class="sbtn-i"><img src="images/social/steam.svg" alt=""></span><span class="sbtn-t">Steam<sup>®</sup></span>
-      </a>
-      <!-- Email is assembled in JS (no @ in the HTML) so Cloudflare cannot
+      <a class="btn btn-sm" href="https://store.steampowered.com/"><span class="brand-ico" style="--bg:#1b2838"><img src="images/social/steam.svg" alt=""></span>Steam<sup>®</sup></a>
+      <!-- Email is assembled in js/site.js (no @ in the HTML) so Cloudflare cannot
            rewrite this into /cdn-cgi/l/email-protection, a 404 Google was crawling. -->
-      <a class="sbtn sbtn-email" id="sss-email" href="#connect" data-email-user="saltshakerstudio" data-email-domain="protonmail.com">
-        <span class="sbtn-i">✉</span><span class="sbtn-t">Email</span>
-      </a>
+      <a class="btn btn-sm" id="sss-email" href="#connect" data-email-user="saltshakerstudio" data-email-domain="protonmail.com"><span class="brand-ico" style="--bg:var(--salt)"><span class="pix" data-pix="mail"></span></span>Email</a>
     </div>
-    <div class="badges">
-      <span class="b88 b88-net" title="Best viewed with Netscape Navigator 4.0">
-        <span class="b88-l">🌐</span><span class="b88-r"><b>Netscape</b><i>Now!</i></span>
-      </span>
-      <span class="b88 b88-res" title="Optimized for 800×600">
-        <span class="b88-l">🖥</span><span class="b88-r"><b>800×600</b><i>optimized</i></span>
-      </span>
-      <span class="b88 b88-html" title="Valid HTML 4.01">
-        <span class="b88-l">✅</span><span class="b88-r"><b>Valid</b><i>HTML 4.01</i></span>
-      </span>
-      <span class="b88 b88-note" title="Made with Notepad">
-        <span class="b88-l">✍</span><span class="b88-r"><b>Made with</b><i>Notepad</i></span>
-      </span>
-      <span class="b88 b88-y2k" title="Y2K compliant">
-        <span class="b88-l">🕛</span><span class="b88-r"><b>Y2K</b><i>compliant</i></span>
-      </span>
-      <span class="b88 b88-caf" title="Powered by caffeine">
-        <span class="b88-l">☕</span><span class="b88-r"><b>Powered by</b><i>caffeine</i></span>
-      </span>
+    <div class="badges88" aria-hidden="true">
+      <span class="b88 b88-net" title="Best viewed with Netscape Navigator 4.0"><span class="b88-l"><span class="pix" data-pix="globe"></span></span><span class="b88-r"><b>Netscape</b><i>Now!</i></span></span>
+      <span class="b88 b88-res" title="Optimized for 800×600"><span class="b88-l"><span class="pix" data-pix="computer"></span></span><span class="b88-r"><b>800×600</b><i>optimized</i></span></span>
+      <span class="b88 b88-html" title="Valid HTML 4.01"><span class="b88-l"><span class="pix" data-pix="folder"></span></span><span class="b88-r"><b>Valid</b><i>HTML 4.01</i></span></span>
+      <span class="b88 b88-note" title="Made with Notepad"><span class="b88-l"><span class="pix" data-pix="notepad"></span></span><span class="b88-r"><b>Made with</b><i>Notepad</i></span></span>
+      <span class="b88 b88-y2k" title="Y2K compliant"><span class="b88-l"><span class="pix" data-pix="calendar"></span></span><span class="b88-r"><b>Y2K</b><i>compliant</i></span></span>
+      <span class="b88 b88-caf" title="Powered by caffeine"><span class="b88-l"><span class="pix" data-pix="cup"></span></span><span class="b88-r"><b>Powered by</b><i>caffeine</i></span></span>
     </div>
-    <div>You are visitor <span class="counter" id="hit-counter">00000001</span></div>
-    <p style="margin-top:12px">© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
-    Educational content for medical professionals. Not for medical advice.<br>
-    <span style="font-size:11px;opacity:.75">Steam and the Steam logo are trademarks of Valve Corporation. All other marks are property of their respective owners.</span></p>
+    <div>You are visitor <span class="counter" id="hit-counter" data-increment>00000001</span></div>
+    <p>© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
+    Educational content for medical professionals. Not for medical advice.</p>
+    <p class="fine">Steam and the Steam logo are trademarks of Valve Corporation. All other marks are property of their respective owners.</p>
   </footer>
 </div>
 
 <!-- ============ START MENU ============ -->
-<nav class="start-menu" id="startMenu" aria-label="Start menu">
-  <div class="sm-stripe">SaltShakerOS</div>
+<nav class="start-menu" id="startMenu" aria-label="Start menu" hidden>
+  <div class="sm-stripe">SaltShaker<b>OS</b></div>
   <div class="sm-items">
-    <a href="#hero">🏠 Home</a>
-    <a href="#portfolio">💾 Games</a>
-    <a href="#devblog">📝 Dev Blog</a>
-    <a href="#roadmap">📅 Roadmap</a>
-    <a href="#testimonials">💬 Testimonials</a>
-    <a href="#about">👤 About</a>
-    <a href="https://discord.gg/b4jsEnW2jZ">💬 Discord</a>
-    <a href="/abg/">▶ Play ABG</a>
+    <a href="#hero"><span class="pix" data-pix="computer"></span>Home</a>
+    <a href="#portfolio"><span class="pix" data-pix="floppy"></span>Software</a>
+    <a href="#devblog"><span class="pix" data-pix="notepad"></span>Dev Blog</a>
+    <a href="#roadmap"><span class="pix" data-pix="calendar"></span>Roadmap</a>
+    <a href="#testimonials"><span class="pix" data-pix="chat"></span>Guestbook</a>
+    <a href="#about"><span class="pix" data-pix="person"></span>About</a>
+    <hr>
+    <a href="https://discord.gg/b4jsEnW2jZ"><span class="pix" data-pix="mail"></span>Discord</a>
+    <a href="/abg/"><span class="pix" data-pix="play"></span>Play ABG</a>
   </div>
 </nav>
 
 <!-- ============ TASKBAR ============ -->
 <div class="taskbar" role="navigation" aria-label="Site navigation taskbar">
-  <button class="btn start-btn" id="startBtn" aria-expanded="false" aria-controls="startMenu">
-    <span class="s-ico">🧂</span> Start
-  </button>
+  <button type="button" class="btn start-btn" id="startBtn" aria-expanded="false" aria-controls="startMenu"><span class="pix" data-pix="shaker"></span>Start</button>
   <div class="task-links">
-    <a class="raised" href="#portfolio">💾 Games</a>
-    <a class="raised" href="#devblog">📝 Dev Blog</a>
-    <a class="raised optional" href="#roadmap">📅 Roadmap</a>
-    <a class="raised optional" href="#testimonials">💬 Testimonials</a>
-    <a class="raised optional" href="#about">👤 About</a>
+    <a href="#portfolio" data-for="portfolio"><span class="pix" data-pix="floppy"></span><span class="label">Software</span></a>
+    <a href="#devblog" data-for="devblog"><span class="pix" data-pix="notepad"></span><span class="label">Dev Blog</span></a>
+    <a class="optional" href="#roadmap" data-for="roadmap"><span class="pix" data-pix="calendar"></span><span class="label">Roadmap</span></a>
+    <a class="optional" href="#testimonials" data-for="testimonials"><span class="pix" data-pix="chat"></span><span class="label">Guestbook</span></a>
+    <a class="optional" href="#about" data-for="about"><span class="pix" data-pix="person"></span><span class="label">About</span></a>
   </div>
-  <div class="clock" id="clock" aria-label="Current time">--:--</div>
+  <div class="tray">
+    <button type="button" class="tray-btn" id="newsBtn" aria-label="Show news" aria-controls="balloon"><span class="pix" data-pix="chat"></span></button>
+    <span class="clock" id="clock">--:--</span>
+    <div class="balloon is-hidden" id="balloon" role="status">
+      <button type="button" class="balloon-x" id="balloonClose" aria-label="Dismiss news">×</button>
+      <span class="balloon-title" id="balloonTitle"></span>
+      <span id="balloonText"></span>
+    </div>
+  </div>
 </div>
 
+<script src="js/site.js"></script>
 <script>
-  /* === Email link (assembled here so Cloudflare email obfuscation never
-         injects a crawlable /cdn-cgi/l/email-protection URL) === */
-  (function () {
-    var links = document.querySelectorAll('a[data-email-user][data-email-domain]');
-    for (var i = 0; i < links.length; i++) {
-      var a = links[i];
-      a.setAttribute(
-        'href',
-        'mailto:' + a.getAttribute('data-email-user') + '@' + a.getAttribute('data-email-domain')
-      );
-    }
-  })();
+(function () {
+  'use strict';
+  var reduced = window.SSS && window.SSS.reducedMotion;
 
-  /* === Start menu open/close === */
-  const startBtn = document.getElementById('startBtn');
-  const startMenu = document.getElementById('startMenu');
-  startBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = startMenu.classList.toggle('open');
-    startBtn.setAttribute('aria-expanded', open);
-  });
-  document.addEventListener('click', (e) => {
-    if (!startMenu.contains(e.target)) {
-      startMenu.classList.remove('open');
-      startBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      startMenu.classList.remove('open');
-      startBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
+  /* === Playable ABG case ===
+     Each case checks out: pH = 6.1 + log10(HCO3 / (0.03 × PaCO2)). */
+  var CASES = [
+    { ctx: 'ED, breathing fast', na: 138, cl: 102, ph: '7.29', pco2: 26, hco3: 12, answer: 'ma',
+      right: '<b>Right: high anion gap metabolic acidosis.</b> pH is low and HCO₃⁻ is low. Winter\'s formula: <code>1.5 × 12 + 8 = 26 ± 2</code>, so a PaCO₂ of 26 is appropriate compensation. Anion gap: <code>138 − 102 − 12 = 24</code>.',
+      hint: 'Not quite. pH 7.29 is acidemic and the HCO₃⁻ is low, so the primary process is metabolic. Try again.' },
+    { ctx: 'post-op day 1, on a PCA pump', na: 140, cl: 104, ph: '7.26', pco2: 60, hco3: 26, answer: 'ra',
+      right: '<b>Right: acute respiratory acidosis.</b> pH is low and PaCO₂ is high. In an acute change HCO₃⁻ rises about 1 per 10 mmHg of PaCO₂: <code>24 + 2 = 26</code>. That matches, so the kidneys haven\'t caught up yet.',
+      hint: 'Not quite. pH 7.26 is acidemic and the PaCO₂ is high, so the lungs are the primary problem. Try again.' },
+    { ctx: 'vomiting for 3 days', na: 138, cl: 92, ph: '7.50', pco2: 45, hco3: 34, answer: 'mk',
+      right: '<b>Right: metabolic alkalosis.</b> pH is high and HCO₃⁻ is high. Expected PaCO₂: <code>0.7 × 34 + 20 ≈ 44 ± 2</code>, so 45 is appropriate compensation. Low chloride fits the vomiting.',
+      hint: 'Not quite. pH 7.50 is alkalemic and the HCO₃⁻ is high, so the primary process is metabolic. Try again.' },
+    { ctx: 'panic attack, tingling fingers', na: 140, cl: 106, ph: '7.52', pco2: 28, hco3: 22, answer: 'rk',
+      right: '<b>Right: acute respiratory alkalosis.</b> pH is high and PaCO₂ is low. In an acute change HCO₃⁻ falls about 2 per 10 mmHg: <code>24 − 2.4 ≈ 22</code>, which matches.',
+      hint: 'Not quite. pH 7.52 is alkalemic and the PaCO₂ is low, so the lungs are driving it. Try again.' }
+  ];
+  var caseIdx = 0;
+  var opts = document.getElementById('opts');
+  var feedback = document.getElementById('feedback');
+  var labs = document.getElementById('labs');
 
-  /* === Live taskbar clock === */
-  function tickClock(){
-    const now = new Date();
-    let h = now.getHours(), m = now.getMinutes();
-    const ap = h >= 12 ? 'PM' : 'AM';
-    h = h % 12 || 12;
-    document.getElementById('clock').textContent =
-      h + ':' + String(m).padStart(2,'0') + ' ' + ap;
+  function lab(name, val, unit, abnormal) {
+    return '<div class="lab' + (abnormal ? ' is-abnormal' : '') + '"><span class="lab-name">' + name + '</span><span class="lab-val">' + val + '</span>' +
+      (unit ? ' <span class="lab-unit">' + unit + '</span>' : '') + '</div>';
   }
-  tickClock();
-  setInterval(tickClock, 30000);
-
-  /* === Faux Hit Counter (localStorage) === */
-  (function () {
-    var hitCounter = document.getElementById('hit-counter');
-    if (hitCounter) {
-      try {
-        var visits = parseInt(localStorage.getItem('sss-visits') || '0', 10);
-        visits++;
-        localStorage.setItem('sss-visits', visits.toString());
-        hitCounter.textContent = visits.toString().padStart(8, '0');
-      } catch (e) {
-        /* private browsing / storage blocked — fail gracefully */
-        hitCounter.textContent = '00000001';
-      }
+  function showCase(i) {
+    var c = CASES[i], ph = parseFloat(c.ph);
+    document.getElementById('caseLabel').textContent = 'Case ' + (i + 1) + ' of ' + CASES.length + ' · ' + c.ctx;
+    document.getElementById('caseLytes').textContent = 'Na ' + c.na + ' · Cl ' + c.cl;
+    labs.innerHTML =
+      lab('pH', c.ph, '', ph < 7.35 || ph > 7.45) +
+      lab('PaCO₂', c.pco2, 'mmHg', c.pco2 < 35 || c.pco2 > 45) +
+      lab('HCO₃⁻', c.hco3, 'mEq/L', c.hco3 < 22 || c.hco3 > 26);
+    [].forEach.call(opts.children, function (b) { b.disabled = false; b.classList.remove('is-right', 'is-wrong'); });
+    feedback.className = 'feedback';
+    feedback.textContent = 'Pick an answer. You get feedback right away, the same way the app does.';
+  }
+  opts.addEventListener('click', function (e) {
+    var b = e.target.closest('.opt');
+    if (!b || b.disabled) return;
+    var c = CASES[caseIdx];
+    if (b.getAttribute('data-a') === c.answer) {
+      [].forEach.call(opts.children, function (o) { o.disabled = true; });
+      b.classList.add('is-right');
+      feedback.className = 'feedback is-right';
+      feedback.innerHTML = c.right;
+    } else {
+      b.classList.add('is-wrong');
+      b.disabled = true;
+      feedback.className = 'feedback is-wrong';
+      feedback.textContent = c.hint;
     }
-  })();
+  });
+  document.getElementById('nextCase').addEventListener('click', function () {
+    caseIdx = (caseIdx + 1) % CASES.length;
+    showCase(caseIdx);
+  });
+  showCase(0);
 
-  /* === Konami Code Easter Egg === */
-  (function () {
-    var konamiCode = [
-      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-      'b', 'a'
-    ];
-    var konamiIndex = 0;
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === konamiCode[konamiIndex]) {
-        konamiIndex++;
-        if (konamiIndex === konamiCode.length) {
-          activateKonamiMode();
-          konamiIndex = 0;
-        }
-      } else {
-        konamiIndex = 0;
-      }
+  /* === Software filter tabs === */
+  var tabs = document.querySelectorAll('#filterTabs button');
+  var cards = document.querySelectorAll('#softwareGrid .card');
+  [].forEach.call(tabs, function (t) {
+    t.addEventListener('click', function () {
+      var f = t.getAttribute('data-f');
+      [].forEach.call(tabs, function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+      [].forEach.call(cards, function (c) { c.hidden = !(f === 'all' || c.getAttribute('data-status') === f); });
     });
+  });
 
-    function activateKonamiMode() {
-      document.body.classList.toggle('konami-mode');
+  /* === Dev blog: list on the left, one post at a time on the right ===
+     Without JavaScript every post simply shows, one after another. */
+  var blog = document.getElementById('blogBody');
+  var list = document.getElementById('postList');
+  var reader = document.getElementById('reader');
+  var posts = reader.querySelectorAll('.post');
+  var buttons = [];
+  function openPost(i, updateHash) {
+    [].forEach.call(posts, function (p, j) { p.hidden = j !== i; });
+    buttons.forEach(function (b, j) { b.setAttribute('aria-selected', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
+    reader.scrollTop = 0;
+    if (updateHash) { try { history.replaceState(null, '', '#' + posts[i].id); } catch (err) {} }
+  }
+  [].forEach.call(posts, function (p, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.innerHTML = '<time>' + p.querySelector('time').textContent + '</time><b>' + p.querySelector('h3').textContent + '</b>';
+    b.addEventListener('click', function () { openPost(i, true); });
+    list.appendChild(b);
+    buttons.push(b);
+  });
+  list.addEventListener('keydown', function (e) {
+    var cur = buttons.indexOf(document.activeElement);
+    if (cur < 0) return;
+    var next = { ArrowDown: cur + 1, ArrowRight: cur + 1, ArrowUp: cur - 1, ArrowLeft: cur - 1, Home: 0, End: buttons.length - 1 }[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    next = Math.max(0, Math.min(buttons.length - 1, next));
+    openPost(next, true);
+    buttons[next].focus();
+  });
+  blog.classList.add('is-enhanced');
+  function postFromHash() {
+    for (var i = 0; i < posts.length; i++) if ('#' + posts[i].id === location.hash) return i;
+    return -1;
+  }
+  var fromHash = postFromHash();
+  openPost(fromHash > -1 ? fromHash : 0, false);
+  if (fromHash > -1) document.getElementById('devblog').scrollIntoView();
+  /* links to a post (e.g. #post-2026-03-10) also work once the page is open */
+  window.addEventListener('hashchange', function () {
+    var i = postFromHash();
+    if (i > -1) { openPost(i, false); document.getElementById('devblog').scrollIntoView(); }
+  });
 
-      var overlay = document.createElement('div');
-      overlay.style.cssText =
-        'position:fixed;top:0;left:0;right:0;bottom:0;' +
-        'background:rgba(0,0,0,0.6);z-index:9999;padding:16px;' +
-        'display:flex;align-items:flex-start;justify-content:center;';
-      overlay.innerHTML =
-        '<div class="window" style="max-width:400px;width:100%;margin-top:20vh;">' +
-        '  <div class="titlebar">' +
-        '    <span class="t-icon">🌟</span><span class="t-text">Secret!</span>' +
-        '    <span class="t-btns"><span class="t-btn">×</span></span>' +
-        '  </div>' +
-        '  <div class="win-body" style="text-align:center;padding:24px;">' +
-        '    <p style="font-family:var(--font-display);font-size:18px;margin-bottom:16px;line-height:1.3;">' +
-        '      🌟 KONAMI CODE ACTIVATED! 🌟' +
-        '    </p>' +
-        '    <p style="font-size:14px;margin-bottom:16px;">You found the secret! Enjoy the extra retro vibes.</p>' +
-        '    <button class="btn btn-primary konami-close">OK</button>' +
-        '  </div>' +
-        '</div>';
-
-      document.body.appendChild(overlay);
-
-      overlay.querySelector('.konami-close').addEventListener('click', function () {
-        overlay.remove();
-      });
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) overlay.remove();
-      });
-    }
-  })();
-
-  /* === Window Close Button Fun (× → "not responding" dialog) === */
-  (function () {
-    document.querySelectorAll('.t-btn').forEach(function (btn) {
-      if (btn.textContent.trim() === '×') {
-        btn.style.cursor = 'pointer';
-        btn.addEventListener('click', function () {
-          var win = this.closest('.window');
-          if (!win) return;
-
-          var dialog = document.createElement('div');
-          dialog.style.cssText =
-            'position:fixed;top:0;left:0;right:0;bottom:0;' +
-            'background:rgba(0,0,0,0.4);z-index:9999;padding:16px;' +
-            'display:flex;align-items:center;justify-content:center;';
-          dialog.innerHTML =
-            '<div class="window" style="max-width:340px;width:100%;margin-bottom:0;">' +
-            '  <div class="titlebar">' +
-            '    <span class="t-icon">🧂</span><span class="t-text">Salt Shaker Studio</span>' +
-            '    <span class="t-btns"><span class="t-btn">×</span></span>' +
-            '  </div>' +
-            '  <div class="win-body" style="text-align:center;padding:20px;">' +
-            '    <p style="margin-bottom:16px;">⚠ This program is not responding.</p>' +
-            '    <p style="font-size:13px;margin-bottom:16px;color:var(--shadow);">If you close it, you might lose unsaved data.</p>' +
-            '    <div style="display:flex;gap:8px;justify-content:center;">' +
-            '      <button class="btn dialog-close">End Now</button>' +
-            '      <button class="btn dialog-cancel">Cancel</button>' +
-            '    </div>' +
-            '  </div>' +
-            '</div>';
-
-          document.body.appendChild(dialog);
-
-          dialog.querySelector('.dialog-cancel').addEventListener('click', function () {
-            dialog.remove();
-          });
-          dialog.querySelector('.dialog-close').addEventListener('click', function () {
-            dialog.remove();
-          });
-          dialog.addEventListener('click', function (e) {
-            if (e.target === dialog) dialog.remove();
-          });
-        });
-      }
-    });
-  })();
-
-  /* === Rotating Taglines === */
-  (function () {
-    var tagline = document.getElementById('rotating-tagline');
-    if (!tagline) return;
-
-    var taglines = [
-      "Because learning by osmosis is still a myth",
-      "Because your brain doesn't have a save button",
-      "Because staring at something isn't the same as understanding it",
-      "Because hope is not a study strategy",
-      "Because your brain doesn't run on Wi-Fi",
-      "Because 'I'll figure it out later' is a bold strategy",
-      "Because your brain isn't a hard drive",
-      "Because pretending to pay attention doesn't work",
-      "Because watching someone else do it doesn't count",
-      "Because 'follow along on the slides' is a nightmare",
-      "Because real learning doesn't come from a deck",
-      "Because your brain doesn't have a download button",
-      "Because watching slides isn't learning",
-      "Because brains aren't USB ports",
-      "Because someone reading slides to you? Not a thing.",
-    ];
-
-    var currentIndex = 0;
-    var interval = null;
-    var isPaused = false;
-
-    function showNextTagline() {
-      tagline.classList.add('fading');
-      setTimeout(function () {
-        currentIndex = (currentIndex + 1) % taglines.length;
-        tagline.textContent = taglines[currentIndex];
-        tagline.classList.remove('fading');
-      }, 300);
-    }
-
-    function startRotation() {
-      if (interval !== null) return;   /* guard: never stack intervals */
-      interval = setInterval(showNextTagline, 10000);
-    }
-
-    function stopRotation() {
-      if (interval !== null) {
-        clearInterval(interval);
-        interval = null;
-      }
-    }
-
-    startRotation();
-
-    /* Pause when hero is out of view */
-    var heroSection = document.querySelector('.hero');
-    if (heroSection && 'IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          tagline.style.opacity = '1';
-          tagline.classList.remove('fading');
-          if (entry.isIntersecting) {
-            if (!isPaused) startRotation();
-          } else {
-            stopRotation();   /* off-screen: pause without touching isPaused */
-          }
-        });
-      }, { threshold: 0.3 });
-      observer.observe(heroSection);
-    }
-
-    /* Pause on hover */
-    tagline.addEventListener('mouseenter', function () {
-      isPaused = true;
-      stopRotation();
-      tagline.style.opacity = '1';
+  /* === Rotating taglines (pause on hover and when the hero is off screen) === */
+  var tagline = document.getElementById('rotating-tagline');
+  var taglines = [
+    "Because nobody ever really learns from a PowerPoint",
+    "Because learning by osmosis is still a myth",
+    "Because your brain doesn't have a save button",
+    "Because staring at something isn't the same as understanding it",
+    "Because hope is not a study strategy",
+    "Because your brain doesn't run on Wi-Fi",
+    "Because 'I'll figure it out later' is a bold strategy",
+    "Because your brain isn't a hard drive",
+    "Because pretending to pay attention doesn't work",
+    "Because watching someone else do it doesn't count",
+    "Because 'follow along on the slides' is a nightmare",
+    "Because real learning doesn't come from a deck",
+    "Because your brain doesn't have a download button",
+    "Because watching slides isn't learning",
+    "Because brains aren't USB ports",
+    "Because someone reading slides to you? Not a thing."
+  ];
+  var tIdx = 0, tTimer = null, hovering = false;
+  function nextTagline() {
+    tagline.classList.add('fading');
+    setTimeout(function () {
+      tIdx = (tIdx + 1) % taglines.length;
+      tagline.textContent = taglines[tIdx];
       tagline.classList.remove('fading');
-    });
+    }, 300);
+  }
+  function startTaglines() { if (tTimer === null && !hovering) tTimer = setInterval(nextTagline, 8000); }
+  function stopTaglines() { if (tTimer !== null) { clearInterval(tTimer); tTimer = null; } tagline.classList.remove('fading'); }
+  tagline.addEventListener('mouseenter', function () { hovering = true; stopTaglines(); });
+  tagline.addEventListener('mouseleave', function () { hovering = false; startTaglines(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) startTaglines(); else stopTaglines();
+    }, { threshold: 0.3 }).observe(document.getElementById('hero'));
+  } else {
+    startTaglines();
+  }
 
-    tagline.addEventListener('mouseleave', function () {
-      isPaused = false;
-      startRotation();
-    });
-  })();
+  /* === News balloon by the clock (replaces the old scrolling ticker) === */
+  var NEWS = [
+    ['ABG is live on Google Play', 'Free on Android, and Expert Mode is in the browser too. <a href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">Get it</a>'],
+    ['AUC v1.0 is out', 'Download it for an Ubuntu PC or a DGX Spark. <a href="auc-detail.html#download">Download</a>'],
+    ['Scrubboard preview', 'Screenshots and details are up. <a href="scrubboard.html">Take a look</a>'],
+    ['ABX prototype in testing', 'Built in Godot. <a href="https://discord.gg/b4jsEnW2jZ">Get notified on Discord</a>']
+  ];
+  var balloon = document.getElementById('balloon');
+  var newsIdx = 0, hideTimer = null;
+  function showNews() {
+    document.getElementById('balloonTitle').textContent = NEWS[newsIdx][0];
+    document.getElementById('balloonText').innerHTML = NEWS[newsIdx][1];
+    balloon.classList.remove('is-hidden');
+    newsIdx = (newsIdx + 1) % NEWS.length;
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideNews, 9000);
+  }
+  function hideNews() { balloon.classList.add('is-hidden'); clearTimeout(hideTimer); }
+  document.getElementById('newsBtn').addEventListener('click', function (e) {
+    e.stopPropagation();
+    showNews();   /* each click shows the next item */
+  });
+  document.getElementById('balloonClose').addEventListener('click', hideNews);
+  balloon.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+  balloon.addEventListener('mouseleave', function () { hideTimer = setTimeout(hideNews, 4000); });
+  /* Pop up once per visit, not on every page load */
+  var seen = false;
+  try { seen = sessionStorage.getItem('sss-news-seen') === '1'; sessionStorage.setItem('sss-news-seen', '1'); } catch (err) {}
+  /* ...and not on phones, where it would cover the quiz */
+  if (!seen && window.innerWidth > 640) setTimeout(showNews, reduced ? 0 : 1500);
+})();
 </script>
 </body>
 </html>
