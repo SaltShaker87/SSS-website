@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syphilis serology — IDSA Chalk Talk</title>
+<meta name="description" content="Making sense of treponemal and nontreponemal tests, screening algorithms, and titre changes.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Syphilis serology — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Sexually transmitted infections</p>
+        <h1 class="ct-h1">Syphilis serology</h1>
+        <p class="ct-subtitle">How to read treponemal and nontreponemal tests without getting burned</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man presents to the emergency department with a painless genital ulcer that healed two weeks ago and now has a diffuse macular rash on his palms and soles, sore throat, and generalised lymphadenopathy. He reports a new sexual partner in the past three months. A routine prenatal panel from his partner, who is 10 weeks pregnant, returns with a positive syphilis screen. You are called to interpret both results and advise what to do next.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish nontreponemal tests (rapid plasma reagin and Venereal Disease Research Laboratory) from treponemal tests and explain what each measures.</li>
+          <li>Compare the traditional and reverse syphilis screening algorithms and decide when a third test is needed.</li>
+          <li>Interpret common result patterns, including biological false positives and treated past infection.</li>
+          <li>Apply titre thresholds and fourfold changes to assess disease activity and response to therapy.</li>
+          <li>Identify when to pursue cerebrospinal fluid testing and how pregnancy changes management.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why syphilis serology trips everyone up</h2>
+      <p><em>Treponema pallidum</em> cannot be cultured routinely — we see the immune response, not the organism. That response is measured by two different families of tests, and most confusion comes from mixing up what each family tells you.</p>
+      <p>Clinically syphilis moves through primary (chancre), secondary (disseminated rash and mucosal lesions), latent (asymptomatic with positive serology), and tertiary stages, but serology does not stage disease. A titre is not a stage. Stage comes from symptoms, examination, history, and exposure; serology supports or refutes it. A positive result can also mean past treated infection or a false positive, because antibodies persist differently.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>We use direct detection of <em>T. pallidum</em> (darkfield microscopy, polymerase chain reaction) rarely on the ward. The familiar tests are the Venereal Disease Research Laboratory (VDRL) test (1946) and rapid plasma reagin (RPR) test (1950s), followed by treponemal antigen tests — all indirect measures.</p>
+      </div>
+
+      <h2 class="ct-h2">Two families of tests</h2>
+      <p>Keep the two families separate in your head. Nontreponemal tests measure antibody against cardiolipin-cholesterol-lecithin antigen — a marker of cell damage, not a syphilis-specific antigen. Treponemal tests measure antibody that binds <em>T. pallidum</em> proteins directly.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Syphilis serologic test families</caption>
+          <thead>
+            <tr><th>Feature</th><th>Nontreponemal tests</th><th>Treponemal tests</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Examples</td><td>Rapid plasma reagin (RPR), Venereal Disease Research Laboratory (VDRL)</td><td>T. pallidum particle agglutination (TP-PA), fluorescent treponemal antibody absorption (FTA-ABS), syphilis enzyme immunoassay (EIA), chemiluminescence immunoassay (CIA)</td></tr>
+            <tr><td>What it detects</td><td>Anti-cardiolipin (reagin) antibody</td><td>Anti-<em>T. pallidum</em> antibody</td></tr>
+            <tr><td>Reported as</td><td>Titre (for example, 1:32); reflects disease activity</td><td>Reactive or nonreactive; usually stays reactive for life</td></tr>
+            <tr><td>Use</td><td>Screening (traditional algorithm), quantifying activity, following response to treatment</td><td>Screening (reverse algorithm), confirming infection</td></tr>
+            <tr><td>False positives</td><td>Common — pregnancy, autoimmune disease, acute infection, vaccination</td><td>Uncommon but occurs; prior treated syphilis stays positive</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><span class="ct-term">Nontreponemal tests</span> are the only ones reported as a titre (1:2, 1:4, 1:8, doubling each step). Higher titre often means more active disease, but very early primary and late latent disease can both be low, and titres can decline without treatment in late disease.</p>
+      <p><span class="ct-term">Treponemal tests</span> often become reactive one to two weeks earlier than nontreponemal tests and usually remain reactive for life after treatment. A reactive treponemal test does not tell you whether infection is active — the key fact for overnight call.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Nontreponemal titre tracks activity; treponemal result tracks exposure. Only one of them should move with treatment.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The RPR and VDRL are equally valid nontreponemal tests but are not interchangeable numerically — a 1:16 on RPR is not equivalent to 1:16 on VDRL, and you should follow titres with the same test in the same laboratory.</p>
+      </div>
+
+      <h2 class="ct-h2">Traditional versus reverse screening</h2>
+      <p>Both algorithms answer the same question — does this person have syphilis right now — but they start at opposite ends. Knowing which algorithm your laboratory uses explains most of the confusing call results.</p>
+      <h3 class="ct-h3">Traditional algorithm</h3>
+      <p>The laboratory starts with a nontreponemal test (RPR or VDRL). If nonreactive, screening stops. If reactive, a treponemal test confirms. This approach is inexpensive and correlates with active disease, but it misses very early primary syphilis (before reagin appears) and some late latent disease where the nontreponemal test has reverted to nonreactive.</p>
+      <h3 class="ct-h3">Reverse algorithm</h3>
+      <p>The laboratory starts with an automated treponemal test (EIA or CIA). If nonreactive, screening stops. If reactive, a nontreponemal test with titre is done. If the treponemal test is reactive but the nontreponemal test is nonreactive, a second, different treponemal test (usually TP-PA) adjudicates. About 60 to 70 percent of those discordant results are past treated infection or late latent infection; the remainder are false-positive treponemal screens.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Reverse algorithm discordance — what to do next</caption>
+          <thead>
+            <tr><th>Initial EIA/CIA</th><th>Reflex RPR/VDRL</th><th>Second treponemal (TP-PA)</th><th>Interpretation and next step</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nonreactive</td><td>Not done</td><td>Not done</td><td>No serologic evidence of syphilis</td></tr>
+            <tr><td>Reactive</td><td>Reactive</td><td>Not needed (or reactive if done)</td><td>Consistent with active or recent syphilis; treat by stage and history</td></tr>
+            <tr><td>Reactive</td><td>Nonreactive</td><td>Reactive</td><td>Past treated syphilis, late latent syphilis, or very early infection; take history, examine, treat if indicated</td></tr>
+            <tr><td>Reactive</td><td>Nonreactive</td><td>Nonreactive</td><td>Likely false-positive treponemal screen; no treatment unless clinical suspicion is high</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If your report says EIA reactive, RPR nonreactive, look for the second treponemal result before you decide. Without it you are guessing.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Treating every reactive treponemal screen as active syphilis. The reverse algorithm increases detection of past infection; overtreatment is common and causes real harm in pregnancy and in penicillin-allergic patients.</p>
+      </div>
+
+      <h2 class="ct-h2">How to read titres and the result patterns you will see</h2>
+      <p>Three rules make most reports make sense.</p>
+      <ol>
+        <li>Titres are reported as the reciprocal of the last reactive dilution. 1:64 is higher than 1:8. A change of two dilutions (for example, 1:64 to 1:16) is a fourfold change and is clinically significant; a change of one dilution (1:64 to 1:32) is within laboratory variation and is not.</li>
+        <li>The same specimen tested by different laboratories or by RPR versus VDRL can differ by one dilution without meaning anything has changed. Always compare titres from the same test in the same laboratory.</li>
+        <li>The <span class="ct-term">prozone phenomenon</span> — falsely low or nonreactive nontreponemal result because antibody excess blocks the flocculation reaction — can occur in secondary syphilis and in pregnancy when titres are very high. If the clinical picture strongly suggests syphilis and the RPR is nonreactive, ask the laboratory to dilute the specimen further.</li>
+      </ol>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common result patterns</caption>
+          <thead>
+            <tr><th>Nontreponemal (RPR/VDRL)</th><th>Treponemal</th><th>What it usually means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Reactive, titre 1:32</td><td>Reactive</td><td>Active syphilis — primary, secondary, or early latent; correlate with examination and history</td></tr>
+            <tr><td>Nonreactive</td><td>Reactive</td><td>Treated syphilis, late latent syphilis, very early primary, or false-positive treponemal test; history decides</td></tr>
+            <tr><td>Reactive, low titre 1:2 or 1:4</td><td>Reactive</td><td>Active syphilis, treated syphilis with persistent low titre (serofast), or biological false positive; if unclear, examine and ask about prior treatment</td></tr>
+            <tr><td>Reactive</td><td>Nonreactive</td><td>Biological false-positive nontreponemal test; common in autoimmune disease, pregnancy, acute viral infection — confirm with treponemal test</td></tr>
+            <tr><td>Nonreactive</td><td>Nonreactive</td><td>No serologic evidence of syphilis; if exposure was within 2 to 3 weeks, repeat testing</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A low titre (1:1 to 1:4) with a reactive treponemal test is the hardest pattern. Do not assume false positive — take a sexual history, check for prior treatment records, and examine for chancre, rash, condyloma lata, or lymphadenopathy.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Biological false-positive nontreponemal tests are typically low titre (1:8 or less) and transient. Antiphospholipid syndrome, systemic lupus erythematosus, malaria, endocarditis, recent vaccination, and pregnancy are classic triggers. A treponemal test will be nonreactive.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old man with no prior syphilis history has an EIA reactive, RPR nonreactive, TP-PA reactive result. He has no symptoms. What is the most likely explanation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Acute false-positive EIA — reassure and discharge</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Late latent syphilis or previously treated infection — obtain treatment history, examine, and treat as late latent if history is negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Active secondary syphilis — start treatment and notify public health today regardless of history</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Biological false-positive RPR — repeat RPR in one week</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Treponemal tests stay reactive for life, so EIA reactive with TP-PA reactive and RPR nonreactive means treponemal exposure has occurred. When history is negative and examination is unrevealing, this pattern is often late latent syphilis (infection more than 12 months ago or of unknown duration) or previously treated infection with records you cannot find. The RPR is not falsely positive here — it is correctly nonreactive, as expected in late disease.</p>
+        </div>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with a known RPR of 1:128 two weeks ago now has an RPR of 1:32 drawn in a different laboratory. Has she had a significant response?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Yes — this is a fourfold decline, indicating treatment response</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">You cannot tell — one dilution of variation between laboratories is expected; repeat in the same laboratory with the same test type</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No — the titre is still high so treatment has failed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Yes — any decline in titre confirms cure</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A change from 1:128 to 1:32 is two dilutions and would be a fourfold decline if both results came from the same laboratory using the same method. Between laboratories, one dilution of difference is within expected variation, so you need a same-lab comparison before calling it a response. Also, a single post-treatment titre too early can be misleading.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Stage, neurosyphilis, and when to tap</h2>
+      <p>Staging drives treatment — penicillin remains the drug of choice for all stages, but dose and duration differ by stage, so getting the stage right matters. Stage by history and examination, not by titre alone.</p>
+      <ul>
+        <li><strong>Primary and secondary:</strong> chancre, disseminated rash (often palms and soles), mucous patches, condyloma lata, lymphadenopathy. Usually nontreponemal titre at least 1:8 and treponemal reactive. Early chancre can be seronegative — repeat in one to two weeks.</li>
+        <li><strong>Early latent:</strong> asymptomatic, acquired within past 12 months — requires documented seroconversion, fourfold titre rise, recent compatible symptoms, or a partner with primary, secondary, or early latent syphilis.</li>
+        <li><strong>Late latent / unknown duration:</strong> asymptomatic without evidence of acquisition within 12 months; titre often 1:4 or less or nonreactive.</li>
+      </ul>
+      <p><span class="ct-term">Neurosyphilis</span> can occur at any stage. Test cerebrospinal fluid (CSF) for neurologic, ophthalmic, or auditory symptoms, tertiary signs, or serologic treatment failure. The CSF-VDRL test is specific but not sensitive (reactive confirms, nonreactive does not exclude). The CSF FTA-ABS test is sensitive but not specific and is most useful when nonreactive. Pleocytosis and elevated protein support the diagnosis; human immunodeficiency virus (HIV) co-infection complicates interpretation.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Ordering a lumbar puncture for every patient with latent syphilis and a positive serology. In an immunocompetent, neurologically normal patient with no auditory or ophthalmic symptoms, routine CSF examination is not required. Reserve it for symptoms, treatment failure, or when you would do it anyway.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Any patient with syphilis and visual changes, hearing loss, or cranial nerve findings needs urgent ophthalmology or otolaryngology evaluation and CSF testing — ocular and otosyphilis can progress quickly and change therapy to a neurosyphilis regimen.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old man with late latent syphilis (RPR 1:4, TP-PA reactive) has no headache, no vision or hearing changes, and a normal neurologic examination. HIV test is negative. Does he need a lumbar puncture before treatment?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Yes — all latent syphilis requires CSF examination to rule out neurosyphilis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">No — if neurologically normal with no ocular or otologic symptoms, treat as late latent without routine CSF examination</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Yes — the low titre suggests neurosyphilis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No — late latent syphilis does not require any treatment</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Routine lumbar puncture in an otherwise well, neurologically intact patient with late latent disease is not recommended. Treatment as late latent is appropriate, with close clinical and serologic follow-up. A lumbar puncture is reserved for neurologic, ophthalmic, or auditory signs, evidence of tertiary disease, or serologic treatment failure.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Pregnancy, newborns, and HIV co-infection</h2>
+      <p>Two populations change your threshold to act.</p>
+      <h3 class="ct-h3">Pregnancy</h3>
+      <p>Syphilis in pregnancy can cause stillbirth and congenital disease. Screen at the first prenatal visit and repeat at 28 weeks and delivery when risk or prevalence is high. Treat without waiting for confirmatory testing when suspicion is strong. Only penicillin treats the fetus — desensitise for allergy. A fourfold higher infant nontreponemal titre than the mother (for example, infant 1:32 vs maternal 1:8) suggests congenital infection, but absence does not exclude it; evaluate by examination, long-bone films, and CSF testing as indicated.</p>
+      <h3 class="ct-h3">HIV co-infection</h3>
+      <p>Test every patient with syphilis for human immunodeficiency virus (HIV) and vice versa. Serologic responses are similar, though titres may be higher. Use the same indications for CSF examination as in HIV-negative patients, with a lower threshold to evaluate neurologic symptoms.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Congenital syphilis is defined by maternal history, infant examination, titre comparison, and direct testing together — not a single value. Involve paediatrics and obstetrics early.</p>
+      </div>
+
+      <h2 class="ct-h2">Following titres after treatment and the serofast state</h2>
+      <p>Nontreponemal titres are the follow-up tool. Treponemal tests are not used to judge cure.</p>
+      <ul>
+        <li>Repeat the same nontreponemal test in the same laboratory at 6, 12, and 24 months (more often in pregnancy or if reinfection is a concern).</li>
+        <li>An adequate response is a fourfold (two-dilution) decline — expected by 6 to 12 months in early syphilis; slower in late latent disease.</li>
+        <li>A fourfold rise suggests reinfection or treatment failure — re-treat, re-stage, retest for HIV, and evaluate partners.</li>
+        <li>Failure to decline fourfold by 12 to 24 months without reinfection should prompt re-evaluation for neurosyphilis and stage, not automatic retreatment.</li>
+      </ul>
+      <p>Some patients remain <span class="ct-term">serofast</span> — titre declines but stabilises at 1:1 to 1:8 for years despite adequate therapy and no reinfection, especially after late latent treatment. With documented prior treatment, no new exposure, and no signs, a stable low titre is usually serofast, not failure. Verify history and examine rather than retreating on the number alone.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Document the titre, the test type, and the date of treatment in the discharge summary. Future clinicians cannot judge a fourfold change if they cannot find the baseline.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Retesting with a treponemal EIA to check for cure. It will stay reactive and will mislead you and the patient into thinking treatment has not worked.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 26-year-old man treated for secondary syphilis (baseline RPR 1:64) returns at 7 months with an RPR of 1:16, no new sexual exposures, and no symptoms. How do you counsel him?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">This is an adequate response — a fourfold decline by 6 to 12 months is expected; continue clinical and serologic follow-up without retreatment</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">This is treatment failure — the RPR should be nonreactive by 6 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Check a treponemal EIA now — if reactive, retreat with a neurosyphilis regimen</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">The titre should have fallen to 1:2 by now — order a lumbar puncture immediately</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A decline from 1:64 to 1:16 is two dilutions — a fourfold fall — which meets the expected response for early syphilis at 6 to 12 months. Complete reversion to nonreactive often takes 12 to 24 months or longer. A treponemal test would remain reactive and does not assess cure, and a lumbar puncture is not indicated in an asymptomatic patient with an adequate titre response.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Nontreponemal tests (RPR, VDRL) measure anti-cardiolipin antibody and are reported as titres that track disease activity; treponemal tests (TP-PA, FTA-ABS, EIA, CIA) measure anti-<em>T. pallidum</em> antibody and usually stay reactive for life.</li>
+        <li>Traditional screening starts with RPR/VDRL, reverse screening starts with a treponemal EIA/CIA — know which your laboratory uses so you can interpret discordant results.</li>
+        <li>EIA reactive, RPR nonreactive, TP-PA reactive usually means late latent or past treated syphilis; EIA reactive, RPR nonreactive, TP-PA nonreactive is usually a false-positive screen.</li>
+        <li>A fourfold (two-dilution) change in the same nontreponemal test is significant; one dilution is laboratory noise. Follow titres in the same laboratory with the same test type.</li>
+        <li>Stage by symptoms, examination, and history — not by titre alone — and reserve cerebrospinal fluid testing for neurologic, ophthalmic, or auditory findings, tertiary signs, or serologic failure.</li>
+        <li>In pregnancy treat with penicillin without delay when syphilis is suspected, and remember that a stable low titre after documented adequate therapy is often a serofast state, not failure.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Workowski KA, Bolan GA, Centers for Disease Control and Prevention. Sexually Transmitted Diseases Treatment Guidelines, 2015 [updated 2021 guidance for syphilis]. <em>MMWR Recomm Rep</em>. 2015;64(RR-03):1-137. Updated CDC STI treatment guidelines for syphilis diagnosis, staging, and follow-up.</li>
+          <li>Janier M, Hegyi V, Dupin N, et al. European guideline on the management of syphilis. <em>J Eur Acad Dermatol Venereol</em>. 2014;28(12):1581-1593. Algorithm comparison and interpretation of discordant results.</li>
+          <li>Clement ME, Okeke NL, Hicks CB. Treatment of syphilis: a systematic review. <em>JAMA</em>. 2014;312(18):1905-1917.</li>
+          <li>Peeling RW, Mabey D, Kamb ML, et al. Syphilis. <em>Nat Rev Dis Primers</em>. 2017;3:17073. Biology of <em>Treponema pallidum</em> and test performance.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Syphilis serology</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

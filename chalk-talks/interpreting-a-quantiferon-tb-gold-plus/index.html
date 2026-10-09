@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interpreting a QuantiFERON-TB Gold Plus and next steps in latent tuberculosis infection — IDSA Chalk Talk</title>
+<meta name="description" content="How to read a QuantiFERON-TB Gold Plus result, sort positive from indeterminate, rule out active disease, and choose treatment for latent tuberculosis infection.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Interpreting a QuantiFERON-TB Gold Plus and next steps in latent tuberculosis infection — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Mycobacterial disease</p>
+        <h1 class="ct-h1">Interpreting a QuantiFERON-TB Gold Plus and next steps in latent tuberculosis infection</h1>
+        <p class="ct-subtitle">What the result means, when not to trust it, and how to manage latent infection</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 min read</span>
+      </div>
+
+<div class="ct-vignette">
+  <span class="ct-vignette-label">Case</span>
+  <p>A 29-year-old nurse has a pre-employment check. She was born in the Philippines and received bacillus Calmette–Guérin (BCG) as a child. She feels well with no cough, fever, night sweats or weight loss, and examination is normal. A QuantiFERON-TB Gold Plus (QFT-Plus) — an interferon-gamma release assay (IGRA) — is positive: TB1 minus Nil 0.68 IU/mL, TB2 minus Nil 0.52 IU/mL. Chest radiograph last month was normal. She asks whether she has tuberculosis and whether she needs treatment.</p>
+</div>
+
+<div class="ct-objectives">
+  <span class="ct-callout-label">By the end of this talk you will be able to</span>
+  <ul>
+    <li>Explain how QuantiFERON-TB Gold Plus detects immune memory to <em>Mycobacterium tuberculosis</em> and what its four tubes control for.</li>
+    <li>Interpret positive, negative, indeterminate and borderline results and decide when to repeat.</li>
+    <li>Outline the steps to exclude active tuberculosis disease after a positive result.</li>
+    <li>Compare recommended regimens for latent tuberculosis infection (LTBI) and counsel on completion and safety.</li>
+  </ul>
+</div>
+
+<h2 class="ct-h2">Latent infection is not active disease</h2>
+<p>About one quarter of the world's population carries <em>Mycobacterium tuberculosis</em> without illness. In <span class="ct-term">latent tuberculosis infection (LTBI)</span> the organism is contained by granulomas, the patient is asymptomatic, not infectious and has a normal chest radiograph. In active tuberculosis disease the organism is replicating and the patient has symptoms, imaging abnormalities and may be infectious.</p>
+<p>A positive immune test does not diagnose active disease. It shows the immune system has seen tuberculosis antigens at some point. It does not tell you when exposure occurred, whether viable organisms persist, or whether the patient is sick now. After a positive result answer two questions in order: does this person have active disease that needs immediate treatment and isolation, and if not, would treating latent infection prevent future disease?</p>
+<p>Without treatment, 5 to 10% of people with LTBI progress to active disease in a lifetime, with risk highest in the first two years after infection and among recent contacts, young children and people with immunocompromise. Treating LTBI substantially lowers that risk. Screen only when you intend to offer treatment if the result is positive.</p>
+<div class="ct-pearl">
+  <span class="ct-callout-label">Pearl</span>
+  <p>Test only if you would treat. A positive interferon-gamma release assay (IGRA) in someone you would never treat generates anxiety without benefit.</p>
+</div>
+
+<h2 class="ct-h2">How QuantiFERON-TB Gold Plus works</h2>
+<p>QuantiFERON-TB Gold Plus is an <span class="ct-term">interferon-gamma release assay (IGRA)</span>. It measures interferon-gamma released when the patient's T cells encounter tuberculosis-specific peptides. The tuberculin skin test (TST) uses purified protein derivative (PPD) shared by many mycobacteria, while QFT-Plus uses peptides from ESAT-6 and CFP-10. These antigens are present in <em>M. tuberculosis</em> complex but absent from BCG and most nontuberculous mycobacteria, so prior BCG does not cause a false positive.</p>
+<p>The assay collects 1 mL of blood into each of four tubes:</p>
+<ul>
+  <li><strong>Nil</strong> (negative control) — measures background interferon-gamma.</li>
+  <li><strong>TB1</strong> — ESAT-6 and CFP-10 peptides optimised for CD4 T-cell responses.</li>
+  <li><strong>TB2</strong> — same peptides plus shorter peptides to elicit both CD4 and CD8 responses. In routine care either tube counts.</li>
+  <li><strong>Mitogen</strong> (positive control) — tests whether T cells can produce interferon-gamma. A low mitogen suggests anergy, immunosuppression or technical problems.</li>
+</ul>
+<p>Tubes are incubated at 37 °C for 16 to 24 hours, interferon-gamma is measured by enzyme-linked immunosorbent assay (ELISA), and results are reported as TB1 minus Nil and TB2 minus Nil in international units per millilitre (IU/mL). Interpretation is qualitative — positive, negative or indeterminate — using a threshold of 0.35 IU/mL for either antigen tube. Near the cutoff, clinical context matters more than the exact number.</p>
+<div class="ct-note">
+  <span class="ct-callout-label">Background</span>
+  <p>IGRAs were developed to avoid two tuberculin skin test problems: cross-reaction with BCG and the need for a return visit. An IGRA needs one blood draw, gives an objective laboratory value and does not boost on serial testing. Trade-offs are higher cost, need for timely incubation, and lower sensitivity in young children and severe immunocompromise, where the skin test still has a role.</p>
+</div>
+<div class="ct-pearl">
+  <span class="ct-callout-label">Pearl</span>
+  <p>BCG does not explain a positive QuantiFERON-TB Gold Plus. The assay was designed to avoid that cross-reaction — look for a different explanation.</p>
+</div>
+
+<h2 class="ct-h2">Reading the report: positive, negative, indeterminate and borderline</h2>
+<p>Read the categorical result together with the quantitative values and the controls.</p>
+<ul>
+  <li><strong>Positive:</strong> TB1 minus Nil or TB2 minus Nil at or above 0.35 IU/mL with Nil acceptable and mitogen adequate. Indicates an adaptive response to <em>M. tuberculosis</em> antigens — consistent with LTBI after active disease is excluded. It does not grade severity or bacterial burden.</li>
+  <li><strong>Negative:</strong> Both antigen tubes below threshold with adequate mitogen. Argues against infection, but sensitivity falls in the window period before T-cell priming (typically up to 8 to 10 weeks after exposure) and with immunosuppression. A negative test never excludes active disease.</li>
+  <li><strong>Indeterminate:</strong> Usually low mitogen or high Nil. This is uninterpretable, not a weak positive. Causes include handling errors, delayed incubation, lymphopenia, corticosteroids, tumour necrosis factor (TNF) inhibitors, advanced human immunodeficiency virus (HIV) and severe illness. Correct reversible factors and repeat once on a fresh sample.</li>
+  <li><strong>Borderline positive:</strong> Values just above threshold, for example 0.35 to about 0.70 IU/mL, show more variability and often revert on repeat. In a low-risk person with no exposures, repeat before labelling LTBI. The same result in a recent close contact carries more weight.</li>
+</ul>
+<p>When you repeat, redraw a fresh sample and process it promptly. Avoid serial testing of low-risk workers without exposure — it increases borderline false positives.</p>
+<div class="ct-caution">
+  <span class="ct-callout-label">Common pitfall</span>
+  <p>Treating an indeterminate result as negative or positive. An indeterminate QuantiFERON-TB Gold Plus is uninterpretable — document the cause, correct what you can and repeat. Do not start LTBI treatment on it and do not use it for reassurance.</p>
+</div>
+
+<div class="ct-quiz">
+  <p class="ct-quiz-q">The nurse in the vignette has TB1 minus Nil 0.68 IU/mL with adequate mitogen. The best interpretation is:</p>
+  <ul class="ct-quiz-options">
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Active tuberculosis disease — isolate and start four-drug therapy</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="true">Immune response to <em>M. tuberculosis</em> antigens — exclude active disease, then consider treatment for LTBI</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">False positive from childhood BCG — no further action</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Indeterminate result — repeat regardless of risk</button></li>
+  </ul>
+  <div class="ct-quiz-explain" hidden>
+    <p>A positive result with adequate controls indicates immune memory to <em>M. tuberculosis</em> complex. It does not distinguish latent from active disease and is not caused by BCG. Symptom review and chest imaging come next.</p>
+  </div>
+</div>
+
+<h2 class="ct-h2">When the result misleads you</h2>
+<p>An IGRA is an immune test. Its predictive value depends on pre-test probability.</p>
+<h3 class="ct-h3">Low pre-test probability and the borderline zone</h3>
+<p>In an asymptomatic, low-risk person with no exposures, even a technically correct positive has lower positive predictive value and higher reversion risk. A borderline 0.38 IU/mL in this setting often generates referrals without preventing disease. If the history does not fit, repeat once before committing to LTBI.</p>
+<h3 class="ct-h3">Window period and immunosuppression</h3>
+<p>After recent exposure, T-cell responses take weeks. Testing the day after exposure can be falsely negative. In recent contacts test at baseline and again 8 to 10 weeks after last exposure; conversion suggests new infection. Corticosteroids, TNF inhibitors, chemotherapy, advanced HIV and very young age can blunt interferon-gamma and cause false negatives or indeterminate results. Tube handling matters too — under-filling, incorrect shaking or delayed incubation increases indeterminate rates.</p>
+<div class="ct-pearl">
+  <span class="ct-callout-label">Pearl</span>
+  <p>Interpret the history, not just the number. The same 0.40 IU/mL means something different in a recent household contact and in an asymptomatic person screened for paperwork.</p>
+</div>
+<div class="ct-quiz">
+  <p class="ct-quiz-q">A 68-year-old man on prednisone 30 mg daily has two weeks of fever, cough and a cavitary right upper lobe lesion. QFT-Plus is negative. What is the correct use of the IGRA here?</p>
+  <ul class="ct-quiz-options">
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">It rules out tuberculosis — pursue malignancy</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="true">It does not rule out active disease — proceed with isolation, sputum studies and imaging regardless</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat immediately to confirm negativity</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">It confirms bacterial pneumonia — start ceftriaxone</button></li>
+  </ul>
+  <div class="ct-quiz-explain" hidden>
+    <p>IGRAs are not tests for active disease and cannot exclude it, especially with immunosuppression and cavitary disease. Clinical, radiographic and microbiologic workup drives care.</p>
+  </div>
+</div>
+
+<h2 class="ct-h2">After a positive: rule out active tuberculosis disease</h2>
+<p>Every positive IGRA triggers the same checklist before you label LTBI.</p>
+<ol>
+  <li><strong>Symptom screen:</strong> Ask about cough more than two to three weeks, haemoptysis, fever, night sweats, weight loss, chest pain and extrapulmonary clues such as lymphadenopathy, back pain or dysuria.</li>
+  <li><strong>Chest imaging:</strong> Obtain a posterior-anterior chest radiograph. Any abnormality, or any suggestive symptom regardless of imaging, needs sputum acid-fast bacilli smear, nucleic acid amplification testing and mycobacterial culture plus prompt referral. A normal film does not exclude extrapulmonary disease.</li>
+  <li><strong>Microbiology if indicated:</strong> Do not start LTBI monotherapy until active disease is excluded — single-drug therapy for disease selects for resistance.</li>
+  <li><strong>Risk stratification:</strong> Recent contact within two years, age under five, HIV, TNF inhibitor use, transplantation, end-stage renal disease, silicosis and poorly controlled diabetes raise urgency once disease is excluded.</li>
+</ol>
+<p>If active disease is excluded, you may diagnose LTBI, explain the patient is not infectious, and offer preventive treatment. If the patient declines, document the discussion and safety-net for new symptoms.</p>
+<div class="ct-caution">
+  <span class="ct-callout-label">Common pitfall</span>
+  <p>Starting LTBI treatment before symptom review and chest imaging. Treating unrecognised active disease with one drug breeds resistance and delays correct care.</p>
+</div>
+<div class="ct-quiz">
+  <p class="ct-quiz-q">A 34-year-old student has a positive QFT-Plus, no symptoms and a normal chest radiograph. Sputum was not collected. What is appropriate?</p>
+  <ul class="ct-quiz-options">
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Order sputum cultures on all asymptomatic patients</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="true">Diagnose LTBI after clinical and radiographic exclusion of active disease and offer preventive treatment</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer imaging until treatment is complete</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat IGRA in six months to assess cure</button></li>
+  </ul>
+  <div class="ct-quiz-explain" hidden>
+    <p>In an asymptomatic person with a normal radiograph, sputum is not routinely needed. LTBI is diagnosed after active disease is excluded clinically and radiographically.</p>
+  </div>
+</div>
+
+<h2 class="ct-h2">Choosing a regimen for latent tuberculosis infection</h2>
+<p>When active disease is excluded, choose a regimen together with the patient, guided by interactions, comorbidities, pregnancy and likelihood of completion. Short rifamycin-based courses are preferred in current United States guidance because they are as effective and more often completed than prolonged isoniazid.</p>
+<div class="ct-table-wrap">
+  <table class="ct-table">
+    <caption>Preferred and alternative regimens for LTBI in adults with presumed drug-susceptible infection</caption>
+    <thead>
+      <tr><th>Regimen</th><th>Duration and dosing in adults</th><th>Key considerations</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rifampin daily (4R)</td><td>4 months of rifampin daily</td><td>Fewer interactions than rifapentine; monitor liver tests when indicated; potent cytochrome P450 inducer</td></tr>
+      <tr><td>Isoniazid plus rifapentine weekly (3HP)</td><td>12 once-weekly doses of isoniazid plus rifapentine</td><td>Preferred short course for most adults; check interactions with antiretrovirals, hormonal contraception and methadone</td></tr>
+      <tr><td>Rifampin plus isoniazid daily (3HR)</td><td>3 months of rifampin plus isoniazid daily</td><td>Alternative where 3HP is unavailable</td></tr>
+      <tr><td>Isoniazid daily (6H or 9H)</td><td>6 or 9 months of isoniazid daily</td><td>Longer course with lower completion; consider pyridoxine (vitamin B6) for neuropathy prevention</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Screen for contraindications first: drug allergy, liver disease, alcohol use, pregnancy, HIV status and all current medications. Rifamycins — rifampin (rifampicin) and rifapentine — induce cytochrome P450 and P-glycoprotein and lower concentrations of antiretrovirals, direct oral anticoagulants, hormonal contraception, calcineurin inhibitors and some antiepileptics. Check every medication with pharmacy.</p>
+<p>Doses above follow current Centers for Disease Control and Prevention and World Health Organization guidance for LTBI with presumed drug-susceptible infection. Paediatric dosing, pregnancy specifics and management after exposure to drug-resistant tuberculosis need specialist input. There is no role for repeating the IGRA to judge cure — results often remain positive after successful treatment.</p>
+<div class="ct-note">
+  <span class="ct-callout-label">Background</span>
+  <p>The tuberculin skin test remains useful where phlebotomy is difficult, in young children or where IGRA is unavailable. It needs a return visit for reading and its thresholds depend on risk group. A two-step skin test helps distinguish boosting from new conversion in serial screening — a different problem from IGRA variability.</p>
+</div>
+<div class="ct-pearl">
+  <span class="ct-callout-label">Pearl</span>
+  <p>The best regimen is the one the patient completes. A shorter course that finishes beats a longer ideal course that stops at month two.</p>
+</div>
+
+<h2 class="ct-h2">Counselling, monitoring and completing treatment</h2>
+<p>Patients commonly ask three things: am I contagious, will treatment protect me, and what are the side effects. With LTBI you can be clear: the patient is not infectious, treatment substantially lowers but does not abolish future risk, and most people tolerate short courses with monitoring.</p>
+<ul>
+  <li><strong>Explain in plain terms:</strong> The blood test shows your immune system remembers tuberculosis. Your film and symptom check show you do not have active disease today. Treatment kills dormant bacilli and prevents progression; without it a small number later develop severe, contagious disease.</li>
+  <li><strong>Review adverse effects:</strong> Hepatitis is uncommon but important — advise avoiding excess alcohol and prompt reporting of jaundice, dark urine, nausea or right upper quadrant pain. Mention rash, gastrointestinal upset, isoniazid neuropathy and orange urine or tears with rifamycins. Review interactions at each visit.</li>
+  <li><strong>Plan follow-up:</strong> Arrange brief adherence checks and liver chemistry only if baseline was abnormal or symptoms develop. Document offer, acceptance or decline and keep the door open if the patient initially declines.</li>
+  <li><strong>Special situations:</strong> Pregnancy, HIV, liver disease, young children and known drug-resistant exposure warrant specialist input. Do not delay counselling while awaiting referral — provide safety netting.</li>
+</ul>
+<p>Completion is the outcome that matters. Weekly dosing, reminders and family support improve completion more than debating equally guideline-concordant regimens. Record dates and send a summary to primary care so future clinicians do not repeat testing or misread a persistently positive IGRA.</p>
+<div class="ct-pearl">
+  <span class="ct-callout-label">Pearl</span>
+  <p>Never use a repeat QuantiFERON-TB Gold Plus to check whether LTBI treatment worked. The interferon-gamma response persists after cure — follow symptoms, not numbers.</p>
+</div>
+<div class="ct-quiz">
+  <p class="ct-quiz-q">A 25-year-old woman with LTBI is offered 3HP and uses combined oral contraception. What counselling is most important?</p>
+  <ul class="ct-quiz-options">
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">IGRA will become negative after three months — use it to confirm cure</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="true">Rifapentine lowers hormonal contraception efficacy — discuss alternative or barrier cover during treatment and for one month after</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">She is infectious until treatment ends</button></li>
+    <li><button class="ct-quiz-opt" type="button" data-correct="false">Baseline liver testing is required in every patient</button></li>
+  </ul>
+  <div class="ct-quiz-explain" hidden>
+    <p>Rifamycins induce hepatic enzymes and reduce hormonal contraception levels, so additional cover is needed. LTBI is not infectious, repeat IGRAs do not mark cure, and routine baseline liver tests are selective rather than universal.</p>
+  </div>
+</div>
+
+<h2 class="ct-h2">The five-minute version</h2>
+<ul>
+  <li>LTBI is asymptomatic immune containment of <em>M. tuberculosis</em> — not active disease. A positive IGRA never diagnoses active disease alone.</li>
+  <li>QuantiFERON-TB Gold Plus measures interferon-gamma after ESAT-6 and CFP-10 stimulation in Nil, TB1, TB2 and mitogen tubes; BCG does not cause a false positive and the usual threshold is 0.35 IU/mL.</li>
+  <li>Read controls with the number. Repeat an indeterminate once after correcting handling or immunosuppression; re-test a borderline low-risk result on a fresh sample rather than labelling LTBI on one value.</li>
+  <li>Every positive needs symptom review and chest imaging to exclude active disease before LTBI therapy. Do not give single-drug treatment for disease.</li>
+  <li>When disease is excluded, offer a short rifamycin course — 4 months rifampin or 12 weekly doses of isoniazid plus rifapentine where appropriate; 6 to 9 months isoniazid is an alternative. Check interactions, especially hormonal contraception and antiretrovirals.</li>
+  <li>Counsel that LTBI is not infectious, support completion and do not repeat the IGRA to judge cure.</li>
+</ul>
+
+<h2 class="ct-h2">References</h2>
+<div class="ct-refs">
+  <ol class="ct-ref-list">
+    <li>Centers for Disease Control and Prevention. Guidelines for treatment of latent tuberculosis infection. <em>MMWR Recomm Rep</em>. 2020;69(1):1-11.</li>
+    <li>Lewinsohn DM, et al. Official American Thoracic Society/Infectious Diseases Society of America/Centers for Disease Control and Prevention clinical practice guidelines: diagnosis of tuberculosis in adults and children. <em>Clin Infect Dis</em>. 2017;64(2):e1-e33.</li>
+    <li>World Health Organization. WHO consolidated guidelines on tuberculosis: preventive treatment. Geneva: WHO; 2020 (update 2024 module).</li>
+    <li>Qiagen. QuantiFERON-TB Gold Plus package insert. Current version — interpretation criteria and indeterminate definitions.</li>
+  </ol>
+</div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Interpreting a QuantiFERON-TB Gold Plus and next steps in latent tuberculosis infection</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

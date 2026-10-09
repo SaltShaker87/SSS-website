@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prosthetic joint infection: diagnosis and management — IDSA Chalk Talk</title>
+<meta name="description" content="A practical framework for diagnosing and managing prosthetic joint infection — when to suspect it, how to prove it, and how to choose between retention, one-stage, and two-stage exchange.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Prosthetic joint infection: diagnosis and management — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Orthopaedic infection</p>
+        <h1 class="ct-h1">Prosthetic joint infection: diagnosis and management</h1>
+        <p class="ct-subtitle">When to suspect it, how to prove it without over-testing, and how to choose the right surgical strategy</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 14 min</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 68-year-old man with a left total knee arthroplasty placed 18 months ago presents with 3 weeks of progressive knee pain, swelling, and stiffness. He is afebrile. The knee is warm with a moderate effusion but no sinus tract or wound drainage. Erythrocyte sedimentation rate (ESR) is 48 mm/hr and C-reactive protein (CRP) is 32 mg/L. Synovial fluid shows 28,000 leukocytes/µL with 89% neutrophils. Two preoperative cultures are pending. He asks whether the joint can be saved.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Classify prosthetic joint infection (PJI) by timing and pathogenesis to predict likely organisms and biofilm maturity.</li>
+          <li>Apply a structured diagnostic approach using inflammatory markers, synovial fluid analysis, and microbiology without over-interpreting single tests.</li>
+          <li>Distinguish the three core surgical strategies — debridement and retention, one-stage exchange, and two-stage exchange — and match each to the right clinical scenario.</li>
+          <li>Select empiric and targeted antibiotic regimens, including the role and timing of rifampin, and recognise when chronic suppression is appropriate.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why prosthetic joint infection matters</h2>
+      <p>Prosthetic joint infection is uncommon — complicating roughly 1 to 2% of primary hip and knee arthroplasties — but the absolute burden is large and growing as arthroplasty volume rises. When it occurs, it carries prolonged hospitalisation, repeated operations, functional loss, and mortality that approaches 5% at one year in older adults. For the internist, the challenge is not rarity but recognition: early symptoms overlap with aseptic loosening, crystal disease, and mechanical failure, and the window for joint-preserving intervention is short.</p>
+      <p>Pathogenesis hinges on <span class="ct-term">biofilm</span>. Bacteria adhere to the implant surface within hours and produce an extracellular polysaccharide matrix that shields them from both neutrophils and antibiotics. Once biofilm matures — generally over 3 to 4 weeks — eradication without removing or exchanging the prosthesis becomes unlikely. That single fact explains why timing, more than organism virulence, drives most management decisions.</p>
+      <p>The microbiology reflects skin, nares, and perioperative contamination. Early infections are dominated by virulent organisms such as <em>Staphylococcus aureus</em> and gram-negative bacilli. Delayed infections more often involve lower-virulence biofilm formers including coagulase-negative staphylococci, <em>Cutibacterium acnes</em> (formerly <em>Propionibacterium acnes</em>), and enterococci. Late haematogenous infections mirror bloodstream sources — <em>S. aureus</em>, beta-haemolytic streptococci, and, in the appropriate host, <em>Cutibacterium</em> or gram-negatives after bacteraemia from skin, urinary, dental, or gastrointestinal sources.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Biofilm age matters more than symptom age. A joint infected for 3 weeks after an acute haematogenous seeding may still have immature biofilm amenable to retention; a joint with low-grade pain for 3 months has mature biofilm even if the patient feels acutely worse today.</p>
+      </div>
+
+      <h2 class="ct-h2">Classifying prosthetic joint infection by timing</h2>
+      <p>Classification is not taxonomy for its own sake — it predicts organism, biofilm state, and surgical options. Three categories are used in practice, and every source of confusion on call comes from blurring them.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Timing-based classification of prosthetic joint infection</caption>
+          <thead>
+            <tr><th>Category</th><th>Onset after implantation</th><th>Typical mechanism</th><th>Usual organisms</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Early postoperative</td><td>&lt; 3 months</td><td>Intraoperative inoculation</td><td><em>S. aureus</em>, gram-negative bacilli, polymicrobial</td></tr>
+            <tr><td>Delayed / low-grade</td><td>3–24 months</td><td>Intraoperative inoculation, indolent course</td><td>Coagulase-negative staphylococci, <em>C. acnes</em>, enterococci</td></tr>
+            <tr><td>Late / haematogenous</td><td>&gt; 24 months, or any time with acute bacteraemic seeding</td><td>Haematogenous from distant site</td><td><em>S. aureus</em>, streptococci, gram-negatives</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Early infection presents within weeks with wound erythema, persistent drainage, fever, and acute joint pain and effusion. Delayed infection is the great mimicker: months of unexplained pain, subtle stiffness, or premature loosening without dramatic inflammatory signs. Late infection is abrupt — a previously well-functioning joint becomes painful and swollen over days, often with fever and bacteraemia, weeks to years after implantation.</p>
+      <p>Two practical pearls follow. First, ask about every bacteraemia. A patient with a prosthesis who had <em>S. aureus</em> bacteraemia last month and now has joint pain has PJI until proven otherwise, even if the joint was implanted a decade ago. Second, a sinus tract communicating with the prosthesis is by itself diagnostic — it bypasses the need for further confirmatory criteria.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The 2013 Infectious Diseases Society of America (IDSA) PJI guideline formalised these timing categories. The 2018 Musculoskeletal Infection Society (MSIS) definition later refined diagnostic criteria (see below). Both remain the framework most institutions still use; newer European and international consensus definitions have not replaced them in US practice.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A woman with a hip arthroplasty placed 5 years ago develops acute left hip pain and fever 10 days after <em>S. aureus</em> bacteraemia from cellulitis. The hip was painless until this week. Which category best fits, and what does it imply about biofilm?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Delayed postoperative infection with mature biofilm; retention is unlikely to succeed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Late haematogenous infection with biofilm of only ~10 days duration; debridement and retention may be feasible if caught early</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Early postoperative infection; treat with wound care alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Aseptic loosening; infection is unlikely because implantation was 5 years ago</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Late haematogenous infection is defined by bacteraemic seeding, not by time since implantation alone. Biofilm age is counted from the seeding event — here about 10 days — so despite the 5-year-old prosthesis, biofilm may still be immature and debridement with retention can be considered if strict criteria are met and symptoms are truly acute. The trap is to treat this as chronic loosening because the implant is old.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">How to make the diagnosis without fooling yourself</h2>
+      <p>No single test proves or excludes PJI. The diagnosis is a synthesis, and each piece has known pitfalls. Use a structured approach in every suspected case.</p>
+
+      <h3 class="ct-h3">Start before the joint: history, exam, and inflammatory markers</h3>
+      <p>History should probe time course, prior wound complications, recent bacteraemia or invasive procedures, antibiotic exposure, and function. On exam, look for sinus tract, wound drainage, effusion, erythema, and range of motion compared with baseline. Sinus tract and visible purulence around the prosthesis are major criteria on their own.</p>
+      <p>ESR and CRP (C-reactive protein) are sensitive screening tools but not specific. In chronic PJI both are elevated in roughly 85–95% of cases, but they may be normal in low-grade infection with <em>C. acnes</em> or coagulase-negative staphylococci, and they are commonly elevated for non-infectious reasons early postoperatively. A normal ESR and CRP make chronic PJI less likely but never exclude it, and an isolated elevation should not alone prompt aspiration.</p>
+
+      <h3 class="ct-h3">Synovial fluid is the workhorse</h3>
+      <p>When infection is plausible and there is no compelling alternative, aspirate the joint — ideally before antibiotics and with strict aseptic technique. Send fluid for total leukocyte count with differential, aerobic and anaerobic cultures, and, where available, leukocyte esterase and alpha-defensin if the diagnosis remains ambiguous. Do not send synovial fluid for culture in routine crystal analysis tubes; use dedicated blood culture bottles or sterile containers per local microbiology guidance.</p>
+      <p>Thresholds that best separate infection from aseptic failure (outside the early postoperative period) are a synovial leukocyte count above approximately 3,000 cells/µL with neutrophils above 80% for chronic PJI, and higher cutoffs — often 10,000 cells/µL — for acute PJI. The exact numbers vary by definition set, but the principle is consistent: markedly cellular fluid with neutrophil predominance strongly favours infection, while counts below 1,500 cells/µL argue against it. Interpret counts cautiously within 6 weeks of implantation or in inflammatory arthropathy, where baseline cell counts are higher.</p>
+      <p>Leukocyte esterase (positive at ++ on colorimetric strip) and alpha-defensin have reasonable sensitivity but add value primarily when pretest probability is intermediate — for example, equivocal counts or prior antibiotics. They do not replace culture and should not override a convincing clinical picture.</p>
+
+      <h3 class="ct-h3">Microbiology: get it right, and do not sabotage it</h3>
+      <p>Culture remains the cornerstone. Obtain at least two, ideally three to five, separate deep tissue or synovial fluid cultures — not swabs of sinus tracts or superficial wounds, which reflect colonisers. Hold cultures for extended incubation (up to 14 days) when <em>C. acnes</em> or other slow growers are suspected, particularly in shoulder arthroplasty. A single positive culture for a virulent organism such as <em>S. aureus</em> in the right clinical context may be significant, but for common contaminants such as coagulase-negative staphylococci, at least two concordant positive specimens are needed to avoid overcalling contamination.</p>
+      <p>Hold antibiotics before aspiration and intraoperative sampling whenever feasible. If the patient is septic or the clinical situation demands immediate antibiotics, draw cultures first and document that prior antibiotics reduce culture yield. Sonication of explanted hardware and prolonged tissue culture improve sensitivity when preoperative cultures are negative, and histopathology showing acute inflammation (≥ 5 neutrophils per high-power field in ≥ 5 fields) provides supportive evidence, especially in culture-negative cases.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Starting empiric vancomycin and piperacillin-tazobactam in the emergency department before aspiration in a stable patient with suspected chronic PJI. In the stable patient, antibiotics sterilise cultures and rarely help; in the septic patient, draw cultures first. Coordinate with orthopaedics before the first dose whenever the patient can tolerate a brief delay.</p>
+      </div>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Simplified synthesis: features that support prosthetic joint infection*</caption>
+          <thead>
+            <tr><th>Domain</th><th>Findings that increase likelihood</th><th>Caveats</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Clinical</td><td>Sinus tract to joint; prior wound drainage; acute effusion after bacteraemia</td><td>Sinus tract alone is diagnostic; absence does not exclude</td></tr>
+            <tr><td>Systemic markers</td><td>Elevated ESR and CRP</td><td>May be normal in low-virulence infection; nonspecific early postoperatively</td></tr>
+            <tr><td>Synovial fluid</td><td>Leukocytes &gt; 3,000/µL chronic (&gt; 10,000/µL acute) with &gt; 80% neutrophils; positive leukocyte esterase or alpha-defensin</td><td>Interpret cautiously within 6 weeks of implantation or with inflammatory arthritis</td></tr>
+            <tr><td>Microbiology / histology</td><td>≥ 2 concordant positive cultures (or 1 virulent organism with compatible syndrome); ≥ 5 neutrophils per high-power field in 5 fields; positive sonication</td><td>Single coagulase-negative staphylococcus may be contaminant; prior antibiotics lower yield</td></tr>
+            <tr><td>Imaging</td><td>Early loosening, periostitis, or effusion on radiograph; nuclear imaging where indicated</td><td>Imaging supports but never rules out PJI</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>*Adapted from IDSA 2013 and MSIS 2018 frameworks; thresholds are approximate and vary by definition set. Use your institution's adopted criteria.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A dry aspiration is not a negative workup. If clinical suspicion is moderate to high, proceed to image-guided aspiration or intraoperative tissue sampling rather than reassuring the patient. Blood cultures are mandatory whenever haematogenous seeding is possible.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 72-year-old woman with a knee arthroplasty placed 14 months ago has 2 months of pain and stiffness. ESR 22 mm/hr, CRP 8 mg/L, both just above normal. Synovial leukocytes 1,800/µL with 62% neutrophils, one of two cultures grows <em>Staphylococcus epidermidis</em>. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Diagnose definite PJI and proceed to two-stage exchange on this single culture</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Treat as possible low-grade PJI — repeat aspiration with multiple tissue cultures and hold for extended incubation before committing to major revision</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Exclude PJI because ESR and CRP are only mildly elevated</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send a sinus tract swab for culture to confirm</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is the classic delayed, low-grade presentation where markers and counts sit in the grey zone and a single coagulase-negative isolate may be contaminant. One positive culture does not meet criteria for a common contaminant organism — you need concordant positives. Superficial swabs mislead. The correct move is to build a better microbiologic dataset before committing to a two-stage exchange.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Choosing the surgical strategy</h2>
+      <p>Antibiotics alone almost never cure PJI when the prosthesis remains. The choice is surgical first, medical second. Three strategies exist, and the job of the medical team is to understand their prerequisites so the patient is properly selected and counselled.</p>
+
+      <h3 class="ct-h3">Debridement, antibiotics, and implant retention (DAIR)</h3>
+      <p>DAIR means opening the joint, excising infected tissue, exchanging modular components (liner, head), copiously irrigating, and retaining the fixed prosthesis. It offers the least morbidity and preserves bone stock, but it only works when biofilm is immature and the implant is stable. Ideal candidates have symptoms for fewer than approximately 3 to 4 weeks, a stable prosthesis without loosening, no sinus tract, and a pathogen susceptible to biofilm-active therapy. DAIR fails predictably when symptoms have smouldered for months, the implant is loose, or the organism is difficult to treat such as meticillin-resistant <em>S. aureus</em> (MRSA) with limited options or <em>Candida</em>.</p>
+      <p>When DAIR is chosen, act quickly — delays beyond a few weeks of symptoms sharply lower success rates — and ensure the surgeon exchanges modular parts rather than simply washing the joint. Arthroscopic washout alone is inadequate.</p>
+
+      <h3 class="ct-h3">One-stage exchange</h3>
+      <p>One-stage exchange removes the prosthesis, debrides thoroughly, and reimplants a new joint in the same operation, followed by antibiotics. It avoids a second major operation and prolonged spacer period, and selected centres report success rates comparable to two-stage when patients are carefully chosen: adequate soft tissue, known pathogen with effective antibiotics, absence of severe bone loss, and no history of prior failed PJI treatment. It is not appropriate when the organism is unknown, susceptibility is unfavourable, or soft-tissue coverage is poor.</p>
+
+      <h3 class="ct-h3">Two-stage exchange</h3>
+      <p>Two-stage exchange remains the workhorse in North America for chronic PJI with mature biofilm, loosened prosthesis, sinus tract, or difficult organisms. Stage one removes the implant, places an antibiotic-loaded spacer, and delivers local plus systemic antibiotics. After weeks of therapy and clinical quiescence, stage two reimplants. The traditional interval is often quoted as 4 to 6 weeks or longer; in practice it hinges on wound healing, inflammatory marker trends, and organism. Success rates are generally the highest of the three strategies for chronic infection, at the cost of two operations, spacer complications, and prolonged immobility. Discuss expectations early — many patients will be non-weight-bearing or partially so between stages.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If the implant is loose, has a sinus tract, or symptoms have lasted months, biofilm is mature — do not propose DAIR to spare the patient an exchange. Offering the wrong operation wastes the one best chance at cure.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Aspiring the joint after antibiotics were started, getting sterile cultures, and concluding the joint is not infected. Negative cultures after antibiotics are uninterpretable. If antibiotics were given prematurely, tell the surgical and microbiology teams explicitly and consider holding antibiotics for at least 2 weeks before repeat sampling when the patient is stable.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 58-year-old man with a hip arthroplasty placed 3 weeks ago has wound drainage, fever, and a stable prosthesis on imaging. Intraoperative cultures grow meticillin-susceptible <em>S. aureus</em> (MSSA). Symptoms began 5 days ago. Which surgical strategy best fits?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">DAIR with exchange of modular components and biofilm-active antibiotics, given short symptom duration and stable implant</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Chronic oral suppression without surgery</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Immediate two-stage exchange regardless of timing, because <em>S. aureus</em> always requires two stages</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Aspiration and antibiotics alone without surgical debridement</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Early postoperative infection with a stable implant and very short symptom duration is the classic DAIR indication. Two-stage is overtreatment here and carries extra morbidity; antibiotics alone will not clear biofilm on retained hardware. Chronic suppression is not a curative strategy for a fit patient with an acute, treatable infection.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Antibiotics: what to start, when to narrow, and how long</h2>
+      <p>Coordinate every antibiotic decision with orthopaedics and infectious disease consultation. The principles below reflect standard PJI practice but must be confirmed against local antibiograms and pharmacy review.</p>
+      <p>Do not start antibiotics before cultures in the stable patient. In the acutely ill or bacteraemic patient, draw two sets of blood cultures and joint cultures first, then start empiric therapy. Empiric regimens typically cover gram-positive organisms including MRSA — often vancomycin — plus gram-negative coverage when risk factors exist, with later tailoring once susceptibilities return. Adjust for renal function, allergy history, and prior microbiology.</p>
+      <p>Targeted therapy is pathogen-directed and usually prolonged. After resection or exchange, many centres deliver 4 to 6 weeks of intravenous or highly bioavailable oral therapy, followed by an oral tail depending on organism and construct. After DAIR, total duration is often longer, commonly 12 weeks, with early transition to oral agents when susceptibility and absorption allow. Durations are not arbitrary — they reflect the need to treat residual biofilm and bone — but the exact weeks should follow the operative plan and consultant guidance, not a memorised number alone.</p>
+      <p>Rifampin deserves special caution. It is highly active against staphylococcal biofilm but must never be used alone, and it should not be started until the bacterial burden has been reduced (operative debridement), susceptibilities are known, and companion agents are already present. Starting rifampin empirically or as monotherapy selects for resistance and can sacrifice its benefit. When used, it is typically added to a backbone such as a beta-lactam or vancomycin for MSSA or MRSA, with attention to drug interactions — rifampin is a potent cytochrome P450 inducer that lowers levels of warfarin, direct oral anticoagulants, and many other agents — and to hepatotoxicity.</p>
+      <p>For streptococcal and enterococcal PJI, beta-lactams remain first-line when susceptible, often with consideration of combination therapy per infectious disease guidance. For gram-negative PJI, fluoroquinolones with biofilm activity may play a role when susceptibility permits, but they should not be used empirically before susceptibilities return. <em>Candida</em> PJI requires antifungals and almost always explantation; bacterial biofilm-active concepts do not translate.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Never add rifampin on day one in the emergency department. Wait for debridement, confirm staphylococcal PJI with susceptibilities, ensure at least one active companion drug is on board, and then add rifampin deliberately with drug-interaction review.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The evidence base for PJI antibiotic duration comes largely from observational cohorts and the IDSA 2013 guideline rather than large randomised trials specific to each surgical strategy. Because of that, recommendations have shifted toward more oral step-down and shorter intravenous courses where bioavailability is excellent — but any change should be explicitly endorsed by your treating infectious disease team.</p>
+      </div>
+
+      <h2 class="ct-h2">When retention fails and when suppression is the kindest option</h2>
+      <p>Not every patient can undergo exchange. Frailty, severe bone loss, unacceptable anaesthetic risk, patient preference after informed discussion, or a pathogen with no reliably curative regimen may make curative surgery impossible or unwise. In those settings, chronic oral antibiotic suppression — after initial debridement and a course of therapy — can control symptoms, reduce drainage, and preserve function, even though it rarely eradicates infection while hardware remains.</p>
+      <p>Suppression is a deliberate long-term commitment, not a default for inadequate debridement. Candidate patients have a stable prosthesis, have completed an initial course of therapy, can tolerate the suppressive agent, and understand that the goal is control rather than cure and that breakthrough, resistance, and drug toxicity remain possible. Agents are chosen for tolerability and sustained activity against the known pathogen — for example, a beta-lactam or trimethoprim-sulfamethoxazole for susceptible staphylococci or streptococci, or an oral agent matched to a gram-negative — with regular monitoring for adverse effects and interactions. Document the indication, the planned duration (often indefinite), and the stopping criteria clearly; suppression should never obscure a deteriorating joint that needs re-evaluation.</p>
+      <p>Revisit suppression annually at minimum, and sooner if pain worsens, sinus tract recurs, or the patient develops drug toxicity. Any new bacteraemia in a suppressed patient merits prompt reassessment — it may represent breakthrough seeding or a new source that threatens the prosthesis anew.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Suppression controls, it rarely cures. If you choose it, name the goal out loud to the patient — fewer symptoms, not sterile hardware — and schedule monitoring for toxicity and failure rather than prescribing indefinitely and looking away.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">An 84-year-old woman with a chronically infected total knee, a loose tibial component, and severe cardiopulmonary disease is deemed unfit for two-stage exchange. She has completed 6 weeks of therapy for MSSA PJI and the wound has healed, but the prosthesis remains. What is the most appropriate next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop all antibiotics and observe, because 6 weeks is curative even with retained hardware</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Discuss chronic oral suppression with a well-tolerated active agent, with explicit goals and monitoring, given the retained hardware and inoperability</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add rifampin alone as chronic monotherapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Schedule DAIR now, 4 months after symptom onset with a loose component</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>With retained hardware, prior therapy alone does not sterilise biofilm. In a patient unfit for exchange, chronic suppression for symptom control is the most appropriate goal-concordant option. Rifampin monotherapy selects resistance and is unsafe, and DAIR with a loose component and months of symptoms has poor success and is not correct here.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Think biofilm age, not just symptom severity — less than about 3 to 4 weeks of symptoms with a stable implant may allow debridement and retention with modular exchange; mature biofilm, loosening, or sinus tract usually requires one-stage or two-stage exchange.</li>
+        <li>No single test diagnoses PJI. Combine history and exam (including sinus tract), ESR and CRP, synovial leukocyte count with differential — roughly &gt; 3,000/µL chronic and &gt; 10,000/µL acute, &gt; 80% neutrophils — and at least 2 to 3 deep cultures off antibiotics when the patient is stable.</li>
+        <li>Hold antibiotics before aspiration and intraoperative sampling in the stable patient; if antibiotics were already given, disclose it and consider repeat sampling off antibiotics. Never diagnose PJI from a superficial swab and never require a swab to exclude it.</li>
+        <li>Choose surgery first, antibiotics second: DAIR for acute, stable, early biofilm; one-stage exchange in selected patients with known susceptible organisms and good soft tissue; two-stage exchange for chronic, loose, or difficult infections.</li>
+        <li>If you use rifampin for staphylococcal PJI, start it only after debridement with an active companion drug on board and after reviewing drug interactions. Chronic suppression is control, not cure — reserve it for patients who cannot undergo curative surgery and monitor it actively.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Osmon DR, Berbari EF, Berendt AR, et al. Diagnosis and management of prosthetic joint infection: clinical practice guidelines by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2013;56(1):e1-e25.</li>
+          <li>Parvizi J, Tan TL, Goswami K, et al. The 2018 definition of periprosthetic hip and knee infection: an evidence-based and validated criteria. <em>J Arthroplasty</em>. 2018;33(5):1309-1314.</li>
+          <li>Zimmerli W, Trampuz A, Ochsner PE. Prosthetic-joint infections. <em>N Engl J Med</em>. 2004;351(16):1645-1654.</li>
+          <li>Tande AJ, Patel R. Prosthetic joint infection. <em>Clin Microbiol Rev</em>. 2014;27(2):302-345.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Prosthetic joint infection: diagnosis and management</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

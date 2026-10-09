@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach to lymphocytic (aseptic) meningitis: ID perspective — IDSA Chalk Talk</title>
+<meta name="description" content="When cerebrospinal fluid shows a lymphocytic pleocytosis — how to sort viral, partially treated bacterial and non-infectious causes.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Approach to lymphocytic (aseptic) meningitis: ID perspective — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 26-year-old graduate student presents in late August with two days of fever to 38.6°C, throbbing headache, photophobia and neck stiffness. She is alert with no focal deficits. A mild sore throat and myalgias last week preceded the headache. Head computed tomography (CT) is normal. Cerebrospinal fluid (CSF) shows white blood cells (WBC) 185 cells/µL with 88% lymphocytes, protein 78 mg/dL, glucose 58 mg/dL with serum glucose 92 mg/dL, and a negative Gram stain. You are asked whether to continue vancomycin, ceftriaxone and acyclovir.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain what <span class="ct-term">aseptic meningitis</span> means and why lymphocytic pleocytosis is a finding, not a diagnosis.</li>
+          <li>Generate a three-bucket differential — viral, non-viral infectious and non-infectious.</li>
+          <li>Interpret CSF cells, protein and glucose in context rather than as isolated thresholds.</li>
+          <li>Choose focused testing and decide when empiric therapy can be stopped safely.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Start with the label, not the diagnosis</h2>
+      <p><span class="ct-term">Aseptic meningitis</span> is a laboratory phrase, not a clinical diagnosis. It means meningeal inflammation — fever, headache, neck stiffness, photophobia and a <span class="ct-term">cerebrospinal fluid (CSF) pleocytosis</span> — with no bacteria on Gram stain and no growth on routine culture. That is all. It does not mean viral, benign or untreatable.</p>
+      <p><span class="ct-term">Lymphocytic meningitis</span> describes the predominant cell type. Most aseptic cases are lymphocytic, but early viral disease can be neutrophil-predominant and tuberculous, fungal and partially treated bacterial disease can also look lymphocytic. Hold both labels lightly until the story is clear.</p>
+      <p>From an infectious diseases (ID) perspective the CSF confirms meningitis; history and examination decide how worried to be and how broadly to test.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Wallgren coined aseptic meningitis in 1925 to separate clear-culture cases from purulent bacterial meningitis. Later work identified <em>lymphocytic choriomeningitis virus</em> and Coxsackie B viruses as common viral causes. The definition is now microbiologic, but the principle is unchanged: negative cultures shift probability, they do not make the case non-urgent.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Aseptic means no bacteria on routine culture — not no infection, not no treatment, and not no follow-up.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The student above has 185 WBC/µL, 88% lymphocytes, normal glucose and a negative Gram stain. What best reflects the next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Label it viral meningitis and discharge on supportive care.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Treat as meningitis of uncertain etiology and keep empiric coverage until bacterial disease and herpes simplex virus (HSV) encephalitis are reasonably excluded.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Count normal glucose as proof against tuberculosis or fungal disease.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Rely on enterovirus polymerase chain reaction (PCR) alone without bacterial studies.</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A single lymphocytic profile with normal glucose is common in viral disease but does not exclude early or partially treated bacterial, tuberculous or other causes. Keep antibacterials per local bacterial meningitis protocol and consider HSV encephalitis separately. Normal glucose makes tuberculosis less likely but never rules it out.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What lymphocytic pleocytosis actually means</h2>
+      <p>Normal CSF has 0 to 5 WBC/µL, all mononuclear. Pleocytosis is more than 5 WBC/µL. In viral meningitis counts are typically tens to a few hundred, predominantly lymphocytes, with normal or mildly elevated protein and usually normal glucose. Yet ranges overlap and timing matters.</p>
+      <p>Early enteroviral meningitis can be neutrophil-predominant for 6 to 24 hours before shifting to lymphocytes. A differential taken too early can mislead. Tuberculous, fungal, spirochetal and parameningeal infections also present with lymphocytic fluid but often with higher protein and lower glucose, though exceptions are frequent.</p>
+      <p>Use the whole fluid and the course, not one number: opening pressure, cell count and differential, glucose with simultaneous serum glucose, protein, Gram stain and tempo together shape probability.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Typical cerebrospinal fluid patterns — use as context, not rules</caption>
+          <thead>
+            <tr><th>Pattern</th><th>White blood cells</th><th>Protein</th><th>Glucose</th><th>Clues</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Viral (aseptic)</td><td>10 to 500/µL, lymphocytes; early neutrophils possible</td><td>Normal to mildly elevated</td><td>Usually normal; low in lymphocytic choriomeningitis virus and mumps</td><td>Summer or fall, upper respiratory or gastrointestinal prodrome</td></tr>
+            <tr><td>Acute bacterial</td><td>Hundreds to thousands/µL, neutrophils</td><td>Elevated</td><td>Low</td><td>Rapid onset, ill appearing, Gram stain often positive</td></tr>
+            <tr><td>Partially treated bacterial</td><td>Variable, may be lymphocytic</td><td>Elevated</td><td>Variable</td><td>Recent antibiotics, sterile culture</td></tr>
+            <tr><td>Tuberculous</td><td>50 to 500/µL, lymphocytes</td><td>Markedly elevated</td><td>Low, often &lt;40 mg/dL or &lt;50% serum</td><td>Subacute, cranial nerve findings, hydrocephalus</td></tr>
+            <tr><td>Fungal or cryptococcal</td><td>10 to 200/µL, lymphocytes</td><td>Elevated</td><td>Low to normal</td><td>Immunocompromise, elevated opening pressure</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Lymphocytes do not prove viral disease. Check glucose against serum glucose, protein and time course before narrowing.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Early enterovirus can look neutrophilic. If the story fits virus but the first differential is polymorphonuclear, the next count often tells the truth.</p>
+      </div>
+
+      <h2 class="ct-h2">The three-bucket differential</h2>
+      <p>Sort lymphocytic meningitis into three buckets and keep them on your note.</p>
+      <ul>
+        <li><strong>Viral</strong> — most common in immunocompetent adults. Non-polio <em>enterovirus</em> is first, then <em>herpes simplex virus type 2 (HSV-2)</em>, varicella-zoster virus (VZV) and less commonly <em>lymphocytic choriomeningitis virus (LCMV)</em>. Mumps, arboviruses such as West Nile virus, and acute human immunodeficiency virus (HIV) seroconversion also present this way. Enterovirus peaks in summer and fall.</li>
+        <li><strong>Non-viral infectious</strong> — the bucket that changes management: <em>Mycobacterium tuberculosis</em>, <em>Cryptococcus neoformans</em> and other fungi, <em>Borrelia burgdorferi</em>, <em>Treponema pallidum</em>, <em>Leptospira</em> spp. and partially treated bacterial meningitis.</li>
+        <li><strong>Non-infectious</strong> — drugs, autoimmunity and neoplasia. Triggers include nonsteroidal anti-inflammatory drugs (NSAIDs), trimethoprim-sulfamethoxazole and immune checkpoint inhibitors; systemic lupus erythematosus, sarcoidosis, Behçet disease and neoplastic meningitis produce similar fluid.</li>
+      </ul>
+      <p>An otherwise healthy young adult with an acute febrile headache and a viral-type CSF usually belongs in the first bucket. Immunocompromise, a subacute course over weeks, or systemic features push you to the other two.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Anchoring on summer enterovirus and missing what needs therapy. Recurrent lymphocytic meningitis is most often <em>HSV-2</em> (Mollaret meningitis). A chronic low-glucose course needs evaluation for tuberculosis, cryptococcus or malignancy, not a repeat enterovirus PCR.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>In adult aseptic meningitis series where a pathogen is sought, 30 to 60% remain without an identified agent despite polymerase chain reaction (PCR) testing, partly because non-infectious causes are not looked for.</p>
+      </div>
+
+      <h2 class="ct-h2">Viral causes you see every summer and fall</h2>
+      <p><em>Enterovirus</em> is the workhorse — fecal-oral or respiratory spread, short incubation, often a sore throat, myalgias, rash or diarrhea before headache dominates. Illness is self-limited over 5 to 10 days; care is supportive. CSF reverse transcription PCR is sensitive early.</p>
+      <p><em>Herpes simplex virus type 2</em> matters because it recurs. Primary genital infection may precede meningitis, but many patients report no genital history. Distinguish meningitis — clear sensorium, no focal deficits — from encephalitis — confusion, seizures or temporal lobe changes — which is a different disease with different urgency.</p>
+      <p><em>Lymphocytic choriomeningitis virus</em>, an arenavirus of house mice and hamsters, follows exposure to rodent excreta. A biphasic influenza-like prodrome that improves then relapses with meningitis, sometimes with orchitis, parotitis or rash, is described. CSF glucose is often low and leukopenia with thrombocytopenia may appear early. Diagnosis is serology or PCR; treatment is supportive.</p>
+      <p>Keep mumps, VZV, West Nile and acute HIV in peripheral vision by season, exposure and vaccination history, but let history invite them rather than testing everyone for everything.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Four questions narrow the viral bucket faster than a panel: rodents, sexual history, sick contacts and recent upper respiratory or gastrointestinal illness plus mosquito season and travel.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 34-year-old man has his third episode of aseptic meningitis in two years, each with 200 to 400 lymphocytes/µL and normal glucose; HSV PCR was once positive for HSV-2. What is most likely?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Recurrent enterovirus reinfection.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recurrent benign lymphocytic meningitis due to HSV-2 (Mollaret meningitis).</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tuberculous meningitis.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Nonsteroidal anti-inflammatory drug (NSAID)-induced meningitis.</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Recurrence is the clue. HSV-2 is the commonest cause of recurrent lymphocytic meningitis. Tuberculosis would be subacute with low glucose, and drug-induced disease recurs only with re-exposure.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When lymphocytic does not mean viral</h2>
+      <p>This section prevents harm. Several treatable diseases look lymphocytic if you stop at season and age.</p>
+      <p><strong>Partially treated bacterial meningitis</strong> can sterilize cultures and shift the differential toward lymphocytes while the patient remains acutely ill. Recent antibiotics before lumbar puncture should make you hesitant to stop therapy without senior review.</p>
+      <p><strong>Tuberculous meningitis</strong> evolves over one to three weeks with headache, fever, confusion or cranial nerve palsies. CSF typically shows 50 to 500 lymphocytes/µL, very high protein and low glucose, but early disease can be bland. A single normal glucose never excludes it.</p>
+      <p><strong>Cryptococcal and other fungal meningitis</strong> is subacute, often with markedly elevated opening pressure and headache as the dominant symptom, in hosts with impaired cell-mediated immunity. Serum and CSF cryptococcal antigen is sensitive.</p>
+      <p><strong>Spirochetal disease</strong> — Lyme meningitis with facial palsy or radiculoneuritis in endemic areas, syphilitic meningitis by sexual history — and <strong>drug-induced meningitis</strong> from NSAIDs, trimethoprim-sulfamethoxazole or checkpoint inhibitors, with onset hours to days after the new drug, also belong here. Neoplastic, sarcoid and vasculitic meningitis produce similar low-glucose, culture-negative fluid.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Stopping empiric antibiotics because the count is lymphocytic. Combine prior antibiotics, illness duration, immune status and the glucose-protein pattern, and involve ID and neurology early when the course is subacute or the host is immunocompromised.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Subacute or chronic lymphocytic meningitis with low glucose is tuberculosis, cryptococcus or malignancy until proven otherwise — not enterovirus.</p>
+      </div>
+
+      <h2 class="ct-h2">Sorting it at the bedside before the laboratory catches up</h2>
+      <p>A short framework for the night shift helps.</p>
+      <ol>
+        <li><strong>How fast?</strong> Hours with high fever and toxicity suggests bacterial or severe viral. Days to weeks with personality change or weight loss suggests tuberculosis, fungus or neoplasia.</li>
+        <li><strong>Who is the host?</strong> Immunocompromise, HIV status, transplant, corticosteroids, biologics, age and pregnancy reshape risk for cryptococcus, tuberculosis and drug-induced disease.</li>
+        <li><strong>What exposures?</strong> Rodents for LCMV, sexual history for HSV-2 and syphilis, ticks in Lyme regions, mosquito season for arboviruses, tuberculosis contacts, travel and new drugs.</li>
+        <li><strong>What syndrome?</strong> Meningitis with preserved cognition contrasts with encephalitis with confusion, seizures or focal deficits. Do not use meningitis pathways when encephalitis features are present.</li>
+      </ol>
+      <p>Kernig, Brudzinski and jolt accentuation are insensitive; absence does not exclude meningitis. For empiric therapy, continue antibacterials per local bacterial meningitis protocol until bacterial disease is reasonably excluded and cover HSV encephalitis separately when considered. In pure, well-appearing viral meningitis many clinicians stop antibacterials once bacterial features are deemed unlikely — make that decision explicitly.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Serum procalcitonin and CSF lactate can support bacterial versus viral discrimination in some studies, but thresholds vary and none replaces culture, Gram stain and judgment. Use them as adjuncts.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 68-year-old woman on prednisone presents with three weeks of headache, low-grade fever and mild confusion. CSF shows 110 lymphocytes/µL, protein 210 mg/dL, glucose 22 mg/dL with serum 98 mg/dL. Gram stain negative. What framing fits best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Enteroviral meningitis — supportive care.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">HSV-2 meningitis — HSV PCR only.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Subacute low-glucose lymphocytic meningitis — prioritise tuberculosis, cryptococcal or neoplastic work-up.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Partially treated bacterial meningitis.</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Weeks of symptoms, confusion, very high protein and very low glucose in an immunocompromised host does not fit enterovirus or HSV meningitis. Tuberculous, fungal or neoplastic meningitis is the working diagnosis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Testing without over-testing</h2>
+      <p>Order what changes care.</p>
+      <p>Every case needs: cell count and differential, protein, glucose with simultaneous serum glucose, Gram stain, bacterial culture and opening pressure. Document the pressure.</p>
+      <p><strong>Targeted PCR and antigen testing.</strong> In acute immunocompetent adults, <em>enterovirus</em> reverse transcription PCR and HSV PCR are highest yield. Add varicella-zoster virus PCR with zoster or cranial neuropathy, arbovirus testing in season, and LCMV serology or PCR with rodent exposure. Consider HIV testing when risk factors exist.</p>
+      <p><strong>Subacute or immunocompromised hosts</strong> need broader work-up: large-volume CSF for mycobacterial culture and nucleic acid amplification, cryptococcal antigen in serum and CSF, fungal culture, syphilis testing with CSF Venereal Disease Research Laboratory (VDRL) when indicated, Lyme testing in endemic regions, and cytology or flow cytometry if neoplasia is plausible.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Send enterovirus and HSV PCR early — delay lowers enterovirus yield. For the rest, let history choose the test.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Broad multiplex panels on every lymphocytic fluid detect latent herpesviruses and contaminants and create false positives. Order the test you would act on in that patient.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 19-year-old well-appearing student in August has CSF 120 lymphocytes/µL, protein 55 mg/dL, glucose 62 mg/dL with serum 90 mg/dL, negative Gram stain. Which approach fits best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Enterovirus and HSV PCR plus routine bacterial studies; hold broad testing unless course diverges.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Immediate tuberculosis PCR, fungal culture and Lyme serology for all patients.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No testing beyond cell count.</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat lumbar puncture in 24 hours before any PCR.</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>In an acute, immunocompetent young adult with a viral-type CSF, focused viral PCR plus bacterial studies is high yield. Broader testing is for subacute course, exposure or immunocompromise.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Aseptic meningitis means no bacteria on Gram stain or routine culture — not a final diagnosis. Lymphocytes are a clue, not a verdict.</li>
+        <li>Think in three buckets: viral (enterovirus most common, then HSV-2 and others), non-viral infectious (tuberculosis, cryptococcus, spirochetes, partially treated bacterial) and non-infectious (drugs, autoimmune, neoplastic).</li>
+        <li>Read the whole CSF and the course — cells with timing and differential, protein, glucose with serum glucose, opening pressure — and repeat early neutrophilic counts if the story fits virus.</li>
+        <li>History narrows faster than panels: tempo, host, exposures, and meningitis versus encephalitis syndrome.</li>
+        <li>Acute well-appearing viral meningitis needs supportive care; keep empiric antibacterials until bacterial disease is reasonably excluded. Subacute low-glucose disease needs urgent evaluation for tuberculosis, fungus or malignancy.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Tunkel AR, Hartman BJ, Kaplan SL, et al. Practice guidelines for the management of bacterial meningitis. <em>Clin Infect Dis</em>. 2004;39(9):1267-1284.</li>
+          <li>Wright WF, Pinto CN, Palisoc K, Baghli S. Viral (aseptic) meningitis: a review. <em>J Neurol Sci</em>. 2019;398:176-183.</li>
+          <li>Kupila L, Vuorinen T, Vainionpää R, Marttila RJ, Kotilainen P. Etiology of aseptic meningitis and encephalitis in an adult population. <em>Neurology</em>. 2006;66(1):75-80.</li>
+          <li>McGill F, Griffiths MJ, Bonnett LJ, et al. Incidence, aetiology and sequelae of viral meningitis in UK adults: a multicentre prospective observational cohort study. <em>Lancet Infect Dis</em>. 2018;18(9):992-1003.</li>
+          <li>Centers for Disease Control and Prevention. Lymphocytic choriomeningitis: about lymphocytic choriomeningitis. Updated January 30, 2025.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Approach to lymphocytic (aseptic) meningitis: ID perspective</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

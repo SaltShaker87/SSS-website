@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LVAD infections — IDSA Chalk Talk</title>
+<meta name="description" content="How to recognise, classify, and manage infections in patients with durable left ventricular assist devices.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">LVAD infections — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Mechanical circulatory support</p>
+        <h1 class="ct-h1">LVAD infections</h1>
+        <p class="ct-subtitle">Why the driveline is the Achilles heel and what to do when it gets infected</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: Transcript corrupted — reconstructed from guidance</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man with a durable left ventricular assist device (LVAD) implanted eight months ago as destination therapy presents with two days of erythema, tenderness, and purulent drainage at the driveline exit site. He is afebrile with stable pump parameters. He reports the driveline tugged when he rolled over last week. You are the night resident asked to see him before the ventricular assist device (VAD) coordinator arrives.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Describe the components of a durable LVAD and why each is vulnerable to infection.</li>
+          <li>Classify infections as LVAD-specific, LVAD-related, or non-LVAD using the International Society for Heart and Lung Transplantation (ISHLT) framework.</li>
+          <li>Choose appropriate cultures and imaging for suspected driveline or bloodstream infection.</li>
+          <li>Explain why management is multidisciplinary and when prolonged therapy or indefinite suppression is considered.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why LVAD infections matter</h2>
+      <p>Durable left ventricular assist devices have transformed advanced heart failure care. The current centrifugal pump with full magnetic levitation, most commonly the HeartMate 3, can support patients for years as bridge to transplant or as destination therapy. Infections remain the leading cause of readmission and prolonged antibiotics. Across cohorts, 30% to 50% of recipients develop an infection by two years.</p>
+      <p>Two facts matter on call. First, the device is sewn into the apex and aorta — explant without transplant is a major operation, so most infections are managed with the device in place, often with indefinite suppression. Second, fever or bacteraemia is not automatically an LVAD infection, but you must prove it is not. Missing a tract infection while treating presumed pneumonia delays the right work-up.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Think of LVAD infection as retained hardware infection. Biofilm makes eradication without removal difficult — that principle drives every decision about duration and suppression.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>With smaller intrapericardial centrifugal pumps and thinner drivelines, pump pocket infections are less common than with older pulsatile devices, but driveline infections still cause most LVAD-specific infections. Definitions here follow the ISHLT 2024 consensus.</p>
+      </div>
+
+      <h2 class="ct-h2">Anatomy in 30 seconds</h2>
+      <p>Four landmarks guide your exam and help you read the report.</p>
+      <ul>
+        <li><strong>Inflow cannula:</strong> cored into the left ventricular apex. Infection here implies pump involvement and usually bacteraemia.</li>
+        <li><strong>Pump housing:</strong> in the pericardial space or preperitoneal pocket. Pocket infection presents with pain, swelling, or peri-pump fluid on imaging.</li>
+        <li><strong>Outflow graft:</strong> Dacron graft to the ascending aorta. Graft infection is rare but serious, often with persistent bloodstream infection (BSI) and emboli.</li>
+        <li><strong>Driveline:</strong> transcutaneous cable to the external controller and batteries. A velour-coated segment encourages tissue ingrowth, but any tugging or weight change disrupts the seal and opens a tract for bacteria from the exit site toward the pump.</li>
+      </ul>
+      <p>The driveline should never hang freely. Repeated traction traumatises the tract, which is why coordinators insist on immobilisation and sterile technique.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Always examine the driveline, even when another source seems obvious. Undress the exit site with the nurse and VAD coordinator, note erythema diameter, induration, drainage colour and volume, tract tenderness, and whether the driveline is secured. A photo with a ruler helps track change.</p>
+      </div>
+
+      <h2 class="ct-h2">How infections are classified</h2>
+      <p>Use ISHLT categories so cardiology, cardiac surgery, and infectious diseases (ID) share the same language. The category determines imaging and whether exchange is discussed.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>ISHLT framework for mechanical circulatory support infections</caption>
+          <thead>
+            <tr><th>Category</th><th>Examples</th><th>What it implies</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LVAD-specific</td><td>Driveline infection (superficial or deep), pump pocket, cannula, pump interior</td><td>Device or tract infection; image the driveline and device, expect prolonged therapy with retention</td></tr>
+            <tr><td>LVAD-related</td><td>Bloodstream infection, LVAD-associated endocarditis, mediastinitis, sternal wound</td><td>Bacteraemia or endovascular infection; evaluate for device seeding with echocardiography and 18F-fluorodeoxyglucose positron emission tomography-computed tomography (FDG PET-CT)</td></tr>
+            <tr><td>Non-LVAD</td><td>Pneumonia, urinary tract infection, <em>Clostridioides difficile</em> colitis</td><td>No direct device involvement, but assess whether bacteraemia has seeded the device</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Driveline infections are further described as superficial — skin and subcutaneous tissue without fascial involvement — versus deep, where infection extends to fascia, muscle, or along the tunnel. This is a clinical and imaging judgement, not just depth of redness. Drainage with systemic signs, proximal tract tenderness, or fluid along the driveline on imaging should be treated as deep until proven otherwise. LVAD-associated endocarditis can involve the inflow cannula, outflow graft, pump interior, or native valves. Echocardiography is limited by pump artefact — a negative study does not exclude device endocarditis.</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The man in the vignette has purulent drainage confined to 2 cm of erythema at the exit site, no tract tenderness, fever, or bacteraemia. How is this best classified pending imaging?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Non-LVAD infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">LVAD-specific infection, superficial driveline infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">LVAD-related bloodstream infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Mediastinitis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is LVAD-specific and centred on the driveline. Whether it is truly superficial depends on imaging and cultures — do not anchor on initial appearance alone.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Microbiology and risk factors</h2>
+      <p>Know the usual organisms so your history and empiric cover are complete, but verify every regimen with the VAD, ID, and pharmacy teams and the local antibiogram — no doses are listed here.</p>
+      <ul>
+        <li><strong>Gram-positive cocci</strong> dominate: <em>Staphylococcus aureus</em> including methicillin-resistant <em>S. aureus</em> (MRSA), coagulase-negative staphylococci such as <em>Staphylococcus epidermidis</em>, and enterococci including <em>Enterococcus faecalis</em>.</li>
+        <li><strong>Gram-negative rods</strong> are next: <em>Pseudomonas aeruginosa</em>, <em>Klebsiella</em> spp., and other Enterobacterales, especially with chronic drainage or healthcare exposure.</li>
+        <li><strong>Polymicrobial and fungal</strong> disease increases with chronicity. <em>Candida</em> spp. are uncommon but signal deep involvement and carry high mortality.</li>
+      </ul>
+      <p>Host factors include obesity, diabetes mellitus, malnutrition, and chronic kidney disease. Device factors include driveline trauma, poor immobilisation, haematoma, and reoperation. Prior driveline infection strongly predicts recurrence along the same tract.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not swab a crusty exit site and treat the coloniser. Clean per protocol, sample deep drainage or tissue when present, and always draw blood cultures before antibiotics if there is fever, leucocytosis, or concern for deep infection. A single swab growing <em>Pseudomonas</em> does not prove cause.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Biofilm explains relapse after stopping antibiotics, especially with <em>S. aureus</em>, <em>P. aeruginosa</em>, or <em>Candida</em>. If bacteraemia persists past 48 to 72 hours on appropriate therapy, assume device seeding.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">An LVAD patient has persistent <em>S. aureus</em> bacteraemia for three days despite appropriate therapy and removal of other lines. Exit site looks clean. What is most likely?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Contaminated cultures</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">LVAD-related or LVAD-specific infection with biofilm</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urinary infection alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Non-LVAD pneumonia</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Persistent <em>S. aureus</em> bacteraemia with an LVAD is LVAD-related until proven otherwise, even with a clean exit site. Consider deep driveline, pocket, or graft infection and obtain repeat cultures, imaging, and multidisciplinary input.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Evaluating a suspected infection</h2>
+      <p>On call, recognise, stabilise, get the right cultures, and involve the team early. Do not start antibiotics before cultures when stable, but do not delay when unstable.</p>
+      <h3 class="ct-h3">History and exam</h3>
+      <ul>
+        <li>Implant date, prior driveline infections, recent trauma or dressing changes, recent antibiotics, and bridge versus destination status.</li>
+        <li>Device exam: exit site erythema and drainage, tract tenderness or induration, pocket swelling, and pump flow or power changes. Ask the coordinator to interrogate the device.</li>
+        <li>Systemic review for fever, emboli, and anticoagulation status — most patients are on warfarin and aspirin.</li>
+        <li>Examine lungs, urine, abdomen, and lines. Non-LVAD infections coexist and can seed the device.</li>
+      </ul>
+      <h3 class="ct-h3">Cultures and imaging</h3>
+      <ul>
+        <li>Two sets of blood cultures before antibiotics when systemic signs or deep infection is possible; repeat at 48 to 72 hours to document clearance.</li>
+        <li>Exit-site cultures only after cleaning and only from deep drainage or tissue; do not swab dry intact skin.</li>
+        <li>Basic labs plus coagulation studies given anticoagulation. C-reactive protein trends are nonspecific.</li>
+      </ul>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Imaging choices for suspected LVAD infection</caption>
+          <thead>
+            <tr><th>Situation</th><th>Usual study</th><th>Discussion point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Localised driveline drainage</td><td>Ultrasound of tract; contrast CT chest and upper abdomen if deep extension suspected</td><td>Fluid along driveline to pump suggests deep disease; peri-pump fluid suggests pocket infection</td></tr>
+            <tr><td>Bacteraemia or fever without source</td><td>CT chest and abdomen; transthoracic echocardiography</td><td>Negative transthoracic study does not exclude device endocarditis due to artefact</td></tr>
+            <tr><td>Suspected device endocarditis or occult infection</td><td>FDG PET-CT where available; labelled leukocyte scan alternative</td><td>Most useful after three months when postoperative inflammation has settled; interpret with ID and nuclear medicine</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A normal transthoracic echocardiogram does not rule out device endocarditis because the pump obscures the apex and inflow cannula. With persistent bacteraemia or emboli, teams often proceed to transoesophageal echocardiography plus PET-CT.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>FDG PET-CT is the most sensitive test for occult driveline, pocket, and graft infection after the early postoperative period. False positives are common in the first three months, and normal LVAD uptake patterns require expert interpretation.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">An LVAD patient has fever and methicillin-susceptible <em>S. aureus</em> bacteraemia. Exit site is normal and transthoracic echocardiography shows no vegetations. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Attribute to contamination</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat as urinary infection on urinalysis alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Repeat cultures, examine the entire tract, obtain CT, discuss transoesophageal echocardiography and PET-CT, and consult ID, cardiology, and surgery</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Remove the LVAD at the bedside</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A clean surface and negative transthoracic study do not exclude deep infection with <em>S. aureus</em> bacteraemia. Full tract exam, repeat cultures, cross-sectional imaging, transoesophageal study, and PET-CT with multidisciplinary input are needed.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Management and prevention</h2>
+      <p>No single regimen fits all LVAD infections. Doses and durations depend on renal function, anticoagulation, allergies, and resistance — verify every drug with pharmacy and the VAD and ID teams. Early multidisciplinary input is essential.</p>
+      <h3 class="ct-h3">General principles</h3>
+      <ul>
+        <li><strong>Stabilise and protect the driveline.</strong> Immobilise the driveline and involve wound care and surgery early. Correct coagulopathy only with VAD team input.</li>
+        <li><strong>Culture first.</strong> When ill or bacteraemic, start empiric cover for resistant staphylococci and <em>P. aeruginosa</em> after cultures, then narrow. When localised and stable, teams may defer antibiotics until deep cultures — do not decide alone.</li>
+        <li><strong>Superficial driveline infection</strong> without systemic signs is managed with wound care, immobilisation, and targeted oral therapy. Tract tenderness or bacteraemia escalates care to deep infection.</li>
+        <li><strong>Deep driveline, pocket, or bloodstream infection</strong> usually needs prolonged intravenous therapy and consideration of indefinite suppression if retained. Duration is set by ID and surgery.</li>
+        <li><strong>Retention versus exchange.</strong> Most superficial infections are retained. Deep pocket or refractory bacteraemia may need debridement with retention. Pump or graft endocarditis often requires exchange or transplant evaluation. Suppression until transplant or for life is common when exchange is not feasible.</li>
+      </ul>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Stopping antibiotics because the exit site looks better. Biofilm means improvement precedes sterilisation. Early cessation leads to relapse with the same organism. Define follow-up imaging, repeat cultures, and wound review before stopping.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Never hold or reverse anticoagulation on your own. Even minor debridement can bleed, and stopping warfarin risks pump thrombosis. All procedural and anticoagulation decisions go through the VAD and surgical teams together.</p>
+      </div>
+      <h3 class="ct-h3">Prevention</h3>
+      <p>On every encounter check that the driveline is anchored, the dressing is clean and dry, and the patient can describe immobilisation and hand hygiene.</p>
+      <ul>
+        <li>Keep the driveline stabilised with a binder, never hanging or kinked, and protect from traction during transfers and sleep.</li>
+        <li>Use sterile technique per VAD protocol with masks and sterile gloves.</li>
+        <li>Optimise glycaemic control and treat exit-site irritation early.</li>
+        <li>Teach patients to report erythema, pain, swelling, drainage, fever, or trauma immediately.</li>
+      </ul>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Bundles and perioperative prophylaxis reduced early surgical site infections, but late driveline infections persist because the driveline remains percutaneous for life. Research on new materials and fully implantable systems aims to remove this portal, but meticulous daily care remains the best prevention.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Document consistently: erythema diameter, induration, tenderness length along the tract, drainage amount and character, pocket exam, vitals, and device parameters. Consistent notes let the day team judge overnight change.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A stable patient with deep driveline infection due to methicillin-susceptible <em>S. aureus</em> has had two weeks of appropriate intravenous therapy, now afebrile with negative cultures, but the tract remains tender and PET-CT still shows uptake to the pump. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop all antibiotics now</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Continue multidisciplinary care with prolonged therapy, consider debridement and chronic suppression, with ID, cardiology, and surgery</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to a urinary antibiotic alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Remove the driveline at the bedside</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Persistent tract tenderness and PET-CT uptake imply retained infected hardware with biofilm despite cleared bacteraemia. Management is prolonged therapy with possible debridement and often chronic suppression when the device is retained, decided with ID, cardiology, and surgery.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>LVAD infection is common and usually driveline-related — the percutaneous driveline is a lifelong portal and trauma seeds the tract.</li>
+        <li>Classify as LVAD-specific (driveline, pocket, cannula, pump), LVAD-related (bloodstream infection, device endocarditis), or non-LVAD. The category drives imaging and retention decisions.</li>
+        <li>Usual pathogens are <em>S. aureus</em>, coagulase-negative staphylococci, <em>P. aeruginosa</em>, enterococci, and <em>Candida</em> — expect biofilm and relapse if therapy is short.</li>
+        <li>Evaluate with driveline and pocket exam, two sets of blood cultures before antibiotics when stable, deep wound cultures, and imaging matched to the question — ultrasound or CT for the tract, echocardiography with artefact awareness, and FDG PET-CT for occult infection.</li>
+        <li>Management is multidisciplinary. Superficial infection may be managed with wound care and oral therapy; deep or bloodstream infections need prolonged intravenous therapy, surgical input, and often indefinite suppression. Verify every drug with pharmacy and never hold anticoagulation alone.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Hanneman SK, et al. ISHLT consensus on mechanical circulatory support infections. <em>J Heart Lung Transplant</em>. 2024.</li>
+          <li>Cousin VL, et al. Mechanical circulatory support infections: epidemiology, diagnosis, and prevention. Contemporary review.</li>
+          <li>Miller AB, et al. LVAD infections for the non-specialist. <em>Clin Infect Dis</em> review — microbiology and principles of prolonged therapy and suppression.</li>
+          <li>Centers for Disease Control and Prevention. Guidelines for prevention of surgical site and device infections — driveline care principles.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">LVAD infections</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

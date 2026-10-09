@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labs for a patient with newly diagnosed HIV — IDSA Chalk Talk</title>
+<meta name="description" content="A practical baseline lab panel after newly diagnosed HIV — what to order, why each test matters, and what should never delay antiretroviral therapy.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Labs for a patient with newly diagnosed HIV — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">HIV medicine</p>
+        <h1 class="ct-h1">Labs for a patient with newly diagnosed HIV</h1>
+        <p class="ct-subtitle">What to order on day one, why each test matters, and what should never delay antiretroviral therapy</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 29-year-old man is seen in primary care after a routine fourth-generation human immunodeficiency virus (HIV) antigen/antibody test returned reactive, with a positive HIV-1/HIV-2 differentiation assay for HIV-1. He feels well, reports no fever, weight loss, thrush, or genital symptoms, and has no prior HIV testing on record. His vital signs are normal. You have 15 minutes before his next patient arrives and a long problem list of orders to consider. What do you actually need to send today?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Confirm a new diagnosis of human immunodeficiency virus (HIV) and explain how cluster of differentiation 4 (CD4) count, plasma HIV RNA (viral load), and resistance testing guide care.</li>
+          <li>Select baseline labs that change antiretroviral therapy (ART) choice — including hepatitis B virus (HBV) serologies, renal and liver function, and human leukocyte antigen (HLA)-B*5701 when abacavir is considered.</li>
+          <li>Apply a once-at-diagnosis screen for co-infections and opportunistic infection risk — tuberculosis, syphilis, hepatitis A and C, <em>Toxoplasma</em>, and cryptococcal antigen when indicated — without delaying ART.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why the first panel matters more than getting every test right</h2>
+      <p>The day a patient learns they have human immunodeficiency virus (HIV) is crowded with emotions, disclosure, and logistics. The baseline panel does three jobs: it confirms the diagnosis, tells you how urgently to act, and prevents an antiretroviral therapy (ART) choice that harms kidneys, liver, or hepatitis B virus (HBV) control. It also establishes a metabolic anchor — when creatinine (Cr), weight, lipids, or glucose rise later, you know whether ART or something else is responsible.</p>
+      <p>The Department of Health and Human Services (DHHS) and the HIV Medicine Association list the same core set for every adult with newly diagnosed HIV, then add conditional tests by organ function, exposures, and cluster of differentiation 4 (CD4) count. Think in four buckets: confirm the virus, quantify immune and virologic burden, screen once for treatable co-infections, and capture organ function you will monitor.</p>
+      <p>One principle outweighs every checklist below: do not delay ART for labs. Genotype, human leukocyte antigen (HLA)-B*5701, and hepatitis results return in days. Start ART the same day or within days and adjust if a result forces a change.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Draw the baseline panel and offer same-day or rapid ART at the same visit. Waiting for a genotype or human leukocyte antigen (HLA)-B*5701 does not justify a delay that lets the virus replicate for another week.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The window after a new HIV diagnosis is also the moment patients are most likely to stay engaged. Bundling labs into a single blood draw, adding pregnancy testing for persons of childbearing potential, and scheduling a 1–2 week return for results reduces loss to follow-up.</p>
+      </div>
+
+      <h2 class="ct-h2">Confirm and characterise the virus</h2>
+      <p>Most new diagnoses arrive as a reactive fourth-generation HIV-1/2 antigen/antibody (Ag/Ab) combination assay, followed by an HIV-1/HIV-2 antibody differentiation assay. If that sequence is reactive for HIV-1, confirmatory plasma HIV ribonucleic acid (RNA) — the viral load — serves as both confirmation and baseline. When the initial Ag/Ab is reactive but differentiation is nonreactive or indeterminate, an HIV RNA test distinguishes acute infection (RNA detectable) from a false-positive screen (RNA undetectable).</p>
+      <p>Once HIV is confirmed, order three studies that describe the virus itself:</p>
+      <ul>
+        <li><span class="ct-term">Plasma HIV RNA (viral load)</span> — quantitative polymerase chain reaction (PCR) in copies per millilitre and log10. This is your treatment-response marker. A viral load drawn before ART lets you document suppression later and, if very high, signals urgency.</li>
+        <li><span class="ct-term">CD4 count and percentage</span> — absolute count in cells per microlitre and percentage of total lymphocytes. Count drives opportunistic infection prophylaxis and staging; percentage is less variable during acute illness.</li>
+        <li><span class="ct-term">Genotypic resistance testing</span> — reverse transcriptase and protease genotype plus integrase strand-transfer inhibitor (INSTI) genotype at entry to care, regardless of whether you plan immediate ART. Transmitted drug resistance is uncommon but clinically important, and the result often returns after you have already started therapy — you then tailor if needed.</li>
+      </ul>
+      <p>Order CD4 and viral load together on day one. Resistance testing requires plasma with detectable virus; if the viral load is undetectable on repeat (for example, an elite controller or a mislabelled acute case), the lab cannot amplify and will cancel the genotype. Do not repeat the fourth-generation screen as your confirmation — use RNA.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Re-checking a reactive fourth-generation assay instead of obtaining an HIV RNA misses acute infection and delays linkage. If Ag/Ab is reactive and differentiation is negative, the next step is plasma HIV RNA, not another antibody test.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 29-year-old with reactive HIV Ag/Ab and HIV-1 positive differentiation returns for baseline labs. Which trio is essential before or at ART start?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat HIV Ag/Ab in 3 months, CD4 count only, and HLA-B*5701</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Plasma HIV RNA (viral load), CD4 count and percentage, and genotypic resistance testing (including integrase)</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">HIV RNA only — CD4 and genotype can wait until symptoms appear</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">CD4 count, cryptococcal antigen, and toxoplasma IgM</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>HIV RNA and CD4 define baseline burden and immune status; genotype at entry guides ART even if started before the result returns. Repeating the screening Ag/Ab adds nothing once differentiation is positive, and IgM for toxoplasma is not the screening test — immunoglobulin G (IgG) is.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Labs that determine which ART you can safely use</h2>
+      <p>Modern ART is forgiving, but three lab groups still change your first prescription.</p>
+      <h3 class="ct-h3">Hepatitis B status</h3>
+      <p>Order hepatitis B virus (HBV) surface antigen (HBsAg), surface antibody (anti-HBs), and core antibody (anti-HBc) for every patient. If HBsAg is positive, choose an ART regimen with two agents active against HBV — typically tenofovir (tenofovir disoproxil fumarate or tenofovir alafenamide) plus lamivudine or emtricitabine — and do not stop the HBV-active backbone without hepatology input, because withdrawal can flare hepatitis. If all three are negative, plan vaccination; if anti-HBs alone is positive, document immunity.</p>
+      <h3 class="ct-h3">Renal and liver baseline</h3>
+      <p>Send a comprehensive metabolic panel (CMP) including creatinine with estimated glomerular filtration rate (eGFR), electrolytes, and hepatic panel, plus phosphate if you may use tenofovir. Add urinalysis with a urine protein–creatinine or albumin–creatinine ratio. Tenofovir disoproxil fumarate is avoided or dose-adjusted with renal dysfunction or proteinuria. A baseline also lets you interpret later Cr rises — dolutegravir and cobicistat inhibit tubular creatinine secretion and raise measured Cr by about 0.1–0.15 mg/dL without changing true glomerular filtration rate (GFR).</p>
+      <h3 class="ct-h3">HLA-B*5701 and tropism</h3>
+      <p>Order human leukocyte antigen (HLA)-B*5701 only if abacavir is under consideration; a positive result is a hard stop for abacavir because of hypersensitivity risk, and you must not rechallenge. Coreceptor tropism testing is not a baseline for everyone — reserve it for when a chemokine receptor 5 (CCR5) antagonist such as maraviroc is contemplated, which is uncommon at entry.</p>
+      <p>Add a complete blood count (CBC) with differential, and a pregnancy test for persons of childbearing potential — both influence ART selection and counselling — and document weight, blood pressure, and a medication and allergy history that captures drug–drug interactions.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Hepatitis B serologies are not academic. An HBsAg-positive patient who stops emtricitabine or tenofovir without a planned HBV-suppressive alternative can develop a severe hepatitis flare. Order the trio before the first prescription and act on it.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Glucose-6-phosphate dehydrogenase (G6PD) testing is sometimes ordered reflexively at HIV diagnosis. It is required before dapsone or primaquine, not before ART itself — send it if your prophylaxis plan may include those agents, rather than for every patient on day one.</p>
+      </div>
+
+      <h2 class="ct-h2">Screen once for co-infections you can treat, cure, or vaccinate against</h2>
+      <p>Many co-infections are silent until ART-induced immune reconstitution or progressive immunodeficiency reveals them. Screening at diagnosis finds them when treatment is simplest.</p>
+      <ul>
+        <li><strong>Hepatitis A virus (HAV):</strong> anti-HAV immunoglobulin G (IgG). If negative, vaccinate; hepatitis A is more severe with chronic liver disease and is vaccine-preventable.</li>
+        <li><strong>Hepatitis C virus (HCV):</strong> anti-HCV antibody with reflex HCV RNA if positive. HCV is curable, interacts with ART choice, and needs prompt referral.</li>
+        <li><strong>Syphilis and other sexually transmitted infections (STIs):</strong> syphilis screening (treponemal or reverse-sequence algorithm per lab), plus nucleic acid amplification test (NAAT) for <em>Neisseria gonorrhoeae</em> and <em>Chlamydia trachomatis</em> at exposed sites — urogenital, rectal, and pharyngeal as indicated by history — and trichomoniasis testing when indicated. Retest at least annually, more often with ongoing risk.</li>
+        <li><strong>Tuberculosis (TB):</strong> interferon-gamma release assay (IGRA), most often QuantiFERON-TB Gold Plus, plus symptom screen and chest radiography if IGRA is positive or symptoms or risk factors exist. A negative IGRA does not exclude active TB — evaluate clinically if cough, fever, or weight loss is present.</li>
+      </ul>
+      <p>Take a sexual, substance-use, and travel history the same day. It determines which sites to swab and whether to add hepatitis D, strongyloides, or endemic mycosis testing. For many residents, the reflex is to send “everything available” — focus instead on the once-at-diagnosis panel above, then tailor by exposure and geography.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Once-at-diagnosis infection screen — what you send today and why</caption>
+          <thead>
+            <tr><th>Test</th><th>What you are looking for</th><th>Action on result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HAV IgG</td><td>Prior immunity to hepatitis A virus</td><td>Vaccinate if negative</td></tr>
+            <tr><td>HBsAg, anti-HBs, anti-HBc</td><td>HBV infection or immunity</td><td>Choose HBV-active ART if HBsAg positive; vaccinate if all negative</td></tr>
+            <tr><td>HCV antibody with reflex RNA</td><td>HCV co-infection</td><td>Stage fibrosis, refer for curative direct-acting antivirals</td></tr>
+            <tr><td>Syphilis screen and gonorrhoea/chlamydia NAAT</td><td>Active STI, often asymptomatic</td><td>Treat per stage/site and retest; partner services</td></tr>
+            <tr><td>IGRA</td><td>Latent or active tuberculosis infection</td><td>Rule out active TB; treat latent TB after active disease excluded</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Anorectal and pharyngeal NAAT matters. A urine-only screen misses the majority of <em>Neisseria gonorrhoeae</em> and <em>Chlamydia trachomatis</em> infections in men who have sex with men — ask about sites of exposure and swab accordingly.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Which hepatitis B serology pattern means you must include tenofovir plus lamivudine or emtricitabine in the ART regimen and avoid stopping them abruptly?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Anti-HBs positive, HBsAg negative, anti-HBc negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">HBsAg positive</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Anti-HBc positive, HBsAg negative, anti-HBs negative (isolated core)</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">All three negative</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>HBsAg positivity denotes active HBV infection. Tenofovir plus lamivudine or emtricitabine suppresses both HIV and HBV; stopping either without an alternative HBV-active agent risks a hepatitis flare. Isolated core antibody needs clinical interpretation and HBV DNA, not automatic HBV-active ART, while vaccine-type immunity or a fully negative panel does not mandate HBV-active therapy.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Stratify opportunistic infection risk</h2>
+      <p>Opportunistic infection screening is selective, not universal. Order based on CD4 count, symptoms, and local epidemiology, and understand what threshold drives prophylaxis.</p>
+      <ul>
+        <li><strong><em>Toxoplasma gondii</em> IgG:</strong> send once for everyone. Seropositivity with a low CD4 count guides primary prophylaxis and later informs encephalitis evaluation. Immunoglobulin M (IgM) is not useful for this purpose.</li>
+        <li><strong>Cryptococcal antigen (CrAg):</strong> serum cryptococcal antigen for patients with CD4 counts below 100 cells per microlitre, or with headache, fever, or meningeal signs regardless of count. A positive CrAg with no meningitis triggers pre-emptive fluconazole; meningitis needs lumbar puncture.</li>
+        <li><strong>Cytomegalovirus (CMV) and varicella:</strong> CMV IgG is optional at entry and mainly helps if retinitis or colitis develops later; varicella-zoster virus IgG is useful if history is unclear.</li>
+        <li><strong>Endemic fungi and parasites:</strong> histoplasma antigen/antibody, coccidioidal serology, or strongyloides serology by exposure and geography or symptoms, not for every patient in a low-prevalence setting.</li>
+        <li><strong>Glucose-6-phosphate dehydrogenase (G6PD):</strong> quantitative G6PD level if dapsone or primaquine may be needed for <em>Pneumocystis jirovecii</em> prophylaxis; deficiency contraindicates those agents.</li>
+      </ul>
+      <p>Do not send Toxoplasma IgM, cryptococcal antigen for every patient with a normal CD4 count, or baseline bronchoalveolar lavage without symptoms. The talk paired each test with its threshold because “screen everyone for everything” generates positives you cannot act on.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Threshold-guided screening often taught with the new-diagnosis panel</caption>
+          <thead>
+            <tr><th>Test or action</th><th>Usual threshold</th><th>Principle</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Toxoplasma gondii</em> IgG</td><td>All patients at entry</td><td>Establish serostatus before CD4 falls</td></tr>
+            <tr><td>Serum cryptococcal antigen</td><td>CD4 &lt;100 cells/µL or central nervous system (CNS) symptoms</td><td>Detect subclinical cryptococcal infection</td></tr>
+            <tr><td>Primary <em>Pneumocystis jirovecii</em> pneumonia (PCP) prophylaxis discussion</td><td>CD4 &lt;200 cells/µL or thrush</td><td>Trimethoprim-sulfamethoxazole is preferred; glucose-6-phosphate dehydrogenase (G6PD) matters for alternatives</td></tr>
+            <tr><td>Chest imaging plus sputum evaluation</td><td>Positive TB screen or TB symptoms</td><td>Rule out active TB before latent TB treatment</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p><em>Toxoplasma gondii</em> IgG is a once-per-life test. Send it at diagnosis while the CD4 percentage is whatever it is — you will want that answer at 2 a.m. when the same patient returns with ring-enhancing lesions.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">For which patient is serum cryptococcal antigen most appropriate at entry?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A patient with CD4 620 cells/µL and no symptoms, as universal screening</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">A patient with CD4 45 cells/µL who reports two weeks of headache and nausea</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A patient with positive toxoplasma IgG and CD4 350 cells/µL</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A patient with latent tuberculosis on IGRA, CD4 400 cells/µL</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cryptococcal antigen screening is targeted: CD4 below about 100 cells per microlitre, or any patient with central nervous system symptoms. Universal screening at high CD4 counts is low yield and not recommended. Toxoplasma seropositivity and latent TB are managed separately.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Baseline organ function, metabolic risk, and safety labs</h2>
+      <p>The metabolic labs you draw today are the comparator for the next decade.</p>
+      <ul>
+        <li><strong>Kidney:</strong> creatinine with estimated glomerular filtration rate (eGFR) and urinalysis with protein quantification. Tenofovir disoproxil fumarate can cause proximal tubulopathy; many clinicians favour tenofovir alafenamide when eGFR is reduced or proteinuria is present.</li>
+        <li><strong>Liver:</strong> hepatic panel at baseline and after ART start, particularly with HBV or hepatitis C virus (HCV) co-infection or alcohol use.</li>
+        <li><strong>Haematology:</strong> complete blood count (CBC) with differential — cytopenias are common before ART and improve with suppression, but a low baseline informs workup and drug avoidance.</li>
+        <li><strong>Metabolic:</strong> fasting lipid panel and fasting glucose or hemoglobin A1c (HbA1c). Integrase strand-transfer inhibitors (INSTIs), particularly dolutegravir and bictegravir, are associated with weight gain; protease inhibitors and some nucleoside reverse transcriptase inhibitors (NRTIs) affect lipids and glucose. Document weight and blood pressure.</li>
+        <li><strong>Pregnancy:</strong> urine pregnancy test for persons of childbearing potential; consider vitamin D or bone density by risk, not universally on day one.</li>
+      </ul>
+      <p>Re-measure creatinine and hepatic panel 2–8 weeks after ART initiation, then every 3–6 months with HIV RNA and CD4. If creatinine rises modestly after dolutegravir or cobicistat without a rise in cystatin C or blood urea nitrogen (BUN) and without proteinuria, recognise benign inhibition of creatinine secretion before labelling it kidney injury.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Do not interpret a 0.1 mg/dL creatinine bump two weeks after dolutegravir or cobicistat as acute kidney injury until you have checked the pattern. Recheck cystatin C or estimated glomerular filtration rate (eGFR), review proteinuria, and look for other nephrotoxins first.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Coreceptor tropism testing was once ordered at entry to preserve a future maraviroc option. With INSTI-based regimens now standard, tropism testing at diagnosis has largely disappeared from practice — order it only if you are actually considering a CCR5 antagonist.</p>
+      </div>
+
+      <h2 class="ct-h2">Put it together: an order set that still lets you start ART today</h2>
+      <p>For the vignette patient — well, no opportunistic infection symptoms, reactive Ag/Ab with HIV-1 differentiation positive — a same-day plan looks like this:</p>
+      <ol>
+        <li>Confirm: plasma HIV RNA (viral load) — also your baseline — plus document the Ag/Ab and differentiation already done.</li>
+        <li>Immune and virologic baseline: CD4 count and percentage, genotypic resistance testing (reverse transcriptase, protease, and INSTI).</li>
+        <li>ART-safety labs: HBsAg, anti-HBs, anti-HBc; HAV IgG; HCV antibody with reflex RNA; CMP with eGFR, phosphate, hepatic panel; urinalysis with protein ratio; CBC; pregnancy test when appropriate; HLA-B*5701 if abacavir is possible.</li>
+        <li>Infection screen: syphilis test, gonorrhoea/chlamydia NAAT by exposure site, IGRA with symptom review and chest film if indicated, toxoplasma IgG, and G6PD if prophylaxis may require dapsone.</li>
+        <li>Metabolic baseline: fasting lipids, fasting glucose or HbA1c, weight and blood pressure.</li>
+        <li>Conditional by CD4: serum cryptococcal antigen if CD4 &lt;100 cells/µL or central nervous system symptoms; evaluate for <em>Pneumocystis jirovecii</em> prophylaxis at &lt;200 cells/µL.</li>
+      </ol>
+      <p>Plan an early return at 1–2 weeks to review genotype, HLA-B*5701, hepatitis, and renal labs; check HIV RNA at 2–8 weeks for a log10 drop and CD4 every 3–6 months until stable. Reinforce condom use, partner testing, and undetectable equals untransmittable (U=U) once viral load is sustained undetectable.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The most dangerous “abnormal lab” after a new HIV diagnosis is the one you forgot to send. A missing HBsAg or baseline creatinine forces a phone call to change ART after the patient has already left with a bottle. Use a standardised panel so you do not rely on memory at the end of a long day.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A newly diagnosed patient has CD4 180 cells/µL, HIV RNA 85,000 copies/mL, negative HBsAg, and eGFR 58 mL/min with 2+ protein on dipstick. HLA-B*5701 and genotype are pending. Which statement best reflects next steps?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Delay ART until genotype and HLA-B*5701 return</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Start ART now with a regimen that avoids tenofovir disoproxil fumarate and accommodates renal dysfunction; adjust if genotype dictates</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order cryptococcal antigen for all patients regardless of CD4 before any ART</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Skip toxoplasma IgG because CD4 is above 100 cells/µL</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>ART should not wait for genotype or HLA-B*5701 — start a regimen appropriate to renal function and HBV status and modify later if needed. Cryptococcal antigen is targeted to low CD4 or symptoms, not universal, and toxoplasma IgG is sent once at entry for everyone, not only those with very low counts.</p>
+        </div>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Ordering toxoplasma IgM, cytomegalovirus (CMV) PCR, or cryptococcal antigen universally wastes resources and creates false positives. Match each opportunistic infection test to seroprevalence logic or a CD4 threshold — IgG once, antigen when risk is real.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Confirm with plasma HIV RNA plus the reactive Ag/Ab and differentiation already done; interpret discordant screens with RNA, not repeat antibody testing.</li>
+        <li>Send CD4 count and percentage, HIV RNA (viral load), and genotypic resistance testing including integrase at entry — and start ART without waiting for results.</li>
+        <li>Send HBsAg, anti-HBs, and anti-HBc, comprehensive metabolic panel (CMP) with estimated glomerular filtration rate (eGFR) and urinalysis, and complete blood count (CBC); add HLA-B*5701 only if abacavir is considered, and pregnancy testing when appropriate.</li>
+        <li>Screen once for hepatitis A IgG, hepatitis C antibody (reflex RNA), syphilis, gonorrhoea/chlamydia nucleic acid amplification test (NAAT) by exposure site, and tuberculosis by interferon-gamma release assay (IGRA) with chest imaging if indicated.</li>
+        <li>Stratify opportunistic infection risk: <em>Toxoplasma gondii</em> IgG once for all, cryptococcal antigen if CD4 &lt;100 cells/µL or neurologic symptoms, and assess <em>Pneumocystis</em> prophylaxis around CD4 &lt;200 cells/µL; check glucose-6-phosphate dehydrogenase (G6PD) only if dapsone or primaquine may be used.</li>
+        <li>Capture fasting lipids and glucose or hemoglobin A1c (HbA1c) plus weight as your metabolic baseline, then recheck HIV RNA, CD4, creatinine, and hepatic panel on a clear follow-up schedule.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Panel on Antiretroviral Guidelines for Adults and Adolescents. Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV. Department of Health and Human Services. Updated 2024. Available at https://clinicalinfo.hiv.gov.</li>
+          <li>Thompson MA, Horberg MA, Agwu AL, et al. Primary care guidance for persons with human immunodeficiency virus: 2020 update by the HIV Medicine Association of the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2021;73(11):e3572-e3605.</li>
+          <li>Centers for Disease Control and Prevention and Association of Public Health Laboratories. Laboratory testing for the diagnosis of HIV infection: updated recommendations. Published June 27, 2014.</li>
+          <li>Gandhi RT, Bedimo R, Hoy JF, et al. Antiretroviral drugs for treatment and prevention of HIV infection in adults: 2022 recommendations of the International Antiviral Society-USA panel. <em>JAMA</em>. 2023;329(1):63-84.</li>
+          <li>Panel on Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents with HIV. Guidelines for the Prevention and Treatment of Opportunistic Infections in HIV-Infected Adults and Adolescents. Updated 2024. Available at https://clinicalinfo.hiv.gov.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Labs for a patient with newly diagnosed HIV</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

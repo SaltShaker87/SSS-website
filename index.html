@@ -230,6 +230,22 @@
   .badge.concept{background:var(--concept)}
   .badge.beta{background:var(--beta)}
 
+  /* ============ CHALK TALKS ============ */
+  .ct-promo .win-body{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .ct-promo-text{flex:1;min-width:240px}
+  .ct-promo h3{font-size:15px;margin-bottom:6px}
+  .ct-promo p{font-size:13px;line-height:1.5;margin-bottom:10px;max-width:62ch}
+  .ct-topics{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+  .ct-topics span{font-size:11px;font-weight:bold;color:#fff;background:var(--title-a);padding:2px 7px}
+  .ct-dir{
+    width:220px;flex:none;padding:10px;background:#fff;
+    font-family:var(--font-mono);font-size:12px;line-height:1.6;
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+  @media(max-width:640px){ .ct-dir{display:none} }
+  .sm-new{font-size:10px;font-weight:bold;background:var(--salt);color:var(--ink);padding:0 4px;margin-left:auto}
+
   /* segmented Win95 progress bar */
   .progress{margin-top:auto}
   .progress .p-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
@@ -637,6 +653,25 @@
     </section>
   </div>
 
+  <!-- ============ CHALK TALKS ============ -->
+  <h2 class="section-h" id="chalktalks">📚 ID Chalk Talks</h2>
+  <section class="window ct-promo" aria-label="ID Chalk Talks">
+    <div class="titlebar">
+      <span class="t-icon">📚</span><span class="t-text">ChalkTalks.exe</span>
+      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
+    </div>
+    <div class="win-body">
+      <div class="ct-promo-text">
+        <span class="badge dev">● 60 TALKS</span> <span class="badge live">FREE</span>
+        <h3>Infectious diseases teaching library</h3>
+        <p>Bite-size, phone-friendly ID teaching pages for residents, adapted from the IDSA ID Chalk Talks series. Each one has a case, key pearls, and self-check questions.</p>
+        <div class="ct-topics"><span>HIV</span><span>Syphilis</span><span>Endocarditis</span><span>Fungal</span><span>TB</span><span>+ more</span></div>
+        <a class="btn btn-primary" href="chalk-talks/">▶ Browse the library</a>
+      </div>
+      <div class="ct-dir" aria-hidden="true">C:\CHALK_TALKS&gt; dir<br>anaerobes.htm<br>syphilis_serology.htm<br>liver_abscess.htm<br>lvad_infections.htm<br>...<br>60 file(s)</div>
+    </div>
+  </section>
+
   <!-- ============ DEV BLOG ============ -->
   <h2 class="section-h" id="devblog">📝 Dev Blog</h2>
   <section class="window notepad" aria-label="Dev blog">
@@ -957,6 +992,7 @@
   <div class="sm-items">
     <a href="#hero">🏠 Home</a>
     <a href="#portfolio">💾 Games</a>
+    <a href="chalk-talks/">📚 Chalk Talks <span class="sm-new">NEW</span></a>
     <a href="#devblog">📝 Dev Blog</a>
     <a href="#roadmap">📅 Roadmap</a>
     <a href="#testimonials">💬 Testimonials</a>
@@ -973,6 +1009,7 @@
   </button>
   <div class="task-links">
     <a class="raised" href="#portfolio">💾 Games</a>
+    <a class="raised" href="chalk-talks/">📚 Chalk Talks</a>
     <a class="raised" href="#devblog">📝 Dev Blog</a>
     <a class="raised optional" href="#roadmap">📅 Roadmap</a>
     <a class="raised optional" href="#testimonials">💬 Testimonials</a>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fourth-generation human immunodeficiency virus antigen/antibody testing — IDSA Chalk Talk</title>
+<meta name="description" content="How the fourth-generation combination assay shortens the window period and how to interpret the CDC testing algorithm at the bedside.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Fourth-generation human immunodeficiency virus antigen/antibody testing — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Human immunodeficiency virus diagnostics</p>
+        <h1 class="ct-h1">Fourth-generation human immunodeficiency virus antigen/antibody testing</h1>
+        <p class="ct-subtitle">Making sense of p24 antigen, antibodies, and the testing algorithm at the bedside</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 24-year-old man presents to the emergency department with 5 days of fever to 38.8°C, sore throat, myalgias, and a faint macular rash on his trunk. He reports condomless anal sex with a new partner 16 days ago. A rapid point-of-care human immunodeficiency virus (HIV) antibody test done today is negative. He asks, “Does that mean I am clear?” You are the resident seeing him at 11 p.m. and need to decide what test to order, what the results will mean, and what to tell him tonight.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain what a fourth-generation HIV antigen/antibody combination assay detects and why it shortens the window period compared with earlier generations.</li>
+          <li>Apply the Centers for Disease Control and Prevention (CDC) laboratory testing algorithm to interpret antigen/antibody, differentiation, and ribonucleic acid (RNA) results.</li>
+          <li>Recognise acute HIV infection and know when a negative combination assay still warrants HIV RNA testing.</li>
+          <li>Counsel a patient about false positive results, repeat testing, and linkage to care after a reactive result.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why we keep renaming the HIV test</h2>
+      <p>Every generation measures the same infection — it just sees it sooner. <span class="ct-term">Fourth-generation HIV testing</span> is a laboratory combination immunoassay that detects HIV-1 p24 antigen (Ag) and antibodies (Ab) to HIV-1 (groups M and O) and HIV-2 together. Most United States platforms report one result — reactive or nonreactive — without saying whether antigen or antibody triggered it.</p>
+      <ul>
+        <li><strong>First and second generation:</strong> immunoglobulin G (IgG) antibody to HIV-1 only; missed the first month.</li>
+        <li><strong>Third generation:</strong> added immunoglobulin M (IgM) sensitivity, a few days earlier.</li>
+        <li><strong>Fourth generation:</strong> added p24 antigen, the capsid protein that appears before antibody.</li>
+        <li><strong>Fifth generation (for example, BioPlex 2200):</strong> same analytes but reports antigen, HIV-1 antibody, and HIV-2 antibody separately — functionally steps 1 and 2 of the algorithm in one run.</li>
+      </ul>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>HIV-1 p24 is a capsid protein that appears when plasma HIV RNA is high and then declines as antibody clears it. That brief rise is why p24 helps only in the acute window.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Generations improve timing, not chronic sensitivity. Fourth generation finds the same infections one to two weeks earlier than antibody-only tests.</p>
+      </div>
+
+      <h2 class="ct-h2">The window period in plain numbers</h2>
+      <p>Ranges matter more than single days. Times below assume day 0 is exposure and the person is not on pre-exposure prophylaxis (PrEP) or post-exposure prophylaxis (PEP), which prolong the window.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Approximate time from exposure to detection by assay type</caption>
+          <thead>
+            <tr><th>Marker or assay</th><th>Median time to detection</th><th>When most infected persons are detected</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HIV RNA nucleic acid test (NAT)</td><td>10–12 days</td><td>By 14 days</td></tr>
+            <tr><td>p24 antigen (as part of fourth-generation assay)</td><td>14–20 days</td><td>By 18–20 days</td></tr>
+            <tr><td>Fourth-generation Ag/Ab combination assay</td><td>18 days</td><td>18–45 days (antibody covers later window)</td></tr>
+            <tr><td>Third-generation IgM/IgG antibody assay</td><td>23 days</td><td>23–90 days</td></tr>
+            <tr><td>Rapid point-of-care antibody-only test</td><td>23–30 days</td><td>Up to 90 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Fourth-generation testing at 6 weeks catches most infections; 45 days is highly reassuring and 90 days is conclusive. A negative rapid antibody test at 16 days only excludes infection from about 3 months ago.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Anchor counselling to 6 weeks for a fourth-generation test and 3 months for final reassurance — and add RNA testing if acute symptoms or high-risk recent exposure is present.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Eclipse period — first 8–10 days — cannot be shortened by any test.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The patient in the vignette had a negative rapid antibody test 16 days after exposure and is now febrile with pharyngitis. What is the most appropriate next test?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat the rapid antibody test in one week</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Laboratory fourth-generation HIV Ag/Ab assay, and add HIV RNA testing if the assay is negative given acute symptoms</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">HIV-1/HIV-2 antibody differentiation assay alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">CD4 count and HIV viral load to stage infection</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A negative rapid antibody test at 16 days does not exclude acute infection. The fourth-generation Ag/Ab assay is the recommended initial test and detects p24 antigen several days before antibody-only assays. If the combination assay is negative but acute retroviral syndrome is suspected, CDC guidance advises adding an HIV RNA test — because RNA is detectable 5–7 days before p24. A differentiation assay alone misses antigen, and CD4 or viral load are not screening tests.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What the fourth-generation assay actually reports</h2>
+      <p>The report is stark: “HIV Ag/Ab, 4th generation: Reactive” or “Nonreactive.”</p>
+      <ul>
+        <li><strong>Nonreactive:</strong> neither p24 nor antibodies detected. Excludes established infection but not infection within the last 2 weeks.</li>
+        <li><strong>Reactive:</strong> at least one analyte detected — p24 only, HIV-1 antibody, HIV-2 antibody, or any combination. The screen does not distinguish which.</li>
+      </ul>
+      <p>The assay does not quantify antigen or antibody or distinguish HIV-1 from HIV-2. It is very sensitive and specific after the window (sensitivity greater than 99.7% and specificity greater than 99.5% on laboratory platforms) but is not diagnostic alone — every reactive result needs the algorithm.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not order a viral load as the next step after a reactive screen in an asymptomatic patient. The next step is the HIV-1/HIV-2 antibody differentiation immunoassay, not RNA.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Reactive = needs differentiation; nonreactive = consider timing. The screen never tells you stage or type alone.</p>
+      </div>
+
+      <h2 class="ct-h2">The CDC testing algorithm — how to read every pattern</h2>
+      <p>Since 2014 and reaffirmed in the 2018 Association of Public Health Laboratories and CDC update, the United States uses a three-step algorithm: screen with the combination assay, type the antibody, then use RNA to resolve discordance.</p>
+      <ol>
+        <li><strong>Step 1 — HIV Ag/Ab assay.</strong> If nonreactive, no laboratory evidence of infection. If acute infection is suspected or exposure is recent, add RNA and repeat Ag/Ab in 2–4 weeks.</li>
+        <li><strong>Step 2 — HIV-1/HIV-2 differentiation</strong> (for example, Geenius) — only if step 1 is reactive. HIV-1 reactive = HIV-1 established; HIV-2 reactive = HIV-2 (rare, needs expertise); both reactive = dually reactive, needs RNA and expert input; nonreactive or indeterminate = go to step 3.</li>
+        <li><strong>Step 3 — HIV-1 RNA NAT.</strong> Only when step 1 is reactive and step 2 is nonreactive or indeterminate. RNA detected = acute HIV-1; RNA not detected = false positive screen.</li>
+      </ol>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Interpreting the CDC algorithm at a glance</caption>
+          <thead>
+            <tr><th>Step 1 Ag/Ab</th><th>Step 2 differentiation</th><th>Step 3 RNA</th><th>Interpretation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nonreactive</td><td>Not done</td><td>Not done (or negative)</td><td>No laboratory evidence of HIV infection</td></tr>
+            <tr><td>Reactive</td><td>HIV-1 reactive</td><td>Not needed</td><td>HIV-1 infection, established</td></tr>
+            <tr><td>Reactive</td><td>HIV-2 reactive</td><td>Not needed (consider HIV-2 RNA if available)</td><td>HIV-2 infection</td></tr>
+            <tr><td>Reactive</td><td>Nonreactive or indeterminate</td><td>Detected</td><td>Acute HIV-1 infection</td></tr>
+            <tr><td>Reactive</td><td>Nonreactive or indeterminate</td><td>Not detected</td><td>False positive screen; no infection</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Fifth-generation BioPlex already separates antigen and antibodies, but any reactive component still triggers confirmation. The algorithm does not apply to persons already known to be HIV positive.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A routine admission screen returns: fourth-generation Ag/Ab reactive, HIV-1/HIV-2 differentiation nonreactive, HIV-1 RNA not detected. The patient feels well and reports no recent exposures. What do you tell the team?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Acute HIV infection — start antiretroviral therapy tonight</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Established HIV-1 infection — order CD4 and genotype</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Likely false positive screen — no laboratory evidence of infection, repeat testing and clinical correlation needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">HIV-2 infection — refer to HIV clinic</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is the classic “isolated reactive screen” pattern. When differentiation is nonreactive and RNA is not detected, the screen was a false positive. False positives are uncommon (specificity is very high) but become visible when screening large numbers of low-prevalence patients. Do not start therapy; repeat the algorithm, review exposures, and document that this is not an HIV diagnosis.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Let the algorithm run. A reactive screen without differentiation is not a diagnosis, and a reactive screen with negative differentiation but detectable RNA is the textbook definition of acute HIV.</p>
+      </div>
+
+      <h2 class="ct-h2">Acute HIV infection — the case you cannot miss</h2>
+      <p>Acute infection is brief (1–2 weeks), symptomatic in 50–80%, highly infectious, and often missed because antibody is still negative. Onset is typically 2–4 weeks after exposure with fever, sore throat, myalgias, headache, maculopapular rash, mucocutaneous ulcers, and lymphadenopathy, sometimes with leukopenia, thrombocytopenia, or transaminitis. It mimics mononucleosis, influenza, and COVID-19 — exposure history is the clue.</p>
+      <p>Plasma HIV RNA can exceed 1 million copies per mL and transmission risk is many-fold higher than in chronic infection.</p>
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case follow-up</span>
+        <p>The 24-year-old man’s fourth-generation Ag/Ab is reactive, differentiation is negative, HIV-1 RNA is 820,000 copies per mL — acute HIV before seroconversion.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not discharge a febrile, pharyngitic patient with a recent high-risk exposure as “rapid HIV negative, reassured.” Use laboratory Ag/Ab plus RNA in that setting.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 30-year-old woman on PrEP with excellent adherence presents for routine quarterly screening. Her laboratory fourth-generation assay is reactive, differentiation is HIV-1 reactive, RNA not detected. She feels well. Which factor best explains the result?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">She has acute HIV infection and needs immediate antiretroviral therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">This represents HIV-2 infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Antiretroviral PrEP can suppress RNA and delay antibody evolution — obtain PrEP history, repeat RNA with a sensitive assay, and involve HIV expertise; do not simply label this false positive</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">The fourth-generation assay cannot be used in persons on PrEP</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This pattern does not fit the standard algorithm teaching case. In persons on PrEP or early ART, viral replication is suppressed, so RNA may be undetectable or low-level positive, and antibody may be attenuated, delayed, or atypical. PrEP-associated HIV acquisition can present with discordant or blunted serologies. Do not dismiss a reactive screen as a false positive without reviewing PrEP adherence, timing of last dose, and exposure, and involving HIV expertise. The assay can still be used, but interpretation requires context.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Pitfalls: false positives, PrEP, PEP, and when to add RNA</h2>
+      <p><strong>False positives.</strong> Specificity is very high, but isolated reactive screens with negative differentiation and undetectable RNA do occur, more often in low-prevalence populations, pregnancy, autoimmune conditions, or after influenza vaccination. The algorithm catches them at step 3 — never disclose “HIV positive” after step 1 alone.</p>
+      <p><strong>PrEP and PEP.</strong> Tenofovir-based PrEP and recent post-exposure prophylaxis (PEP) can suppress replication, blunt p24 and RNA, delay antibody, and prolong the window. In persons on PrEP who acquire HIV, the Ag/Ab assay may be intermittently reactive and RNA low or undetectable. Add RNA when suspicion is high in persons on PrEP and involve HIV expertise.</p>
+      <p><strong>When to add RNA even if the screen is negative.</strong> If acute retroviral syndrome is present, exposure was within the past 2–4 weeks, or recent PEP was given, a negative Ag/Ab assay does not exclude acute infection — order HIV-1 RNA and repeat Ag/Ab in 2–4 weeks. Do not repeat a rapid antibody test to resolve high suspicion.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>HIV-2 is less than 0.1% of United States infections, mostly West African exposures, progresses slowly, and has intrinsic resistance to non-nucleoside reverse transcriptase inhibitors. Confirm any HIV-2 reactive differentiation and refer.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>RNA is the safety net: order it when a reactive screen has negative differentiation, or when the screen is negative but the picture suggests acute HIV.</p>
+      </div>
+
+      <h2 class="ct-h2">Counselling, reporting, and linkage after a reactive result</h2>
+      <p><strong>Before confirmation:</strong> say “reactive screen, pending confirmation” — not “HIV positive.” Advise condom use, no new exposures, and no blood donation until confirmation. If acute infection is likely, infectivity may be very high.</p>
+      <p><strong>After confirmation:</strong> link to HIV care immediately, ideally same-day or within 72 hours, for counselling, baseline laboratories (CD4, genotype, renal and liver function, hepatitis B and C, syphilis, gonorrhoea and chlamydia screening, pregnancy test where applicable), and rapid ART assessment. Draw baseline labs and start ART as soon as feasible without waiting for genotype.</p>
+      <p><strong>Partners and retesting.</strong> Ask about partners from the past 6–12 weeks, arrange public health reporting (required in all states), and if exposure was recent give a concrete retest date — “repeat fourth-generation test 6 weeks from exposure, sooner if symptoms develop” — and offer PrEP, PEP if within 72 hours, and sexually transmitted infection screening. Document assay names, dates, and step reached.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Calling a reactive screen “positive” before confirmation, or calling a negative screen “clear” before RNA and repeat testing when acute infection is possible. Use “pending confirmatory testing” and a scheduled follow-up plan.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Fourth-generation HIV testing is a combination immunoassay that detects HIV-1 p24 antigen plus IgM/IgG antibodies to HIV-1 and HIV-2 in one screen — antigen shortens the window to about 18–45 days from exposure versus 23–90 days for antibody-only tests.</li>
+        <li>Follow the CDC three-step algorithm: Ag/Ab screen, then HIV-1/HIV-2 antibody differentiation if reactive, then HIV-1 RNA if differentiation is nonreactive or indeterminate — never diagnose from the screen alone.</li>
+        <li>Reactive screen with negative differentiation but detectable RNA equals acute HIV infection before seroconversion — highly infectious and often symptomatic with fever, sore throat, myalgias, and rash 2–4 weeks after exposure.</li>
+        <li>A reactive screen with negative differentiation and undetectable RNA usually represents a false positive — do not label the patient as HIV positive; repeat and correlate clinically.</li>
+        <li>A negative Ag/Ab assay within the first 2 weeks of exposure does not exclude infection; if acute retroviral syndrome is suspected or a high-risk exposure was very recent, add HIV RNA testing and repeat the Ag/Ab assay in 2–4 weeks, and remember that PrEP and PEP can prolong the window.</li>
+        <li>Counsel “reactive, pending confirmation,” link every confirmed result to HIV care immediately, and document assay names and dates — then schedule concrete retesting and offer PrEP or PEP when indicated.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Centers for Disease Control and Prevention and Association of Public Health Laboratories. Laboratory testing for the diagnosis of HIV infection: updated recommendations. Published June 27, 2014. Laboratory testing for HIV updated technical guidance 2018. Available at cdc.gov/hiv/testing.</li>
+          <li>Branson BM, Owen SM, Wesolowski LG, et al. Laboratory testing for the diagnosis of HIV infection: updated recommendations. <em>Clin Infect Dis</em>. 2014;58(12):e44-e59.</li>
+          <li>Centers for Disease Control and Prevention. Preexposure prophylaxis for the prevention of HIV infection in the United States — 2021 update: interim considerations for HIV screening with laboratory and point-of-care assays. <em>MMWR</em>. 2021.</li>
+          <li>Pitman JP, Patel S, et al. Acute HIV infection: clinical presentation, testing and management. <em>Clin Infect Dis</em>. Review articles summarizing acute retroviral syndrome and transmission risk during acute infection.</li>
+        </ol>
+      </div>
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Fourth-generation HIV testing</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

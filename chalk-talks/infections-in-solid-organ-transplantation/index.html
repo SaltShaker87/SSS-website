@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infections in solid organ transplantation — IDSA Chalk Talk</title>
+<meta name="description" content="A timeline-based guide to donor-derived, nosocomial, and opportunistic infections after solid organ transplant.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Infections in solid organ transplantation — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Transplant infectious diseases</p>
+        <h1 class="ct-h1">Infections in solid organ transplantation</h1>
+        <p class="ct-subtitle">A timeline-based approach to what happens when, why it happens, and what prevents it</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 54-year-old man is 10 weeks after deceased-donor kidney transplant on tacrolimus, mycophenolate mofetil, and prednisone after antithymocyte globulin induction. He takes trimethoprim-sulfamethoxazole and valganciclovir. He presents with two weeks of fever to 38.4 °C, fatigue, leukopenia, and rising creatinine. Donor was cytomegalovirus (CMV) positive, recipient negative. Exam is unremarkable. Is this rejection, CMV, or something else — and does timing help?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Use the classic post-transplant timeline to narrow the differential for fever and infection.</li>
+          <li>Distinguish donor-derived, nosocomial, and opportunistic infections by time period and net state of immunosuppression.</li>
+          <li>Explain how cytomegalovirus (CMV) risk stratification and prophylaxis shift the timeline.</li>
+          <li>Outline a bedside approach to evaluating fever in a solid organ transplant (SOT) recipient.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">The net state of immunosuppression frames everything</h2>
+      <p>The most useful concept is not a list of organisms but how suppressed the patient is. The <span class="ct-term">net state of immunosuppression</span> is the sum of every factor that impairs defence, not just tacrolimus level.</p>
+      <p>Drugs matter most — induction with antithymocyte globulin or alemtuzumab creates a T-cell debt for weeks to months. Corticosteroids, mycophenolate, tacrolimus, cyclosporine, and mammalian target of rapamycin (mTOR) inhibitors add, as do neutropenia, barrier breaks (surgery, lines, leaks), metabolic problems (uraemia, hyperglycaemia), and viral coinfection — especially cytomegalovirus (CMV), itself immunosuppressive.</p>
+      <p>Two recipients at the same day post-transplant can differ sharply. A young living-donor kidney recipient on low-dose tacrolimus with no rejection has a low net state. An older deceased-donor recipient after antithymocyte globulin, with leukopenia and recent methylprednisolone for rejection, has a high net state — opportunists appear earlier.</p>
+      <p>Three periods defined by this net state form the Fishman timeline. It is a guide. Prophylaxis and rejection therapy shift infections forward or back — always ask what modified the timeline.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Do not anchor on calendar days alone — ask what has increased the net state of immunosuppression since transplant: induction, rejection treatment, leukopenia, CMV, and barrier breaks matter more than the date.</p>
+      </div>
+
+      <h2 class="ct-h2">The first month: what the hospital and the donor gave you</h2>
+      <p>In the first 30 days opportunistic reactivation has not yet declared itself. Almost all early infections are carried with the donor or acquired during surgery and recovery.</p>
+      <p>Bacterial infections dominate: surgical site infection, anastomotic leak, infected collection, catheter-associated urinary infection, ventilator-associated pneumonia, and line bloodstream infection. Early urinary infection is common after kidney transplant. <em>Clostridioides difficile</em> appears early from perioperative antibacterials. Candidiasis clusters with lines and broad antibiotics; invasive aspergillosis is uncommon this early.</p>
+      <p>Donor-derived infections also declare here but are often missed. Bacteremia from an unrecognised donor infection, window-period human immunodeficiency virus (HIV), hepatitis B virus (HBV) or hepatitis C virus (HCV), and unexpected <em>Toxoplasma gondii</em>, <em>Strongyloides stercoralis</em>, or <em>Mycobacterium tuberculosis</em> can present as early sepsis with no source. The Organ Procurement and Transplantation Network (OPTN) expects reporting — flag them.</p>
+      <p>Herpes simplex virus (HSV) reactivation can appear within days if prophylaxis is missed. Cytomegalovirus (CMV) and <em>Pneumocystis jirovecii</em> pneumonia (PJP) are rare in month one because prophylaxis starts at transplant.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Calling every early fever rejection. In the first two weeks fever plus leukocytosis, graft dysfunction, wound erythema, or pulmonary infiltrates is infection or a surgical complication until proven otherwise — verify cultures, imaging, and donor cultures before pulsing steroids.</p>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>What to expect by period — Fishman timeline in brief</caption>
+          <thead>
+            <tr><th>Period</th><th>Typical infections</th><th>What drives them</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0 to 30 days</td><td>Surgical site, bacteremia, pneumonia, urinary tract infection, <em>C. difficile</em>, line infection, donor-derived bacteremia or viremia, HSV reactivation</td><td>Donor inoculum, nosocomial exposure, barriers, antibacterials</td></tr>
+            <tr><td>1 to 6 months</td><td>CMV, Epstein-Barr virus (EBV), BK polyomavirus, HSV/ varicella-zoster virus (VZV) if prophylaxis lapsed, PJP, <em>Toxoplasma</em>, <em>Nocardia</em>, <em>Aspergillus</em>, <em>Cryptococcus</em></td><td>Peak net immunosuppression, prophylaxis gaps</td></tr>
+            <tr><td>After 6 months</td><td>Community-acquired pneumonia, urinary tract infection, late CMV, late <em>Cryptococcus</em> or endemic fungi, post-transplant lymphoproliferative disorder (PTLD)</td><td>Stable or reduced immunosuppression, exposures</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A recipient is 12 days after liver transplant, febrile to 38.8 °C, with leukocytosis and purulent drain output near the biliary anastomosis. Which diagnosis fits the timeline best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Surgical site infection or anastomotic leak with nosocomial bacteria</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">CMV syndrome with leukopenia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false"><em>Pneumocystis jirovecii</em> pneumonia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Late <em>Cryptococcus</em> meningitis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>The first month is dominated by nosocomial and surgical infections. CMV and PJP occur later and typically show leukopenia or hypoxemia rather than purulent surgical drainage. Late cryptococcal disease is beyond six months.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">One to six months: the opportunistic window</h2>
+      <p>Months one to six are the classic opportunistic period. T-cell immunity is at its nadir and latent organisms reactivate.</p>
+      <p>Cytomegalovirus (CMV) is the centrepiece. Risk depends on donor (D) and recipient (R) serostatus: D positive/R negative is highest risk for primary infection; R positive risks reactivation; D negative/R negative is lowest. Without prophylaxis CMV peaks 1 to 4 months, as a syndrome (fever, leukopenia, malaise, hepatitis) or tissue-invasive disease — colitis, hepatitis, pneumonitis, or retinitis. Prophylaxis with valganciclovir or ganciclovir delays onset; late-onset CMV now presents 3 to 6 months after stopping, especially in D positive/R negative. Breakthrough suggests nonadherence or resistance and needs quantitative testing.</p>
+      <p>Epstein-Barr virus (EBV) drives post-transplant lymphoproliferative disorder (PTLD), often in EBV D positive/R negative recipients. BK polyomavirus causes BK nephropathy in kidney recipients, typically within the first year, as rising creatinine without fever mimicking rejection.</p>
+      <p>Other opportunists: <em>Pneumocystis jirovecii</em> pneumonia (PJP) when trimethoprim-sulfamethoxazole (TMP-SMX) is missed; aspergillosis in lung recipients; <em>Nocardia</em>; <em>Toxoplasma gondii</em> especially in heart recipients when donor positive/recipient negative and TMP-SMX held; tuberculosis reactivation; and endemic fungi such as <em>Histoplasma capsulatum</em>.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The original Fishman description assumed little CMV prophylaxis. Modern universal or preemptive strategies have shifted CMV later — sometimes to months 6 to 12 — without eliminating it. A negative CMV polymerase chain reaction (PCR) while on prophylaxis does not guarantee lifelong protection.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>CMV itself suppresses marrow and T cells, so it invites co-pathogens: a CMV syndrome with fever and leukopenia should make you look harder for PJP, aspergillosis, and bacterial superinfection rather than assuming one diagnosis.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A kidney recipient who is CMV D positive/R negative stopped valganciclovir at month 6. At 8 months he develops fever, leukopenia, and watery diarrhoea. Colonoscopy shows ulcerations. What best explains the timing?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Early surgical infection — still within the first-month window</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Late-onset CMV colitis after prophylaxis — classic for D positive/R negative after universal prophylaxis ends</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Donor-derived hepatitis B transmission — typically presents years later</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Community-acquired norovirus — leukopenia would be unusual</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Stopping CMV prophylaxis in high-risk D positive/R negative patients shifts CMV to a late-onset presentation, often 3 to 6 months after prophylaxis ends. Colitis with leukopenia and fever fits tissue-invasive CMV, and requires quantitative CMV testing and gastroenterology input. Surgical infections do not present this late with leukopenia.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">After six months: community infections and the long tail</h2>
+      <p>Beyond six months most recipients on stable, reduced immunosuppression without recent rejection resemble the general population. Community-acquired pneumonia, urinary infection, skin infection, and gastroenteritis predominate. Treat per community guidelines, adjusted for renal function and interactions.</p>
+      <p>The opportunistic tail persists with augmented immunosuppression for rejection, poor graft function or persistent leukopenia, or early prophylaxis stops. Late CMV, late PJP, late nocardiosis, and <em>Cryptococcus neoformans</em> disease can appear 6 to 12 months or later. Headache, fever, and subtle confusion months after transplant should prompt cryptococcal antigen and lumbar puncture.</p>
+      <p>Beyond one year watch for severe influenza, respiratory syncytial virus (RSV), and severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), and for malignancy driven by viral persistence — particularly post-transplant lymphoproliferative disorder (PTLD) related to EBV.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Stable after month six does not mean immunocompetent. If the net state rose again with rejection therapy, re-enter the 1-to-6-month differential even if the calendar says month ten.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A liver recipient at month 9 on stable tacrolimus monotherapy presents with cough and fever during influenza season. She has no recent rejection. What is the most appropriate framing?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Community-acquired pneumonia with viral and bacterial causes — same workup as other adults, adjusted for drug interactions</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Immediate empiric therapy for <em>Nocardia</em> — most likely despite no brain lesions</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false"><em>Pneumocystis jirovecii</em> pneumonia — always treat as PJP beyond six months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Donor-derived aspergillosis — still the dominant risk at month nine</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Beyond six months on stable immunosuppression, community infections dominate. Influenza and typical bacterial pneumonias are more likely than opportunistic causes, although you should still verify prophylaxis adherence and recent net state. Nocardia and donor aspergillosis are possible but lower pretest probability without specific risk.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Donor-derived infections: when to suspect them</h2>
+      <p>Donor-derived infection is uncommon but high impact — the donor carries organisms the immunosuppressed recipient cannot contain.</p>
+      <p>Three buckets: bacteremia or candidemia from donor hospitalisation (early recipient bacteremia with matching donor cultures); window-period viruses — human immunodeficiency virus (HIV), hepatitis B virus (HBV), hepatitis C virus (HCV) — nucleic acid testing shortened but did not close the window; and latent or geographic organisms: <em>Toxoplasma gondii</em> (heart most vulnerable), <em>Strongyloides stercoralis</em>, <em>Mycobacterium tuberculosis</em>, <em>Histoplasma</em>, <em>Coccidioides</em>, and rarely lymphocytic choriomeningitis virus or rabies.</p>
+      <p>Suspect donor origin when early infection is severe, atypical, unexpected, recurrent, or synchronous in multiple recipients from the same donor. Early sepsis with no source or early brain abscess are red flags. Do not dismiss donor gram-negative bacilli as contaminant.</p>
+      <p>Review donor serologies and cultures, note any increased-risk donor flag, and alert the transplant team and Organ Procurement and Transplantation Network (OPTN) coordinator if transmission is possible.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Missing strongyloidiasis. Severe <em>S. stercoralis</em> hyperinfection after transplant presents as gram-negative or central nervous system bacteremia with eosinopenia, not eosinophilia, and as diffuse pulmonary infiltrates. It is preventable with recipient and donor screening and ivermectin when indicated — think of it before hyperinfection, not after.</p>
+      </div>
+
+      <h2 class="ct-h2">Prophylaxis and vaccination: what prevents the timeline</h2>
+      <p>Much of the timeline is shaped by prophylaxis. When given correctly it prevents expected infections; when missed or misdosed, infections return — often late.</p>
+      <p>Three pillars are near-universal. First, trimethoprim-sulfamethoxazole (TMP-SMX) prevents <em>Pneumocystis jirovecii</em> pneumonia (PJP) and also protects against <em>Toxoplasma</em>, <em>Nocardia</em>, and urinary infection. It is typically continued 6 to 12 months, longer after rejection or in lung and heart recipients. If switched to dapsone or atovaquone for cytopenias or hyperkalaemia, note the lost breadth. Second, CMV prevention uses universal prophylaxis or preemptive monitoring with serial nucleic acid testing; duration depends on donor/recipient serostatus and organ. Third, antifungal prophylaxis is targeted: nystatin or fluconazole early when at risk, and mould-active coverage in lung transplant.</p>
+      <p>Vaccination is most effective before transplant. Inactivated vaccines — influenza, COVID-19, pneumococcal, hepatitis B, recombinant zoster — should be updated while waitlisted. After transplant, inactivated vaccines are given but responses are blunted; live vaccines (measles-mumps-rubella, varicella) are avoided while immunosuppressed.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common prophylaxis by indication — verify dosing with pharmacy for renal function and interactions</caption>
+          <thead>
+            <tr><th>Target</th><th>Typical agent and duration</th><th>Pearl or caveat</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PJP, <em>Toxoplasma</em>, <em>Nocardia</em></td><td>TMP-SMX for 6 to 12 months; longer after rejection</td><td>If switched to dapsone or atovaquone, toxoplasma and nocardia protection may be lost</td></tr>
+            <tr><td>CMV</td><td>Valganciclovir or ganciclovir universal prophylaxis, or preemptive monitoring</td><td>Duration by D/R risk; monitor leukopenia and renal dosing; late disease after prophylaxis ends</td></tr>
+            <tr><td>HSV and VZV</td><td>Acyclovir or valacyclovir overlapping with CMV prophylaxis</td><td>Reactivation if stopped early</td></tr>
+            <tr><td>Oral candidiasis</td><td>Nystatin or fluconazole short course</td><td>Local protocol dependent</td></tr>
+            <tr><td>Endemic fungi or mould in lung recipients</td><td>Azole or inhaled polyene per centre</td><td>Check tacrolimus and cyclosporine interactions</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Prophylaxis doses are renal-function and weight dependent and have changed with updated guidelines. The table states principles only. No dose in this page is meant for prescribing — verify every dose with pharmacy and your centre protocol.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Ask about prophylaxis adherence at every visit. Nonadherence to TMP-SMX or valganciclovir is the commonest reversible reason an expected timeline infection appears.</p>
+      </div>
+
+      <h2 class="ct-h2">A bedside approach to fever after transplant</h2>
+      <p>On call you get fever and a worried team, not a timeline label. Structured assessment keeps you from missing infection and rejection.</p>
+      <p>Start with three questions: when relative to transplant and recent rejection therapy; what prophylaxis is actually being taken and donor/recipient serostatus; what is the net state today (recent antithymocyte globulin, steroids, leukopenia, CMV, barrier breaks). Then expand: exposures, donor data if early, antibiotics, vaccines, and interactions (TMP-SMX, azoles, and valganciclovir all interact with calcineurin inhibitors).</p>
+      <p>Examine graft, wound, mucosa, sinuses, lungs, skin, nodes, and central nervous system. Fever plus graft pain is not automatically rejection — pyelonephritis, obstruction, and BK virus look similar. Fever plus headache months later deserves cryptococcal antigen and lumbar puncture; fever plus nodules deserves galactomannan and imaging.</p>
+      <p>Test with timeline in hand: complete blood count, creatinine, liver enzymes, tacrolimus level, urinalysis, cultures before antibiotics, CMV quantitative polymerase chain reaction (PCR), Epstein-Barr virus (EBV) PCR when PTLD or BK suspected, cryptococcal antigen when indicated, and early bronchoalveolar lavage (BAL) for pulmonary findings. Remember TMP-SMX and valganciclovir cause leukopenia mimicking virus; azoles raise calcineurin inhibitor levels.</p>
+      <p>Empiric therapy covers the likely period. Days 0 to 30: nosocomial bacteria and <em>Candida</em> with source control. Months 1 to 6: add CMV and consider PJP, <em>Nocardia</em>, and mould by syndrome. After month 6 on stable therapy: community guidelines first, opportunistic workup if net state rose or prophylaxis lapsed. Involve transplant infectious diseases early — reducing immunosuppression is a team decision.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Holding immunosuppression without the transplant team, or reflexively treating every infiltrate as rejection with high-dose steroids. Both escalate infection risk without improving outcomes. Co-manage, do not solo-manage.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Culture the obvious: urine and blood in the febrile kidney recipient, bronchoalveolar lavage in the lung recipient with new infiltrates, and cerebrospinal fluid when headache and fever persist — localisation beats broad panels.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A heart recipient at month 4 on tacrolimus and mycophenolate presents with fever, cough, and a cavitary lung nodule. He takes TMP-SMX irregularly. CMV PCR is undetectable. What should broaden your differential besides typical bacteria?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urinary tract infection alone — most likely despite nodular lung disease</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true"><em>Nocardia</em> and <em>Aspergillus</em> — classic 1-to-6-month cavitary pathogens, especially with lapsed TMP-SMX and T-cell suppression</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Donor-derived rabies — common cause of cavitary nodules</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Community influenza only — explains cavitation fully</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cavitary lung disease in the opportunistic window with nonadherence to TMP-SMX implicates Nocardia and mould such as <em>Aspergillus</em>. Undetectable CMV does not exclude co-pathogens — and single-pathogen thinking is hazardous in high net state. Bacteria and viruses should still be tested, but cavitation points toward Nocardia/mould. Donor rabies is exceptionally rare and does not present this way.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Net state of immunosuppression matters more than calendar — but the Fishman timeline frames risk: 0 to 30 days surgical and nosocomial, 1 to 6 months opportunistic, after 6 months community with a late tail if net state rose.</li>
+        <li>Cytomegalovirus (CMV) risk is donor positive/recipient negative-driven and modified by prevention: prophylaxis delays disease to after stopping; preemptive monitoring catches early viremia — know your centre.</li>
+        <li>Early severe or atypical sepsis should prompt review of donor cultures and serologies and alerting the transplant team and OPTN.</li>
+        <li>Trimethoprim-sulfamethoxazole (TMP-SMX) and valganciclovir prevent most expected opportunists; nonadherence brings them back — verify adherence.</li>
+        <li>For fever, anchor to time, net state, prophylaxis and donor/recipient status, localise, culture before antibiotics, and involve transplant infectious diseases before changing immunosuppression.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Fishman JA. Infection in solid-organ transplant recipients. <em>N Engl J Med</em>. 2007;357(25):2601-2614.</li>
+          <li>American Society of Transplantation. Guidelines for vaccination, donor-derived infection, and CMV management in solid organ transplantation. <em>Am J Transplant</em>. 2019;19(suppl 4).</li>
+          <li>AST Infectious Diseases Community of Practice. Guidance on <em>Staphylococcus</em>, CMV, EBV/PTLD, BK polyomavirus and PJP prophylaxis — updates through 2023.</li>
+          <li>Therapeutic Guidelines and centre protocols for TMP-SMX, valganciclovir, and antifungal prophylaxis — verify renal dosing and drug interactions with pharmacy.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Infections in solid organ transplantation</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

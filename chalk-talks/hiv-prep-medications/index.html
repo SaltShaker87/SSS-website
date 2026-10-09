@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIV PrEP medications — IDSA Chalk Talk</title>
+<meta name="description" content="Choosing and monitoring oral and injectable pre-exposure prophylaxis for HIV prevention.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">HIV PrEP medications — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">HIV prevention</p>
+        <h1 class="ct-h1">HIV PrEP medications</h1>
+        <p class="ct-subtitle">Choosing and monitoring oral and injectable pre-exposure prophylaxis</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 24-year-old man who has sex with men comes for a routine primary care visit. He reports condomless anal sex with two partners in the past 3 months, one partner with unknown human immunodeficiency virus (HIV) status. He had a rectal chlamydia infection 6 months ago, treated. He is interested in HIV prevention but says he “is not great at taking a pill every day” and asks what options exist beyond condoms. He has no chronic medical conditions, takes no regular medications, and his last HIV test 2 months ago was negative.</p>
+        <p>How do you counsel him about pre-exposure prophylaxis (PrEP), choose a regimen, and make a follow-up plan he can actually stay on?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Identify who should be offered PrEP and how to frame the conversation routinely.</li>
+          <li>Compare the three FDA-approved PrEP regimens — including dosing, eligibility, and key trade-offs — to choose a regimen with the patient.</li>
+          <li>List the required baseline workup before starting PrEP and the ongoing monitoring schedule.</li>
+          <li>Counsel patients on adherence, missed doses, and what to do around gaps in coverage.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why PrEP belongs in primary care</h2>
+      <p>PrEP is antiretroviral medication taken by people without <span class="ct-term">human immunodeficiency virus (HIV)</span> to prevent acquisition. Daily oral <span class="ct-term">pre-exposure prophylaxis (PrEP)</span> and every-2-month cabotegravir each reduce sexual HIV risk by greater than 90 percent in trials; effectiveness in practice tracks adherence.</p>
+      <p>The Centers for Disease Control and Prevention (CDC) 2021 PrEP guideline recommends informing all sexually active adults and adolescents about PrEP and offering it to anyone who requests it — do not wait for the patient to ask.</p>
+      <p>Substantial risk includes recent bacterial sexually transmitted infection (STI), condomless anal or vaginal sex with partners of unknown HIV status, having a partner with HIV who is not virologically suppressed, and sharing injection equipment. Screen by behaviour, not identity, and remember adolescents weighing at least 35 kg can receive PrEP.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Make PrEP an opt-out conversation: “I talk to all my patients about HIV prevention — would it be okay to spend 1 minute on PrEP?” It normalises the offer and doubles the chance a patient will say yes if they need it.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>HIV incidence remains about 32,000 new U.S. diagnoses yearly, concentrated in the South and among young men who have sex with men and Black and Latino patients — yet PrEP uptake is lowest there. The implementation gap exceeds the pharmacology gap.</p>
+      </div>
+
+      <h2 class="ct-h2">The PrEP menu at a glance</h2>
+      <p>As of the 2021 CDC guideline updated through 2022, there are three Food and Drug Administration (FDA)-approved PrEP options for adults and adolescents at least 35 kg. A fourth — twice-yearly lenacapavir — was FDA-approved in June 2025 and is discussed below as an emerging option that postdates the original talk.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Current FDA-approved PrEP regimens for sexual exposure</caption>
+          <thead>
+            <tr><th>Regimen</th><th>Dose and schedule</th><th>Who it is for</th><th>Key considerations</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Emtricitabine (FTC) + tenofovir disoproxil fumarate (TDF) — e.g., Truvada and generics</td><td>Emtricitabine 200 mg + tenofovir disoproxil fumarate 300 mg by mouth daily</td><td>All groups at risk through sex or injection drug use; the only oral option approved for receptive vaginal sex</td><td>Needs creatinine clearance ≥60 mL/min; monitor kidney function and bone density risk; active against hepatitis B virus (HBV)</td></tr>
+            <tr><td>Emtricitabine + tenofovir alafenamide (TAF) — Descovy</td><td>Emtricitabine 200 mg + tenofovir alafenamide 25 mg by mouth daily</td><td>Men and transgender women at risk through sex, excluding those at risk through receptive vaginal sex</td><td>Needs creatinine clearance ≥30 mL/min; less renal and bone toxicity than FTC/TDF; associated with more weight gain and dyslipidaemia; not approved for receptive vaginal exposure because efficacy was not studied in that group</td></tr>
+            <tr><td>Cabotegravir long-acting (CAB-LA) — Apretude</td><td>Cabotegravir 600 mg intramuscular gluteal injection: first 2 injections 1 month apart, then every 2 months; optional oral cabotegravir 30 mg daily lead-in for ≈4 weeks to assess tolerability</td><td>Adults and adolescents at risk through sex (and approved for all sexes)</td><td>No kidney restriction; delays HIV seroconversion so RNA testing matters; injection-site reactions common; long pharmacologic tail after stopping requires bridging</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>With perfect adherence, effectiveness is comparable. Trials HPTN 083 and HPTN 084 showed cabotegravir superior to daily FTC/TDF only because adherence to pills was imperfect. Choice hinges on preference, kidney function, hepatitis B virus (HBV) status, pregnancy plans, and ability to keep pill versus clinic schedules.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If the patient can name a reason they will miss pills — “I travel, I’m home late, I hide meds from family” — that is a vote for injectable PrEP, even if they initially say “pills are fine.” Match the pharmacology to the life, not the other way around.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Update since the talk</span>
+        <p>Lenacapavir (Yeztugo) 927 mg subcutaneously every 26 weeks was FDA-approved for PrEP in June 2025 after PURPOSE 1 and 2 showed near-complete protection. CDC guidance had not yet incorporated it when this page was adapted.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your patient says he has trouble remembering a daily pill but can get to clinic every 2 months. Which in-force FDA-approved option best matches his pattern?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">FTC/TDF daily — emphasise phone reminders</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Cabotegravir long-acting injections every 2 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">FTC/TAF on-demand (2-1-1) before sex only</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tenofovir alone weekly</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cabotegravir long-acting was superior to daily FTC/TDF in populations where adherence was imperfect precisely because it removes the daily-pill requirement. 2-1-1 dosing is not FDA-approved and was studied only in men who have sex with men — it is not a substitute for approved daily or injectable regimens in routine U.S. practice. Tenofovir alone is not PrEP.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Oral PrEP in detail: FTC/TDF versus FTC/TAF</h2>
+      <p>Both pills contain emtricitabine (FTC) 200 mg plus a tenofovir prodrug. Protection builds after starting daily dosing: about 7 days for receptive anal sex and about 21 days for receptive vaginal sex and for injection drug use.</p>
+      <p><strong>FTC/TDF 200 mg/300 mg by mouth daily.</strong> Approved for all groups including receptive vaginal sex and injection drug use. Requires estimated creatinine clearance (CrCl) at least 60 mL/min. Tenofovir disoproxil fumarate (TDF) can lower estimated glomerular filtration rate (eGFR) by a few points and reduce bone density by 1–2 percent in the first year; both largely reverse after stopping. Preferred if HBV infection is present because TDF suppresses HBV.</p>
+      <p><strong>FTC/TAF 200 mg/25 mg by mouth daily.</strong> Approved only for men and transgender women at risk through sex, not for receptive vaginal sex — the DISCOVER trial enrolled only that population. Can be used down to CrCl 30 mL/min, with fewer renal and bone effects than FTC/TDF, but more weight gain (~1–2 kg) and higher lipids.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not prescribe FTC/TAF to a cisgender woman at risk through vaginal sex. Efficacy in that population was not established, and FTC/TDF or cabotegravir should be used instead. Pharmacists will flag this — but the resident is ultimately responsible.</p>
+      </div>
+      <h3 class="ct-h3">What about on-demand or 2-1-1 dosing?</h3>
+      <p>The IPERGAY 2-1-1 regimen (two pills 2–24 hours before sex, then one at 24 and 48 hours) worked in men who have sex with men with infrequent sex but is not FDA-approved and was not studied in cisgender women, heterosexual men, or people who inject drugs. The CDC does not recommend it as a substitute for daily dosing.</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 29-year-old cisgender woman with a partner with HIV who is not on treatment asks for PrEP and prefers a pill. Her creatinine clearance is 95 mL/min. Which oral option is FDA-approved for her?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">FTC/TDF daily</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">FTC/TAF daily</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Either FTC/TDF or FTC/TAF — they are interchangeable</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">On-demand FTC/TDF 2-1-1 only</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>FTC/TDF is the only oral PrEP approved for receptive vaginal exposure. FTC/TAF was studied only in men and transgender women, and its label explicitly excludes those at risk through receptive vaginal sex. 2-1-1 is not FDA-approved and was studied only in men who have sex with men.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Injectable cabotegravir: who it helps and how it works</h2>
+      <p>Cabotegravir is an integrase strand transfer inhibitor given as 600 mg (3 mL) intramuscularly in the gluteal muscle. After two injections 1 month apart, it is given every 2 months. An optional 4-week oral cabotegravir 30 mg daily lead-in to check tolerability is allowed, but direct-to-injection is now standard.</p>
+      <p>It reaches protective levels within days and persists for months (half-life ~40 days). That tail protects briefly after a missed dose but can select integrase resistance if HIV is acquired while drug levels are low.</p>
+      <p>Best for patients who struggle with daily pills or prefer discretion. Contraindications are prior hypersensitivity and unknown HIV status. No renal adjustment. Injection-site pain (~80 percent, mild) is most common, then headache and fatigue. It does not treat HBV.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For injectable PrEP, the appointment is the adherence. Build the recall system before the first shot: schedule the next injection before the patient leaves, add phone and portal reminders, and have a plan for a 7-day window on either side of the due date.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Never let a patient drift for months after a missed cabotegravir dose with no coverage. The tail can select resistance. If they are more than 7 days late, use the re-initiation schedule (repeat the 1-month interval) and bridge the gap with oral FTC/TDF or FTC/TAF until levels are restored — or switch formally to oral PrEP if injections are no longer feasible.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient on cabotegravir misses his injection by 5 weeks and reports condomless sex last week. HIV antigen/antibody test is negative today. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure — the tail protects him and no testing is needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Obtain HIV RNA urgently, re-initiate cabotegravir dosing, and bridge with oral FTC/TDF or FTC/TAF while assessing for post-exposure prophylaxis (PEP) need</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop PrEP entirely — he has failed injectable PrEP</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give two cabotegravir injections today</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cabotegravir delays seroconversion so antibody tests may be negative early. Human immunodeficiency virus ribonucleic acid (RNA) testing is required when injection delays overlap with possible exposure. A 5-week delay exceeds the 7-day window, so the initiation interval must be repeated and oral bridging prevents a resistance-prone tail period. Also assess whether PEP is indicated for the last-week exposure.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Before you prescribe: the non-negotiable workup</h2>
+      <p>Every PrEP start requires the same safety checklist, whether oral or injectable. Do not prescribe PrEP if HIV status is unknown or if the patient has signs of acute HIV.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Baseline workup before starting PrEP</caption>
+          <thead>
+            <tr><th>Test or action</th><th>Why it matters</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HIV antigen/antibody test and HIV ribonucleic acid (RNA) if symptoms of acute infection or exposure within past 4 weeks</td><td>PrEP with undiagnosed HIV selects resistance; two-drug PrEP is not treatment</td><td>Review symptoms: fever, rash, sore throat, myalgias, lymphadenopathy. Any concern — get RNA and defer PrEP until negative; consider PEP if exposure was within 72 hours</td></tr>
+            <tr><td>Hepatitis B serologies — surface antigen, surface antibody, core antibody</td><td>FTC, TDF, and TAF are active against HBV; stopping can cause flare; determines need for vaccination</td><td>If surface antigen positive, coordinate with hepatology/ID — FTC/TDF may be preferred and stopping requires monitoring</td></tr>
+            <tr><td>Serum creatinine and estimated creatinine clearance</td><td>Determines FTC/TDF vs FTC/TAF eligibility</td><td>≥60 mL/min for FTC/TDF; ≥30 for FTC/TAF; no threshold for cabotegravir</td></tr>
+            <tr><td>Pregnancy test when applicable</td><td>Safety counselling and regimen choice</td><td>FTC/TDF and cabotegravir have the most safety data in pregnancy; FTC/TAF data are more limited</td></tr>
+            <tr><td>STI screen — nucleic acid amplification test (NAAT) for chlamydia and gonorrhoea at exposed sites (urine, rectal, pharyngeal) plus syphilis serology</td><td>Recent STI raises HIV risk and needs treatment; also establishes baseline for q3–6 month screening</td><td>Offer self-collected swabs if available — it increases screening</td></tr>
+            <tr><td>Hepatitis C antibody if indicated; lipids and weight for TAF/cabotegravir baseline</td><td>Risk assessment and metabolic monitoring</td><td>Not mandatory at first visit but reasonable in people who inject drugs or with metabolic risk</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>If exposure was within 72 hours and PrEP has not started, give 28 days of three-drug post-exposure prophylaxis (PEP) first, then transition to PrEP once HIV testing is negative. Do not use PrEP as PEP.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>An indeterminate HIV test is a stop sign, not a yellow light. Hold PrEP, obtain RNA, and get same-day ID or clinic support before the patient leaves. Starting two drugs during acute infection is how resistance happens.</p>
+      </div>
+
+      <h2 class="ct-h2">Follow-up, monitoring, and what to do when doses are missed</h2>
+      <p>The CDC schedule below applies to all three regimens, with drug-specific tweaks.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Routine follow-up on PrEP</caption>
+          <thead>
+            <tr><th>Interval</th><th>What to do</th><th>Extra notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Every visit</td><td>HIV test (antigen/antibody; add RNA for cabotegravir or if acute symptoms); STI symptom review; adherence, side-effect, and risk-reduction counselling; pregnancy check if relevant</td><td>For cabotegravir, HIV RNA is recommended at initiation and at each injection visit because the drug can delay antibody seroconversion</td></tr>
+            <tr><td>Every 3 months (oral) or every 2 months at injection visits</td><td>Chlamydia/gonorrhoea NAAT and syphilis serology for sexually active patients; HIV testing as above</td><td>CDC recommends STI screening at least every 6 months; many clinics do it every 3 months when labs are already being drawn</td></tr>
+            <tr><td>Every 6 months</td><td>Creatinine and creatinine clearance for FTC/TDF; consider for FTC/TAF as well; weight, blood pressure, contraception review</td><td>For FTC/TDF, stop and evaluate if creatinine clearance falls below 60 mL/min; for FTC/TAF threshold is 30 mL/min</td></tr>
+            <tr><td>Every 12 months</td><td>Hepatitis C screen if at risk; lipid panel if concerns about weight or metabolic effects on FTC/TAF or cabotegravir; hepatitis B vaccination if non-immune</td><td>Also re-assess whether PrEP is still desired — needs change</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Missed oral doses.</strong> Take a missed dose when remembered. With fewer than 4 doses taken per week, vaginal protection falls first. If 7 or more consecutive days were missed with recent condomless sex, test for HIV with RNA before resuming. For planned stops, continue 7 days after last sex; restart 7 days (rectal) to 21 days (vaginal) before risk resumes.</p>
+      <p><strong>Late injections.</strong> A 7-day window on either side of the due date is allowed. If 8 days to 4 weeks late, inject and resume every 2 months; if &gt;4 weeks late, repeat the 1-month initiation pair and bridge with daily oral FTC/TDF or FTC/TAF until levels are restored, or switch to oral PrEP if injections remain impractical.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Minor creatinine bumps on TDF often reflect inhibition of tubular secretion rather than true injury. A rise of 0.1–0.2 mg/dL within the normal range does not mandate stopping if creatinine clearance remains ≥60, but any clearance drop below threshold, new proteinuria, or hyperphosphatemia should prompt renal evaluation and consideration of FTC/TAF or cabotegravir.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient on FTC/TDF has a creatinine clearance of 58 mL/min, down from 82 six months ago. She is asymptomatic and sexually active. What is the best action?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue FTC/TDF — 58 is close enough</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Hold FTC/TDF, repeat labs, evaluate causes, and discuss switching to FTC/TAF (if eligible) or cabotegravir</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cut the pill in half to reduce dose</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop PrEP permanently — she can no longer be protected</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>FTC/TDF requires creatinine clearance at least 60 mL/min. A sustained fall below threshold warrants holding the drug, repeating labs to confirm, looking for reversible causes (nonsteroidal anti-inflammatory drugs, dehydration), and switching to FTC/TAF if the exposure is not vaginal or to injectable cabotegravir. Cutting pills is not an approved strategy. Stopping permanently is not required if an alternative regimen is feasible.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Practical counselling and troubleshooting</h2>
+      <p>Side effects are usually early and mild. FTC/TDF and FTC/TAF can cause nausea or headache for 1–2 weeks — “start-up syndrome” that resolves. Cabotegravir causes injection pain for 1–2 days; rotation, ice, and activity advice help. Modest weight gain on FTC/TAF or cabotegravir is common.</p>
+      <p><strong>PrEP does not prevent other STIs.</strong> Condoms, regular STI screening, hepatitis B vaccination if non-immune, and linkage to medication for opioid use disorder and syringe services for people who inject drugs remain essential.</p>
+      <p><strong>Pregnancy and HBV matter for choice.</strong> FTC/TDF has the most pregnancy safety data and is CDC-preferred when pregnancy is planned; cabotegravir is not contraindicated in pregnancy. Oral PrEP suppresses HBV — brief stops can trigger alanine aminotransferase (ALT) and hepatitis B virus (HBV) deoxyribonucleic acid (DNA) flares, so co-manage with hepatology.</p>
+      <p><strong>Cost and access.</strong> Generic FTC/TDF is inexpensive; FTC/TAF and cabotegravir remain costly. Most insurance covers PrEP without cost sharing, but verify. If cabotegravir is denied, start oral FTC/TDF same day and appeal.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Same-day start wins — if baseline labs are pending and HIV antigen/antibody is negative with no acute symptoms, give PrEP today and follow up results within a week. Requiring a second visit loses 1 in 3 starts.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">When to get help</span>
+        <p>Call for ID or pharmacy backup if: HIV test is indeterminate or RNA positive; creatinine clearance falls below threshold; patient is surface antigen positive for hepatitis B; pregnancy is planned on cabotegravir; or there is a gap longer than 4 weeks in injections with ongoing risk. A short curbside prevents long-term harm.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 22-year-old on FTC/TDF reports mild nausea and loose stools for 4 days after starting last week, now improving. HIV test is negative, creatinine clearance 88 mL/min. What do you advise?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop PrEP — he is intolerant</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Reassure, encourage adherence, and schedule routine 3-month follow-up — start-up symptoms usually resolve in 1–2 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch immediately to cabotegravir</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add loperamide long-term</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Start-up syndrome — mild gastrointestinal symptoms and headache in the first 2 weeks — is common with FTC/TDF and FTC/TAF, mild, self-limited, and not a reason to stop or switch. Reassurance plus a plan to check in preserves adherence. Switching is reserved for persistent intolerance or threshold issues.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Offer PrEP routinely to all sexually active adults and adolescents — do not wait to be asked. Recent STI, condomless sex with partners of unknown status, or sharing injection equipment are practical triggers.</li>
+        <li>Three FDA-approved options exist: FTC/TDF daily (all groups, needs CrCl ≥60), FTC/TAF daily (men and transgender women only, needs CrCl ≥30, not for vaginal exposure), and cabotegravir 600 mg intramuscular every 2 months (all groups, no renal threshold, needs RNA monitoring). Twice-yearly lenacapavir was approved in 2025 and is not yet in CDC guidance.</li>
+        <li>Before starting, always check HIV (antigen/antibody plus RNA if recent exposure or acute symptoms), hepatitis B serologies, creatinine/clearance, pregnancy when relevant, and STI screening. Never start two-drug PrEP with undiagnosed HIV.</li>
+        <li>Follow up every 3 months (oral) or at each injection with HIV testing, STI screening, adherence and pregnancy review, creatinine every 6 months on tenofovir, and re-assess need annually.</li>
+        <li>Manage gaps deliberately: missed oral doses — take when remembered; ≥7 days missed — RNA test before resuming. Late cabotegravir — 7-day window is okay, beyond that bridge with oral PrEP and repeat the initiation sequence if &gt;4 weeks late.</li>
+        <li>Same-day start after a negative rapid HIV test is safe and improves uptake; mild nausea early or injection-site pain do not mean failure; and cost should not end the conversation — start generic FTC/TDF today if needed and sort coverage in parallel.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Centers for Disease Control and Prevention. Preexposure prophylaxis for the prevention of HIV infection in the United States — 2021 update: a clinical practice guideline. Published Dec 2021; update 2022.</li>
+          <li>Landovitz RJ, et al. Cabotegravir for HIV prevention in cisgender men and transgender women. <em>N Engl J Med</em>. 2021;385(7):595-608. (HPTN 083)</li>
+          <li>Delany-Moretlwe S, et al. Cabotegravir for the prevention of HIV-1 in women: results from HPTN 084. <em>Lancet</em>. 2022;399(10337):1779-1789. (HPTN 084)</li>
+          <li>Mayer KH, et al. Emtricitabine and tenofovir alafenamide vs emtricitabine and tenofovir disoproxil fumarate for HIV pre-exposure prophylaxis (DISCOVER). <em>Lancet</em>. 2020;396(10246):239-254.</li>
+          <li>Fonner VA, et al. Effectiveness and safety of oral HIV preexposure prophylaxis for all populations. <em>AIDS</em>. 2016;30(12):1973-1983.</li>
+          <li>U.S. Food and Drug Administration. Lenacapavir (Yeztugo) prescribing information. June 2025. [Not in original talk; included as post-talk update — verify locally.]</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">HIV PrEP medications</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

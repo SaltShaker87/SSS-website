@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach to Fever in the Returning Traveler — IDSA Chalk Talk</title>
+<meta name="description" content="A systematic approach to fever after travel — rule out malaria first, then build an exposure-driven differential.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Approach to Fever in the Returning Traveler — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Infectious disease / travel medicine</p>
+        <h1 class="ct-h1">Approach to fever in the returning traveler</h1>
+        <p class="ct-subtitle">Malaria until proven otherwise, and what else not to miss</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 11 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man presents to the emergency department with fever to 39.1°C, headache, and myalgias. He returned 6 days ago from a 3-week trip to rural Ghana, where he visited family. He took no malaria chemoprophylaxis. He reports mosquito bites, ate street food, swam in freshwater, and had no sick contacts. He is not sexually active on the trip. Exam shows temperature 38.8°C, mild tachycardia, no rash, no jaundice, and no focal findings. Labs are pending. You are the resident asked: what could this be and what do you do tonight?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Apply a structured approach to fever in the returning traveler that rules out life-threatening infection first.</li>
+          <li>Triage malaria risk using geography and timeline and order the right tests without delay.</li>
+          <li>Build an exposure-driven differential using region, activities, and incubation period.</li>
+          <li>Choose an initial workup and know when to admit, isolate, and ask for help.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why this presentation deserves a different reflex</h2>
+      <p>Fever after travel is common, but the stakes are higher than fever in a patient who has not traveled. In the United States the two most frequently identified causes of fever in returned travelers are malaria and dengue, followed by enteric fever (typhoid and paratyphoid), but most patients will have a cosmopolitan cause such as influenza, urinary tract infection, or COVID-19 (coronavirus disease 2019). The travel history does not replace the usual fever workup — it adds a parallel list of cannot-miss diagnoses where delay harms.</p>
+      <p>Two principles organize the workup. First, consider <span class="ct-term">Plasmodium falciparum malaria</span> in every febrile patient from a malaria-endemic area until proven otherwise — even with prophylaxis. <em>P. falciparum</em> can become severe in hours. Second, use time as a filter: incubation, time since return, and duration of fever. A 2-day incubation argues against malaria; fever 6 months after a brief trip argues against most acute tropical infections.</p>
+      <p>In the emergency department the question is not "what tropical disease is this?" but "what will kill the patient if I miss it tonight, does this patient need isolation, and have I sent malaria testing now?"</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Fever in a traveler is malaria until proven otherwise if they were anywhere <em>Anopheles</em> mosquitoes transmit — including a single night near an airport or a brief layover counts.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Waiting for the classic paroxysmal fever pattern to suspect malaria. Most patients with <em>P. falciparum</em> present with irregular fever, headache, and myalgias — not the textbook tertian cycle. Do not wait for periodicity.</p>
+      </div>
+
+      <h2 class="ct-h2">First ten minutes — triage, isolation, and vitals that change the plan</h2>
+      <p>Start with the same rapid assessment you use for any febrile patient, then add three travel-specific screens.</p>
+      <ul>
+        <li><strong>Is this unstable?</strong> Hypotension, altered mentation, bleeding, or severe hemolysis suggests severe malaria or sepsis — escalate early.</li>
+        <li><strong>Does this patient need isolation?</strong> Ask about outbreak exposure and high-risk geography. If Middle East respiratory syndrome (MERS), viral hemorrhagic fever (Ebola, Lassa), or tuberculosis are plausible, isolate and notify infection prevention before further workup.</li>
+        <li><strong>How long since return?</strong> Most imported infections present within 1 month. Fever more than 6 to 12 months later makes acute malaria, dengue, and enteric fever unlikely, though <em>P. vivax</em> and <em>P. ovale</em> can relapse from liver hypnozoites.</li>
+      </ul>
+      <p>Collect core vitals and quick labs that help everywhere: complete blood count (CBC) with differential, complete metabolic panel, bilirubin, and urinalysis. Thrombocytopenia points toward malaria or dengue; leukopenia toward dengue or acute viral illness; elevated transaminases are common in enteric fever, dengue, and acute viral hepatitis.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The incubation period is your most underused test. Malaria usually presents 7 days to several weeks after exposure, dengue 3 to 14 days, typhoid 6 to 30 days, chikungunya 2 to 12 days, and acute human immunodeficiency virus (HIV) 2 to 4 weeks. If the math does not fit, reconsider the diagnosis even if the geography seems perfect.</p>
+      </div>
+
+      <h2 class="ct-h2">Take the travel history that actually helps</h2>
+      <p>A vague "have you traveled?" is not enough. A focused five-part history gives you the differential in two minutes and saves a scatter of low-yield tests.</p>
+      <ol>
+        <li><strong>Where exactly?</strong> Region, rural versus urban, altitude, and season matter more than country alone. Sub-Saharan Africa carries highest risk for <em>P. falciparum</em>; South and Southeast Asia for dengue, chikungunya, and enteric fever; rural freshwater in Africa or Asia for schistosomiasis and leptospirosis. Check Centers for Disease Control and Prevention (CDC) country pages when unsure.</li>
+        <li><strong>When?</strong> Dates of travel, date of return, and date fever began. Plot incubation. Also ask about stopovers — a night in Addis Ababa en route elsewhere is an exposure.</li>
+        <li><strong>What did you do?</strong> Mosquito bites and net use, freshwater swimming, animal contact, street food, unpasteurized dairy, sexual activity, medical injections abroad, and activities such as safari or caving. Visiting friends and relatives (VFR) travelers often have higher risk and less prophylaxis.</li>
+        <li><strong>What protected you?</strong> Vaccines, malaria chemoprophylaxis (drug, adherence, and when stopped), insect precautions, and pretravel counseling. Remember prophylaxis can suppress but not always prevent malaria and can prolong incubation.</li>
+        <li><strong>Who else is ill?</strong> Travel companions, household contacts, and recent outbreaks at the destination.</li>
+      </ol>
+      <p>Finish with host factors: pregnancy, asplenia, immunosuppression, and prior malaria or dengue. Asplenic patients can deteriorate very quickly from malaria or babesiosis.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>VFR travelers returning from West Africa without prophylaxis are the highest-yield group for <em>P. falciparum</em> in the emergency department. Ask explicitly about prophylaxis and do not accept "I took something" — ask the name and whether they finished the course after return.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old woman returns from Thailand 5 days ago with fever, retro-orbital headache, and myalgias. Platelets are 98,000 per microliter, white cells low. Which exposure history most changes your top diagnosis?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">She ate street food daily</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Multiple daytime mosquito bites in Bangkok and Phuket</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">She swam in a hotel pool</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">She took doxycycline perfectly for malaria prophylaxis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Dengue is transmitted by <em>Aedes</em> mosquitoes that bite during the day in urban areas. Urban daytime bites in Southeast Asia with fever, retro-orbital pain, leukopenia, and thrombocytopenia make dengue the lead diagnosis. Street food points toward enteric infection but is far less specific here, and a clean pool is not a schistosomiasis risk.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Malaria — the diagnosis you must rule out tonight</h2>
+      <p>If the patient was in a malaria-endemic area at any point in the relevant window, malaria testing is urgent — not tomorrow morning, tonight.</p>
+      <h3 class="ct-h3">How to test</h3>
+      <p>Order both a rapid diagnostic test (RDT) and thick and thin smears when available. Thick smear detects parasites; thin smear identifies species and quantifies parasitemia. One negative smear or RDT does not exclude malaria — repeat every 12 to 24 hours for at least two more sets if suspicion is high. Polymerase chain reaction (PCR) is sensitive but rarely available urgently; do not wait for it if severe malaria is possible.</p>
+      <p>RDTs for <em>P. falciparum</em> histidine-rich protein 2 can stay positive for weeks after treatment and can miss low parasitemia or non-falciparum species. If your lab cannot read smears promptly at night, call pathology or a reference lab and treat on clinical grounds if severe disease is suspected.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Malaria clues by species and timing</caption>
+          <thead>
+            <tr><th>Feature</th><th>What it suggests</th><th>Practical point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Onset 7 days to months after exposure</td><td>Any <em>Plasmodium</em> species</td><td>If fever began less than 7 days after arrival, look harder at other causes but still test if exposure ongoing</td></tr>
+            <tr><td>Heavy travel to sub-Saharan Africa, no prophylaxis</td><td><em>P. falciparum</em> most likely</td><td>Highest risk of severe disease; quantify parasitemia urgently</td></tr>
+            <tr><td>Relapse months after initial trip</td><td><em>P. vivax</em> or <em>P. ovale</em> hypnozoite reactivation</td><td>Ask about prior malaria and whether primaquine was given</td></tr>
+            <tr><td>Thrombocytopenia without clear source</td><td>Malaria high on list (also dengue)</td><td>Low platelets plus travel from Africa should trigger repeat smears</td></tr>
+            <tr><td>Hemolysis, jaundice, dark urine</td><td>Complicated malaria</td><td>Check glucose, creatinine, lactate, parasitemia and escalate</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="ct-h3">When to treat before confirmation</h3>
+      <p>Do not delay therapy for severe malaria awaiting a second test. If pretest risk is high and there is altered consciousness, severe anemia, renal injury, respiratory distress, or high parasitemia, treat as severe malaria and get urgent infectious disease input. In the United States intravenous artesunate is the treatment for severe malaria. For uncomplicated disease, choice depends on species and resistance — confirm species with infectious disease and pharmacy before deciding.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>One negative smear does not exclude malaria. If the story fits, repeat thick and thin smears every 12 to 24 hours for three total sets. Document the plan so the night team does not stop at one.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old man returned from Nigeria 10 days ago with fever and is now confused and jaundiced. RDT is negative, first smear negative, platelets 62,000 per microliter. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Discharge and repeat smear as outpatient in 1 week</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Repeat thick and thin smears promptly, keep severe malaria in the differential, and seek urgent infectious disease input while stabilising</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order dengue PCR and cancel malaria testing</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start empiric ciprofloxacin for typhoid and observe</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Severe malaria kills quickly and smears can be falsely negative early, especially with low or sequestered parasitemia. Altered mentation plus recent West Africa travel mandates repeat malaria testing on a tight schedule, clinical treatment planning for severe disease, and specialist involvement. Dengue does not explain confusion and jaundice well in this context.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Beyond malaria — a syndrome-based differential</h2>
+      <p>Once malaria testing is underway, broaden systematically. The most useful split is by accompanying syndrome, not by country list alone.</p>
+      <ul>
+        <li><strong>Fever with rash or arthralgia:</strong> Think dengue, chikungunya, and Zika virus. Dengue often gives high fever, retro-orbital pain, leukopenia, and thrombocytopenia, sometimes with mild bleeding; chikungunya is dominated by severe, often persistent polyarthralgia; Zika is frequently mild with rash and conjunctivitis and matters greatly in pregnancy.</li>
+        <li><strong>Fever with abdominal pain or diarrhea:</strong> Consider enteric fever (<em>Salmonella enterica</em> serotype Typhi and Paratyphi), amebic liver abscess, and hepatitis A or E. Enteric fever often shows prolonged fever and abdominal tenderness without diarrhea early on.</li>
+        <li><strong>Fever with respiratory symptoms:</strong> Remember influenza and COVID-19 (coronavirus disease 2019) first, then add Middle East respiratory syndrome (MERS), tuberculosis, and endemic fungi if exposures fit.</li>
+        <li><strong>Fever with eosinophilia:</strong> Think helminths and other parasites — acute schistosomiasis (Katayama syndrome) weeks after freshwater exposure, strongyloidiasis, or filariasis. Eosinophilia may be absent early.</li>
+        <li><strong>Fever with jaundice:</strong> Consider viral hepatitis, leptospirosis, and complicated malaria. Leptospirosis follows freshwater or mud exposure with conjunctival suffusion and renal injury.</li>
+        <li><strong>Undifferentiated fever:</strong> Rickettsial spotted fevers (for example African tick bite fever with eschar after safari), leptospirosis, acute human immunodeficiency virus (HIV), and enteric fever all belong here.</li>
+      </ul>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Exposure often matters more than the stamp in the passport</caption>
+          <thead>
+            <tr><th>Exposure</th><th>Classic infections to consider</th><th>Clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Freshwater wading or swimming in Africa or Southeast Asia</td><td>Schistosomiasis, leptospirosis</td><td>Hematuria, Katayama fever weeks later; conjunctival injection and myalgias in leptospirosis</td></tr>
+            <tr><td>Safari, brush, eschar</td><td>Rickettsial spotted fevers</td><td>Eschar, regional adenopathy, rash after tick bite; doxycycline is the treatment — do not wait for serology</td></tr>
+            <tr><td>Street food, unsafe water</td><td>Enteric fever, hepatitis A, hepatitis E</td><td>Prolonged fever, abdominal pain, sometimes relative bradycardia in typhoid</td></tr>
+            <tr><td>Unpasteurised dairy, animal contact</td><td>Brucellosis, Q fever</td><td>Undulant fever, arthralgia, hepatitis</td></tr>
+            <tr><td>Sexual exposure abroad</td><td>Acute HIV, syphilis, gonorrhea</td><td>Always ask; acute retroviral syndrome is easy to miss</td></tr>
+            <tr><td>Caves, construction dust, bat exposure</td><td>Histoplasmosis</td><td>Respiratory or febrile illness weeks after aerosol exposure</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Routine serologies sent in the emergency department often return days after discharge and can mislead if you test for everything. Prioritize tests that change tonight's management — malaria smear, dengue nonstructural protein 1 (NS1) antigen where appropriate, blood cultures, and respiratory viral testing — and let the outpatient or inpatient workup add the rest with intention.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Always add acute HIV to the differential for febrile returning travelers with sexual exposure or injection risk. It is common, treatable, and routinely missed when the workup stays tropical-only.</p>
+      </div>
+
+      <h2 class="ct-h2">What to do on day one — workup that does not waste time</h2>
+      <p>Order in parallel, not in sequence.</p>
+      <ul>
+        <li><strong>Everyone with fever and relevant geography:</strong> Malaria RDT plus thick and thin smears, complete blood count (CBC) and metabolic panel, bilirubin, lactate if ill, blood cultures before antibiotics, urinalysis, and chest radiograph if respiratory symptoms or hypoxia.</li>
+        <li><strong>Add by syndrome:</strong> Respiratory viral panel including influenza and COVID-19 testing; stool cultures and liver panel if diarrheal or hepatitis; dengue NS1 antigen and/or PCR if within the first week of illness in a dengue-endemic area, with dengue immunoglobulin M (IgM) later; HIV antigen/antibody plus HIV PCR if acute infection suspected; consider leptospirosis PCR early and paired serology.</li>
+        <li><strong>Do not send in isolation:</strong>Typhoid serology (Widal) has poor performance — blood and stool cultures are better. Save convalescent serologies for paired testing with infectious disease guidance.</li>
+      </ul>
+      <p>Be restrained with empiric antibiotics — they do not treat dengue or malaria. If the patient is unstable, give broad coverage after cultures and get help. For suspected rickettsial disease, do not delay doxycycline. For suspected enteric fever, ceftriaxone is a common empiric choice pending cultures; tailor once susceptibilities return given resistance in South Asia.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Starting a nonsteroidal anti-inflammatory drug (NSAID) for dengue-like illness before dengue is excluded. If dengue is on the differential, avoid NSAIDs and aspirin because of bleeding risk — use acetaminophen for fever while you test.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 24-year-old student backpacked in India, ate street food, now has 7 days of fever to 39.5°C, abdominal pain, and constipation. Labs show mild transaminitis and relative bradycardia at 62 beats per minute despite fever. Blood cultures are pending. Which test is most appropriate now?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Widal serology alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Blood cultures plus malaria testing given travel, and stool cultures — do not rely on a single serology</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">White cell count alone to rule in typhoid</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Empiric azithromycin and discharge without cultures</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is classic enteric fever until proven otherwise, but blood cultures are the diagnostic standard; Widal testing is insensitive and nonspecific, and leukopenia is not specific. Malaria testing belongs in parallel because it kills faster than typhoid if missed. Empiric therapy comes after cultures.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When malaria tests are negative — what not to miss</h2>
+      <p>A negative malaria workup is the start, not the end. Three mistakes are common once the smear is negative.</p>
+      <p>First, anchoring on a single exotic diagnosis because the travel seems exotic. Most fevers are still cosmopolitan infections. Look again for pyelonephritis, pneumonia, cellulitis, or viral upper respiratory infection before ordering rare serologies.</p>
+      <p>Second, forgetting infections with long tails. <em>P. vivax</em> can relapse months later, visceral leishmaniasis can present months after travel to South Asia or the Mediterranean, and amebic liver abscess can appear weeks after a diarrheal illness has resolved. Ask about prior malaria treatment — if the patient had vivax without primaquine for hypnozoites, relapse is more likely.</p>
+      <p>Third, missing public health obligations. Suspected viral hemorrhagic fever, MERS, measles, or tuberculosis triggers isolation and reporting before confirmation. If you are considering one of these, keep the patient masked and in a private room, use appropriate personal protective equipment, and call infection prevention and the health department early.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Every febrile traveler needs three parallel thoughts: malaria, the most common cosmopolitan cause of fever, and the one exposure-driven infection that fits incubation and activities tonight.</p>
+      </div>
+
+      <h2 class="ct-h2">When to admit, when to call for help, and counseling for next time</h2>
+      <p>Admit if you cannot exclude malaria, the patient is unstable, has dengue warning signs (abdominal pain, persistent vomiting, bleeding), has severe enteric fever, or needs isolation. Stable patients with low-risk travel, a plan for three smears, and a plausible viral syndrome can sometimes be managed as outpatients with clear return precautions and reliable follow-up.</p>
+      <p>Call for help early: infectious disease for suspected malaria, severe dengue, or hemorrhagic fever concern; the CDC malaria hotline for artesunate access; and infection prevention for high-consequence pathogens.</p>
+      <p>Before discharge, counsel on completing prophylaxis after return, insect repellent with DEET (N,N-diethyl-meta-toluamide) or picaridin, treated bed nets, avoiding freshwater swimming in schistosomiasis-endemic areas, and seeking care quickly for fever — telling the next clinician exactly where they traveled and when. Record missed vaccines for catch-up.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>GeoSentinel and similar surveillance networks consistently show that fever in travelers from sub-Saharan Africa is most often malaria, while fever from Southeast Asia is most often dengue, and fever from South Asia often includes enteric fever. Use that as a starting prior, then override it with the individual's exposures and timeline.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 19-year-old returned from a freshwater lake in Malawi 4 weeks ago now has fever, dry cough, and peripheral eosinophilia. Malaria smears are negative. What exposure most explains this?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Mosquito bites</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Typhoid vaccine failure</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Freshwater swimming with acute schistosomiasis (Katayama syndrome)</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urban hotel pool</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Katayama syndrome presents 3 to 8 weeks after cercarial exposure during freshwater contact in endemic regions, with fever, cough, and eosinophilia. Mosquito bites explain malaria or dengue but not this timing and eosinophilia. Chlorinated pools do not carry <em>Schistosoma</em>.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Treat every fever after travel from a malaria-endemic area as malaria until proven otherwise — send RDT plus thick and thin smear immediately and repeat every 12 to 24 hours for three total sets if suspicion remains.</li>
+        <li>Use time as a filter: incubation, time since return, and duration of fever narrow the list faster than a long country-based catalogue.</li>
+        <li>Anchor your history on where exactly, when, and what you did — mosquitoes, fresh water, food and water, animals, sex, and prophylaxis adherence, with special attention to VFR travelers.</li>
+        <li>Test in parallel by syndrome — blood cultures always, respiratory viral testing, dengue NS1 early or IgM later, and HIV testing when exposure or an acute viral syndrome fits — and do not rely on a single serology like Widal.</li>
+        <li>Isolate and notify early if viral hemorrhagic fever, MERS, or tuberculosis are plausible, and call infectious disease quickly for any suspected severe malaria — artesunate saves lives but takes logistics.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Freedman DO, et al. Spectrum of disease and relation to place of exposure among ill returned travelers. <em>N Engl J Med</em>. 2006;354(2):119-130.</li>
+          <li>Centers for Disease Control and Prevention. CDC Yellow Book 2024: Health Information for International Travel. Oxford University Press; 2023.</li>
+          <li>Centers for Disease Control and Prevention. Treatment of malaria: guidelines for clinicians (United States). Updated 2024.</li>
+          <li>World Health Organization. International travel and health: malaria and other travel-related infections. Updated 2023.</li>
+          <li>Fairley JK, et al. Fever in the returning traveler. In: Bennett JE, Dolin R, Blaser MJ, eds. <em>Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases</em>. 9th ed. Elsevier; 2020.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Approach to Fever in the Returning Traveler</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ID Chalk Talks — 60 bite-size infectious diseases teaching pages for residents, adapted from the IDSA ID Chalk Talks series.">
+<title>ID Chalk Talks — Salt Shaker Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ WIN95 DESIGN TOKENS (shared with index.html / abg-detail.html) ============ */
+  :root{
+    --desktop:#0d7c7c;
+    --face:#c0c0c0;
+    --face-light:#dfdfdf;
+    --shadow:#808080;
+    --shadow-dark:#0a0a0a;
+    --title-a:#000080;
+    --title-b:#1084d0;
+    --paper:#ffffff;
+    --ink:#111111;
+    --salt:#ffd23f;
+    --live:#1ca31c;
+    --font-ui:Tahoma,"MS Sans Serif",Geneva,sans-serif;
+    --font-display:"Silkscreen",Tahoma,sans-serif;
+    --font-mono:"Courier New",Courier,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--font-ui);font-size:14px;color:var(--ink);
+    background:var(--desktop);
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:6px 6px;
+    padding-bottom:40px;
+  }
+  a{color:#000080}
+  :focus-visible{outline:2px dotted var(--ink);outline-offset:2px}
+
+  .skip-link{
+    position:absolute;left:-9999px;top:0;z-index:200;
+    background:var(--salt);color:var(--ink);font-weight:bold;
+    padding:8px 14px;text-decoration:none;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff;
+  }
+  .skip-link:focus{left:8px;top:8px}
+
+  .sunken{
+    background:var(--paper);
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--shadow), inset -2px -2px #fff;
+  }
+
+  .window{
+    background:var(--face);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--shadow), inset 2px 2px #fff,
+               4px 4px 0 rgba(0,0,0,.35);
+    margin-bottom:28px;
+  }
+  .titlebar{
+    display:flex;align-items:center;gap:6px;
+    background:linear-gradient(90deg,var(--title-a),var(--title-b));
+    color:#fff;padding:3px 4px 3px 8px;
+    font-weight:bold;font-size:13px;
+    user-select:none;
+  }
+  .titlebar .t-icon{font-size:13px}
+  .titlebar .t-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .t-btns{display:flex;gap:2px}
+  .t-btn{
+    width:18px;height:16px;font-size:10px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--face);color:var(--ink);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+    font-family:var(--font-ui);
+  }
+  .win-body{padding:18px}
+
+  .btn{
+    display:inline-block;
+    font-family:var(--font-ui);font-size:13px;color:var(--ink);
+    text-decoration:none;cursor:pointer;
+    padding:6px 14px;background:var(--face);border:0;
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px #fff,
+               inset -2px -2px var(--shadow), inset 2px 2px var(--face-light);
+  }
+  .btn:active,.btn[aria-pressed="true"]{
+    box-shadow:inset 1px 1px var(--shadow-dark), inset -1px -1px #fff,
+               inset 2px 2px var(--shadow), inset -2px -2px var(--face-light);
+  }
+  .btn:active{transform:translate(1px,1px)}
+  .btn[aria-pressed="true"]{background:var(--face-light);font-weight:bold}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 16px 40px}
+
+  /* ============ LIBRARY ============ */
+  .lib-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+  .lib-head h1{
+    font-family:var(--font-display);font-size:clamp(18px,4vw,28px);
+    color:var(--title-a);text-shadow:2px 2px 0 var(--salt);
+    line-height:1.2;margin-bottom:6px;
+  }
+  .lib-head p{font-size:13px;line-height:1.5;max-width:62ch}
+
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .toolbar label{font-size:13px}
+  .search{
+    flex:1;min-width:200px;
+    font-family:var(--font-ui);font-size:14px;color:var(--ink);
+    padding:6px 8px;border:0;
+  }
+  .sort{display:flex;gap:4px;align-items:center;font-size:13px}
+  .sort .btn{padding:4px 10px;font-size:12px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+  .chips .btn{padding:4px 10px;font-size:12px}
+  .chips .n{color:#555;font-weight:normal}
+
+  .status{
+    font-size:12px;padding:3px 8px;margin-bottom:10px;
+    box-shadow:inset 1px 1px var(--shadow), inset -1px -1px #fff;
+  }
+
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:10px;padding:10px;min-height:120px;
+  }
+  .card{
+    display:flex;flex-direction:column;gap:4px;
+    padding:10px 12px;text-decoration:none;color:var(--ink);
+    background:var(--paper);
+    box-shadow:inset -1px -1px var(--shadow-dark), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--shadow), inset 2px 2px #fff;
+  }
+  .card:hover{outline:2px dotted var(--title-a);outline-offset:-4px}
+  .card:hover .card-title{color:var(--title-a);text-decoration:underline}
+  .card-num{font-family:var(--font-mono);font-size:11px;color:#555}
+  .card-topic{
+    align-self:flex-start;font-size:10px;font-weight:bold;letter-spacing:.3px;
+    color:#fff;background:var(--title-a);padding:2px 6px;
+  }
+  .card-title{font-weight:bold;font-size:14px;line-height:1.3}
+  .card-sub{font-size:12px;line-height:1.45;color:#333}
+  .card-meta{margin-top:auto;padding-top:6px;font-size:11px;color:#555}
+  .empty{grid-column:1/-1;font-size:13px;line-height:1.6;padding:10px}
+
+  .notice{font-size:12px;line-height:1.55;margin-top:14px;padding:10px 12px;background:var(--face-light)}
+  .notice p+p{margin-top:6px}
+
+  footer{text-align:center;color:#dff;font-size:12px;padding:8px 12px 20px}
+  footer a{color:#fff}
+
+  @media(max-width:640px){
+    .win-body{padding:12px}
+    .grid{grid-template-columns:1fr;padding:8px}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<main class="wrap" id="main" tabindex="-1">
+
+  <section class="window" aria-label="ID Chalk Talks library">
+    <div class="titlebar">
+      <span class="t-icon">📚</span>
+      <span class="t-text">C:\Chalk Talks — Library</span>
+      <span class="t-btns" aria-hidden="true"><span class="t-btn">_</span><span class="t-btn">□</span><span class="t-btn">×</span></span>
+    </div>
+    <div class="win-body">
+
+      <div class="lib-head">
+        <div>
+          <h1>ID Chalk Talks</h1>
+          <p>Bite-size infectious diseases teaching pages for residents. Each one opens with a case, walks through the reasoning, and ends with self-check questions. Works on a phone.</p>
+        </div>
+        <a class="btn" href="../">◀ Salt Shaker home</a>
+      </div>
+
+      <div class="toolbar">
+        <label for="q">Search:</label>
+        <input id="q" class="search sunken" type="search" placeholder="syphilis, endocarditis, PrEP…" autocomplete="off">
+        <div class="sort" role="group" aria-label="Sort">
+          <span>Sort:</span>
+          <button class="btn" type="button" data-sort="az" aria-pressed="true">A–Z</button>
+          <button class="btn" type="button" data-sort="num" aria-pressed="false">Number</button>
+        </div>
+      </div>
+
+      <div class="chips" id="chips" role="group" aria-label="Filter by topic"></div>
+
+      <div class="status" id="count" aria-live="polite"></div>
+
+      <div class="grid sunken" id="grid"></div>
+
+      <div class="notice">
+        <p>Adapted from the <a href="https://idsame.notion.site/ID-Chalk-Talks-37138fc2c0444f66b24b2c676be9ae1a" target="_blank" rel="noopener">IDSA ID Chalk Talks</a> series and rewritten for reading rather than presenting.</p>
+        <p>For education only, not medical advice. Doses and recommendations can change, so check current guidelines before acting on anything here.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025–2026 Salt Shaker Studio · <a href="../">Home</a></p>
+</footer>
+
+<script>
+/* ============ TALK DATA — generated from the talk pages; edit the pages, then regenerate ============ */
+// TALKS:BEGIN
+var TALKS = [{"num": 1,"slug": "anaerobes","title": "Anaerobes","sub": "From mouth to colon, which infections need anaerobic coverage and when you can safely skip it","cat": "Infectious diseases","mins": 9,"topics": ["Microbiology","Antibiotics & resistance"],"h2": ["What anaerobe means at the bedside","The usual suspects and where they live","When to think anaerobes: syndromes and bedside clues","When anaerobic coverage is not needed","Making the microbiologic diagnosis","Choosing therapy and avoiding double coverage","Putting it together: three cases on call","The five-minute version","References"]},
+{"num": 2,"slug": "an-id-approach-to-lymphadenopathy","title": "An ID approach to lymphadenopathy","sub": "Sorting signal from noise when nodes stay enlarged","cat": "Infectious diseases / General ID","mins": 9,"topics": ["General ID"],"h2": ["What counts as abnormal","Localised versus generalised changes everything","History and examination that matter","Infectious patterns to recognise","Workup that avoids low-value testing","When tissue is the answer","Pitfalls that cause harm","The five-minute version","References"]},
+{"num": 3,"slug": "native-vertebral-osteomyelitis-diagnostic-workup","title": "Native vertebral osteomyelitis: diagnostic workup","sub": "When back pain is more than mechanical — how to suspect, confirm, and source the infection","cat": "Bone and joint infections","mins": 10,"topics": ["Bone, joint & skin"],"h2": ["Why native vertebral osteomyelitis is easy to miss","When to suspect it","Start with blood cultures and inflammatory markers","Magnetic resonance imaging is the test of choice","When to do a biopsy and when you can skip it","Tying the diagnosis together and finding the source","Pitfalls that delay diagnosis or mislead you","The five-minute version","References"]},
+{"num": 4,"slug": "hiv-prep-medications","title": "HIV PrEP medications","sub": "Choosing and monitoring oral and injectable pre-exposure prophylaxis","cat": "HIV prevention","mins": 10,"topics": ["HIV"],"h2": ["Why PrEP belongs in primary care","The PrEP menu at a glance","Oral PrEP in detail: FTC/TDF versus FTC/TAF","Injectable cabotegravir: who it helps and how it works","Before you prescribe: the non-negotiable workup","Follow-up, monitoring, and what to do when doses are missed","Practical counselling and troubleshooting","The five-minute version","References"]},
+{"num": 5,"slug": "id-focused-differential-diagnoses-of-miliary-nodules","title": "ID-focused differential diagnoses of miliary nodules","sub": "Sorting hematogenous spread from its mimics at the bedside","cat": "Pulmonary infections \\u00b7 Radiology","mins": 10,"topics": ["Lung & TB"],"h2": ["What miliary actually means","Why the infectious differential is so broad","The ID short list you can carry in your pocket","History and host factors that re-weight the list","What makes you worry for miliary tuberculosis tonight","When miliary is not infection — the mimics to rule out","A practical workup you can order on call","The five-minute version","References"]},
+{"num": 6,"slug": "cerebral-mass-lesions-in-patients-with-aids","title": "Cerebral mass lesions in patients with AIDS","sub": "Distinguishing toxoplasmosis from lymphoma and knowing when to treat, test, or biopsy","cat": "Central nervous system infections","mins": 12,"topics": ["HIV","Brain & meninges"],"h2": ["Why a new cerebral mass lesion in AIDS is an emergency","The short differential that actually matters","Clues from history, CD4 count and serology","What imaging tells you — and what it cannot","A practical diagnostic algorithm","Treating presumed toxoplasmosis and watching for response","When to pivot to lymphoma and the role of biopsy","Steroids, prophylaxis and timing of antiretroviral therapy","The five-minute version","References"]},
+{"num": 7,"slug": "pulmonary-nodules-in-immunocompromised-hosts","title": "Pulmonary nodules in immunocompromised hosts","sub": "Sorting nodules by host, imaging pattern, and timing","cat": "Pulmonary and opportunistic infections","mins": 10,"topics": ["Lung & TB","Transplant & immunocompromised"],"h2": ["Why pulmonary nodules mean something different when immunity is impaired","Start with the host: who is immunocompromised and how","What the computed tomography pattern is trying to tell you","The infectious differential that matters most","A stepwise workup that keeps you out of trouble","Treatment principles and when to call for help","The five-minute version","References"]},
+{"num": 8,"slug": "management-of-methamphetamine-use-disorder","title": "Management of methamphetamine use disorder","sub": "No FDA-approved medication, one strong counselling tool, and a lot of harm reduction you can do tonight","cat": "Addiction medicine","mins": 10,"topics": ["General ID"],"h2": ["Why you are seeing more methamphetamine now","What methamphetamine does and why it is different from opioids","Recognising methamphetamine use disorder at the bedside","The patient in front of you tonight — acute intoxication, psychosis, and medical complications","Withdrawal is not what you think","What actually helps long term","Harm reduction and medical linkage when abstinence is not the goal","The five-minute version","References"]},
+{"num": 9,"slug": "approach-to-lymphocytic-aseptic-meningitis-id-perspective","title": "Approach to lymphocytic (aseptic) meningitis: ID perspective","sub": "When cerebrospinal fluid shows a lymphocytic pleocytosis — how to sort viral, partially treated bacterial and non-infectious causes.","cat": "","mins": 11,"topics": ["Brain & meninges"],"h2": ["Start with the label, not the diagnosis","What lymphocytic pleocytosis actually means","The three-bucket differential","Viral causes you see every summer and fall","When lymphocytic does not mean viral","Sorting it at the bedside before the laboratory catches up","Testing without over-testing","The five-minute version","References"]},
+{"num": 10,"slug": "art-genetic-barrier-to-resistance","title": "ART genetic barrier to resistance","sub": "What genetic barrier means, which antiretrovirals have it, and how to choose a regimen that resists resistance.","cat": "","mins": 11,"topics": ["HIV"],"h2": ["What we mean by genetic barrier","Why HIV is built to mutate under pressure","Ranking the classes by barrier","Low-barrier drugs you will see fail first","What makes a high barrier — dolutegravir, bictegravir and boosted darunavir","Choosing and protecting a regimen","When even a high barrier breaks","The five-minute version","References"]},
+{"num": 11,"slug": "challenging-resistance-patterns-ampc-and-esbl","title": "Challenging resistance patterns: AmpC and ESBL","sub": "What to do when ceftriaxone looks susceptible but will fail, and when piperacillin-tazobactam is not enough","cat": "Antimicrobial resistance","mins": 9,"topics": ["Antibiotics & resistance"],"h2": ["Why AmpC and ESBL get confused","What ESBL means and where you find it","What AmpC means and why it behaves differently","Why the susceptibility report is not the whole answer","AmpC at the bedside: avoiding the ceftriaxone trap","ESBL at the bedside: choosing therapy by site and severity","Putting it together on call","The five-minute version","References"]},
+{"num": 12,"slug": "labs-for-a-patient-with-newly-diagnosed-hiv","title": "Labs for a patient with newly diagnosed HIV","sub": "What to order on day one, why each test matters, and what should never delay antiretroviral therapy","cat": "HIV medicine","mins": 10,"topics": ["HIV"],"h2": ["Why the first panel matters more than getting every test right","Confirm and characterise the virus","Labs that determine which ART you can safely use","Screen once for co-infections you can treat, cure, or vaccinate against","Stratify opportunistic infection risk","Baseline organ function, metabolic risk, and safety labs","Put it together: an order set that still lets you start ART today","The five-minute version","References"]},
+{"num": 13,"slug": "antimicrobial-treatment-of-endocarditis-caused-by-common","title": "Antimicrobial treatment of endocarditis caused by common organisms","sub": "Which organism, which valve, and how long — a resident's guide to getting the regimen right","cat": "Cardiovascular infections","mins": 10,"topics": ["Bacteremia & endocarditis"],"h2": ["Before you pick an antibiotic — the framework","Viridans group streptococci and Streptococcus gallolyticus — susceptibility drives the choice","Staphylococcus aureus — MSSA versus MRSA and why gentamicin no longer helps native valves","Enterococcus faecalis and faecium — two beta-lactams are better than one","HACEK and other gram-negatives plus empiric therapy when you do not yet know","From inpatient to outpatient — duration, monitoring, and when to call surgery","The five-minute version","References"]},
+{"num": 14,"slug": "streptococci-101","title": "Streptococci 101","sub": "How to group them, what each group does, and what to do about it","cat": "Clinical microbiology","mins": 10,"topics": ["Microbiology"],"h2": ["Why streptococci deserve a framework, not a list","How the lab sorts streptococci before the name arrives","Group A Streptococcus pyogenes — throat, skin, and what comes after","Groups B, C, and G — not just a pregnancy problem","Viridans, anginosus, and bovis groups — three clues you should not miss","Streptococcus pneumoniae — the streptococcus with its own rules","Choosing antibiotics — principles rather than a memorised table","The five-minute version","References"]},
+{"num": 15,"slug": "coccidioides-serologic-testing","title": "Coccidioides serologic testing","sub": "Interpreting EIA, immunodiffusion and complement fixation without getting fooled by a false-positive IgM","cat": "Mycology","mins": 9,"topics": ["Fungal"],"h2": ["Why Valley fever serology keeps surprising residents","The three tests in your lab report","What a complement fixation titer actually tells you","Timing: why early serology is often negative","Common pitfalls that lead to misdiagnosis","How to order and interpret serology at the bedside","The five-minute version","References"]},
+{"num": 16,"slug": "syphilis-treatment","title": "Syphilis treatment","sub": "Pick the penicillin, get the dose and duration right, and do not miss the nervous system","cat": "Sexually transmitted infections","mins": 9,"topics": ["STIs"],"h2": ["Why staging determines everything","Early syphilis — primary, secondary, and early latent","Late latent, tertiary, and syphilis of unknown duration","Neurosyphilis, ocular syphilis, and otosyphilis","Syphilis in pregnancy","If penicillin cannot be used, and how to follow up","The five-minute version","References"]},
+{"num": 17,"slug": "diagnosis-and-differential-of-native-septic-joint-arthritis","title": "Diagnosis and Differential of Native Septic Joint Arthritis","sub": "How to recognise a joint emergency, interpret synovial fluid, and sort it from gout, pseudogout and other mimics","cat": "Bone and joint infection","mins": 10,"topics": ["Bone, joint & skin"],"h2": ["Why a hot joint is an emergency","Who is at risk and which organisms to expect","What septic arthritis looks like and what it does not","The differential you cannot skip","The tap is the test","Reading the synovial fluid without getting fooled","The five-minute version","References"]},
+{"num": 18,"slug": "human-herpesvirus-8-disease-in-people-living-with-hiv","title": "Human herpesvirus-8 disease in people living with HIV","sub": "Kaposi sarcoma and the rest of the KSHV spectrum — what to recognise, what to biopsy, and when to call for help","cat": "HIV and opportunistic infections","mins": 10,"topics": ["HIV"],"h2": ["Why HHV-8 still matters in the ART era","The virus in brief","Kaposi sarcoma — the disease you will see most","Multicentric Castleman disease and KICS — the febrile, inflamed patient","Primary effusion lymphoma and other rarer KSHV diseases","How to evaluate a suspected KSHV disease","Management principles and when to urgently refer","The five-minute version","References"]},
+{"num": 19,"slug": "infections-in-solid-organ-transplantation","title": "Infections in solid organ transplantation","sub": "A timeline-based approach to what happens when, why it happens, and what prevents it","cat": "Transplant infectious diseases","mins": 10,"topics": ["Transplant & immunocompromised"],"h2": ["The net state of immunosuppression frames everything","The first month: what the hospital and the donor gave you","One to six months: the opportunistic window","After six months: community infections and the long tail","Donor-derived infections: when to suspect them","Prophylaxis and vaccination: what prevents the timeline","A bedside approach to fever after transplant","The five-minute version","References"]},
+{"num": 20,"slug": "pre-transplant-evaluation-for-solid-organ-transplant","title": "Pre-transplant evaluation for solid organ transplant","sub": "Finding what will reactivate, what the donor may bring, and what you can prevent","cat": "Transplant infectious diseases","mins": 10,"topics": ["Transplant & immunocompromised"],"h2": ["Why this evaluation cannot wait until after transplant","The history that changes what you screen for","The universal laboratory panel","Tailored screening based on epidemiology and organ","Vaccines: the window that closes after transplant","From results to a plan: treat, defer, or document for prophylaxis","Putting it together: counseling and coordinating the team","The five-minute version","References"]},
+{"num": 21,"slug": "penicillin-overview","title": "Penicillin overview","sub": "How to choose the narrowest penicillin that still works","cat": "Antimicrobial stewardship","mins": 10,"topics": ["Antibiotics & resistance"],"h2": ["Why penicillin still matters","How penicillins work and how bacteria escape","The four families you need at the bedside","Spectrum in practice","Pharmacology that changes your orders","Allergy, adverse effects, and the delabeling imperative","Choosing a penicillin at the bedside","The five-minute version","References"]},
+{"num": 22,"slug": "syphilis-treatment-by-stage-of-infection","title": "Syphilis treatment by stage of infection","sub": "Choose the right penicillin, dose, and duration — and never miss the nervous system","cat": "Sexually transmitted infections","mins": 9,"topics": ["STIs"],"h2": ["Why staging decides the regimen","Early syphilis — primary, secondary, and early latent","Late latent, syphilis of unknown duration, and tertiary syphilis without neurosyphilis","Neurosyphilis, ocular syphilis, and otosyphilis at any stage","Syphilis in pregnancy","If penicillin cannot be used and how to counsel about Jarisch-Herxheimer","Serologic follow-up, partner management, and human immunodeficiency virus (HIV) co-infection","The five-minute version","References"]},
+{"num": 23,"slug": "diagnosis-and-treatment-of-malaria","title": "Diagnosis and treatment of malaria","sub": "How to recognise, test, and treat malaria in returned travellers — species, severity, and guideline-based regimens.","cat": "","mins": 13,"topics": ["Travel & tick-borne"],"h2": ["Why you cannot miss malaria","Which species matter and when they present","How to diagnose malaria tonight","Species and severity drive every decision","Treatment of uncomplicated malaria","Severe malaria is an emergency","Before discharge — close the loops","The five-minute version","References"]},
+{"num": 24,"slug": "clostridioides-difficile-infection-diagnosis","title": "Clostridioides difficile infection — diagnosis","sub": "When to test, which assay to trust, and what a positive result actually means","cat": "Clostridioides difficile infection","mins": 8,"topics": ["GI, liver & urinary"],"h2": ["Only test diarrhoea that needs explaining","What each assay actually detects","Why most hospitals use a two-step algorithm","How to handle discordant results","Pitfalls before the specimen reaches the lab","When to repeat — and when to stop","Diagnostic stewardship on rounds","The five-minute version","References"]},
+{"num": 25,"slug": "prevention-of-perinatal-hiv-transmission","title": "Prevention of perinatal HIV transmission","sub": "How testing, suppressive antiretroviral therapy, delivery planning, and infant prophylaxis prevent perinatal HIV transmission — reconstructed from current perinatal guidance after corrupted source files.","cat": "","mins": 13,"topics": ["HIV"],"h2": ["Why perinatal transmission still matters","When and how transmission happens","Test every pregnancy — and test again","Maternal antiretroviral therapy is the cornerstone","How delivery planning changes with viral load","Infant prophylaxis and testing after birth","Infant feeding, counseling, and follow-up","The five-minute version","References"]},
+{"num": 26,"slug": "staphylococcus-aureus-resistance-mechanisms-and-treatment","title": "Staphylococcus aureus resistance mechanisms and treatment options","sub": "From mecA to MIC creep: how resistance guides the right drug for the right isolate","cat": "Antimicrobial resistance","mins": 10,"topics": ["Antibiotics & resistance","Bacteremia & endocarditis"],"h2": ["Why Staphylococcus aureus still matters on call","The beta-lactam story: from penicillinase to PBP2a","When vancomycin and daptomycin become less reliable","Other phenotypes that change the prescription","Choosing therapy: MSSA is not treated like MRSA","On the wards: culture, source, heart, and duration","What not to do","The five-minute version","References"]},
+{"num": 27,"slug": "hepatitis-c-treatment-naive-essentials","title": "Hepatitis C treatment-naïve essentials","sub": "Who to treat, what to check, and how to choose and monitor pangenotypic therapy","cat": "Viral hepatitis","mins": 10,"topics": ["GI, liver & urinary"],"h2": ["Why treatment is offered to every adult with hepatitis C","Confirm active infection and stage the liver","Who fits the simplified treatment pathway","Choosing between the two pangenotypic regimens","Drug interactions and contraindications you must check","Monitoring on treatment and confirming cure","Counseling, vaccination, and preventing reinfection","The five-minute version","References"]},
+{"num": 28,"slug": "lvad-infections","title": "LVAD infections","sub": "Why the driveline is the Achilles heel and what to do when it gets infected","cat": "Mechanical circulatory support","mins": 10,"topics": ["Bacteremia & endocarditis"],"h2": ["Why LVAD infections matter","Anatomy in 30 seconds","How infections are classified","Microbiology and risk factors","Evaluating a suspected infection","Management and prevention","The five-minute version","References"]},
+{"num": 29,"slug": "stages-of-syphilis","title": "Stages of syphilis","sub": "From chancre to tertiary disease — how to recognise each stage and why staging still matters","cat": "Sexually transmitted infections","mins": 9,"topics": ["STIs"],"h2": ["Why staging still drives everything","Primary syphilis — the chancre you can miss","Secondary syphilis — the great imitator","Latent syphilis — early versus late, and why 12 months matters","Tertiary syphilis — gummas, aorta, and the nervous system","Neurosyphilis, ocular syphilis, and otosyphilis at any stage","Putting staging into practice at the bedside","The five-minute version","References"]},
+{"num": 30,"slug": "navigating-penicillin-allergies","title": "Navigating penicillin allergies","sub": "Turning a chart label into a clinical decision","cat": "Antimicrobial stewardship","mins": 10,"topics": ["Antibiotics & resistance"],"h2": ["Why the label matters","Taking the allergy history in two minutes","Sorting low-risk from high-risk","When the history is low-risk: direct challenge","When the history is high-risk: testing and desensitisation","Choosing alternatives and cross-reactivity","Documenting and closing the loop","The five-minute version","References"]},
+{"num": 31,"slug": "tick-id-of-the-midwest","title": "Tick ID of the Midwest","sub": "From erythema migrans to Ehrlichia — what a Midwest resident needs in their pocket","cat": "Tick-borne infections","mins": 10,"topics": ["Travel & tick-borne"],"h2": ["Why the Midwest is tick country now","Know the tick — three vectors that matter","Lyme disease — most common and most overcalled","Anaplasmosis and ehrlichiosis — the fever and cytopenia syndromes","Babesiosis, spotted fever, and tularemia — less common but high stakes","Testing wisely — what helps and what misleads","Treatment and prevention","The five-minute version","References"]},
+{"num": 32,"slug": "diagnosis-and-treatment-of-lower-urinary-tract-infection","title": "Diagnosis and treatment of lower urinary tract infection (cystitis) in adults","sub": "When dysuria is cystitis, when it is not, and how to pick an antibiotic that works without collateral damage","cat": "Genitourinary infections","mins": 9,"topics": ["GI, liver & urinary"],"h2": ["What counts as cystitis — and what does not","When the history makes the diagnosis","Using the urinalysis and urine culture without being misled","Choosing an antibiotic — short and narrow","Cystitis in men, older adults, and other edge cases","Follow-up, treatment failure, and preventing the next episode","The five-minute version","References"]},
+{"num": 33,"slug": "diabetic-foot-infections-empiric-antibiotic-selection","title": "Diabetic foot infections — empiric antibiotic selection","sub": "Grading severity, predicting microbiology, and choosing empiric therapy without over-covering","cat": "Skin, soft tissue and bone infections","mins": 9,"topics": ["Bone, joint & skin"],"h2": ["Is this wound infected at all?","Severity grading is the decision point","What grows and why history matters","Empiric therapy for mild infections","Empiric therapy for moderate and severe infections","Getting the culture right","When to worry about bone","The five-minute version","References"]},
+{"num": 34,"slug": "approach-to-hepatitis-b-serologies-in-patients-with-hiv","title": "Approach to hepatitis B serologies in patients with HIV","sub": "Reading the three-test panel and acting on it when HIV is in the room","cat": "HIV and viral hepatitis","mins": 9,"topics": ["HIV","GI, liver & urinary"],"h2": ["Why hepatitis B matters more when HIV is present","The three tests you actually need","Reading the common patterns at a glance","The patient with isolated anti-HBc","What to do when HBsAg is positive","Vaccinating the susceptible patient with HIV","The five-minute version","References"]},
+{"num": 35,"slug": "natural-history-of-hiv-infection-and-acute-hiv","title": "Natural history of HIV infection and acute HIV","sub": "What the virus does before antibody appears, and why early recognition matters","cat": "Human immunodeficiency virus","mins": 10,"topics": ["HIV"],"h2": ["How HIV gets a foothold","The first 2 to 4 weeks: viraemia and the acute retroviral syndrome","How testing catches up to the virus","After the storm: set point and the long asymptomatic years","The slow decline without treatment","Why you cannot miss acute HIV on call","The five-minute version","References"]},
+{"num": 36,"slug": "babesiosis-caused-by-babesia-microti","title": "Babesiosis caused by Babesia microti","sub": "A tick-borne red cell parasite that looks like malaria but is not","cat": "Vector-borne infections","mins": 9,"topics": ["Travel & tick-borne"],"h2": ["Why babesiosis matters on call","How the parasite makes people sick","Who gets sick and what it looks like","How to make the diagnosis","Treatment for the patient in front of you","Follow-up, persistence, and counseling","Special populations and the broader differential","The five-minute version","References"]},
+{"num": 37,"slug": "fourth-generation-human-immunodeficiency-virus-antigen","title": "Fourth-generation human immunodeficiency virus antigen/antibody testing","sub": "Making sense of p24 antigen, antibodies, and the testing algorithm at the bedside","cat": "Human immunodeficiency virus diagnostics","mins": 10,"topics": ["HIV"],"h2": ["Why we keep renaming the HIV test","The window period in plain numbers","What the fourth-generation assay actually reports","The CDC testing algorithm — how to read every pattern","Acute HIV infection — the case you cannot miss","Pitfalls: false positives, PrEP, PEP, and when to add RNA","Counselling, reporting, and linkage after a reactive result","The five-minute version","References"]},
+{"num": 38,"slug": "approach-to-cavitary-pulmonary-diseases-an-infectious","title": "Approach to cavitary pulmonary diseases — an infectious diseases perspective","sub": "Tempo, host, and location — the three questions that narrow a long differential","cat": "Pulmonary infections","mins": 10,"topics": ["Lung & TB"],"h2": ["What counts as a cavity — and what does not","Start with three questions: tempo, host, and location","Reading the scan: wall, number, and content","The infectious differential, organized by tempo","Noninfectious mimics you must not miss","A bedside workup that actually answers the question","Pitfalls, infection control, and when to worry now","The five-minute version","References"]},
+{"num": 39,"slug": "2-drug-regimens-for-hiv-treatment","title": "2-Drug Regimens for HIV Treatment","sub": "When two drugs are enough — and when they are not","cat": "Human immunodeficiency virus (HIV)","mins": 10,"topics": ["HIV"],"h2": ["Why three drugs became standard and why we are revisiting it","The two-drug regimens that made it into guidelines","Dolutegravir plus lamivudine — a starter and a switch option","Dolutegravir plus rilpivirine and cabotegravir plus rilpivirine — the suppressive switch and the injectable","Who should not get a two-drug regimen","What to check before you switch or start","The five-minute version","References"]},
+{"num": 40,"slug": "approach-to-the-red-swollen-leg","title": "Approach to the red, swollen leg","sub": "Telling cellulitis from its many mimics at the bedside","cat": "Skin and soft tissue infection","mins": 12,"topics": ["Bone, joint & skin"],"h2": ["Not every red leg is cellulitis","What cellulitis is — and how it behaves","A three-minute history and exam that sorts the list","Common mimics and how to tell them apart","Red flags for necrotizing infection and severe disease","Testing and treatment without overdoing it","The five-minute version","References"]},
+{"num": 41,"slug": "risk-factors-for-tuberculosis-infection","title": "Risk factors for tuberculosis infection","sub": "From exposure to infection to disease — sorting risk by step","cat": "Mycobacterial disease","mins": 9,"topics": ["Lung & TB"],"h2": ["Why infection is not random","From exposure to infection: what has to happen","Who is most likely to acquire infection","Where transmission thrives","Who progresses from infection to disease","Using risk to guide testing, counselling, and prevention","The five-minute version","References"]},
+{"num": 42,"slug": "differentiating-the-clinical-presentations-of-common-hiv","title": "Differentiating the clinical presentations of common HIV-associated pulmonary infections","sub": "How tempo, CD4 count, and chest imaging separate Pneumocystis, bacterial pneumonia, tuberculosis, and fungal disease","cat": "HIV medicine","mins": 10,"topics": ["HIV","Lung & TB"],"h2": ["Start with two questions: CD4 count and tempo","Bacterial pneumonia: acute and lobar at any CD4 count","Pneumocystis pneumonia: the subacute diffuse interstitial syndrome","Tuberculosis: presentation shifts with immunity","Disseminated opportunists and regional fungi","Pattern recognition on chest imaging and labs","Evaluation, isolation, and empiric decisions while you wait","The five-minute version","References"]},
+{"num": 43,"slug": "mucormycosis-treatment","title": "Mucormycosis treatment","sub": "Early amphotericin, early surgery, and fixing the host — a practical ward approach","cat": "Invasive mycoses","mins": 10,"topics": ["Fungal"],"h2": ["Why mucormycosis behaves so aggressively","Who is at risk — and why diabetes plus iron matter","The three clinical syndromes you cannot miss","Making the diagnosis before the lab catches up","Treatment pillar one — antifungal therapy","Treatment pillars two and three — surgery and reversing the host defect","The five-minute version","References"]},
+{"num": 44,"slug": "the-nope-bug-a-lesson-on-lyme-disease","title": "The NOPE bug: a lesson on Lyme disease","sub": "When to test, when to treat, and when to say no","cat": "Tick-borne infections","mins": 9,"topics": ["Travel & tick-borne"],"h2": ["Why Lyme earns its NOPE reputation","Where, when, and how risk actually happens","Recognising Lyme by stage","Diagnosis: use the test — do not let the test use you","Treatment by syndrome: drugs, doses, and durations","The tick bite in front of you: prophylaxis and counselling","When to say NOPE: mimics, overtesting, and life after treatment","The five-minute version","References"]},
+{"num": 45,"slug": "liver-abscess","title": "Liver abscess","sub": "From fever without a source to source control — sorting pyogenic from amebic disease","cat": "Hepatobiliary infection","mins": 10,"topics": ["GI, liver & urinary"],"h2": ["What this lesion is — and what it is not","How infection reaches the liver","Who gets which pathogen","How it presents and how to work it up","Bedside management: antibiotics and drainage","Amebic liver abscess — the one you treat differently","Follow-up, complications and when to worry","The five-minute version","References"]},
+{"num": 46,"slug": "complications-of-staphylococcus-aureus-bacteremia","title": "Complications of Staphylococcus aureus bacteremia","sub": "Why one positive bottle changes everything — and how to find endocarditis, vertebral infection and other metastatic seeding before it finds you","cat": "Bacteremia and endocarditis","mins": 10,"topics": ["Bacteremia & endocarditis"],"h2": ["Why a single bottle of Staphylococcus aureus is never a contaminant","What makes Staphylococcus aureus so good at spreading","Uncomplicated versus complicated — sorting it out on day three","Where it goes: complications you must look for","The workup every patient with Staphylococcus aureus bacteremia needs","Treatment, source control and how long to treat","When to worry again: persistent bacteremia, recurrence and follow-up","The five-minute version","References"]},
+{"num": 47,"slug": "fever-in-a-returned-traveller","title": "Fever in a returned traveller","sub": "A structured approach to fever after travel — sorting incubation periods, exposures and the cannot-miss diagnoses.","cat": "","mins": 12,"topics": ["Travel & tick-borne"],"h2": ["Start with triage — is this patient unstable, contagious or malarious?","The timeline is your best diagnostic test","Ask where, when and what — a history that narrows the field","Match syndrome and geography to a short differential","The workup you should order on day one","Three cannot-miss infections and how they declare themselves","When fever persists, when to escalate and what not to miss","The five-minute version","References"]},
+{"num": 48,"slug": "pounding-out-penicillin-allergies","title": "Pounding out penicillin allergies","sub": "Sorting true allergy from lingering label — and why fixing the label changes outcomes","cat": "Antimicrobial stewardship","mins": 10,"topics": ["Antibiotics & resistance"],"h2": ["Why the label matters more than you think","What counts as an allergy — and what does not","How to take a penicillin allergy history that actually helps","Risk stratification: who is low risk and what it unlocks","Delabelling in practice: challenge, skin testing, and making it stick","What about cephalosporins, carbapenems, and the cross-reactivity myth","The five-minute version","References"]},
+{"num": 49,"slug": "pulmonary-mac-infection","title": "Pulmonary MAC infection","sub": "When to treat, what to use, and how long to stay the course","cat": "Nontuberculous mycobacterial disease","mins": 11,"topics": ["Lung & TB"],"h2": ["Why pulmonary MAC is not tuberculosis","Two radiographic patterns, two kinds of patients","When a positive culture equals disease","Treat or watch: making the decision","The three-drug backbone and why each drug matters","How to give it: schedule, duration, and follow-up","The five-minute version","References"]},
+{"num": 50,"slug": "bacteria-a-framework-for-selecting-antimicrobials","title": "BACTERIA: A framework for selecting antimicrobials","sub": "A bedside checklist that starts with the bug, not the drug","cat": "Antimicrobial stewardship","mins": 10,"topics": ["Antibiotics & resistance"],"h2": ["Why you need a checklist at 2 a.m.","B — bugs: what are you actually covering","A — allergies and adverse effects","C — cultures, history, and local data","T — tissue penetration: can the drug get there","E and R — efficacy, evidence, resistance, and organ function","I and A — interactions, immune status, access, and stewardship","Putting it together at the bedside","The five-minute version","References"]},
+{"num": 51,"slug": "approach-to-fever-in-the-returning-traveler","title": "Approach to Fever in the Returning Traveler","sub": "Malaria until proven otherwise, and what else not to miss","cat": "Infectious disease / travel medicine","mins": 11,"topics": ["Travel & tick-borne"],"h2": ["Why this presentation deserves a different reflex","First ten minutes — triage, isolation, and vitals that change the plan","Take the travel history that actually helps","Malaria — the diagnosis you must rule out tonight","Beyond malaria — a syndrome-based differential","What to do on day one — workup that does not waste time","When malaria tests are negative — what not to miss","When to admit, when to call for help, and counseling for next time","The five-minute version","References"]},
+{"num": 52,"slug": "hiv-antiretrovirals","title": "HIV antiretrovirals","sub": "What to start, what to continue, and what never to interrupt on the wards","cat": "HIV medicine","mins": 12,"topics": ["HIV"],"h2": ["Why HIV is never treated with one drug","The five classes you actually need to know","What we start today and why","What to check before you prescribe or restart","Toxicities and interactions the ward team will see","Monitoring, adherence, and what failure looks like","Special situations on call","The five-minute version","References"]},
+{"num": 53,"slug": "interpreting-a-quantiferon-tb-gold-plus","title": "Interpreting a QuantiFERON-TB Gold Plus and next steps in latent tuberculosis infection","sub": "What the result means, when not to trust it, and how to manage latent infection","cat": "Mycobacterial disease","mins": 10,"topics": ["Lung & TB"],"h2": ["Latent infection is not active disease","How QuantiFERON-TB Gold Plus works","Reading the report: positive, negative, indeterminate and borderline","When the result misleads you","After a positive: rule out active tuberculosis disease","Choosing a regimen for latent tuberculosis infection","Counselling, monitoring and completing treatment","The five-minute version","References"]},
+{"num": 54,"slug": "infectious-risks-of-asplenia-and-deficiencies-in-humoral","title": "Infectious risks of asplenia and deficiencies in humoral immunity and complement","sub": "Why missing spleen, antibodies, or complement converges on the same dangerous bacteria","cat": "Immunocompromised hosts","mins": 12,"topics": ["Transplant & immunocompromised"],"h2": ["Why the spleen matters","Who is functionally asplenic","The organisms you cannot afford to miss","When humoral immunity fails","When complement fails","Prevention is the treatment","What to do when the asplenic patient spikes a fever","The five-minute version","References"]},
+{"num": 55,"slug": "fungal-biomarkers","title": "Fungal biomarkers","sub": "When galactomannan, beta-D-glucan, and fungal antigens help — and when they mislead","cat": "Diagnostic reasoning","mins": 10,"topics": ["Fungal"],"h2": ["Why we need fungal biomarkers at all","Galactomannan — the aspergillus signal","(1→3)-β-D-glucan — a broad but noisy fungal screen","Cryptococcal antigen and endemic mycosis antigens","Aspergillus polymerase chain reaction and emerging assays","Putting it together — pretest probability, pitfalls, and stewardship","The five-minute version","References"]},
+{"num": 56,"slug": "syphilis-serology","title": "Syphilis serology","sub": "How to read treponemal and nontreponemal tests without getting burned","cat": "Sexually transmitted infections","mins": 10,"topics": ["STIs"],"h2": ["Why syphilis serology trips everyone up","Two families of tests","Traditional versus reverse screening","How to read titres and the result patterns you will see","Stage, neurosyphilis, and when to tap","Pregnancy, newborns, and HIV co-infection","Following titres after treatment and the serofast state","The five-minute version","References"]},
+{"num": 57,"slug": "prosthetic-joint-infection-diagnosis-and-management","title": "Prosthetic joint infection: diagnosis and management","sub": "When to suspect it, how to prove it without over-testing, and how to choose the right surgical strategy","cat": "Orthopaedic infection","mins": 14,"topics": ["Bone, joint & skin"],"h2": ["Why prosthetic joint infection matters","Classifying prosthetic joint infection by timing","How to make the diagnosis without fooling yourself","Choosing the surgical strategy","Antibiotics: what to start, when to narrow, and how long","When retention fails and when suppression is the kindest option","The five-minute version","References"]},
+{"num": 58,"slug": "opportunistic-infections-in-hiv-aids-screening","title": "Opportunistic infections in HIV/AIDS: screening and prevention","sub": "A CD4-guided approach to screening, prophylaxis, and everyday prevention","cat": "HIV medicine","mins": 10,"topics": ["HIV"],"h2": ["Why opportunistic infections still matter when ART works so well","The CD4 count is still your compass","What to screen for at entry to care — and what not to chase","Primary prophylaxis: who gets it, what to give, and when to stop","Antiretroviral therapy first, but mind the timing and immune reconstitution","Vaccines and everyday prevention that also prevent opportunistic infections","The five-minute version","References"]},
+{"num": 59,"slug": "immunizations-for-people-living-with-hiv","title": "Immunizations for people living with HIV","sub": "A practical guide to what to give, when to give it, and what to hold","cat": "HIV medicine","mins": 12,"topics": ["HIV"],"h2": ["Why vaccines matter more when HIV is in the room","The framework: CD4 count, viral suppression, and vaccine type","Inactivated vaccines almost everyone with HIV should get","Hepatitis A and hepatitis B: screen, vaccinate, then check the response","Meningococcal disease and recombinant zoster: two vaccines to stop missing","Live vaccines: measles, mumps, rubella, varicella, and yellow fever","Making it stick: timing with antiretroviral therapy, documentation, and contacts","The five-minute version","References"]},
+{"num": 60,"slug": "antibiotic-failure","title": "Antibiotic failure","sub": "Why patients stay febrile on treatment and what to check before you broaden","cat": "Antimicrobial stewardship","mins": 10,"topics": ["Antibiotics & resistance"],"h2": ["What do we mean by antibiotic failure?","First, is it infection at all?","Second, did we get the syndrome right?","Third, are we missing the organism?","Fourth, is the drug reaching the site?","Fifth, have we achieved source control?","Host factors, drug fever, and superinfection","A bedside checklist for day 3","The five-minute version","References"]}];
+var TOPICS = ["HIV", "STIs", "Antibiotics & resistance", "Microbiology", "Bacteremia & endocarditis", "Bone, joint & skin", "Lung & TB", "Fungal", "Transplant & immunocompromised", "Travel & tick-borne", "GI, liver & urinary", "Brain & meninges", "General ID"];
+// TALKS:END
+
+/* ============ SEARCH / FILTER / SORT ============ */
+(function(){
+  var q = document.getElementById('q');
+  var grid = document.getElementById('grid');
+  var chips = document.getElementById('chips');
+  var count = document.getElementById('count');
+  var sortBtns = document.querySelectorAll('[data-sort]');
+  var topic = 'All', sort = 'az';
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; });
+  }
+  function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+
+  TALKS.forEach(function(t){
+    t.hay = norm([t.title, t.sub, t.topics.join(' '), t.cat, t.h2.join(' ')].join(' '));
+  });
+
+  function drawChips(){
+    var html = '';
+    ['All'].concat(TOPICS).forEach(function(name){
+      var n = name === 'All' ? TALKS.length : TALKS.filter(function(t){ return t.topics.indexOf(name) > -1; }).length;
+      html += '<button class="btn" type="button" data-topic="' + esc(name) + '" aria-pressed="' + (name === topic) + '">' +
+              esc(name) + ' <span class="n">(' + n + ')</span></button>';
+    });
+    chips.innerHTML = html;
+  }
+
+  function draw(){
+    var terms = norm(q.value.trim()).split(/\s+/).filter(Boolean);
+    var list = TALKS.filter(function(t){
+      if (topic !== 'All' && t.topics.indexOf(topic) < 0) return false;
+      return terms.every(function(w){ return t.hay.indexOf(w) > -1; });
+    });
+    list.sort(sort === 'num'
+      ? function(a, b){ return a.num - b.num; }
+      : function(a, b){ return a.title.localeCompare(b.title); });
+
+    count.textContent = 'Showing ' + list.length + ' of ' + TALKS.length + ' talks' +
+      (topic !== 'All' ? ' in ' + topic : '') + (terms.length ? ' matching "' + q.value.trim() + '"' : '');
+
+    if (!list.length){
+      grid.innerHTML = '<p class="empty">No talks match that. Try a broader word, or pick <b>All</b> topics.</p>';
+      return;
+    }
+    grid.innerHTML = list.map(function(t){
+      return '<a class="card" href="' + esc(t.slug) + '/">' +
+        '<span class="card-num">#' + (t.num < 10 ? '0' : '') + t.num + '</span>' +
+        '<span class="card-topic">' + esc(t.topics[0]) + '</span>' +
+        '<span class="card-title">' + esc(t.title) + '</span>' +
+        '<span class="card-sub">' + esc(t.sub) + '</span>' +
+        '<span class="card-meta">🕑 ' + t.mins + ' min read</span>' +
+      '</a>';
+    }).join('');
+  }
+
+  chips.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-topic]') : null;
+    if (!b) return;
+    topic = b.getAttribute('data-topic');
+    drawChips(); draw();
+  });
+  Array.prototype.forEach.call(sortBtns, function(b){
+    b.addEventListener('click', function(){
+      sort = b.getAttribute('data-sort');
+      Array.prototype.forEach.call(sortBtns, function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      draw();
+    });
+  });
+  q.addEventListener('input', draw);
+
+  drawChips(); draw();
+})();
+</script>
+</body>
+</html>

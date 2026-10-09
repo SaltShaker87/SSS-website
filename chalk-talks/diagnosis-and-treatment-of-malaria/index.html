@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnosis and treatment of malaria — IDSA Chalk Talk</title>
+<meta name="description" content="How to recognise, test, and treat malaria in returned travellers — species, severity, and guideline-based regimens.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Diagnosis and treatment of malaria — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+<div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 29-year-old man presents with fever to 39.2&deg;C, headache, and fatigue for 2 days. He returned 10 days ago from 3 weeks in rural Nigeria visiting friends and relatives and took no chemoprophylaxis. He has no rash, cough, or dysuria. Labs show platelets 88,000 per microlitre, bilirubin 1.9 mg/dL, and fever persists. Should you test for malaria tonight?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Identify which travellers and time windows require urgent malaria testing.</li>
+          <li>Order and interpret thick and thin smears and rapid diagnostic tests, and know when to repeat them.</li>
+          <li>Distinguish <em>Plasmodium falciparum</em> from relapsing species and apply severity criteria.</li>
+          <li>Select guideline-based treatment for uncomplicated and severe malaria and plan follow-up to prevent relapse.</li>
+        </ul>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">A note on reconstruction</span>
+        <p>The original transcript and slide deck were unreadable after download — both zip archives were corrupted by EF BF BD substitution. Repair was attempted by replacing 0xEF 0xBF 0xBD with 0x00 and patching the end-of-central-directory via PK 01 02 scan, but no decompressible content was recovered and the slide extractor returned BadZipFile: Bad offset for central directory with 0 images. This page is therefore reconstructed from current Centers for Disease Control and Prevention (CDC) and World Health Organization (WHO) malaria guidance. All drugs, doses, and durations below are guideline-derived, not verbatim from the speaker, and no number has been invented from the corrupted transcript.</p>
+      </div>
+
+      <h2 class="ct-h2">Why you cannot miss malaria</h2>
+      <p>Malaria is a febrile illness caused by <em>Plasmodium</em> parasites transmitted by infected female <em>Anopheles</em> mosquitoes. In the United States almost all cases are imported in travellers returning from sub-Saharan Africa, South Asia, Oceania, and parts of Latin America. Persons visiting friends and relatives (VFR) who stay in family homes without chemoprophylaxis carry the highest risk; prior partial immunity does not protect them.</p>
+      <p><em>Plasmodium falciparum</em> can progress from fever to coma, renal failure, and death in hours when treatment is delayed. Most delays occur because malaria was not considered or because a single negative smear was taken as definitive. For the overnight resident the rule is: fever in a returned traveller is malaria until proven otherwise, and testing cannot wait until morning.</p>
+      <p>Most <em>P. falciparum</em> presents 9 to 14 days after an infectious bite and almost always within 30 days of return, but relapsing species present months later. Do not use time since return alone to exclude malaria.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Ask every febrile patient where they have travelled in the past 12 months and whether they took prophylaxis. A VFR traveller from West Africa without prophylaxis is the highest-risk history on board.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not anchor on viral syndrome because the urinalysis is positive or a respiratory panel is pending. Thrombocytopenia with fever after travel should keep malaria at the top of the list.</p>
+      </div>
+
+      <h2 class="ct-h2">Which species matter and when they present</h2>
+      <p>Five species infect humans: <em>Plasmodium falciparum</em>, <em>Plasmodium vivax</em>, <em>Plasmodium ovale</em>, <em>Plasmodium malariae</em>, and <em>Plasmodium knowlesi</em>. <em>P. falciparum</em> causes most severe disease and deaths in non-immune travellers. <em>P. vivax</em> and <em>P. ovale</em> form dormant liver hypnozoites that relapse months to years later unless the liver stage is treated. <em>P. knowlesi</em> (macaque-associated in Malaysian Borneo) can produce very high parasite densities rapidly.</p>
+      <p>Geography helps you anticipate resistance. Most <em>P. falciparum</em> from Africa and much of Asia is chloroquine-resistant. Only a few areas west of the Panama Canal still have chloroquine-sensitive <em>P. falciparum</em>; maps change, so check CDC country guidance at the bedside rather than relying on memory.</p>
+      <p>Early malaria is non-specific: high fever with rigors, headache, myalgias, nausea, and sometimes diarrhoea. Classic periodic fevers are often absent. Mild splenomegaly or jaundice may be present, but exam is often normal. Clues that argue for repeat testing include thrombocytopenia, hyperbilirubinaemia, anaemia, and transaminitis.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Sporozoites develop in hepatocytes for about 7 to 10 days before merozoites invade red cells and cause fever. Hypnozoites of <em>P. vivax</em> and <em>P. ovale</em> can remain dormant and reactivate without a new bite — hence presentation well after travel ends.</p>
+      </div>
+
+      <h2 class="ct-h2">How to diagnose malaria tonight</h2>
+      <p>Order thick and thin peripheral blood smears, a rapid diagnostic test (RDT) for malaria antigens where available, and routine labs (complete blood count, metabolic panel, bilirubin, lactate, glucose) together, and tell the laboratory it is urgent. Do not send malaria testing as a routine next-day test.</p>
+      <p><span class="ct-term">Thick and thin smears</span> remain the reference standard. Thick smears concentrate parasites and are most sensitive for detection; thin smears preserve morphology for species identification and parasite density (percent of infected red cells). Both must be read urgently, ideally within 1 to 2 hours, with a quantitative density reported.</p>
+      <p><span class="ct-term">Rapid diagnostic tests</span> detect histidine-rich protein 2 (HRP2) for <em>P. falciparum</em> and parasite lactate dehydrogenase (pLDH) for all species in 15 to 20 minutes. They help when expert microscopy is delayed, but they do not replace smears: they give no density, stay positive for weeks after treatment, and can miss low-density infections or <em>hrp2</em>-deleted parasites.</p>
+      <p>Polymerase chain reaction (PCR) is sensitive for species confirmation but is not an emergency test in most hospitals — do not wait for it to start treatment. One negative smear never rules out malaria. If suspicion remains, repeat thick and thin smears every 12 to 24 hours for 3 total sets and document the timing.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Order smears, RDT, and parasite density together and write &ldquo;repeat q12&ndash;24h &times; 3 if negative&rdquo; in the order so the night team knows the plan.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The VFR traveller from Nigeria has a first thin smear negative and a negative HRP2-based RDT but remains febrile with platelets 88,000 per microlitre. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Discharge — malaria is ruled out</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Keep malaria on the differential and repeat thick and thin smears q12&ndash;24h up to 3 total with expert microscopy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait for PCR before repeating smears</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give chloroquine because Nigeria is chloroquine-sensitive</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A single negative smear and a negative HRP2 RDT do not exclude malaria with thrombocytopenia after West Africa travel. Parasites can be sequestered or submicroscopic on the first sample. Nigeria has chloroquine-resistant <em>P. falciparum</em>, so chloroquine would be incorrect.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Species and severity drive every decision</h2>
+      <p>Once parasites are seen, answer two questions before choosing a drug: what species is it, and is there any sign of severe malaria? Both change level of care.</p>
+      <p>Thin-smear morphology guides species: <em>P. falciparum</em> shows delicate rings, multiple rings per red cell, appliqu&eacute; forms, and sometimes crescent gametocytes with high densities possible; <em>P. vivax</em> and <em>P. ovale</em> show enlarged cells and Sch&uuml;ffner dots; <em>P. malariae</em> compact forms without enlargement. When the report says &ldquo;indeterminate&rdquo; or mixed, treat as <em>P. falciparum</em> until proven otherwise.</p>
+      <p>Severity is any one of the features below. In non-immune adults many US clinicians treat parasite density above 5 percent as severe even without organ dysfunction; WHO uses above 10 percent, with above 4 percent plus other severity signs also considered severe. Report density as a number, not &ldquo;few rings.&rdquo;</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Species at a glance</caption>
+          <thead>
+            <tr><th>Species</th><th>Where to suspect</th><th>Relapse risk</th><th>Key concern</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>P. falciparum</em></td><td>Sub-Saharan Africa, most tropical regions</td><td>No</td><td>Severe disease, death, drug resistance</td></tr>
+            <tr><td><em>P. vivax</em></td><td>South and Southeast Asia, Latin America, Ethiopia</td><td>Yes — hypnozoites</td><td>Relapse without radical cure</td></tr>
+            <tr><td><em>P. ovale</em></td><td>West and Central Africa</td><td>Yes</td><td>Relapse; needs radical cure</td></tr>
+            <tr><td><em>P. malariae</em></td><td>Worldwide, patchy</td><td>No (may persist years)</td><td>Low density, nephrotic syndrome rarely</td></tr>
+            <tr><td><em>P. knowlesi</em></td><td>Borneo, peninsular Malaysia</td><td>No</td><td>Rapid, high-density severe disease</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Any one feature makes malaria severe</caption>
+          <thead>
+            <tr><th>Domain</th><th>Examples</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Neurologic</td><td>Impaired consciousness, coma, repeated seizures</td></tr>
+            <tr><td>Respiratory</td><td>Pulmonary oedema or acute respiratory distress, need for oxygen</td></tr>
+            <tr><td>Circulatory / metabolic</td><td>Shock, acidosis with elevated lactate, hypoglycaemia</td></tr>
+            <tr><td>Renal / hepatic / haematologic</td><td>Acute kidney injury, jaundice with high density, haemoglobin below 7 g/dL, bleeding, density above 5&ndash;10 percent</td></tr>
+            <tr><td>Other</td><td>Inability to take oral drugs, vomiting all doses, pregnancy with any above at lower thresholds</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Species is not trivia — <em>P. falciparum</em> drives intensive care decisions and <em>P. vivax</em> and <em>P. ovale</em> need a second drug for the liver. If uncertain, treat as <em>P. falciparum</em>.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Thin smear shows <em>P. falciparum</em> rings at 6 percent density. The patient is alert with bilirubin 3.2 mg/dL. How to classify?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Uncomplicated — alert so outpatient is safe</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Severe by hyperparasitaemia above 5 percent — admit for parenteral therapy and monitoring</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Not malaria — bilirubin points to hepatitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Severe only if above 10 percent</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Above 5 percent is treated as severe in many US frameworks even when the patient looks well; deterioration can be rapid. Thrombocytopenia and hyperbilirubinaemia support malaria rather than exclude it.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treatment of uncomplicated malaria</h2>
+      <p>All doses below are guideline-derived from CDC 2023&ndash;2024 and WHO 2023 guidance because no verbatim numbers were recoverable from the corrupted transcript. Verify weight-based dosing, pregnancy status, QT risk, and glucose-6-phosphate dehydrogenase (G6PD) status with pharmacy and current CDC tables before prescribing. If you need help overnight, infectious diseases and the CDC malaria hotline via your health department will want species, density, pregnancy, weight, and G6PD.</p>
+      <p>Treat promptly, give the full course, and confirm the patient can keep oral drugs down. If vomiting occurs within 30 minutes of a dose, repeat it. Monitor density daily until negative and watch for haemolysis after treatment.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Uncomplicated malaria — guideline-derived options for adults (use paediatric tables for children)</caption>
+          <thead>
+            <tr><th>Scenario</th><th>Preferred regimen</th><th>Key cautions</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Chloroquine-sensitive <em>P. falciparum</em> (e.g., Haiti, northwest of Panama Canal) or confirmed sensitive <em>P. malariae</em> / <em>P. knowlesi</em></td><td>Chloroquine phosphate 600 mg base (1,000 mg salt) orally then 300 mg base (500 mg salt) at 6, 24, and 48 hours — total 1,500 mg base over 3 days</td><td>Do not use for African <em>P. falciparum</em>; prolongs QT interval</td></tr>
+            <tr><td>Chloroquine-resistant <em>P. falciparum</em> or species unknown (most US cases)</td><td>Artemether-lumefantrine 20 mg/120 mg: 4 tablets per dose at 0, 8, 24, 36, 48, and 60 hours (6 doses) with fatty food; alternative: atovaquone-proguanil 1,000 mg/400 mg (4 adult tablets) daily for 3 days</td><td>Take artemether-lumefantrine with food; avoid mefloquine or quinine without specialist input due to neuropsychiatric and QT effects</td></tr>
+            <tr><td><em>P. vivax</em> or <em>P. ovale</em> blood stage</td><td>Same chloroquine schedule where sensitive, or artemether-lumefantrine where resistance reported</td><td>Blood-stage cure alone leaves hypnozoites — add radical cure below</td></tr>
+            <tr><td>Radical cure for <em>P. vivax</em> / <em>P. ovale</em> liver stage (after G6PD checked)</td><td>Primaquine 30 mg base daily for 14 days (0.5 mg/kg/day); alternative if G6PD normal: tafenoquine 300 mg single dose</td><td>Quantitative G6PD required before 8-aminoquinolines; contraindicated in pregnancy and in breastfeeding of G6PD-deficient infants</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Most US travellers with <em>falciparum</em> need artemether-lumefantrine, not chloroquine. Geography decides which drug fails.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not give primaquine or tafenoquine without a quantitative G6PD result. The radical cure can wait a day; the blood-stage treatment cannot. Giving an 8-aminoquinoline when G6PD-deficient risks severe haemolysis.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Artemisinins clear parasites fastest and reduce gametocytes, which is why artemisinin-based combinations are preferred. Never use an artemisinin alone for uncomplicated disease outside the parenteral severe-malaria pathway — monotherapy accelerates resistance.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q"><em>P. vivax</em> from Ethiopia is treated with artemether-lumefantrine. Smears are now negative, G6PD is normal, pregnancy test negative. Next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No further therapy needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Add radical cure: primaquine 30 mg base daily for 14 days or tafenoquine 300 mg single dose</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add chloroquine for relapse prevention</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start primaquine before G6PD returns</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>P. vivax</em> and <em>P. ovale</em> require radical cure after the blood stage, only after G6PD is normal. Chloroquine does not kill hypnozoites, and starting before G6PD risks haemolysis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Severe malaria is an emergency</h2>
+      <p>Severe malaria can kill within hours. Admit to a monitored unit, correct hypoglycaemia, acidosis, and renal injury, and treat hyperparasitaemia as severe even if the patient appears stable. Give broad antibiotics in parallel until cultures return — severe malaria and bacterial sepsis overlap and are hard to distinguish on arrival.</p>
+      <p><span class="ct-term">Intravenous artesunate</span> is the treatment of choice for severe malaria due to any species. The CDC-referenced adult dose is 2.4 mg per kilogram intravenously at 0, 12, and 24 hours, then once daily until oral therapy is tolerated and parasite density is at or below 1 percent. It is stocked in many hospital pharmacies and otherwise available via CDC — call early. Quinidine is no longer preferred due to toxicity.</p>
+      <p>After parenteral artesunate always complete a full oral combination course such as artemether-lumefantrine once the patient can swallow. Artesunate alone risks recrudescence. Counsel about delayed haemolysis 1 to 4 weeks after artesunate — warn to return for anaemia, jaundice, or dark urine and repeat haemoglobin in 1 to 2 weeks. Exchange transfusion is not routinely recommended.</p>
+      <p>Pregnancy raises stakes: thresholds for severity are lower and risks of hypoglycaemia, pulmonary oedema, and fetal loss are higher. Involve obstetrics and infectious diseases early. Primaquine and tafenoquine are contraindicated in pregnancy.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not wait for &ldquo;confirmation&rdquo; to treat severe malaria. If pretest probability is high and the patient is critically ill, start IV artesunate while repeating smears.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>IV artesunate is not the end — you must finish a full oral combination course and schedule follow-up for delayed haemolysis weeks later.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 34-year-old at 18 weeks gestation has fever, confusion, and <em>P. falciparum</em> density 8 percent. Best immediate step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Admit to intensive care, correct glucose, give IV artesunate 2.4 mg/kg at 0, 12, and 24 hours, and involve obstetrics and infectious diseases</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give oral chloroquine and discharge</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add primaquine with IV artesunate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait for PCR before treatment</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is severe malaria by consciousness and hyperparasitaemia; pregnancy lowers thresholds. IV artesunate is preferred in all trimesters for severe disease. Chloroquine is ineffective for most <em>P. falciparum</em> and oral therapy is inappropriate for severe disease. Primaquine is contraindicated in pregnancy.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Before discharge — close the loops</h2>
+      <p>Four items are commonly left open and cause readmission.</p>
+      <p><strong>1. Confirm species and density are final.</strong> Chase &ldquo;species pending&rdquo; reports. Mixed <em>P. falciparum</em> plus <em>P. vivax</em> needs both a falciparum-active combination and later radical cure.</p>
+      <p><strong>2. Check G6PD and confirm clearance.</strong> For <em>P. vivax</em> or <em>P. ovale</em>, obtain quantitative G6PD before discharge so radical cure is not delayed. Repeat smears until negative — rising density suggests resistance, non-adherence, or vomiting of doses.</p>
+      <p><strong>3. Counsel on prevention.</strong> Use the admission to teach chemoprophylaxis — atovaquone-proguanil, doxycycline, mefloquine, or chloroquine where still appropriate, chosen by destination — plus insect precautions and a travel-clinic referral. VFR travellers benefit most from a non-judgmental conversation about prophylaxis every trip.</p>
+      <p><strong>4. Report and arrange follow-up.</strong> Malaria is nationally notifiable. Notify your health department, arrange haemoglobin check in 1 to 2 weeks for delayed haemolysis, and confirm the 3-day course was completed — many readmissions are from unfinished pills.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Artemisinin partial resistance with delayed clearance is now confirmed beyond Southeast Asia, including parts of East Africa and the Horn of Africa. Reporting imported cases helps track these shifts — another reason to notify public health.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Fever within 12 months of travel to an endemic area — especially VFR without prophylaxis — is malaria until proven otherwise. Test tonight, not tomorrow.</li>
+        <li>Order thick and thin smears plus RDT together, report species and parasite density urgently, and repeat smears q12&ndash;24h &times; 3 if the first is negative.</li>
+        <li>Any severity feature or density above 5 percent makes malaria severe; treat indeterminate or mixed species as <em>P. falciparum</em>.</li>
+        <li>Uncomplicated chloroquine-resistant disease (most US cases) gets artemether-lumefantrine 6 doses over 3 days with food; add primaquine 30 mg base for 14 days or tafenoquine 300 mg single dose for <em>P. vivax</em> / <em>P. ovale</em> only after normal quantitative G6PD and not in pregnancy.</li>
+        <li>Severe malaria gets IV artesunate 2.4 mg/kg at 0, 12, and 24 hours then daily until oral therapy possible, followed by a full oral combination — and follow-up for delayed haemolysis 1 to 4 weeks later.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Centers for Disease Control and Prevention. Malaria diagnosis and treatment — United States. CDC malaria program, updated 2024. cdc.gov/malaria.</li>
+          <li>World Health Organization. WHO guidelines for malaria, 16 October 2023 update. <em>World Health Organization</em>. 2023.</li>
+          <li>Ashley EA, Pyae Phyo A, Woodrow CJ. Malaria. <em>Lancet</em>. 2018;391(10130):1608-1621.</li>
+          <li>White NJ, et al. Severe malaria. <em>N Engl J Med</em>. 2022;386:1654-1665.</li>
+        </ol>
+      </div>
+
+      <!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Diagnosis and treatment of malaria</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

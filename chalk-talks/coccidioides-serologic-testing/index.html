@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coccidioides serologic testing — IDSA Chalk Talk</title>
+<meta name="description" content="When to order Valley fever serology, how to interpret EIA, immunodiffusion and complement fixation, and why timing and confirmation matter">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Coccidioides serologic testing — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Mycology</p>
+        <h1 class="ct-h1">Coccidioides serologic testing</h1>
+        <p class="ct-subtitle">Interpreting EIA, immunodiffusion and complement fixation without getting fooled by a false-positive IgM</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 38-year-old man returns 10 days after a week-long work trip to Phoenix, where he visited construction sites. He now reports two weeks of fever, dry cough, profound fatigue, night sweats, and arthralgias. Chest radiograph shows a right lower lobe infiltrate with ipsilateral hilar lymphadenopathy. A 5-day course of azithromycin for community-acquired pneumonia has not helped, and his blood count shows eosinophils 7%.</p>
+        <p>The clinic nurse has already sent a coccidioidal enzyme immunoassay: immunoglobulin M (IgM) positive, immunoglobulin G (IgG) negative. What does that mean, and what is next?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Describe when to order coccidioidal serology and when not to.</li>
+          <li>Compare enzyme immunoassay (EIA), immunodiffusion (ID) and complement fixation (CF), and explain why confirmation matters.</li>
+          <li>Interpret a CF titer and explain why trends matter more than a single threshold.</li>
+          <li>Explain why early and isolated IgM results mislead and when to repeat testing.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why Valley fever serology keeps surprising residents</h2>
+      <p><span class="ct-term">Coccidioidomycosis</span> — Valley fever — is infection caused by the dimorphic fungi <em>Coccidioides immitis</em> and <em>Coccidioides posadasii</em>. The organisms live as mould in arid soils of the southwestern United States, especially the southern San Joaquin Valley of California and Arizona, and are inhaled as arthroconidia when soil is disturbed by wind, construction, or agriculture.</p>
+      <p>Most infections are asymptomatic or cause a self-limited influenza-like illness. When symptomatic, disease usually presents as community-acquired pneumonia (CAP) — fever, cough, chest pain, fatigue — sometimes with eosinophilia, erythema nodosum, or arthralgias known as desert rheumatism. Disseminated disease to skin, bone, joint, or meninges is uncommon but serious, especially in immunocompromised hosts and those of Filipino or African ancestry.</p>
+      <p>Because the presentation overlaps bacterial pneumonia and is often acquired during travel rather than where you practise, it is frequently missed. Serology is the most available test, but it is not an on-off switch. Antibodies take weeks to appear, different methods detect different antibodies, and a single out-of-context result causes harm if over-interpreted.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The Infectious Diseases Society of America (IDSA) 2016 coccidioidomycosis guideline frames serology as supportive, not definitive: pair it with epidemiology, syndrome, and direct tests such as culture or histopathology when feasible. Culture is definitive but requires biosafety level 3 and takes days, so most bedside decisions rely on serology.</p>
+      </div>
+      <p>The specifics below are derived from that guideline and standard laboratory practice in endemic centres, because the original transcript and slides were irrecoverably corrupted and could not be read verbatim. This talk focuses only on testing; treatment doses are intentionally omitted.</p>
+
+      <h2 class="ct-h2">The three tests in your lab report</h2>
+      <p>Most laboratories offer the same three methods, often as a cascade. Understanding what each measures prevents treating the report rather than the patient.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common coccidioidal serologic methods</caption>
+          <thead>
+            <tr><th>Method</th><th>What it detects</th><th>Timing and role</th><th>Limitations</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Enzyme immunoassay (EIA)</td><td>IgM and IgG antibodies, reported separately or together</td><td>Screening; hours; IgM appears 1 to 3 weeks after symptoms</td><td>Sensitive but less specific; isolated IgM frequently false positive; requires confirmation</td></tr>
+            <tr><td>Immunodiffusion (ID)</td><td>Precipitating antibodies; ID tube precipitin (IDTP) mirrors IgM, ID complement fixation (IDCF) mirrors IgG</td><td>Confirmatory, highly specific; IDTP early and transient, IDCF later and durable</td><td>Lower sensitivity early; needs expertise and days</td></tr>
+            <tr><td>Complement fixation (CF)</td><td>IgG that fixes complement; reported as quantitative titer, e.g., 1:2 to 1:512</td><td>Confirmatory and for monitoring; IgG appears 2 to 4 weeks; titer tracks activity</td><td>Cross-reacts with <em>Histoplasma</em> and <em>Blastomyces</em> at low titer; negative early; persists months to years</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><span class="ct-term">Enzyme immunoassay</span> is the screening test most residents see first. Many commercial labs use one kit that detects IgM and IgG together. An IgM band on EIA is not the same as an ID tube precipitin band. In CAP studies in endemic areas, EIA IgM alone without IgG or confirmatory ID or CF had false-positive rates ranging from about one in eight to nearly one in two, depending on population and kit, and can cross-react with other infections. A positive EIA IgG is more specific but still needs ID or CF confirmation.</p>
+      <p><span class="ct-term">Immunodiffusion</span> is agar gel diffusion. A line of precipitate is highly specific for <em>Coccidioides</em>. IDTP mirrors IgM and is transient; IDCF mirrors IgG and persists. Most reference labs — including the classic UC Davis model — reflex a positive EIA to ID and CF rather than reporting EIA alone.</p>
+      <p><span class="ct-term">Complement fixation</span> is the only routinely quantitative test. The lab reports how far serum can be diluted and still fix complement, e.g., 1:2, 1:4, 1:16. A fourfold change is significant. Older tests such as latex agglutination for IgM are not recommended alone because of poor specificity; know them only to recognise them in outside records.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>An isolated immunoglobulin M (IgM) by enzyme immunoassay without IgG or confirmatory immunodiffusion or complement fixation is more often false positive than true Valley fever. Never diagnose on IgM EIA alone.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The clinic patient above has EIA IgM positive, EIA IgG negative, no immunodiffusion or complement fixation reported. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tell him he has Valley fever and start fluconazole</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Order confirmatory immunodiffusion and complement fixation and counsel that the isolated IgM needs confirmation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure him the test is negative because IgG is negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send a coccidioidal urine antigen alone to confirm</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Isolated IgM by EIA is notoriously nonspecific. Request reflex or add-on immunodiffusion and complement fixation and interpret in context of exposure and syndrome. Starting therapy on IgM EIA alone risks treating a false positive, while calling it negative ignores that IgG may still be pending. Urine antigen is not the confirmatory test here.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What a complement fixation titer actually tells you</h2>
+      <p>The CF titer is a number you follow over months, not a cutoff that makes or excludes the diagnosis on a single day.</p>
+      <p>The titer roughly correlates with fungal burden. Higher titers are more often seen with extensive pulmonary disease, cavitation, or disseminated infection. The IDSA guideline and several cohorts note that titers of 1:16 or greater are seen more often with disseminated or higher-burden disease and merit a careful search for spread when symptoms fit. Some centres use 1:32 as a pragmatic concern threshold, but a titer alone, without clinical findings, does not prove dissemination, and a low titer does not exclude it.</p>
+      <p>What matters more than the absolute number is the trend in the same laboratory. A fourfold rise suggests worsening activity or inadequate response; a fourfold fall suggests improvement. Because titers can remain positive at low levels such as 1:2 or 1:4 for months to years after resolved pneumonia, a low persistent titer without symptoms is often serologic scar rather than active disease. Always compare to the prior result from the same lab — methods vary.</p>
+      <p>Cross-reactivity occurs. <em>Histoplasma capsulatum</em> and <em>Blastomyces dermatitidis</em> can cause low-positive CF, so a 1:2 in a patient never in a <em>Coccidioides</em>-endemic area but with exposure to the Ohio-Mississippi River Valley should prompt reconsideration. The test also does not distinguish <em>C. immitis</em> from <em>C. posadasii</em>.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Think of the CF titer as a disease activity marker to trend, not as a yes-or-no cutoff. A 1:16 or higher should prompt a closer look for dissemination when symptoms fit, but low or negative early titers never rule it out.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>CF in cerebrospinal fluid (CSF) is special. In coccidioidal meningitis, CSF complement fixation is sensitive and relatively specific and can be positive even when serum CF is low or negative. If meningitis is suspected, send CSF CF and do not rely on serum alone.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with proven pulmonary coccidioidomycosis has CF titer 1:4 at diagnosis and 1:32 six weeks later with worsening chest pain despite therapy. What does the rising titer suggest?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Laboratory error; CF never changes that quickly</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Serologic scar; ignore the change</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Increasing fungal burden or inadequate response; re-evaluate for cavitation, relapse or dissemination and adherence</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Proof of cure</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A fourfold rise — 1:4 to 1:16 would already qualify, and 1:4 to 1:32 is an eightfold rise — is significant and should prompt reassessment of disease extent, adherence, drug interactions, and complications. Low persistent titers are scar only when the patient is well.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Timing: why early serology is often negative</h2>
+      <p>Antibodies lag behind symptoms. Immunoglobulin M (IgM), including ID tube precipitin, typically appears 1 to 3 weeks after onset, sometimes later. Immunoglobulin G (IgG) by CF or IDCF typically appears 2 to 4 weeks, and EIA IgG follows a similar arc. Testing in the first week is frequently negative even in true disease.</p>
+      <p>In prospective CAP studies in Arizona, more than one in three patients with ultimately confirmed infection had negative initial serology when tested within the first two weeks. Immunosuppression worsens this: patients on high-dose corticosteroids, chemotherapy, transplant rejection therapy, or with advanced human immunodeficiency virus (HIV) may mount a weak or absent response, or remain CF-negative despite dissemination.</p>
+      <p>Practical rule: a negative serology within the first 1 to 2 weeks, or in any immunocompromised host, does not rule out coccidioidomycosis. If suspicion remains based on exposure and syndrome, repeat serology in 2 to 6 weeks and pursue culture, cytopathology, or histopathology when a sample is available. Do not let a single early negative close the search if the patient has not improved.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Send a baseline at presentation and calendar a repeat in 2 to 6 weeks if the first is negative and Valley fever remains plausible. Tell the patient why you are repeating it — antibodies are not present from day one.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old woman with 5 days of fever and pneumonia after camping in the southern San Joaquin Valley has negative EIA IgM and IgG. She is still febrile on day 10. What now?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Exclude coccidioidomycosis; the test is negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Keep coccidioidomycosis in the differential; repeat serology with immunodiffusion and complement fixation in 2 to 4 weeks and consider further diagnostics if indicated</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start empiric liposomal amphotericin B immediately because serology is negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order an isolated coccidioidal IgM by latex agglutination to rule out</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Early serology is commonly negative; timing explains the result. Keep Valley fever on the list, repeat with confirmatory methods, and let the evolving syndrome and alternative diagnostics guide you. Latex agglutination alone is not a reliable rule-out.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Common pitfalls that lead to misdiagnosis</h2>
+      <p>Most errors fall into a few repeat patterns.</p>
+      <ul>
+        <li><strong>Trusting an isolated IgM EIA.</strong> Up to a third or more of isolated IgM positives do not confirm on ID or CF. Do not label a patient as Valley fever or start weeks of antifungal on that alone.</li>
+        <li><strong>Overreading a low CF titer out of context.</strong> A 1:2 can persist for a year after spontaneously resolved mild pneumonia or cross-react with histoplasmosis. Alone, it is not evidence of active disease requiring therapy.</li>
+        <li><strong>Forgetting background seropositivity.</strong> In parts of Arizona, 10% to 30% of long-term residents have positive serology from past, possibly asymptomatic infection. A positive result during admission for an unrelated syndrome may be incidental.</li>
+        <li><strong>Assuming serology replaces microbiology.</strong> A nodule, effusion, or lesion that can be safely sampled often yields a clearer answer from culture or histopathology showing spherules with endospores. Serology complements, not replaces, tissue diagnosis.</li>
+        <li><strong>Testing everyone with any cough.</strong> Outside endemic areas or without travel, routine serology generates more false positives.</li>
+        <li><strong>Missing meningitis.</strong> Chronic headache, meningismus, or cranial neuropathy with prior Valley fever warrants CSF CF even if serum was positive. Do not use serum to exclude central nervous system disease.</li>
+      </ul>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not start or withhold antifungal therapy based solely on a single EIA result. Confirm with immunodiffusion and complement fixation, correlate with exposure and syndrome, and repeat early negatives. An antifungal course has interactions and toxicity; a missed diagnosis risks dissemination. Both errors start with over-interpreting one line on the report.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When the report says EIA positive, check which line is positive — IgM alone, IgG, or both — and whether ID or CF was done. The comment field often holds the most relevant sentence.</p>
+      </div>
+
+      <h2 class="ct-h2">How to order and interpret serology at the bedside</h2>
+      <p>Let epidemiology guide pre-test probability. After travel to Arizona, California&#8217;s Central Valley, west Texas, New Mexico, or northwestern Mexico within the prior few months, especially with dust exposure, consider coccidioidomycosis in CAP that fails antibacterials, with eosinophilia, persistent fatigue or arthralgias, erythema nodosum, or hilar adenopathy. In an immunocompromised host with nodular pneumonia, cavitation, skin lesions, bone pain, or unexplained meningitis, consider it even without classic pneumonia.</p>
+      <h3 class="ct-h3">A pragmatic ordering sequence</h3>
+      <ol>
+        <li>Order EIA with reflex to ID and CF if available as one set. If your lab does not reflex, order EIA plus ID and CF together when probability is more than low.</li>
+        <li>If EIA is IgM only positive, treat as pending confirmation. Request add-on ID and CF on the same sample if possible.</li>
+        <li>If EIA IgG is positive with confirmatory ID or a compatible syndrome and CF, that supports infection. Record the CF titer as baseline for follow-up.</li>
+        <li>If all serology is negative but symptoms began within 1 to 3 weeks and suspicion remains, repeat EIA with ID and CF in 2 to 6 weeks and pursue culture or histopathology if a sample exists.</li>
+        <li>For known infection, trend CF in the same lab every 4 to 12 weeks early, then less often as improvement occurs. A fourfold change is meaningful; smaller shifts are within assay variation.</li>
+      </ol>
+      <p>Document two dates: symptom onset and exposure window. Ask where the patient has lived, worked, travelled, or done outdoor work in the past 4 months — construction site, cave, archeologic dig, or dust storm.</p>
+      <p>Serology cannot declare cure or set treatment duration alone. Decisions to treat and duration depend on severity, dissemination and host factors; involve infectious diseases and use the IDSA guideline rather than a titer alone.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Write both dates in the note — onset and exposure — to interpret an early negative or isolated IgM correctly later.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">You suspect Valley fever in a man with persistent CAP after travel to Arizona. Your lab offers EIA alone without reflex. What is most efficient?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">EIA IgM only; add others only if positive</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">EIA for IgM and IgG plus immunodiffusion and complement fixation together</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urine coccidioidal antigen alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No serology; culture is the only useful test</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Ordering the panel together — or a reflex set — avoids the isolated IgM trap and provides the baseline CF you will need for follow-up. Antigen alone is insufficient for pulmonary disease, and culture is not bedside-rapid. IgM-only misses emerging IgG.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Suspect <em>Coccidioides</em> in CAP that fails antibacterials, with eosinophilia, erythema nodosum, or arthralgias, especially after exposure in Arizona or California&#8217;s Central Valley.</li>
+        <li>Order enzyme immunoassay (EIA) for IgM and IgG with reflex to immunodiffusion (ID) and complement fixation (CF); if reflex is not automatic, order all three together.</li>
+        <li>Do not diagnose on isolated IgM by EIA alone — it is frequently false positive. Confirm with ID and CF and clinical context.</li>
+        <li>Antibodies lag symptoms: IgM at 1 to 3 weeks, IgG at 2 to 4 weeks. Early negatives, or any negative in an immunocompromised host, do not rule out disease; repeat in 2 to 6 weeks.</li>
+        <li>Use CF as a trend marker: higher titers correlate with higher burden and a fourfold change matters. Low titers such as 1:2 can be serologic scar. For meningitis, send CSF CF.</li>
+        <li>Correlate exposure and symptom dates with serology, pursue tissue diagnosis when accessible, and use guideline-based treatment decisions rather than a single titer.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Galgiani JN, Ampel NM, Blair JE, et al. 2016 Infectious Diseases Society of America (IDSA) clinical practice guideline for the treatment of coccidioidomycosis. <em>Clin Infect Dis</em>. 2016;63(6):e112-e146.</li>
+          <li>Saubolle MA, McKellar PP, Sussland D. Epidemiologic, clinical, and diagnostic perspectives of coccidioidomycosis. <em>J Clin Microbiol</em>. 2007;45(1):26-30.</li>
+          <li>Crum NF, Lederman ER, Stafford CM, Parrish JS, Wallace MR. Coccidioidomycosis: a descriptive survey of a reemerging disease. Clinical characteristics and current controversies. <em>Medicine (Baltimore)</em>. 2004;83(3):149-175.</li>
+          <li>Valdivia L, Nix D, Wright M, et al. Coccidioidomycosis as a common cause of community-acquired pneumonia. <em>Emerg Infect Dis</em>. 2006;12(6):958-962.</li>
+          <li>Centers for Disease Control and Prevention. Valley fever (coccidioidomycosis): information for healthcare professionals. Accessed August 2026.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Coccidioides serologic testing</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

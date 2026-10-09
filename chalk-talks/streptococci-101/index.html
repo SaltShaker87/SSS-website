@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Streptococci 101 — IDSA Chalk Talk</title>
+<meta name="description" content="A practical framework for grouping streptococci and linking each group to disease.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Streptococci 101 — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Clinical microbiology</p>
+        <h1 class="ct-h1">Streptococci 101</h1>
+        <p class="ct-subtitle">How to group them, what each group does, and what to do about it</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 24-year-old presents in February with 2 days of sore throat, fever to 38.6°C, tender anterior nodes, and tonsillar exudates, without cough or rhinorrhoea. Rapid antigen is positive and her roommate asks about testing. Down the hall, a 68-year-old man has fever and back pain 2 weeks after a dental cleaning; blood cultures grow gram-positive cocci in chains, later <em>Streptococcus gallolyticus</em>. The team wonders if endocarditis workup and colonoscopy are needed.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Sort streptococci by haemolysis and Lancefield group and predict the clinical syndrome each group tends to cause.</li>
+          <li>Distinguish suppurative group A <em>Streptococcus</em> infections from non-suppurative immune sequelae and know when to test and treat pharyngitis.</li>
+          <li>Recognise the adult syndromes of groups B, C, G, viridans, anginosus, and bovis groups and their sentinel associations.</li>
+          <li>Choose first-line therapy for streptococcal syndromes and know when penicillin still works and when resistance matters.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why streptococci deserve a framework, not a list</h2>
+      <p>On Gram stain they all look alike — gram-positive cocci in chains — but at the bedside they behave like different organisms. <em>Streptococcus pyogenes</em> makes toxins, <em>Streptococcus agalactiae</em> colonises mucosa and invades neonates and older adults, viridans streptococci build biofilm on valves, anginosus group makes abscesses, and <em>Streptococcus gallolyticus</em> (formerly <em>Streptococcus bovis</em>) points to the colon. This talk gives you a sorting system, not a list of 20 names.</p>
+      <p>The two tools you will use most are <span class="ct-term">haemolysis</span> on blood agar — complete (beta), partial or greening (alpha), or none (gamma) — and <span class="ct-term">Lancefield grouping</span> by cell wall carbohydrate. Group A is almost always <em>Streptococcus pyogenes</em>, group B is <em>Streptococcus agalactiae</em>, and many viridans streptococci are non-groupable. <em>Streptococcus pneumoniae</em> is technically alpha-haemolytic but is managed separately.</p>
+      <p>When the lab says “streptococci,” ask how it haemolysed, what group, and where it came from. The same alpha-haemolytic description in sputum versus two blood culture sets after a dental procedure means different things.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Rebecca Lancefield grouped streptococci in the 1930s by cell wall carbohydrate; haemolysis was described by James Brown. Neither alone is specific — for example, groups C and G can be <em>Streptococcus pyogenes</em>-like or anginosus group.</p>
+      </div>
+
+      <h2 class="ct-h2">How the lab sorts streptococci before the name arrives</h2>
+      <p>A beta-haemolytic colony that is bacitracin sensitive and pyrrolidonyl arylamidase (PYR) positive is <em>Streptococcus pyogenes</em> until proven otherwise. Group B streptococci are beta-haemolytic, bacitracin resistant, PYR negative, hippurate positive, and Christie-Atkins-Munch-Petersen (CAMP) positive.</p>
+      <p>For alpha-haemolytic isolates, <em>Streptococcus pneumoniae</em> is optochin susceptible and bile soluble with lancet-shaped diplococci. Viridans group are optochin resistant and bile insoluble. Anginosus group (<em>Streptococcus anginosus</em>, <em>Streptococcus constellatus</em>, <em>Streptococcus intermedius</em>) are often minute colony and may be beta-, alpha-, or gamma-haemolytic with a faint caramel odour.</p>
+      <p>You rarely order these tests, but they help you read a preliminary report. “Beta-haemolytic streptococcus, not A or B, pending” in a superficial swab is often not a primary pathogen; the same report from blood in a postpartum patient is likely group C or G <em>Streptococcus</em> with invasive potential.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Sorting common streptococci at a glance</caption>
+          <thead>
+            <tr><th>Organism or group</th><th>Haemolysis</th><th>Lancefield</th><th>Key lab clue</th><th>Typical site or clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Streptococcus pyogenes</em></td><td>Beta</td><td>A</td><td>Bacitracin sensitive, PYR positive</td><td>Throat, skin, invasive soft tissue</td></tr>
+            <tr><td><em>Streptococcus agalactiae</em></td><td>Beta (often)</td><td>B</td><td>CAMP positive, hippurate positive</td><td>Neonate, pregnant person, older adult</td></tr>
+            <tr><td><em>Streptococcus dysgalactiae</em> subsp. <em>equisimilis</em> (groups C/G)</td><td>Beta</td><td>C/G</td><td>Large colony, bacitracin resistant</td><td>Pharyngitis, cellulitis, bacteraemia</td></tr>
+            <tr><td><em>Streptococcus pneumoniae</em></td><td>Alpha</td><td>None</td><td>Optochin sensitive, bile soluble</td><td>Lung, sinus, meninges</td></tr>
+            <tr><td>Viridans group (e.g., <em>Streptococcus mitis</em>, <em>Streptococcus sanguinis</em>)</td><td>Alpha</td><td>None or variable</td><td>Optochin resistant</td><td>Oral flora, endocarditis</td></tr>
+            <tr><td>Anginosus group (<em>Streptococcus anginosus</em> group)</td><td>Alpha, beta, or gamma</td><td>A, C, F, G or none</td><td>Minute colony, abscess former</td><td>Deep abscesses, liver, brain</td></tr>
+            <tr><td><em>Streptococcus gallolyticus</em> group (bovis)</td><td>Gamma or alpha</td><td>D (old)</td><td>Bile-esculin, group D antigen</td><td>Blood, colon pathology, endocarditis</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If the report says “beta-haemolytic streptococcus, not A or B,” look at the source before you treat it as <em>Streptococcus pyogenes</em>. Throat and blood are different stories from a superficial swab.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A preliminary blood culture report says “alpha-haemolytic streptococcus, optochin resistant.” Which description fits best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Likely <em>Streptococcus pneumoniae</em> — consider meningitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Likely viridans group streptococcus — assess for endocarditis risk rather than assuming pneumonia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Likely <em>Streptococcus pyogenes</em> — start clindamycin for toxin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Contaminant only — no further workup needed</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>Streptococcus pneumoniae</em> is optochin sensitive and bile soluble. Optochin resistance points to viridans group, which in blood, especially with a recent dental procedure or valvular disease, should prompt consideration of endocarditis rather than dismissal as a contaminant.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Group A Streptococcus pyogenes — throat, skin, and what comes after</h2>
+      <p>Group A <em>Streptococcus</em> (GAS), essentially <em>Streptococcus pyogenes</em>, is the streptococcus with both toxins and immune aftermath. It causes pharyngitis, scarlet fever, impetigo and cellulitis, necrotising soft tissue infection, and streptococcal toxic shock syndrome.</p>
+      <h3 class="ct-h3">Pharyngitis</h3>
+      <p>Classic group A <em>Streptococcus</em> (GAS) pharyngitis is abrupt sore throat with fever, tonsillar exudates, tender anterior nodes, and no cough or rhinorrhoea. Cough, coryza, hoarseness, conjunctivitis, or diarrhoea favour viral illness. Use modified Centor criteria to decide who to test, then test. Do not treat adults without testing, and do not test asymptomatic contacts.</p>
+      <p>Rapid antigen testing is specific but misses some cases; backup culture is recommended in children when rapid testing is negative. Treatment shortens symptoms modestly and prevents acute rheumatic fever when started within about 9 days. Penicillin and amoxicillin remain first line because <em>Streptococcus pyogenes</em> has never shown penicillin resistance. With immediate penicillin allergy, options per guidelines include a first-generation cephalosporin if tolerated, clindamycin, or a macrolide — but macrolide resistance makes macrolides a last choice.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not test “every sore throat.” Testing cough-predominant illness drives unnecessary antibiotics and misses the real diagnosis.</p>
+      </div>
+      <h3 class="ct-h3">Skin and invasive disease</h3>
+      <p>Impetigo is honey-crusted or purulent. GAS cellulitis is rapidly spreading with well-demarcated erythema, and necrotising infection is pain out of proportion with systemic toxicity — a surgical emergency. Streptococcal toxic shock syndrome presents with fever, hypotension, renal or hepatic dysfunction, and coagulopathy, driven by superantigen toxins.</p>
+      <p>For mild non-purulent cellulitis where group A <em>Streptococcus</em> and methicillin-susceptible <em>Staphylococcus aureus</em> are the target, use an anti-streptococcal beta-lactam. For necrotising infection or toxic shock, add clindamycin for toxin suppression — never alone — and obtain urgent surgical debridement.</p>
+      <h3 class="ct-h3">The immune sequelae only GAS causes</h3>
+      <p>Only GAS causes acute rheumatic fever and post-streptococcal glomerulonephritis. Rheumatic fever follows pharyngitis 1 to 5 weeks later with migratory polyarthritis, carditis, chorea, erythema marginatum, or nodules, and is largely preventable by treating pharyngitis. Glomerulonephritis follows throat or skin infection 1 to 3 weeks later with haematuria, oedema, and hypertension; antibiotics treat the infection but do not prevent it.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Penicillin still kills <em>Streptococcus pyogenes</em> every time. When treatment fails, think adherence, re-exposure or viral co-infection, or carriage — not penicillin-resistant GAS.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Glomerulonephritis can follow skin infection; rheumatic fever cannot. If a patient had impetigo 2 weeks ago and now has haematuria, think post-streptococcal glomerulonephritis, not rheumatic fever.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 19-year-old has sore throat with fever, exudates, tender nodes, and no cough. Rapid antigen is negative. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat empirically with azithromycin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Send throat culture if the patient is a child or adolescent; in adults use clinical judgement and guideline-based backup testing rather than automatic macrolide therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order antistreptolysin O (ASO) titre now to confirm</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure and do not test further — rapid test rules out GAS</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Rapid antigen tests are specific but miss some cases. Guidelines advise backup culture in children when rapid testing is negative because rheumatic fever prevention matters most in that group. ASO titres rise weeks later and do not help acute pharyngitis decisions. Empiric macrolide therapy risks failure and resistance.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Groups B, C, and G — not just a pregnancy problem</h2>
+      <p>Group B <em>Streptococcus</em> (GBS), <em>Streptococcus agalactiae</em>, colonises the gastrointestinal and genitourinary tract in 15 to 30 percent of adults. You learned it as a neonatal pathogen causing early-onset sepsis in the first week and late-onset meningitis, with universal rectovaginal screening at 35 to 37 weeks and intrapartum prophylaxis. In adults, most invasive GBS now occurs outside pregnancy.</p>
+      <p>In non-pregnant adults GBS causes bacteraemia, skin and soft tissue infection especially with diabetes, urinary infection, pneumonia, arthritis, and meningitis. Management is a beta-lactam, penicillin first line when susceptible. Do not treat asymptomatic colonisation in non-pregnant adults.</p>
+      <p>Groups C and G are largely <em>Streptococcus dysgalactiae</em> subsp. <em>equisimilis</em>. They cause pharyngitis, cellulitis, bacteraemia, and endocarditis that can mimic GAS but do not cause rheumatic fever. Penicillin susceptibility is the rule.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Intrapartum prophylaxis has reduced early-onset neonatal GBS disease since the 1990s, but adult invasive disease has risen — now more often seen on adult wards than obstetric wards.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>GBS bacteremia in an older adult with diabetes and cellulitis is not a contaminant and not “just skin flora.” Look for bacteraemia, joint infection, and endocarditis risk rather than assuming a simple wound culture.</p>
+      </div>
+
+      <h2 class="ct-h2">Viridans, anginosus, and bovis groups — three clues you should not miss</h2>
+      <p>These are the alpha- or gamma-haemolytic streptococci where the species name changes management even when the Gram stain does not.</p>
+      <h3 class="ct-h3">Viridans group — the endocarditis organism</h3>
+      <p>Viridans group streptococci (VGS) — <em>Streptococcus mitis</em>, <em>Streptococcus oralis</em>, <em>Streptococcus sanguinis</em>, and others — are oral flora and classic causes of subacute endocarditis on damaged or prosthetic valves after dental trauma. Two positive blood culture sets, persistent growth, a new murmur, or emboli should trigger Duke criteria evaluation and echocardiography; a single positive bottle can be contamination but not always.</p>
+      <p>Endocarditis requires prolonged intravenous beta-lactam therapy, often ceftriaxone or penicillin G, sometimes with short gentamicin synergy per guidelines — not a short course. Prophylaxis before dental procedures is now limited to high-risk cardiac conditions; check current American Heart Association guidance.</p>
+      <h3 class="ct-h3">Anginosus group — the abscess former</h3>
+      <p>Anginosus group (<em>Streptococcus anginosus</em>, <em>Streptococcus constellatus</em>, <em>Streptococcus intermedius</em>) forms abscesses — dental, sinus, brain, liver, lung, intra-abdominal — often with anaerobes. When this group grows, expect pus and plan for drainage.</p>
+      <h3 class="ct-h3">Bovis or gallolyticus group — the colonoscopy clue</h3>
+      <p><em>Streptococcus gallolyticus</em> subsp. <em>gallolyticus</em> (biotype I, formerly <em>Streptococcus bovis</em> type I) bacteremia is associated with colonic neoplasia and endocarditis, often on a normal valve. Subsp. <em>pasteurianus</em> (biotype II/2) is linked more to biliary disease. Finding <em>Streptococcus gallolyticus</em> in blood should prompt colonoscopy and echocardiography even if fever resolves.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Calling viridans group streptococci in blood a contaminant without counting sets and timing, or calling <em>Streptococcus gallolyticus</em> bacteremia “just bacteraemia” without evaluating the colon and heart, misses the diagnosis that changes outcomes.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 64-year-old man has <em>Streptococcus gallolyticus</em> bacteremia from two sets. Transthoracic echocardiogram is negative and he is afebrile after 48 hours of ceftriaxone. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop antibiotics — bacteraemia has cleared</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Continue evaluation for endocarditis with transoesophageal imaging as indicated and arrange colonoscopy; do not treat as simple bacteraemia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to oral clindamycin for 5 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat blood cultures only if fever returns</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>Streptococcus gallolyticus</em> bacteremia has a well-established association with colonic pathology including cancer and adenoma, and with endocarditis even on native valves. A negative transthoracic study does not exclude endocarditis, and resolution of fever does not remove the need to evaluate the colon. Management is prolonged therapy when endocarditis is found.</p>
+        </div>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with a dental abscess develops headache, fever, and a rim-enhancing brain lesion. Culture grows <em>Streptococcus intermedius</em>. What is most characteristic of this group?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">It always indicates endocarditis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">It is universally penicillin resistant</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">It tends to cause suppurative abscesses and often requires drainage plus prolonged antibiotics</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">It never grows with anaerobes</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Anginosus group organisms (<em>Streptococcus anginosus</em>, <em>Streptococcus constellatus</em>, <em>Streptococcus intermedius</em>) are classic abscess formers in brain, liver, and abdomen, often in mixed infection with anaerobes. Source control via drainage is often essential.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Streptococcus pneumoniae — the streptococcus with its own rules</h2>
+      <p><em>Streptococcus pneumoniae</em> is the alpha-haemolytic outlier — lancet-shaped diplococci with a capsule. It causes pneumonia, otitis media, sinusitis, and meningitis, especially with asplenia or after viral infection.</p>
+      <p>Unlike <em>Streptococcus pyogenes</em>, it can be penicillin non-susceptible and macrolide resistant. Empiric therapy depends on syndrome and local susceptibility. Check current Centers for Disease Control and Prevention vaccine schedules for adults 65 years or older, immunocompromise, asplenia, cerebrospinal fluid leak, or cochlear implant.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When you see “gram-positive diplococci” in sputum, think <em>Streptococcus pneumoniae</em>, but do not call sputum culture proof of pneumonia. When you see them in cerebrospinal fluid, treat as pneumococcal meningitis until proven otherwise and add dexamethasone where indicated before or with the first antibiotic dose.</p>
+      </div>
+
+      <h2 class="ct-h2">Choosing antibiotics — principles rather than a memorised table</h2>
+      <p>For almost all beta-haemolytic streptococci except pneumococcus, penicillin or amoxicillin is the backbone when susceptible — which for GAS, GBS, and groups C/G it almost always is. Broader is not better; vancomycin is not stronger for a penicillin-susceptible streptococcus.</p>
+      <p>Syndrome sets the duration and setting: pharyngitis needs a short oral course, endocarditis needs weeks intravenously, abscess needs drainage. For anginosus group, the drug without drainage fails.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>First-line thinking by syndrome — verify doses and durations locally</caption>
+          <thead>
+            <tr><th>Syndrome</th><th>Likely streptococcus</th><th>Usual first-line principle</th><th>When to think differently</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Streptococcal pharyngitis</td><td><em>Streptococcus pyogenes</em></td><td>Oral penicillin or amoxicillin; treat after positive test</td><td>Immediate penicillin allergy — consider cephalosporin if tolerated or specialist-guided alternatives</td></tr>
+            <tr><td>Non-purulent cellulitis</td><td><em>Streptococcus pyogenes</em> plus methicillin-susceptible <em>Staphylococcus aureus</em></td><td>Anti-streptococcal beta-lactam such as cefazolin or ceftriaxone systemically; oral follow-on per guidance</td><td>Purulent wound — consider methicillin-resistant <em>Staphylococcus aureus</em> coverage instead</td></tr>
+            <tr><td>Necrotising infection or toxic shock</td><td><em>Streptococcus pyogenes</em></td><td>Beta-lactam plus clindamycin for toxin plus urgent surgery</td><td>Do not use clindamycin alone; add, do not replace</td></tr>
+            <tr><td>GBS bacteraemia or soft tissue</td><td><em>Streptococcus agalactiae</em></td><td>Penicillin when susceptible</td><td>Assess for endocarditis and deep source</td></tr>
+            <tr><td>Viridans endocarditis</td><td>Viridans group</td><td>Prolonged penicillin G or ceftriaxone per susceptibility; seek infectious diseases input</td><td>Short courses fail; evaluate valves and emboli</td></tr>
+            <tr><td>Anginosus abscess</td><td>Anginosus group</td><td>Beta-lactam plus drainage; add anaerobic coverage when mixed</td><td>Antibiotics alone without source control</td></tr>
+            <tr><td><em>Streptococcus gallolyticus</em> bacteraemia</td><td><em>Streptococcus gallolyticus</em> group</td><td>Penicillin or ceftriaxone per susceptibility plus echo and colonoscopy</td><td>Treating as “uncomplicated bacteraemia” without evaluating colon</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Allergy history matters more than the label — most reported penicillin allergies are not true immunoglobulin E-mediated allergies. Clarify the reaction and what has been tolerated since; de-labelling can change outcomes. And remember: treating GAS pharyngitis prevents rheumatic fever but does not prevent glomerulonephritis.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For penicillin-susceptible streptococci, penicillin is the most active drug. Reaching for vancomycin “to be safe” is less safe and less effective.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Sort by haemolysis and Lancefield, then by site — that predicts syndrome better than memorizing every species name.</li>
+        <li>Group A <em>Streptococcus pyogenes</em> is the toxin- and immune-sequelae organism: pharyngitis, impetigo, cellulitis, necrotising infection, toxic shock, and uniquely rheumatic fever and post-streptococcal glomerulonephritis.</li>
+        <li>Group B <em>Streptococcus agalactiae</em> colonises many adults and causes neonatal early- and late-onset disease plus adult bacteraemia, cellulitis, and meningitis — treat infection, not colonisation.</li>
+        <li>Viridans group signals endocarditis risk in blood; anginosus group signals abscess and need for drainage; <em>Streptococcus gallolyticus</em> (bovis) in blood triggers echocardiography and colonoscopy.</li>
+        <li><em>Streptococcus pneumoniae</em> is the capsular, vaccine-preventable outlier with distinct penicillin and macrolide resistance — test susceptibility and check current vaccine schedules.</li>
+        <li>Penicillin remains first line for most streptococci except pneumococcus; add clindamycin for toxin-mediated GAS syndromes, never alone, and always pair antibiotics with source control for abscess and necrotising infection.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Shulman ST, et al. Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update. <em>Clin Infect Dis</em>. 2012;55(10):e86-e102.</li>
+          <li>Stevens DL, et al. Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update. <em>Clin Infect Dis</em>. 2014;59(2):e10-e52.</li>
+          <li>Verani JR, McGee L, Schrag SJ. Prevention of Perinatal Group B Streptococcal Disease: Revised Guidelines from CDC, 2010. <em>MMWR Recomm Rep</em>. 2010;59(RR-10):1-36. Updated CDC guidance should be checked for current screening recommendations.</li>
+          <li>Baddour LM, et al. Infective Endocarditis in Adults: Diagnosis, Antimicrobial Therapy, and Management of Complications. <em>Circulation</em>. 2015;132:1435-1486.</li>
+          <li>Musher DM. <em>Streptococcus pneumoniae</em>. In: Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases. 9th ed. Elsevier; 2020.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Streptococci 101</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

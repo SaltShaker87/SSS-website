@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The NOPE bug: a lesson on Lyme disease — IDSA Chalk Talk</title>
+<meta name="description" content="When to diagnose Lyme disease, when to treat, and when to say NOPE — a practical guide for residents.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">The NOPE bug: a lesson on Lyme disease — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Tick-borne infections</p>
+        <h1 class="ct-h1">The NOPE bug: a lesson on Lyme disease</h1>
+        <p class="ct-subtitle">When to test, when to treat, and when to say no</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: Drs. Boatwright and Blyth</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man from Connecticut presents in July with a week of fever, fatigue, and an expanding annular rash on his left thigh. He removed a small tick from that leg 10 days ago after hiking. He has no headache, neck stiffness, joint swelling, palpitations, or facial droop. Examination shows a 12-cm erythematous oval with central clearing, warm, non-tender, with a raised border.</p>
+        <p>A second consult that night: a 48-year-old woman with six months of diffuse joint pains, fatigue, and difficulty concentrating. She lives in Arizona without Northeast travel, rash, or tick recall. An outside clinic sent a Lyme immunoglobulin M (IgM) immunoblot that returned positive with 2 of 3 bands. She asks about prolonged intravenous antibiotics for chronic Lyme disease.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Apply the NOPE framework to avoid overdiagnosis and overtreatment of Lyme disease.</li>
+          <li>Recognise the stages of Lyme disease and know which require testing versus clinical diagnosis.</li>
+          <li>Interpret two-tier serologic testing correctly by pretest probability and timing.</li>
+          <li>Select treatment by syndrome and counsel patients after a tick bite.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why Lyme earns its NOPE reputation</h2>
+      <p>Lyme disease is the most common vector-borne infection in the United States, caused by <em>Borrelia burgdorferi</em> sensu stricto (and rarely <em>Borrelia mayonii</em>). It is also one of the most misapplied diagnoses on the wards. A positive test without the right story does harm, while a classic rash without any test is still Lyme.</p>
+      <p>The speakers introduced <span class="ct-term">NOPE</span> as a memory aid for when to say “nope, not Lyme.” It flags four pitfalls:</p>
+      <ul>
+        <li><strong>N — No credible exposure:</strong> no residence, travel, or outdoor activity in a high-incidence region during transmission season.</li>
+        <li><strong>O — Only subjective complaints:</strong> fatigue, diffuse arthralgias, brain fog, or paresthesias without objective findings such as erythema migrans, facial palsy, meningitis, carditis, or swollen joint.</li>
+        <li><strong>P — Positive serology misread:</strong> IgM ordered outside the 30-day window, false-positive enzyme immunoassay, or IgG reflecting past infection.</li>
+        <li><strong>E — Erythema migrans overcalled:</strong> every annular rash is not erythema migrans — consider cellulitis, tinea corporis, or a bite hypersensitivity reaction.</li>
+      </ul>
+      <p>If any NOPE criterion is present, reconsider whether Lyme fits before testing or treating. That restraint protects patients from unnecessary antibiotics and missed alternative diagnoses.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If the story is NOPE, the test will not rescue you — a positive result in a low-probability patient is more likely false than true.</p>
+      </div>
+
+      <h2 class="ct-h2">Where, when, and how risk actually happens</h2>
+      <p>Lyme is not everywhere. Most United States cases cluster in the Northeast, mid-Atlantic, and upper Midwest, with smaller foci on the west coast where <em>Ixodes pacificus</em> is the vector. Elsewhere it is rare even when ticks are common.</p>
+      <p>Transmission requires an <em>Ixodes scapularis</em> nymph or adult tick to feed at least 36 hours to transfer spirochetes from its midgut. A flat, quickly removed tick rarely transmits. Nymphs are active May through July, are poppy-seed sized, and cause most infections because they are hard to notice. Adult ticks are larger and more often found before transmission.</p>
+      <p>The spirochete does not spread person to person. A patient who never leaves an Arizona suburb in January has essentially no Lyme risk, regardless of aches reported.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p><em>Borrelia burgdorferi</em> disseminates via blood and lymphatics early. Serology is insensitive at this stage, so erythema migrans must be diagnosed clinically.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Equating any tick bite with automatic Lyme risk. Species, geography, engorgement, and attachment time determine risk — not the word “tick” alone.</p>
+      </div>
+
+      <h2 class="ct-h2">Recognising Lyme by stage</h2>
+      <p>Lyme unfolds in stages that overlap, but each has objective findings you can name.</p>
+      <h3 class="ct-h3">Early localised disease (days to weeks)</h3>
+      <p><span class="ct-term">Erythema migrans</span> occurs in 70–80% of symptomatic infections. It expands over days, often to 5 cm or more, with central clearing in a third but many are uniformly erythematous. It is warm, usually not pruritic or painful, and not scaly. Serology is often negative. A classic lesion with fitting exposure should be treated without testing.</p>
+      <h3 class="ct-h3">Early disseminated disease (weeks to months)</h3>
+      <ul>
+        <li><strong>Multiple erythema migrans:</strong> smaller secondary annular lesions from spirochetemia, not multiple bites.</li>
+        <li><strong>Neurologic disease:</strong> lymphocytic meningitis, cranial neuropathy — especially facial palsy — and painful radiculoneuritis. Isolated encephalopathy is not neuroborreliosis.</li>
+        <li><strong>Cardiac disease:</strong> fluctuating atrioventricular block, sometimes with myopericarditis, with dizziness, syncope, or palpitations. The block can change hour to hour.</li>
+      </ul>
+      <h3 class="ct-h3">Late disseminated disease (months to years)</h3>
+      <p>Late disease is usually large-joint oligoarthritis, most often a swollen knee with effusion but relatively little pain — the “swollen but not miserable” knee. Late neuropathy or encephalomyelitis are uncommon in treated populations.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Erythema migrans is diagnosed by the eye and the story, not the lab. A classic expanding annular rash in an endemic area in summer is Lyme — send no test.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Late Lyme is objective. Migratory arthralgias and fatigue without joint swelling, heart block, facial palsy, or meningitis are not late Lyme.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The 32-year-old man with the 12-cm expanding annular rash in July in Connecticut — what is the next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order two-tier serology and await results before treating</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Diagnose erythema migrans clinically and start treatment without serology</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Perform punch biopsy for polymerase chain reaction testing</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure without treatment because the tick was removed</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Erythema migrans is a clinical diagnosis. Serology is insensitive early and a negative result does not exclude disease. A classic lesion in season and in an endemic area should be treated on sight; biopsy and polymerase chain reaction testing are not indicated.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Diagnosis: use the test — do not let the test use you</h2>
+      <p>Serology measures the host antibody response, not the organism. Blood culture and polymerase chain reaction testing have no routine role, and no test is positive before the immune system responds.</p>
+      <p>The 2020 Infectious Diseases Society of America, American Academy of Neurology, and American College of Rheumatology guideline endorses two-tier testing:</p>
+      <ul>
+        <li><strong>Standard two-tier testing (STTT):</strong> a sensitive enzyme immunoassay (EIA) or chemiluminescence immunoassay (CIA); if positive or equivocal, reflex to <em>Borrelia burgdorferi</em> IgM and IgG immunoblot.</li>
+        <li><strong>Modified two-tier testing (MTTT):</strong> two sequential EIAs (for example, whole-cell sonicate followed by C6 peptide), with similar sensitivity and better specificity, increasingly used by reference labs.</li>
+      </ul>
+      <p>Rules that prevent NOPE errors:</p>
+      <ul>
+        <li>In the first weeks, sensitivity is low (about 30–40% in erythema migrans) — a negative test does not rule out early disease.</li>
+        <li>IgM immunoblot is valid only within 30 days of symptoms. After that, a positive IgM with negative IgG is almost always false positive.</li>
+        <li>IgG requires 5 of 10 bands and remains positive for years after treatment — persistent IgG is not active disease.</li>
+        <li>Cerebrospinal fluid serology without pleocytosis has little meaning. For neuroborreliosis, look for lymphocytic pleocytosis and paired serum and cerebrospinal fluid antibody testing.</li>
+        <li>Do not screen asymptomatic patients, including after a tick bite, and do not use serology to judge treatment response.</li>
+      </ul>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>When testing helps and when it misleads</caption>
+          <thead>
+            <tr><th>Situation</th><th>Pretest probability</th><th>Appropriate action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Classic erythema migrans in endemic summer</td><td>High</td><td>Treat clinically; do not test</td></tr>
+            <tr><td>Facial palsy, meningitis, heart block, or swollen knee in endemic area</td><td>Intermediate to high</td><td>Test with two-tier serology</td></tr>
+            <tr><td>Diffuse fatigue and arthralgia only, no exposure</td><td>Very low</td><td>Do not test; pursue other diagnoses</td></tr>
+            <tr><td>Asymptomatic tick bite, feels well</td><td>Not applicable</td><td>Do not test; counsel and observe</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Ordering an IgM immunoblot beyond 30 days. A positive IgM after a month with a negative IgG launches a cascade of unnecessary treatment.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The 48-year-old woman in Arizona with six months of diffuse pain and an isolated IgM immunoblot (2 of 3 bands, IgG negative) most likely has:</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Late Lyme disease requiring ceftriaxone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">A false-positive IgM — not active Lyme disease</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Seronegative Lyme arthritis needing doxycycline</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">An indication to repeat serology in two weeks</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>IgM is not interpretable beyond 30 days, IgG should be positive by six months if truly infected, and there is no credible exposure or objective Lyme sign. With a negative IgG at six months this is a false positive — a classic NOPE pattern.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treatment by syndrome: drugs, doses, and durations</h2>
+      <p>Treatment follows the syndrome, not the titre. Regimens below reflect the 2020 Infectious Diseases Society of America, American Academy of Neurology, and American College of Rheumatology guideline. Verify dosing for the individual patient — regimens are given from current guidance because the original transcript was irretrievably corrupted and verbatim transcript numbers could not be recovered.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Treatment by manifestation — adult regimens (check renal, hepatic, allergy, and pregnancy status)</caption>
+          <thead>
+            <tr><th>Manifestation</th><th>First-line regimen</th><th>Alternatives</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Erythema migrans</td><td>Doxycycline 100 mg by mouth twice daily for 10 days</td><td>Amoxicillin 500 mg three times daily for 14 days; cefuroxime 500 mg twice daily for 14 days. Azithromycin only if others contraindicated.</td></tr>
+            <tr><td>Facial palsy without meningitis</td><td>Doxycycline 100 mg twice daily for 14 days</td><td>Amoxicillin or cefuroxime for same duration if needed. Lumbar puncture not required for isolated palsy in endemic setting.</td></tr>
+            <tr><td>Meningitis or radiculoneuritis</td><td>Doxycycline 100 mg twice daily for 14 days or ceftriaxone 2 g intravenously once daily for 14 days</td><td>Duration 14–21 days by severity. Cefotaxime or penicillin G are alternatives.</td></tr>
+            <tr><td>Carditis (mild, ambulatory)</td><td>Doxycycline 100 mg twice daily or amoxicillin 500 mg three times daily for 14–21 days if PR &lt;300 ms</td><td>Hospitalise and use ceftriaxone 2 g daily if PR ≥300 ms, symptomatic bradycardia, or high-grade block; add monitoring and cardiology input.</td></tr>
+            <tr><td>Arthritis</td><td>Doxycycline 100 mg twice daily for 28 days</td><td>Amoxicillin 500 mg three times daily for 28 days or cefuroxime 500 mg twice daily for 28 days. If incomplete response, repeat oral course; refer persistent synovitis.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Doxycycline has excellent central nervous system penetration and is effective for neurologic and cardiac disease in ambulatory patients — intravenous therapy is not automatically superior. Routine coinfection testing for <em>Anaplasma</em> or <em>Babesia</em> is not needed without leukopenia, thrombocytopenia, or hemolytic anaemia with high fever.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Treat the syndrome for the recommended duration — no longer. Lyme arthritis does not need months of antibiotics, and carditis still needs the full course even after telemetry improves.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Earlier guidelines suggested 14–21 days for erythema migrans. Randomised data and the 2020 guideline now support 10 days of doxycycline with equivalent efficacy and fewer adverse effects. If local protocol lists 14 days, following it is reasonable.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 29-year-old woman has an 8-cm annular rash consistent with erythema migrans, no neurologic or cardiac symptoms, no allergies, and is not pregnant. Appropriate treatment is:</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone 2 g intravenously daily for 14 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Doxycycline 100 mg by mouth twice daily for 10 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Amoxicillin 500 mg three times daily for 28 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin 500 mg daily for 3 days</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Uncomplicated erythema migrans is treated orally for a short course. Doxycycline for 10 days is first line; amoxicillin or cefuroxime for 14 days are alternatives, and 28 days is arthritis dosing. Ceftriaxone is for severe disseminated disease and azithromycin has higher failure rates.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The tick bite in front of you: prophylaxis and counselling</h2>
+      <p>Routine prophylaxis after any tick bite is not recommended. Single-dose doxycycline 200 mg once (4.4 mg/kg up to 200 mg in children) may be offered only when <em>all</em> of the following are true:</p>
+      <ul>
+        <li>The tick is an <em>Ixodes</em> nymph or adult, engorged and attached at least 36 hours.</li>
+        <li>The bite occurred in a highly endemic area where at least 20% of ticks are infected.</li>
+        <li>Prophylaxis can be given within 72 hours of removal.</li>
+        <li>No contraindication to doxycycline exists.</li>
+      </ul>
+      <p>If any criterion is missing or more than 72 hours have passed, counsel and observe. Teach removal with fine-tipped tweezers, steady upward traction, and cleaning. Advise that erythema migrans appears 3–30 days after a bite (usually 7–14 days) and to seek care for rash or fever. Do not send acute serology — it will be negative.</p>
+      <p>Recommend daily tick checks, showering within two hours of outdoor activity, and repellents with DEET (N,N-diethyl-meta-toluamide) or picaridin and permethrin for clothing.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For a tick bite, time matters more than panic. Within 72 hours run the four-point checklist; after 72 hours the window closes — counsel, do not prescribe.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A healthy 25-year-old man presents 24 hours after removing a flat, non-engorged nymphal tick in New Jersey. The site is clean and he feels well. Best next step is:</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Single-dose doxycycline 200 mg now</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">No antibiotics; counsel and observe for rash or fever for 30 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Doxycycline 100 mg twice daily for 10 days empirically</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send Lyme enzyme immunoassay now</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Prophylaxis requires an engorged <em>Ixodes</em> tick with prolonged attachment in a highly endemic area within 72 hours. A flat tick does not meet criteria, and empiric treatment or baseline serology is not indicated. Observation with return precautions is correct.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When to say NOPE: mimics, overtesting, and life after treatment</h2>
+      <p>The hardest consult is the patient who is sure they have Lyme despite a NOPE story. Many annular rashes are not Lyme: cellulitis (rapid, painful, with lymphangitis), tinea corporis (scaly, pruritic), erythema multiforme (target lesions), Southern tick-associated rash illness from <em>Amblyomma americanum</em> in the Southeast (looks like erythema migrans but testing is negative), and contact dermatitis. For oligoarthritis, consider crystal disease and septic arthritis.</p>
+      <p>For persistent fatigue or arthralgia after appropriate treatment — sometimes called post-treatment Lyme disease syndrome — prolonged antibiotics do not help. Randomised trials showed no sustained benefit and excess harms including catheter infection and <em>Clostridioides difficile</em>. Validate symptoms, screen for depression and sleep disorders, and focus on rehabilitation.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Months of intravenous ceftriaxone for “chronic Lyme disease” based on non-specific symptoms and a false-positive IgM — risking biliary sludge, neutropenia, and bloodstream infection without benefit.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Non-standard tests marketed for “chronic Lyme disease” — urine antigen, alternative cultures, or immunoblots with looser criteria — have poor specificity. Use only standard or modified two-tier testing in a certified laboratory.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The best Lyme test is a good history. Geography, season, exposure, and objective findings predict disease far better than serology in a NOPE scenario.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Think NOPE before you test: no credible exposure, only non-specific complaints, positive serology misread, or erythema migrans overcalled — pause and reconsider.</li>
+        <li>Erythema migrans is a clinical diagnosis (expanding annular lesion, often ≥5 cm, in season and in an endemic area) — treat without serology.</li>
+        <li>Use two-tier testing only with intermediate-to-high pretest probability (facial palsy, meningitis, carditis, or objective arthritis) and interpret IgM only within 30 days.</li>
+        <li>Treat by syndrome: doxycycline 100 mg twice daily for 10 days for erythema migrans, 14 days for facial palsy or meningitis (or ceftriaxone 2 g daily when indicated), 14–21 days for carditis, and 28 days for arthritis — no prolonged courses for subjective persistence.</li>
+        <li>After a tick bite, single-dose doxycycline 200 mg is only for an engorged <em>Ixodes</em> tick attached ≥36 hours in a highly endemic area within 72 hours; otherwise counsel and observe for 30 days.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Lantos PM, Rumbaugh J, Bockenstedt LK, et al. Clinical Practice Guidelines by the Infectious Diseases Society of America (IDSA), American Academy of Neurology (AAN), and American College of Rheumatology (ACR): 2020 Guidelines for the Prevention, Diagnosis and Treatment of Lyme Disease. <em>Clin Infect Dis</em>. 2021;72(1):e1-e48.</li>
+          <li>Wormser GP, Dattwyler RJ, Shapiro ED, et al. The Clinical Assessment, Treatment, and Prevention of Lyme Disease, Human Granulocytic Anaplasmosis, and Babesiosis: Clinical Practice Guidelines by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2006;43(9):1089-1134.</li>
+          <li>Steere AC. Lyme disease. <em>N Engl J Med</em>. 2001;345(2):115-125.</li>
+          <li>Berende A, ter Hofstede HJM, Vos FJ, et al. Randomized Trial of Longer-Term Therapy for Symptoms Attributed to Lyme Disease. <em>N Engl J Med</em>. 2016;374:1209-1220.</li>
+          <li>Klempner MS, Hu LT, Evans J, et al. Two Controlled Trials of Antibiotic Treatment in Patients with Persistent Symptoms and a History of Lyme Disease. <em>N Engl J Med</em>. 2001;345:85-92.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">The NOPE bug: a lesson on Lyme disease</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

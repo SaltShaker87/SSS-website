@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fungal biomarkers — IDSA Chalk Talk</title>
+<meta name="description" content="How to use galactomannan, beta-D-glucan, cryptococcal antigen, and fungal PCR without fooling yourself.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Fungal biomarkers — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Diagnostic reasoning</p>
+        <h1 class="ct-h1">Fungal biomarkers</h1>
+        <p class="ct-subtitle">When galactomannan, beta-D-glucan, and fungal antigens help — and when they mislead</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man with acute myeloid leukaemia, day 14 after induction chemotherapy, remains neutropenic and febrile despite 72 hours of cefepime. He is on fluconazole prophylaxis. Chest computed tomography (CT) shows a new 1.8-cm nodule with surrounding ground glass in the right upper lobe. Serum galactomannan (GM) returns at 0.7 (optical density index), and (1→3)-β-D-glucan (BDG) at 95 pg/mL. The team asks whether this is proven aspergillosis and whether to change antifungals.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Describe what galactomannan (GM), (1→3)-β-D-glucan (BDG), cryptococcal antigen (CrAg), and <em>Aspergillus</em> polymerase chain reaction (PCR) actually measure.</li>
+          <li>Select the right biomarker for the right host and interpret results in the context of pretest probability.</li>
+          <li>List common causes of false-positive and false-negative biomarker results and how to avoid misinterpretation.</li>
+          <li>Apply a stewardship framework for when to order, when not to order, and when to repeat fungal biomarkers.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why we need fungal biomarkers at all</h2>
+      <p>Invasive fungal disease is hard to prove quickly. Blood cultures are insensitive for <em>Aspergillus</em> and other moulds, tissue biopsy is often unsafe in thrombocytopenic or critically ill patients, and cultures can take days to weeks. Meanwhile, empiric antifungals are toxic, expensive, and drive resistance. Biomarkers — circulating fungal cell-wall components, antigens, or nucleic acid — were developed to close that diagnostic gap, not to replace clinical judgement.</p>
+      <p>All of them share the same problem: their performance depends almost entirely on <span class="ct-term">pretest probability</span>. In a high-risk host with a compatible syndrome, a positive result raises confidence meaningfully. In a low-risk host without a compatible syndrome, the same result is far more likely to be noise. The European Organisation for Research and Treatment of Cancer and the Mycoses Study Group (EORTC/MSGERC) definitions make this explicit: biomarkers can support a diagnosis of probable invasive fungal disease only when host, clinical, and mycologic criteria align. A positive biomarker alone never makes a proven case.</p>
+      <p>Keep three principles in mind throughout this talk. First, no biomarker diagnoses infection by itself. Second, sensitivity and specificity quoted from studies in haematology patients do not travel well to intensive care unit (ICU) or general medical patients. Third, drugs that suppress fungal growth will suppress biomarker release — mould-active prophylaxis or early therapy blunts galactomannan and BDG sensitivity.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The EORTC/MSGERC definitions classify invasive fungal disease as proven (histopathology or culture from sterile site), probable (host factor plus clinical feature plus mycologic evidence, including biomarkers), or possible (host plus clinical without mycologic support). Biomarkers live in that middle, mycologic lane.</p>
+      </div>
+
+      <h2 class="ct-h2">Galactomannan — the aspergillus signal</h2>
+      <p><span class="ct-term">Galactomannan (GM)</span> is a polysaccharide in the cell wall of <em>Aspergillus</em> species that is released during hyphal growth. The assay is an enzyme immunoassay reported as an optical density index (ODI). It does not detect <em>Mucorales</em>, <em>Fusarium</em> inconsistently, and <em>Cryptococcus</em> not at all.</p>
+      <p>Interpretation depends on specimen. Serum GM is most studied in neutropenic patients with haematologic malignancy or haematopoietic stem-cell transplant where angioinvasion releases antigen into blood. Bronchoalveolar lavage (BAL) fluid GM is more sensitive than serum in non-neutropenic hosts and in patients already on mould-active agents, because antigen is concentrated at the site of pulmonary disease. Cerebrospinal fluid (CSF) GM has been used for suspected <em>Aspergillus</em> meningitis but is not standardised.</p>
+      <p>Cutoffs commonly used in practice and in trial definitions are an ODI of 0.5 for serum positivity (some centres require two consecutive positives or 0.7 on a single sample) and 1.0 for BAL fluid positivity. Sensitivity in high-risk haematology cohorts is roughly 70 to 80 percent for proven or probable invasive aspergillosis, higher in BAL than serum, and specificity around 85 to 90 percent when prevalence is high. In low-risk populations, the positive predictive value collapses because false positives dominate.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Galactomannan interpretation by context</caption>
+          <thead>
+            <tr><th>Specimen</th><th>Common cutoff</th><th>Best use case</th><th>Limitation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Serum</td><td>0.5 ODI (repeat or 0.7 single)</td><td>Neutropenic haematology, stem-cell transplant, untreated</td><td>Blunted by mould-active azoles; lower sensitivity outside neutropenia</td></tr>
+            <tr><td>BAL fluid</td><td>1.0 ODI</td><td>Pulmonary nodule or infiltrate, especially if serum negative or on prophylaxis</td><td>Contamination and colonisation possible; no value in patients without lung disease</td></tr>
+            <tr><td>CSF</td><td>Not standardised</td><td>Concern for central nervous system aspergillosis with compatible imaging</td><td>Consult infectious diseases; send with fungal culture and PCR</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>False positives still occur, although the classic piperacillin-tazobactam problem has largely resolved with modern formulations. Other causes include severe mucositis with gut translocation, receipt of certain nutritional or electrolyte solutions, and laboratory handling. False negatives are more common and more dangerous: concurrent mould-active prophylaxis with posaconazole, isavuconazole, or voriconazole, early sampling before angioinvasion, and non-<em>Aspergillus</em> moulds that simply do not make galactomannan.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Galactomannan is not a screen for everyone with fever. It performs in neutropenic hosts with pulmonary disease and little else — outside that group, order it only to support a specific clinical question.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your neutropenic patient on posaconazole prophylaxis has a negative serum GM of 0.2 ODI. What best explains the result?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Aspergillosis is ruled out; no further workup needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Mould-active prophylaxis markedly reduces serum GM sensitivity — consider BAL GM if pulmonary disease persists</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">The cutoff for positivity on prophylaxis should be lowered to 0.3 to compensate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat serum GM daily for three days to rule out disease</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Mould-active azoles suppress galactomannan release, so serum sensitivity falls from the 70 to 80 percent seen in untreated haematology patients to much lower. A single negative serum GM on prophylaxis does not exclude disease. Bronchoalveolar lavage fluid GM retains higher sensitivity. There is no validated lower cutoff on prophylaxis, and daily serum repeats without a clinical change add noise without benefit.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">(1→3)-β-D-glucan — a broad but noisy fungal screen</h2>
+      <p><span class="ct-term">(1→3)-β-D-glucan (BDG)</span> is a cell-wall polysaccharide found in most pathogenic fungi — <em>Candida</em>, <em>Aspergillus</em>, <em>Pneumocystis jirovecii</em>, and others — but notably absent in <em>Cryptococcus</em> and <em>Mucorales</em>, which have little BDG in their walls. The most widely used assay in the United States is the Fungitell assay, with a common positivity threshold around 80 pg/mL (with an indeterminate zone around 60 to 79 pg/mL). Thresholds vary by laboratory and assay, so check your own report.</p>
+      <p>BDG is best understood as a pan-fungal marker with good negative predictive value and poor positive predictive value. Pooled sensitivity for invasive fungal disease is roughly 75 to 80 percent and specificity roughly 80 percent in high-risk cohorts, but specificity drops sharply in ICU patients. In other words, a negative BDG in a high-risk, untreated patient makes invasive candidiasis or aspergillosis less likely, while a single positive BDG should not by itself trigger therapy.</p>
+      <p>The list of false positives is long and clinically relevant. Intravenous immunoglobulin, albumin, certain beta-lactams and haemodialysis membranes, surgical gauze exposure, and severe bacterial infection can all elevate BDG. Blood sampling through gauze or filters can contaminate specimens. Conversely, BDG is insensitive for cryptococcosis and mucormycosis by biology, not by assay failure, and can be low in early or localised disease.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Ordering BDG as a daily screen in every ICU patient with fever. The pretest probability for invasive fungal disease in most ICU patients is low, so even a specificity of 80 to 85 percent generates far more false positives than true positives. Use BDG to support discontinuation of empiric therapy in high-risk patients or to bolster suspicion for <em>Pneumocystis</em> pneumonia, not as a fever workup panel.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A negative BDG helps you stop. In high-risk patients started on empiric antifungals, two consecutive negative BDG results combined with negative cultures and stable imaging strengthen a decision to de-escalate — but only within the full clinical picture.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p><em>Pneumocystis jirovecii</em> produces abundant BDG. In human immunodeficiency virus (HIV)-negative patients with diffuse ground-glass opacities where bronchoscopy is delayed, a markedly elevated BDG can support early presumptive therapy pending definitive testing. <em>Cryptococcus</em> and <em>Mucorales</em> remain the deliberate blind spots — a negative BDG never excludes them.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 64-year-old ICU patient on haemodialysis with bacteraemia due to <em>Staphylococcus aureus</em> has a BDG of 110 pg/mL without any pulmonary nodules or candidemia. What is the most appropriate next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start micafungin for probable candidiasis based on BDG alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recognise BDG as likely false positive from haemodialysis and bacterial infection; look for clinical and microbiologic evidence before labelling fungal disease</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order serum galactomannan to confirm candidiasis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat BDG in 24 hours; a second positive confirms invasive fungal disease</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>BDG is positive in only 10 to 20 percent of bacteraemic patients in some series, but haemodialysis and albumin are well-described false positives. Galactomannan does not detect <em>Candida</em> and cannot confirm candidiasis. A single elevated BDG without host risk, imaging, or culture support should not drive therapy — repeat testing amplifies the false-positive problem when prevalence is low.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Cryptococcal antigen and endemic mycosis antigens</h2>
+      <p><span class="ct-term">Cryptococcal antigen (CrAg)</span> is in a different league from GM and BDG for accuracy. The lateral flow assay (LFA) for cryptococcal capsular polysaccharide is highly sensitive and specific in both serum and CSF, approaching 99 percent in many studies, and has largely replaced the older latex agglutination test. A positive serum CrAg in a patient with meningitis or pulmonary nodules should prompt lumbar puncture unless contraindicated, and in people living with HIV with CD4 counts below 100 cells per microlitre, serum CrAg screening can detect subclinical cryptococcaemia before meningitis develops.</p>
+      <p>Titres matter less than trajectory. CrAg can remain positive for months after successful treatment, so rising titres or persistently high titres do not by themselves define failure — symptoms, culture, and opening pressure matter more. False negatives are rare but occur with a prozone effect at very high antigen burdens (the laboratory must dilute) and with localised pulmonary disease where antigenaemia is limited.</p>
+      <p>For endemic mycoses, urine and serum antigen enzyme immunoassays for <em>Histoplasma capsulatum</em> are valuable, particularly for disseminated disease. Sensitivity is highest in disseminated histoplasmosis (often 90 percent or higher in urine) and lower in isolated pulmonary disease. Cross-reactivity is the key caveat: <em>Histoplasma</em> and <em>Blastomyces dermatitidis</em> antigens cross-react substantially, and <em>Coccidioides</em> and <em>Paracoccidioides</em> can cross-react to a lesser degree. A positive <em>Histoplasma</em> urine antigen in the right epidemiology — Ohio and Mississippi River valleys, cavitary or disseminated disease — is actionable, but confirmation with culture, pathology, or serology is still needed. <em>Blastomyces</em> urine antigen has similar caveats, and <em>Coccidioides</em> diagnosis still relies heavily on serology (complement fixation and immunodiffusion) rather than antigen alone.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cryptococcal antigen lateral flow assay is the one fungal biomarker you can trust broadly. A positive serum or CSF CrAg deserves urgent action, while a negative BDG or GM without clinical context deserves scepticism.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 35-year-old with advanced HIV (CD4 45 cells per microlitre) has a positive serum cryptococcal antigen lateral flow assay but no headache or fever. What is the next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure and repeat CrAg in 3 months; antigenaemia is expected at low CD4</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Perform urgent clinical assessment for meningitis, including lumbar puncture, and start pre-emptive fluconazole if CSF is negative per guidance</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order serum galactomannan to look for co-infection before deciding</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait for cryptococcal culture before any intervention</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Asymptomatic cryptococcal antigenaemia in advanced HIV predicts progression to meningitis. World Health Organization (WHO) and IDSA guidance recommend lumbar puncture to exclude central nervous system disease even without symptoms when serum CrAg is positive at low CD4, followed by pre-emptive fluconazole if meningitis is excluded. Waiting for culture loses the window where intervention prevents disease.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2"><em>Aspergillus</em> polymerase chain reaction and emerging assays</h2>
+      <p><span class="ct-term">Aspergillus polymerase chain reaction (PCR)</span> detects fungal deoxyribonucleic acid (DNA) in blood (serum, plasma, or whole blood) or BAL fluid. The EORTC/MSGERC definitions now include PCR as mycologic support when performed in a standardised laboratory, requiring two consecutive positive blood PCR results or a single BAL PCR with appropriate controls. In practice, outside dedicated centres, assay heterogeneity remains the barrier — extraction methods, targets, and thresholds differ — so a positive PCR from an unvalidated laboratory should be interpreted with caution.</p>
+      <p>Where PCR shines is combination testing. In high-risk haematology patients, combining GM plus PCR raises sensitivity and, critically, raises negative predictive value: two negative biomarkers off therapy make invasive aspergillosis considerably less likely. PCR can also remain positive slightly longer than GM after therapy has started, though the clinical use of that persistence is still being defined.</p>
+      <p>Beyond PCR, <em>Pneumocystis</em> PCR on BAL fluid is now central for <em>Pneumocystis</em> pneumonia, and T2 magnetic resonance (T2MR) Candida panels and targeted next-generation sequencing are entering clinical use in some centres. None has yet replaced culture and histology as the reference, and none should be ordered without a plan for what a positive or negative result will change.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Combine, do not stack. Galactomannan plus <em>Aspergillus</em> PCR in the right host is a sensible pair with complementary strengths; ordering galactomannan, BDG, and PCR together in a low-risk patient is a recipe for conflicting false positives.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The 2020 EORTC/MSGERC update formalised <em>Aspergillus</em> PCR criteria precisely because earlier studies were undermined by non-standardised assays. If your laboratory does not report assay validation and controls, treat PCR as investigational and confirm with a second specimen type or reference laboratory.</p>
+      </div>
+
+      <h2 class="ct-h2">Putting it together — pretest probability, pitfalls, and stewardship</h2>
+      <p>Think Bayesian, not binary. Estimate pretest probability from host (prolonged neutropenia, transplant, high-dose steroids, HIV with low CD4), syndrome (pulmonary nodule with halo sign, diffuse ground glass, meningitis with high opening pressure, disseminated granulomatous disease), and exposures (geography, construction, prior prophylaxis). Then choose the narrowest biomarker that tests your hypothesis.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Choosing a fungal biomarker by clinical question</caption>
+          <thead>
+            <tr><th>Clinical question</th><th>Order</th><th>Do not order</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pulmonary aspergillosis in neutropenic host</td><td>Serum GM; BAL GM if bronchoscopy performed</td><td>BDG alone to diagnose aspergillosis</td></tr>
+            <tr><td>Possible candidemia, needs de-escalation</td><td>BDG as adjunct to cultures (note threshold 80 pg/mL varies by lab)</td><td>GM</td></tr>
+            <tr><td>Suspected cryptococcal meningitis</td><td>Serum and CSF cryptococcal antigen lateral flow assay</td><td>BDG to rule out cryptococcus — it will be negative by biology</td></tr>
+            <tr><td>Disseminated histoplasmosis in endemic area</td><td>Urine and serum <em>Histoplasma</em> antigen</td><td>Isolated serology without antigen in acute severe disease</td></tr>
+            <tr><td>Mucormycosis concern</td><td>Histopathology and culture urgently</td><td>GM or BDG to exclude — both are typically negative</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Stewardship matters. Do not use GM or BDG as a screening test in patients without risk factors, do not repeat a positive BDG daily to watch it fall (it does not track reliably with therapeutic response), and do not treat a single low-level positive without corroboration — repeat the same assay, send a second specimen type, and reassess the clinical syndrome.</p>
+      <p>For monitoring, GM has the best evidence for trajectory: falling serum GM in a treated patient with invasive aspergillosis correlates with response, while persistently positive GM predicts worse outcomes. BDG trajectories are inconsistent and should not guide duration of therapy. CrAg titres linger and are poor markers of response; follow symptoms, culture clearance, and imaging instead.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Use biomarkers to answer one question at a time. Write down what you will do if the result is positive and what you will do if it is negative before you order — if the answer is the same either way, skip the test.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Chasing a positive BDG in a patient on haemodialysis, albumin, or with recent gauze exposure. The test was not built for that host, and a single value above 80 pg/mL without a compatible syndrome is far more likely to be analytic noise than invasive fungal disease.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Returning to the opening vignette — neutropenic leukaemia, pulmonary nodule, on fluconazole, serum GM 0.7 and BDG 95 pg/mL. What is the best interpretation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Proven aspergillosis — both biomarkers positive</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Probable invasive aspergillosis is plausible; the syndrome fits and GM is above the usual 0.5 threshold, but mould-inactive fluconazole does not blunt GM, and BDG is near the 80 pg/mL cutoff and non-specific — pursue chest CT follow-up, BAL with GM and <em>Aspergillus</em> PCR and culture, and switch to mould-active therapy pending results</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Invasive fungal disease excluded because GM is below 1.0</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Mucormycosis is most likely because GM is positive</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Proven disease requires histology or sterile culture — biomarkers alone never qualify. Fluconazole has no mould activity, so it would not blunt GM, unlike posaconazole. A GM of 0.7 exceeds the common serum threshold of 0.5 and in a compatible high-risk pulmonary syndrome supports probable disease, but BDG near 80 pg/mL is borderline and non-specific for <em>Aspergillus</em>. <em>Mucorales</em> do not make galactomannan. The right move is BAL-based confirmation where safe and mould-active coverage while awaiting results.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>All fungal biomarkers depend on pretest probability — the same number means opposite things in a high-risk neutropenic host and a low-risk ICU patient with fever.</li>
+        <li>Galactomannan detects <em>Aspergillus</em> (not <em>Mucorales</em> or <em>Cryptococcus</em>); use serum cutoff around 0.5 ODI and BAL around 1.0 ODI, and expect false negatives on mould-active prophylaxis — BAL GM rescues sensitivity.</li>
+        <li>(1→3)-β-D-glucan is pan-fungal but noisy; threshold around 80 pg/mL varies by assay, negative results help de-escalate while single positives without a syndrome mislead — haemodialysis, albumin, and gauze are classic false positives, and <em>Cryptococcus</em> and <em>Mucorales</em> are true negatives by biology.</li>
+        <li>Cryptococcal antigen lateral flow assay is highly accurate; a positive serum CrAg in advanced HIV deserves lumbar puncture and pre-emptive therapy even without meningismus, and titres linger long after cure.</li>
+        <li><em>Aspergillus</em> PCR is now EORTC/MSGERC-accepted when standardised, and pairs well with GM; non-standardised PCR, T2MR, and sequencing should not be ordered without a plan for the result.</li>
+        <li>Order one hypothesis-driven biomarker at a time, do not treat a single borderline BDG or GM without repeat or second-specimen confirmation, follow GM trajectories not BDG trajectories, and never use biomarkers to diagnose or exclude mucormycosis.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Donnelly JP, Chen SC, Kauffman CA, et al. Revision and update of the consensus definitions of invasive fungal disease from the European Organization for Research and Treatment of Cancer and the Mycoses Study Group Education and Research Consortium. <em>Clin Infect Dis</em>. 2020;71(6):1367-1376.</li>
+          <li>Patterson TF, Thompson GR 3rd, Denning DW, et al. Practice guidelines for the diagnosis and management of aspergillosis: 2016 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2016;63(4):e1-e60.</li>
+          <li>Pappas PG, Kauffman CA, Andes DR, et al. Clinical practice guideline for the management of candidiasis: 2016 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2016;62(4):e1-e50.</li>
+          <li>Boulware DR, Meya DB, Muzoora C, et al. Timing of antiretroviral therapy after diagnosis of cryptococcal meningitis. <em>N Engl J Med</em>. 2014;370(26):2487-2498; and World Health Organization guideline for cryptococcal disease screening.</li>
+          <li>Hage CA, Azar MM, Bahr NC, Loyd J, Wheat LJ. Histoplasmosis: up-to-date evidence-based approach to diagnosis and management. <em>Semin Respir Crit Care Med</em>. 2015;36(5):729-745.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Fungal biomarkers</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

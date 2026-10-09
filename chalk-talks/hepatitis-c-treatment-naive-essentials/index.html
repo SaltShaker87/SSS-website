@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepatitis C treatment-naïve essentials — IDSA Chalk Talk</title>
+<meta name="description" content="A practical guide to curing hepatitis C in adults who have never been treated: workup, staging, pangenotypic regimens, and follow-up.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Hepatitis C treatment-naïve essentials — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Viral hepatitis</p>
+        <h1 class="ct-h1">Hepatitis C treatment-naïve essentials</h1>
+        <p class="ct-subtitle">Who to treat, what to check, and how to choose and monitor pangenotypic therapy</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: Not recoverable from corrupted transcript — reconstructed from AASLD/IDSA guidance</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man is referred after routine screening showed hepatitis C virus (HCV) antibody positive. He has never taken HCV therapy, injects drugs occasionally, drinks 2–3 beers on weekends, and takes no regular medicines. Labs: complete blood count and creatinine normal, alanine aminotransferase 68, aspartate aminotransferase 42, bilirubin and international normalised ratio normal. He asks if he needs a biopsy, genotype, and how long treatment lasts.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Confirm active hepatitis C virus infection, stage liver fibrosis without a biopsy, and complete the essential pre-treatment workup.</li>
+          <li>Identify who qualifies for the simplified pangenotypic pathway and who needs specialty input.</li>
+          <li>Choose between glecaprevir/pibrentasvir and sofosbuvir/velpatasvir for a treatment-naïve adult and recognise key drug interactions and contraindications.</li>
+          <li>Counsel on adherence, monitoring, cure criteria, and harm reduction to prevent reinfection.</li>
+        </ul>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">A note on reconstruction</span>
+        <p>The transcript and slides were corrupted — null bytes replaced by the replacement character — so archives remained unreadable after repair. Content below was reconstructed from current AASLD/IDSA guidance for treatment-naïve adults; all drug, dose and duration details are guideline-derived. No images were recoverable.</p>
+      </div>
+
+      <h2 class="ct-h2">Why treatment is offered to every adult with hepatitis C</h2>
+      <p>Chronic <span class="ct-term">hepatitis C virus (HCV) infection</span> — detectable HCV ribonucleic acid (RNA) beyond 6 months — is now curable in more than 95% of treatment-naïve adults with 8 to 12 weeks of oral <span class="ct-term">direct-acting antivirals (DAAs)</span>. Cure, or <span class="ct-term">sustained virologic response (SVR)</span>, means undetectable RNA 12 weeks after therapy and lowers cirrhosis progression, hepatocellular carcinoma, liver death, and transmission. AASLD/IDSA guidance therefore recommends treatment for virtually all adults except those with a very limited life expectancy not improved by cure.</p>
+      <p>Watchful waiting for mild disease is obsolete. Treatment is warranted even with minimal fibrosis to prevent hepatic and extrahepatic complications such as cryoglobulinaemia. For residents the question is no longer “does this patient need treatment?” but “is there a modifiable reason to defer today?” Reasons to defer or refer are pregnancy, decompensated cirrhosis, active hepatocellular carcinoma, and unmanageable drug interactions. Active injection drug use alone is not a reason to withhold therapy if the person can adhere.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Treat chronic hepatitis C in almost everyone. Active drug use, mild transaminase elevation, or a normal physical exam are not reasons to delay — decompensated cirrhosis, pregnancy, and untreated hepatocellular carcinoma are.</p>
+      </div>
+
+      <h2 class="ct-h2">Confirm active infection and stage the liver</h2>
+      <p>Antibody alone does not prove current infection — about one quarter clear hepatitis C spontaneously and remain antibody positive. Confirm <span class="ct-term">active infection</span> with a quantitative HCV RNA. If undetectable, no treatment now; if detectable, stage without a routine biopsy.</p>
+      <p>Staging asks if cirrhosis is present and if it is compensated. Calculate a <span class="ct-term">fibrosis-4 index (FIB-4)</span> from age, aspartate aminotransferase, alanine aminotransferase, and platelets; a low FIB-4 makes advanced fibrosis unlikely, a high value triggers elastography or ultrasound. Ascites, oedema, jaundice, encephalopathy, low platelets or albumin, high bilirubin, or prolonged international normalised ratio suggest advanced disease. Transient elastography gives a rapid noninvasive estimate when available.</p>
+      <p>Complete the panel at the same visit: hepatitis B virus surface antigen, surface antibody and core antibody; human immunodeficiency virus (HIV) antigen/antibody; hepatitis A virus antibody for vaccination; pregnancy test when relevant; complete blood count, metabolic panel with estimated glomerular filtration rate, bilirubin; and a full medication and supplement list including proton pump inhibitors, statins, hormonal contraception, and anti-epileptics. Genotype is not needed for pangenotypic choice in the simplified pathway — follow local protocol.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Essential pre-treatment workup for a treatment-naïve adult</caption>
+          <thead>
+            <tr><th>Item</th><th>Why it matters</th><th>What to do</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HCV RNA quantitative</td><td>Confirms active infection; antibody alone is not enough</td><td>If detectable, proceed; if undetectable, no treatment now</td></tr>
+            <tr><td>Hepatitis B virus serologies</td><td>Risk of hepatitis B reactivation during DAA therapy</td><td>Test surface antigen, surface antibody, core antibody; vaccinate if non-immune</td></tr>
+            <tr><td>HIV test, pregnancy test</td><td>Coinfection and teratogenicity alter regimen choice</td><td>Screen at baseline; manage HIV first or coordinate care</td></tr>
+            <tr><td>Liver disease assessment (FIB-4, platelets, bilirubin, albumin, elastography if needed)</td><td>Determines cirrhosis status and whether simplified pathway applies</td><td>FIB-4 plus clinical exam; refer if decompensated</td></tr>
+            <tr><td>Medication and supplement review</td><td>Drug interactions determine safety of glecaprevir/pibrentasvir vs sofosbuvir/velpatasvir</td><td>Use a current interaction checker; involve pharmacy</td></tr>
+            <tr><td>Hepatitis A immunity, alcohol and substance use history</td><td>Vaccination and harm reduction reduce liver injury and reinfection</td><td>Vaccinate if non-immune; counsel on alcohol and safe injection</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Antibody proves exposure, RNA proves active infection. Stage the liver with FIB-4, platelets, exam, and elastography — not a routine biopsy — and get hepatitis B virus serologies, HIV, pregnancy testing, and a full drug list before you prescribe.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The man in the vignette has positive HCV antibody. What is the essential next test before any treatment plan?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">HCV genotype</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Quantitative HCV RNA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Liver biopsy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">HCV core antigen only</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>HCV antibody persists after spontaneous clearance. You must demonstrate active viraemia with a quantitative HCV RNA before treatment. Genotype is not required for a pangenotypic simplified regimen, and biopsy is unnecessary for most treatment-naïve adults.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Who fits the simplified treatment pathway</h2>
+      <p>The simplified pathway lets primary care cure most treatment-naïve adults without referral. An adult qualifies if 18 years or older, HCV RNA positive, never treated for hepatitis C, and without decompensated cirrhosis — no ascites, spontaneous bacterial peritonitis, encephalopathy, or variceal bleed, and no Child-Pugh B or C. There should be no known hepatocellular carcinoma, liver transplant, or hepatitis B surface antigen requiring active therapy, and no unmanageable drug interactions. Both non-cirrhotic and compensated cirrhosis (Child-Pugh A) fit, though some centres co-manage compensated cirrhosis — follow local rules.</p>
+      <p>Who does not fit: decompensated cirrhosis or portal hypertension, indeterminate fibrosis needing workup, active hepatocellular carcinoma, prior direct-acting antiviral exposure, pregnancy, and complex HIV coinfection on interacting antiretrovirals. For these, refer to hepatology or infectious diseases rather than forcing a pangenotypic course. If the vignette patient has normal bilirubin, albumin, platelets and no stigmata, his FIB-4 will likely be low and he fits the simplified track — document that you checked for red flags.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not start glecaprevir/pibrentasvir in decompensated cirrhosis — protease inhibitors are contraindicated in Child-Pugh B and C and can precipitate liver failure. If you suspect decompensation, stop, stage carefully, and refer; sofosbuvir/velpatasvir is the usual backbone when treatment is indicated in decompensation, often with specialist input and sometimes with ribavirin.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Which patient belongs in the simplified pangenotypic pathway?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A 54-year-old woman with prior sofosbuvir exposure and now detectable RNA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A 45-year-old man with ascites, bilirubin 3.2 mg/dL, and platelets 68,000</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">A 32-year-old treatment-naïve man, no cirrhosis signs, FIB-4 1.1, normal bilirubin and albumin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A pregnant patient at 18 weeks with positive HCV RNA</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Simplified treatment is for treatment-naïve adults without decompensated cirrhosis, without prior DAA failure, and without active hepatocellular carcinoma or pregnancy. Prior treatment failure, decompensation, and pregnancy all require specialty management.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Choosing between the two pangenotypic regimens</h2>
+      <p>For treatment-naïve adults who fit the simplified pathway, guidance highlights two pangenotypic options that do not require genotype testing: <span class="ct-term">glecaprevir/pibrentasvir (G/P)</span> and <span class="ct-term">sofosbuvir/velpatasvir (SOF/VEL)</span>. The table below summarises guideline-derived regimens — doses were not recoverable from the corrupted transcript and are therefore taken from current AASLD/IDSA simplified guidance and should be verified with pharmacy and local formulary.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Simplified pangenotypic regimens for treatment-naïve adults (guideline-derived)</caption>
+          <thead>
+            <tr><th>Regimen</th><th>Guideline-derived dose</th><th>Duration without cirrhosis</th><th>Duration with compensated cirrhosis</th><th>Key considerations</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Glecaprevir/pibrentasvir</td><td>Glecaprevir 300 mg / pibrentasvir 120 mg once daily (three tablets together) with food</td><td>8 weeks</td><td>8 weeks</td><td>Avoid in decompensated cirrhosis; watch statins, ethinyl estradiol, and strong inducers</td></tr>
+            <tr><td>Sofosbuvir/velpatasvir</td><td>Sofosbuvir 400 mg / velpatasvir 100 mg once daily</td><td>12 weeks</td><td>12 weeks</td><td>Separate antacids; watch acid reducers and inducers; monitor for hepatitis B reactivation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Both regimens cure similarly; practical factors decide. Glecaprevir/pibrentasvir is favoured with severe renal impairment including dialysis because clearance is hepatic, and it offers the shorter 8-week course. Sofosbuvir/velpatasvir is favoured when a protease inhibitor is undesirable, bilirubin is elevated, or the patient cannot reliably take medicine with food. Neither needs on-treatment RNA to set duration. Do not extend to 16 weeks or add ribavirin in this population — that belongs to failure or decompensated protocols. Document start date and SVR12 due date so follow-up is not lost.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>In the simplified pathway, genotype does not drive the choice — tolerability, drug interactions, renal function, and cirrhosis status do. Glecaprevir/pibrentasvir is 8 weeks with food; sofosbuvir/velpatasvir is 12 weeks once daily without a food requirement.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Hepatitis C was once treated with 24–48 weeks of pegylated interferon and ribavirin; direct-acting antivirals targeting NS3/4A, NS5A and NS5B now cure more than 95% in weeks.</p>
+      </div>
+
+      <h2 class="ct-h2">Drug interactions and contraindications you must check</h2>
+      <p>Both regimens have major interactions via cytochrome P450 and transporters.</p>
+      <p>With glecaprevir/pibrentasvir avoid strong inducers — rifampin, carbamazepine, phenytoin, phenobarbital, St John’s wort — which render therapy ineffective, and avoid atazanavir and ethinyl estradiol combinations because of alanine aminotransferase risk. Statins need action: hold rosuvastatin, limit atorvastatin, or switch to pravastatin with monitoring. Review anticoagulants with pharmacy.</p>
+      <p>With sofosbuvir/velpatasvir, acid suppression lowers velpatasvir. If a proton pump inhibitor is essential, give sofosbuvir/velpatasvir with food 4 hours before the inhibitor at the lowest effective dose, or use an H2-receptor antagonist separated in time. Separate antacids by 4 hours. Strong inducers are contraindicated. Amiodarone with sofosbuvir can cause severe bradycardia — avoid. Two standalone contraindications: protease inhibitors are contraindicated in decompensated cirrhosis, and hepatitis B virus reactivation can occur — obtain surface antigen, surface antibody and core antibody before therapy and manage positives before the first dose.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Starting hepatitis C treatment without checking hepatitis B virus serologies. Reactivation has caused fulminant failure. Obtain surface antigen, surface antibody, and core antibody in every person before direct-acting antivirals, and act on a positive surface antigen or isolated core antibody before the first dose.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient on carbamazepine for epilepsy and omeprazole daily is evaluated for treatment-naïve hepatitis C. What is the safest next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start glecaprevir/pibrentasvir immediately — epilepsy drugs do not interact</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start sofosbuvir/velpatasvir alongside omeprazole without timing changes</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Pause to review interactions: carbamazepine is a strong inducer contraindicated with both regimens, and omeprazole reduces velpatasvir; involve pharmacy/neurology to switch or time therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add rifampin to “boost” the hepatitis C regimen</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Carbamazepine and other strong inducers are contraindicated with both glecaprevir/pibrentasvir and sofosbuvir/velpatasvir due to subtherapeutic levels. Proton pump inhibitors lower velpatasvir; timing, dose adjustment, or switch is needed. Discuss alternatives with neurology and pharmacy rather than pushing through.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Monitoring on treatment and confirming cure</h2>
+      <p>No on-treatment RNA is needed to set duration. The essential test is HCV RNA 12 weeks after the last dose — <span class="ct-term">SVR at 12 weeks (SVR12)</span>: undetectable means cured, detectable means refer for resistance and retreatment, not empiric extension.</p>
+      <p>During therapy focus on adherence and side effects, take glecaprevir/pibrentasvir with food and separate sofosbuvir/velpatasvir from antacids, and recheck labs only if clinically indicated. Marked alanine aminotransferase rise with symptoms needs urgent review. With compensated cirrhosis, continue hepatocellular carcinoma surveillance with ultrasound with or without alpha-fetoprotein every 6 months after SVR — cure reduces but does not abolish risk. Non-cirrhotic patients need no routine elastography after SVR. Document start, end and SVR12 dates, and if more than 7 days are missed seek specialty input. Schedule SVR12 before starting so follow-up is not lost.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cure is defined by undetectable HCV RNA at 12 weeks after the last dose. Do not use end-of-treatment RNA to declare success, and do not add extra weeks because you are anxious — schedule SVR12 before you start.</p>
+      </div>
+
+      <h2 class="ct-h2">Counseling, vaccination, and preventing reinfection</h2>
+      <p>DAAs do not confer immunity — reinfection occurs with ongoing injection use or high-risk sexual exposure. Discuss harm reduction without stigma, offer clean equipment where legal, medication for opioid use disorder, and partner testing. Antibody stays positive for life, so only RNA can detect reinfection.</p>
+      <p>Advise minimal or no alcohol and offer support. Vaccinate for hepatitis A and B if non-immune and complete the series even after SVR. Adherence best predicts cure: link dosing to a daily habit, explain food and antacid rules, give a written plan and a missed-dose action, and start prior authorisation early because access, not biology, most often delays cure.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Antibody stays positive after cure — you cannot use it to check for reinfection. Tell patients to return for HCV RNA testing if they have a new exposure, and keep hepatocellular carcinoma surveillance every 6 months if they had cirrhosis before treatment.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Liver biopsy is rarely needed now — FIB-4, elastography and exam stage most treatment-naïve adults.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient completes 8 weeks of glecaprevir/pibrentasvir and asks when you can confirm he is cured. What do you tell him?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Check HCV RNA at the end of treatment — if undetectable, he is cured</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Check quantitative HCV RNA 12 weeks after the last dose (SVR12)</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Check HCV antibody 12 weeks after treatment</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat FIB-4 next week to declare cure</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>SVR is defined by undetectable HCV RNA at 12 weeks after therapy ends. End-of-treatment RNA and antibody do not define cure, and FIB-4 monitors fibrosis, not virologic response.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Treat almost every treatment-naïve adult with chronic hepatitis C (detectable HCV RNA); confirm RNA, do not treat antibody alone, and defer only for pregnancy, decompensated cirrhosis, active hepatocellular carcinoma, or unmanageable interactions.</li>
+        <li>Complete a focused pre-treatment panel at the first visit: HCV RNA, hepatitis B virus surface antigen/core antibody/surface antibody, HIV, pregnancy test, hepatitis A immunity, metabolic panel, complete blood count, FIB-4 with exam and elastography if needed, and a full drug list reviewed with pharmacy.</li>
+        <li>Use the simplified pangenotypic pathway for treatment-naïve adults without decompensated cirrhosis: glecaprevir/pibrentasvir 8 weeks with food or sofosbuvir/velpatasvir 12 weeks once daily — both guideline-derived doses, pangenotypic without routine genotype, and verified locally.</li>
+        <li>Check interactions and contraindications every time: never use glecaprevir/pibrentasvir in decompensated disease, avoid strong inducers with both regimens, manage acid reducers and antacids with sofosbuvir/velpatasvir, and evaluate hepatitis B virus status for reactivation risk before the first dose.</li>
+        <li>Define cure by undetectable HCV RNA 12 weeks after the last dose (SVR12), continue hepatocellular carcinoma surveillance every 6 months if cirrhosis was present before treatment, vaccinate for hepatitis A and B if non-immune, and counsel on adherence and harm reduction because antibody remains positive and reinfection is possible.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>American Association for the Study of Liver Diseases and Infectious Diseases Society of America. HCV Guidance: Recommendations for testing, managing, and treating hepatitis C. Updated 2023–2024. https://www.hcvguidelines.org — pangenotypic simplified treatment for treatment-naïve adults, staging, and monitoring. Guideline-derived regimens and durations cited in this page reflect this source because the original transcript was unrecoverable.</li>
+          <li>Ghany MG, et al. Hepatitis C guidance 2023 update: AASLD-IDSA recommendations for testing, managing, and treating hepatitis C virus infection. <em>Clin Infect Dis</em>. 2024;78(5):e1-e20.</li>
+          <li>Centers for Disease Control and Prevention. Hepatitis C virus infection and hepatitis B reactivation: screening and vaccination recommendations. <em>MMWR</em>. 2023–2024 updates.</li>
+          <li>Bhattacharya D, et al. Management of hepatitis C virus in the direct-acting antiviral era. <em>JAMA</em>. 2023;330(9):867-877.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Hepatitis C treatment-naïve essentials</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

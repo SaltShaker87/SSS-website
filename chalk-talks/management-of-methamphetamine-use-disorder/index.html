@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Management of methamphetamine use disorder — IDSA Chalk Talk</title>
+<meta name="description" content="How to recognise methamphetamine use disorder, stabilise acute complications, and offer the few interventions that actually work.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Management of methamphetamine use disorder — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+<header class="ct-hero">
+        <p class="ct-eyebrow">Addiction medicine</p>
+        <h1 class="ct-h1">Management of methamphetamine use disorder</h1>
+        <p class="ct-subtitle">No FDA-approved medication, one strong counselling tool, and a lot of harm reduction you can do tonight</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man is admitted with fever and a fluctuant forearm abscess at an injection site. He reports daily smoked methamphetamine for three years, most recently 12 hours ago. He is tachycardic, agitated, and says he wants to leave before withdrawal sets in. Blood cultures are pending. The team wonders what to do about the infection and what to say about his methamphetamine use.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish methamphetamine intoxication, the post-use crash, and <span class="ct-term">methamphetamine use disorder</span> using Diagnostic and Statistical Manual of Mental Disorders, fifth edition (DSM-5) criteria.</li>
+          <li>Stabilise acute agitation, psychosis, hyperthermia, and common medical complications without causing additional harm.</li>
+          <li>Explain why <span class="ct-term">contingency management</span> and structured psychosocial support are first-line, and why no medication is currently approved by the Food and Drug Administration (FDA) for methamphetamine use disorder.</li>
+          <li>Apply <span class="ct-term">harm reduction</span> and linkage strategies when a patient is not ready for abstinence.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why you are seeing more methamphetamine now</h2>
+      <p>Methamphetamine is a potent synthetic psychostimulant whose use, overdose deaths, and co-use with fentanyl have risen sharply across the United States. Now common on general medical wards everywhere.</p>
+      <p>For infectious disease practice the link is direct. People who use methamphetamine have higher rates of skin and soft tissue infection, <em>Staphylococcus aureus</em> bacteraemia, endocarditis, human immunodeficiency virus (HIV) infection and hepatitis C virus (HCV) infection. Risk is highest with injection but persists with smoked use. When you see recurrent abscesses without classic risk factors, ask about stimulants even if the screen is pending.</p>
+      <p>Ask non-judgementally — “What do you use, how, and what have you tried before?” — to keep the patient engaged.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Methamphetamine increases synaptic dopamine and norepinephrine through release and reuptake blockade. Its elimination half-life is typically 10 to 12 hours, so a patient who last used 12 hours ago may still be intoxicated and symptoms can fluctuate during a long emergency department (ED) stay.</p>
+      </div>
+
+      <h2 class="ct-h2">What methamphetamine does and why it is different from opioids</h2>
+      <p>Low doses increase energy and sociability; repeated or high doses cause hypertension, tachycardia, hyperthermia, agitation, insomnia, anorexia, and a sense of invulnerability that leads to risky injection or sexual practices. The usual pattern is binge and crash — days of heavy use with little sleep or food, then exhaustion and hypersomnia when supply runs out.</p>
+      <p>Three differences from opioid use disorder matter at the bedside:</p>
+      <ul>
+        <li>There is no reversal agent like naloxone and no maintenance agonist like buprenorphine or methadone to prevent withdrawal.</li>
+        <li>Intoxication threatens through agitation, psychosis, hyperthermia, and cardiovascular strain, not respiratory depression.</li>
+        <li>Withdrawal is not medically dangerous like alcohol or benzodiazepine withdrawal. There is real suffering and suicide risk, but no seizure-prone autonomic storm requiring a taper.</li>
+      </ul>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Methamphetamine use disorder is not opioid use disorder with a different drug. There is no reversal agent and no FDA-approved maintenance medication. Looking for a pharmacologic fix makes you miss the counselling intervention that actually works.</p>
+      </div>
+
+      <h2 class="ct-h2">Recognising methamphetamine use disorder at the bedside</h2>
+      <p>A positive stimulant screen shows exposure, not a disorder. Diagnose from the history.</p>
+      <p>DSM-5 defines stimulant use disorder as a problematic pattern within 12 months meeting at least 2 of 11 criteria across four domains: impaired control, social impairment, risky use, and pharmacologic effects. Severity is mild (2 to 3 criteria), moderate (4 to 5), or severe (6 or more). Criteria include using more or longer than intended, unsuccessful efforts to cut down, craving, great time spent obtaining or recovering, failure to fulfil roles, continued use despite interpersonal or medical harm, activities given up, and tolerance or withdrawal. Tolerance alone does not make a disorder.</p>
+      <p>Screening can be brief: “How many times in the past year have you used an illegal drug or prescription medication for non-medical reasons?” Tools such as the Alcohol, Smoking and Substance Involvement Screening Test (ASSIST) add structure. For methamphetamine, ask route (smoked, injected, snorted), frequency, last use, co-use of fentanyl, opioids, benzodiazepines or alcohol, prior treatment, housing, and goals.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>DSM-5 stimulant use disorder — what to ask about</caption>
+          <thead>
+            <tr><th>Domain</th><th>Examples</th><th>Why it matters</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Impaired control</td><td>Using more or longer than intended, craving, time spent</td><td>Captures loss of control</td></tr>
+            <tr><td>Social impairment</td><td>Missed work or school, conflict, activities given up</td><td>Shows functional impact</td></tr>
+            <tr><td>Risky use</td><td>Use in hazardous situations, use despite health harms</td><td>Common with methamphetamine</td></tr>
+            <tr><td>Pharmacologic</td><td>Tolerance, withdrawal</td><td>Expected findings alone are not diagnostic</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>In the vignette, daily smoked use for three years with craving, failed quit attempts, and continued use despite a serious skin infection already suggests moderate or severe disorder. Naming that shifts you from “positive methamphetamine” to “person with a severe stimulant use disorder who needs antibiotics and a therapeutic relationship.”</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The patient smoked methamphetamine 12 hours ago and is agitated and tachycardic. He reports daily use, strong craving, and prior failed quit attempts. Which statement is most accurate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A positive drug screen alone establishes methamphetamine use disorder</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">The pattern suggests methamphetamine use disorder; current agitation at 12 hours likely reflects intoxication, not withdrawal</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reduced sleep and appetite during a binge define withdrawal</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tolerance alone is sufficient for a severe diagnosis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A screen shows exposure, not a disorder. DSM-5 requires a 12-month pattern with at least 2 criteria. Tolerance during a binge is expected pharmacology, not withdrawal. With a 10 to 12 hour half-life, intoxication is still very plausible 12 hours after smoked methamphetamine.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The patient in front of you tonight — acute intoxication, psychosis, and medical complications</h2>
+      <p>Intoxication ranges from awake and paranoid with skin picking to agitated, hyperthermic, and overtly psychotic with persecutory delusions that can persist for days after last use, especially with sleep deprivation.</p>
+      <p>Your priorities are supportive care, safety, and treating the medical problem that prompted admission.</p>
+      <ul>
+        <li><strong>Keep the environment calm.</strong> Reduce stimulation, offer food, water, and sleep, and use a sitter if available. One-to-one de-escalation works better than repeated confrontation.</li>
+        <li><strong>Treat agitation stepwise.</strong> Benzodiazepines such as lorazepam are generally first-line for stimulant agitation because they reduce sympathetic drive. Antipsychotics such as haloperidol or olanzapine are second-line for persistent psychosis, with monitoring for QT interval prolongation.</li>
+        <li><strong>Measure what kills quickly.</strong> Check core temperature, blood pressure, heart rate, creatine kinase, renal function, and electrolytes. Hyperthermia is an emergency: cool actively, give fluids, and control agitation with benzodiazepines rather than antipyretics alone.</li>
+        <li><strong>Evaluate chest pain fully.</strong> Methamphetamine can cause vasospasm, ischaemia, and arrhythmia. Avoid a beta-blocker without alpha-blockade for ischaemic chest pain because unopposed alpha stimulation may worsen vasospasm. Most hypertension and tachycardia improve with sedation and rest.</li>
+      </ul>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not place an agitated patient who has recently used methamphetamine in prone restraint or leave them in prolonged physical restraint without continuous monitoring. Positional asphyxia and hyperthermia can be fatal. Use the least restrictive method, avoid prone positioning, and replace restraint with de-escalation and sedation as soon as possible.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For stimulant agitation, benzodiazepines are first-line and antipsychotics are backup. Cooling, hydration, and creatine kinase monitoring matter more than a drug screen. Most vital sign abnormalities improve with rest and hydration.</p>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common acute problems and practical steps</caption>
+          <thead>
+            <tr><th>Problem</th><th>What to do</th><th>What to avoid</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Agitation or psychosis</td><td>Quiet room, sitter, offer sleep, lorazepam per protocol, antipsychotic if psychosis persists</td><td>Prone restraint, repeated confrontations</td></tr>
+            <tr><td>Hyperthermia</td><td>Active cooling, fluids, benzodiazepine for agitation, monitor creatine kinase</td><td>Antipyretics alone</td></tr>
+            <tr><td>Hypertension or tachycardia</td><td>Observe, treat agitation and pain, evaluate chest pain</td><td>Isolated beta-blocker for ischaemic pain</td></tr>
+            <tr><td>Rhabdomyolysis</td><td>Hydration, monitor kidney function</td><td>Delaying fluids while awaiting a screen</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old woman who smoked methamphetamine last night has paranoid delusions, heart rate 124, blood pressure 178/104, and chest pressure. Electrocardiogram shows sinus tachycardia. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give metoprolol alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Reduce stimulation, evaluate the chest pain as possible ischaemia, and use a benzodiazepine per protocol for severe agitation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give naloxone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Prone restraint</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Naloxone reverses opioids, not stimulants. A pure beta-blocker without alpha-blockade can worsen vasospasm. Prone restraint raises risk of asphyxia. Supportive care, full chest pain work-up, and benzodiazepine for severe agitation is safest.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Withdrawal is not what you think</h2>
+      <p>After heavy, prolonged use, a crash of hypersomnia, increased appetite, and exhaustion for one to three days is common, followed by days to weeks of anhedonia, dysphoria, irritability, anxiety, and craving. Unlike alcohol or benzodiazepine withdrawal, it does not typically cause seizures, delirium, or autonomic instability requiring a taper. Vitals often normalise while mood worsens.</p>
+      <p>That does not mean it is benign. Depressive symptoms and psychosis can persist and suicidal ideation is common. Ask directly about suicide, remove means, and arrange follow-up. Reassure the patient that fatigue and low mood usually improve with sleep and nutrition.</p>
+      <p>For the patient who wants to leave to avoid a crash, the real risk is not a withdrawal seizure — it is untreated infection and use of an unregulated supply outside. Name it and make a plan to sleep, eat, and stay for antibiotics without requiring a commitment to stop tonight.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The crash is real but not acutely life-threatening like alcohol withdrawal. Expect hypersomnia, dysphoria, and craving. There is no standard taper — monitor mood, encourage sleep and nutrition, and screen for suicide risk.</p>
+      </div>
+
+      <h2 class="ct-h2">What actually helps long term</h2>
+      <p>As of this writing, no medication is approved by the FDA for methamphetamine use disorder. Many agents have been studied — including bupropion, naltrexone, mirtazapine, and topiramate — and a large trial of bupropion plus naltrexone showed modest benefit for some subgroups, but results have been inconsistent. Do not start these on the ward without specialist input.</p>
+      <p>What does have strong evidence is contingency management: a structured intervention in which patients receive small, immediate rewards — gift cards or vouchers — for stimulant-negative urine tests. Rewards escalate with consecutive negatives. Multiple trials and meta-analyses show it reduces use and improves retention more than counselling alone.</p>
+      <p>Contingency management is often delivered with:</p>
+      <ul>
+        <li><strong>Cognitive behavioural therapy (CBT)</strong> — identifying triggers and building coping and relapse-prevention skills.</li>
+        <li><strong>Community reinforcement approach (CRA)</strong> — combining CBT with family, social, and vocational support and incentives.</li>
+        <li><strong>Motivational interviewing</strong> — exploring ambivalence without prescribing a goal the patient does not endorse.</li>
+      </ul>
+      <p>Hospitals rarely have contingency management on site. Your job is to name the diagnosis, explain that an incentive program has the best evidence rather than a daily pill, and connect the patient to a clinic or community program that offers it.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Evidence for methamphetamine use disorder</caption>
+          <thead>
+            <tr><th>Intervention</th><th>What it is</th><th>Evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Contingency management</td><td>Immediate rewards for stimulant-negative tests</td><td>Strong — reduced use in multiple trials</td></tr>
+            <tr><td>CBT and CRA</td><td>Structured coping skills and reinforcement</td><td>Moderate — improved abstinence, especially with incentives</td></tr>
+            <tr><td>Motivational interviewing</td><td>Collaborative exploration of goals</td><td>Moderate for engagement</td></tr>
+            <tr><td>Medications</td><td>Off-label agents under study</td><td>Low and inconsistent — not FDA approved</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not prescribe bupropion, naltrexone, mirtazapine, or topiramate on your own because “something is better than nothing.” These agents are not FDA approved for methamphetamine use disorder and ad-hoc prescribing can delay linkage to contingency management, which has stronger evidence.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Contingency management — small, immediate rewards for stimulant-negative tests — is the single most effective treatment. Know where it is offered near your hospital and refer by name.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with severe methamphetamine use disorder asks for a daily medication like buprenorphine for methamphetamine. What is the most evidence-based response?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start bupropion plus naltrexone tonight; it is FDA approved</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">There is no FDA-approved medication; contingency management with immediate rewards has the strongest evidence, often with CBT</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Prescribe daily lorazepam for craving</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A methamphetamine taper is required first</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>No medication is FDA approved for methamphetamine use disorder. Trials of bupropion plus naltrexone showed limited, inconsistent benefit and are not routinely started without specialist input. Lorazepam is for acute agitation, not daily craving. Contingency management is the intervention with the strongest evidence.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Harm reduction and medical linkage when abstinence is not the goal</h2>
+      <p>Most hospitalised patients are not ready to commit to abstinence tonight. That does not leave you without a plan. Harm reduction reduces death and disease without requiring immediate abstinence and keeps people engaged until they are ready.</p>
+      <p>In the medical setting, harm reduction is infection prevention:</p>
+      <ul>
+        <li><strong>Talk about route.</strong> Injection carries the highest risk for bacteraemia and endocarditis, but smoking still risks burns and shared equipment. If injecting, discuss sterile water, a new syringe each time, and safe disposal, and give locations for syringe services programs where available.</li>
+        <li><strong>Address fentanyl adulteration.</strong> Offer naloxone and training to any patient using methamphetamine, even without opioid use, and test strips where available.</li>
+        <li><strong>Close care gaps.</strong> Offer HIV and HCV testing, hepatitis A and B vaccination, HIV pre-exposure prophylaxis (PrEP) where indicated, and wound care.</li>
+        <li><strong>Make discharge realistic.</strong> A referral weeks away often fails. Arrange prompt follow-up and a take-home naloxone kit.</li>
+        <li><strong>Preserve return.</strong> Ask “Are you thinking about cutting down, or trying to use more safely right now?” Avoid shaming language.</li>
+      </ul>
+      <p>For patients who do want treatment, arrange a warm hand-off: call the program, confirm contingency management availability, and document a plan the patient helped create. For those with co-occurring opioid use, linkage to buprenorphine or methadone for opioid use disorder remains essential, even though those medications do not treat methamphetamine use itself.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When the patient says “I’m not ready to stop,” switch to harm reduction: sterile equipment, naloxone, fentanyl test strips where available, and testing and vaccination for HIV and hepatitis C virus. A plan that keeps the patient alive and engaged is better than a perfect plan the patient rejects.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The patient is afebrile after drainage and two days of antibiotics. He is not ready to stop methamphetamine but wants to avoid another infection. What is the best next step before discharge?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Require abstinence before discharge</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Offer harm-reduction counselling — sterile equipment, naloxone training, and prompt linkage to wound care, HIV and hepatitis C virus testing, and a contingency management program</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Prescribe a 14-day lorazepam taper for craving</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure that smoked methamphetamine has no infection risk</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Requiring abstinence drives leave against medical advice and worsens outcomes. Lorazepam is not for craving, and smoked methamphetamine still carries risks. Practical harm reduction plus explicit linkage to contingency management and medical follow-up is highest yield.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Methamphetamine use is rising and brings abscesses, bacteraemia, endocarditis, HIV and hepatitis C virus — even when smoked.</li>
+        <li>Intoxication causes agitation, psychosis, hyperthermia, and cardiovascular strain; withdrawal causes a crash with hypersomnia and dysphoria but not seizures requiring a taper.</li>
+        <li>For acute agitation use de-escalation and benzodiazepines first-line; avoid prone restraint and avoid a lone beta-blocker for chest pain. Cool hyperthermia and monitor creatine kinase.</li>
+        <li>No medication is FDA approved for methamphetamine use disorder. Contingency management — immediate rewards for stimulant-negative tests — has the strongest evidence, especially with CBT and community reinforcement.</li>
+        <li>When the patient is not ready to stop, offer harm reduction: sterile equipment, naloxone for fentanyl-adulterated supply, and testing and vaccination for HIV and hepatitis C virus.</li>
+        <li>Name the disorder, document severity, and refer explicitly to contingency management.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>American Society of Addiction Medicine. The ASAM/AAAP Clinical Practice Guideline on the Management of Stimulant Use Disorder. <em>J Addict Med</em>. 2024;18(1S Suppl 1):1-56.</li>
+          <li>Substance Abuse and Mental Health Services Administration. Treatment of stimulant use disorders. SAMHSA Publication No. PEP21-06-02-004. 2021.</li>
+          <li>Trivedi MH, et al. Bupropion and naltrexone in methamphetamine use disorder. <em>N Engl J Med</em>. 2021;384(2):140-153.</li>
+          <li>Rawson RA, et al. A comparison of contingency management and cognitive-behavioral approaches for stimulant-dependent individuals. <em>Addiction</em>. 2006;101(2):267-274.</li>
+          <li>American Psychiatric Association. Diagnostic and statistical manual of mental disorders. 5th ed, text revision (DSM-5-TR). 2022.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Management of methamphetamine use disorder</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

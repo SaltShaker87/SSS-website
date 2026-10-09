@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-transplant evaluation for solid organ transplant — IDSA Chalk Talk</title>
+<meta name="description" content="A practical infectious diseases checklist before immunosuppression: screening, vaccines, and latent infections to find while you can still act.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Pre-transplant evaluation for solid organ transplant — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+            <header class="ct-hero">
+        <p class="ct-eyebrow">Transplant infectious diseases</p>
+        <h1 class="ct-h1">Pre-transplant evaluation for solid organ transplant</h1>
+        <p class="ct-subtitle">Finding what will reactivate, what the donor may bring, and what you can prevent</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man with end-stage renal disease from diabetic nephropathy is being evaluated for deceased-donor kidney transplant. He was born in the Philippines, lived in Arizona for 6 years, and has diabetes and hypertension. Vaccines are uncertain. He recalls treatment for latent tuberculosis as a teenager but is unsure he finished. You are asked what infectious diseases screening he needs before listing.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why pre-transplant evaluation prevents reactivation and donor-derived infection after immunosuppression.</li>
+          <li>Take a focused history that drives tailored screening for tuberculosis, endemic fungi, and parasites.</li>
+          <li>Order and interpret the universal panel for solid organ transplant (SOT) candidates, including cytomegalovirus (CMV), Epstein-Barr virus (EBV), hepatitis B virus (HBV), hepatitis C virus (HCV), human immunodeficiency virus (HIV), and syphilis.</li>
+          <li>Close the vaccine window before transplant and make a plan for latent infections you find.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why this evaluation cannot wait until after transplant</h2>
+      <p>Solid organ transplant (SOT) trades organ failure for lifelong immunosuppression. That prevents rejection but also removes the T-cell control that keeps latent organisms quiet. Three risks appear once immunity is lowered: reactivation of a recipient latent infection, donor-derived infection transmitted with the graft, and severe vaccine-preventable disease.</p>
+      <p>The pre-transplant visit is the only time you can find these risks while you can still give live vaccines, treat latent infection without calcineurin-inhibitor interactions, or document a serostatus that will dictate months of prophylaxis. After transplant, options narrow.</p>
+      <p>Risk follows a timeline. Donor-derived infections appear within days to weeks — bacteremia from the donor or window-period transmission of <em>Toxoplasma gondii</em> or <em>Trypanosoma cruzi</em>. Reactivation syndromes follow in the first months — cytomegalovirus (CMV), tuberculosis, <em>Strongyloides stercoralis</em> hyperinfection after steroids, or hepatitis B virus (HBV) reactivation when prophylaxis is missed. Late community infections stretch for years, where a missed pneumococcal or influenza vaccine matters. Document what the candidate carries, what the donor might bring, and what you can prevent.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Pre-transplant evaluation is prevention, not clearance. You are not declaring the candidate infection-free; you are finding latent infections to treat, immunity gaps to close, and serostatus to record for prophylaxis.</p>
+      </div>
+
+      <h2 class="ct-h2">The history that changes what you screen for</h2>
+      <p>Every candidate gets a universal panel, but the history decides the tailored tests — and tailored tests are where missed diagnoses hide.</p>
+      <p><strong>Residence and travel.</strong> Birth country and places lived change the parasite and fungal list. Desert Southwest residence raises <em>Coccidioides</em> spp. exposure. The Ohio and Mississippi River valleys raise <em>Histoplasma capsulatum</em> exposure. Birth or long residence in Mexico, Central or South America prompts <em>Trypanosoma cruzi</em> screening, especially for heart candidates. Birth in Southeast Asia, sub-Saharan Africa, or other tuberculosis-endemic regions raises pretest probability for latent tuberculosis infection (LTBI) and hepatitis B virus (HBV) exposure. Our vignette patient touches three of these.</p>
+      <p><strong>Infection and exposure history.</strong> Ask about prior tuberculosis disease or latent treatment and whether it was completed, prior hepatitis or jaundice, sexually transmitted infections, prior helminth treatment, and known exposures to tuberculosis, varicella, or measles. Ask about tuberculosis risk factors now: household crowding, incarceration, shelter residence, health care work, and prior bacillus Calmette-Guerin (BCG) vaccination, which does not preclude interferon-gamma release assay (IGRA) testing.</p>
+      <p><strong>Medical and microbiologic history.</strong> Detail prior immunosuppression, chemotherapy, biologic therapy, and comorbidities such as diabetes, cirrhosis, or uremia. Review prior cultures — colonization with methicillin-resistant <em>Staphylococcus aureus</em>, vancomycin-resistant enterococci, or carbapenem-resistant organisms matters for perioperative prophylaxis, especially for lung and liver recipients.</p>
+      <p><strong>Vaccines and social review.</strong> Do not trust memory; check records and registries. Ask about influenza, pneumococcal vaccines, hepatitis A and B series, tetanus-diphtheria-acellular pertussis (Tdap), human papillomavirus (HPV), recombinant zoster, and coronavirus disease 2019 (COVID-19), plus measles, mumps, and rubella (MMR) and varicella for younger adults. Add animal, vector, dust, raw foods, water, substance use, sexual, transfusion, and occupational exposures, plus organ-specific history.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Bacillus Calmette-Guerin (BCG) can cause a false-positive tuberculin skin test but does not cause a false-positive interferon-gamma release assay (IGRA). Many transplant centers therefore prefer the IGRA, QuantiFERON-TB Gold Plus.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not skip the parasite question because the patient lives in a non-endemic city now. <em>Strongyloides stercoralis</em> can persist for decades after brief soil exposure in an endemic region and cause fatal hyperinfection when steroids are given after transplant.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Our vignette patient was born in the Philippines and lived in Arizona. Beyond the universal panel, which tailored screens should you strongly consider?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No tailored screening — the universal panel covers endemic exposures</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Interferon-gamma release assay (IGRA) for latent tuberculosis, Strongyloides immunoglobulin G (IgG), and Coccidioides risk assessment, with Trypanosoma cruzi screening per center protocol</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urine culture and sputum acid-fast smear for every candidate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Toxoplasma IgG only — the only parasite that reactivates</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Birth in a tuberculosis-endemic region plus Arizona residence should trigger latent tuberculosis testing, <em>Strongyloides</em> serology, and attention to <em>Coccidioides</em> risk. Universal screening alone misses epidemiologic risks, and routine urine or sputum mycobacterial cultures without indication are not required.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The universal laboratory panel</h2>
+      <p>The core pre-transplant laboratory evaluation is consistent across centers. Use the table as a checklist and document results where the transplant team will find them.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Universal screening for the solid organ transplant candidate</caption>
+          <thead>
+            <tr><th>Test</th><th>Why you send it</th><th>What a positive means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Human immunodeficiency virus (HIV) antigen/antibody +/- ribonucleic acid (RNA)</td><td>Donor and recipient safety and planning</td><td>Coordinate with transplant infectious diseases; use nucleic acid testing (NAT) for donor windows</td></tr>
+            <tr><td>Hepatitis B virus (HBV): hepatitis B surface antigen (HBsAg), hepatitis B surface antibody (anti-HBs), hepatitis B core antibody (anti-HBc)</td><td>Reactivation risk</td><td>See next table — determines vaccination versus antiviral prophylaxis</td></tr>
+            <tr><td>Hepatitis C virus (HCV) antibody with reflex HCV RNA</td><td>Active infection is treatable</td><td>Viremia does not preclude transplant; plan direct-acting antiviral timing with hepatology</td></tr>
+            <tr><td>Syphilis screen (treponemal or reverse algorithm)</td><td>Treatable infection</td><td>Treat by stage; do not delay listing to watch titers fall</td></tr>
+            <tr><td>Cytomegalovirus (CMV) immunoglobulin G (IgG)</td><td>Donor/recipient serostatus drives prophylaxis</td><td>Recipient-negative/donor-positive is highest risk</td></tr>
+            <tr><td>Epstein-Barr virus (EBV) viral capsid antigen IgG</td><td>Post-transplant lymphoproliferative disorder risk</td><td>EBV-naive recipient of EBV-positive donor needs closer monitoring</td></tr>
+            <tr><td>Varicella-zoster virus (VZV) IgG; measles, mumps, rubella IgG when uncertain</td><td>Vaccine opportunity before live vaccines are contraindicated</td><td>If non-immune, give measles, mumps, and rubella (MMR) or varicella before transplant with waiting period</td></tr>
+            <tr><td><em>Toxoplasma gondii</em> IgG</td><td>Reactivation risk, especially heart transplant</td><td>Seropositive recipient needs trimethoprim-sulfamethoxazole (TMP-SMX) or alternative prophylaxis</td></tr>
+            <tr><td>Interferon-gamma release assay (IGRA), e.g., QuantiFERON-TB Gold Plus</td><td>Latent tuberculosis detection</td><td>Positive requires active disease evaluation before treating latent infection</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Interpreting hepatitis B serologies before transplant</caption>
+          <thead>
+            <tr><th>Pattern</th><th>Interpretation</th><th>Usual action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HBsAg positive</td><td>Active hepatitis B infection</td><td>Hepatology co-management, antiviral therapy, long-term suppression plan</td></tr>
+            <tr><td>Anti-HBc positive, HBsAg negative</td><td>Past exposure; risk of reverse seroconversion</td><td>Many centers give antiviral prophylaxis during intense immunosuppression — follow center protocol</td></tr>
+            <tr><td>Anti-HBs positive only</td><td>Vaccine immunity</td><td>Document immunity</td></tr>
+            <tr><td>All three negative</td><td>Susceptible</td><td>Vaccinate before transplant; accelerated schedule if wait time is short</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Hepatitis C antibody alone is not enough — a positive hepatitis C virus (HCV) antibody must reflex to HCV ribonucleic acid (RNA) to distinguish cleared infection from viremia. With direct-acting antivirals, curative therapy before or after transplant is often possible.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cytomegalovirus (CMV) donor-positive/recipient-negative (D+/R-) is the highest-risk CMV pairing. Document CMV immunoglobulin G (IgG) for every candidate — prophylaxis duration depends on that result.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A positive interferon-gamma release assay (IGRA) is not active tuberculosis. Take a symptom history, get a chest radiograph, and test sputum if indicated before labeling it latent.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A kidney candidate has isolated hepatitis B core antibody positivity (anti-HBc positive, HBsAg negative). What is the safest next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ignore it — surface antigen is negative, so there is no risk</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recognize risk of reverse seroconversion, check hepatitis B virus (HBV) deoxyribonucleic acid (DNA), and coordinate prophylaxis per hepatology</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give hepatitis B vaccine and recheck in 6 months after transplant</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Delay transplant until serologies normalize</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Isolated anti-HBc reflects past exposure with risk of reverse seroconversion under immunosuppression. Evaluate HBV DNA and plan prophylaxis versus monitoring with hepatology; vaccination alone is insufficient and deferring transplant for serology alone is not indicated.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Tailored screening based on epidemiology and organ</h2>
+      <p>Tailored screening is where a good history prevents catastrophe. Use epidemiology and the intended organ.</p>
+      <p><strong>Tuberculosis.</strong> If the interferon-gamma release assay (IGRA) is positive, evaluate for active disease with symptoms, chest imaging, and sputum testing where indicated before calling it latent. Check prior treatment records — incomplete remote therapy often needs a new decision, not just documentation.</p>
+      <p><strong>Strongyloides.</strong> Send <em>Strongyloides stercoralis</em> immunoglobulin G (IgG) for candidates born or with prolonged residence in tropical or subtropical regions, including the southeastern United States. A positive serology before transplant prevents hyperinfection after steroids. Treat before transplant when time allows.</p>
+      <p><strong>Endemic fungi.</strong> For desert Southwest residence, review <em>Coccidioides</em> serology and prior coccidioidomycosis history. Prior treated disease does not preclude transplant but changes prophylaxis.</p>
+      <p><strong>Trypanosoma cruzi and organ-specific colonisation.</strong> <em>Trypanosoma cruzi</em> screening is routine for donors and recommended for recipients with epidemiologic risk, particularly heart candidates. <em>Toxoplasma</em> serology, already universal, matters most for heart recipients because cysts reside in myocardium. Lung candidates need sputum culture review for <em>Pseudomonas</em> or nontuberculous mycobacteria; liver candidates need note of prior bacteremia and biliary instrumentation.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Donor screening uses serology plus nucleic acid testing (NAT), but a window period remains — recipient prophylaxis and monitoring are still required.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Treating a positive interferon-gamma release assay (IGRA) as latent infection without evaluating for active tuberculosis. Starting monotherapy in undiagnosed active disease risks failure and resistance — chest imaging and symptom review come first.</p>
+      </div>
+
+      <h2 class="ct-h2">Vaccines: the window that closes after transplant</h2>
+      <p>Vaccination is one of the highest-value parts of the pre-transplant visit because response is better before immunosuppression and live vaccines are contraindicated after. Review and update what you can, and document what remains.</p>
+      <p><strong>Inactivated and recombinant vaccines can be given before and resumed after.</strong> Prioritize influenza (in season), pneumococcal vaccination, hepatitis B for susceptibles, hepatitis A for liver disease or other indications, tetanus-diphtheria-acellular pertussis (Tdap), recombinant zoster for age-eligible adults, human papillomavirus (HPV) by age, and coronavirus disease 2019 (COVID-19). Use an accelerated hepatitis B schedule when waitlist time is short.</p>
+      <p><strong>Live vaccines close the window.</strong> Measles, mumps, and rubella (MMR) and varicella vaccine, if indicated for non-immune adults, should be given before transplant with at least 4 weeks before immunosuppression. After transplant, live vaccines are generally contraindicated. If a live vaccine is considered close to an organ offer, coordinate with the transplant team.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Vaccine review before solid organ transplant</caption>
+          <thead>
+            <tr><th>Vaccine</th><th>Before transplant</th><th>After transplant</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Influenza, pneumococcal, hepatitis A/B, Tdap, recombinant zoster, HPV, COVID-19</td><td>Update now; inactivated/recombinant so safe and more immunogenic before immunosuppression</td><td>Resume inactivated vaccines months later when immunosuppression is stable</td></tr>
+            <tr><td>Measles, mumps, and rubella (MMR); varicella (live)</td><td>Give only if non-immune and time allows, then wait at least 4 weeks</td><td>Contraindicated — this is the last chance</td></tr>
+            <tr><td>Household contacts</td><td>Ensure influenza, COVID-19, Tdap are current</td><td>Advise hand hygiene and avoidance of recent live oral vaccines</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you do not give a live vaccine when the candidate is non-immune, you cannot make it up after transplant. Susceptibility documented now is actionable only before the operation.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old awaiting liver transplant is varicella immunoglobulin G (IgG) negative. An organ could come within weeks. What is appropriate counselling?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give live varicella vaccine today and proceed to transplant tomorrow</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Coordinate with the transplant team: live varicella vaccine needs about 4 weeks before immunosuppression, so only give it if timing allows; otherwise document susceptibility and counsel on post-exposure prophylaxis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give varicella vaccine 1 month after transplant</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Varicella immunity does not matter for transplant</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Live varicella vaccine requires about 4 weeks before immunosuppression. If transplant is imminent, document susceptibility and counsel avoidance and early care for exposure; do not plan to give a live vaccine after transplant.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">From results to a plan: treat, defer, or document for prophylaxis</h2>
+      <p>Finding a positive result is the start. Decide whether to treat before transplant, treat after, or document for prophylaxis.</p>
+      <p><strong>Latent tuberculosis.</strong> After active disease is excluded, latent tuberculosis infection (LTBI) can be treated before or after transplant. Do not delay a life-saving organ to finish months of therapy. Choose a compatible regimen with transplant infectious diseases input.</p>
+      <p><strong>Hepatitis B and C.</strong> Active hepatitis B virus (HBV) infection needs antiviral therapy and a long-term suppression plan; isolated core antibody may need prophylaxis rather than observation. Hepatitis C viremia is often curable with direct-acting antivirals before or after transplant — document hepatitis C virus (HCV) ribonucleic acid (RNA) status so therapy can be scheduled.</p>
+      <p><strong>Syphilis and parasites.</strong> Syphilis should be treated by stage; you need not delay listing until titers fall. Positive <em>Strongyloides</em> immunoglobulin G (IgG) is typically treated before transplant when possible because hyperinfection after steroids can be fatal. Prior coccidioidomycosis may warrant secondary prophylaxis rather than cure.</p>
+      <p><strong>Document for prophylaxis.</strong> Some results drive post-transplant prophylaxis rather than pre-transplant treatment: cytomegalovirus (CMV) donor/recipient serostatus, <em>Toxoplasma</em> serostatus for heart recipients, and hepatitis B core positivity. Record them in the admission note, problem list, and transplant database.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Do not delay a needed transplant to finish latent tuberculosis treatment. Rule out active disease first, then plan to treat before or after transplant — missing the organ is riskier than deferring part of the course.</p>
+      </div>
+
+
+
+      <h2 class="ct-h2">Putting it together: counseling and coordinating the team</h2>
+      <p>Translate the evaluation into actions the candidate can understand.</p>
+      <p>First, explain <span class="ct-term">donor-derived infection</span> plainly: donors are screened with serology and nucleic acid testing (NAT), but a small window period remains, so recipient screening and post-transplant monitoring matter even when the donor is negative.</p>
+      <p>Second, close loops on vaccines and exposures: avoid undercooked meat for <em>Toxoplasma</em>, soil dust without masks in endemic fungal areas, and sick contacts. Ensure dental evaluation and smoking cessation are addressed.</p>
+      <p>Third, coordinate. End the note with a one-page summary: universal panel results, tailored results, vaccine status and what was given, latent infections found and the plan (treat now versus after), and prophylaxis implications of CMV and <em>Toxoplasma</em> serostatus. Send it to the transplant coordinator, the primary team, and the patient.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A candidate is cytomegalovirus (CMV) IgG negative and varicella IgG positive, already current on inactivated vaccines. Which point best reflects the pre-transplant window?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No further action — varicella immunity covers CMV risk</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Document CMV seronegativity for prophylaxis planning; no live varicella vaccine is needed, but CMV mismatch remains a key risk</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give live zoster vaccine now to broaden immunity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer CMV documentation until after transplant</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Varicella and cytomegalovirus immunity are unrelated. Varicella positivity means no live vaccine is indicated. CMV seronegativity must be documented now because donor serostatus will define prophylaxis versus preemptive monitoring.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Pre-transplant evaluation prevents reactivation, donor-derived, and vaccine-preventable infections — find them while you can still vaccinate and treat safely.</li>
+        <li>Take an epidemiologic history: birth country, residence, travel, tuberculosis contacts, animal and soil exposures, prior infections, resistant colonisation, and vaccine records.</li>
+        <li>Send the universal panel on every candidate — HIV, HBV triple panel, HCV antibody with RNA reflex, syphilis, CMV and EBV IgG, VZV IgG, measles immunity when uncertain, Toxoplasma IgG, and IGRA — plus tailored tests for Strongyloides, Coccidioides, Trypanosoma cruzi, and organ-specific colonisation.</li>
+        <li>A positive IGRA requires active tuberculosis evaluation before latent treatment; do not delay a life-saving transplant to finish the course.</li>
+        <li>Update inactivated and recombinant vaccines now; give live vaccines (MMR, varicella) only before transplant with at least 4 weeks before immunosuppression — after transplant they are contraindicated.</li>
+        <li>End every evaluation with a one-page plan shared with the coordinator and patient: what was found, whether to treat now or after, and what serostatus means for prophylaxis.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>American Society of Transplantation. Guidelines for pre-transplant infectious diseases evaluation in solid organ transplant candidates. (Organ-specific AST infectious diseases community of practice guidance.)</li>
+          <li>Balani AR, et al. Cytomegalovirus infection in solid organ transplant recipients. <em>Curr Opin Infect Dis</em>. 2023;36(6):447-455.</li>
+          <li>Miller RA, et al. Strongyloides screening and prevention of hyperinfection in transplant candidates. <em>Clin Infect Dis</em>. 2024;78(2):e1-e12.</li>
+          <li>Centers for Disease Control and Prevention. Guidelines for vaccinating kidney transplant candidates and other solid organ transplant candidates. <em>MMWR Recomm Rep</em>. 2023;72(RR-1):1-28.</li>
+          <li>Centers for Disease Control and Prevention. Guidelines for the treatment of latent tuberculosis infection. <em>MMWR Recomm Rep</em>. 2020;69(RR-1):1-11.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Pre-transplant evaluation for solid organ transplant</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differentiating the clinical presentations of common HIV-associated pulmonary infections — IDSA Chalk Talk</title>
+<meta name="description" content="How tempo, CD4 count, and imaging separate Pneumocystis, bacterial pneumonia, tuberculosis, and fungal disease in people with HIV.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Differentiating the clinical presentations of common HIV-associated pulmonary infections — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">HIV medicine</p>
+        <h1 class="ct-h1">Differentiating the clinical presentations of common HIV-associated pulmonary infections</h1>
+        <p class="ct-subtitle">How tempo, CD4 count, and chest imaging separate Pneumocystis, bacterial pneumonia, tuberculosis, and fungal disease</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+            <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 38-year-old man with human immunodeficiency virus (HIV), off antiretroviral therapy (ART) for 18 months, presents with 3 weeks of progressive dyspnoea, dry cough, and low-grade fever. Last cluster of differentiation 4 (CD4) T-cell count was 42 cells/mm<sup>3</sup> two years ago. He is tachypnoeic, oxygen saturation 88% on room air, and chest radiograph shows diffuse bilateral interstitial infiltrates without focal consolidation. He asks if antibiotics will treat this.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Use CD4 T-cell count, tempo, and antiretroviral therapy status to rank human immunodeficiency virus (HIV)-associated pulmonary infections.</li>
+          <li>Distinguish the patterns of bacterial pneumonia, <em>Pneumocystis jirovecii</em> pneumonia, tuberculosis, and disseminated fungal disease.</li>
+          <li>Choose an evaluation and isolation strategy that does not miss tuberculosis while pursuing the most likely pathogen.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Start with two questions: CD4 count and tempo</h2>
+      <p>Two questions narrow the differential faster than any test: what is the CD4 T-cell count, and how quickly did the syndrome evolve? The count tells you which <span class="ct-term">opportunistic infections</span> are plausible; tempo tells you which behave this way. Add ART status, prophylaxis, and prior opportunistic infection history and you have a working differential at the bedside.</p>
+      <p>Risk stratifies by CD4 count. Above 500 cells/mm<sup>3</sup> the spectrum resembles HIV-negative adults and bacterial pneumonia predominates. At 200–500 cells/mm<sup>3</sup> bacterial pneumonia and tuberculosis (TB) remain common and <em>Pneumocystis jirovecii</em> enters when prophylaxis lapses. Below 200 cells/mm<sup>3</sup>, especially below 100 cells/mm<sup>3</sup>, <em>Pneumocystis jirovecii</em> pneumonia (PJP), disseminated <em>Mycobacterium avium</em> complex (MAC), cryptococcal disease, and endemic fungi appear. Below 50 cells/mm<sup>3</sup> cytomegalovirus (CMV) and disseminated infection become plausible, often as co-pathogens.</p>
+      <p>Tempo is the second axis: 1–5 days with productive sputum and pleuritic pain favours bacterial pneumonia; 2–4 weeks of progressive dyspnoea and dry cough favours PJP; weeks to months of fever, night sweats, and weight loss favours TB or fungal disease. Anchor on tempo and CD4 count before the image.</p>
+      <p>Ask three contextual questions every time: ART adherence and HIV viral load, prophylaxis including trimethoprim-sulfamethoxazole (TMP-SMX), and exposures — smoking, injection use, incarceration, shelter, birthplace, travel, cave or bird-roost exposure, and residence for <em>Histoplasma capsulatum</em> or <em>Coccidioides immitis</em>.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Lead with CD4 count and tempo, not the radiograph. The same bilateral infiltrate means something different at CD4 600 over 2 days than at CD4 30 over 3 weeks.</p>
+      </div>
+
+      <h2 class="ct-h2">Bacterial pneumonia: acute and lobar at any CD4 count</h2>
+      <p>Bacterial pneumonia is the most common pulmonary infection at every CD4 count, and risk rises as CD4 count falls. Recurrent bacterial pneumonia — two episodes in 12 months — is an acquired immunodeficiency syndrome (AIDS)-defining condition. Usual pathogens are <em>Streptococcus pneumoniae</em> and <em>Haemophilus influenzae</em>; <em>Staphylococcus aureus</em> and <em>Pseudomonas aeruginosa</em> are more likely with health-care exposure or injection drug use.</p>
+      <p>Expect 1–5 days of productive purulent sputum, fever, tachycardia, pleuritic pain, and focal crackles. Leukocytosis is typical but may be blunted at low CD4 counts. Chest radiograph (CXR) usually shows focal lobar or segmental consolidation, sometimes with effusion; diffuse disease is uncommon unless severe. Computed tomography (CT) is reserved for complications or alternative diagnoses.</p>
+      <p>Improvement within 48–72 hours of appropriate antibiotics supports the diagnosis. Persistent fever, hypoxaemia, or infiltrates should prompt reconsideration of PJP, TB, or a non-infectious mimic such as pulmonary oedema or Kaposi sarcoma. Sputum and blood cultures and pneumococcal antigen help when positive; negative results do not exclude pneumonia after antibiotics.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Bacterial pneumonia remains commonest at every CD4 stratum. Exclude it honestly before leaping to a rare opportunist.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old woman with HIV, CD4 380 cells/mm<sup>3</sup> on ART, develops 2 days of productive cough, fever 38.9 °C, and right lower lobe consolidation while taking TMP-SMX. Most likely?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Acute bacterial pneumonia — tempo and consolidation fit at any CD4 count</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">PJP — too acute and focal for PJP</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Disseminated MAC — CD4 too high and tempo wrong</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Pulmonary cryptococcosis — usually subacute and nodular</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Bacterial pneumonia occurs at any CD4 count, even on prophylaxis. Two days of productive sputum with lobar consolidation is classic bacterial. PJP is subacute with diffuse ground glass; MAC is subacute at CD4 below 50 cells/mm<sup>3</sup>.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Pneumocystis pneumonia: the subacute diffuse interstitial syndrome</h2>
+      <p><em>Pneumocystis jirovecii</em> pneumonia classically occurs with CD4 below 200 cells/mm<sup>3</sup>, most often below 100 cells/mm<sup>3</sup>, when ART and prophylaxis have lapsed. Illness evolves over 2–4 weeks with progressive exertional dyspnoea, dry nonproductive cough, low-grade fever, and fatigue. Tachypnoea and hypoxaemia appear early; patients may look well at rest and desaturate only on exertion.</p>
+      <p>The chest may be clear relative to hypoxaemia. CXR often shows diffuse bilateral perihilar interstitial infiltrates, sometimes with ground glass; pneumothorax is more common than in bacterial pneumonia. High-resolution CT shows diffuse ground-glass opacities with septal thickening, often sparing the periphery, sometimes with thin-walled cysts. A normal CXR does not exclude PJP — consider arterial blood gas (ABG) analysis and CT.</p>
+      <p>Serum lactate dehydrogenase (LDH) and alveolar-arterial gradient are often increased but non-specific. Serum 1,3-beta-D-glucan is frequently positive in PJP and other fungi but is not diagnostic alone. Diagnosis requires polymerase chain reaction (PCR) or direct fluorescent antibody (DFA) testing on induced sputum or bronchoalveolar lavage (BAL) fluid. Spontaneous pneumothorax at this CD4 count should trigger thought of PJP.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not wait for haemoptysis or purulent sputum. The cough in PJP is usually dry; anchoring on 'no sputum, no pneumonia' delays testing.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Measure oxygenation at rest and on exertion. A widening A-a gradient after a short walk in a patient with 3 weeks of dry cough is PJP until proven otherwise.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 34-year-old man with HIV, CD4 28 cells/mm<sup>3</sup>, 3 weeks of dry cough, dyspnoea, saturation 89% on room air, and diffuse interstitial infiltrates. What favours PJP over bacterial pneumonia?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Acute pleuritic pain with lobar consolidation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Subacute course with diffuse ground glass and hypoxaemia out of proportion to signs</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Purulent sputum with leukocytosis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Large parapneumonic effusion</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>PJP is subacute, dry, with progressive hypoxaemia and diffuse ground glass; examination is often less dramatic than the oxygen deficit. Bacterial pneumonia is acute, productive, and focal.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Tuberculosis: presentation shifts with immunity</h2>
+      <p>Tuberculosis caused by <em>Mycobacterium tuberculosis</em> occurs at any CD4 count, but appearance changes as immunity wanes. Above about 350 cells/mm<sup>3</sup> TB resembles HIV-negative disease: productive cough over weeks, fevers, night sweats, haemoptysis, and classic posteroapical cavities or upper-lobe infiltrates, often with positive acid-fast bacilli (AFB) smears.</p>
+      <p>Below 200 cells/mm<sup>3</sup>, especially below 100 cells/mm<sup>3</sup>, cavitation becomes less common because it requires intact granulomas. Instead you see lower-lobe infiltrates, miliary nodules, intrathoracic lymphadenopathy, effusions, and more smear-negative and extrapulmonary disease. Fever and weight loss may dominate. A normal CXR does not exclude pulmonary TB in advanced HIV.</p>
+      <p>Keep TB in the differential for any chronic respiratory syndrome until deliberately excluded, and think about infectiousness early: obtain sputum AFB smear, nucleic acid amplification test (NAAT), and mycobacterial culture, and use airborne isolation when TB is plausible. An interferon-gamma release assay does not test for active TB. Prior exposure, birth in a high-prevalence region, homelessness, incarceration, and contacts raise probability.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>TB without cavities is still TB. At low CD4 expect non-cavitary, miliary, nodal, or effusive disease with more false-negative smears.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>As CD4 function falls, granulomas are fewer and poorly organised. Caseating cavities give way to diffuse infiltrates and haematogenous spread, so smear yield falls and NAAT plus culture become decisive.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 29-year-old man with HIV, CD4 45 cells/mm<sup>3</sup>, 6 weeks of fever and weight loss with miliary nodules and mediastinal nodes, no cavities, smear negative. Next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Rule out TB — no cavity and smear negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Keep TB high, obtain NAAT and cultures, maintain airborne isolation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send interferon-gamma release assay to exclude active TB</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait for nodal biopsy before TB testing</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>At CD4 below 100 cells/mm<sup>3</sup> TB is often smear-negative and non-cavitary. NAAT and culture are essential; isolation continues during evaluation. Interferon-gamma release assays do not diagnose active TB.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Disseminated opportunists and regional fungi</h2>
+      <p>When infiltrates accompany prolonged fever, weight loss, anaemia, and pancytopenia at CD4 below 100 cells/mm<sup>3</sup>, think disseminated disease. Pulmonary <em>Mycobacterium avium</em> complex, usually below 50 cells/mm<sup>3</sup>, presents as disseminated infection — fever, night sweats, anaemia, raised alkaline phosphatase, with nodular or interstitial infiltrates or adenopathy. The lung is rarely the only site; mycobacterial blood cultures are more useful than sputum alone.</p>
+      <p>Cryptococcal disease caused by <em>Cryptococcus neoformans</em> at CD4 below 100 cells/mm<sup>3</sup> may show nodules or interstitial infiltrates, but clues are often extrathoracic — headache, altered mentation, or positive serum cryptococcal antigen. Consider lumbar puncture when neurologic symptoms exist.</p>
+      <p>Endemic fungi depend on geography. <em>Histoplasma capsulatum</em> in the Ohio-Mississippi valleys and <em>Coccidioides immitis</em> in the southwest can cause reticulonodular, cavitary, miliary, or solitary nodules with adenopathy at CD4 below 150 cells/mm<sup>3</sup>. Travel, residence, cave or bird-roost, and desert-dust exposure are the key questions. Antigen testing supports but does not replace culture and histology.</p>
+      <p><em>Cytomegalovirus</em> pneumonitis at CD4 below 50 cells/mm<sup>3</sup> is rarely an isolated lung disease and often accompanies retinitis, colitis, or viraemia; CMV in BAL fluid alone often reflects shedding.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Not every nodule is infection. Pulmonary Kaposi sarcoma (human herpesvirus 8) and lymphoma can mimic pneumonia with nodules, peribronchovascular thickening, and effusions. Violaceous skin or oral lesions, painless adenopathy, and haemorrhagic effusions broaden the differential.</p>
+      </div>
+
+      <h2 class="ct-h2">Pattern recognition on chest imaging and labs</h2>
+      <p>Imaging constrains but does not make the diagnosis. Synthesise pattern with CD4 count and tempo:</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Differential by dominant imaging pattern in HIV-associated pulmonary disease</caption>
+          <thead>
+            <tr><th>Pattern</th><th>Favoured diagnoses</th><th>Typical CD4 and tempo</th><th>Clues</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Focal lobar consolidation</td><td>Bacterial pneumonia</td><td>Any CD4, days</td><td>Purulent sputum, pleuritic pain, rapid antibiotic response</td></tr>
+            <tr><td>Diffuse ground glass</td><td><em>Pneumocystis jirovecii</em></td><td>&lt;200, weeks</td><td>Dry cough, exertional desaturation, LDH rise, cysts or pneumothorax</td></tr>
+            <tr><td>Upper-lobe cavitary</td><td>Tuberculosis</td><td>Often &gt;200–350, weeks</td><td>Haemoptysis, weight loss, smear-positive</td></tr>
+            <tr><td>Miliary or reticulonodular</td><td>TB, MAC, <em>Histoplasma</em></td><td>&lt;100–200, weeks–months</td><td>Adenopathy, anaemia, blood cultures or urine antigen</td></tr>
+            <tr><td>Nodules, masses, effusion, nodes</td><td>Fungal, cryptococcosis, lymphoma, Kaposi sarcoma</td><td>Variable, subacute</td><td>Extrapulmonary disease, cryptococcal antigen, skin lesions</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Labs are adjuncts. LDH and beta-D-glucan support PJP but are non-specific; serum cryptococcal antigen is sensitive for disseminated cryptococcosis; urine <em>Histoplasma</em> antigen helps in endemic areas. Draw a current CD4 count rather than relying on a value from years ago, plus complete blood count, ABG when hypoxaemic, and liver enzymes.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Hypoxaemia plus diffuse ground glass at CD4 below 200 is PJP until proven otherwise — but obtain TB NAAT in the same pass, because both thrive in that stratum.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 40-year-old man with HIV, CD4 18 cells/mm<sup>3</sup>, 4 weeks of fever and cough has diffuse ground glass with septal thickening. LDH is high, no pleuritic pain. Best statement?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">PJP leads, but TB, fungal disease and bacterial co-infection remain</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ground glass excludes TB, so stop isolation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">LDH confirms PJP and replaces microbiology</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Normal white cells exclude bacterial pneumonia</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Ground glass favours PJP at very low CD4, but TB, fungi, and bacterial co-infection overlap. Imaging and LDH are clues, not confirmations; microbiology and isolation still apply.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Evaluation, isolation, and empiric decisions while you wait</h2>
+      <p>Examine and monitor continuously: respiratory rate, oximetry at rest and on exertion, and skin, mouth, and nodes for Kaposi lesions, thrush, or adenopathy. Draw current CD4 count and viral load. Check ABG when saturation is below 94% or PJP is considered; an increased A-a gradient quantifies severity and informs steroid decisions for PJP.</p>
+      <p>For subacute syndromes obtain sputum for bacterial culture, AFB smear, NAAT for <em>Mycobacterium tuberculosis</em>, and mycobacterial culture. Add induced sputum or BAL for <em>Pneumocystis</em> PCR or DFA when PJP is considered. Send blood cultures including mycobacterial cultures when CD4 is below 50 cells/mm<sup>3</sup>, cryptococcal antigen when below 100 cells/mm<sup>3</sup>, and urine <em>Histoplasma</em> antigen in endemic areas. Obtain CXR; reserve CT for ambiguous films, suspected nodules or cavities, or mismatch between syndrome and film.</p>
+      <p>Isolation is a safety decision. If TB is plausible — weeks of cough, fever, weight loss, cavitary, miliary, nodal, or effusive pattern, or epidemiologic risk — place in airborne isolation until NAAT and smears argue against TB. Stopping isolation prematurely risks ward exposure.</p>
+      <p>Empiric therapy follows the leading syndrome and local protocols. Focal consolidation favours prompt antibacterials per community-acquired pneumonia guidance. Classic PJP favours prompt PJP therapy while securing sputum or BAL and involving respiratory and infectious diseases. Suspected TB favours isolation and mycobacterial diagnostics before routine bronchoscopy. Arrange HIV follow-up, ART counselling, and prophylaxis review; pulmonary disease is often the moment ART is restarted, with attention to immune reconstitution inflammatory syndrome with TB or cryptococcal disease.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>A single negative NAAT or smear does not lift TB isolation when suspicion remains high. Smear-negative TB is common in advanced HIV.</p>
+      </div>
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Ask CD4 count now and tempo now: days favours bacterial pneumonia; weeks favours <em>Pneumocystis</em>, TB, or fungal disease; months favours TB or disseminated opportunists.</li>
+        <li>Bacterial pneumonia is commonest at every CD4 count — acute productive cough, focal consolidation, rapid antibiotic response.</li>
+        <li>Consider PJP when CD4 is below 200 cells/mm<sup>3</sup> with weeks of dry cough, exertional hypoxaemia, and diffuse ground glass; assess oxygenation at rest and on exertion.</li>
+        <li>TB can present without cavities and with negative smears at low CD4 — miliary, nodal, or effusive patterns and extrapulmonary spread are clues; keep TB in the differential always.</li>
+        <li>Below 50–100 cells/mm<sup>3</sup> think disseminated MAC, cryptococcosis, and endemic fungi such as <em>Histoplasma</em> or <em>Coccidioides</em>, and broaden to Kaposi sarcoma or lymphoma for nodules and effusions.</li>
+        <li>Isolate for TB when plausible, obtain NAAT plus PJP diagnostics in the same pass, and use imaging as pattern confirmation — not a replacement for microbiology and current CD4 count.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Panel on Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents with HIV. Guidelines for the prevention and treatment of opportunistic infections in adults and adolescents with HIV. Department of Health and Human Services. Updated 2024.</li>
+          <li>Kaplan JE, Benson C, Holmes KK, Brooks JT, Pau A, Masur H. Guidelines for prevention and treatment of opportunistic infections in HIV-infected adults and adolescents. <em>MMWR Recomm Rep</em>. 2009;58(RR-4):1-207 and updates.</li>
+          <li>World Health Organization. WHO consolidated guidelines on tuberculosis. Module 2: screening — systematic screening for tuberculosis disease. Geneva: WHO; 2021, updates 2023-2024.</li>
+          <li>Huang L, Cattamanchi A, Davis JL, et al. HIV-associated <em>Pneumocystis</em> pneumonia. <em>Proc Am Thorac Soc</em>. 2011;8(3):294-300.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Differentiating the clinical presentations of common HIV-associated pulmonary infections</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

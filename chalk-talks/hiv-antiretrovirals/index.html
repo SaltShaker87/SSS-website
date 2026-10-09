@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIV antiretrovirals — IDSA Chalk Talk</title>
+<meta name="description" content="A practical guide to modern HIV antiretroviral therapy for the ward resident: what to start, what to continue, and what not to stop.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">HIV antiretrovirals — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">HIV medicine</p>
+        <h1 class="ct-h1">HIV antiretrovirals</h1>
+        <p class="ct-subtitle">What to start, what to continue, and what never to interrupt on the wards</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 12 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 34-year-old man with human immunodeficiency virus (HIV) infection presents to the emergency department with fever, cough, and dyspnoea. He was diagnosed 3 years ago, started on antiretroviral therapy (ART) with dolutegravir plus tenofovir alafenamide/emtricitabine, then lost to follow-up 8 months ago. He is not sure if he is still taking anything — “maybe some pills when I remember.” His CD4 count (cluster of differentiation 4) a year ago was 280 cells/mm<sup>3</sup>. Today his CD4 count is 45 cells/mm<sup>3</sup>, HIV RNA (ribonucleic acid) is 185,000 copies/mL, and chest imaging shows diffuse ground-glass opacities. The admitting team asks: should we restart his old regimen tonight, switch something, or wait until the opportunistic infection is sorted out?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why HIV is always treated with combination antiretroviral therapy and what three drugs a standard initial regimen contains.</li>
+          <li>Name the five major antiretroviral classes, how each blocks the viral life cycle, and one hallmark toxicity or interaction per class.</li>
+          <li>List the baseline work-up before starting or restarting ART and why human leukocyte antigen (HLA)-B*5701, hepatitis B status, and renal function change the choice.</li>
+          <li>Describe when to start ART in a newly diagnosed patient and when to briefly defer or adjust for opportunistic infections.</li>
+          <li>Apply ward-level rules for continuing, holding, and monitoring ART during hospitalisation.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why HIV is never treated with one drug</h2>
+      <p><span class="ct-term">Antiretroviral therapy (ART)</span> means three active drugs from at least two classes taken together, every day, indefinitely. That number is not habit — it is virology. HIV reverse transcriptase (the enzyme that copies viral RNA into DNA) makes roughly one error per genome per replication cycle, and the virus produces billions of virions daily. Any single drug selects resistance within days to weeks. Two drugs delay but do not prevent it. Three drugs, if taken consistently, close the escape routes and drive plasma HIV RNA below the limit of detection.</p>
+      <p>Undetectable means untransmittable and means the CD4 count can recover. It also means opportunistic infections become preventable. The entire modern era of HIV care rests on that principle: suppression requires combination therapy and near-perfect adherence.</p>
+      <p>On the wards this matters in two practical ways. First, never add a single new drug to a failing regimen — you are just donating that drug to the virus. Second, never continue one or two drugs alone when a patient cannot take their full regimen by mouth or has a drug interaction; an incomplete regimen is worse than a brief, planned interruption with expert guidance, and any interruption should involve infectious diseases (ID) and pharmacy input the same day.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>HIV therapy is always combination therapy. One active drug equals monotherapy equals resistance. If the patient cannot take the full three-drug combination, get ID help before you give a partial regimen.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The life cycle helps you remember the classes. HIV attaches and enters the CD4 cell, reverse transcribes RNA to DNA, integrates that DNA into the host chromosome, then uses host machinery to make new viral proteins that are cut to size by protease and assembled into new virions. Each step is a drug target.</p>
+      </div>
+
+      <h2 class="ct-h2">The five classes you actually need to know</h2>
+      <p>There are more than 30 approved antiretrovirals, but almost every regimen you will encounter is built from five classes. You do not need to memorise every drug — you need to recognise the class, the anchor, and the backbone.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Antiretroviral classes in current use</caption>
+          <thead>
+            <tr><th>Class</th><th>How it works</th><th>Examples you will see</th><th>Hallmark issue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nucleoside/nucleotide reverse transcriptase inhibitors (NRTIs)</td><td>Faulty building blocks that terminate DNA chain elongation</td><td>Tenofovir disoproxil fumarate (TDF), tenofovir alafenamide (TAF), emtricitabine (FTC), abacavir (ABC), lamivudine (3TC)</td><td>Renal/bone (TDF), hypersensitivity (ABC)</td></tr>
+            <tr><td>Non-nucleoside reverse transcriptase inhibitors (NNRTIs)</td><td>Bind directly to reverse transcriptase away from active site</td><td>Efavirenz, rilpivirine, doravirine</td><td>Rash, neuropsychiatric effects, low barrier to resistance</td></tr>
+            <tr><td>Protease inhibitors (PIs)</td><td>Block cleavage of viral polyprotein; require boosting with cobicistat or ritonavir</td><td>Darunavir, atazanavir</td><td>Drug interactions, gastrointestinal upset, lipids</td></tr>
+            <tr><td>Integrase strand transfer inhibitors (INSTIs)</td><td>Block integration of viral DNA into host genome</td><td>Dolutegravir, bictegravir, raltegravir, cabotegravir</td><td>Weight gain, insomnia; generally best tolerated</td></tr>
+            <tr><td>Entry inhibitors</td><td>Block attachment, CCR5 binding, or fusion</td><td>Maraviroc (CCR5 antagonist), fostemsavir, enfuvirtide, ibalizumab</td><td>Tropism testing needed for maraviroc; niche use</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Most initial regimens use <strong>two NRTIs as the backbone</strong> plus an <strong>integrase inhibitor as the anchor</strong>. The backbone is usually tenofovir (TAF or TDF) plus emtricitabine or lamivudine; abacavir plus lamivudine is an alternative when tenofovir cannot be used and human leukocyte antigen (HLA)-B*5701 is negative. The anchor is dolutegravir or bictegravir in most adults — they have a high barrier to resistance, few interactions, and are forgiving of occasional late doses compared with older non-nucleoside reverse transcriptase inhibitors (NNRTIs) or protease inhibitors.</p>
+      <p>Boosters (cobicistat and ritonavir) are not antiretrovirals themselves. They inhibit cytochrome P450 3A4 (CYP3A4) to raise levels of another drug, usually elvitegravir or darunavir. If you see cobicistat or ritonavir on the list, assume major drug interactions until proven otherwise.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you remember nothing else about classes, remember this: modern therapy is two NRTIs plus an integrase inhibitor. If the regimen in front of you does not look like that, there is usually a reason — resistance, intolerance, or hepatitis B coinfection — and it is worth a chart dig and a pharmacy call.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient’s home regimen is listed as darunavir/cobicistat plus tenofovir alafenamide/emtricitabine. Which component is the booster, not an antiretroviral?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Darunavir</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Cobicistat</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tenofovir alafenamide</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Emtricitabine</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cobicistat has no anti-HIV activity; it inhibits CYP3A4 to boost darunavir levels. Darunavir is the protease inhibitor, and tenofovir alafenamide plus emtricitabine are the NRTI backbone. Any cobicistat- or ritonavir-containing regimen should prompt a drug interaction check.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What we start today and why</h2>
+      <p>Current Department of Health and Human Services (DHHS) and International Antiviral Society (IAS)-USA guidance is consistent: <strong>offer ART to everyone with HIV, regardless of CD4 count, as soon as possible after diagnosis</strong> — often the same day if the patient is ready and there is no clinical reason to defer. The START trial showed that starting above 500 cells/mm<sup>3</sup> rather than waiting reduces serious AIDS and non-AIDS events. There is no CD4 threshold to cross anymore.</p>
+      <p>For initial therapy in most adults without prior treatment, recommended regimens are <strong>bictegravir/tenofovir alafenamide/emtricitabine</strong> as a single tablet or <strong>dolutegravir plus tenofovir alafenamide/emtricitabine</strong> (or tenofovir disoproxil fumarate/emtricitabine). Dolutegravir plus lamivudine is also recommended in some settings when hepatitis B coinfection is absent and viral load is below 500,000 copies/mL, but many programmes still favour a three-drug start for simplicity. Abacavir-based regimens require documented HLA-B*5701 negativity.</p>
+      <p>Efavirenz, once ubiquitous, is now rarely used for initial therapy because of neuropsychiatric effects (vivid dreams, mood changes) and a lower barrier to resistance than integrase inhibitors. Protease inhibitor-based initial regimens are reserved for when integrase inhibitors cannot be used or resistance is a concern.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common initial regimens for adults without prior ART (guideline-based examples)</caption>
+          <thead>
+            <tr><th>Regimen</th><th>Components</th><th>When it is preferred</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Bictegravir/TAF/FTC</td><td>Integrase inhibitor plus 2 NRTIs in one tablet</td><td>Most adults; avoid if creatinine clearance &lt;30 mL/min or on dialysis varies by formulation — check renal dosing</td></tr>
+            <tr><td>Dolutegravir plus TAF/FTC (or TDF/FTC)</td><td>Integrase inhibitor plus 2 NRTIs</td><td>When a separate tenofovir formulation is needed; TDF preferred if hepatitis B coinfection and renal function allows</td></tr>
+            <tr><td>Dolutegravir/lamivudine</td><td>Integrase inhibitor plus 1 NRTI</td><td>Only when hepatitis B surface antigen negative, no resistance, and viral load criteria met — confirm with guidelines/ID</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Delaying ART for weeks while “waiting for resistance results” in a patient who is ready and has no opportunistic infection that requires deferral. Send the genotype, then start. You can adjust later if resistance is found — the harm of waiting exceeds the harm of a later switch.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 26-year-old woman is diagnosed with HIV yesterday. CD4 count is 620 cells/mm<sup>3</sup>, she feels well, and she wants to start treatment. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer ART until CD4 count falls below 350 cells/mm<sup>3</sup></button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer ART until genotypic resistance results return</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Offer same-day or rapid ART initiation after baseline labs and counselling, without waiting for CD4 threshold or genotype</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start trimethoprim-sulfamethoxazole alone and reassess in 3 months</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>ART is recommended for all people with HIV regardless of CD4 count. Rapid initiation (same day if ready) improves linkage and outcomes. Baseline labs and a resistance genotype are sent at entry, but you do not wait for the genotype to start — you start an integrase inhibitor-based regimen with a high barrier to resistance and adjust if needed.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What to check before you prescribe or restart</h2>
+      <p>The ward error is not picking the wrong brand — it is restarting the old regimen without checking what has changed. Before you start or re-start ART, confirm five things. Every one of them can change the regimen.</p>
+      <ul>
+        <li><strong>HIV RNA, CD4 count, and genotype.</strong> A genotypic resistance test should be sent before starting ART and when virologic failure is suspected. If the patient has prior genotypes, find them. Prior nucleoside or NNRTI resistance persists in archives even when the current genotype looks wild-type after time off therapy.</li>
+        <li><strong>HLA-B*5701</strong> if abacavir is considered. Positive means never use abacavir — rechallenge can be fatal.</li>
+        <li><strong>Hepatitis B surface antigen, surface antibody, and core antibody, plus hepatitis C antibody.</strong> Tenofovir (TDF or TAF) plus emtricitabine or lamivudine treats hepatitis B as well as HIV. Stopping them in a coinfected patient can precipitate a hepatitis B flare. Lamivudine or emtricitabine alone is not adequate hepatitis B therapy.</li>
+        <li><strong>Renal function, urinalysis, and pregnancy test.</strong> Tenofovir disoproxil fumarate is more nephrotoxic and causes greater bone loss than tenofovir alafenamide. Abacavir avoids renal issues but requires HLA screening. Dolutegravir and bictegravir need renal dose attention and have specific creatinine transport effects — a small rise in creatinine from inhibition of tubular secretion is expected and is not acute kidney injury.</li>
+        <li><strong>Medications, over-the-counter agents, and substance use.</strong> Integrase inhibitors have fewer interactions than boosted regimens, but polyvalent cations (calcium, iron, magnesium, aluminium) chelate dolutegravir and bictegravir if taken together. Rifamycins, certain anti-epileptics, and boosted protease inhibitors create profound interactions. Always run an interaction check.</li>
+      </ul>
+      <p>Also screen for <em>Mycobacterium tuberculosis</em> (TB) if there are symptoms or epidemiologic risk before starting ART — not to delay ART, but to avoid missing TB immune reconstitution inflammatory syndrome (IRIS) risk and to correct timing with TB therapy.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Never stop tenofovir plus emtricitabine without checking hepatitis B status. If the patient is hepatitis B surface antigen positive and you stop the tenofovir-containing regimen (for example, by holding ART for nil per os), you can trigger a hepatitis flare. Flag coinfection on the problem list and the handoff.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>HLA-B*5701 testing is a rare example of a pharmacogenetic test that is truly mandatory. Abacavir hypersensitivity — fever, rash, gastrointestinal symptoms, malaise progressing to hypotension — occurs in about 5 to 8% of unselected patients and is strongly linked to HLA-B*5701. Screening has made this reaction largely preventable.</p>
+      </div>
+
+      <h2 class="ct-h2">Toxicities and interactions the ward team will see</h2>
+      <p>Modern ART is far better tolerated than the zidovudine and stavudine era, but three problems still bring patients to medical attention: kidney and bone effects, hypersensitivity, and drug interactions.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Toxicities and monitoring points by drug</caption>
+          <thead>
+            <tr><th>Drug or class</th><th>What to watch for</th><th>Practical tip</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tenofovir disoproxil fumarate (TDF)</td><td>Proximal tubulopathy, Fanconi syndrome, decline in estimated glomerular filtration rate (eGFR), bone mineral loss, phosphate wasting</td><td>Check creatinine, phosphate, urinalysis for glycosuria/proteinuria; consider TAF if renal or bone risk</td></tr>
+            <tr><td>Tenofovir alafenamide (TAF)</td><td>Less renal and bone toxicity than TDF; weight and lipid increases more common</td><td>Still needs renal monitoring; preferred over TDF when eGFR is reduced, if available</td></tr>
+            <tr><td>Abacavir</td><td>Hypersensitivity reaction (fever, rash, nausea, malaise) within 6 weeks; never rechallenge</td><td>Only use if HLA-B*5701 negative and documented</td></tr>
+            <tr><td>Dolutegravir, bictegravir</td><td>Insomnia, headache, weight gain; dolutegravir inhibits creatinine secretion (small creatinine rise)</td><td>Separate from polyvalent cations by 2 hours before or 6 hours after; reassure about creatinine bump but monitor</td></tr>
+            <tr><td>Efavirenz, rilpivirine</td><td>Neuropsychiatric (efavirenz), QT prolongation and need for food/acid considerations (rilpivirine)</td><td>Ask about mood, sleep, and concomitant proton pump inhibitors</td></tr>
+            <tr><td>Boosted protease inhibitors</td><td>Drug interactions via CYP3A4, gastrointestinal upset, hyperlipidaemia, hyperglycaemia</td><td>Assume every new drug interacts until checked; involve pharmacy</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Two interaction patterns deserve special mention. First, <strong>chelation</strong>: calcium, iron, magnesium, and aluminium bind integrase inhibitors in the gut. A patient who takes dolutegravir with a multivitamin or antacid absorbs less drug. Second, <strong>boosting</strong>: cobicistat and ritonavir raise levels of many co-medications — statins, direct oral anticoagulants, anti-epileptics, steroids, and calcineurin inhibitors are classic ward examples. When you see a boosted regimen, do not add rifampin, carbamazepine, phenytoin, or St John’s wort without ID input; these induce metabolism and can cause virologic failure.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Holding all ART because the patient is nil per os for a procedure and “we’ll restart tomorrow.” Missing even a few days can allow viral rebound, and resuming a partial regimen after a gap risks resistance. If ART must be held, hold all drugs together, make it as brief as possible, and document a restart plan with a time. Many regimens can be crushed or given via feeding tube — ask pharmacy before you hold.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient on bictegravir/tenofovir alafenamide/emtricitabine is started on calcium carbonate and ferrous sulfate for anaemia. Her HIV RNA, previously undetectable, becomes detectable 8 weeks later. What most likely contributed?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Calcium directly inactivates tenofovir alafenamide in plasma</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Polyvalent cations chelated the integrase inhibitor in the gut, reducing absorption</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Iron induces CYP3A4 and lowered bictegravir levels systemically</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Emtricitabine antagonises iron absorption, causing anaemia</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Bictegravir and dolutegravir are chelated by calcium, iron, magnesium, and aluminium. They should be separated from cation-containing products — typically 2 hours before or 6 hours after — or taken with food as directed. Without separation, drug levels fall and virologic failure can follow. This is a classic, preventable ward interaction.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Monitoring, adherence, and what failure looks like</h2>
+      <p>Start ART, then measure. HIV RNA should fall briskly — often by more than 1 log<sub>10</sub> within a few weeks — and become undetectable (generally &lt;50 copies/mL depending on assay) within 12 to 24 weeks. CD4 count rises more slowly, sometimes over months to years, and is not the right tool to judge early regimen success. If HIV RNA has not fallen as expected or becomes detectable after being undetectable, think adherence first, then interactions, then resistance.</p>
+      <p>Ask about adherence the way you ask about any chronic therapy: non-judgmentally, specifically, and with pharmacy refill data if available. Common, honest reasons for missed doses include pill burden, side effects, depression, substance use, unstable housing, cost, and simply forgetting when life is chaotic. Long-acting injectable cabotegravir plus rilpivirine, given monthly or every 2 months after an oral lead-in or direct initiation per current labelling, is an option for selected virologically suppressed patients who prefer not to take daily pills — but it requires rigorous clinic attendance and is not for patients with prior failure or rilpivirine or cabotegravir resistance.</p>
+      <p>Definitions you will hear: <strong>virologic suppression</strong> means sustained RNA below detection; <strong>virologic failure</strong> means confirmed RNA above 200 copies/mL after suppression or failure to suppress. A single low-level blip (for example, 60 copies/mL once, then undetectable again) is common and usually not failure. Do not switch therapy on one blip — repeat the RNA, assess adherence, and send a genotype if failure is confirmed while the patient is still taking the regimen.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Undetectable equals untransmittable (U=U). A person with sustained HIV RNA below 200 copies/mL does not sexually transmit HIV. That statement is evidence-based and matters to patients far beyond the numbers — say it when it applies.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>CD4 count guides opportunistic infection prophylaxis, not ART success. Trimethoprim-sulfamethoxazole for <em>Pneumocystis jirovecii</em> when CD4 &lt;200 cells/mm<sup>3</sup>, and added toxoplasmosis prophylaxis when the patient is <em>Toxoplasma gondii</em> immunoglobulin G (IgG) positive and CD4 &lt;100 cells/mm<sup>3</sup>, are classic thresholds — but effective ART is what lets you stop prophylaxis safely when CD4 rises.</p>
+      </div>
+
+      <h2 class="ct-h2">Special situations on call</h2>
+      <p>Several scenarios present at night and reward a clear plan.</p>
+      <p><strong>Opportunistic infection first or ART first?</strong> For most opportunistic infections, including <em>Pneumocystis jirovecii</em> pneumonia, start ART within 2 weeks of diagnosis. For cryptococcal meningitis and tuberculous meningitis, defer ART for a few weeks (cryptococcal meningitis typically 4 to 6 weeks, tuberculous meningitis about 8 weeks) because early ART increases risk of immune reconstitution inflammatory syndrome (IRIS) and mortality in these specific infections. For pulmonary TB without meningitis, start ART within 2 weeks if CD4 &lt;50 cells/mm<sup>3</sup> and within 2 to 4 weeks otherwise, with careful attention to rifamycin interactions — rifampin markedly lowers dolutegravir and bictegravir levels and usually requires dose adjustment or an alternative regimen via ID guidance.</p>
+      <p><strong>Hepatitis B coinfection.</strong> Include tenofovir (TAF or TDF) plus emtricitabine or lamivudine in the regimen and do not stop it without a hepatitis B plan. If tenofovir must be stopped, hepatitis B treatment must be replaced.</p>
+      <p><strong>Pregnancy.</strong> Test for pregnancy before starting ART and do not delay ART because of pregnancy — suppressive ART protects both parent and infant. Dolutegravir is now a preferred anchor in pregnancy; earlier concern about neural tube defects with periconception dolutegravir has been reassuring with larger datasets, but confirm current guidance and involve obstetrics and ID. Avoid efavirenz in the first trimester only if alternatives exist and the patient prefers, and avoid cobicistat-boosted regimens in pregnancy because drug levels fall.</p>
+      <p><strong>Renal failure and dialysis.</strong> TDF is generally avoided with significant renal dysfunction; TAF and abacavir-based backbones are often preferred, but dosing depends on the specific tablet and eGFR. Do not assume renal dose adjustment is unnecessary for fixed-dose combinations — check each component.</p>
+      <p><strong>The admitted patient already on ART.</strong> Continue it. Check that every dose was actually given (many “continued” regimens are missed because the drug is not on formulary or the patient is nil per os). Use the inpatient formulary equivalent, crush or liquid formulation, or an alternative with ID input rather than leaving a gap. Document hepatitis B status so covering teams do not inadvertently hold tenofovir.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When TB and HIV coincide, the question is not whether to treat HIV but when and how to dose it with rifamycins. Starting ART early saves lives in most TB — only meningitis is the deliberate exception to brief deferral. Get ID and pulmonary involved the same day.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Stopping ART to “let the CD4 recover first” or because the patient has a mild intercurrent illness. ART is what recovers the CD4 count. The modern rule is start quickly and keep going; stopping without a plan helps no one.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 34-year-old man with CD4 45 cells/mm<sup>3</sup> is diagnosed with pulmonary tuberculosis without meningitis. He is not yet on ART. When should ART be started?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer ART until TB treatment is completed in 6 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Within 2 weeks, with attention to rifamycin drug interactions</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Only after CD4 count rises above 200 cells/mm<sup>3</sup> on TB therapy alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Immediately switch TB therapy to avoid rifampin, then start ART in 8 weeks</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>For HIV-associated pulmonary TB, early ART (within 2 weeks when CD4 &lt;50 cells/mm<sup>3</sup>, and within 2 to 4 weeks otherwise) reduces mortality and AIDS progression. The exception is meningitis, where ART is deliberately deferred several weeks to reduce IRIS harm. Rifampin interacts heavily with integrase inhibitors and many other antiretrovirals, so involve ID and pharmacy to adjust dosing rather than delaying ART.</p>
+        </div>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your patient on dolutegravir plus tenofovir alafenamide/emtricitabine is hepatitis B surface antigen positive. The team proposes holding ART for 3 days because the patient is nil per os after surgery. What is the most important risk of holding all three drugs together for a few days without a hepatitis B plan?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Immediate dolutegravir withdrawal syndrome</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Hepatitis B flare when tenofovir and emtricitabine are withdrawn</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Permanent loss of emtricitabine activity due to single missed doses</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No risk if all three drugs are held together</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Holding all drugs together avoids functional monotherapy, but in hepatitis B coinfection, withdrawing the tenofovir/emtricitabine component removes hepatitis B therapy and can trigger a flare, sometimes severe. If ART must be paused, flag hepatitis B coinfection, keep the pause as short as possible, and ensure hepatitis B coverage is maintained or promptly resumed with ID and hepatology input.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>HIV is always treated with three drugs from at least two classes — typically two nucleoside reverse transcriptase inhibitors (NRTIs) plus an integrase strand transfer inhibitor (INSTI) such as bictegravir or dolutegravir.</li>
+        <li>Offer ART to everyone with HIV as soon as possible after diagnosis, regardless of CD4 count; send baseline genotype, HLA-B*5701 if abacavir is considered, hepatitis B and C serologies, renal function, pregnancy test, and a medication interaction check, but do not wait for genotype results to start.</li>
+        <li>Check hepatitis B status before you stop or switch tenofovir/emtricitabine — withdrawing them in coinfection risks a hepatitis flare — and never rechallenge abacavir after hypersensitivity.</li>
+        <li>Watch for two common ward interactions: polyvalent cations that chelate integrase inhibitors and CYP3A4 boosting by cobicistat or ritonavir that raises levels of many co-medications.</li>
+        <li>Continue ART during hospitalisation whenever possible; if a gap is unavoidable, hold all drugs together, keep it brief, and restart promptly with a documented plan. For tuberculosis without meningitis start ART within 2 weeks; defer briefly only for cryptococcal or tuberculous meningitis.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Panel on Antiretroviral Guidelines for Adults and Adolescents. Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents with HIV. Department of Health and Human Services (DHHS). Updated 2024. Available at clinicalinfo.hiv.gov.</li>
+          <li>Saag MS, et al. Antiretroviral drugs for treatment and prevention of HIV infection in adults: 2024 recommendations of the International Antiviral Society–USA Panel. <em>JAMA</em>. 2024;332(19):1652-1672.</li>
+          <li>Institute Lundgren JD, et al. Initiation of antiretroviral therapy in early asymptomatic HIV infection (START). <em>N Engl J Med</em>. 2015;373(9):795-807.</li>
+          <li>Gunthard HF, et al. Human immunodeficiency virus drug resistance: 2024 guidelines and future directions. <em>Clin Infect Dis</em>. In press and DHHS drug resistance guidelines; see also Stanford HIV Drug Resistance Database.</li>
+          <li>Panel on Opportunistic Infections in Adults and Adolescents with HIV. Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents with HIV. DHHS. Updated 2024.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">HIV antiretrovirals</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

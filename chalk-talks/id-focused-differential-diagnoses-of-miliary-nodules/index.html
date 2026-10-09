@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ID-focused differential diagnoses of miliary nodules — IDSA Chalk Talk</title>
+<meta name="description" content="When 1- to 3-mm random nodules mean hematogenous spread — and how to sort the infectious causes.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">ID-focused differential diagnoses of miliary nodules — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Pulmonary infections \u00b7 Radiology</p>
+        <h1 class="ct-h1">ID-focused differential diagnoses of miliary nodules</h1>
+        <p class="ct-subtitle">Sorting hematogenous spread from its mimics at the bedside</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 34-year-old man with untreated human immunodeficiency virus (HIV) infection presents with 6 weeks of fever, night sweats, 5-kg weight loss, and dry cough. Chest radiograph and computed tomography (CT) show innumerable 1- to 3-mm nodules in a random distribution. He worked two years on a construction site in Arizona and grew up in the Ohio River valley. CD4 count is 38 cells per cubic mm. The night team asks: is this miliary tuberculosis (TB), disseminated histoplasmosis, or something else — and what do you do before morning?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Define miliary nodules and distinguish a random distribution from perilymphatic or centrilobular patterns on chest CT.</li>
+          <li>Generate an infectious diseases (ID)-focused differential for miliary nodules weighted by host immune status and epidemiologic exposure.</li>
+          <li>Recognise clinical and radiographic clues that push toward miliary TB, endemic fungi, <em>Nocardia</em>, or viral causes.</li>
+          <li>Outline a practical inpatient workup that does not miss airborne isolation, HIV testing, and tissue diagnosis.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">What miliary actually means</h2>
+      <p><span class="ct-term">Miliary</span> comes from the Latin for millet seed. On imaging it means innumerable 1- to 3-mm nodules scattered so evenly that no lung zone is spared. The pattern can be subtle on plain radiograph; high-resolution CT makes it obvious and lets you read the <em>distribution</em>, which is the most useful clue.</p>
+      <p>Pathologists and radiologists describe three distributions:</p>
+      <ul>
+        <li><strong>Random</strong> nodules touch the pleura, fissures, and bronchovascular bundles without preference — they sit along pleural surfaces and inside the lobule. This is the hematogenous pattern and the one we mean by miliary.</li>
+        <li><strong>Perilymphatic</strong> nodules cluster along fissures, pleura, and bronchovascular bundles, sparing parts of the lobule. Think sarcoidosis and lymphangitic carcinomatosis.</li>
+        <li><strong>Centrilobular</strong> nodules spare the pleura and sit a few millimetres away from it, often with tree-in-bud branching. Think endobronchial spread of infection such as active TB or bacterial bronchiolitis, or hypersensitivity pneumonitis.</li>
+      </ul>
+      <p>If the nodules truly touch the pleura everywhere you look, assume hematogenous dissemination until proven otherwise. That single observation narrows a long pulmonary nodule list to a much shorter ID-focused list.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Size and distribution matter more than counting nodules. Random 1- to 3-mm nodules that abut the pleura in all zones equal hematogenous spread, even before you know the organism.</p>
+      </div>
+
+      <h2 class="ct-h2">Why the infectious differential is so broad</h2>
+      <p>Any organism that can enter the bloodstream and seed the pulmonary capillaries can produce a miliary pattern. The alveolar capillary bed is a filter for hematogenous traffic, so a shower of organisms lodges diffusely and forms granulomas or microabscesses that appear as identical nodules.</p>
+      <p>The same CT pattern appears in a traveller with miliary TB, a transplant recipient with disseminated <em>Histoplasma capsulatum</em>, a young adult on a tumour necrosis factor (TNF) inhibitor with coccidioidomycosis, and an older adult with <em>Nocardia</em> bacteraemia. The radiograph does not name the organism — the host, exposure, and syndrome do.</p>
+      <p>A useful mental model is <strong>host plus route plus tempo</strong>: immune status, exposure, and tempo. Weeks of wasting favours TB and fungi; days of rapid hypoxaemia favours viral or bacterial seeding.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Classic miliary TB was described before CT existed, on chest radiographs of children with hematogenous spread. The term stuck because the nodules really do look like millet seeds scattered on a plate. Modern high-resolution CT simply makes the distribution easier to read.</p>
+      </div>
+
+      <h2 class="ct-h2">The ID short list you can carry in your pocket</h2>
+      <p>From an ID perspective, four groups cause most infectious miliary patterns in adults. Everything else is rare but worth keeping in the back of your mind.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Infectious causes of miliary nodules and their signature contexts</caption>
+          <thead>
+            <tr><th>Category</th><th>Typical organisms</th><th>Key host or exposure clue</th><th>Extrapulmonary hint</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mycobacteria</td><td><em>Mycobacterium tuberculosis</em>, less often <em>Mycobacterium avium</em> complex in advanced HIV</td><td>Any host; TB contact, prior latent TB, migration from high-prevalence area, TNF inhibitor</td><td>Choroidal tubercles, meningitis, spondylitis, sterile pyuria</td></tr>
+            <tr><td>Endemic fungi</td><td><em>Histoplasma capsulatum</em>, <em>Coccidioides immitis</em> or <em>posadasii</em>, <em>Blastomyces dermatitidis</em></td><td>Ohio–Mississippi River valley, southwest United States, cave/bird/bat or dust and construction exposure</td><td>Pancytopenia and hepatosplenomegaly (<em>Histoplasma</em>), erythema nodosum or arthralgias (<em>Coccidioides</em>), skin lesions (<em>Blastomyces</em>)</td></tr>
+            <tr><td>Nocardiosis</td><td><em>Nocardia asteroides</em> complex and related species</td><td>Transplant, prolonged steroids, malignancy; soil exposure</td><td>Brain abscess, cutaneous nodules, no person-to-person spread</td></tr>
+            <tr><td>Viral and other</td><td>Cytomegalovirus (CMV), varicella-zoster virus (VZV), measles in immunocompromised hosts; disseminated <em>Cryptococcus neoformans</em> can mimic</td><td>Advanced HIV, transplant, chemotherapy; unvaccinated or recent exposure</td><td>Retinitis or colitis (CMV), vesicular rash (VZV), cryptococcal meningitis</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Endemic fungi are the most common mimic of miliary TB in the United States and are often diagnosed late. <em>Histoplasma</em> favours very low CD4 count with bone marrow and liver involvement; <em>Coccidioides</em> favours dust exposure in Arizona or California and can be fulminant in pregnancy or with TNF inhibition.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you remember only three organisms after midnight, remember <em>Mycobacterium tuberculosis</em>, <em>Histoplasma capsulatum</em>, and <em>Coccidioides</em>. In a United States hospital they cover most infectious miliary cases and they are the ones with specific public-health and treatment consequences.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old on adalimumab (a TNF inhibitor) for Crohn disease develops fever and diffuse 2-mm random nodules after a winter trip to Arizona. Sputum acid-fast smear is negative. What best explains the pattern?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A negative smear excludes TB, so this must be sarcoidosis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Disseminated coccidioidomycosis mimics miliary TB; TNF inhibition and desert dust exposure raise its probability and smear negativity does not exclude TB</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Centrilobular nodules from bronchiolitis are the expected pattern for hematogenous spread</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Miliary pattern always means malignancy in this age group</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Hematogenous infections produce random nodules. A negative smear does not exclude miliary TB, but TNF inhibition plus desert Southwest exposure strongly favours <em>Coccidioides</em>. Sarcoidosis is perilymphatic, not random, and malignancy rarely gives uniform 1- to 3-mm random nodules.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">History and host factors that re-weight the list</h2>
+      <p>At the bedside, ask three questions before ordering:</p>
+      <ol>
+        <li><strong>Where have you lived and travelled?</strong> Midwest or cave/bird exposure pushes <em>Histoplasma</em>; Arizona/California dust pushes <em>Coccidioides</em>; birth in a high-TB-burden country or shelter work pushes TB.</li>
+        <li><strong>What is the immune status?</strong> HIV/CD4, transplant, biologics, steroids, pregnancy. Advanced HIV favours histoplasmosis and cryptococcosis; TNF inhibitors favour TB and fungi.</li>
+        <li><strong>What is outside the lung?</strong> Headache suggests meningitis or brain abscess; skin lesions suggest <em>Nocardia</em> or <em>Cryptococcus</em>; eye symptoms suggest choroidal tubercles or CMV retinitis.</li>
+      </ol>
+      <p>Do not forget dust, farming, spelunking, mulch or bird droppings, and chicken coops. Ask about TB contacts, prior latent TB testing and treatment, and vaccination and sick contacts for measles and VZV.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Geography is the best rapid test for endemic fungi. A one-sentence travel and residence history narrows the differential more than a second CT scan.</p>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Host factors that push the differential</caption>
+          <thead>
+            <tr><th>Factor</th><th>Raises probability of</th><th>Practical next step</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Untreated HIV, CD4 &lt;100</td><td>Disseminated <em>Histoplasma</em>, <em>Mycobacterium avium</em> complex, cryptococcosis, CMV, TB</td><td>Offer HIV test to every adult with miliary pattern if status unknown; send <em>Histoplasma</em> urine antigen, cryptococcal antigen, sputum mycobacterial studies</td></tr>
+            <tr><td>TNF inhibitor, high-dose steroids</td><td>TB reactivation, coccidioidomycosis, histoplasmosis</td><td>Hold biologic, review latent TB and fungal screening, involve ID early</td></tr>
+            <tr><td>Solid organ transplant</td><td><em>Nocardia</em>, <em>Histoplasma</em>, CMV, donor-derived TB</td><td>Check donor history, add <em>Nocardia</em> to laboratory alert, brain imaging if headache</td></tr>
+            <tr><td>Pregnancy, especially third trimester</td><td>Severe coccidioidomycosis</td><td>Lower threshold for fungal testing in endemic area, involve obstetrics and ID</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="ct-h2">What makes you worry for miliary tuberculosis tonight</h2>
+      <p>Miliary TB is the diagnosis you cannot miss at 2 a.m. because it is transmissible, treatable, and lethal if delayed. It occurs when a primary or reactivated focus seeds the bloodstream and lungs simultaneously.</p>
+      <p>Favouring features include weeks of fever, night sweats, weight loss, and cough, often with hepatosplenomegaly, choroidal tubercles, and hints of disseminated disease such as pancytopenia, hyponatraemia, or sterile pyuria.</p>
+      <p>The classic error is waiting for sputum to be positive. Smear sensitivity is low in miliary disease; a negative smear or even a negative Xpert Ultra does not exclude TB.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not wait for confirmation to isolate. If miliary TB is plausible, place the patient in an airborne infection isolation room, require N95 respirators, and notify infection control and the health department before you send the third sputum. Document why you isolated or why you did not.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Examine the eyes and the cerebrospinal fluid in miliary TB. Choroidal tubercles and TB meningitis coexist with miliary nodules more often than trainees expect; both change duration of therapy and urgency of steroids and consultation.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 62-year-old man with miliary nodules and fever has three negative sputum acid-fast smears. No isolation was ordered. What is the safest next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Declare TB excluded and remove isolation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Keep or initiate airborne isolation, obtain mycobacterial nucleic acid amplification testing, cultures, and HIV test, and examine for extrapulmonary disease while pursuing alternative diagnoses</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send only bacterial blood cultures and await growth</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start broad-spectrum antibacterial therapy and defer TB workup</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Miliary TB is paucibacillary in sputum. Smear negativity is common and does not exclude it. Isolation, nucleic acid amplification testing, cultures, HIV testing, and evaluation for meningitis or dissemination should proceed in parallel with testing for fungi and other causes.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When miliary is not infection — the mimics to rule out</h2>
+      <p>Not every miliary pattern is infection. Residents are consulted on miliary nodules that turn out to be sarcoidosis, hypersensitivity pneumonitis, or metastases. The ID contribution is distinguishing hematogenous infection from these mimics so the patient is not treated incorrectly.</p>
+      <p>Clues that point away from infection:</p>
+      <ul>
+        <li><strong>Sarcoidosis</strong> usually shows perilymphatic nodules along fissures, bilateral hilar adenopathy, and often hypercalcaemia or uveitis. Nodules are not uniformly random to the pleura everywhere.</li>
+        <li><strong>Hypersensitivity pneumonitis</strong> shows centrilobular ground-glass nodules that spare the pleura, often with mid-lung predominance and exposure to birds, mould, or hot tubs. Hypoxaemia and inspiratory crackles dominate over fever.</li>
+        <li><strong>Miliary metastases</strong> (thyroid, renal, melanoma, and others) can look random but nodules are often larger, vary more in size, and may be positron emission tomography (PET)-avid; history of known malignancy or thyroid mass helps.</li>
+        <li><strong>Langerhans cell histiocytosis</strong> and pneumoconioses have upper-lobe or occupational signatures and very different demographics.</li>
+      </ul>
+      <p>Biopsy often settles the question. Non-caseating granulomas favour sarcoidosis and caseating granulomas favour infection, but neither is specific. Never start steroids for presumed sarcoidosis before infection is reasonably excluded — steroids can worsen TB or disseminated fungi.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Giving high-dose steroids for presumed sarcoidosis or hypersensitivity before excluding TB and endemic fungi. The patient may improve briefly and then deteriorate as infection disseminates. Obtain HIV status, sputum and fungal studies, and tissue before immunosuppression if you can.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 48-year-old woman with diffuse nodules has perilymphatic distribution along fissures, bilateral hilar nodes, and hypercalcaemia. No fever. Most likely category?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Miliary TB</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Sarcoidosis — perilymphatic nodules and hilar adenopathy are characteristic, unlike random hematogenous infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Centrilobular bacterial bronchiolitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Disseminated histoplasmosis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Distribution solves the case. Perilymphatic nodules along fissures and pleura plus hilar adenopathy favour sarcoidosis. Miliary infection is random and febrile; hypersensitivity spares the pleura.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">A practical workup you can order on call</h2>
+      <p>Build the workup in layers: isolate and test for TB, check immune status, pursue fungi and <em>Nocardia</em> in parallel, and plan for tissue.</p>
+      <h3 class="ct-h3">First hour</h3>
+      <ul>
+        <li>Place in airborne isolation if TB is on the differential and document it. Notify infection prevention.</li>
+        <li>Offer HIV antigen/antibody testing if status unknown, and CD4 count if positive. This changes pretest probabilities immediately.</li>
+        <li>Obtain sputum for acid-fast smear, mycobacterial nucleic acid amplification (e.g., Xpert Ultra), and mycobacterial culture — three sputa are often recommended by guidelines, but do not delay isolation for the second or third. Add bacterial and fungal cultures of sputum and blood.</li>
+        <li>Check basic labs with attention to cytopenias, liver enzymes, and electrolytes; these are clues to disseminated disease rather than diagnostic tests.</li>
+      </ul>
+      <h3 class="ct-h3">Before morning</h3>
+      <ul>
+        <li>High-resolution chest CT to confirm random distribution and to guide bronchoscopy. Compare old imaging if available.</li>
+        <li>For endemic fungi: <em>Histoplasma</em> urine antigen and serology; <em>Coccidioides</em> serology and antigen; cryptococcal antigen where appropriate. Cross-reactivity is common — interpret with ID.</li>
+        <li>For <em>Nocardia</em>: alert the lab to hold cultures longer, request modified acid-fast staining, and consider brain imaging.</li>
+        <li>For viral causes: review vaccination, consider CMV PCR and eye exam in immunosuppression.</li>
+        <li>Plan for bronchoscopy with bronchoalveolar lavage (BAL) and transbronchial biopsy if sputum is non-diagnostic. BAL yield is higher than sputum for TB and fungal testing. A skin or node biopsy is faster if a lesion exists.</li>
+      </ul>
+      <p>No single test excludes disseminated infection. Cultures take weeks; antigens and nucleic acid tests are faster but each has blind spots. Running the panel in parallel avoids days of delay.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Send the fungal and mycobacterial tests together. <em>Histoplasma</em> urine antigen can return in a day and change management before cultures or biopsy. Waiting for one result before sending the next adds days you cannot afford.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Specific drug regimens and durations were intentionally omitted here because the source transcript was corrupted and doses could not be verified verbatim. Treat the syndrome first, involve ID early, and verify every dose against current guidelines and pharmacy before prescribing. Empiric therapy for miliary TB or disseminated endemic fungi should not be delayed for results when suspicion is high, but the choice of regimen depends on host, severity, and local guidance.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 41-year-old with miliary nodules, fever, and headache has advanced HIV. Chest CT is random miliary. What studies belong in the first bundle besides TB workup?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Liver function tests alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">HIV CD4 count, <em>Histoplasma</em> urine antigen, cryptococcal antigen, and brain imaging with lumbar puncture considered for headache</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">D-dimer and lower extremity Doppler only</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Echocardiogram only</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>In advanced HIV, miliary pattern strongly overlaps disseminated histoplasmosis and cryptococcosis, both of which involve the central nervous system. CD4 count, fungal antigens, and evaluation for meningitis belong with TB testing, not after it.</p>
+        </div>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Which feature best separates miliary infection from hypersensitivity pneumonitis on CT?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Miliary infection is random and touches pleural surfaces everywhere; hypersensitivity is centrilobular and spares the pleura</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Miliary nodules are always cavitary</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Hypersensitivity always shows cavitation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Both spare the pleura equally</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Distribution is the discriminator. Random nodules abut pleura everywhere in hematogenous infection; hypersensitivity nodules are centrilobular and keep a few millimetres distance from the pleura, often with ground-glass opacity.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Miliary means hematogenous: 1- to 3-mm nodules in a random distribution that touch the pleura everywhere. Check distribution before chasing organisms.</li>
+        <li>Carry a four-group ID short list: <em>Mycobacterium tuberculosis</em>, endemic fungi (<em>Histoplasma</em>, <em>Coccidioides</em>, <em>Blastomyces</em>), <em>Nocardia</em>, and disseminated viral or cryptococcal disease — re-weighted by immune status.</li>
+        <li>Geography and host are the fastest tests. A sentence about residence, dust or cave or bird exposure, HIV and TNF inhibitor status, and extrapulmonary symptoms re-orders the list immediately.</li>
+        <li>If miliary TB is plausible, isolate on arrival, send sputum smear, nucleic acid amplification, and culture, offer HIV testing, and look for extrapulmonary TB — a negative smear never excludes it.</li>
+        <li>Work up fungi and <em>Nocardia</em> in parallel, not in sequence, and plan early for BAL or biopsy. Do not start high-dose steroids for presumed sarcoidosis before infection is reasonably excluded.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Original IDSA Chalk Talk: ID-focused differential diagnoses of miliary nodules — transcript and slide deck provided for this conversion (source files corrupted; content reconstructed from standard IDSA/clinical knowledge and flagged where verbatim doses could not be verified).</li>
+          <li>Nahid P, Dorman SE, Alipanah N, et al. Official American Thoracic Society / Centers for Disease Control and Prevention / Infectious Diseases Society of America clinical practice guidelines: treatment of drug-susceptible tuberculosis. <em>Clin Infect Dis</em>. 2016;63(7):e147-e195. (General guideline for TB diagnosis and management; cited as background for workup principles.)</li>
+          <li>Azar MM, Loyd JL, Relich RF, Wheat LJ, Hage CA. Current concepts in the epidemiology, diagnosis, and management of histoplasmosis syndromes. <em>Semin Respir Crit Care Med</em>. 2020;41(1):13-30.</li>
+          <li>Galgiani JN, Ampel NM, Blair JE, et al. 2016 Infectious Diseases Society of America guideline for the treatment of coccidioidomycosis. <em>Clin Infect Dis</em>. 2016;63(6):e112-e146.</li>
+          <li>Margolis E, Albers B, Armstrong WS, et al. Diagnosis and management of nocardiosis — recent advances. <em>Curr Fungal Infect Rep</em>. 2020;14:193-204. (General reference for <em>Nocardia</em> brain and pulmonary disease.)</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">ID-focused differential diagnoses of miliary nodules</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

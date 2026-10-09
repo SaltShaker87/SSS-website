@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulmonary nodules in immunocompromised hosts — IDSA Chalk Talk</title>
+<meta name="description" content="How to sort infectious from noninfectious pulmonary nodules when immunity is impaired — and what to do next.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Pulmonary nodules in immunocompromised hosts — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Pulmonary and opportunistic infections</p>
+        <h1 class="ct-h1">Pulmonary nodules in immunocompromised hosts</h1>
+        <p class="ct-subtitle">Sorting nodules by host, imaging pattern, and timing</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Pulmonary and opportunistic infections</p>
+        <h1 class="ct-h1">Pulmonary nodules in immunocompromised hosts</h1>
+        <p class="ct-subtitle">Sorting nodules by host, imaging pattern, and timing</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 46-year-old man is on day 14 after induction chemotherapy for acute myeloid leukaemia. He has had persistent fever despite cefepime for 4 days. His absolute neutrophil count (ANC) remains very low, he is receiving fluconazole for prophylaxis, and a chest computed tomography (CT) scan shows a 2.5 cm peripheral nodule in the right upper lobe with surrounding ground-glass opacity and two smaller bilateral nodules. He has mild pleuritic chest pain, no haemoptysis, and oxygen saturation is 94% on room air. The team asks: is this bacterial pneumonia, an invasive mould, or something else?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Use the type and timing of immune impairment to narrow the differential diagnosis for pulmonary nodules.</li>
+          <li>Interpret key computed tomography (CT) patterns — halo sign, reverse halo, cavitation, and tree-in-bud — in context.</li>
+          <li>Build a focused workup that includes appropriate fungal and bacterial studies and identifies when bronchoalveolar lavage (BAL) or biopsy is needed.</li>
+          <li>Choose next steps in management, including when to adjust prophylaxis and involve consultants early.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why pulmonary nodules mean something different when immunity is impaired</h2>
+      <p>In an otherwise healthy adult, a solitary pulmonary nodule is often followed over months. In the immunocompromised host, a new nodule is an acute problem. It may represent angioinvasive infection, disseminated infection with pulmonary seeding, or a noninfectious mimic that still requires urgent sorting. Fever and imaging can change within hours to days.</p>
+      <p>This talk focuses on adults whose nodules appear during an immunocompromised period — prolonged neutropenia, after solid organ transplantation, during high-dose glucocorticoid therapy, after chimeric antigen receptor T-cell therapy, or with advanced human immunodeficiency virus (HIV) infection. The bedside principle is: a nodule is a clue, not a diagnosis. Your job is to name the host defect, propose a short ranked differential diagnosis, and move quickly to microbiologic testing.</p>
+      <p>Most patients carry more than one risk at once. Chemotherapy causes mucositis while neutropenia removes phagocytic defence. Glucocorticoids blunt fever even with angioinvasion. Antifungal prophylaxis shifts odds among moulds but does not eliminate risk. Travel, animal or soil exposure, and local construction change pre-test probability for endemic fungi and soil organisms.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>In an immunocompromised host, a new pulmonary nodule is an urgent infectious workup, not a routine nodule clinic referral. Name the immune defect first — it narrows the differential diagnosis more than size does.</p>
+      </div>
+
+      <h2 class="ct-h2">Start with the host: who is immunocompromised and how</h2>
+      <p>The same nodule means different things in different hosts. Anchor the differential diagnosis to the defect, not the scan alone.</p>
+      <ul>
+        <li><strong>Prolonged neutropenia</strong> (for example, after induction for acute leukaemia) — impaired phagocytosis favours angioinvasive moulds such as <em>Aspergillus</em> species and <em>Mucorales</em>, and bacterial pathogens including <em>Nocardia</em> species. Longer, deeper low absolute neutrophil count raises risk. Concurrent fluconazole covers many <em>Candida</em> species but not moulds.</li>
+        <li><strong>T-cell impairment</strong> (advanced HIV with low cluster of differentiation 4 (CD4) T-lymphocyte count, solid organ transplant on calcineurin inhibitors, or prolonged high-dose glucocorticoids) — favours <em>Pneumocystis jirovecii</em> (usually diffuse ground-glass but can be nodular), <em>Cryptococcus neoformans</em>, <em>Nocardia</em>, <em>Mycobacterium tuberculosis</em> and nontuberculous mycobacteria, cytomegalovirus (CMV), and endemic fungi such as <em>Histoplasma capsulatum</em> and <em>Coccidioides</em> species.</li>
+        <li><strong>Combination defects</strong> — most high-risk inpatients have several defects at once. A patient on glucocorticoids for graft-versus-host disease who remains lymphopenic after chemotherapy is at risk for both mould and viral or mycobacterial disease. Time since transplantation matters: early neutropenia favours bacterial and mould disease, late ongoing immunosuppression favours <em>Nocardia</em>, cryptococcosis, and viral reactivation.</li>
+      </ul>
+      <p>Review prophylaxis explicitly: trimethoprim-sulfamethoxazole, azole antifungals, antiviral agents, plus recent antibiotics, glucocorticoid dose and duration, and calcineurin or mammalian target of rapamycin (mTOR) inhibitors. Prophylaxis failures and drug interactions change empiric choices.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Write down three things before you interpret the scan: the immune defect, how long it has been present, and what prophylaxis the patient is receiving.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not equate afebrile with uninfected in patients on glucocorticoids or with profound neutropenia. Extensive angioinvasive disease can exist with minimal fever or sputum.</p>
+      </div>
+
+      <h2 class="ct-h2">What the computed tomography pattern is trying to tell you</h2>
+      <p>Chest computed tomography is the anchor study. Plain radiography misses early nodules. Describe nodules systematically: number, size, distribution, associated ground-glass halo, cavitation, and ancillary findings such as sinus disease or lymphadenopathy.</p>
+      <p>No pattern is diagnostic alone. The speaker stressed pattern plus host plus tempo.</p>
+      <ul>
+        <li><strong>Halo sign</strong> (nodule with surrounding ground-glass) — suggests angioinvasion with haemorrhage. Classically seen with invasive aspergillosis in neutropenic hosts early in disease, but also with other moulds and <em>Nocardia</em>. After several days the halo may fade as cavitation appears.</li>
+        <li><strong>Reverse halo or atoll sign</strong> — central ground-glass surrounded by consolidation. Seen in pulmonary mucormycosis and organising pneumonia. In the right host, consider <em>Mucorales</em> urgently.</li>
+        <li><strong>Cavitation or air-crescent sign</strong> — often appears as neutrophils recover and necrotic centre retracts. It does not by itself prove improvement; it can reflect immune reconstitution around an established infarct.</li>
+        <li><strong>Tree-in-bud opacities</strong> — branching centrilobular opacities suggest endobronchial spread, more typical of bacterial bronchopneumonia or mycobacterial disease than angioinvasive mould.</li>
+        <li><strong>Miliary or random nodules</strong> — consider disseminated tuberculosis, endemic fungi, <em>Nocardia</em>, or haematogenous seeding.</li>
+      </ul>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Halo and reverse halo are clues about vessel invasion, not organism labels. A halo on a mould-inactive azole should prompt consideration of breakthrough mould, not waiting for serum markers.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The vignette patient has a peripheral nodule with a halo sign during prolonged neutropenia while on fluconazole. Which pattern fits best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tree-in-bud opacities from bacterial bronchopneumonia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Angioinvasive mould disease with perinodular haemorrhage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Diffuse ground-glass typical of <em>Pneumocystis jirovecii</em> pneumonia alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A solitary calcified granuloma</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Peripheral nodules with halo sign in prolonged neutropenia suggest angioinvasion with haemorrhage. Fluconazole has no mould activity, so breakthrough <em>Aspergillus</em> or <em>Mucorales</em> remains possible. Tree-in-bud implies endobronchial spread rather than haematogenous angioinvasion.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The infectious differential that matters most</h2>
+      <p>Use a short ranked list. The table groups common nodular pathogens by the host context in which they most often appear. Keep bacterial, fungal, mycobacterial, viral, and noninfectious mimics on each list.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Infectious causes of pulmonary nodules by dominant host defect</caption>
+          <thead>
+            <tr><th>Dominant defect</th><th>Common nodular pathogens and patterns</th><th>Key distinguishing clues</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Prolonged neutropenia</td><td><em>Aspergillus</em> species (halo, cavitation on recovery), <em>Mucorales</em> (reverse halo, rapid progression), <em>Nocardia</em> species, <em>Pseudomonas aeruginosa</em></td><td>Breakthrough on fluconazole points toward mould; sinus or palatal lesions suggest <em>Mucorales</em></td></tr>
+            <tr><td>T-cell impairment</td><td><em>Nocardia</em>, <em>Cryptococcus neoformans</em>, <em>Mycobacterium tuberculosis</em> and nontuberculous mycobacteria, <em>Histoplasma capsulatum</em>, <em>Coccidioides</em> species, cytomegalovirus, <em>Pneumocystis jirovecii</em></td><td>CD4 count and exposure history; skin or central nervous system disease favours cryptococcosis or nocardiosis</td></tr>
+            <tr><td>Mixed or late post-transplant</td><td><em>Nocardia</em>, <em>Aspergillus</em>, <em>Mucorales</em>, <em>Cryptococcus</em>, mycobacteria</td><td>Months to years after transplantation; drug interaction history essential</td></tr>
+            <tr><td colspan="3">Noninfectious mimics: malignancy, organising pneumonia, drug toxicity, immune reconstitution inflammatory syndrome</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two organisms are frequently missed. <span class="ct-term">Nocardiosis</span> produces nodules that may cavitate and often coexists with brain abscesses; diagnosis is frequently delayed. Consider brain imaging when <em>Nocardia</em> is plausible. <span class="ct-term">Mucormycosis</span> progresses rapidly and does not respond to voriconazole; early involvement of infectious diseases, pulmonary, and surgical teams matters more than waiting for a perfect test.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Think of <em>Nocardia</em> when you see cavitary nodules plus brain lesions in a patient on prolonged glucocorticoids — image the brain before dismissing headache.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 38-year-old woman 9 months after renal transplantation on tacrolimus and prednisone has two cavitary nodules, fever, and a new enhancing brain lesion. Sputum gram stain shows beaded gram-positive rods. Which organism best explains the syndrome?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false"><em>Aspergillus fumigatus</em></button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true"><em>Nocardia</em> species</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false"><em>Pneumocystis jirovecii</em></button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Respiratory syncytial virus</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>Nocardia</em> causes pulmonary nodules that cavitate and disseminates to brain, especially with glucocorticoids. Beaded gram-positive rods that are partially acid-fast are characteristic.</p>
+        </div>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not anchor on a single sputum culture or serum marker. Sputum <em>Candida</em> rarely explains nodules, and a negative serum galactomannan does not exclude aspergillosis, especially on mould-active prophylaxis or with <em>Mucorales</em>.</p>
+      </div>
+
+      <h2 class="ct-h2">A stepwise workup that keeps you out of trouble</h2>
+      <p>Move quickly but in order: secure microbiology before empiric changes obscure it, without causing dangerous delay.</p>
+      <ol>
+        <li><strong>Review the timeline.</strong> Onset and duration of immunosuppression, chemotherapy or transplant dates, prophylaxis and antibiotics, glucocorticoid exposure, travel and environmental exposures. Examine sinuses, palate, skin, and fundi for <em>Mucorales</em> or disseminated cryptococcosis.</li>
+        <li><strong>Confirm with chest CT and compare with priors</strong> to assess tempo. Do not rely on radiography alone for nodule assessment.</li>
+        <li><strong>Send focused microbiology before changing antifungals.</strong> Blood cultures, sputum gram stain and culture, acid-fast smear and mycobacterial culture, serum cryptococcal antigen where T-cell impairment exists. In neutropenic hosts send serum galactomannan (GM) and beta-D-glucan (BDG) when available, recognising limited sensitivity and specificity. Galactomannan is most useful for <em>Aspergillus</em> and not produced by <em>Mucorales</em>; beta-D-glucan is unreliable for <em>Mucorales</em> and <em>Cryptococcus</em>.</li>
+        <li><strong>Plan bronchoalveolar lavage (BAL) early.</strong> BAL with bacterial, fungal, and mycobacterial cultures, BAL galactomannan, cytology, and molecular studies has highest yield before a nodule walls off. Discuss with pulmonology and infectious diseases before broadening antifungals if the patient is stable for timely BAL.</li>
+        <li><strong>Pursue tissue when BAL is nondiagnostic or malignancy or <em>Mucorales</em> is strongly considered.</strong> Percutaneous or surgical biopsy may be fastest for peripheral lesions. Do not delay biopsy planning while repeating low-yield tests.</li>
+        <li><strong>Image what the lung suggests.</strong> If <em>Nocardia</em> or disseminated mould is plausible, add brain imaging. If <em>Mucorales</em> is considered, examine sinuses urgently.</li>
+      </ol>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Galactomannan and beta-D-glucan are adjuncts, not gatekeepers. Sensitivity falls on mould-active azoles, and false positives occur with certain beta-lactams and severe mucositis. A negative serum test does not cancel a compelling host plus CT pattern.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When you order BAL for suspected mould, tell the laboratory what you suspect. A general culture request may not trigger fungal stains or BAL galactomannan without a prompt.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A neutropenic patient with a halo-sign nodule has a negative serum galactomannan while on fluconazole. What is the best interpretation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Invasive aspergillosis is excluded</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Negative galactomannan does not exclude mould; proceed with CT-guided management and early BAL</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to voriconazole and repeat galactomannan in one week before further workup</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order a ventilation-perfusion scan</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Galactomannan sensitivity is reduced by azole exposure and is imperfect, and <em>Mucorales</em> does not produce it. Host plus imaging should drive next steps; BAL remains valuable.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treatment principles and when to call for help</h2>
+      <p>Definitive therapy depends on the organism and whether immunity will recover soon. Avoid two errors: doing nothing while awaiting perfect data, and starting broad therapy in a way that destroys diagnostic yield.</p>
+      <ul>
+        <li><strong>Coordinate timing.</strong> If clinically stable and BAL can be arranged promptly, obtain BAL before broadening antifungal coverage. If unstable or BAL will be markedly delayed, do not defer empiric therapy for suspected invasive mould — involve infectious diseases urgently and document the trade-off.</li>
+        <li><strong>Reassess prophylaxis.</strong> Fluconazole does not treat mould. When mould is likely, continued mould-inactive prophylaxis should be reconsidered deliberately, not by default. Choice of mould-active agent depends on suspected organism, interactions, and organ function; obtain pharmacy and infectious diseases input, especially when <em>Mucorales</em> is possible.</li>
+        <li><strong>Do not treat sputum <em>Candida</em> as the explanation for nodules.</strong> Pulmonary candidiasis presenting as nodules is uncommon; sputum <em>Candida</em> usually reflects colonisation.</li>
+        <li><strong>Plan for drug interactions.</strong> Azoles interact extensively with calcineurin inhibitors and chemotherapy. Any new azole needs medication reconciliation and often therapeutic drug monitoring.</li>
+        <li><strong>Consider source control.</strong> For suspected <em>Mucorales</em>, early surgical consultation is part of therapy. For transplant recipients, communicate with the transplant team before adjusting immunosuppression.</li>
+        <li><strong>Follow immune recovery.</strong> Cavitation often appears as neutrophils recover. Worsening that coincides with recovery may reflect immune reconstitution rather than failure; integrate microbiology and tempo before declaring failure.</li>
+      </ul>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 62-year-old stem cell transplant recipient on voriconazole prophylaxis develops a rapidly enlarging reverse halo lesion with sinus pain and palatal discolouration. Which step best fits?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue voriconazole and repeat CT in one week</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add trimethoprim-sulfamethoxazole for <em>Pneumocystis</em></button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Urgently involve infectious diseases, pulmonary, otolaryngology and surgical teams for suspected mucormycosis and obtain tissue</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start anti-tuberculous therapy</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Reverse halo with rapid progression and palatal lesions on voriconazole points toward <em>Mucorales</em>, which is resistant to voriconazole. Urgent multidisciplinary tissue diagnosis is needed.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Breakthrough nodules on mould-active prophylaxis do not reassure — they redirect. Consider organisms not covered by the current azole and escalate diagnostics.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Name the host defect before interpreting the nodule — neutropenia favours angioinvasive moulds and <em>Nocardia</em>, T-cell impairment broadens to cryptococcosis, tuberculosis, endemic fungi, and viral disease.</li>
+        <li>Treat halo and reverse halo as markers of vessel invasion that demand urgent workup, not organism stamps. Combine pattern with host, prophylaxis, and tempo.</li>
+        <li>Build a short ranked differential diagnosis and keep noninfectious mimics on the list.</li>
+        <li>Send focused fungal and mycobacterial studies early, plan bronchoalveolar lavage (BAL) promptly, and pursue tissue when needed — a single negative serum marker does not exclude disease.</li>
+        <li>Image the brain when <em>Nocardia</em> or disseminated mould is plausible; examine sinuses when <em>Mucorales</em> is considered.</li>
+        <li>Involve infectious diseases, pulmonary, and surgical or transplant teams early; reassess prophylaxis deliberately and manage azole interactions.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Patterson TF, et al. Practice guidelines for the diagnosis and management of aspergillosis: 2016 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2016;63(4):e1-e60.</li>
+          <li>Cornely OA, et al. Global guideline for the diagnosis and management of mucormycosis. <em>Lancet Infect Dis</em>. 2019;19(12):e405-e421.</li>
+          <li>Perfect JR, et al. Clinical practice guidelines for the management of cryptococcal disease: 2010 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2010;50(3):291-322.</li>
+          <li>Donnelly JP, et al. Revision and update of the consensus definitions of invasive fungal disease from the European Organization for Research and Treatment of Cancer and the Mycoses Study Group Education and Research Consortium. <em>Clin Infect Dis</em>. 2020;71(6):1367-1376.</li>
+        </ol>
+      </div>
+
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Pulmonary nodules in immunocompromised hosts</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

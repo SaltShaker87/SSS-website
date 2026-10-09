@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach to the red, swollen leg — IDSA Chalk Talk</title>
+<meta name="description" content="When a red leg is cellulitis — and when it is not — and how to manage it safely.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Approach to the red, swollen leg — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Skin and soft tissue infection</p>
+        <h1 class="ct-h1">Approach to the red, swollen leg</h1>
+        <p class="ct-subtitle">Telling cellulitis from its many mimics at the bedside</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 12 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man with obesity, chronic bilateral leg swelling, and venous insufficiency presents with three days of left shin redness, warmth, and aching. He has had two similar episodes in the past year, each treated with antibiotics. He is afebrile, his vital signs are normal, and his white blood cell count is 8,200 per microliter. The left lower leg is diffusely erythematous with ill-defined borders from ankle to mid-calf, pitting oedema, brownish discolouration around the ankles bilaterally, and shallow scaling between the toes. The right leg looks similar but less red. He reports pruritus more than pain, and no fever, rigour, or trauma. The team asks: is this cellulitis again?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish true cellulitis from pseudocellulitis using a focused history and exam.</li>
+          <li>Name at least four common mimics of lower-leg cellulitis and their bedside clues.</li>
+          <li>Identify red flags that should prompt concern for necrotizing infection or severe disease.</li>
+          <li>Choose a workup that helps without over-testing, and select narrow empiric therapy when antibiotics are indicated.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Not every red leg is cellulitis</h2>
+      <p>The red, swollen leg is one of the most common infectious disease consults — and one of the most often misdiagnosed. Prospective studies in which dermatologists or infectious disease specialists re-examined patients admitted for lower-extremity cellulitis found that about one in three did not actually have cellulitis. That label is sticky: once it is in the chart, recurrence gets assumed and antibiotics get repeated.</p>
+      <p>That repetition has costs — adverse drug effects, <em>Clostridioides difficile</em> infection, colonisation with resistant organisms, and longer stays — while the true underlying condition, often chronic venous disease or stasis dermatitis, goes untreated. Learning to pause before calling every red leg cellulitis protects patients from both undertreatment and overtreatment.</p>
+      <p><span class="ct-term">Pseudocellulitis</span> is the umbrella term for inflammatory conditions that mimic cellulitis without bacterial infection of the dermis and subcutaneous tissue. Most mimics share erythema, warmth, and oedema with cellulitis, but they present with clues that a brief, structured bedside assessment can uncover. The key is to ask about tempo, symmetry, pruritus versus pain, systemic symptoms, and prior pattern, and to look at both legs, the interdigital toe spaces, and the skin surface — not just the colour.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>About 30% of patients labelled as lower-leg cellulitis do not have cellulitis when re-examined by an expert. Bilateral redness, chronicity, pruritus, and repeated prior episodes should make you widen the differential.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>There is no single laboratory test that establishes cellulitis. It remains a clinical diagnosis based on history and exam, with labs and imaging used mainly to exclude mimics or detect complications. That uncertainty is exactly why a framework matters.</p>
+      </div>
+
+      <h2 class="ct-h2">What cellulitis is — and how it behaves</h2>
+      <p><span class="ct-term">Cellulitis</span> is an acute bacterial infection of the dermis and subcutaneous tissue, usually without a drainable abscess or purulence. In the immunocompetent adult, the typical pathogens are group A <em>Streptococcus pyogenes</em> and other beta-haemolytic streptococci (groups C and G, <em>Streptococcus dysgalactiae</em>), and methicillin-susceptible <em>Staphylococcus aureus</em> (MSSA). Community-associated methicillin-resistant <em>Staphylococcus aureus</em> (MRSA) is an important cause of purulent skin infection — abscess, furuncle, or cellulitis with purulent drainage — but it causes only a minority of otherwise nonpurulent leg cellulitis.</p>
+      <p>True cellulitis is almost always unilateral and relatively acute — hours to a few days of spreading erythema, warmth, tenderness, and oedema. The border is typically diffuse and not sharply demarcated. In <span class="ct-term">erysipelas</span>, a superficial variant with lymphatic involvement caused most often by <em>Streptococcus pyogenes</em>, the border may be raised and sharply defined with a glossy appearance, but the leg is still exquisitely tender. Systemic features such as fever, chills, or malaise may be present but are often absent, especially in older adults.</p>
+      <p>Portal of entry matters more than redness. Interdigital tinea pedis, toe-web maceration, trauma, chronic oedema, obesity, and venous insufficiency impair skin integrity and predispose to recurrence. Fixing the portal — drying toe webs, treating fungal infection, elevating and managing oedema — matters as much as antibiotics, yet is most often skipped.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cellulitis is unilateral, acute, and tender. Erysipelas is the same process more superficially — sharply demarcated and bright red — still usually streptococcal. Bilateral, symmetric, and chronic redness favours stasis over infection.</p>
+      </div>
+
+      <h3 class="ct-h3">Why both legs matter</h3>
+      <p>Examine both legs fully, in good light, including the ankles, gaiters, and toe webs. Hemosiderin staining (brown pigment from chronic venous hypertension), pitting oedema, varicosities, scaling, and excoriations point toward chronic venous disease. A leg that has looked the same for weeks or months, with mild pruritus rather than acute pain, is unlikely to have become acutely infected overnight.</p>
+
+      <h2 class="ct-h2">A three-minute history and exam that sorts the list</h2>
+      <p>When the team calls about a red leg, the fastest way to avoid anchoring is to run the same few questions and exam steps each time.</p>
+      <p>Ask about onset and course: when did redness start, how quickly did it spread, and is this the first episode or the third this year? Ask about pain versus itch (cellulitis tends to be tender or painful; stasis dermatitis and contact dermatitis often itch), fever, rigour, and systemic symptoms. Ask about trauma, insect bite, injection or infusional injury, animal exposure, water exposure, prior deep vein thrombosis (DVT), gout or joint swelling, recent hospitalisation or surgery, antibiotics already given and response, and chronic leg swelling or known venous insufficiency. Ask about pruritic rash, new soaps, topical products, or dressings that suggest contact dermatitis. For any patient with oedema, ask about heart failure, liver or kidney disease, and medications that cause oedema such as calcium-channel blockers.</p>
+      <p>On exam, start with vital signs and a full skin exam. Note distribution (unilateral versus bilateral and symmetric), border characteristics (diffuse versus sharply raised), warmth, tenderness to palpation, and presence of oedema — pitting versus non-pitting, extent, and symmetry. Look for interdigital maceration or scaling, ulceration, vesicles, bullae, haemorrhage, or crepitus. Palpate for fluctuance suggesting abscess and examine joints for gout or septic arthritis. Check both legs for hemosiderin staining, eczematous changes, and varicosities. An acutely painful, markedly swollen calf with positive Homan's sign is not specific; calf asymmetry with oedema should prompt consideration of DVT regardless of erythema.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Interdigital toe-web disease is the most treatable risk factor for streptococcal leg cellulitis. If the toe webs are white, macerated, or scaly, that finding changes management more than any lab value.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 62-year-old woman with chronic bilateral ankle oedema and brownish ankle discolouration develops mild bilateral shin erythema and pruritus over two weeks. She is afebrile with a normal white blood cell count. What most favours pseudocellulitis over cellulitis?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Unilateral warmth</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Bilateral, symmetric, pruritic eruption with chronic course and hemosiderin staining</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Fever to 38.5°C with acute unilateral pain</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Rapid spread over six hours with sharply demarcated raised border</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Chronicity, symmetry, pruritus over pain, stable vital signs, and stigmata of chronic venous insufficiency such as hemosiderin staining point toward stasis dermatitis. True cellulitis is acute, usually unilateral, tender, and not chronically symmetric. A raised, sharply demarcated hot plaque favours erysipelas, still infection, not stasis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Common mimics and how to tell them apart</h2>
+      <p>Memorise a short list and the bedside clues that separate each from cellulitis. Most mimics do not require antibiotics, and several worsen with them only through delay of correct therapy.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common pseudocellulitis mimics — bedside clues</caption>
+          <thead>
+            <tr><th>Mimic</th><th>Typical clues</th><th>What helps confirm or exclude</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Stasis dermatitis and lipodermatosclerosis</td><td>Bilateral or symmetric erythema, pruritus, chronic course, hemosiderin staining, pitting oedema, scaling, prior episodes that recurred quickly after antibiotics</td><td>Leg elevation test — erythema often fades with elevation; dermatology input if uncertain; treat underlying venous disease</td></tr>
+            <tr><td>Deep vein thrombosis (DVT)</td><td>Unilateral calf or whole-leg swelling and pain, oedema out of proportion to erythema, risk factors such as immobility or prior clot; erythema may be mild</td><td>Compression duplex ultrasound; apply a clinical decision rule before d-dimer testing; do not rely on erythema alone</td></tr>
+            <tr><td>Acute gout or inflammatory arthritis</td><td>Sudden joint-centred pain, overlying erythema, prior gout, tophi, involvement of first metatarsophalangeal or other joint</td><td>Joint exam, serum urate is not diagnostic acutely, arthrocentesis if the joint is the centre of inflammation</td></tr>
+            <tr><td>Contact or irritant dermatitis</td><td>Pruritic, sometimes vesicular or eczematous, exposure to new topical agent, dressing, or compression stocking</td><td>History of exposure, distribution matching contact area, improvement with removal and topical care</td></tr>
+            <tr><td>Lymphedema with chronic changes</td><td>Non-pitting swelling, woody texture, recurrent but similar episodes, prior lymphatic injury or surgery</td><td>History of lymphatic damage; cellulitis can supervene, so look for acute change in pain, fever, or rapid spread</td></tr>
+            <tr><td>Hematoma, dependent rubor, or dependent oedema</td><td>History of trauma or prolonged dependency, petechiae or bruising, erythema that lessens with elevation</td><td>History, elevation, and observation; imaging only if trauma concern is high</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Other mimics worth a brief thought include eosinophilic cellulitis (Wells syndrome), vasculitis, pyoderma gangrenosum, erythema migrans from Lyme disease, and bilateral lower-leg erythema from systemic causes such as heart failure or medication-related oedema. The table is not exhaustive, but it covers the diagnoses responsible for most non-cellulitis legs.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Calling bilateral symmetric redness cellulitis and starting broad-spectrum antibiotics. True bilateral lower-leg cellulitis is rare. When both legs are red, think stasis dermatitis, contact dermatitis, or bilateral oedema from a systemic cause before you think bilateral infection.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Marked chronic oedema, pruritus, brown discolouration, or scaling around the ankles points to venous disease even when the current episode is unilateral. Treating tinea pedis, drying toe webs, and planning compression after the acute phase prevents the next episode.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 48-year-old man with sudden severe pain and erythema over the first metatarsophalangeal joint, mild dorsal foot erythema, and a history of gout presents with a red, swollen foot. He is afebrile. What is the most useful next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start vancomycin and cefazolin for cellulitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Examine the joint, assess for gout flare, and consider arthrocentesis if indicated rather than reflexively treating cellulitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Obtain blood cultures and start broad coverage for bilateral cellulitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Mark the border and reassess in 24 hours without further evaluation</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Joint-centred erythema with exquisite joint pain and a known gout history should prompt evaluation for gout or septic arthritis before assuming foot cellulitis. Arthrocentesis is indicated when the joint is the epicentre, with care to avoid passing through infected skin. Reflexively starting anti-MRSA therapy for what is likely crystal disease delays the right treatment.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Red flags for necrotizing infection and severe disease</h2>
+      <p>Nearly all legs in the pseudocellulitis discussion are not emergencies, but a small subset are. Necrotizing soft tissue infection progresses swiftly, and survival depends on early surgical evaluation. Do not let the cellulitis label reassure you when the exam does not fit.</p>
+      <p>Seek urgent surgical consultation for pain out of proportion, rapidly progressive erythema or oedema, tense oedema, violaceous or dusky skin, haemorrhagic bullae, crepitus, subcutaneous gas, anaesthesia over the area, or systemic toxicity with hypotension or altered mental status. These findings prompt immediate resuscitation and broad antibiotics; imaging — computed tomography (CT) or magnetic resonance imaging (MRI) — must not delay surgery and a negative scan does not exclude necrotizing infection.</p>
+      <p>Other markers of severe cellulitis that merit closer monitoring or admission include marked leukocytosis, hypotension, immunosuppression, extensive body-surface involvement, involvement near devices or prostheses, or failure to improve on oral therapy. For the usual nonpurulent leg cellulitis without red flags, routine computed tomography or magnetic resonance imaging is not needed and often misleads.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Reassuring yourself with a normal Laboratory Risk Indicator for Necrotizing Fasciitis (LRINEC) score. The score has poor sensitivity and a low score does not rule out necrotizing infection. Trust the story — rapid progression, severe pain, bullae, crepitus, hypotension — over any calculator.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Pain out of proportion, anaesthesia over the lesion, haemorrhagic bullae, and crepitus are surgical emergencies. Call surgery early and do not wait for imaging to catch up.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Necrotizing fasciitis is most often polymicrobial or caused by group A <em>Streptococcus pyogenes</em> or <em>Staphylococcus aureus</em>. The classic teaching of gas on exam or imaging identifies only a minority early; absence of gas does not mean absence of necrosis.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 55-year-old man with diabetes presents with 12 hours of rapidly spreading leg erythema, tense oedema, haemorrhagic bullae, and pain that now seems less than expected for the appearance. He is hypotensive and febrile. What is the next best action?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start oral dicloxacillin and arrange outpatient follow-up</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order a magnetic resonance image and await results before antibiotics</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Begin broad empiric antibiotics, resuscitate, and obtain emergent surgical evaluation without delay for imaging</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Calculate LRINEC and discharge if the score is low</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Haemorrhagic bullae, rapid progression, hypotension, and pain that becomes paradoxically blunted suggest necrotizing infection. Broad antibiotics and immediate surgical assessment are the priority; imaging must not delay debridement. A low LRINEC score does not exclude necrotizing fasciitis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Testing and treatment without overdoing it</h2>
+      <p>For typical nonpurulent leg cellulitis without systemic toxicity, labs rarely change management. A complete blood count (CBC) and C-reactive protein (CRP) are nonspecific and do not distinguish cellulitis from stasis dermatitis. Blood cultures are positive in only a small minority and are reserved for high fever, hypotension, immunocompromise, or atypical infection. Wound cultures help only with purulent drainage or abscess — not intact erythema. Duplex ultrasound is the test when deep vein thrombosis (DVT) is in the differential.</p>
+      <p>When you decide the leg is infected, narrow therapy is the point. For typical nonpurulent cellulitis, streptococci are the most likely pathogen, with methicillin-susceptible <em>Staphylococcus aureus</em> next. Guidelines for nonpurulent cellulitis suggest coverage aimed at streptococci and methicillin-susceptible <em>Staphylococcus aureus</em> without routine MRSA coverage — for example an oral first-generation cephalosporin or dicloxacillin for mild disease, or intravenous cefazolin when parenteral therapy is needed. Add MRSA-active therapy only when there is purulence, known MRSA colonisation or prior infection, or risk factors that raise MRSA likelihood, choosing among agents such as vancomycin, trimethoprim-sulfamethoxazole, or doxycycline according to local resistance and patient factors. Broader gram-negative or anaerobic coverage is not routinely needed for leg cellulitis without specific exposures such as water immersion, bite, or diabetic foot wound.</p>
+      <p>Duration follows the same principle of restraint. Uncomplicated cellulitis that is clearly improving often needs only about five to six days of therapy, with extension only if clinical response is slow. Counsel the patient that erythema and oedema improve more slowly than fever and pain — marking the border with a pen may show initial expansion even as systemic symptoms ease, and oedema can persist for days. Elevation, skin care, treatment of tinea pedis, and oedema management between episodes prevent recurrence more effectively than repeated antibiotic courses. When the picture favours pseudocellulitis, the most therapeutic intervention is often stopping the unnecessary antibiotic, elevating the leg, protecting the skin barrier, and arranging follow-up for compression once acute inflammation has settled.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Blood cultures, computed tomography, and magnetic resonance imaging are overused in uncomplicated cellulitis. Reserve cultures for severe or atypical presentations and imaging for suspected deep infection, abscess, or necrotizing disease. For cellulitis that is improving, redness often lags behind clinical improvement — treat the patient, not the outline.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When antibiotics are needed for nonpurulent leg cellulitis, think streptococci first. Routine MRSA coverage for every red leg is overkill — reserve it for purulence, known colonisation, or specific risk factors, and keep duration short when the patient is improving.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 58-year-old man from the opening vignette is now reassessed. Both shins show chronic brown discolouration and pitting oedema, toe webs are white and macerated, and the border of erythema is diffuse and modestly tender. He is afebrile with a normal white blood cell count and no bullae or crepitus. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start vancomycin plus piperacillin-tazobactam and order a leg CT</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Elevate the leg, treat interdigital fungal infection, provide skin care, and reconsider whether antibiotics are indicated; if cellulitis is still suspected, choose narrow streptococcal-active therapy and close follow-up</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Swab the intact erythematous skin for culture and await results</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start a 14-day course of broad-spectrum oral antibiotics regardless of exam</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This presentation favours stasis dermatitis with possible mild superimposed cellulitis rather than severe purulent infection. Elevation, skin care, and treating tinea pedis address the portal and underlying oedema. If infection remains likely after bedside reassessment, narrow empiric therapy aimed at streptococci and methicillin-susceptible <em>Staphylococcus aureus</em> is appropriate, not routine MRSA plus gram-negative coverage, and surface swabs of intact skin do not guide care. Duration should be short if improving.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>One in three legs labelled cellulitis is not infected on expert review — check for bilateral redness, chronicity, pruritus over pain, and repeated prior antibiotic courses before reflexively treating.</li>
+        <li>True cellulitis is acute, unilateral, tender, and diffuse-bordered (erysipelas is sharply demarcated and superficial) — look above all for a portal such as interdigital tinea pedis.</li>
+        <li>Run the mimics systematically: stasis dermatitis and lipodermatosclerosis, DVT, acute gout, contact dermatitis, lymphedema, and hematoma or dependent change cover most pseudocellulitis.</li>
+        <li>Pain out of proportion, rapid progression, haemorrhagic bullae, crepitus, anaesthesia, or hypotension are necrotizing infection until proven otherwise — resuscitate, give broad antibiotics, and call surgery immediately without waiting for imaging.</li>
+        <li>For uncomplicated nonpurulent cellulitis, cultures and advanced imaging rarely help; choose narrow streptococcal-active therapy, reserve MRSA coverage for purulence or known risk, keep duration short when improving, elevate the leg, and treat toe-web disease and oedema to prevent recurrence.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Stevens DL, Bisno AL, Chambers HF, et al. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2014;59(2):e10-e52.</li>
+          <li>Weng QM, Raff AB, Cohen JM, et al. Costs and consequences associated with misdiagnosed lower extremity cellulitis. <em>JAMA Dermatol</em>. 2017;153(2):141-146.</li>
+          <li>Gunderson CG. Cellulitis: definition, etiology, and clinical features. <em>Am J Med</em>. 2011;124(12):1113-1122.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Approach to the red, swollen leg</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BACTERIA: A framework for selecting antimicrobials — IDSA Chalk Talk</title>
+<meta name="description" content="A bedside checklist for choosing the right antibiotic for the right patient — organism, host, site, and stewardship.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">BACTERIA: A framework for selecting antimicrobials — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Antimicrobial stewardship</p>
+        <h1 class="ct-h1">BACTERIA: A framework for selecting antimicrobials</h1>
+        <p class="ct-subtitle">A bedside checklist that starts with the bug, not the drug</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+            <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man is admitted at 11 p.m. with fever, productive cough, and hypotension. He has chronic kidney disease (CKD), a documented rash to penicillin as a child, and methicillin-resistant <em>Staphylococcus aureus</em> (MRSA) in a sputum culture from 3 months ago. The night resident asks: which antibiotic do I start right now, and how do I know it is the right one?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Apply the BACTERIA checklist to choose an empiric regimen systematically instead of from memory.</li>
+          <li>Integrate patient-specific factors — allergy history, prior cultures, organ function, and site of infection — before picking a drug.</li>
+          <li>Select the narrowest effective agent, plan culture-guided de-escalation, and choose the right route and duration.</li>
+          <li>Identify common pitfalls that harm patients: treating colonisation, inadequate source control, and missed drug interactions.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why you need a checklist at 2 a.m.</h2>
+      <p>Choosing antibiotics feels like a memory test. You are tired, the patient is unstable, and the electronic health record (EHR) offers thirty options. Without a system you anchor on the last case you saw or the broadest drug you remember. That is how overtreatment happens — and how a patient with a simple urinary syndrome gets a carbapenem.</p>
+      <p>The BACTERIA framework is not an antibiogram. It is a bedside sequence that forces you to answer questions in the right order: what bug you are covering, what the patient brings, where the drug has to go, and how you will stop or narrow it. Use it for empiric therapy in the first hour, then run it again at 48 to 72 hours when cultures return. It works whether you have ten minutes or two.</p>
+      <p>Two principles underpin the whole thing. First, <span class="ct-term">empiric therapy</span> is an educated guess that must be revisited — it is not a final answer. Second, every extra day and every extra spectrum of coverage has a cost: kidney injury, <em>Clostridioides difficile</em> infection, resistance, and drug interactions. The narrowest regimen that covers the likely organisms at the site is the most effective regimen.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The letters spell BACTERIA so you can run through them without a pocket card. Different programmes teach slightly different words for each letter. The version here — bugs, allergies, cultures, tissue penetration, efficacy, resistance and renal function, interactions and immune status, access and stewardship — captures what most infectious diseases (ID) services check on rounds. Pick one wording and use it consistently.</p>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>BACTERIA at a glance — what each letter asks</caption>
+          <thead>
+            <tr><th>Letter</th><th>Stands for</th><th>Ask yourself</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>B</strong></td><td>Bugs — likely organisms</td><td>What syndrome is this, and what organisms cause it here?</td></tr>
+            <tr><td><strong>A</strong></td><td>Allergies and adverse effects</td><td>What is the real allergy history and what toxicities can the patient not afford?</td></tr>
+            <tr><td><strong>C</strong></td><td>Cultures, history, and local data</td><td>What do prior cultures, prior antibiotics, and the hospital antibiogram tell me?</td></tr>
+            <tr><td><strong>T</strong></td><td>Tissue penetration and site</td><td>Will this drug reach the site at active concentrations?</td></tr>
+            <tr><td><strong>E</strong></td><td>Efficacy and evidence</td><td>What do guidelines and the narrowest effective option support?</td></tr>
+            <tr><td><strong>R</strong></td><td>Resistance and renal or hepatic function</td><td>What resistance risks and dose adjustments apply?</td></tr>
+            <tr><td><strong>I</strong></td><td>Interactions and immune status</td><td>What interactions, immunosuppression, or pregnancy considerations change the choice?</td></tr>
+            <tr><td><strong>A</strong></td><td>Access, administration, and stewardship</td><td>Can the patient take it, get it, afford it, and stop it on time?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="ct-h2">B — bugs: what are you actually covering</h2>
+      <p>Start with the syndrome, not the drug. A community-acquired pneumonia (CAP), a cellulitis, a urinary tract infection (UTI), and a biliary infection each point to a different short list of organisms. Your job is to name that list before you name an antibiotic. If you cannot name the organism, you cannot judge whether your drug covers it.</p>
+      <p>Three inputs sharpen the list. First, the clinical syndrome and severity: where is the infection, is there sepsis, and what does the physical exam and imaging show. Second, the Gram stain and any rapid diagnostics available — they are imperfect but they narrow possibilities within minutes. Third, host and exposure clues: recent hospitalisation, nursing facility residence, injection drug use, animal exposure, travel, and prior colonisation with resistant organisms such as MRSA or vancomycin-resistant <em>Enterococcus</em> (VRE).</p>
+      <p>For our vignette, hypotensive pneumonia with a prior MRSA sputum culture raises two simultaneous questions: typical CAP organisms such as <em>Streptococcus pneumoniae</em> and <em>Haemophilus influenzae</em> remain possible, but prior MRSA colonisation increases the pre-test probability of MRSA pneumonia enough that empiric MRSA coverage is reasonable until cultures and a nasal polymerase chain reaction (PCR) result return. That reasoning is different from automatically covering MRSA in every pneumonia — it is tied to a patient-specific risk factor.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Start with the bug, not the drug. If you cannot name the organisms you need to cover, any antibiotic choice is a guess.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old otherwise healthy woman presents with acute dysuria, frequency, and no fever or back pain. No prior resistant cultures. What is the most useful next step in B — bugs?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cover for <em>Pseudomonas aeruginosa</em> because it is the most resistant organism</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Identify acute uncomplicated cystitis and its usual organisms, chiefly <em>Escherichia coli</em></button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start empiric therapy for pyelonephritis because she has dysuria</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send a respiratory culture to exclude pneumonia</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Syndrome defines the organism list. Uncomplicated cystitis in a young healthy woman is dominated by <em>E. coli</em> and occasionally <em>Staphylococcus saprophyticus</em>. Starting from the syndrome avoids both undertreatment and unnecessarily broad coverage. Dysuria without fever or costovertebral angle tenderness points to bladder, not kidney, and does not by itself require pyelonephritis coverage.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">A — allergies and adverse effects</h2>
+      <p>The allergy box in the chart is often wrong, and it drives harm when it is. A childhood rash to penicillin entered decades ago may have been viral, while a true history of anaphylaxis, airway swelling, or severe cutaneous adverse reaction such as Stevens-Johnson syndrome is a different level of risk. Reaction type, timing, and what has been tolerated since matter more than the word “allergy”.</p>
+      <p>Expand every beta-lactam allergy on first contact. Ask: what happened, how quickly after the dose, how long ago, how was it treated, and have you taken amoxicillin, ceftriaxone, or cefuroxime since without a problem. Many patients with a remote maculopapular rash can safely receive a cephalosporin with monitoring, while patients with true immunoglobulin E (IgE)-mediated penicillin allergy need an alternative and an allergy referral. When in doubt, involve pharmacy early — they do this all day.</p>
+      <p>Also ask what toxicity the patient cannot afford tonight. An older adult with chronic kidney disease and hearing loss may be a poor candidate for an aminoglycoside even if it is susceptible. A patient with prolonged QT interval on telemetry is at higher risk from agents that prolong the QT interval. A patient with a history of <em>C. difficile</em> in the past 3 months carries higher recurrence risk with clindamycin or broad fluoroquinolone exposure.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>An allergy label is not a diagnosis. Clarify the reaction, the timing, and what the patient has tolerated since — it changes whether a beta-lactam is an option.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not equate every rash with anaphylaxis and do not equate “no allergy” with “no adverse effect.” Azithromycin in a patient with a QT interval over 500 ms, or nitrofurantoin in a patient with a creatinine clearance below 30 mL per minute for pyelonephritis, can cause harm even with a clean allergy list.</p>
+      </div>
+
+      <h2 class="ct-h2">C — cultures, history, and local data</h2>
+      <p>Cultures drawn after antibiotics are negative cultures you cannot interpret. Before the first dose, get blood cultures when there is sepsis, get a reliable site culture when you can access the source without delaying therapy, and send a urinalysis with culture only when urinary symptoms exist. Ordering a urinalysis because the urine looks cloudy is testing the bag, not the patient.</p>
+      <p>Pull the history that changes empiric coverage:</p>
+      <ul>
+        <li>Prior cultures with resistant organisms in the past year, especially MRSA, extended-spectrum beta-lactamase (ESBL)-producing <em>Enterobacterales</em>, or carbapenem-resistant organisms. Recent colonisation often predicts the next infection.</li>
+        <li>Antibiotics in the past 90 days. Recent beta-lactam or fluoroquinolone exposure raises the odds that the current isolate is non-susceptible to that class.</li>
+        <li>Hospital or healthcare exposure, devices, and prior intensive care unit (ICU) stay. These shift the likely organisms from community to healthcare-associated.</li>
+        <li>The institutional antibiogram. If your hospital’s <em>E. coli</em> susceptibility to trimethoprim-sulfamethoxazole is low, that drug is a poor empiric choice for pyelonephritis regardless of how often it is prescribed.</li>
+      </ul>
+      <p>For the man in the vignette, the prior MRSA sputum culture is recent enough to influence empiric therapy, but it does not commit him to weeks of vancomycin. It commits you to covering MRSA up front, reassessing, and stopping it promptly if the current cultures, nasal MRSA PCR, and clinical picture point away from MRSA.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>An antibiogram is a summary of susceptibility for isolates at one institution, usually over a year. It shows what is likely before you have the patient’s own susceptibility. Check your hospital’s antibiogram once — most lab websites host it — so you know the local fluoroquinolone, nitrofurantoin, and ceftriaxone susceptibility for <em>E. coli</em> without hunting mid-shift.</p>
+      </div>
+
+      <h2 class="ct-h2">T — tissue penetration: can the drug get there</h2>
+      <p>Susceptible on paper does not mean effective at the site. Each compartment — lung, urine, cerebrospinal fluid (CSF), bone, central nervous system (CNS), and abscess — has its own penetration rules. If the drug does not reach the site, susceptibility is irrelevant.</p>
+      <p>Examples you will use often: nitrofurantoin concentrates in urine but not in blood or kidney tissue, so it is an option for cystitis and a poor option for pyelonephritis or bacteraemia. Daptomycin is inactivated by surfactant, so it has no role in pneumonia even when the organism is susceptible. Many beta-lactams penetrate lung and soft tissue well but cross into CSF poorly unless inflamed or given at higher meningeal doses. First-generation cephalosporins achieve limited intra-abdominal and biliary concentrations compared with agents with reliable gram-negative and anaerobic activity at those sites.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Penetration principles by site — ask before you choose</caption>
+          <thead>
+            <tr><th>Site</th><th>Agents that generally reach it</th><th>Agents that generally do not</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cystitis (bladder urine)</td><td>Nitrofurantoin, fosfomycin achieve high urine levels</td><td>Nitrofurantoin does not achieve bloodstream or tissue levels for pyelonephritis</td></tr>
+            <tr><td>Pneumonia (alveoli)</td><td>Beta-lactams, respiratory fluoroquinolones, linezolid</td><td>Daptomycin (surfactant inactivation), aminoglycosides as monotherapy</td></tr>
+            <tr><td>CSF or meninges</td><td>Ceftriaxone, cefotaxime, vancomycin when meninges inflamed</td><td>Many oral agents and clindamycin without inflammation</td></tr>
+            <tr><td>Bone or undrained abscess</td><td>Consider need for source control first; prolonged high-dose agents with known bone penetration</td><td>Agents without source control will fail regardless of susceptibility</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Susceptibility tells you what kills the bug on a plate. Penetration tells you whether the drug meets the bug at the site. You need both.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 68-year-old woman has fever, nuchal rigidity, and CSF with gram-positive cocci in pairs. Blood cultures are pending. Which principle best guides early therapy?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Choose agents with reliable CSF penetration when meninges are inflamed, such as a third-generation cephalosporin plus vancomycin pending cultures</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give nitrofurantoin because it is often active against gram-positive organisms</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give daptomycin because it covers gram-positive cocci in the bloodstream</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Await definitive cultures before any antibiotics when meningitis is suspected</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Meningitis is a penetration problem first. The drug must cross the blood–brain barrier while meninges are inflamed. Nitrofurantoin and daptomycin are classic mismatches for CNS infection despite their gram-positive activity. Do not delay empiric meningeal therapy for culture confirmation.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">E and R — efficacy, evidence, resistance, and organ function</h2>
+      <p>With bugs, allergies, cultures, and site in mind, pick the narrowest option with convincing evidence for that syndrome. Guidelines exist for exactly this reason — community-acquired pneumonia, hospital-acquired and ventilator-associated pneumonia, UTI, skin and soft tissue infection, and intra-abdominal infection each have IDSA guidance that ranks regimens by efficacy, toxicity, and local resistance.</p>
+      <p>This is where the second R matters twice: resistance and renal or hepatic function. Resistance is not just an isolate problem; it is an exposure history. Prior ESBL colonisation, a long-term care facility stay, or broad antibiotics last month makes an ESBL organism more likely today. When resistance risk is low, the narrowest guideline-concordant option is the most stewardship-friendly and often the safest. When risk is high, empiric breadth is justified — but only until cultures allow narrowing.</p>
+      <p>Organ function changes the dose, not always the drug. Creatinine clearance, estimated glomerular filtration rate (eGFR), liver failure, body weight, and age alter how much drug reaches the target and how long it stays there. Vancomycin, aminoglycosides, and many beta-lactams need renal adjustment. Hepatically cleared agents such as clindamycin or metronidazole behave differently in severe liver disease. Ask pharmacy to dose-adjust at initiation rather than after toxicity appears.</p>
+      <p>Two pharmacologic ideas help you interpret dosing once cultures return. For beta-lactams, efficacy correlates with time above the minimum inhibitory concentration (MIC). For vancomycin and fluoroquinolones, it correlates with area under the curve relative to MIC. You do not need to calculate these at the bedside; recognise that an organism reported as susceptible but with a high MIC near the breakpoint may need a higher dose or a different agent, and always discuss borderline susceptibilities with microbiology or ID.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not stack anaerobic double coverage by default. Adding metronidazole to piperacillin-tazobactam or adding clindamycin to a regimen that already covers anaerobes increases toxicity without added benefit. Similarly, do not keep both vancomycin and linezolid for MRSA after you have chosen one MRSA agent.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Broad is not safe and narrow is not wimpy. The safest empiric choice is the narrowest regimen that reliably covers the likely organisms at the site, with a plan to narrow further at 48 to 72 hours.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Blood cultures grow <em>E. coli</em> susceptible to ceftriaxone and also to piperacillin-tazobactam. The patient is improving. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue piperacillin-tazobactam because broader is better for bloodstream infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Narrow to ceftriaxone if the site and susceptibilities support it</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add metronidazole for double anaerobic coverage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin until susceptibilities are final</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>De-escalation is stewardship. When a narrower beta-lactam covers the documented organism at the infected site, narrowing reduces toxicity, <em>C. difficile</em> risk, and resistance pressure without losing efficacy. Double anaerobic coverage and routine addition of vancomycin to a susceptible gram-negative bacteraemia do not help.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">I and A — interactions, immune status, access, and stewardship</h2>
+      <p>The last two letters keep you from prescribing an antibiotic the patient cannot safely receive or cannot complete. <span class="ct-term">Drug interactions</span> are common and consequential: fluoroquinolones and macrolides can prolong the QT interval, rifampin induces cytochrome P450 enzymes and lowers levels of anticoagulants, antiretrovirals, and immunosuppressants, and linezolid interacts with serotonergic agents. A two-second interaction check in the order entry system is faster than managing serotonin syndrome or subtherapeutic immunosuppression later.</p>
+      <p><span class="ct-term">Immune status</span> changes the differential and the threshold for early broad therapy. A neutropenic patient with fever needs prompt anti-pseudomonal coverage. A patient with advanced human immunodeficiency virus (HIV) or on high-dose glucocorticoids may need evaluation for opportunistic pathogens beyond the usual bacterial list, but that does not mean every immunocompromised patient needs antifungal or anti-pseudomonal therapy for every fever — syndrome and severity still guide you.</p>
+      <p><span class="ct-term">Access and administration</span> determine whether the right drug actually gets home. Can the patient swallow, absorb, and afford it. Is an oral option with similar bioavailability available. For many syndromes — community pneumonia, cellulitis, pyelonephritis, and uncomplicated bacteraemia after source control — high-bioavailability oral agents are as effective as intravenous (IV) therapy once the patient is clinically stable and can tolerate oral intake. Outpatient parenteral antimicrobial therapy (OPAT) is a commitment device, not a convenience: it requires line access, laboratory monitoring, and follow-up that the patient can realistically complete.</p>
+      <p>Stewardship closes the loop. Document indication, expected duration, and review date in the note. Set a calendar nudge for 48 to 72 hours to reassess cultures, narrow or stop, and convert IV to oral (PO) when criteria are met. Shorter evidence-based durations — for example, limited days for uncomplicated cystitis or CAP in a stable patient — cure as well and harm less.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Intravenous is not stronger than oral when bioavailability is high. Switching from IV to PO at clinical stability shortens length of stay and line-associated harm.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Source control — draining an abscess, removing an infected catheter, or decompressing the biliary tree — matters more than the exact antibiotic. No regimen overcomes retained pus or an undrained obstruction. If you are debating a third antibiotic instead of drainage, call the procedural service.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 55-year-old man with cellulitis is afebrile on day 3, erythema is improving, and he can swallow. He is on IV cefazolin. Blood cultures are negative. What is the most appropriate next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Transition to an oral agent with good bioavailability and skin coverage if the organism and site allow</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue IV therapy for a full 14 days because IV is stronger</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin to “cover” contaminants</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Keep IV access for OPAT even though oral therapy is an option</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Oral step-down is effective when the patient is stable, can absorb, and the organism is susceptible to an oral agent that reaches the site. Continuing IV therapy when an equipotent oral option exists adds line, cost, and stay without improving cure.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Putting it together at the bedside</h2>
+      <p>Return to the 62-year-old man with pneumonia, hypotension, chronic kidney disease, a childhood penicillin rash, and prior MRSA. Run BACTERIA in order, out loud if you need to:</p>
+      <ol>
+        <li><strong>Bugs:</strong> severe CAP with hypotension — typical CAP organisms plus health-care risk for MRSA given prior colonisation. No urinary symptoms to justify urine testing.</li>
+        <li><strong>Allergies:</strong> remote penicillin rash as a child, no anaphylaxis, no recent beta-lactam challenge. Clarify further and enlist pharmacy; a cephalosporin may still be an option with observation, rather than defaulting to a non-beta-lactam regimen that is less effective for CAP.</li>
+        <li><strong>Cultures and history:</strong> draw blood cultures before antibiotics, obtain a good sputum culture, send a nasal MRSA PCR to help de-escalate, check the prior MRSA sputum record, and review the antibiogram for CAP pathogens.</li>
+        <li><strong>Tissue penetration:</strong> lung is the target — avoid daptomycin and urinary-only agents; choose agents with reliable alveolar concentrations.</li>
+        <li><strong>Efficacy and resistance:</strong> guideline-concordant CAP backbone that covers <em>S. pneumoniae</em> and community organisms, plus empiric MRSA coverage given recent colonisation and severity. Plan to stop MRSA coverage if nasal PCR is negative and cultures do not support it.</li>
+        <li><strong>Renal function:</strong> estimate creatinine clearance and ask pharmacy to dose for chronic kidney disease at initiation.</li>
+        <li><strong>Interactions and immune status:</strong> check QT interval, anticoagulant use, and immunosuppression; adjust accordingly.</li>
+        <li><strong>Access and stewardship:</strong> start IV while hypotensive, document indication and planned reassessment at 48 to 72 hours, and plan IV to PO conversion and narrowest duration once stable and cultures return. Address source control — chest imaging and consider drainage if an effusion or obstruction is found.</li>
+      </ol>
+      <p>Now contrast that with the 28-year-old woman with uncomplicated cystitis. B points to <em>E. coli</em>; A reveals no allergy; C shows no prior resistant cultures; T tells you urine is the site — so nitrofurantoin or fosfomycin can be appropriate and a fluoroquinolone is broader than needed; E and R point to the narrowest recommended cystitis agent per guidelines and local susceptibility; I and A confirm she can take an oral agent at home with a short evidence-based duration and no need for blood cultures. Same framework, very different drugs.</p>
+      <p>The point is not to memorise a favourite antibiotic. The point is to make the same eight checks every time, so the choice reflects the syndrome, the patient, and the site — and so the plan includes when and how you will narrow, switch routes, and stop.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Write the stop date and the reassessment trigger the moment you start. “Reassess MRSA coverage in 48 hours with nasal PCR and cultures and plan IV to PO switch when afebrile 24 hours” is a prescription for de-escalation.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Start with the syndrome and the organisms it predicts — B and C — before you name a drug. Prior MRSA or ESBL cultures in the past year and antibiotics in the past 90 days change the likely list.</li>
+        <li>Clarify allergies as reaction type and recency, and name what the patient cannot afford to lose to an adverse effect — kidneys, QT interval, or <em>C. difficile</em> recurrence.</li>
+        <li>Ask whether the drug reaches the site. Urinary-only agents for urine, alveolar agents for lung, meningeal doses for CSF — susceptibility without penetration is a mismatch.</li>
+        <li>Choose the narrowest guideline-concordant option with a dosing plan for creatinine clearance or liver function, then plan the 48 to 72 hour culture check to narrow, stop, or convert from IV to PO.</li>
+        <li>Document indication, duration, and access, and address source control first. An undrained abscess or retained line will fail any regimen.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Barlam TF, Cosgrove SE, Abbo LM, et al. Implementing an antibiotic stewardship program: guidelines by the Infectious Diseases Society of America and the Society for Healthcare Epidemiology of America. <em>Clin Infect Dis</em>. 2016;62(10):e51-e77.</li>
+          <li>Tamma PD, Aitken SL, Bonomo RA, Mathers AJ, van Duin D, Clancy CJ. Infectious Diseases Society of America guidance on the treatment of extended-spectrum beta-lactamase producing <em>Enterobacterales</em>, carbapenem-resistant <em>Enterobacterales</em>, and <em>Pseudomonas aeruginosa</em> with difficult-to-treat resistance: a focused update. <em>Clin Infect Dis</em>. 2022;75(2):e147-e159.</li>
+          <li>Metlay JP, Waterer GW, Long AC, et al. Diagnosis and treatment of adults with community-acquired pneumonia: an official clinical practice guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med</em>. 2019;200(7):e45-e67.</li>
+          <li>Gupta K, Hooton TM, Naber KG, et al. International clinical practice guidelines for the treatment of acute uncomplicated cystitis and pyelonephritis in women: a 2010 update by the Infectious Diseases Society of America and the European Society for Microbiology and Infectious Diseases. <em>Clin Infect Dis</em>. 2011;52(5):e103-e120.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">BACTERIA: A framework for selecting antimicrobials</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

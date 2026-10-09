@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diabetic foot infections — empiric antibiotic selection — IDSA Chalk Talk</title>
+<meta name="description" content="How to grade a diabetic foot wound, predict its microbiology, and choose empiric antibiotics while getting a culture you can trust.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Diabetic foot infections — empiric antibiotic selection — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Skin, soft tissue and bone infections</p>
+        <h1 class="ct-h1">Diabetic foot infections — empiric antibiotic selection</h1>
+        <p class="ct-subtitle">Grading severity, predicting microbiology, and choosing empiric therapy without over-covering</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA chalk talk faculty — 2023 revision (transcript reconstructed from guideline)</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+<div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man with type 2 diabetes mellitus and neuropathy has a 3-week plantar ulcer under the first metatarsal head. Over 2 days it has become red, swollen and malodorous with yellow purulent drainage. He is afebrile, blood pressure 128/74 mmHg, heart rate 88/min. The ulcer is 2.5 cm with 3 cm of surrounding erythema, warmth and tenderness. He took cephalexin 4 weeks ago for a prior ulcer. Nasal screening last admission grew methicillin-resistant <em>Staphylococcus aureus</em> (MRSA). Pedal pulses are diminished. You are asked to choose empiric antibiotics and what culture to send.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Use Infectious Diseases Society of America (IDSA) criteria to decide if a diabetic foot wound is infected and how severe it is.</li>
+          <li>Predict likely pathogens from chronicity, prior antibiotics, and risk factors for MRSA and <em>Pseudomonas aeruginosa</em>.</li>
+          <li>Select an empiric regimen for mild, moderate and severe infection.</li>
+          <li>Obtain a deep tissue culture correctly and recognise when to look for osteomyelitis.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Is this wound infected at all?</h2>
+      <p>Most diabetic foot ulcers are colonised. Treat infection, not colonisation. The Infectious Diseases Society of America (IDSA) and International Working Group on the Diabetic Foot (IWGDF) define infection as purulent secretions <em>or</em> at least two signs of inflammation: erythema, warmth, swelling or induration, and pain or tenderness. The <span class="ct-term">diabetic foot infection</span> is a host response, not just bacteria on a swab. Callus, venous stasis or Charcot change can mimic inflammation, so look for purulence or expanding erythema. Fever, leukocytosis and hyperglycaemia support infection but are not required. Neuropathy blunts pain and ischaemia blunts redness, so a bland ulcer can still be infected.</p>
+      <p>An uninfected ulcer — no purulence and fewer than two inflammatory signs — needs no antibiotics even if a swab would grow organisms. Swabbing uninfected wounds drives overtreatment.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Colonisation is not infection. No purulence and fewer than two inflammatory signs means no antibiotics and no culture. Debride and offload instead.</p>
+      </div>
+      <p>The vignette has purulence plus four inflammatory signs — clearly infected. Next grade severity.</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 58-year-old woman has a 1-cm plantar ulcer with a dry scab, no erythema, swelling or purulence. Swab grows <em>Staphylococcus aureus</em>. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start cephalexin because the swab is positive</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">No antibiotics; wound care, debridement and offloading</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start vancomycin for possible MRSA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start ciprofloxacin plus metronidazole</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Without two inflammatory signs or purulence the ulcer is uninfected. Treating colonisation harms without benefit. Even MRSA colonisation alone is not an indication for antibiotics.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Severity grading is the decision point</h2>
+      <p>Once infected, grade severity. Grade determines setting, route and breadth, and reminds you to check perfusion and bone.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>IDSA/IWGDF severity for diabetic foot wounds</caption>
+          <thead>
+            <tr><th>Grade</th><th>Category</th><th>Features</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Uninfected</td><td>No purulence, no inflammation</td></tr>
+            <tr><td>2</td><td>Mild</td><td>&ge;2 signs or purulence, erythema &le;2 cm, limited to skin/subcutis, no systemic toxicity</td></tr>
+            <tr><td>3</td><td>Moderate</td><td>Erythema &gt;2 cm, lymphangitis, subfascial spread, abscess, gangrene, or muscle/tendon/joint involvement</td></tr>
+            <tr><td>4</td><td>Severe</td><td>Any infection with systemic toxicity — fever, tachycardia, tachypnoea, leukocytosis — meeting systemic inflammatory response syndrome (SIRS) criteria</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Mild disease can often be outpatient oral therapy. Moderate often needs initial intravenous and deeper debridement. Severe needs admission, broad intravenous cover and urgent surgery.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Grade before you prescribe. Mild is oral and narrow; severe with SIRS is admission, surgery and broad intravenous therapy.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>With every grade check perfusion — pulses, dependent rubor, prior revascularisation — and screen for osteomyelitis. Probing to bone or an erythrocyte sedimentation rate (ESR) around 70 mm per hour should raise suspicion.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The vignette man has purulence, 3 cm of periwound erythema, swelling and tenderness, but is afebrile with normal vitals. What grade?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Grade 1 — uninfected</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Grade 2 — mild</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Grade 3 — moderate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Grade 4 — severe</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Erythema greater than 2 cm with purulence and local signs but no systemic toxicity is moderate. Mild needs erythema 2 cm or less. Severe needs SIRS.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What grows and why history matters</h2>
+      <p>History predicts flora better than appearance. Acute, antibiotic-naive mild infections are usually gram-positive cocci — methicillin-susceptible <em>Staphylococcus aureus</em> (MSSA) and <em>Streptococcus pyogenes</em>. Chronic wounds, prior antibiotics or hospitalisation bring polymicrobial flora: <em>Enterobacterales</em> such as <em>Escherichia coli</em> and <em>Proteus</em> species plus anaerobes.</p>
+      <ul>
+        <li><strong>Methicillin-resistant <em>Staphylococcus aureus</em> (MRSA):</strong> prior MRSA, recent hospital or nursing facility, recent antibiotics, high local prevalence, severe or non-healing wound.</li>
+        <li><strong><em>Pseudomonas aeruginosa</em>:</strong> macerated or water-exposed wound, warm climate, prior antibiotics, chronic or severe infection. Not routine without these risks.</li>
+      </ul>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Pathogens by context</caption>
+          <thead>
+            <tr><th>Context</th><th>Likely organisms</th><th>Implication</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mild, acute, no prior antibiotics</td><td><em>S. aureus</em> (MSSA), streptococci</td><td>Narrow gram-positive cover</td></tr>
+            <tr><td>Chronic or prior antibiotics/hospitalisation</td><td>Above plus <em>Enterobacterales</em> and anaerobes</td><td>Broaden to gram-negatives/anaerobes</td></tr>
+            <tr><td>MRSA risk</td><td>Add MRSA</td><td>Add MRSA agent</td></tr>
+            <tr><td>Macerated/water-exposed or severe</td><td>Consider <em>Pseudomonas</em></td><td>Add antipseudomonal beta-lactam if risk</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Ask about recent antibiotics, hospitalisation and MRSA history, and whether the wound is macerated. Those three answers decide MRSA and <em>Pseudomonas</em> cover.</p>
+      </div>
+      <p>The vignette has recent antibiotics and known MRSA colonisation — add MRSA cover now.</p>
+
+      <h2 class="ct-h2">Empiric therapy for mild infections</h2>
+      <p>Mild disease without MRSA or <em>Pseudomonas</em> risk needs only narrow oral therapy for MSSA and streptococci. Use one agent, reassess in 48–72 hours, and pair with wound care and offloading.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Oral options for mild infection — verify dose locally</caption>
+          <thead>
+            <tr><th>Scenario</th><th>Options (guideline-derived; verify locally)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>No MRSA/<em>Pseudomonas</em> risk</td><td>Cephalexin or dicloxacillin; or amoxicillin-clavulanate if gram-negative/anaerobe concern. Clindamycin only if true beta-lactam allergy and susceptibility known.</td></tr>
+            <tr><td>MRSA risk</td><td>Trimethoprim-sulfamethoxazole or doxycycline (each needs added streptococcal cover) or linezolid. Culture and narrow.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>All regimens here are from current IDSA and International Working Group on the Diabetic Foot (IWGDF) guidance because the transcript was not recoverable; doses were not preserved in the source. Verify every dose with pharmacy and renal function before prescribing.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Do not add vancomycin or piperacillin-tazobactam to mild disease without MRSA or <em>Pseudomonas</em> risk. Over-covering mild infection adds harm without benefit.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Clindamycin is unreliable empiric cover where resistance is high. Do not use it alone for moderate or severe infection.</p>
+      </div>
+
+      <h2 class="ct-h2">Empiric therapy for moderate and severe infections</h2>
+      <p>Moderate disease often starts intravenous and steps to oral once improving. Severe disease starts broad intravenous plus urgent surgical evaluation, then narrows.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Empiric approach by severity — narrow at 48–72 hours</caption>
+          <thead>
+            <tr><th>Severity</th><th>Without MRSA/<em>Pseudomonas</em> risk</th><th>With risk or severe disease</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Moderate</td><td>Amoxicillin-clavulanate, or ceftriaxone plus metronidazole, or ertapenem</td><td>Add vancomycin/daptomycin/linezolid if MRSA risk; use piperacillin-tazobactam or cefepime plus metronidazole or meropenem if <em>Pseudomonas</em> risk</td></tr>
+            <tr><td>Severe</td><td colspan="2">Vancomycin plus antipseudomonal beta-lactam — piperacillin-tazobactam, or cefepime plus metronidazole, or meropenem — adjust for renal function. Consult surgery promptly.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Cefepime lacks anaerobe cover — add metronidazole. Piperacillin-tazobactam and carbapenems already cover anaerobes. Avoid routine double gram-negative or double anaerobe cover. Vancomycin remains default for severe MRSA cover with level monitoring.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Start broad for moderate and severe, then stop what cultures say you do not need. Severe is vancomycin plus an antipseudomonal beta-lactam, with anaerobe cover if needed.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Vancomycin plus piperacillin-tazobactam raises acute kidney injury risk in some cohorts. Monitor creatinine and levels, hydrate, and de-escalate early.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The 2023 IWGDF/IDSA update kept the severity-based strategy but stressed earlier oral step-down when improving. Duration depends on severity and osteomyelitis, not the initial empiric choice.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 67-year-old man has severe infection with hypotension, leukocytosis, prior hospitalisation and known MRSA. Which regimen fits?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cephalexin alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Vancomycin plus piperacillin-tazobactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Trimethoprim-sulfamethoxazole alone</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Severe disease with MRSA risk needs MRSA plus broad gram-negative and anaerobe cover. Only vancomycin plus piperacillin-tazobactam achieves that; the others are too narrow and would delay source control.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Getting the culture right</h2>
+      <p>Empiric cover is a bridge. Narrowing depends on a good culture. Superficial swabs of pus or wound edges mostly grow colonisers. When possible, culture before antibiotics, but do not delay severe disease.</p>
+      <p>Clean and debride first, then sample the ulcer base — curettage, punch biopsy of viable tissue, or aspirated pus. If bone is exposed, obtain bone via uninfected skin. Send gram stain and aerobic and anaerobic cultures. Note prior antibiotics so no growth is interpreted correctly. Do not culture uninfected ulcers.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Clean, debride, then biopsy the base. Deep tissue after debridement tells the truth; a superficial swab tells you surface colonisers.</p>
+      </div>
+      <p>For the vignette, debride, obtain deep curettage culture, note cephalexin exposure, then start moderate disease therapy with MRSA cover. Draw blood cultures if severe.</p>
+
+      <h2 class="ct-h2">When to worry about bone</h2>
+      <p>Osteomyelitis complicates up to a third of infected ulcers and changes duration and surgery. Suspect it with an ulcer over bone, visible bone, non-healing despite perfusion, or persistent erythema.</p>
+      <p>The <span class="ct-term">probe-to-bone test</span> — feeling gritty bone with a sterile blunt probe — is specific when positive in a high-risk foot but a negative test does not exclude disease. An erythrocyte sedimentation rate (ESR) markedly high (around 70 mm per hour) and elevated C-reactive protein (CRP) raise suspicion; a normal ESR makes osteomyelitis less likely. Plain films are insensitive for 1–2 weeks; magnetic resonance imaging (MRI) best shows marrow oedema. Definitive diagnosis needs bone culture and histology via percutaneous biopsy through uninfected skin.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Normal early radiographs do not exclude osteomyelitis. If suspicion is high, offload, involve surgery early and plan bone biopsy rather than prolonging broad antibiotics.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 70-year-old man has a chronic calcaneal ulcer, probe-to-bone positive, radiograph normal, ESR 85 mm per hour. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure that normal film excludes bone infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Swab the sinus and treat that result</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Consider osteomyelitis likely; arrange MRI and bone biopsy while covering per severity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Oral cephalexin alone for 2 weeks</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Positive probe plus high ESR is highly suggestive despite normal early film. Sinus swabs mislead. MRI and bone sampling guide therapy.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Do not treat colonisation. Purulence or at least two inflammatory signs are required for infection; uninfected ulcers need wound care, not antibiotics.</li>
+        <li>Grade first. Mild is erythema &le;2 cm, moderate is larger or deeper, severe is any infection with SIRS. Grade drives setting and breadth.</li>
+        <li>History predicts bugs. Acute mild is <em>Staphylococcus aureus</em> and streptococci; chronic or previously treated wounds are polymicrobial. Add MRSA cover for prior MRSA or recent antibiotics/hospitalisation; add <em>Pseudomonas</em> cover for macerated or severely ischaemic wounds.</li>
+        <li>Choose by grade: narrow oral (cephalexin, dicloxacillin or amoxicillin-clavulanate) for mild; broader for moderate; vancomycin plus antipseudomonal beta-lactam for severe — then narrow at 48–72 hours.</li>
+        <li>Culture the base, not the drainage. Debride, then send deep tissue or curettage for aerobic and anaerobic culture before antibiotics when feasible.</li>
+        <li>Think bone early. Probe to bone, check ESR and CRP, MRI when needed, and biopsy bone for definitive microbiology.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Lipsky BA, Berendt AR, Cornia PB, et al. 2012 Infectious Diseases Society of America clinical practice guideline for the diagnosis and treatment of diabetic foot infections. <em>Clin Infect Dis</em>. 2012;54(12):e132-e173.</li>
+          <li>Senneville E, Albalawi Z, van Asten SA, et al. IWGDF/IDSA guidelines on the diagnosis and treatment of foot infection in persons with diabetes: 2023 update. <em>Clin Infect Dis</em>. 2024;78(2):e66-e88.</li>
+          <li>Doses and thresholds here are guideline-derived; the original transcript and slides were not recoverable (files contained UTF-8 replacement characters). Verify all doses with institutional antibiogram and pharmacy.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Diabetic foot infections — empiric antibiotic selection</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

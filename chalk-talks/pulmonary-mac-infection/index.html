@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulmonary MAC infection — IDSA Chalk Talk</title>
+<meta name="description" content="Nodular bronchiectasis or cavitary disease? When a sputum Mycobacterium avium complex isolate means disease and how to build a three-drug regimen without creating resistance.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Pulmonary MAC infection — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Nontuberculous mycobacterial disease</p>
+        <h1 class="ct-h1">Pulmonary MAC infection</h1>
+        <p class="ct-subtitle">When to treat, what to use, and how long to stay the course</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 11 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 67-year-old woman with bronchiectasis and a year of chronic cough, fatigue, and intermittent sputum production is referred after two sputum cultures grew <em>Mycobacterium avium</em> complex. She is thin, afebrile, and short of breath only on exertion. Computed tomography (CT) shows cylindrical bronchiectasis and 8-mm nodules in the right middle lobe and lingula without cavitation. She asks whether this is tuberculosis and whether she needs months of antibiotics.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish <em>Mycobacterium avium</em> complex (MAC) colonization or contamination from true pulmonary disease using clinical, radiographic, and microbiologic criteria.</li>
+          <li>Identify the two classic radiographic phenotypes — fibrocavitary and nodular bronchiectatic — and explain how phenotype drives treatment decisions.</li>
+          <li>Choose a guideline-based three-drug macrolide-containing regimen and decide when thrice-weekly versus daily dosing is appropriate.</li>
+          <li>Counsel a patient on duration, monitoring, and the toxicities that most often limit therapy.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why pulmonary MAC is not tuberculosis</h2>
+      <p><span class="ct-term">Mycobacterium avium complex (MAC)</span> — mainly <em>M. avium</em>, <em>M. intracellulare</em>, and <em>M. chimaera</em> — belongs to the <span class="ct-term">nontuberculous mycobacteria (NTM)</span>. Unlike <em>Mycobacterium tuberculosis</em>, MAC lives in soil and water systems, including showerheads and hot-water pipes, and is not spread person to person. That means no airborne isolation, no contact tracing, and no public health reporting in most jurisdictions, but also that eradication from the environment is impossible and reinfection after cure is common.</p>
+      <p>It is an opportunistic, indolent pathogen that exploits impaired airway clearance or structural lung disease rather than classic immunosuppression. Human immunodeficiency virus (HIV)-related disseminated MAC is a different syndrome. In immunocompetent adults, lung destruction evolves over months to years, not weeks. Sputum AFB smears may be positive, but culture takes 7 to 21 days even in liquid media, and a single positive can reflect contamination, not disease.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>MAC is an environmental organism, not a contagious one. You do not isolate the patient, but you also cannot assume a single sputum isolate equals disease.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>NTM comprises more than 190 species. Only a handful regularly cause lung disease in adults without cystic fibrosis or HIV: MAC is by far the most common, followed by <em>M. kansasii</em> and <em>M. abscessus</em>. Species matters — treatment differs completely — so always identify to species level rather than treating “NTM” generically.</p>
+      </div>
+
+      <h2 class="ct-h2">Two radiographic patterns, two kinds of patients</h2>
+      <p>Most pulmonary MAC presents in one of two patterns. Recognising which pattern you are seeing changes urgency, regimen, and prognosis.</p>
+      <p><strong>Fibrocavitary disease</strong> resembles reactivation TB: upper-lobe cavities with pleural thickening. It classically affects older men with chronic obstructive pulmonary disease (COPD) or prior TB and smoking history. Cavities mean high burden, more symptoms, and faster progression, and usually need prompt daily multidrug treatment with early parenteral aminoglycoside.</p>
+      <p><strong>Nodular bronchiectatic disease</strong> shows cylindrical bronchiectasis with small nodules and tree-in-bud opacities in the right middle lobe and lingula. First described in tall, thin women without prior lung disease (“Lady Windermere syndrome”), it affects both sexes, often with underlying bronchiectasis, and is usually indolent with chronic cough and fatigue for years.</p>
+      <p>Mixed patterns occur, and severe bronchiectasis with extensive nodules behaves like cavitary disease. Weight loss, hemoptysis, smear positivity, and radiographic progression all push toward treatment.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Name the phenotype before you pick the regimen. Noncavitary nodular bronchiectatic disease can often be treated intermittently; cavitary or severe disease needs daily therapy.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The “Lady Windermere” label reflects a voluntary cough suppression hypothesis that has never been proven. More likely, tall habitus, narrow airways, impaired mucociliary clearance, and associated connective-tissue traits such as pectus excavatum or scoliosis predispose to middle-lobe stasis.</p>
+      </div>
+
+      <h2 class="ct-h2">When a positive culture equals disease</h2>
+      <p>A positive MAC sputum culture is not, by itself, a diagnosis. The 2020 American Thoracic Society (ATS), European Respiratory Society (ERS), European Society of Clinical Microbiology and Infectious Diseases (ESCMID), and Infectious Diseases Society of America (IDSA) guideline and the earlier 2007 ATS/IDSA criteria require all three pillars:</p>
+      <ol>
+        <li><strong>Clinical:</strong> pulmonary symptoms with exclusion of other causes. Chronic cough, sputum, dyspnea, fatigue, weight loss, or hemoptysis — and a work-up that has reasonably ruled out malignancy, ordinary bacterial bronchiectasis flares, or other mimics.</li>
+        <li><strong>Radiographic:</strong> nodular or cavitary opacities on chest radiograph, or bronchiectasis with small nodules on CT. A normal CT makes MAC pulmonary disease unlikely even if a culture is positive.</li>
+        <li><strong>Microbiologic:</strong> either positive cultures from at least two separate expectorated sputum samples, or one positive culture from a bronchoalveolar lavage (BAL) or bronchial wash, or lung biopsy with granulomatous inflammation or AFB plus one positive culture. A single positive sputum among several negatives during the initial evaluation is usually not considered diagnostic.</li>
+      </ol>
+      <p>In practice, send at least three expectorated sputums on different days before bronchoscopy. For patients who cannot expectorate, bronchoalveolar lavage (BAL) of the most involved lobe increases yield. Biopsy is rarely needed.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>ATS/IDSA microbiologic criteria for NTM pulmonary disease — all require clinical and radiographic criteria plus one of these</caption>
+          <thead>
+            <tr><th>Specimen</th><th>What counts as positive</th><th>Practical tip</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Expectorated sputum</td><td>Same NTM species in ≥2 separate cultures</td><td>Collect on different days; clinically significant MAC disease is unlikely with only one of three positives</td></tr>
+            <tr><td>Bronchoscopic wash or BAL</td><td>≥1 culture positive for NTM</td><td>Prefer BAL over wash when possible; document lobe sampled</td></tr>
+            <tr><td>Lung biopsy</td><td>Granulomatous inflammation or AFB plus ≥1 culture positive from sputum, BAL, or biopsy</td><td>Histology alone without a positive culture is not sufficient</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Obtain baseline susceptibility for macrolides and amikacin — the two agents where in vitro results predict response. Routine testing for rifamycins or ethambutol is not predictive. If prior macrolide exposure occurred, assess for 23S ribosomal ribonucleic acid (rRNA) mutations.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Starting treatment on a single positive sputum without meeting radiographic or clinical criteria leads to months of unnecessary toxicity and labels the patient with a disease they may not have. Repeat sputums first and look at the CT yourself.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 70-year-old with chronic cough and mild bronchiectasis has one of three sputum cultures positive for MAC. CT shows stable, mild cylindrical bronchiectasis without nodules. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start azithromycin, rifampin, and ethambutol immediately</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Repeat sputum cultures, review imaging and symptoms, and do not start MAC therapy yet</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order a single AFB smear to decide</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start azithromycin monotherapy until more cultures return</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>One positive of three does not meet microbiologic criteria when the radiographic and clinical pictures are also not convincing. Smears are insensitive, and macrolide monotherapy risks acquired resistance if disease is later confirmed. Repeating cultures is the guideline-recommended step.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treat or watch: making the decision</h2>
+      <p>Meeting diagnostic criteria does not automatically mean antibiotics. Many patients with nodular bronchiectatic disease are stable for prolonged periods, and treatment is difficult, long, and often adverse-effect limited. The decision should be shared, explicit, and revisited.</p>
+      <p>Favour prompt treatment for cavitary or severe disease, smear positivity, progressive symptoms, weight loss, or radiographic deterioration. Conversion is higher with treatment and destruction is harder to reverse if you wait.</p>
+      <p>Favour watchful waiting with airway clearance and close observation when disease is mild, noncavitary, and nondisabling — for example, an older woman like the vignette patient with modest nodules, negative smears, and slowly progressive cough. In that scenario, optimise airway clearance (daily chest physiotherapy, flutter device, nebulised hypertonic saline where available), treat coexistent bronchiectasis drivers such as reflux or sinus disease, vaccinate for influenza and pneumococcus, and schedule sputum surveillance and repeat CT in 3 to 6 months. If cough worsens, sputums become consistently positive, or nodules progress, the balance shifts toward therapy.</p>
+      <p>Document the discussion. Patients need to know that therapy will last well over a year, that sputum will be checked monthly, and that adverse effects are expected, not exceptional. Many will reasonably choose to defer if symptoms are tolerable.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If the patient meets criteria but is clinically stable with noncavitary disease, watchful waiting with airway clearance is reasonable. Treatment can be started when progression is demonstrated.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Which patient most clearly needs immediate MAC-directed therapy rather than observation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Asymptomatic woman with two positive sputums but no radiographic progression over 12 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Man with COPD, a new 3-cm upper-lobe cavity, AFB smear-positive sputum, and weight loss</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Patient with a single positive sputum and normal CT</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Patient with stable right middle lobe nodules who feels well and has declined therapy</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cavitary, smear-positive disease with constitutional symptoms carries high bacillary burden and risk of progression. That phenotype responds poorly to intermittent therapy and warrants daily multidrug treatment, usually including a parenteral agent initially. Stable nodular disease without progression can often be observed.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The three-drug backbone and why each drug matters</h2>
+      <p>For macrolide-susceptible disease, the backbone is three drugs including a macrolide and ethambutol — not two and not a macrolide alone. Companion drugs exist to protect the macrolide. Once resistance emerges, sustained conversion falls from roughly 80% to 5–36%.</p>
+      <p><strong>Macrolide:</strong> azithromycin is suggested over clarithromycin — fewer drug interactions, once-daily dosing, better tolerance, and less acquired resistance in cohorts. Never use a macrolide alone or with only a fluoroquinolone.</p>
+      <p><strong>Ethambutol:</strong> in every regimen. Modest activity but best protection against macrolide resistance. Key toxicity is optic neuritis — decreased acuity, red-green loss, or scotomata — requiring baseline and periodic vision checks.</p>
+      <p><strong>Rifamycin:</strong> rifampin or rifabutin is the third drug. Rifamycins add sterilising activity and protect against resistance but induce metabolic enzymes and lower macrolide levels — choose azithromycin to minimise this.</p>
+      <p>For cavitary or advanced disease, or macrolide-resistant disease, add an aminoglycoside — amikacin or streptomycin — for the first 2 to 3 months. For refractory disease after at least 6 months of standard therapy, amikacin liposome inhalation suspension (ALIS) can improve conversion when added to the backbone.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Lowering the regimen to two drugs or substituting a fluoroquinolone for ethambutol or the rifamycin feels “less toxic” but is associated with acquired macrolide resistance. Susceptibility-based treatment for macrolides and amikacin should guide therapy; empiric swaps without testing do not improve outcomes.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>At least three drugs that include a macrolide and ethambutol, with a rifamycin as the third, is the standard for macrolide-susceptible disease. Think “three to protect one” — the one being the macrolide.</p>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Guideline-suggested regimens for macrolide-susceptible MAC pulmonary disease</caption>
+          <thead>
+            <tr><th>Phenotype</th><th>Frequency</th><th>Core regimen</th><th>When to add parenteral agent</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Noncavitary nodular bronchiectatic</td><td>Thrice weekly</td><td>Azithromycin + ethambutol + rifampin (or rifabutin)</td><td>Not routinely in initial therapy; consider if severe or refractory</td></tr>
+            <tr><td>Cavitary or severe/advanced bronchiectatic</td><td>Daily</td><td>Azithromycin + ethambutol + rifampin (or rifabutin) daily</td><td>Add amikacin or streptomycin for 2–3 months at start</td></tr>
+            <tr><td>Macrolide-resistant or refractory</td><td>Daily</td><td>Ethambutol + rifamycin + ALIS plus additional agents guided by susceptibility and expert consultation</td><td>ALIS requires ≥6 months of prior guideline-based therapy without conversion</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 64-year-old woman with noncavitary nodular bronchiectatic MAC disease and no prior macrolide exposure is starting therapy. Which regimen best aligns with guideline suggestions?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Clarithromycin plus moxifloxacin daily</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Azithromycin, ethambutol, and rifampin thrice weekly</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin and ethambutol two-drug therapy thrice weekly</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin monotherapy daily for 12 months</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Guidelines suggest a three-drug macrolide-containing regimen with ethambutol and a rifamycin, with azithromycin preferred over clarithromycin. For noncavitary nodular bronchiectatic disease, thrice-weekly dosing has similar conversion rates and is better tolerated than daily dosing. Two-drug and monotherapy regimens risk macrolide resistance, and fluoroquinolone substitution is not a recommended backbone.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">How to give it: schedule, duration, and follow-up</h2>
+      <p>Schedule follows phenotype. For noncavitary nodular bronchiectatic disease, thrice-weekly azithromycin, ethambutol, and rifampin has similar conversion to daily therapy and is better tolerated. For cavitary or severe disease, use daily dosing — never intermittent for cavitary disease.</p>
+      <p>Duration is measured from culture conversion. Treat for at least 12 months after the first consistently negative culture — total therapy is often 15 to 24 months. Shorter courses relapse. Obtain sputum acid-fast bacilli (AFB) cultures every 1 to 2 months; a single negative does not define conversion — expect two to three consecutive negatives.</p>
+      <p>Monitoring is as important as prescribing. At baseline obtain visual acuity and color vision, audiology if an aminoglycoside is planned, electrocardiogram for QT interval, blood counts, liver enzymes, and creatinine, and review drug interactions — rifamycins lower levels of many agents. Recheck labs, vision, hearing, and symptoms at each visit and continue airway clearance throughout.</p>
+      <p>Common adverse effects and what to do:</p>
+      <ul>
+        <li><strong>Ethambutol:</strong> optic neuritis — stop immediately and refer to ophthalmology if new vision change occurs; risk increases with dose and duration.</li>
+        <li><strong>Macrolides:</strong> gastrointestinal intolerance, hearing loss or tinnitus, QT prolongation, and drug interactions (clarithromycin worse than azithromycin).</li>
+        <li><strong>Rifamycins:</strong> hepatotoxicity, cytopenias, rash, flu-like hypersensitivity, orange discoloration of secretions, and extensive drug interactions via cytochrome P450 induction.</li>
+        <li><strong>Amikacin (parenteral or ALIS):</strong> nephrotoxicity, irreversible ototoxicity, and vestibular toxicity — monitor creatinine and audiometry, maintain hydration, and avoid concurrent nephrotoxins or loop diuretics.</li>
+      </ul>
+      <p>If cultures remain positive after 6 months despite adherence, reassess for macrolide resistance, drug interactions, poor clearance, or alternative diagnoses, and seek expert input regarding amikacin liposome inhalation suspension (ALIS) or surgical referral for localised cavitary disease.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Count duration from the first consistently negative culture, not from day one. At least 12 months after culture conversion is the suggested minimum — a single negative sputum does not start the clock.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with cavitary MAC disease becomes sputum culture-negative at month 6 of daily azithromycin, ethambutol, and rifampin plus 2 months of amikacin. She feels better. When would you plan to stop therapy if cultures remain negative and monitoring is unremarkable?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop now at 6 months total — she has converted</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Continue to at least 18 months total — 12 months after first consistent culture negativity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop at 12 months total regardless of conversion date</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Extend to 24 months after conversion to guarantee cure</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Guidelines suggest at least 12 months of treatment after culture conversion, measured from the first culture that begins a series of consistently negative cultures. Stopping at conversion or at a fixed 12 months total risks relapse. Extending to 24 months after conversion is not suggested as standard.</p>
+        </div>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Reported sustained sputum conversion rates with macrolide-containing three-drug regimens are around 60 to 80%, falling dramatically once macrolide resistance emerges. That is why protection of the macrolide and adherence to a full course matter more than rapid symptom relief alone.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Single MAC sputum isolates do not equal disease. Require clinical symptoms, compatible CT findings (bronchiectasis with nodules or fibrocavitary disease), and microbiologic criteria (≥2 positive sputums or 1 BAL/bronchial wash) before labelling pulmonary MAC.</li>
+        <li>Phenotype drives urgency and schedule: noncavitary nodular bronchiectatic disease can often be observed or treated thrice weekly; cavitary or severe bronchiectatic disease needs prompt daily three-drug therapy and early consideration of parenteral amikacin.</li>
+        <li>Standard for macrolide-susceptible disease is at least three drugs including azithromycin (preferred) plus ethambutol and a rifamycin. Never use macrolide monotherapy or two-drug therapy to “reduce toxicity” — it creates macrolide resistance.</li>
+        <li>Check macrolide and amikacin susceptibility at baseline. Perform sputum cultures every 1 to 2 months, and count at least 12 months of therapy after the first consistently negative culture.</li>
+        <li>Monitor vision (ethambutol), hearing and kidney function (amikacin), liver enzymes and blood counts (rifamycin), and QT interval and hearing (macrolide). Continue airway clearance throughout.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Daley CL, Iaccarino JM, Lange C, et al. Treatment of nontuberculous mycobacterial pulmonary disease: an official ATS/ERS/ESCMID/IDSA clinical practice guideline. <em>Clin Infect Dis</em>. 2020;71(4):e1-e36. doi:10.1093/cid/ciaa241.</li>
+          <li>Griffith DE, Aksamit T, Brown-Elliott BA, et al. An official ATS/IDSA statement: diagnosis, treatment, and prevention of nontuberculous mycobacterial diseases. <em>Am J Respir Crit Care Med</em>. 2007;175(4):367-416.</li>
+          <li>Haworth CS, Banks J, Capstick T, et al. British Thoracic Society guidelines for the management of non-tuberculous mycobacterial pulmonary disease. <em>Thorax</em>. 2017;72(suppl 2):ii1-ii64.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Pulmonary MAC infection</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

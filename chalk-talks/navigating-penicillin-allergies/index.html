@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navigating penicillin allergies — IDSA Chalk Talk</title>
+<meta name="description" content="How to evaluate a reported penicillin allergy, distinguish low-risk from high-risk histories, and choose safe beta-lactam options.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Navigating penicillin allergies — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Antimicrobial stewardship</p>
+        <h1 class="ct-h1">Navigating penicillin allergies</h1>
+        <p class="ct-subtitle">Turning a chart label into a clinical decision</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty — transcript reconstructed from current guideline knowledge</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 68-year-old man is admitted with left leg cellulitis — warm, tender, with a small ankle wound. He is afebrile, no bullae or crepitus. The allergy list says “penicillin — rash, childhood.” He recalls a blotchy rash at age 8 after amoxicillin, no hives, swelling, or hospitalisation, and has avoided penicillins since. Is a beta-lactam safer and more effective?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why a penicillin allergy label causes harm and why most labels do not represent true allergy.</li>
+          <li>Take a focused five-question allergy history and document it clearly.</li>
+          <li>Sort histories into low-risk, moderate-risk, and high-risk for immunoglobulin E (IgE)–mediated or severe reactions.</li>
+          <li>Choose a safe pathway — direct challenge, skin testing, or desensitisation — and apply cross-reactivity principles.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why the label matters</h2>
+      <p>About one in ten hospitalised patients reports penicillin allergy, yet more than nine in ten can tolerate penicillin when tested. Many reports reflect a childhood viral rash, a non-allergic effect such as nausea, or a family member’s allergy copied into the chart.</p>
+      <p>The label harms patients. Labelled patients receive broader, less effective, and more toxic alternatives, with higher rates of <em>Clostridioides difficile</em> infection, longer stays, more surgical site infections when cephalosporin prophylaxis is withheld, and greater exposure to vancomycin, fluoroquinolones, and carbapenems. Systematic <span class="ct-term">de-labelling</span> — evaluating and, when safe, removing the label — is a stewardship intervention.</p>
+      <p>True allergy still matters. Immunoglobulin E (IgE)–mediated reactions cause urticaria (hives), angioedema, bronchospasm, or anaphylaxis within minutes to hours. Severe cutaneous adverse reactions (SCARs) such as Stevens-Johnson syndrome (SJS), toxic epidermal necrolysis (TEN), and drug reaction with eosinophilia and systemic symptoms (DRESS) are delayed by days to weeks. The goal is to return low-risk patients to beta-lactams and protect high-risk patients.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>“Penicillin — rash” is a story, not a diagnosis. Ask what it looked like, when it appeared, and what else was happening.</p>
+      </div>
+
+
+      <h2 class="ct-h2">Taking the allergy history in two minutes</h2>
+      <p>Five questions cover what an allergist needs and let you risk-stratify at the bedside:</p>
+      <ol>
+        <li><strong>What happened?</strong> Was it hives, swelling, wheezing, or throat closure versus flat rash, nausea, or diarrhoea? Many “allergies” are intolerances.</li>
+        <li><strong>Timing after dose?</strong> IgE reactions start within minutes to hours. Rash after days or weeks later points away from IgE; SCARs are days to weeks.</li>
+        <li><strong>How long ago and since?</strong> Half of IgE wanes by five years. Age-8 rash 60 years ago differs from hives last month. Ask about any beta-lactam tolerated since.</li>
+        <li><strong>Treatment and outcome?</strong> Antihistamines versus epinephrine or intensive care changes risk; peeling or organ injury suggests SCAR.</li>
+        <li><strong>Other cause?</strong> Mono with ampicillin, viral exanthem, or “my mother said I was allergic as a baby” are common confounders.</li>
+      </ol>
+      <p>Document the exact story: “generalised hives and lip swelling 30 minutes after amoxicillin at age 24, epinephrine in emergency department” is actionable. “PCN allergy” is not. Use the structured allergy fields so pharmacy and the next team see the detail.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>“I don’t remember, my mother said I was allergic as a baby” with no severe features is typically a low-risk, incomplete history — not an automatic high-risk label.</p>
+      </div>
+
+      <h2 class="ct-h2">Sorting low-risk from high-risk</h2>
+      <p>Sort the story into three buckets. This reflects current allergy and stewardship principles for triage, not a substitute for allergist judgement. No specific drug doses are given here; all pathways should follow institutional allergy and stewardship protocols.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Risk stratification by history for triage</caption>
+          <thead>
+            <tr><th>Category</th><th>Typical histories</th><th>What it suggests</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Low-risk for IgE and for SCAR</td><td>Remote mild non-urticarial rash; maculopapular rash without hives or swelling; isolated gastrointestinal upset, headache, or yeast infection labelled as allergy; vague childhood history with no severe features</td><td>Very low likelihood of true allergy; often eligible for supervised direct challenge after protocol review</td></tr>
+            <tr><td>Moderate-risk for IgE</td><td>Recent hives or itch; immediate rash with pruritus; possible bronchospasm or angioedema without anaphylaxis; reaction within last few years</td><td>Possible true allergy; needs allergist-guided testing, not ward challenge</td></tr>
+            <tr><td>High-risk or severe</td><td>Anaphylaxis, respiratory compromise, hypotension, or laryngeal oedema minutes to hours after penicillin; any blistering, peeling, mucosal erosions, SJS/TEN, DRESS, organ injury, haemolytic anaemia, or interstitial nephritis attributed to a beta-lactam</td><td>Do not challenge; avoid culprit, refer to allergy, consider desensitisation only if no alternative</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Any history of blistering, peeling, painful skin, mucosal involvement, or fever with facial oedema and eosinophilia weeks into therapy should prompt avoidance and urgent allergy or dermatology input. Do not skin test or challenge SCARs.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not re-expose a patient with a credible history of toxic epidermal necrolysis (TEN) from penicillin to “see if it was really the drug,” even if the chart is vague. Avoid and consult.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 74-year-old reports nausea alone after amoxicillin ten years ago, no rash, swelling, or breathing difficulty, and tolerated cephalexin since. How would you categorise this?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">High-risk — needs skin testing before any beta-lactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Low-risk, non-allergic adverse effect — often eligible for de-labelling via direct challenge per protocol</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Severe cutaneous adverse reaction — needs dermatology</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Nausea without skin, respiratory, or cardiovascular features is an intolerance, not allergy. Remote timing and cephalosporin tolerance lower IgE risk, so supervised direct challenge per pathway is typical.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When the history is low-risk: direct challenge</h2>
+      <p>When history is low-risk for IgE and SCAR, many centres offer a <span class="ct-term">direct oral challenge</span> — a supervised dose of amoxicillin with observation per protocol — without prior skin testing. Most low-risk patients tolerate it and can be de-labelled.</p>
+      <p>Do not improvise challenges. They require a pathway with selection, consent, resuscitation capability, monitoring, and documentation. Allergy or stewardship pharmacy determines eligibility and location.</p>
+      <p>After a negative challenge, update the allergy field, pharmacy, and primary care record, and counsel the patient: “You took amoxicillin under observation without reaction. We removed the allergy. Tell every clinic and pharmacy you have taken it since.”</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>De-labelling is the treatment. A negative challenge that stays in a progress note but never updates the allergy field helps no one. The allergy list, pharmacy, and patient must all get the same message.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The man in the vignette (remote blotchy rash at age 8, no severe features) is admitted for cellulitis at a hospital with a pharmacist-supervised challenge pathway. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue vancomycin indefinitely as the safest option</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Assess eligibility via the de-labelling pathway; if cleared, use a first-line beta-lactam for cellulitis per institutional guidance</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send the patient home with amoxicillin to test tolerance unsupervised</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Low-risk histories are best managed through a structured pathway, not reflexive avoidance or unsupervised exposure. Vancomycin is less effective and more toxic for cellulitis; desensitisation is for high-risk patients who must receive the culprit.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When the history is high-risk: testing and desensitisation</h2>
+      <p>Recent hives, angioedema, wheezing, or anaphylaxis minutes to hours after penicillin, or any SCAR, should prompt avoidance and referral. Do not challenge on the ward.</p>
+      <p><span class="ct-term">Penicillin skin testing</span> typically uses penicilloyl polylysine and, where formulary allows, minor determinants with histamine and saline controls, followed by observed oral challenge if negative. It requires trained staff and resuscitation equipment and is not a bedside workaround. It is not validated for SCARs.</p>
+      <p><span class="ct-term">Desensitisation</span> induces temporary tolerance by giving escalating doses over hours in a monitored setting, often intensive care. Tolerance lasts only while the drug is continuously infused; interruption requires repeat desensitisation. It is for patients with confirmed high-risk allergy who must receive the culprit agent urgently and have no acceptable alternative, for example penicillin for neurosyphilis with documented anaphylaxis.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Ordering penicillin skin testing for every labelled patient without triage wastes allergist capacity and delays care. Many low-risk patients do not need skin testing at all to be de-labelled.</p>
+      </div>
+
+      <h2 class="ct-h2">Choosing alternatives and cross-reactivity</h2>
+      <p>When you must avoid penicillin, side chain similarity — not the beta-lactam ring itself — drives risk.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Cross-reactivity principles — check institutional side chain tables</caption>
+          <thead>
+            <tr><th>Situation</th><th>What to know</th><th>Practical point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cephalosporins after penicillin history</td><td>Risk is low when the cephalosporin does not share the culprit’s side chain; modern risk is much lower than historic 10 percent estimates.</td><td>Do not assume all cephalosporins are equal. Check side chains with pharmacy.</td></tr>
+            <tr><td>Carbapenems (imipenem, meropenem, ertapenem)</td><td>Cross-reactivity is low, generally around 1 percent or less, and many IgE-allergic patients have safely received carbapenems under observation.</td><td>For severe infections where a carbapenem is indicated, a remote low-risk rash alone should not automatically deny therapy; consult for high-risk histories.</td></tr>
+            <tr><td>Aztreonam (monobactam)</td><td>Almost no cross-reactivity with penicillin except with ceftazidime, which shares an identical side chain with aztreonam.</td><td>Usable for gram-negative coverage in penicillin anaphylaxis, but lacks gram-positive activity — add coverage for <em>Staphylococcus</em> or <em>Streptococcus</em> when needed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>For non-purulent cellulitis, first-generation cephalosporins covering methicillin-susceptible <em>Staphylococcus aureus</em> and streptococci are first-line in many pathways when the history is low-risk and side chains differ. Vancomycin and clindamycin are not interchangeable. Purulent cellulitis or suspected MRSA shifts choices regardless of allergy.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Ask pharmacy: “Does my intended alternative share the side chain of the culprit penicillin?” That is more useful than “Do penicillins cross-react with cephalosporins?”</p>
+      </div>
+
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with penicillin anaphylaxis (hives, wheeze, hypotension 20 minutes after amoxicillin last year) needs gram-negative therapy for severe pneumonia. Which is most accurate about aztreonam?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">All beta-lactams including aztreonam are contraindicated</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Aztreonam has negligible cross-reactivity except with ceftazidime and is often an option for gram-negative coverage, but lacks gram-positive activity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Carbapenems need no allergy input after anaphylaxis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Aztreonam’s monobactam structure gives very low penicillin cross-reactivity; ceftazidime is the exception because of an identical R1 side chain. It does not cover gram-positives, so <em>Streptococcus pneumoniae</em> or <em>S. aureus</em> needs added therapy. Carbapenem cross-reactivity is low but not zero after recent anaphylaxis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Documenting and closing the loop</h2>
+      <p>Before discharge, do three things:</p>
+      <ol>
+        <li><strong>Update the structured allergy field</strong> — symptom, timing, severity, treatment, and tolerance since. For de-labelled patients, reclassify as “de-labelled — tolerated amoxicillin on [date] supervised.”</li>
+        <li><strong>Send it where it will be seen</strong> — handoff, discharge summary, and patient instructions.</li>
+        <li><strong>Counsel the patient.</strong> Give explicit permission to stop saying they are allergic and explain what to do if symptoms recur.</li>
+      </ol>
+      <p>If not de-labelled now, write: “Low-risk remote rash, referral sent; avoid penicillin until evaluated, cephalosporins per side chain guidance pending.”</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The most common failure is administrative: the challenge was negative but the allergy field stayed active, so the next admission reused vancomycin.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not copy forward “allergy: penicillins” with no reaction listed as permanent avoidance without asking the five questions. Every medication reconciliation is a chance to refine.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">After a negative supervised amoxicillin challenge via the pathway, what best completes documentation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Leave allergy active with a note “may tolerate penicillin”</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Update or remove the allergy entry with date and setting, and update patient instructions and handoff</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No documentation needed — patient will remember</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>The structured allergy field drives prescribing alerts. A note alone does not suppress future alerts, and the patient needs written instructions to carry forward.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>One in ten reports penicillin allergy; more than nine in ten can tolerate it. The label drives broader, less effective therapy and <em>C. difficile</em> risk.</li>
+        <li>Ask five questions every time: what happened, timing after dose, how long ago and what has been tolerated since, treatment and outcome, and alternative explanations. Document verbatim in the allergy field.</li>
+        <li>Sort histories: low-risk (remote mild rash, isolated gut upset) versus moderate-risk (recent hives) versus high-risk or severe (anaphylaxis, SJS/TEN/DRESS) — only low-risk is considered for direct challenge; never challenge SCARs.</li>
+        <li>Low-risk patients who tolerate supervised challenge should be actively de-labelled across the chart and counselled. High-risk patients avoid the culprit, use side chain–informed alternatives, and are referred; desensitisation is temporary and only when the culprit is indispensable.</li>
+        <li>Cross-reactivity follows side chains: cephalosporin risk low when side chains differ; carbapenem about 1 percent or less; aztreonam negligible except with ceftazidime and lacks gram-positive coverage.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Shenoy ES, Macy E, Rowe T, Blumenthal KG. Evaluation and management of penicillin allergy: a review. <em>JAMA</em>. 2019;321(2):188-199. Guideline-derived summary used because the original transcript was irrecoverably corrupted; no speaker-cited references were retrievable.</li>
+          <li>Blumenthal KG, Peter JG, Trubiano JA, Phillips EJ. Antibiotic allergy. <em>Lancet</em>. 2019;393(10167):183-198.</li>
+          <li>Khan DA, Banerji A, Blumenthal KG, et al. Drug allergy: a 2022 practice parameter update. <em>J Allergy Clin Immunol</em>. 2022;150(6):1333-1393.</li>
+          <li>Trubiano JA, Adkinson NF, Phillips EJ. Penicillin allergy is not necessarily forever. <em>JAMA</em>. 2017;318(1):82-83.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Navigating penicillin allergies</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

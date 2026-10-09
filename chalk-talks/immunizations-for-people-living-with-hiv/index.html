@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Immunizations for people living with HIV — IDSA Chalk Talk</title>
+<meta name="description" content="What to give, what to avoid, and when — a practical guide to vaccinating adults living with HIV.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Immunizations for people living with HIV — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">HIV medicine</p>
+        <h1 class="ct-h1">Immunizations for people living with HIV</h1>
+        <p class="ct-subtitle">A practical guide to what to give, when to give it, and what to hold</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 12 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 34-year-old man with human immunodeficiency virus (HIV) comes to clinic for routine follow-up. He was diagnosed two years ago, started antiretroviral therapy (ART) with dolutegravir plus tenofovir alafenamide/emtricitabine, and now has an undetectable viral load. His most recent cluster of differentiation 4 (CD4) count is 380 cells/µL, up from a nadir of 180 cells/µL. He feels well. He asks, “My friend said I shouldn’t get vaccines because my immune system is weak — is that true?” He cannot recall his childhood vaccines, has never had a pneumococcal or hepatitis B vaccine as an adult, and had chickenpox as a child. He is sexually active with one partner and has not travelled outside the United States in five years.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish inactivated, recombinant, and live vaccines and explain why that distinction matters for people living with HIV (PLWH).</li>
+          <li>List the routine inactivated and recombinant vaccines recommended for most adults with HIV and when to check the response.</li>
+          <li>Apply cluster of differentiation 4 (CD4) count thresholds to decide when live vaccines are safe or contraindicated.</li>
+          <li>Plan vaccine timing around antiretroviral therapy initiation and document immunity without over-testing.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why vaccines matter more when HIV is in the room</h2>
+      <p>Even with effective <span class="ct-term">antiretroviral therapy (ART)</span>, people living with HIV (PLWH) remain at higher risk for several vaccine-preventable infections and for more severe disease when infection occurs. <em>Streptococcus pneumoniae</em> causes invasive pneumococcal disease at rates manyfold higher than in HIV-negative adults, even when the viral load is suppressed. Influenza leads to more hospitalisation. Human papillomavirus (HPV) persists longer and progresses more often to dysplasia. Hepatitis B virus (HBV) is more likely to become chronic. That is the whole rationale for this talk: the same vaccines you recommend to everyone else are more urgent here, not less, and a few extra vaccines move from “optional” to “recommended.”</p>
+      <p>The good news is that most vaccines are safe in HIV. The common fear — “my immune system is too weak to handle a vaccine” — is backwards for inactivated and recombinant vaccines. They contain no replicating organism, so they cannot cause infection. The worst outcome with a low CD4 count is a weaker response, not a vaccine-induced infection. The exception is live-attenuated vaccines, which do replicate and can cause disease if cellular immunity is severely impaired. Learning which vaccines are which is the entire framework.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For PLWH, vaccinate more, not less. Inactivated and recombinant vaccines cannot cause infection at any CD4 count — low CD4 means lower response, not higher risk from the vaccine itself.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Before ART, vaccine responses were so poor that some clinicians delayed vaccines until immune reconstitution. Current guidance is the opposite: give inactivated vaccines without waiting for a CD4 rise, and revaccinate or boost later if needed once the CD4 count improves.</p>
+      </div>
+
+      <h2 class="ct-h2">The framework: CD4 count, viral suppression, and vaccine type</h2>
+      <p>Three questions sort every decision:</p>
+      <ol>
+        <li>Is the vaccine inactivated, recombinant, or live-attenuated?</li>
+        <li>What is the current CD4 count and percentage, and the HIV viral load?</li>
+        <li>Has the person already started ART, and is immune reconstitution underway?</li>
+      </ol>
+      <p><strong>Inactivated and recombinant vaccines</strong> include inactivated influenza, COVID-19 (messenger RNA [mRNA] or protein subunit), pneumococcal conjugate and polysaccharide, tetanus-diphtheria-acellular pertussis (Tdap) and tetanus-diphtheria (Td), HPV (recombinant 9-valent), hepatitis A and hepatitis B (including the recombinant adjuvanted Heplisav-B), meningococcal conjugate (MenACWY) and MenB recombinant, and recombinant zoster vaccine (RZV, Shingrix). Give them regardless of CD4 count. Do not defer them because the CD4 count is low — vaccinate now and consider repeating or checking titres later.</p>
+      <p><strong>Live-attenuated vaccines</strong> include measles, mumps, and rubella (MMR), varicella (VAR), live-attenuated influenza vaccine (LAIV, nasal spray), and yellow fever. Varicella and MMR can be considered only if there is no severe immunosuppression: generally CD4 count at least 200 cells/µL and CD4 percentage at least 15% for adults, with sustained viral suppression on ART. LAIV and bacillus Calmette-Guérin (BCG) are contraindicated and not used in the United States for adults with HIV. Yellow fever follows similar CD4 thresholds and always requires specialist advice.</p>
+      <p>Viral suppression matters because ART restores vaccine responses over months. If a vaccine is given when the CD4 count is very low and the viral load is high, document it and plan to recheck the response or revaccinate after the CD4 count rises above 200 cells/µL on therapy. Do not interpret a negative titre six weeks after ART initiation as lifelong non-immunity — it is often a timing problem.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Delaying all vaccines “until the CD4 recovers” leaves the window of highest infection risk uncovered. Give inactivated vaccines on the day you see the patient. Reserve delay only for live vaccines that truly require a CD4 threshold.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your patient above has a CD4 count of 380 cells/µL on suppressed ART. Which statement is correct about giving an inactivated influenza vaccine today?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer until CD4 is above 500 cells/µL to ensure a response</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Give inactivated influenza vaccine now at any CD4 count; low CD4 reduces response but does not make the vaccine unsafe</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give the nasal live-attenuated influenza vaccine instead because it is more immunogenic</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Withhold all vaccines until hepatitis B serologies return</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Inactivated vaccines do not replicate and are safe at any CD4 count. Delaying leaves the patient unprotected during high-risk months. Live-attenuated influenza vaccine is contraindicated in HIV, and there is no reason to wait for hepatitis B testing before giving influenza or other inactivated vaccines — give them in parallel.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Inactivated vaccines almost everyone with HIV should get</h2>
+      <p>Think of this as the routine adult schedule, plus emphasis on three infections that are disproportionately severe in HIV: influenza, COVID-19, and pneumococcal disease.</p>
+      <p><strong>Influenza and COVID-19:</strong> Recommend annual inactivated influenza vaccine to all PLWH, every year, regardless of CD4 count or viral load. Never use LAIV. For COVID-19, follow current Centers for Disease Control and Prevention (CDC) guidance for updated vaccines — PLWH are included without different dosing, and additional doses are not based on CD4 count alone unless another immunocompromising condition applies.</p>
+      <p><strong>Pneumococcal disease:</strong> PLWH aged 19 years and older should receive pneumococcal vaccination if not already done. Current Advisory Committee on Immunization Practices (ACIP) guidance for immunocompromised adults favours a single conjugate vaccine — either 20-valent pneumococcal conjugate vaccine (PCV20) or 21-valent (PCV21) — alone. If PCV15 is used, it is followed by 23-valent pneumococcal polysaccharide vaccine (PPSV23). The key practical point is that PLWH need not receive both PCV and PPSV23 if they receive PCV20 or PCV21. If they already received PPSV23 or an older PCV13, check the interval and give a conjugate now — you do not restart the series.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Pneumococcal vaccination for adults with HIV — simplified approach</caption>
+          <thead>
+            <tr><th>History</th><th>What to give now</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>No prior pneumococcal vaccine</td><td>Single dose of PCV20 or PCV21</td><td>No PPSV23 needed after PCV20 or PCV21</td></tr>
+            <tr><td>Previously received only PPSV23</td><td>Single dose of PCV20 or PCV21 at least 1 year later</td><td>Count prior doses; do not repeat PPSV23 routinely</td></tr>
+            <tr><td>Previously received PCV13 with or without PPSV23</td><td>Single dose of PCV20 or PCV21 at least 1 year after last dose</td><td>If PCV15 was the last dose, PPSV23 is the alternative to PCV20 or PCV21</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Tetanus, diphtheria, and pertussis:</strong> Same schedule as the general population. Give one-time Tdap if not previously received, then Td or Tdap every 10 years. There is no CD4 threshold and no earlier booster because of HIV.</p>
+      <p><strong>Human papillomavirus (HPV):</strong> Recommend recombinant 9-valent HPV vaccine for all PLWH through age 26 years, and offer through age 45 years after shared decision-making. For anyone with HIV, the series is three doses at 0, 1 to 2, and 6 months, regardless of age at initiation. This is different from the two-dose schedule used in HIV-negative adolescents. Even if the patient is older than 26 and reports prior HPV exposure, benefit remains for new types.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>HPV vaccine in HIV is always three doses, even if started in adolescence. The two-dose adolescent schedule does not apply to PLWH.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>HPV persistence and progression to high-grade intraepithelial neoplasia are more common with HIV, which is why the indication extends and the dosing stays at three. Anal cancer screening, where available, complements but does not replace vaccination.</p>
+      </div>
+
+      <h2 class="ct-h2">Hepatitis A and hepatitis B: screen, vaccinate, then check the response</h2>
+      <p>Hepatitis A and B are where residents most often get stuck — and where antibody titres actually change management.</p>
+      <h3 class="ct-h3">Hepatitis A</h3>
+      <p>Screen for hepatitis A virus (HAV) immunoglobulin G (IgG) if status is unknown. If negative, vaccinate. The inactivated hepatitis A vaccines (Havrix or Vaqta) are given as a two-dose series at 0 and 6 to 12 months. The combined hepatitis A and hepatitis B vaccine (Twinrix) is an alternative if both are needed, given as three doses at 0, 1, and 6 months (or an accelerated four-dose schedule for urgent travel). No post-vaccine titre is needed for hepatitis A in routine practice.</p>
+      <h3 class="ct-h3">Hepatitis B</h3>
+      <p>Check hepatitis B surface antigen (HBsAg), hepatitis B surface antibody (anti-HBs), and hepatitis B core antibody (anti-HBc) before vaccinating. If all are negative, vaccinate. You have two licensed options:</p>
+      <ul>
+        <li>The adjuvanted recombinant hepatitis B vaccine, Heplisav-B, two doses at 0 and 1 month — now preferred in many HIV programmes because completion is higher and seroconversion may be better with lower CD4 counts.</li>
+        <li>The single-antigen recombinant vaccines (Engerix-B or Recombivax HB), three doses at 0, 1, and 6 months, historically often given as double-dose (40 mcg) for PLWH.</li>
+      </ul>
+      <p>Whichever series you use, check a quantitative anti-HBs 1 to 2 months after the final dose, and ideally when the CD4 count is above 200 cells/µL and the viral load is suppressed. An anti-HBs of at least 10 milli-international units per mL is considered protective. If the response is negative, revaccinate with a full series (often switching to Heplisav-B if Engerix-B was used) and recheck. Document non-response after two complete series as a true non-responder — they remain candidates for hepatitis B immunoglobulin after exposure.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Hepatitis B vaccination in adults with HIV</caption>
+          <thead>
+            <tr><th>Option</th><th>Schedule</th><th>When to check anti-HBs</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Heplisav-B (adjuvanted, recombinant)</td><td>2 doses at 0 and 1 month</td><td>1 to 2 months after dose 2</td></tr>
+            <tr><td>Engerix-B or Recombivax HB (single-antigen)</td><td>3 doses at 0, 1, and 6 months; double-dose often used historically in HIV</td><td>1 to 2 months after dose 3</td></tr>
+            <tr><td>Non-responder after one series</td><td>Repeat full series, preferably with Heplisav-B</td><td>1 to 2 months after repeat series</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Forgetting to check anti-HBs after hepatitis B vaccination in HIV. Response rates are lower than in the general population, and you will not know to revaccinate without a titre. Put the titre order in the same visit as the last dose, dated for one month later, before the patient leaves the clinic.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If hepatitis B vaccination is started when the CD4 count is very low, vaccinate anyway and plan to recheck anti-HBs after immune reconstitution. A “negative” titre drawn before the CD4 rises is not yet the final answer.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old woman with HIV, CD4 290 cells/µL, is hepatitis B surface antigen negative, anti-HBs negative, and anti-HBc negative. She has not had hepatitis B vaccine before. What do you recommend?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer vaccination until CD4 is above 500 cells/µL</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Give Heplisav-B at 0 and 1 month and check anti-HBs 1 to 2 months after the second dose</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give one dose of Engerix-B and consider the series complete if she feels well</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Check anti-HBs now and vaccinate only if it is already positive</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>She is non-immune and needs a full series. Heplisav-B is two doses one month apart with a titre check after. A single dose is not protective, and deferring until a higher CD4 count leaves her at risk longer. You vaccinate because anti-HBs is negative, not the reverse.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Meningococcal disease and recombinant zoster: two vaccines to stop missing</h2>
+      <p>These are the most commonly missed routine vaccines in HIV clinics — and both are inactivated or recombinant, so there is no CD4 barrier to giving them.</p>
+      <p><strong>Meningococcal vaccine:</strong> PLWH have higher risk of invasive meningococcal disease from <em>Neisseria meningitidis</em>. Give quadrivalent meningococcal conjugate vaccine (MenACWY) as a two-dose primary series 8 to 12 weeks apart, with a booster every 5 years thereafter as long as HIV persists. Serogroup B meningococcal vaccine (MenB) is not routinely recommended for all PLWH but should be given if there is an outbreak, complement deficiency, or other MenB risk — a shared decision with the patient. Document MenACWY clearly, because emergency departments will assume it was not given unless charted.</p>
+      <p><strong>Recombinant zoster vaccine (RZV, Shingrix):</strong> Give to all adults with HIV aged 19 years and older. This is a change from the age 50 threshold for immunocompetent adults — immunocompromise, including HIV, lowers the eligible age to 19. Shingrix is recombinant and adjuvanted, not live, so it is safe at any CD4 count and can be given at any viral load. The series is two doses at 0 and 2 to 6 months. It does not require varicella zoster virus (VZV) serology and it does not matter whether the patient recalls chickenpox. Do not use the older live zoster vaccine (Zostavax) — it is no longer distributed in the United States and was live-attenuated.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Shingrix is not live. You can and should give it to a patient with a CD4 count of 150 cells/µL — the same patient from whom you would withhold MMR or varicella.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The age expansion to 19 years for immunocompromised adults reflects the Advisory Committee on Immunization Practices 2021 update. Many electronic health record prompts still fire only at age 50, so PLWH are missed unless you add a manual flag.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 36-year-old man with HIV, CD4 160 cells/µL, suppressed viral load, has never had MenACWY or Shingrix. He asks what he can receive today. What is appropriate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer both until CD4 is above 200 cells/µL</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Give MenACWY dose one and Shingrix dose one today; schedule returns for each series</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give only MenACWY; Shingrix is contraindicated below 200 cells/µL</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give Zostavax instead of Shingrix because it is a single dose</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Both MenACWY and Shingrix are non-live and have no CD4 threshold. The CD4 of 160 limits live vaccines only. Zostavax was live and is no longer available; Shingrix is the recommended zoster vaccine and is preferred precisely because it works in immunocompromise.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Live vaccines: measles, mumps, rubella, varicella, and yellow fever</h2>
+      <p>This is the only group where HIV truly restricts vaccination. The principle is simple: a live vaccine replicates, and if cellular immunity is profoundly impaired that replication is no longer self-limited.</p>
+      <p><strong>Measles, mumps, and rubella (MMR) and varicella (VAR):</strong> Both are live-attenuated. For adults with HIV, they are recommended only if the patient is not severely immunosuppressed — generally CD4 count at least 200 cells/µL and CD4 percentage at least 15% during sustained ART, and without an opportunistic infection or recent severe illness. If those criteria are met and the patient is seronegative, give MMR as two doses at least 28 days apart and varicella as two doses 3 months apart. If the CD4 count is below 200 cells/µL or the percentage is below 15%, withhold and reassess after immune reconstitution. Do not give them during an acute febrile illness or when the patient is receiving high-dose immunosuppressive therapy.</p>
+      <p>Check serology first if history is unclear. Many adults were vaccinated in childhood, but titres wane. For varicella, a documented history of chickenpox or shingles is not enough — check VZV immunoglobulin G (IgG) if unsure, and only vaccinate if seronegative. For measles, most adults born before 1957 are assumed immune; otherwise check MMR serologies before vaccinating someone with HIV rather than giving unnecessary live virus.</p>
+      <p><strong>Yellow fever, live-attenuated influenza, and others:</strong> Yellow fever vaccine is live and follows the same CD4 threshold, with the added rule that travel itself creates exposure risk — consult infectious diseases and the travel clinic; if the CD4 count is too low, advise against travel rather than giving a dangerous vaccine or an unhelpful waiver. Live-attenuated influenza (nasal spray) is contraindicated in HIV — use the inactivated injection. Bacillus Calmette-Guérin is not relevant to adult HIV care in the United States.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Live vaccines and HIV — when to give and when to hold</caption>
+          <thead>
+            <tr><th>Vaccine</th><th>Can give if</th><th>Hold or defer if</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>MMR</td><td>CD4 ≥200 cells/µL and ≥15%, on ART, seronegative</td><td>CD4 &lt;200 cells/µL or &lt;15%, severe opportunistic infection, high-dose steroids</td></tr>
+            <tr><td>Varicella (VAR)</td><td>CD4 ≥200 cells/µL and ≥15%, VZV seronegative</td><td>CD4 &lt;200 cells/µL or &lt;15%, VZV seropositive (already immune)</td></tr>
+            <tr><td>Yellow fever</td><td>CD4 ≥200 cells/µL and specialist approval for travel</td><td>CD4 &lt;200 cells/µL — advise deferring travel</td></tr>
+            <tr><td>Live-attenuated influenza (LAIV)</td><td colspan="2">Contraindicated in HIV at any CD4 count — use inactivated vaccine</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Giving MMR or varicella because the patient “is due” without checking the most recent CD4 count and percentage. A patient who was above 200 last year may be below 200 today after an ART interruption. Check the labs drawn this visit, not the best number in the chart.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 41-year-old woman with HIV, CD4 130 cells/µL (14%), viral load 45,000 copies/mL after ART interruption, is VZV seronegative and asks for varicella vaccine before visiting a newborn grandchild. What do you do?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give varicella vaccine now and restart ART in parallel</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give Shingrix instead to cover varicella</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Withhold live varicella vaccine, restart ART urgently, counsel on avoiding exposure, and reassess after CD4 rises above 200 cells/µL and 15%</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give MMR instead because it will provide cross-protection</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Live varicella vaccine requires intact cellular immunity to contain replication. At CD4 130 cells/µL and 14% with viraemia, the risk of vaccine-strain disease outweighs benefit. Shingrix does not prevent primary varicella and is not a substitute. The urgent intervention is ART resumption; exposure avoidance and post-exposure varicella zoster immunoglobulin if needed bridge the gap until she can be safely vaccinated.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Making it stick: timing with antiretroviral therapy, documentation, and contacts</h2>
+      <p>The visit where you diagnose or re-engage a patient is the visit to vaccinate. Do not create a referral that the patient may not complete. Stock inactivated vaccines in the HIV clinic if possible, or give them in the same building on the same day. Series that need multiple doses — HPV, hepatitis A, hepatitis B, Shingrix, MenACWY — fail most often because no recall was set.</p>
+      <p><strong>Timing with ART:</strong> If ART has not yet been started, give inactivated vaccines immediately and start ART as soon as possible — do not wait for vaccine titres to return. Responses will be better once the viral load is suppressed and the CD4 count rises, but partial protection now is preferable to perfect protection never. After the CD4 count climbs above 200 cells/µL, recheck hepatitis B anti-HBs if it was previously negative, and consider a one-time revaccination for vaccines given during profound immunosuppression if local guidance advises it.</p>
+      <p><strong>Documentation and serology:</strong> Record the vaccine name, valency (for example, PCV20 versus PPSV23), lot number, and date. For hepatitis B, record both the series and the post-series titre. For MMR and varicella, record serologies and the CD4 count and percentage on the day of vaccination — if an adverse event is later reported, that contemporaneous CD4 is the relevant number. Avoid routine post-vaccine titres for influenza, pneumococcus, or HPV — they do not change care.</p>
+      <p><strong>Household and sexual contacts:</strong> Contacts of PLWH should themselves be fully vaccinated, including annual influenza and COVID-19, to create a cocoon of protection. Contacts can receive MMR, varicella, and recombinant zoster without restriction. They should not receive LAIV if in close contact with a severely immunocompromised person — they should receive the inactivated influenza vaccine instead. Oral typhoid (Ty21a, live) for travelling contacts also warrants discussion with a travel clinic.</p>
+      <p><strong>Travel, pregnancy, and asplenia gaps:</strong> Before travel, check hepatitis A, hepatitis B, and MenACWY status early — accelerated schedules exist but are still spread over weeks. In pregnancy, inactivated influenza and Tdap are recommended in every pregnancy regardless of HIV status; live vaccines are deferred until after delivery and until CD4 criteria are met. Hyposplenia is not common in HIV alone but review the chart for splenectomy or sickle cell co-morbidity that would add meningococcal and pneumococcal urgency.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Vaccinate the contacts too. A fully vaccinated household protects a patient with a low CD4 count far more than a single additional titre check.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>One note that prevents a year of confusion: write the valency. “Pneumococcal vaccine given” does not tell the next clinician whether PPSV23 or PCV20 was used. “PCV20 lot 1234 12 Aug 2026” does.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Most vaccine failures in HIV are not immunologic — they are logistic. Uptake of Shingrix and MenACWY booster doses is below 25 percent in many HIV cohorts, not because patients declined, but because no one offered them twice.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Inactivated and recombinant vaccines are safe at any CD4 count — give them on the day you see the patient. Low CD4 reduces response, not safety. Live vaccines are the only group that requires a CD4 threshold.</li>
+        <li>Every adult with HIV needs annual inactivated influenza, updated COVID-19, a pneumococcal conjugate (PCV20 or PCV21 once), Tdap once then Td/Tdap every 10 years, and 3-dose HPV through age 26 (through 45 after discussion).</li>
+        <li>For hepatitis A, vaccinate if HAV IgG is negative with a 2-dose series; for hepatitis B, vaccinate if HBsAg, anti-HBs, and anti-HBc are negative, preferably with Heplisav-B at 0 and 1 month, and check anti-HBs 1 to 2 months after the series.</li>
+        <li>Give MenACWY as two doses then a booster every 5 years, and give recombinant zoster vaccine (Shingrix) at 0 and 2 to 6 months starting at age 19 — both are non-live and have no CD4 threshold.</li>
+        <li>Give MMR and varicella only if CD4 is at least 200 cells/µL and at least 15 percent, on suppressed ART, and the patient is seronegative; never give LAIV nasal flu vaccine to PLWH; yellow fever requires specialist input and the same CD4 threshold.</li>
+        <li>Start ART first, vaccinate in parallel, document valency and CD4 at the time of live vaccines, check hepatitis B titres after immune reconstitution, and vaccinate household contacts with inactivated influenza to cocoon the patient.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Thompson MA, Horberg MA, Agwu AL, et al. Primary care guidance for persons with human immunodeficiency virus: 2020 update by the HIV Medicine Association of the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2021;73(11):e3572-e3605.</li>
+          <li>Centers for Disease Control and Prevention. Adult immunization schedule — recommended vaccinations for adults. Advisory Committee on Immunization Practices (ACIP), updated annually.</li>
+          <li>Kobayashi M, Farrar JL, Gierke R, et al. Use of 20-valent pneumococcal conjugate vaccine among US adults: updated recommendations. Advisory Committee on Immunization Practices, United States, 2023. <em>MMWR Morb Mortal Wkly Rep</em>. 2023;72:1072-1076.</li>
+          <li>Advisory Committee on Immunization Practices. Use of recombinant zoster vaccine in immunocompromised adults aged ≥19 years. <em>MMWR</em>. 2022;71(3):80-84.</li>
+          <li>Centers for Disease Control and Prevention. Guidelines for vaccinating persons with altered immunocompetence. In: <em>Epidemiology and Prevention of Vaccine-Preventable Diseases (The Pink Book)</em>. 14th ed.</li>
+          <li>National Institutes of Health, Centers for Disease Control and Prevention, HIV Medicine Association, Infectious Diseases Society of America. Guidelines for the prevention and treatment of opportunistic infections in adults and adolescents with HIV. Updated 2023.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Immunizations for people living with HIV</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

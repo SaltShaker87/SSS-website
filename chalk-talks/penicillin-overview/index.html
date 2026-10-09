@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penicillin overview — IDSA Chalk Talk</title>
+<meta name="description" content="Mechanism, spectrum, and safe use of the oldest antibiotic family">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Penicillin overview — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Antimicrobial stewardship</p>
+        <h1 class="ct-h1">Penicillin overview</h1>
+        <p class="ct-subtitle">How to choose the narrowest penicillin that still works</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 34-year-old man is admitted with fever, trismus, and a tender right lower molar with facial swelling. When asked about allergies he says, "I am allergic to penicillin — I had a rash as a kid." The emergency department started clindamycin for a presumed dental abscess. You wonder whether penicillin would have been better and whether that old rash matters.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain how penicillins kill bacteria and the three main mechanisms of resistance.</li>
+          <li>Distinguish the four clinical penicillin families and what each adds to the spectrum.</li>
+          <li>Apply time-dependent killing and distribution principles to dosing and tissue penetration.</li>
+          <li>Take a penicillin allergy history that separates low-risk from high-risk and know when delabeling is appropriate.</li>
+        </ul>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">A note on sources</span>
+        <p>The original transcript and slide files for this talk were corrupted and could not be recovered as readable text. This page is reconstructed from standard Infectious Diseases Society of America (IDSA) guidance and core references. No dosing numbers are verbatim from the speaker; verify exact regimens locally.</p>
+      </div>
+
+      <h2 class="ct-h2">Why penicillin still matters</h2>
+      <p>For organisms that remain susceptible, no newer drug is more active or narrower than penicillin. Using the narrowest active penicillin reduces microbiome disruption, <em>Clostridioides difficile</em> infection, and selection for resistance.</p>
+      <p>The defining feature is the <span class="ct-term">beta-lactam ring</span>, which mimics the D-alanine-D-alanine end of the cell-wall precursor. Every penicillin shares that ring and therefore shares its vulnerabilities: inactivation by <span class="ct-term">beta-lactamase</span> and allergy to the ring and its breakdown products.</p>
+      <p>Penicillins remain the drug of choice where alternatives are worse: <em>Streptococcus pyogenes</em> pharyngitis, susceptible <em>Streptococcus pneumoniae</em>, syphilis due to <em>Treponema pallidum</em>, and susceptible <em>Enterococcus faecalis</em> in combination. Broadening to an inhibitor combination or to piperacillin-tazobactam when plain penicillin or amoxicillin would work is not safer.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If the isolate is susceptible, penicillin itself is the most active and narrowest choice. Broader is not safer.</p>
+      </div>
+
+      <h2 class="ct-h2">How penicillins work and how bacteria escape</h2>
+      <p>Penicillins kill only bacteria that are building cell wall. They bind <span class="ct-term">penicillin-binding proteins (PBPs)</span> — transpeptidases that cross-link peptidoglycan — the wall weakens, and the cell lyses. They have no activity against organisms without wall or against intracellular bacteria hidden inside host cells.</p>
+      <p>Killing is <span class="ct-term">time-dependent</span>: efficacy depends on the proportion of the dosing interval that free drug remains above the minimum inhibitory concentration (MIC) of the organism, abbreviated fT &gt; MIC (free time above MIC). Interval and infusion length matter more than peak height.</p>
+      <p>Bacteria escape three ways:</p>
+      <ul>
+        <li>Beta-lactamase production, which opens the ring. Nearly all <em>Staphylococcus aureus</em> produce it, so penicillin G never treats staphylococcal infection.</li>
+        <li>Target alteration. Changed PBPs cause methicillin-resistant <em>Staphylococcus aureus</em> (MRSA) and penicillin-non-susceptible pneumococci. No penicillin overcomes MRSA.</li>
+        <li>Reduced entry or increased efflux — porin loss and pumps, most relevant for <em>Pseudomonas aeruginosa</em>, often combined with beta-lactamases.</li>
+      </ul>
+      <p>The fix follows the mechanism: add a beta-lactamase inhibitor for enzymatic destruction, but do not add it for an altered target, and do not expect any penicillin to cover MRSA.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Penicillins kill by time above MIC. Shorter intervals or prolonged infusions help when the MIC is higher; a single large bolus does not.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A blood culture grows <em>Staphylococcus aureus</em> reported as methicillin-resistant. Which penicillin option will be active?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Nafcillin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Piperacillin-tazobactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Amoxicillin-clavulanate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">None — altered PBP2a makes all penicillins inactive</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Methicillin resistance means an altered target (PBP2a from <em>mecA</em>). Beta-lactamase inhibitors do not restore activity, and no penicillin overcomes it, even broad antipseudomonal agents.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The four families you need at the bedside</h2>
+      <p>Members within a family share spectrum; the difference is route and pharmacology.</p>
+      <ol>
+        <li><strong>Natural penicillins</strong> — penicillin G (intravenous, IV) and penicillin V (oral). Narrowest, best for susceptible streptococci, oral anaerobes, <em>Neisseria meningitidis</em>, and <em>Treponema pallidum</em>.</li>
+        <li><strong>Aminopenicillins</strong> — ampicillin (IV) and amoxicillin (oral). Natural spectrum plus susceptible <em>Enterococcus faecalis</em>, <em>Listeria monocytogenes</em>, and some beta-lactamase-negative <em>Escherichia coli</em> and <em>Proteus mirabilis</em>. Amoxicillin is better absorbed orally; ampicillin is the IV form. No added staphylococcal or pseudomonal coverage.</li>
+        <li><strong>Antistaphylococcal penicillins</strong> — nafcillin, oxacillin, dicloxacillin. Resistant to staphylococcal beta-lactamase, so active against methicillin-susceptible <em>Staphylococcus aureus</em> (MSSA). Narrow otherwise.</li>
+        <li><strong>Antipseudomonal penicillins</strong> — piperacillin, as piperacillin-tazobactam with the inhibitor. Adds <em>Pseudomonas aeruginosa</em> and many beta-lactamase producers and anaerobes. Broader coverage brings higher ecological cost.</li>
+      </ol>
+      <p>Inhibitors — clavulanate, sulbactam, and tazobactam — are not antibiotics alone. Amoxicillin-clavulanate and ampicillin-sulbactam extend coverage to many beta-lactamase-producing oral anaerobes, <em>Haemophilus influenzae</em>, and <em>Moraxella catarrhalis</em>. Piperacillin-tazobactam extends further, but it does not add MRSA activity and does not make ampicillin active against <em>Enterococcus faecium</em>.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Penicillin families by spectrum and typical use</caption>
+          <thead>
+            <tr><th>Family</th><th>Examples</th><th>What it adds</th><th>Where you reach for it</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Natural</td><td>Penicillin G, penicillin V</td><td>Narrowest; no beta-lactamase stability</td><td>Streptococcal pharyngitis, susceptible pneumococcal infection, syphilis</td></tr>
+            <tr><td>Aminopenicillin</td><td>Ampicillin, amoxicillin</td><td>Enterococcus faecalis, Listeria</td><td>Enterococcal infection, community-acquired pneumonia</td></tr>
+            <tr><td>Antistaphylococcal</td><td>Nafcillin, oxacillin, dicloxacillin</td><td>Staphylococcal beta-lactamase resistance</td><td>MSSA bacteraemia and endocarditis</td></tr>
+            <tr><td>Antipseudomonal + inhibitor</td><td>Piperacillin-tazobactam</td><td>Pseudomonas and many beta-lactamases</td><td>Healthcare-associated pneumonia, intra-abdominal infection</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Ampicillin and amoxicillin are identical by spectrum; choose by route and absorption, not coverage.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not use amoxicillin-clavulanate for <em>Enterococcus faecium</em>. Resistance is from altered PBPs, not beta-lactamase, so the inhibitor does not help.</p>
+      </div>
+
+      <h2 class="ct-h2">Spectrum in practice</h2>
+      <p>Three patterns cover most decisions:</p>
+      <ul>
+        <li><strong>Streptococci are the core.</strong> All penicillins cover susceptible <em>Streptococcus pyogenes</em> and <em>Streptococcus agalactiae</em>. Penicillin G remains first-line where susceptibility is proven, and benzathine penicillin G is the only recommended therapy for syphilis in pregnancy.</li>
+        <li><strong>Staphylococci split on beta-lactamase.</strong> Use nafcillin or oxacillin for MSSA. Penicillin G, ampicillin, and piperacillin are reliably inactive against <em>Staphylococcus aureus</em>, and none cover MRSA.</li>
+        <li><strong>Gram-negatives depend on beta-lactamase.</strong> Natural penicillins add little beyond <em>Neisseria</em>. Aminopenicillins add some <em>E. coli</em> and <em>Proteus</em> only when beta-lactamase negative. Clavulanate or sulbactam restores many oral anaerobes; piperacillin-tazobactam adds <em>Pseudomonas</em> but still misses MRSA and carbapenemase producers.</li>
+      </ul>
+      <p>Above the diaphragm, mouth anaerobes such as <em>Peptostreptococcus</em> and <em>Fusobacterium</em> are often penicillin-susceptible, but beta-lactamase production is common, so amoxicillin-clavulanate or ampicillin-sulbactam is often chosen. Below the diaphragm, <em>Bacteroides fragilis</em> is reliably beta-lactamase positive; plain penicillin is inadequate.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Quick spectrum check</caption>
+          <thead>
+            <tr><th>Organism or syndrome</th><th>Preferred penicillin if susceptible</th><th>When penicillin is not the answer</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Streptococcus pyogenes</em> pharyngitis</td><td>Penicillin V or amoxicillin</td><td>Macrolide only for true anaphylaxis</td></tr>
+            <tr><td><em>Streptococcus pneumoniae</em> pneumonia</td><td>Amoxicillin or penicillin G</td><td>Non-susceptible isolates need alternative by susceptibility</td></tr>
+            <tr><td>Syphilis (<em>Treponema pallidum</em>)</td><td>Benzathine penicillin G</td><td>Do not substitute doxycycline in pregnancy</td></tr>
+            <tr><td><em>Enterococcus faecalis</em></td><td>Ampicillin</td><td><em>Enterococcus faecium</em> often resistant</td></tr>
+            <tr><td>MSSA bacteraemia</td><td>Nafcillin or oxacillin</td><td>MRSA needs non-penicillin therapy</td></tr>
+            <tr><td>Suspected pseudomonal infection</td><td>Piperacillin-tazobactam (empiric)</td><td>No pseudomonal risk — use narrower agent</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 19-year-old with confirmed group A streptococcal pharyngitis and no allergy. What is the narrowest recommended therapy?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Penicillin V or amoxicillin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Amoxicillin-clavulanate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Piperacillin-tazobactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin because it is shorter</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Penicillin V and amoxicillin are first-line for <em>Streptococcus pyogenes</em>. Adding clavulanate or using an antipseudomonal adds toxicity without benefit, and azithromycin is reserved for true immediate hypersensitivity.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Pharmacology that changes your orders</h2>
+      <p>Penicillins are small and hydrophilic. They distribute well to extracellular fluid but poorly to cells, eye, prostate, and uninflamed central nervous system (CNS). Meningeal inflammation markedly increases CNS penetration, so high-dose penicillin G and ampicillin work for susceptible meningitis. They cross the placenta — useful for syphilis — and are cleared renally, so renal function determines interval and dose, which directly affects time above MIC.</p>
+      <p>The same total daily dose divided into frequent doses or given as prolonged infusion keeps the concentration above MIC longer than a single large bolus. That is why penicillin G is given every four hours as intermittent bolus and why prolonged infusion of piperacillin-tazobactam is used in critical illness. Most penicillins have a half-life of one to two hours with normal renal function, so missed doses quickly create subtherapeutic time.</p>
+      <p>Oral bioavailability differs: amoxicillin is well absorbed, penicillin V moderately, and oral ampicillin poorly. For outpatient step-down to an aminopenicillin, amoxicillin is preferred; ampicillin remains the intravenous form.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Alexander Fleming observed penicillin in 1928; systemic use began in the early 1940s. Beta-lactamase-mediated resistant <em>Staphylococcus aureus</em> appeared within a few years — a reminder that resistance follows use.</p>
+      </div>
+
+      <h2 class="ct-h2">Allergy, adverse effects, and the delabeling imperative</h2>
+      <p>About one in ten patients reports a penicillin allergy, but more than nine in ten labels are incorrect on formal assessment. The cost is broader, more toxic alternatives, longer stays, and more <em>Clostridioides difficile</em> infection. A careful history is therapeutic.</p>
+      <p>Separate immediate from delayed reactions:</p>
+      <ul>
+        <li><strong>Immediate, immunoglobulin E (IgE)-mediated</strong> — minutes to hours: hives, angioedema, wheeze, anaphylaxis, hypotension. Requires avoidance and, when penicillin is essential such as in syphilis in pregnancy, allergy evaluation and possible desensitisation.</li>
+        <li><strong>Delayed, T-cell-mediated</strong> — hours to days: morbilliform rash, and severe reactions including Stevens-Johnson syndrome, toxic epidermal necrolysis, or drug reaction with eosinophilia and systemic symptoms (DRESS), which are lifelong contraindications.</li>
+      </ul>
+      <p>Common adverse effects include diarrhoea, nausea, and rash. Less common are interstitial nephritis, haemolytic anaemia, cytopenias with prolonged high-dose therapy, and seizures with very high concentrations in renal failure. High-dose penicillin G salts add potassium or sodium load.</p>
+      <p>Cephalosporin cross-reactivity is driven by side-chain similarity, not the ring alone. For most cephalosporins without a shared side chain it is around 1 to 2 percent, higher when the R1 chain is identical (for example, amoxicillin with cefadroxil). Carbapenem cross-reactivity is also low. A mild delayed rash does not preclude a cephalosporin with a different side chain; anaphylaxis needs allergy consultation.</p>
+      <p>For low-risk histories — remote benign rash without hives or angioedema, gastrointestinal upset alone, or family history only — many guidelines endorse direct oral amoxicillin challenge under observation. Formal skin testing followed by challenge remains the standard when IgE-mediated disease is possible and penicillin is needed.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Nine in ten penicillin allergy labels are wrong. Distinguishing hives within hours from a late morbilliform rash is more useful than any lab test.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Labelling an Epstein-Barr virus plus amoxicillin rash as lifelong anaphylaxis. That morbilliform eruption is not IgE-mediated and does not predict anaphylaxis, yet it labels patients for decades.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your patient had a diffuse morbilliform rash 3 days into amoxicillin at age 8, no hives or angioedema, and has tolerated cephalexin since. Best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Label severe allergy and avoid all beta-lactams for life</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Structured low-risk assessment and, if confirmed, supervised oral amoxicillin challenge or delabeling per local protocol</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urgent skin testing on the ward without history</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure zero future risk</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A late non-urticarial rash without IgE features is low risk and often nonallergic. Tolerance of a cephalosporin lowers risk further. Guidelines support supervised challenge after risk stratification, not lifelong avoidance.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Choosing a penicillin at the bedside</h2>
+      <p>Start with the target, not the drug:</p>
+      <ol>
+        <li><strong>Name the organism or syndrome.</strong> Community cellulitis without risk factors is usually streptococcal or MSSA; intra-abdominal infection includes anaerobes and enterics.</li>
+        <li><strong>Pick the narrowest active penicillin:</strong> penicillin or amoxicillin for streptococci; ampicillin for <em>Enterococcus faecalis</em>; nafcillin or oxacillin for MSSA; piperacillin-tazobactam only when pseudomonal or broad beta-lactamase coverage is needed empirically.</li>
+        <li><strong>Add an inhibitor only for beta-lactamase.</strong> Amoxicillin-clavulanate or ampicillin-sulbactam for expected beta-lactamase producers; do not reflex to the combination when plain penicillin would work.</li>
+        <li><strong>Dose for time above MIC and verify renal adjustment.</strong> Meningitis and endocarditis need syndrome-specific regimens — check current guidance.</li>
+        <li><strong>De-escalate by culture.</strong> Empiric piperacillin-tazobactam that grows penicillin-susceptible streptococcus should be narrowed promptly.</li>
+      </ol>
+      <p>In the vignette, clindamycin is not superior for dental anaerobes, carries higher <em>Clostridioides difficile</em> risk, and perpetuates a label that will drive broader therapy for years. If the history is low risk, delabeling and using amoxicillin or amoxicillin-clavulanate per severity is better stewardship.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The best penicillin decision is often to narrow — and the second best is to remove a label that forces broadening for the next decade.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Blood cultures on piperacillin-tazobactam grow <em>Streptococcus pneumoniae</em> susceptible to penicillin. Most stewardship-consistent step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue piperacillin-tazobactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Narrow to penicillin G or amoxicillin per susceptibility</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop all antibiotics</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Narrowing to the active narrowest penicillin reduces toxicity without losing efficacy. Adding vancomycin without MRSA evidence broadens incorrectly.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Penicillins block penicillin-binding proteins (PBPs) and kill only actively wall-building bacteria. Efficacy depends on time above MIC, not peak level.</li>
+        <li>Four families differ by spectrum: natural, aminopenicillin, antistaphylococcal, and antipseudomonal. Ampicillin equals amoxicillin; beta-lactamase inhibitors help only enzymatic resistance, not altered targets such as MRSA.</li>
+        <li>If susceptible, use the narrowest penicillin — penicillin G or V for streptococci and syphilis, ampicillin for <em>Enterococcus faecalis</em>, nafcillin or oxacillin for MSSA. Reserve piperacillin-tazobactam for true pseudomonal or broad beta-lactamase need.</li>
+        <li>More than nine in ten reported allergies are not true allergies. Distinguish immediate hives or anaphylaxis from late morbilliform rash and use a low-risk versus high-risk pathway rather than lifelong avoidance.</li>
+        <li>Dose for time above MIC, adjust for renal function, and verify syndromes such as meningitis or endocarditis in current guidance. De-escalate by culture and address the allergy label.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Original transcript and slides were corrupted and not recoverable. This synthesis is reconstructed from standard references; no verbatim speaker citations were extractable.</li>
+          <li>Mandell GL, Bennett JE, Dolin R, eds. <em>Mandell, Douglas, and Bennett's Principles and Practice of Infectious Diseases</em>. 9th ed. Elsevier; 2020. Penicillin chapters.</li>
+          <li>Centers for Disease Control and Prevention. Penicillin allergy evaluation and delabeling guidance. Updated 2023–2024.</li>
+          <li>Current IDSA, American Heart Association, and CDC guidelines for syphilis, streptococcal pharyngitis, and infective endocarditis — verify syndrome-specific dosing with pharmacy.</li>
+        </ol>
+      </div>
+
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Penicillin overview</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

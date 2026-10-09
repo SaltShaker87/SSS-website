@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Challenging resistance patterns: AmpC and ESBL — IDSA Chalk Talk</title>
+<meta name="description" content="How to distinguish AmpC from ESBL and choose therapy when susceptibility reports are misleading">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Challenging resistance patterns: AmpC and ESBL — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Antimicrobial resistance</p>
+        <h1 class="ct-h1">Challenging resistance patterns: AmpC and ESBL</h1>
+        <p class="ct-subtitle">What to do when ceftriaxone looks susceptible but will fail, and when piperacillin-tazobactam is not enough</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 64-year-old man with a common bile duct stricture and an internal biliary drain is admitted with fever to 38.9°C and hypotension two days after an endoscopic retrograde cholangiopancreatography. Blood cultures grow <em>Enterobacter cloacae</em> complex. The laboratory reports ceftriaxone susceptible at a <span class="ct-term">minimum inhibitory concentration (MIC)</span> of 1 mg/L. The overnight team continues ceftriaxone. Across the hall, a 71-year-old woman with pyelonephritis and bacteremia grows <em>Escherichia coli</em> resistant to ceftriaxone and ceftazidime but reported susceptible to piperacillin-tazobactam. The resident asks whether either patient can stay on the current beta-lactam.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish <span class="ct-term">extended-spectrum beta-lactamase (ESBL)</span> and <span class="ct-term">AmpC beta-lactamase (AmpC)</span> mechanisms, the organisms that most often carry them, and the antibiotics each enzyme hydrolyses.</li>
+          <li>Explain why a susceptibility report can show ceftriaxone or piperacillin-tazobactam as susceptible and still be unsafe to use.</li>
+          <li>Choose empiric and directed therapy for bloodstream infection and urinary tract infection caused by high-risk AmpC producers and by ESBL-producing <em>Enterobacterales</em>, using current Infectious Diseases Society of America (IDSA) guidance.</li>
+          <li>Apply stewardship principles to avoid induction and selection of AmpC and to reserve carbapenems when narrower options work.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why AmpC and ESBL get confused</h2>
+      <p>Both AmpC and ESBL are beta-lactamases made by <em>Enterobacterales</em>, the gram-negative rods that cause most urinary, intra-abdominal, and health care-associated bloodstream infections. Both make third-generation cephalosporins such as ceftriaxone look unreliable. Both often travel with resistance to other classes. But they are different enzymes, coded by different genes, inhibited by different inhibitors, and they fail on different drugs.</p>
+      <p>The confusion matters when the report says susceptible. A susceptible ceftriaxone result does not guarantee ceftriaxone will work if the organism carries inducible AmpC, and a susceptible piperacillin-tazobactam result does not guarantee it will work for ESBL bacteremia. Knowing the likely enzyme tells you which result to trust.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The <span class="ct-term">Clinical and Laboratory Standards Institute (CLSI)</span> lowered cephalosporin breakpoints in 2010. Before that, laboratories reflexively performed ESBL confirmatory testing and edited susceptible cephalosporin results to resistant. Since the breakpoint change, many laboratories no longer perform routine ESBL testing at all. They report the MIC as measured. Your job is to apply IDSA guidance to that MIC when the organism and syndrome make ESBL or AmpC likely.</p>
+      </div>
+
+      <h2 class="ct-h2">What ESBL means and where you find it</h2>
+      <p>An ESBL is most often a plasmid-mediated enzyme of the CTX-M, SHV, or TEM families. It hydrolyses penicillins, first-, second-, and third-generation cephalosporins, and aztreonam. It does not hydrolyse carbapenems or cephamycins (cefoxitin) and it is inhibited in vitro by clavulanate. That last point is a laboratory clue, not a therapeutic one — you do not treat ESBL infection with clavulanate combinations.</p>
+      <p>The classic ESBL producers are <em>Escherichia coli</em>, <em>Klebsiella pneumoniae</em>, <em>Klebsiella oxytoca</em>, and <em>Proteus mirabilis</em>. The plasmid often carries fluoroquinolone and trimethoprim-sulfamethoxazole resistance as well. Community carriage of <em>E. coli</em> ST131 with CTX-M-15 is now common, so ESBL urinary infection occurs without recent health care exposure.</p>
+      <p>ESBL genes are not inducible the way AmpC is. If the isolate tests resistant to ceftriaxone, you should assume the ESBL is present whether the laboratory performs a confirmatory test or not. Current IDSA guidance treats any ceftriaxone-resistant <em>E. coli</em>, <em>K. pneumoniae</em>, <em>K. oxytoca</em>, or <em>P. mirabilis</em> as a presumptive ESBL producer for treatment purposes.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cefoxitin tells them apart. ESBL isolates are typically susceptible to cefoxitin. Resistance to cefoxitin plus resistance to ceftriaxone points toward AmpC rather than ESBL in <em>E. coli</em> or <em>Klebsiella</em>.</p>
+      </div>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>ESBL versus AmpC at a glance</caption>
+          <thead>
+            <tr><th>Feature</th><th>ESBL</th><th>AmpC</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Typical organisms</td><td><em>E. coli</em>, <em>K. pneumoniae</em>, <em>K. oxytoca</em>, <em>P. mirabilis</em> (plasmid-mediated)</td><td>Chromosomal in <em>Enterobacter cloacae</em> complex, <em>Klebsiella aerogenes</em>, <em>Citrobacter freundii</em>; plasmid-mediated in some <em>E. coli</em> or <em>Klebsiella</em></td></tr>
+            <tr><td>Hydrolyses</td><td>Penicillins, ceftriaxone, cefotaxime, ceftazidime, aztreonam</td><td>Penicillins, cefoxitin, ceftriaxone, cefotaxime, ceftazidime, aztreonam</td></tr>
+            <tr><td>Spares</td><td>Cefoxitin, carbapenems</td><td>Cefepime, carbapenems (if no carbapenemase)</td></tr>
+            <tr><td>Inhibited by clavulanate</td><td>Yes (laboratory clue)</td><td>No</td></tr>
+            <tr><td>Inducible or derepressible on therapy</td><td>No</td><td>Yes, in chromosomal AmpC producers</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="ct-h2">What AmpC means and why it behaves differently</h2>
+      <p>AmpC enzymes also hydrolyse penicillins and first-, second-, and third-generation cephalosporins, but unlike ESBL they also hydrolyse cefoxitin and they are not inhibited by clavulanate. Two properties make AmpC clinically tricky: induction and derepression.</p>
+      <p>Many organisms carry a chromosomal <em>ampC</em> gene that is normally repressed. Certain beta-lactams induce higher production. Cefepime and carbapenems are weak inducers; cefoxitin is a strong inducer but is itself stable to hydrolysis. Ceftriaxone and ceftazidime sit in the middle: they induce AmpC and are also hydrolysed once AmpC is derepressed.</p>
+      <p>Derepression is the second problem. During ceftriaxone therapy, a subpopulation with a regulator mutation (<em>ampD</em> or <em>ampR</em>) can lose repression and produce AmpC constitutively. The isolate may test susceptible on day 1 and resistant on day 4. Risk is highest for high-inoculum infection such as bacteremia, cholangitis, or undrained abscess, and lowest for uncomplicated cystitis where urine levels are high.</p>
+      <p>Not every gram-negative rod carries this risk equally. IDSA guidance separates organisms by the likelihood that AmpC production is clinically significant.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>AmpC risk groups in current IDSA guidance</caption>
+          <thead>
+            <tr><th>Risk of clinically significant chromosomal AmpC</th><th>Organisms</th><th>Practical point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Moderate to high</td><td><em>Enterobacter cloacae</em> complex, <em>Klebsiella aerogenes</em> (formerly <em>Enterobacter aerogenes</em>), <em>Citrobacter freundii</em> complex</td><td>Avoid ceftriaxone, cefotaxime, and ceftazidime even if susceptible for invasive infection; prefer cefepime if susceptible or a carbapenem</td></tr>
+            <tr><td>Lower but not zero</td><td><em>Serratia marcescens</em>, <em>Morganella morganii</em>, <em>Providencia</em> spp., <em>Hafnia alvei</em>, <em>Citrobacter koseri</em></td><td>Less likely to need derepression on therapy, but still consider AmpC if cefoxitin-resistant and ceftriaxone-resistant</td></tr>
+            <tr><td>Low (no chromosomal inducible AmpC)</td><td><em>E. coli</em>, <em>K. pneumoniae</em>, <em>P. mirabilis</em>, <em>K. oxytoca</em></td><td>AmpC unusual unless plasmid-mediated; think ESBL or other mechanism when ceftriaxone-resistant</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Three names carry the most AmpC risk: <em>Enterobacter cloacae</em> complex, <em>Klebsiella aerogenes</em>, and <em>Citrobacter freundii</em>. If one of those grows from blood and the report says ceftriaxone susceptible, do not relax.</p>
+      </div>
+
+      <h2 class="ct-h2">Why the susceptibility report is not the whole answer</h2>
+      <p>Automated testing measures growth at a fixed inoculum over hours. It does not capture selection of a derepressed mutant after several days of ceftriaxone. That is why IDSA guidance does not rely on the ceftriaxone MIC alone for high-risk AmpC organisms with invasive disease.</p>
+      <p>For ESBL, laboratories may not flag the mechanism at all. Treat ceftriaxone resistance in <em>E. coli</em>, <em>K. pneumoniae</em>, <em>K. oxytoca</em>, or <em>P. mirabilis</em> as presumptive ESBL and avoid penicillins, cephalosporins, and aztreonam regardless of other panel results. Cefoxitin susceptibility favours ESBL over AmpC.</p>
+      <p>AmpC is not reliably inhibited by tazobactam, so piperacillin-tazobactam is not a workaround for AmpC even if the MIC looks good. Cefepime is a weak inducer and more stable to AmpC hydrolysis than ceftriaxone, so it is preferred for susceptible AmpC isolates, but it is not active against most ESBLs. Carbapenems remain active against both when no carbapenemase is present, but should not be default for every resistant urine isolate.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not use ceftriaxone, cefotaxime, or ceftazidime for bacteremia or other invasive infection caused by <em>E. cloacae</em> complex, <em>K. aerogenes</em>, or <em>C. freundii</em> even when the laboratory reports susceptible. Clinical failure from derepression occurs after the report has been printed.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Cefepime is dosed to keep concentrations above the MIC for longer. In IDSA guidance the recommendation for AmpC bacteremia assumes standard high dosing of cefepime and that the isolate is susceptible to cefepime. Check local thresholds with pharmacy, and verify dosing for renal function and for critical illness where extended infusion of beta-lactams is used.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A blood culture grows <em>Enterobacter cloacae</em> complex, ceftriaxone MIC 1 mg/L (susceptible), cefepime MIC 2 mg/L (susceptible). The source is cholangitis. What is the safer directed choice?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue ceftriaxone — the MIC is susceptible so derepression will not matter</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Switch to cefepime (if dosing and susceptibility support it) or a carbapenem, and arrange source control</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to piperacillin-tazobactam because tazobactam inhibits AmpC</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add clavulanate to ceftriaxone to inhibit the AmpC</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Ceftriaxone is a strong AmpC inducer and selects for derepressed mutants during therapy of high-inoculum infection. The susceptible MIC on day 1 does not predict day 4. Piperacillin-tazobactam is not reliably active against AmpC, and clavulanate does not inhibit AmpC. Cefepime is a weak inducer and stable to AmpC hydrolysis; a carbapenem is the alternative when cefepime is not susceptible or the patient is critically ill. Source control still matters.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">AmpC at the bedside: avoiding the ceftriaxone trap</h2>
+      <p>When you see <em>Enterobacter cloacae</em> complex, <em>Klebsiella aerogenes</em>, or <em>Citrobacter freundii</em> from a sterile site or from a high-inoculum source, treat the organism as if AmpC will matter, even before any repeat testing confirms it.</p>
+      <ul>
+        <li>For invasive infection such as bacteremia, cholangitis, pneumonia, or undrained intra-abdominal infection, avoid ceftriaxone, cefotaxime, and ceftazidime regardless of susceptibility. Prefer cefepime when susceptible; use meropenem or ertapenem when cefepime is non-susceptible, the MIC is borderline, or the patient is critically ill.</li>
+        <li>For uncomplicated cystitis with the organism only in urine, high urinary concentrations change the approach. Nitrofurantoin, fosfomycin, or other urinary agents with demonstrated susceptibility can work where the same organism would need a different drug for bacteremia.</li>
+        <li>Do not rely on piperacillin-tazobactam for high-risk AmpC bacteremia even if the MIC is low — it faces the same selection pressure.</li>
+      </ul>
+      <p>When you use cefepime, check the exact MIC and dosing. IDSA guidance accepts cefepime only when susceptible; borderline MICs or critical illness often push toward a carbapenem. A quick pharmacy check is part of safe prescribing.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cefepime survives AmpC when ceftriaxone does not, because it is a weak inducer and is more stable to hydrolysis. That advantage disappears once the organism also carries an ESBL or a carbapenemase.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A urine culture in a stable, afebrile woman with dysuria grows <em>Enterobacter cloacae</em> complex 10^5 CFU/mL, susceptible to cefepime and nitrofurantoin, ceftriaxone susceptible. Blood cultures are negative. What is reasonable?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone for cystitis because the MIC is low</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Nitrofurantoin for uncomplicated cystitis if susceptible and no upper tract signs, or cefepime only if pyelonephritis and the isolate is cefepime-susceptible</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Piperacillin-tazobactam is always safe for AmpC cystitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat any <em>Enterobacter</em> in urine as bacteremia and use a carbapenem</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Site matters. Uncomplicated cystitis is low inoculum and urinary concentrations are high, so oral urinary agents with proven susceptibility can work and spare broader therapy. For upper tract or invasive disease, avoid ceftriaxone for high-risk AmpC organisms. Piperacillin-tazobactam is not a reliable AmpC drug.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">ESBL at the bedside: choosing therapy by site and severity</h2>
+      <p>For ESBL producers, the site of infection drives the choice more than the MIC panel suggests.</p>
+      <ul>
+        <li><strong>Uncomplicated cystitis</strong> due to ESBL <em>E. coli</em> is often treatable without a carbapenem. Nitrofurantoin and fosfomycin achieve very high urine levels and are preferred when susceptible and without upper tract signs or bacteremia. Trimethoprim-sulfamethoxazole can be used when susceptible, though resistance is common.</li>
+        <li><strong>Pyelonephritis, bacteremia, pneumonia, or intra-abdominal infection</strong> due to ESBL <em>E. coli</em>, <em>K. pneumoniae</em>, <em>K. oxytoca</em>, or <em>P. mirabilis</em> requires a carbapenem when ceftriaxone-resistant. Ertapenem or meropenem are typical choices. Piperacillin-tazobactam is not a carbapenem-sparing option for bloodstream infection even when susceptible — the MERINO trial showed higher mortality with piperacillin-tazobactam than meropenem.</li>
+        <li><strong>Do not use cefepime or ceftazidime for ESBL bacteremia</strong> even if susceptible. Most ESBLs hydrolyse them and failures have been reported. Newer combinations such as ceftolozane-tazobactam or ceftazidime-avibactam are reserved for carbapenem-resistant organisms and specific indications.</li>
+      </ul>
+      <p>Source control remains part of therapy. Remove infected lines, drain abscesses, relieve obstruction. An ESBL cholangitis that stays obstructed will fail on any drug.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For ESBL bloodstream infection, piperacillin-tazobactam susceptibility on the panel is not a green light. The randomised MERINO trial is why IDSA guidance favours a carbapenem for invasive ESBL disease.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Uncomplicated ESBL cystitis is the one place you can often spare a carbapenem. Nitrofurantoin or fosfomycin for susceptible <em>E. coli</em> cystitis treats the patient and protects carbapenems for the next patient with bacteremia.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 71-year-old woman with pyelonephritis and <em>E. coli</em> bacteremia grows ceftriaxone-resistant, cefoxitin-susceptible, piperacillin-tazobactam-susceptible <em>E. coli</em>. She is hypotensive. Which is most appropriate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Piperacillin-tazobactam, because the MIC is susceptible and it spares carbapenems</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">A carbapenem such as ertapenem or meropenem, with dose adjusted for renal function and severity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cefepime, because it is a weak AmpC inducer</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Nitrofurantoin, because it works for ESBL cystitis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is invasive ESBL <em>E. coli</em> disease — bacteremia plus pyelonephritis with hypotension. Nitrofurantoin does not achieve blood levels. Cefepime is not active against ESBL. Piperacillin-tazobactam showed inferior outcomes to meropenem for ESBL bloodstream infection in MERINO, so a carbapenem is preferred. Cefoxitin susceptibility simply supports that AmpC is not the main mechanism.</p>
+        </div>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A healthy 24-year-old woman with dysuria, no fever or flank pain, grows ESBL <em>E. coli</em> in urine, susceptible to nitrofurantoin and fosfomycin, resistant to trimethoprim-sulfamethoxazole. Blood cultures are negative. What is reasonable?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Nitrofurantoin or fosfomycin for uncomplicated cystitis, with counselling on hydration and return precautions</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Meropenem for all ESBL urinary isolates, even uncomplicated cystitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone because cystitis is low inoculum</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cefepime for cystitis because it covers AmpC</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Uncomplicated ESBL cystitis without bacteremia or upper tract involvement can be treated with a urinary agent that tests susceptible. Nitrofurantoin and fosfomycin concentrate in urine and spare carbapenems. Ceftriaxone and cefepime are not options for an ESBL isolate with ceftriaxone resistance, and routine carbapenem use for cystitis drives resistance.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Putting it together on call</h2>
+      <p>On call, run a short checklist before you accept a susceptible result.</p>
+      <ol>
+        <li><strong>What organism?</strong> High-risk AmpC organisms (<em>E. cloacae</em> complex, <em>K. aerogenes</em>, <em>C. freundii</em>) mean no ceftriaxone for invasive infection even if susceptible. Low-risk organisms with ceftriaxone resistance suggest ESBL.</li>
+        <li><strong>What site and how sick?</strong> Bacteremia, pneumonia, cholangitis, and undrained abscess are high-inoculum AmpC failure risks. Uncomplicated cystitis is where oral urinary agents can avoid both the AmpC trap and carbapenem overuse.</li>
+        <li><strong>What does cefoxitin say?</strong> Resistant to both cefoxitin and ceftriaxone suggests AmpC; cefoxitin susceptible with ceftriaxone resistance suggests ESBL.</li>
+        <li><strong>What is the safest narrow option?</strong> High-risk AmpC bacteremia: cefepime if susceptible or a carbapenem. ESBL bacteremia or pyelonephritis: a carbapenem. Uncomplicated ESBL cystitis: nitrofurantoin or fosfomycin when susceptible.</li>
+      </ol>
+      <p>Document your reasoning and talk to pharmacy early. Local antibiogram rates of ESBL and AmpC matter more than any single table, and IDSA guidance is updated as data evolve.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When you are not sure whether you are dealing with AmpC or ESBL, let the organism and cefoxitin guide you, and choose the drug that is safe for either until infectious diseases or microbiology can help.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>ESBL (often CTX-M in <em>E. coli</em> or <em>Klebsiella</em>) hydrolyses ceftriaxone and aztreonam, spares cefoxitin, and is inhibited by clavulanate; AmpC hydrolyses ceftriaxone and cefoxitin, is not inhibited by clavulanate, and can be induced or derepressed on therapy.</li>
+        <li>High-risk AmpC organisms are <em>Enterobacter cloacae</em> complex, <em>Klebsiella aerogenes</em>, and <em>Citrobacter freundii</em>. For invasive infection with one of them, avoid ceftriaxone, cefotaxime, and ceftazidime even if reported susceptible; use cefepime if susceptible or a carbapenem.</li>
+        <li>Treat ceftriaxone resistance in <em>E. coli</em>, <em>K. pneumoniae</em>, <em>K. oxytoca</em>, or <em>P. mirabilis</em> as presumptive ESBL and avoid penicillins, cephalosporins, and aztreonam regardless of panel results for those agents.</li>
+        <li>For invasive ESBL infection such as bacteremia or pyelonephritis, a carbapenem is preferred. Piperacillin-tazobactam is not a reliable carbapenem-sparing option for bloodstream infection even when susceptible, and cefepime is not reliable for ESBL.</li>
+        <li>For uncomplicated ESBL cystitis without bacteremia, nitrofurantoin or fosfomycin with demonstrated susceptibility can spare a carbapenem. Nitrofurantoin does not treat bacteremia or pyelonephritis.</li>
+        <li>Check cefoxitin, confirm the exact MIC for cefepime, verify dosing with pharmacy, and prioritise source control for any high-inoculum infection.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Tamma PD, Aitken SL, Bonomo RA, Mathers AJ, van Duin D, Clancy CJ. Infectious Diseases Society of America 2023 guidance on the treatment of antimicrobial resistant gram-negative infections. <em>Clin Infect Dis</em>. 2023;77(7):e106-e138. Updated 2024.</li>
+          <li>Tamma PD, Doi Y, Bonomo RA, Johnson JK, Simner PJ, on behalf of the IDSA. A primer on AmpC beta-lactamases: necessary knowledge for the next generation. <em>Clin Infect Dis</em>. 2019;68(4):e89-e95.</li>
+          <li>Harris PNA, Tambyah PA, Lye DC, et al. Effect of piperacillin-tazobactam vs meropenem on 30-day mortality for patients with <em>E. coli</em> or <em>Klebsiella pneumoniae</em> bloodstream infection and ceftriaxone resistance: a randomized clinical trial (MERINO). <em>JAMA</em>. 2018;320(10):984-994.</li>
+          <li>Clinical and Laboratory Standards Institute. Performance standards for antimicrobial susceptibility testing. 33rd ed. CLSI supplement M100. 2023.</li>
+          <li>Jacoby GA. AmpC beta-lactamases. <em>Clin Microbiol Rev</em>. 2009;22(1):161-182.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Challenging resistance patterns: AmpC and ESBL</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

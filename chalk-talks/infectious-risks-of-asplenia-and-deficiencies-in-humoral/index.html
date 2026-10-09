@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infectious risks of asplenia and deficiencies in humoral immunity and complement — IDSA Chalk Talk</title>
+<meta name="description" content="Why asplenia, antibody deficiency, and complement deficiency converge on encapsulated bacteria — and how to vaccinate, prophylax, and respond to fever.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Infectious risks of asplenia and deficiencies in humoral immunity and complement — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Immunocompromised hosts</p>
+        <h1 class="ct-h1">Infectious risks of asplenia and deficiencies in humoral immunity and complement</h1>
+        <p class="ct-subtitle">Why missing spleen, antibodies, or complement converges on the same dangerous bacteria</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 12 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 28-year-old man with sickle cell disease presents to the emergency department with 8 hours of fever, rigors, and left upper quadrant pain. He had a splenectomy at age 12 after a traumatic splenic rupture and has not seen primary care in three years. He is now febrile to 39.8°C, hypotensive, tachycardic, and confused. His white blood cell count is 28,000 per microliter, platelets 68,000, and a peripheral smear shows Howell-Jolly bodies. Blood cultures are drawn. What organisms are you most worried about, and what do you do in the next minutes?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why asplenia, humoral immunodeficiency, and complement deficiency share susceptibility to encapsulated bacteria.</li>
+          <li>List the core organisms that cause overwhelming infection in asplenic and antibody-deficient hosts and how they present.</li>
+          <li>Distinguish infection patterns of early complement component deficiency from terminal complement deficiency.</li>
+          <li>Apply a practical approach to vaccination, antibiotic prophylaxis, and fever action planning for asplenic patients.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why the spleen matters</h2>
+      <p>The spleen does three jobs that together explain <span class="ct-term">overwhelming post-splenectomy infection</span> (OPSI) — the fulminant bacteraemia without a focus that can kill within 24 to 48 hours despite antibiotics, with mortality 40 to 70 percent.</p>
+      <p>First, it is a mechanical filter. Blood must squeeze through slits between endothelial cells to re-enter the venous circulation; poorly opsonised (poorly antibody- or complement-coated) <span class="ct-term">encapsulated bacteria</span> and intraerythrocytic parasites are trapped and removed by splenic macrophages. Capsules resist phagocytosis unless opsonised, so losing the filter matters most for capsulated organisms.</p>
+      <p>Second, it is a rapid antibody factory. Marginal zone memory B cells make immunoglobulin M (IgM) against T-cell-independent polysaccharide antigens — exactly what capsules are made of — without T-cell help. Splenic macrophages also produce tuftsin and properdin that support phagocytosis.</p>
+      <p>Third, it is the final clearance site. Even after opsonisation, removal depends on splenic macrophages via Fc and C3b receptors. Liver Kupffer cells handle well-opsonised bacteria but are poor with poorly opsonised capsules, so the defect is clearance failure, not just load. OPSI reflects all three failures at once: bacteraemia, no localising focus, rapid septic shock, disseminated intravascular coagulation, and often Waterhouse-Friderichsen adrenal haemorrhage.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Asplenia removes a filter, a rapid IgM factory, and a clearance site at once. That is why infection is not just more frequent — it is faster and more lethal than in a normal host.</p>
+      </div>
+
+      <h2 class="ct-h2">Who is functionally asplenic</h2>
+      <p>Surgical asplenia is obvious; functional asplenia often is not. Recognise both.</p>
+      <ul>
+        <li><strong>Sickle cell disease</strong> causes autosplenectomy by early childhood. Treat infants with sickle cell anaemia as asplenic from diagnosis.</li>
+        <li><strong>Hyposplenism</strong> from celiac disease, alcohol-associated liver disease, systemic lupus erythematosus, inflammatory bowel disease, or graft-versus-host disease — often subclinical.</li>
+        <li><strong>Congenital asplenia or polysplenia</strong>, splenic irradiation, or prior splenic artery embolisation.</li>
+      </ul>
+      <p>Howell-Jolly bodies, target cells, or thrombocytosis suggest hyposplenism, but absence does not rule it out. Treat any such patient as asplenic. Risk is lifelong — highest in the first one to three years and in children splenectomised under age five — but fatal OPSI occurs decades later. Do not assume a remote splenectomy is no longer relevant.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Patients often do not know they are asplenic. Trauma patients may have had a splenectomy reported as “abdominal surgery” years ago, and patients with sickle cell disease may think their spleen is normal because no one removed it. Ask explicitly: have you had your spleen removed, and have you ever been told you have sickle cell disease?</p>
+      </div>
+
+      <h2 class="ct-h2">The organisms you cannot afford to miss</h2>
+      <p>Asplenia, humoral deficiency, and early complement deficiency converge on the same short list. Learn it cold.</p>
+      <p>Classic triad:</p>
+      <ul>
+        <li><em>Streptococcus pneumoniae</em> — most common cause of OPSI by far; bacteraemia often without pneumonia or meningitis.</li>
+        <li><em>Haemophilus influenzae</em> type b — less common after conjugate vaccines but still a risk in unvaccinated adults.</li>
+        <li><em>Neisseria meningitidis</em> — more frequent and more severe meningococcemia and meningitis.</li>
+      </ul>
+      <p>Also expect:</p>
+      <ul>
+        <li><em>Capnocytophaga canimorsus</em> after dog bites or licks on broken skin — trivial wounds can cause fulminant sepsis with disseminated intravascular coagulation.</li>
+        <li>Intraerythrocytic parasites: <em>Babesia microti</em> and <em>Plasmodium</em> species cause higher parasitaemia and more severe disease without splenic filtering.</li>
+      </ul>
+      <p>Cover empirically for all of them and narrow later. Waiting for a syndrome to declare itself is how OPSI kills.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Dismissing a dog bite as minor in an asplenic patient. Even a small lick on broken skin or a nip that barely breaks the epidermis has preceded fatal <em>Capnocytophaga</em> sepsis. Ask every febrile asplenic patient about animal exposure and give bite prophylaxis counselling at every visit.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your asplenic patient returns from a summer in the Northeast with 10 days of fever, haemolytic anaemia, and thrombocytopenia. Blood smear shows intraerythrocytic ring forms. Which exposure history most increases severity in asplenia?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Consumption of unpasteurised cheese</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Tick bite in a <em>Babesia</em>-endemic area</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Exposure to a child with viral pharyngitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Recent influenza vaccination</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>Babesia microti</em>, like <em>Plasmodium</em>, lives inside red cells that the spleen normally filters. Asplenia allows higher parasitaemia, more severe haemolysis, and prolonged illness. Always ask asplenic patients about tick exposure and travel, and examine the smear yourself — tetrads and extracellular forms distinguish <em>Babesia</em> from malaria.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When humoral immunity fails</h2>
+      <p>Antibodies opsonise capsules so phagocytes can see them. When B-cell function or immunoglobulin falls, the same encapsulated bacteria recur — plus clues pointing to humoral rather than splenic failure.</p>
+      <p>Primary defects to know:</p>
+      <ul>
+        <li><strong>X-linked agammaglobulinaemia (XLA)</strong> — absent B cells from Bruton tyrosine kinase mutation; infancy onset after maternal IgG wanes with <em>S. pneumoniae</em> and <em>H. influenzae</em> sinopulmonary infections plus chronic enteroviral meningoencephalitis and <em>Giardia lamblia</em>.</li>
+        <li><strong>Common variable immunodeficiency (CVID)</strong> — most common symptomatic adult defect; low IgG plus low IgA or IgM, poor vaccine responses, recurrent sinusitis, bronchiectasis, autoimmune cytopenias.</li>
+        <li><strong>Selective IgA deficiency</strong> — often asymptomatic; increased sinopulmonary and <em>Giardia</em> infections; anaphylaxis risk with IgA-containing blood products.</li>
+        <li><strong>Hyper-IgM syndromes</strong> — defective class-switch; sinopulmonary bacteria plus <em>Pneumocystis jirovecii</em> and <em>Cryptosporidium</em> in some forms.</li>
+      </ul>
+      <p>Secondary causes are more common on adult wards: rituximab or other anti-CD20 therapy, myeloma or chronic lymphocytic leukaemia, and protein-losing states. Clinically, humoral defects cause recurrent sinopulmonary infections with poor antibiotic response and eventual bronchiectasis, chronic <em>Giardia</em> diarrhoea, and enteroviral persistence. Check immunoglobulins (IgG, IgA, IgM) and specific antibody titres to pneumococcal and tetanus vaccines when you see this pattern, and involve immunology — immunoglobulin replacement dramatically reduces infections.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If an adult has been hospitalised twice in one year for pneumococcal pneumonia or has persistent bronchiectasis and chronic diarrhoea, do not keep treating episodes — check immunoglobulins. CVID is underdiagnosed and often labelled “difficult asthma” or “recurrent sinusitis” for years.</p>
+      </div>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Clues that point toward humoral versus splenic defect</caption>
+          <thead>
+            <tr><th>Pattern</th><th>More suggestive of</th><th>Typical organisms</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Single fulminant bacteraemia with DIC</td><td>Asplenia</td><td><em>S. pneumoniae</em>, <em>N. meningitidis</em>, <em>Capnocytophaga</em></td></tr>
+            <tr><td>Recurrent sinopulmonary infections, poor vaccine response</td><td>Humoral deficiency (CVID, XLA)</td><td><em>S. pneumoniae</em>, <em>H. influenzae</em>, <em>Moraxella</em></td></tr>
+            <tr><td>Chronic diarrhoea with malabsorption</td><td>Humoral deficiency</td><td><em>Giardia lamblia</em></td></tr>
+            <tr><td>Persistent enteroviral meningoencephalitis</td><td>XLA or severe agammaglobulinaemia</td><td>Enteroviruses (echovirus)</td></tr>
+            <tr><td>Recurrent pyogenic infections plus autoimmune features</td><td>Early complement deficiency</td><td><em>S. pneumoniae</em>, <em>H. influenzae</em></td></tr>
+            <tr><td>Recurrent meningococcal disease, any serogroup</td><td>Terminal complement deficiency</td><td><em>N. meningitidis</em>, <em>N. gonorrhoeae</em> (disseminated)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 32-year-old woman has had four sinus infections and two pneumonias in two years, each requiring prolonged antibiotics. She has chronic diarrhoea and low IgG and IgA with poor response to pneumococcal vaccination. Which management most reduces future infections?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Prolonged macrolide prophylaxis alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Immunology referral for immunoglobulin replacement evaluation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Splenectomy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Avoid all vaccines due to poor response</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This is classic CVID: low IgG plus low IgA, recurrent encapsulated bacterial infections, poor specific antibody production, and <em>Giardia</em>-associated diarrhoea. Long-term macrolides do not correct the defect. Immunoglobulin replacement reduces sinopulmonary infections and slows bronchiectasis. Vaccination is still given, but titres are used diagnostically and protective responses are not expected without replacement.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When complement fails</h2>
+      <p>Complement opsonises bacteria, lyses susceptible organisms via the membrane attack complex (MAC), and clears immune complexes. Defects produce two distinct infection patterns.</p>
+
+      <h3 class="ct-h3">Early and classical pathway deficiency</h3>
+      <p>C1q, C1r, C1s, C4, and C2 (classical pathway) and C3 at the convergence of all pathways are needed for opsonisation and immune-complex clearance. Deficiency looks like humoral failure: recurrent sinopulmonary pyogenic infections with <em>S. pneumoniae</em> and <em>H. influenzae</em>. Because complexes are not cleared, C1q and C4 deficiency often present first with systemic lupus erythematosus–like autoimmunity, delaying the infectious workup. C3 deficiency is most severe — without C3b, opsonisation collapses, causing recurrent life-threatening encapsulated infections in infancy.</p>
+
+      <h3 class="ct-h3">Terminal pathway deficiency</h3>
+      <p>C5 through C9 form the MAC, which punches holes in gram-negative membranes. MAC is dispensable for most gram positives but critical for <em>Neisseria</em>. Terminal deficiency (C5, C6, C7, C8, or C9) therefore presents with recurrent invasive meningococcal disease — often uncommon serogroups W, X, or Y — and disseminated gonococcal infection. A repeat episode, unusual serogroup, or family history should prompt CH50 and AH50 screening then component levels. Eculizumab and ravulizumab, which bind C5, create pharmacologic terminal deficiency with the same meningococcal risk even after vaccination, requiring vaccination plus prophylaxis.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Repeated meningococcal infection points to the membrane attack complex; repeated pneumococcal infection points to opsonisation. One is a MAC problem (C5–C9 or eculizumab), the other is a C3, early complement, or humoral problem.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Total haemolytic complement (CH50) screens the classical and terminal pathways; alternative pathway haemolytic activity (AH50) screens the alternative and terminal pathways. An absent CH50 with normal AH50 suggests early classical deficiency; absent CH50 and AH50 suggests C3 or terminal deficiency. Low C3 and C4 together suggest consumption or synthesis problems rather than a single inherited deficiency.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 19-year-old man has had two episodes of meningococcal meningitis, one serogroup Y and one serogroup W, both treated successfully. He is otherwise healthy. What is the most appropriate next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure and give standard pneumococcal vaccination</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Check total haemolytic complement (CH50) and alternative pathway activity (AH50), and refer for complement component testing</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Check immunoglobulin levels only</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start lifelong penicillin without further workup</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Recurrent meningococcal disease with uncommon serogroups is the hallmark of terminal complement deficiency (C5–C9). CH50 will be absent; AH50 will also be absent with terminal deficiency. Immunoglobulin testing is appropriate for recurrent pneumococcal disease, not recurrent meningococcal disease. Vaccination and prophylaxis follow, but the diagnosis comes first.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Prevention is the treatment</h2>
+      <p>You cannot recreate the spleen; you can provide the antibodies it would have made, reduce inoculum, and ensure fever triggers urgent care.</p>
+
+      <h3 class="ct-h3">Vaccination</h3>
+      <p>Vaccinate every asplenic or hyposplenic patient against encapsulated organisms — ideally at least two weeks before elective splenectomy, but do not delay when surgery is urgent; vaccinate as soon as possible afterward.</p>
+      <ul>
+        <li><strong>Pneumococcal</strong> — conjugate and polysaccharide vaccines per current Advisory Committee on Immunization Practices (ACIP) guidance with boosters for asplenia.</li>
+        <li><strong>Meningococcal</strong> — quadrivalent conjugate (A, C, W, Y) plus serogroup B vaccines, both with boosters for asplenia and complement deficiency.</li>
+        <li><strong><em>Haemophilus influenzae</em> type b (Hib)</strong> — one dose for unvaccinated adults per ACIP.</li>
+        <li><strong>Influenza annually</strong> — to prevent secondary pneumococcal infection.</li>
+      </ul>
+      <p>Titres wane faster without a spleen; a single remote dose is not enough. Check the record at every visit. Patients with humoral or complement defects often respond poorly, especially after rituximab or with CVID — vaccinate anyway, use titres diagnostically, and do not delay immunoglobulin replacement because response was poor.</p>
+
+      <h3 class="ct-h3">Antibiotic prophylaxis</h3>
+      <p>Daily oral penicillin prophylaxis is standard in children with sickle cell disease and young children after splenectomy; adult duration varies by institutional guidance. Patients on eculizumab or ravulizumab need meningococcal prophylaxis for the duration of complement blockade plus vaccination. Every asplenic patient should have a written “pill in pocket” plan — an empiric oral dose (often amoxicillin where susceptible, with an alternative for penicillin allergy per protocol) to take at first fever while going immediately to emergency care. The dose is a bridge, not a home course, and requires explicit counselling.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Vaccines need boosters. The most common failure in asplenia care is vaccinating once at the time of splenectomy and never revisiting the record. Put a reminder in the chart for pneumococcal and meningococcal boosters — your patient will not remember.</p>
+      </div>
+
+      <h3 class="ct-h3">Counselling you must document</h3>
+      <p>Give every asplenic patient a written plan and teach-back:</p>
+      <ul>
+        <li>Wear a medical alert bracelet or card stating asplenia.</li>
+        <li>Treat any fever (often 38.3°C or 101°F) as an emergency — go now, do not watch until morning, and tell every clinician about asplenia.</li>
+        <li>Seek immediate care for any dog bite, even trivial, and for tick exposure in endemic areas; discuss malaria prophylaxis before travel.</li>
+      </ul>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Deferring vaccines because the patient is “acutely ill” after splenectomy and then never catching up. Vaccinate before discharge and schedule the boosters before the patient leaves the hospital. The discharge checklist should include vaccination and education, not just wound care.</p>
+      </div>
+
+      <h2 class="ct-h2">What to do when the asplenic patient spikes a fever</h2>
+      <p>Assume bacteraemia until proven otherwise. Act urgently and empirically.</p>
+      <ul>
+        <li><strong>Do not triage as viral or low risk.</strong> Even without localising signs, fever warrants rapid assessment, blood cultures, and empiric antibiotics covering <em>S. pneumoniae</em>, <em>H. influenzae</em>, and <em>N. meningitidis</em>. Ask about animal bites, tick exposure, travel, and malaria risk.</li>
+        <li><strong>Give empiric broad-spectrum antibiotics promptly</strong> per institutional sepsis protocol; add <em>Capnocytophaga</em> coverage if any dog exposure and consider babesiosis or malaria where epidemiology fits. Do not delay antibiotics for imaging or lumbar puncture; involve infectious diseases early.</li>
+        <li><strong>Admit most febrile asplenic patients</strong> until bacteraemia is excluded. OPSI can progress from well-appearing to vasopressor-dependent in hours; apparent improvement after fluids does not make discharge safe without a clear alternative diagnosis.</li>
+      </ul>
+      <p>A “pill in pocket” dose is a bridge to emergency evaluation, not a substitute. Patients who feel better transiently after the dose still need immediate care — the antibiotic buys time, not safety.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Fever plus asplenia equals blood cultures and empiric antibiotics now, not after the chest radiograph. Treat the absence of a source as the expected presentation of OPSI, not as reassurance.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old woman, splenectomised five years ago for immune thrombocytopenia, calls your clinic with 6 hours of fever to 38.6°C and no other symptoms. She has amoxicillin from a prior “pill in pocket” prescription. What is the best advice?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stay home, take amoxicillin, and call back if fever persists 48 hours</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Take the prescribed empiric dose now if instructed in her action plan and go immediately to the emergency department for evaluation and blood cultures</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Take an anti-inflammatory and recheck temperature in the morning</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Go to the emergency department only if a rash or neck stiffness develops</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>The “pill in pocket” dose is a bridge to immediate care, not a home treatment course. OPSI presents without localising signs and deteriorates rapidly; early blood cultures and parenteral antibiotics in the emergency department are essential. Waiting for meningeal signs or rash loses the window where treatment saves lives. Always pair the dose with an instruction to seek care now.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Asplenia, humoral deficiency, and early complement deficiency all impair opsonisation and clearance of encapsulated bacteria — that is why <em>S. pneumoniae</em>, <em>H. influenzae</em> type b, and <em>N. meningitidis</em> dominate all three.</li>
+        <li>OPSI is rapid, often without a focus, and carries high mortality even with prompt care. Risk is lifelong, highest early after splenectomy. Do not be reassured by a remote surgical date.</li>
+        <li>Think beyond the triad: ask about dog bites (<em>Capnocytophaga</em>), ticks (<em>Babesia</em>), and travel (malaria) in any febrile asplenic patient — these infections are more severe without splenic filtering.</li>
+        <li>Recurrent sinopulmonary infections with poor vaccine response and chronic <em>Giardia</em> diarrhoea point to humoral deficiency (especially CVID); recurrent meningococcal disease with unusual serogroups points to terminal complement deficiency (C5–C9) or C5 inhibitor therapy.</li>
+        <li>Prevention saves lives: vaccinate against pneumococcus, meningococcus (A, C, W, Y plus B), Hib, and influenza with scheduled boosters; counsel on medical alert identification, dog-bite precautions, and malaria risk; and give every patient a written fever action plan including when to use a bridge antibiotic and go to emergency care immediately.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Rubin LG, Schaffner W. Clinical practice guideline for vaccination of the asplenic patient: 2014 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2014;58(3):309-310.</li>
+          <li>Di Sabatino A, Carsetti R, Corazza GR. Post-splenectomy and hyposplenic states. <em>Lancet</em>. 2011;378(9785):86-97.</li>
+          <li>Bonilla FA, et al. Practice parameter for the diagnosis and management of primary immunodeficiency. <em>J Allergy Clin Immunol</em>. 2015;136(5):1186-1205.</li>
+          <li>Ram S, Lewis LA, Rice PA. Infections of people with complement deficiencies and patients who have undergone splenectomy. <em>Clin Microbiol Rev</em>. 2010;23(4):740-780.</li>
+          <li>Lambert MP, et al. C5 inhibitor therapy and meningococcal risk: vaccination and prophylaxis considerations. <em>Am J Hematol</em>. 2017;92(10):E585-E586.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Infectious risks of asplenia and deficiencies in humoral immunity and complement</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

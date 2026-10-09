@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antimicrobial treatment of endocarditis caused by common organisms — IDSA Chalk Talk</title>
+<meta name="description" content="Choosing the right drug, dose, and duration for streptococcal, staphylococcal, enterococcal, and HACEK endocarditis.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Antimicrobial treatment of endocarditis caused by common organisms — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Cardiovascular infections</p>
+        <h1 class="ct-h1">Antimicrobial treatment of endocarditis caused by common organisms</h1>
+        <p class="ct-subtitle">Which organism, which valve, and how long — a resident's guide to getting the regimen right</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man with poor dentition is admitted with 3 weeks of low-grade fever, night sweats, and 4 kg weight loss. Two sets of blood cultures grow <em>Streptococcus mitis</em> with a penicillin minimum inhibitory concentration (MIC) of 0.06 mcg per mL. A new systolic murmur is noted. Transesophageal echocardiogram (TEE) shows a 9 mm vegetation on the native mitral valve without abscess. He reports a rash with penicillin as a child. The team asks what antibiotic to start, for how long, and whether he needs gentamicin.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Choose first-line therapy for infective endocarditis (IE) caused by viridans group streptococci, <em>Staphylococcus aureus</em>, <em>Enterococcus</em> species, and HACEK (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella) organisms based on susceptibility and valve type.</li>
+          <li>Explain why valve type (native versus prosthetic) and organism susceptibility determine duration and whether combination therapy is needed.</li>
+          <li>Identify when aminoglycoside (gentamicin) synergy adds toxicity without benefit and when dual beta-lactam therapy is preferred.</li>
+          <li>Outline practical steps for empiric therapy, outpatient planning, and when to involve surgery.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Before you pick an antibiotic — the framework</h2>
+      <p><span class="ct-term">Infective endocarditis</span> is a biofilm infection on a valve surface. Bacteria are not floating in blood alone but embedded in vegetation where drug penetration is poor and the inoculum is high. That is why endocarditis needs bactericidal agents, prolonged courses, and higher doses than the same organism would need for bacteraemia alone. Treatment is defined by three variables: the organism and its susceptibility, whether the valve is native or prosthetic, and whether there are complications such as abscess, heart failure, or emboli.</p>
+      <p>Do not start antibiotics until you have drawn two to three sets of blood cultures, unless the patient is in septic shock. Cultures after antibiotics are usually negative and leave you treating blind. Once cultures are drawn, start empiric therapy promptly and narrow when the organism returns. For native valve endocarditis (NVE) and prosthetic valve endocarditis (PVE), involve infectious diseases, cardiology, and cardiothoracic surgery early.</p>
+      <p>Duration is counted from the first day of effective therapy after bacteraemia clears, not from admission. Repeat blood cultures every 24 to 48 hours until negative, look for metastatic foci, and obtain a TEE in most adults — transthoracic echocardiogram (TTE) misses small vegetations and abscesses.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The 2015 American Heart Association (AHA) scientific statement on IE in adults remains the backbone for antimicrobial choices in the United States. It groups regimens by organism and by penicillin MIC rather than by empirical preference. The principles below follow that statement and subsequent stewardship updates.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Culture first, then treat. Two to three blood culture sets before antibiotics save more lives than an early extra dose of vancomycin ever will.</p>
+      </div>
+
+      <h2 class="ct-h2">Viridans group streptococci and Streptococcus gallolyticus — susceptibility drives the choice</h2>
+      <p>Viridans group streptococci (including <em>Streptococcus mitis</em>, <em>Streptococcus oralis</em>, <em>Streptococcus sanguinis</em>, and <em>Streptococcus mutans</em>) and <em>Streptococcus gallolyticus</em> (formerly <em>Streptococcus bovis</em>) are the classic causes of subacute native valve IE after dental or colonic sources. The single most important number is the penicillin MIC.</p>
+      <p>When the penicillin MIC is 0.12 mcg per mL or less, the organism is considered penicillin-susceptible. For NVE, aqueous crystalline penicillin G or ceftriaxone for 4 weeks is standard. A 2-week course of penicillin or ceftriaxone plus gentamicin for the first 2 weeks is an alternative for uncomplicated NVE in patients without renal dysfunction, but most clinicians now prefer the 4-week monotherapy to avoid aminoglycoside toxicity.</p>
+      <p>When the penicillin MIC is 0.12 to 0.5 mcg per mL (relatively resistant), add gentamicin for the first 2 weeks to penicillin or ceftriaxone and treat for 4 weeks total for NVE. When the MIC is greater than 0.5 mcg per mL, treat as for enterococcal IE and consult infectious diseases.</p>
+      <p>For PVE caused by penicillin-susceptible streptococci, treat for 6 weeks with penicillin or ceftriaxone; many add gentamicin for the first 2 weeks for PVE unless renal impairment argues against it. For true immediate penicillin hypersensitivity, vancomycin for 4 weeks (NVE) or 6 weeks (PVE) is the alternative.</p>
+      <p>Always ask about the colon. <em>Streptococcus gallolyticus</em> bacteraemia, especially with endocarditis, is associated with colonic neoplasia and merits colonoscopy in adults.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Viridans group streptococci and Streptococcus gallolyticus by penicillin MIC</caption>
+          <thead>
+            <tr><th>Susceptibility</th><th>Native valve duration</th><th>Prosthetic valve duration</th><th>Typical regimen</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Penicillin MIC ≤0.12 mcg per mL</td><td>4 weeks</td><td>6 weeks</td><td>Penicillin G 12 to 18 million units per day IV in divided doses or ceftriaxone 2 g IV daily</td></tr>
+            <tr><td>MIC 0.12 to 0.5 mcg per mL</td><td>4 weeks</td><td>6 weeks</td><td>Penicillin or ceftriaxone plus gentamicin for first 2 weeks</td></tr>
+            <tr><td>MIC &gt;0.5 mcg per mL or nutritionally variant</td><td>4 to 6 weeks</td><td>6 weeks</td><td>Treat as enterococcal IE; infectious diseases consultation recommended</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not default to vancomycin for streptococcal IE because of a vague childhood rash. Verify the allergy. Penicillin and ceftriaxone are more bactericidal, better tolerated, and allow outpatient ceftriaxone once daily. Use vancomycin only for true immediate hypersensitivity.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The patient in the vignette has NVE due to penicillin-susceptible <em>Streptococcus mitis</em> (MIC 0.06). His penicillin rash as a child was mild and non-immediate. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Vancomycin 6 weeks because any penicillin allergy prohibits beta-lactams</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Ceftriaxone 2 g IV daily for 4 weeks after careful allergy history; consider penicillin after clarification</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone 2 weeks plus gentamicin 2 weeks and stop</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Oral amoxicillin 4 weeks</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>For penicillin MIC ≤0.12, 4 weeks of penicillin or ceftriaxone suffices for NVE. A 2-week combination course is only for selected uncomplicated cases. A remote mild rash is usually not an immediate hypersensitivity; ceftriaxone is preferred over vancomycin after clarifying the allergy, with allergy input if needed. Oral therapy is not adequate for IE.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For streptococcal IE, the MIC tells you the duration and whether gentamicin adds anything. MIC ≤0.12 means 4 weeks of a single beta-lactam for native valves.</p>
+      </div>
+
+      <h2 class="ct-h2">Staphylococcus aureus — MSSA versus MRSA and why gentamicin no longer helps native valves</h2>
+      <p><em>Staphylococcus aureus</em> causes acute, destructive IE with high rates of embolization, abscess, and death. It affects both native and prosthetic valves and frequently seeds the spine, brain, and lungs in people who inject drugs. The key distinction is methicillin-susceptible <em>Staphylococcus aureus</em> (MSSA) versus methicillin-resistant <em>Staphylococcus aureus</em> (MRSA).</p>
+      <p>For MSSA NVE, a beta-lactam is superior to vancomycin. Use nafcillin or oxacillin 12 g per day IV divided, or cefazolin 2 g IV every 8 hours (6 g per day) with normal renal function, for 6 weeks. Cefazolin is better tolerated than nafcillin for long courses but avoid it with central nervous system infection due to limited penetration. Do not add gentamicin for MSSA or MRSA NVE — it worsens renal injury without improving cure.</p>
+      <p>For MRSA NVE, use vancomycin with therapeutic monitoring, or daptomycin 8 to 10 mg per kg IV daily for 6 weeks if vancomycin cannot be used. Daptomycin is inactivated by surfactant and cannot be used with pneumonia.</p>
+      <p>For PVE due to <em>Staphylococcus aureus</em>, duration is at least 6 weeks. Traditionally rifampin and gentamicin were added for the first 2 weeks, but rifampin must never start until bacteraemia has cleared or resistance emerges. Many teams now omit gentamicin for PVE due to nephrotoxicity and use the core beta-lactam or vancomycin plus rifampin after clearance.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Staphylococcus aureus endocarditis — practical regimens</caption>
+          <thead>
+            <tr><th>Situation</th><th>First-line regimen</th><th>Duration</th><th>Key caveat</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>MSSA, native valve</td><td>Nafcillin or oxacillin 12 g per day IV divided, or cefazolin 2 g IV every 8 hours</td><td>6 weeks</td><td>No gentamicin; check for penicillin allergy before defaulting to vancomycin</td></tr>
+            <tr><td>MRSA, native valve</td><td>Vancomycin (monitored) or daptomycin 8 to 10 mg per kg IV daily</td><td>6 weeks</td><td>Daptomycin not for pneumonia; obtain repeat cultures to confirm clearance</td></tr>
+            <tr><td>MSSA or MRSA, prosthetic valve</td><td>Same core agent as above for at least 6 weeks; add rifampin 300 mg orally every 8 hours only after bacteraemia cleared</td><td>≥6 weeks</td><td>Do not start rifampin alone or while bacteraemic; many centres now omit gentamicin</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Using vancomycin for MSSA endocarditis because it feels broader is not broader — it is worse. MSSA treated with vancomycin has higher failure rates than with nafcillin, oxacillin, or cefazolin. Reserve vancomycin for true MRSA or severe beta-lactam allergy.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 32-year-old woman who injects drugs has tricuspid NVE due to MSSA. Blood cultures clear on day 2 of nafcillin. She has normal renal function. What is the best regimen?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Vancomycin 6 weeks plus gentamicin 2 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Nafcillin or cefazolin for 6 weeks without gentamicin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Nafcillin 2 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Daptomycin plus rifampin from day 1</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>MSSA NVE needs 6 weeks of a beta-lactam. Vancomycin is inferior for MSSA. Gentamicin adds nephrotoxicity without survival benefit for native valve staphylococcal IE. Two weeks is far too short, and rifampin is not a first-line partner for native valve disease nor started on day 1.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If it is MSSA, use a beta-lactam. Every day on vancomycin for MSSA is a day with higher failure risk.</p>
+      </div>
+
+      <h2 class="ct-h2">Enterococcus faecalis and faecium — two beta-lactams are better than one</h2>
+      <p><em>Enterococcus faecalis</em> and <em>Enterococcus faecium</em> cause IE with a reputation for relapse if undertreated. They are tolerant to cell-wall agents alone, which is why monotherapy with penicillin or ampicillin fails. Traditional teaching was ampicillin plus gentamicin, but high-level aminoglycoside resistance and renal injury have shifted practice toward dual beta-lactam therapy.</p>
+      <p>For penicillin-susceptible <em>Enterococcus faecalis</em> NVE or PVE, ampicillin plus ceftriaxone for 6 weeks is now preferred. The pair is synergistic by saturating different penicillin-binding proteins, works against many high-level aminoglycoside-resistant strains, and spares the kidney. Give ampicillin 2 g IV every 4 hours plus ceftriaxone 2 g IV every 12 hours.</p>
+      <p>Ampicillin plus gentamicin for 4 to 6 weeks remains an option when the isolate is not highly resistant and the patient can tolerate it, with dosing by ideal body weight and monitoring of levels, renal function, and hearing.</p>
+      <p><em>Enterococcus faecium</em> is often ampicillin- and vancomycin-resistant. Therapy depends fully on susceptibilities: vancomycin-susceptible isolates may be treated with vancomycin plus gentamicin, but vancomycin-resistant <em>Enterococcus</em> (VRE) needs infectious diseases input for agents such as daptomycin or linezolid and often needs surgical evaluation.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Enterococcal endocarditis — choosing the combination</caption>
+          <thead>
+            <tr><th>Organism</th><th>Preferred regimen</th><th>Duration</th><th>When to choose alternative</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Enterococcus faecalis</em>, ampicillin-susceptible</td><td>Ampicillin plus ceftriaxone</td><td>6 weeks (NVE or PVE)</td><td>If ceftriaxone cannot be used, use ampicillin plus gentamicin if not highly resistant</td></tr>
+            <tr><td><em>Enterococcus faecalis</em>, high-level gentamicin resistance</td><td>Ampicillin plus ceftriaxone</td><td>6 weeks</td><td>Dual beta-lactam avoids aminoglycoside that will not work</td></tr>
+            <tr><td><em>Enterococcus faecium</em>, vancomycin-susceptible</td><td>Vancomycin plus gentamicin (if susceptible)</td><td>6 weeks</td><td>Consult infectious diseases; alternatives depend on susceptibilities</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>High-level aminoglycoside resistance means synergy with gentamicin is lost. The lab reports it as high-level gentamicin resistance or gentamicin MIC greater than 500 mcg per mL. When present, gentamicin adds only toxicity.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 71-year-old man has PVE due to ampicillin-susceptible <em>Enterococcus faecalis</em> with high-level gentamicin resistance. Creatinine is 1.6 mg per dL. What is the best regimen?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ampicillin alone for 6 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ampicillin plus gentamicin 6 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Ampicillin plus ceftriaxone for 6 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Vancomycin plus gentamicin</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Mono-therapy fails for enterococcal IE. Gentamicin is both ineffective in high-level resistance and nephrotoxic with a borderline creatinine. Ampicillin plus ceftriaxone gives synergy without aminoglycoside and is the contemporary standard for susceptible <em>Enterococcus faecalis</em> PVE or NVE.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For <em>Enterococcus faecalis</em> IE, think two drugs for six weeks. Ampicillin plus ceftriaxone has largely replaced ampicillin plus gentamicin, especially when the kidney is at risk.</p>
+      </div>
+
+      <h2 class="ct-h2">HACEK and other gram-negatives plus empiric therapy when you do not yet know</h2>
+      <p>HACEK organisms grow slowly but the treatment is straightforward. For NVE, ceftriaxone 2 g IV daily for 4 weeks is effective. For PVE or complicated disease, extend to 6 weeks. Ampicillin plus gentamicin is listed in older tables but ceftriaxone monotherapy is simpler and better tolerated.</p>
+      <p>True gram-negative bacillary endocarditis (outside HACEK) is uncommon and usually healthcare-associated. It often requires combination therapy with a beta-lactam plus an aminoglycoside or fluoroquinolone guided by susceptibilities and surgical consultation — do not extrapolate from HACEK.</p>
+      <p>When you must start empiric therapy before cultures return for suspected NVE, cover <em>Staphylococcus aureus</em>, streptococci, and enterococci — commonly vancomycin plus ceftriaxone. For suspected PVE or early prosthetic infection, broaden to vancomycin plus gentamicin plus cefepime or ceftriaxone, then narrow rapidly when cultures return.</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old man has native valve IE but blood cultures are still pending. He is stable, has no prosthetic material, and no drug allergy. What empiric regimen is most appropriate while awaiting cultures?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Oral amoxicillin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Vancomycin plus ceftriaxone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Piperacillin-tazobactam alone</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Empiric NVE therapy should cover MSSA, MRSA, streptococci, and enterococci. Vancomycin covers MRSA and enterococci pending susceptibilities, ceftriaxone covers streptococci including <em>Streptococcus gallolyticus</em> and MSSA. Ceftriaxone alone misses MRSA, piperacillin-tazobactam alone misses the need for reliable MRSA activity, and oral therapy is inadequate.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>HACEK is easy: ceftriaxone 4 weeks for native valves, 6 weeks for prosthetic. Save the complex combinations for non-HACEK gram-negatives.</p>
+      </div>
+
+      <h2 class="ct-h2">From inpatient to outpatient — duration, monitoring, and when to call surgery</h2>
+      <p>Duration thresholds are strict: viridans NVE 4 weeks, prosthetic 6 weeks; <em>Staphylococcus aureus</em> NVE and PVE at least 6 weeks; <em>Enterococcus</em> and HACEK NVE 4 to 6 weeks, PVE 6 weeks. Gentamicin when used is only for the first 2 weeks; rifampin for staphylococcal PVE is added only after bacteraemia clears.</p>
+      <p>Monitor toxicity weekly: creatinine and electrolytes for beta-lactams and vancomycin, blood counts for nafcillin and ceftriaxone, liver tests for rifampin, creatine kinase for daptomycin, and vancomycin levels per pharmacy protocol. Repeat blood cultures until negative and repeat TEE if fever or emboli persist.</p>
+      <p>Plan outpatient parenteral antimicrobial therapy (OPAT) early. Ceftriaxone and daptomycin once daily are OPAT-friendly; nafcillin every 4 hours is hard at home, so cefazolin every 8 hours is often used. Confirm stable housing, reliable access, and safety of a peripherally inserted central catheter (PICC). Early oral step-down after an initial IV course is selective and needs infectious diseases input.</p>
+      <p>Call surgery early for heart failure from valve destruction, perivalvular abscess or fistula, persistent bacteraemia beyond 5 to 7 days on appropriate therapy, large vegetations with recurrent emboli, or prosthetic dehiscence.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Counting duration from the admission date instead of the first negative culture shortens therapy. Document the date cultures cleared, then count forward. A week of positive cultures followed by 4 weeks from admission is really only 3 weeks of effective therapy.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with MSSA PVE cleared bacteraemia on hospital day 4. The team started vancomycin, then added rifampin on day 2 while still bacteraemic. What needs correction?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Rifampin timing is fine; continue</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Rifampin should have been started after clearance, not during bacteraemia; also vancomycin is inferior to a beta-lactam for MSSA — switch to nafcillin or cefazolin if not allergic</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add gentamicin for 6 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop antibiotics now that cultures are negative</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Rifampin started during bacteraemia selects resistance and can render it useless. Start rifampin only after blood cultures are negative and a primary active agent is on board. For MSSA, a beta-lactam beats vancomycin. Gentamicin for 6 weeks would be nephrotoxic, and stopping early guarantees relapse for PVE which needs at least 6 weeks.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For staphylococcal prosthetic valve IE, rifampin is a companion, not a starter. Never start it while the blood is still positive.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Draw two to three blood culture sets before any antibiotics, then start empiric therapy — vancomycin plus ceftriaxone for NVE, broaden for PVE — and narrow once the organism is known.</li>
+        <li>Viridans streptococci and <em>Streptococcus gallolyticus</em>: use the penicillin MIC. MIC ≤0.12 means 4 weeks of penicillin or ceftriaxone for native valves and 6 weeks for prosthetic; add gentamicin only for relatively resistant isolates.</li>
+        <li><em>Staphylococcus aureus</em>: MSSA needs a beta-lactam (nafcillin, oxacillin, or cefazolin) for 6 weeks; MRSA needs vancomycin or daptomycin for 6 weeks. Do not add gentamicin for native valves, and only add rifampin for prosthetic valves after bacteraemia clears.</li>
+        <li><em>Enterococcus faecalis</em>: ampicillin plus ceftriaxone for 6 weeks is preferred over ampicillin plus gentamicin, especially with renal dysfunction or high-level aminoglycoside resistance.</li>
+        <li>HACEK: ceftriaxone 4 weeks native, 6 weeks prosthetic. Count duration from first negative culture, monitor for toxicity weekly, plan outpatient parenteral therapy early, and call surgery for heart failure, abscess, persistent bacteraemia, or recurrent emboli.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Baddour LM, Wilson WR, Bayer AS, et al. Infective Endocarditis in Adults: Diagnosis, Antimicrobial Therapy, and Management of Complications. A Scientific Statement for Healthcare Professionals From the American Heart Association. <em>Circulation</em>. 2015;132(15):1435-1486.</li>
+          <li>Habib G, Lancellotti P, Antunes MJ, et al. 2015 ESC Guidelines for the management of infective endocarditis. <em>Eur Heart J</em>. 2015;36(44):3075-3128.</li>
+          <li>Miller WR, Murray BE, Rice LB, Arias CA. Vancomycin-resistant enterococci: therapeutic challenges in the 21st century. <em>Infect Dis Clin North Am</em>. 2020;34(4):751-771.</li>
+          <li>Baddour LM, Wilson WR, Bayer AS, et al. Update on cardiovascular implantable electronic device infections and their management. <em>Circulation</em>. 2010;121(3):458-477.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Antimicrobial treatment of endocarditis caused by common organisms</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

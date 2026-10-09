@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antibiotic failure — IDSA Chalk Talk</title>
+<meta name="description" content="When the patient is not getting better on antibiotics — a systematic bedside approach to what to check before you broaden.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Antibiotic failure — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Antimicrobial stewardship</p>
+        <h1 class="ct-h1">Antibiotic failure</h1>
+        <p class="ct-subtitle">Why patients stay febrile on treatment and what to check before you broaden</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: Dr Miller — IDSA Chalk Talk faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man is admitted with community-acquired pneumonia. He is started on ceftriaxone and azithromycin. Blood and sputum cultures are sent. By hospital day 3 he is still febrile to 38.6 °C, tachycardic, and requires 2 L of oxygen by nasal cannula — about the same as on admission. The white blood cell count is 14,200 per microlitre, down from 15,800. The team wonders whether to broaden to vancomycin and piperacillin-tazobactam.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Define antibiotic failure versus expected slow response and set a realistic timeline for reassessment.</li>
+          <li>Apply a five-part framework — infection versus mimic, syndrome, organism, drug and penetration, and source control — to a patient not improving on therapy.</li>
+          <li>Identify common gaps in empiric coverage and when broadening is not the right next step.</li>
+          <li>Recognise host factors, drug fever, and superinfection that masquerade as failure.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">What do we mean by antibiotic failure?</h2>
+      <p><span class="ct-term">Antibiotic failure</span> is shorthand for "the patient is not doing what I expected on this regimen." Most bacterial infections do not defervesce overnight. For pneumonia, fever and tachycardia often persist for 48 to 72 hours even when the antibiotic is correct; for <em>Staphylococcus aureus</em> bacteraemia, blood cultures can remain positive for several days despite appropriate therapy. Calling failure too early drives unnecessary broadening and toxicity.</p>
+      <p>A better bedside question is: what exactly is not getting better, and over what interval? Vital signs, oxygen requirement, blood pressure, mental status, and white blood cell (WBC) count trend are more informative than a single temperature. A patient with persistent fever but improving oxygenation and WBC count is on a different trajectory from one whose oxygen needs are climbing.</p>
+      <p>Set a clock when you start antibiotics and reassess around 48 to 72 hours for most non-critically ill patients — sooner if worsening. That window lets cultures return and the inflammatory response lag behind bacterial killing.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Failure is defined by the patient trajectory, not by the thermometer alone. Compare vital signs, oxygen needs, blood pressure, and WBC count trend at 48 to 72 hours — not just the current temperature.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Use 72 hours as a prompt to reassess systematically, not as an automatic trigger to add methicillin-resistant <em>Staphylococcus aureus</em> (MRSA) or gram-negative coverage.</p>
+      </div>
+
+      <h2 class="ct-h2">First, is it infection at all?</h2>
+      <p>This is the most common reason antibiotics appear to fail: the fever was never bacterial. Non-infectious mimics account for a large share of "not improving" calls after 48 hours.</p>
+      <p>On every recheck ask: what else explains fever or leukocytosis? Contributors include drug fever, venous thromboembolism, acute pancreatitis, chemical aspiration pneumonitis, malignancy, and inflammatory disease. Drug fever often starts 7 to 10 days after the agent, with relative bradycardia or rash, and persists despite antibiotics. Pulmonary embolism and pancreatitis raise WBC count without responding to antibacterials.</p>
+      <p>Colonisation also misleads. A sputum culture with "mixed flora" is oropharyngeal colonisation, not pneumonia. Treat the syndrome and radiology, not the culture in isolation.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Adding antibiotics because "we cannot rule out infection" when the picture now favours a non-infectious cause. Each added agent carries toxicity, selects for resistance, and makes subsequent diagnosis harder. Pause and name the alternative diagnoses before you broaden.</p>
+      </div>
+
+      <h2 class="ct-h2">Second, did we get the syndrome right?</h2>
+      <p>If infection is likely, the next error is the wrong syndrome. An antibiotic that covers pneumonia may miss cellulitis, intra-abdominal infection, or line infection. Re-examine and ask whether the admission diagnosis still fits.</p>
+      <p>For our patient, re-examine the radiograph, focal findings, and timeline. Consider mimics: heart failure with vascular congestion, pulmonary embolism with infarct, or organising pneumonia. On the wards, cellulitis is often overcalled — bilateral symmetric stasis erythema is rarely bacterial — and urinary tract infection is overcalled when pyuria and a positive culture occur without urinary symptoms.</p>
+      <p>Name the expected organisms for each syndrome. If the syndrome shifts, coverage must shift — often toward narrowing or stopping. If pneumonia becomes heart failure, the answer is diuresis, not vancomycin.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The man in the vignette is on day 3 of ceftriaxone and azithromycin for pneumonia but remains febrile. Blood cultures are negative, WBC count is trending down slightly, and oxygen need is stable. What is the most useful next step before broadening?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin and piperacillin-tazobactam now because fever persists</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Re-examine, review imaging and microbiology, and ask whether infection, syndrome, and organism assumptions still hold</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch azithromycin to levofloxacin for "double pseudomonal coverage"</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order procalcitonin and broaden if it is elevated</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Persistent fever alone does not prove inadequate coverage, and double covering <em>Pseudomonas aeruginosa</em> without a reason adds toxicity. The highest yield at 72 hours is a structured reassessment — confirm that the syndrome still fits, check culture data and trends, and look for non-infectious causes and source issues — before committing to broader therapy. Procalcitonin trends can inform but do not replace clinical reassessment.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Third, are we missing the organism?</h2>
+      <p>Once the syndrome feels right, ask whether the regimen covers likely pathogens — and whether the pathogen would respond to antibacterials at all.</p>
+      <p>Three gaps matter. First, resistant organisms: recent health care exposure, antibiotics within 90 days, known methicillin-resistant <em>Staphylococcus aureus</em> (MRSA) or extended-spectrum beta-lactamase (ESBL) <em>Escherichia coli</em> or <em>Klebsiella</em> colonisation, and local antibiogram data. Second, intrinsically uncovered organisms: anaerobes in aspiration with putrid sputum, <em>Pseudomonas aeruginosa</em> with structural lung disease, or <em>Legionella pneumophila</em> if atypical coverage was omitted. Third, non-bacterial infection: influenza, severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), respiratory syncytial virus (RSV), or fungi can mimic bacterial pneumonia.</p>
+      <p>Use negative data too. Negative cultures after antibiotics are less reassuring, but a Gram stain with no organisms or no good-quality sputum tells you the culture is unreliable. If you add MRSA or <em>Pseudomonas aeruginosa</em> coverage, state the stop rule — "pending nares screen and blood cultures, stop if negative at 48 hours" — rather than leaving broad coverage running.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common empiric gaps when pneumonia does not improve</caption>
+          <thead>
+            <tr><th>Situation</th><th>What may be missed</th><th>Bedside clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Health care exposure, prior broad-spectrum antibiotics</td><td>MRSA, <em>Pseudomonas aeruginosa</em>, ESBL organisms</td><td>Prior culture history, recent intravenous antibiotics, local antibiogram</td></tr>
+            <tr><td>Aspiration with poor dentition, putrid sputum</td><td>Anaerobes</td><td>Foul sputum, cavitation, periodontal disease</td></tr>
+            <tr><td>Atypical presentation, hyponatraemia, diarrhoea</td><td><em>Legionella</em>, other atypicals</td><td>Azithromycin or doxycycline already covers — check it was given</td></tr>
+            <tr><td>Viral season, negative bacterial studies</td><td>Influenza, SARS-CoV-2, other viruses</td><td>Rapid antigen or polymerase chain reaction (PCR) testing, exposure history</td></tr>
+            <tr><td>Persisting fever with negative routine cultures</td><td>Endocarditis, tuberculosis, fungi</td><td>Murmur, embolic phenomena, travel and exposure history</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When you broaden for a missing organism, write the stop rule at the same time. "Start vancomycin pending MRSA nares and blood cultures; discontinue if negative at 48 hours" prevents indefinite broad coverage.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 55-year-old woman with healthcare-associated pneumonia was started on ceftriaxone. She has a history of MRSA nasal colonisation and received clindamycin 2 weeks ago. She is not improving at 48 hours. Which gap is most plausible?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">MRSA not covered by ceftriaxone — resistant gram-positive coverage is missing</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Amoxicillin would have covered MRSA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add metronidazole for atypical coverage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Fever must be non-infectious, so stop all antibiotics</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Ceftriaxone does not cover MRSA. Prior colonisation plus recent antibiotics markedly raises risk. Metronidazole does not add atypical or MRSA coverage, and amoxicillin is also inactive against MRSA. Stopping antibiotics entirely ignores the still-plausible bacterial pneumonia — you need to cover the likely resistant pathogen and reassess.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Fourth, is the drug reaching the site?</h2>
+      <p>The right drug fails if it never reaches the site at an effective concentration. Pharmacokinetic and pharmacodynamic (PK/PD) issues are underappreciated.</p>
+      <p>Check dose and interval for this patient: weight-based dosing for vancomycin and aminoglycosides, renal function for beta-lactams, and augmented renal clearance in young critically ill patients. An obese patient dosed like a 70-kg adult will be underdosed; a patient with rising creatinine may be overdosed today and underdosed tomorrow.</p>
+      <p>Consider penetration. Beta-lactams penetrate the central nervous system (CNS) poorly without inflamed meninges; nitrofurantoin does not reach blood or kidney parenchyma and should never be used for pyelonephritis or bacteraemia; aminoglycosides are inactive in acidic abscess fluid. Missed doses and interactions matter — a patient who vomits oral doxycycline or is kept nothing by mouth without an intravenous alternative is not receiving therapy.</p>
+      <p>Use therapeutic drug monitoring where it exists — vancomycin area-under-the-curve dosing is the clearest example — and involve pharmacy early.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The right antibiotic at the wrong dose, by the wrong route, or to the wrong compartment is still the wrong regimen. Check renal function, weight, route, and site penetration before you call it failure.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Beta-lactams need time above the minimum inhibitory concentration (MIC); fluoroquinolones and aminoglycosides need peak relative to MIC. Give beta-lactams at the correct interval and infusion time.</p>
+      </div>
+
+      <h2 class="ct-h2">Fifth, have we achieved source control?</h2>
+      <p>Antibiotics cannot sterilise an undrained collection, an obstructed tract, or an infected device left in place. Source control is the forgotten half of treatment and the most fixable cause of apparent failure.</p>
+      <p>Ask about every source: a central or peripheral line placed days ago, an undrained parapneumonic effusion or empyema with persistent pleuritic pain, sinusitis from a nasogastric tube, cholecystitis or cholangitis with biliary obstruction, intra-abdominal abscess, pressure injury, or retained secretions. An undrained effusion or a 4-cm abdominal fluid collection on computed tomography (CT) often matters more than the next antibiotic.</p>
+      <p>For pneumonia this means clearing the airway, mobilising, avoiding ongoing aspiration, and evaluating pleural collections. For bacteraemia it means removing infected lines rather than "treating through" them. For urinary infection it means relieving obstruction, not swapping cephalosporins.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Undrained pus, an obstructed duct, or a retained infected line will not resolve with antibiotic changes alone. Source control beats spectrum every time.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 70-year-old patient on broad-spectrum antibiotics for pneumonia has persistent fever. Chest CT shows a moderate right pleural effusion with loculations not previously sampled. Blood cultures are negative. Next best step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add linezolid for "better lung penetration"</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Evaluate the effusion with thoracentesis and involve pulmonology or interventional radiology for drainage if criteria for empyema are met</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Extend ceftriaxone for another 7 days without further workup</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to oral amoxicillin to complete a 5-day course</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A loculated pleural collection can explain persistent fever despite adequate antibiotics. Sampling is diagnostic and often therapeutic; empyema requires drainage. Changing antibiotics without addressing the collection misses the fix, and de-escalating to oral amoxicillin without source control risks relapse.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Host factors, drug fever, and superinfection</h2>
+      <p>The host and the drugs themselves can mimic failure.</p>
+      <p>Immunosuppression — neutropenia, chemotherapy, high-dose corticosteroids, advanced human immunodeficiency virus (HIV), or functional asplenia — blunts improvement and widens the differential to opportunists and fungi. Prolonged neutropenic fever on antibacterials may need evaluation for invasive fungal disease rather than endless escalation.</p>
+      <p>Drug fever is common and often missed. Beta-lactams, sulfonamides, and anti-seizure agents are frequent culprits. Clues include fever starting days into therapy despite improvement elsewhere, relative bradycardia, rash or eosinophilia, and defervescence within 48 to 72 hours of stopping the agent. <em>Clostridioides difficile</em> infection can also generate fever and leukocytosis that look like worsening pneumonia.</p>
+      <p>Superinfection is less common than invoked. Extending antibiotics increases <em>C. difficile</em> and resistance risk without benefit if another cause explains the fever.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When a patient improves clinically but fever lingers after a new drug was started 7 to 10 days ago, consider drug fever. A pause and review of the medication list is safer than adding another antimicrobial.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Treating persistent fever with additional antibiotics without reviewing for drug fever, <em>C. difficile</em> disease, or an undrained source. If you add, document why and when you will stop.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with cellulitis on cefazolin is afebrile with improving erythema by day 3, but on day 8 develops new fever to 39.0 °C, rash, and eosinophilia with stable vitals and no new focus of infection. blood urea nitrogen (BUN) and creatinine are slightly up.</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Broaden to meropenem for presumed gram-negative superinfection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Consider drug fever from cefazolin and evaluate for acute interstitial nephritis before broadening</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin because fever must mean MRSA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue cefazolin and add an antipyretic — this is expected</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>New fever with rash and eosinophilia a week into beta-lactam therapy, with improving original infection, favours drug hypersensitivity — including acute interstitial nephritis — over superinfection. Broadening without considering drug fever adds harm and delays stopping the culprit. Evaluate renal function, urinalysis, and medication timeline.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">A bedside checklist for day 3</h2>
+      <p>Use the same order every time so you do not skip a step. Run it with the nurse and pharmacist.</p>
+      <ol>
+        <li>Reassess trajectory: temperature curve, respiratory rate, oxygen need, blood pressure, heart rate, and WBC count from day 1 to now.</li>
+        <li>Name alternatives: drug fever, embolism, pancreatitis, heart failure, or other non-infectious cause?</li>
+        <li>Confirm syndrome: does the admission diagnosis still fit or has a new syndrome emerged?</li>
+        <li>Audit microbiology: what grew, what did not, and specimen quality? Review Gram stains, cultures, nares screens, and viral PCR.</li>
+        <li>Check the drug: dose, interval, route, penetration, renal function, weight, interactions, and missed doses.</li>
+        <li>Check source control: lines, pleural space, biliary and urinary obstruction, abscess, wound, and aspiration risk.</li>
+        <li>Decide and document: continue, narrow, broaden with a stop rule, image, sample, drain, or stop — and reassess in 24 hours.</li>
+      </ol>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Good antibiotic decisions on day 3 are often about diagnostics and drainage, not about a bigger gun. If you reach for a broader drug, reach for the phone to microbiology, pharmacy, or radiology at the same time.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Set the clock at 48 to 72 hours and judge trajectory — vital signs, oxygen and pressure trends, and WBC count — not a single fever.</li>
+        <li>First, ask whether fever is infection at all; drug fever, emboli, pancreatitis, and colonisation masquerading as infection are common causes of apparent failure.</li>
+        <li>Then confirm the syndrome: if the diagnosis has changed, the antibiotic should change with it — and sometimes that means stopping, not broadening.</li>
+        <li>Check for missing organisms with intent: add MRSA or <em>Pseudomonas aeruginosa</em> coverage only when risk factors support it, and write the de-escalation rule when you start.</li>
+        <li>Verify dose, route, renal function, weight, interactions, and penetration to the infected compartment; a drug that cannot reach the site cannot succeed.</li>
+        <li>Prioritise source control — drain pus, relieve obstruction, remove infected lines — before assuming you need a broader spectrum.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Metlay JP, Waterer GW, Long AC, et al. Diagnosis and treatment of adults with community-acquired pneumonia: an official clinical practice guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med</em>. 2019;200(7):e45-e67.</li>
+          <li>Liu C, Bayer A, Cosgrove SE, et al. Clinical practice guidelines by the Infectious Diseases Society of America for the treatment of methicillin-resistant <em>Staphylococcus aureus</em> infections in adults and children. <em>Clin Infect Dis</em>. 2011;52(3):e18-e55.</li>
+          <li>Kalil AC, Metersky ML, Klompas M, et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 clinical practice guidelines by the Infectious Diseases Society of America and the American Thoracic Society. <em>Clin Infect Dis</em>. 2016;63(5):e61-e111.</li>
+          <li>Stevens DL, Bisno AL, Chambers HF, et al. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2014;59(2):e10-e52.</li>
+          <li>Solomkin JS, Mazuski JE, Bradley JS, et al. Diagnosis and management of complicated intra-abdominal infection in adults and children: guidelines by the Surgical Infection Society and the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2010;50(2):133-164.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Antibiotic failure</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

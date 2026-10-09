@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach to cavitary pulmonary diseases — an infectious diseases perspective — IDSA Chalk Talk</title>
+<meta name="description" content="A structured approach to lung cavities for the overnight resident: tempo, host, and location narrow the infectious and noninfectious differential and drive the workup.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Approach to cavitary pulmonary diseases — an infectious diseases perspective — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Pulmonary infections</p>
+        <h1 class="ct-h1">Approach to cavitary pulmonary diseases — an infectious diseases perspective</h1>
+        <p class="ct-subtitle">Tempo, host, and location — the three questions that narrow a long differential</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+            <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man with a 30 pack-year smoking history presents with 6 weeks of cough, night sweats, and 8 lb weight loss. Computed tomography (CT) shows a 3 cm thick-walled cavity in the posterior right upper lobe without an air-fluid level, plus ipsilateral hilar lymphadenopathy. He was born outside the United States and visited family 4 months ago. He has well-controlled diabetes. On call you are asked: is this tuberculosis (TB), cancer, or something else, and what precautions and tests are needed tonight?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Define a cavity and distinguish it from cysts, blebs, and bullae.</li>
+          <li>Use tempo, host immune status, and location to prioritise infectious versus noninfectious causes.</li>
+          <li>Build a focused bedside workup that addresses airborne precautions, microbiology, and tissue planning.</li>
+          <li>Recognise urgent complications and avoid common pitfalls such as anchoring on infection alone.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">What counts as a cavity — and what does not</h2>
+      <p>A <span class="ct-term">cavity</span> is a gas-filled space inside a consolidation, mass, or nodule, formed when necrotic tissue drains through the bronchial tree. Its wall is derived from surrounding inflammatory tissue, tumour, or fibrosis.</p>
+      <p>A true cavity has a visible wall several millimetres thick. A thin, smooth, hairline wall around a lucency in normal lung is more often a <span class="ct-term">cyst</span>, <span class="ct-term">bulla</span>, or <span class="ct-term">bleb</span> — not drained necrosis.</p>
+      <p>From an infectious diseases (ID) perspective, cavities are not always infection. Squamous cell carcinoma, granulomatosis with polyangiitis (GPA), and rheumatoid nodules all cavitate. Start by reminding yourself that infection is common but not guaranteed, especially in older smokers.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A cavity is drained necrosis inside a lesion. A hairline-walled lucency in normal lung is a cyst or bulla until proven otherwise — broaden the differential before ordering infectious studies.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Wall thickness alone does not reliably separate infection from cancer. <em>Mycobacterium tuberculosis</em>, endemic fungi, and pyogenic abscess can all produce thick, irregular walls. Use wall character together with tempo and host.</p>
+      </div>
+
+      <h2 class="ct-h2">Start with three questions: tempo, host, and location</h2>
+      <p>The speaker’s framework was tempo, host, and location.</p>
+      <p><strong>Tempo.</strong> Acute necrotizing pneumonia and lung abscess evolve over days to weeks with fever, productive cough, pleuritic pain, sometimes putrid sputum, and an air-fluid level as the cavity liquefies. Chronic cavities evolve over weeks to months with night sweats, weight loss, or hemoptysis and persist despite antibacterial therapy. <em>M. tuberculosis</em>, non-tuberculous mycobacteria (NTM) such as <em>Mycobacterium avium</em> complex and <em>Mycobacterium kansasii</em>, endemic fungi, and <em>Nocardia</em> species live in the chronic lane but can accelerate in severe immunocompromise.</p>
+      <p><strong>Host.</strong> Ask about human immunodeficiency virus (HIV) status and CD4 count, diabetes, alcohol use, smoking, chronic lung disease, glucocorticoids, biologics, transplant, neutropenia, and injection drug use. Map TB exposure, country of birth, every state lived in, and exposures to caves, birds, bats, farms, and desert dust. Residence in the Ohio and Mississippi River valleys (<em>Histoplasma capsulatum</em>), the Southwest (<em>Coccidioides immitis</em> or <em>posadasii</em>), or the Southeast (<em>Blastomyces</em> species) matters years later. A cavity with CD4 below 200 cells per microliter points toward <em>M. tuberculosis</em> or fungal disease rather than simple aspiration. Chronic steroids or tumour necrosis factor inhibition raise <em>Aspergillus</em> species, <em>Nocardia</em> species, and reactivated TB.</p>
+      <p><strong>Location.</strong> Upper lobe posterior segments favour TB, NTM, and chronic fungi where oxygen tension is higher. Dependent lower lobes favour aspiration-related anaerobes and <em>Klebsiella pneumoniae</em>. Multiple bilateral peripheral cavities with feeding vessels suggest septic emboli. Diffuse cysts with cavities in advanced HIV suggest <em>Pneumocystis jirovecii</em> pneumatoceles.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Tempo, host, and location before bug. “How long, in whom, and where” narrows twenty possibilities to three faster than ordering every stain.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not call every upper lobe cavity TB and every lower lobe cavity aspiration. NTM in older adults with bronchiectasis and <em>Nocardia</em> in patients on steroids both favour upper lobes and present chronically.</p>
+      </div>
+
+      <h2 class="ct-h2">Reading the scan: wall, number, and content</h2>
+      <p>Use chest CT as your exam. Note number, size, wall thickness and nodularity, air-fluid level, surrounding consolidation or ground glass, bronchiectasis, nodes, and effusion. Link pattern to cause rather than memorising wall millimetre cut-offs.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>CT patterns that help prioritise causes — always with tempo and host</caption>
+          <thead>
+            <tr><th>Pattern</th><th>Raises suspicion for</th><th>Additional clues</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Solitary thick irregular wall, upper lobe, no level</td><td><em>M. tuberculosis</em>, squamous cancer, endemic fungi</td><td>Sister nodules, hilar nodes, smoking history; infection and cancer can coexist</td></tr>
+            <tr><td>Solitary shaggy wall with air-fluid level, dependent lobe</td><td>Pyogenic abscess — anaerobes, <em>Staphylococcus aureus</em>, <em>K. pneumoniae</em></td><td>Poor dentition, alcohol, aspiration, recent viral pneumonia</td></tr>
+            <tr><td>Multiple bilateral peripheral cavities, feeding vessel sign</td><td>Septic emboli, jugular thrombophlebitis, endocarditis</td><td>Neck tenderness, skin lesions; blood cultures before antibiotics; echocardiography</td></tr>
+            <tr><td>Nodular consolidation with halo or reverse halo in neutropenia or steroids</td><td>Invasive aspergillosis, mucormycosis, <em>Nocardia</em> species</td><td>Galactomannan and beta-D-glucan are adjuncts, not rule-outs</td></tr>
+            <tr><td>Thin wall with fungus ball and air crescent in upper lobe scar</td><td>Aspergilloma in pre-existing cavity</td><td>Prior TB or sarcoid; hemoptysis risk even when stable</td></tr>
+            <tr><td>Cavitating nodules with bronchiectasis, upper lobe</td><td>NTM — <em>M. avium</em> complex, <em>M. kansasii</em></td><td>Older adult, low body mass index, chronic cough over months</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Air-fluid levels favour pyogenic abscess but can appear in TB or fungal cavities superinfected secondarily. Absence of a level does not exclude early abscess before drainage. Read the syndrome, not a single sign.</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old man with opioid use disorder, fever, and pleuritic pain has CT showing multiple bilateral peripheral cavities with feeding vessels and a tender right neck cord. What fits best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reactivated TB with a single upper lobe cavity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Septic pulmonary emboli from jugular thrombophlebitis — obtain blood cultures, start empiric staphylococcal coverage, and evaluate the jugular vein and heart</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Aspergilloma in a pre-existing bulla</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Solitary aspiration abscess</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Multiple peripheral bilateral cavities with feeding vessels plus neck tenderness in a person who injects drugs fits septic emboli, often <em>S. aureus</em> or <em>Fusobacterium necrophorum</em> with jugular thrombophlebitis. A solitary chronic upper lobe cavity would fit reactivated TB instead, and an aspergilloma needs a preformed cavity with a fungus ball.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The infectious differential, organized by tempo</h2>
+      <p>Grouping by tempo and host avoids shotgun panels that generate false positives. The table reflects the core ID differential from the talk, supplemented by standard guideline sources because the original transcript file was unrecoverable.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Infectious causes of cavities by tempo and host</caption>
+          <thead>
+            <tr><th>Tempo</th><th>Organisms or syndromes</th><th>When it rises in rank</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Acute, days to weeks</td><td>Lung abscess and necrotizing pneumonia — anaerobes (<em>Fusobacterium</em>, <em>Prevotella</em>), <em>S. aureus</em>, <em>K. pneumoniae</em>, <em>Pseudomonas aeruginosa</em>; septic emboli</td><td>Aspiration, poor dentition, alcohol, recent influenza, hospitalisation, injection drug use</td></tr>
+            <tr><td>Subacute to chronic, weeks to months</td><td><em>M. tuberculosis</em>; NTM — <em>M. avium</em> complex, <em>M. kansasii</em>; endemic fungi — <em>H. capsulatum</em>, <em>Coccidioides</em> species, <em>Blastomyces</em> species</td><td>Endemic area birth or travel, prior TB, bronchiectasis, HIV with cell-mediated defect</td></tr>
+            <tr><td>Chronic in immunocompromise or steroids</td><td><em>Nocardia</em> species; <em>Aspergillus</em> species and mucormycosis; <em>P. jirovecii</em> pneumatoceles mimicking cavities; cryptococcosis</td><td>Glucocorticoids, biologics, transplant, neutropenia, advanced HIV</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Points that change management tonight:</p>
+      <ul>
+        <li><strong><em>M. tuberculosis</em>.</strong> Chronic upper lobe cavity with weight loss or hemoptysis plus TB risk factors deserves airborne precautions before testing returns. Nucleic acid amplification testing on sputum plus acid-fast bacilli (AFB) smears and mycobacterial cultures are the backbone. Interferon-gamma release assay (IGRA) does not diagnose or exclude active pulmonary TB.</li>
+        <li><strong>Anaerobic abscess.</strong> Putrid sputum, poor dentition, and a dependent cavity with a level after aspiration. <em>S. aureus</em> or <em>K. pneumoniae</em> can also cavitate after viral infection.</li>
+        <li><strong><em>Nocardia</em> species.</strong> Branching gram-positive rods that are partially acid-fast, often with brain lesions — request prolonged incubation and neuroimaging.</li>
+        <li><strong>Fungi.</strong> Geography is durable: prior residence in endemic areas matters even a decade later. Antigen and antibody tests for <em>Histoplasma</em> and <em>Coccidioides</em> are adjuncts with cross-reactivity.</li>
+        <li><strong>NTM.</strong> One sputum isolate is not disease. American Thoracic Society and Infectious Diseases Society of America (ATS/IDSA) criteria require compatible imaging plus repeated microbiology and exclusion of mimics.</li>
+      </ul>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Geography is durable. A desert Southwest residence ten years ago still raises <em>Coccidioides</em> species for a cavity today.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>For NTM, one isolate is not disease. Require imaging plus repeated cultures and exclusion of alternatives per ATS/IDSA before treating.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 68-year-old woman with bronchiectasis and 8 months of cough has a right middle lobe cavitary nodule and one sputum culture growing <em>M. avium</em> complex. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start three-drug NTM therapy immediately</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Obtain repeat sputum AFB cultures, review ATS/IDSA criteria, and exclude alternatives before committing to prolonged therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Use IGRA to confirm active NTM</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order beta-D-glucan to rule out fungal cavity</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>ATS/IDSA NTM disease requires imaging plus repeated isolates plus exclusion of other causes. One isolate may be colonisation; repeating cultures avoids toxic overtreatment. IGRA and beta-D-glucan do not diagnose NTM.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Noninfectious mimics you must not miss</h2>
+      <p>The ID perspective is not “always infection.” Malignancy and vasculitis regularly cavitate and delay the right diagnosis if you anchor.</p>
+      <p><strong>Malignancy.</strong> Squamous cell lung cancer cavitates when the centre outgrows its supply, and head and neck squamous metastases behave similarly. Clues include older age, heavy smoking, thick nodular or spiculated wall, and absent purulence, though secondary infection can cause fever. Do not let mixed oral flora in sputum distract from a mass that needs tissue.</p>
+      <p><strong>Autoimmune cavitary nodules.</strong> GPA produces bilateral cavitary nodules, often with sinus disease, hematuria, and antineutrophil cytoplasmic antibody (ANCA) positivity, particularly proteinase 3. Rheumatoid nodules and sarcoidosis can also cavitate. Include epistaxis, hearing loss, rash, arthralgia, episcleritis, and renal sediment in the same note as the lung findings.</p>
+      <p>Keep cancer and vasculitis on the written differential you show the attending, even while pursuing infection. Sputum AFB and fungal studies can proceed in parallel with pulmonology or rheumatology input and tissue planning.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Treating cavitary squamous carcinoma with prolonged antibiotics because sputum grows oral flora delays tissue diagnosis. If the lesion is solitary, nodular, and lacks an infectious tempo, plan tissue early while cultures incubate.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The talk used granulomatosis with polyangiitis rather than Wegener, reflecting current nomenclature. Recognising both names links sinus, kidney, and lung clues.</p>
+      </div>
+
+      <h2 class="ct-h2">A bedside workup that actually answers the question</h2>
+      <p>A workup balloons quickly without a tiered plan. The talk proposed an overnight approach you can hand off cleanly.</p>
+      <p><strong>1. History and exam.</strong> </p>
+      <p><strong>2. Precautions and initial labs.</strong> If TB is plausible, place the patient in airborne infection isolation with fitted N95 use before results return. Order HIV antigen/antibody testing if unknown, complete blood count, and basic metabolic panel. </p>
+      <p><strong>3. Microbiology, prioritised.</strong> Collect sputum for Gram stain and bacterial culture and for AFB smear, nucleic acid amplification testing, and mycobacterial culture. Induced sputum is preferred over a single poor sample; ideally obtain multiple early-morning specimens on consecutive days per local TB protocol. Add fungal culture and targeted <em>Histoplasma</em> urine antigen, <em>Coccidioides</em> serology, or cryptococcal antigen only when host and geography indicate them. Send blood cultures before antibiotics when feasible if septic emboli or <em>S. aureus</em> bacteraemia is considered. Pneumococcal and Legionella urine antigens rarely explain cavitary disease and do not replace AFB studies when TB risk is more than negligible.</p>
+      <p><strong>4. Imaging and consults.</strong> Chest CT with contrast better defines wall and vessel signs and guides bronchoscopy. Involve pulmonology early for bronchoalveolar lavage when sputum is nondiagnostic, tissue is needed to separate infection from malignancy, or the patient cannot produce sputum. Consider echocardiography for emboli and brain imaging for suspected <em>Nocardia</em> species.</p>
+      <p><strong>5. Follow-up plan.</strong> NTM and fungal cultures take weeks. Document what was sent, what is pending, and what triggers repeat sampling. For stable outpatients with unclear cause, arrange close follow-up rather than empiric prolonged antibiotics.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If TB is possible, isolate now and interview with a respirator. A pan-fungal panel creates more confusion than a focused history.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A resident is about to examine a patient with a new right upper lobe cavity and night sweats after incarceration. No precautions are in place yet. What is best before the exam?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Place the patient in airborne isolation with N95 precautions and obtain sputum for AFB smear, nucleic acid amplification testing, and culture</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send IGRA and wait before isolating</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start vancomycin and piperacillin-tazobactam and defer sputum to morning</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order a five-organism fungal panel and defer TB testing</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Chronic upper lobe cavity with systemic symptoms and an epidemiologic risk for TB needs airborne precautions before confirmation. IGRA does not diagnose active TB, fungal panels should be exposure-guided, and microbiology should be obtained promptly before broad antibiotics obscure it.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Pitfalls, infection control, and when to worry now</h2>
+      <p>Some scenarios need action tonight.</p>
+      <p><strong>Hemoptysis.</strong> Cavities and aspergillomas can erode bronchial arteries. Even small streaks merit quantification, airway monitoring, reversal of coagulopathy, and early pulmonology, interventional radiology, or thoracic surgery involvement. </p>
+      <p><strong>Infection control.</strong> Suspected TB in a standard room can expose a ward before sign-out. Isolate, limit transport, and notify infection prevention and the health department per local policy. A negative AFB smear does not lift isolation; culture and clinical correlation are needed per institutional protocol.</p>
+      <p><strong>Do not reflexively give steroids.</strong> A cavitary nodule misread as organising pneumonia and treated with glucocorticoids worsens undiagnosed TB, <em>Nocardia</em> species, or aspergillosis. If steroids are otherwise indicated, document that TB and fungi were considered and sampled.</p>
+      <p><strong>Antibiotics without a plan.</strong> Empiric antibiotics for every cavity suppress cultures and delay cancer diagnosis. When you do treat — for example, acute abscess with a dependent level and aspiration history — obtain cultures first, choose empiric therapy per local antibiogram, and set a reassessment point. Durations are typically weeks and step-down depends on response and subspecialty input; verify exact doses with pharmacy based on susceptibility and source control.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Lifting precautions after one negative AFB smear or transporting the patient for non-urgent procedures before TB evaluation is complete creates exposures that are hard to trace. Keep precautions until infection prevention supports stopping.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Any hemoptysis in cavitary disease deserves quantification and escalation. An aspergilloma in a TB scar can bleed fatally between stable visits.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with a left upper lobe cavity and prior TB scar plus a fungus ball reports a teaspoon of hemoptysis this evening. Vitals are stable. What is most appropriate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Discharge with reassurance</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Quantify bleeding, protect the airway, hold anticoagulants, review CT, and notify pulmonology and interventional radiology — bleeding can escalate rapidly</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start high-dose steroids</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order only outpatient radiograph in 6 weeks</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Stable vitals now do not guarantee a benign course. Hemoptysis from an aspergilloma or cavity can become life-threatening quickly. Quantify, protect the airway, review medications, and involve pulmonology and interventional services; steroids will not help and may worsen TB or fungal disease.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Define the lucency: a true cavity is drained necrosis inside a lesion with a wall. Hairline-walled lucency in normal lung is cyst or bulla.</li>
+        <li>Ask tempo, host, and location. Acute dependent level favours pyogenic abscess; chronic upper lobe favours TB, NTM, or endemic fungi; multiple peripheral feeding-vessel cavities suggest septic emboli.</li>
+        <li>Geography and immunity narrow testing faster than broad panels: Ohio and Mississippi valleys (<em>Histoplasma</em>), Southwest (<em>Coccidioides</em>), HIV and CD4, steroids and biologics.</li>
+        <li>If TB is plausible, isolate on airborne precautions with N95 immediately and obtain sputum AFB smear, nucleic acid amplification testing, and culture — do not use IGRA to rule out active disease and do not lift precautions on one smear.</li>
+        <li>Keep cancer and vasculitis on the differential, especially solitary nodular lesions in smokers or bilateral nodules with sinus and renal findings; pursue tissue in parallel with microbiology.</li>
+        <li>Quantify any hemoptysis and escalate, avoid reflex steroids, and obtain cultures before antibiotics when it is safe to do so.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Nahid P, et al. Official American Thoracic Society / Centers for Disease Control and Prevention / Infectious Diseases Society of America clinical practice guidelines: treatment of drug-susceptible tuberculosis. <em>Clin Infect Dis</em>. 2016;63(7):e147-e195.</li>
+          <li>Griffith DE, et al. An official ATS/IDSA statement: diagnosis, treatment, and prevention of nontuberculous mycobacterial diseases. <em>Am J Respir Crit Care Med</em>. 2007;175(4):367-416; Daley CL, et al. Treatment of NTM pulmonary disease: ATS/ERS/ESCMID/IDSA guideline. <em>Eur Respir J</em>. 2020;56(1):2000535.</li>
+          <li>Standard guidance on community-acquired pneumonia, endemic fungi, and aspergillosis informs the tempo-host framework. Specific regimens and doses were not verifiable in the corrupted transcript and were therefore described as principles; verify doses with pharmacy and local protocols. — References included for reconstruction, not as verbatim transcript citations.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Approach to cavitary pulmonary diseases — an infectious diseases perspective</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

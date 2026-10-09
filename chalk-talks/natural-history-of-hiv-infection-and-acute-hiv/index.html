@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natural history of HIV infection and acute HIV — IDSA Chalk Talk</title>
+<meta name="description" content="From exposure to set point — recognising acute HIV and understanding what happens without treatment">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Natural history of HIV infection and acute HIV — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Human immunodeficiency virus</p>
+        <h1 class="ct-h1">Natural history of HIV infection and acute HIV</h1>
+        <p class="ct-subtitle">What the virus does before antibody appears, and why early recognition matters</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 24-year-old man comes to the emergency department with 5 days of fever, sore throat, diffuse myalgias, and a faint pink rash on his trunk. He reports a new sexual partner about 3 weeks ago. He has tender cervical lymphadenopathy and shallow oral ulcers. A heterophile antibody test (Monospot) is negative. A point-of-care human immunodeficiency virus (HIV) antibody test is negative. He is told he has a viral syndrome and sent home. He returns asking whether that negative test ruled out HIV.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Describe the virologic timeline from mucosal exposure through acute infection to chronic infection.</li>
+          <li>Recognise the clinical syndrome of acute HIV and distinguish it from similar illnesses.</li>
+          <li>Choose the right test for the right time and explain why antibody tests miss very early infection.</li>
+          <li>Explain the natural history of untreated HIV, including set point, latency, and progression to acquired immunodeficiency syndrome (AIDS).</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">How HIV gets a foothold</h2>
+      <p>After mucosal exposure, HIV does not immediately appear in the blood. There is an <span class="ct-term">eclipse phase</span> of roughly 7 to 10 days when the virus replicates locally and in draining lymphoid tissue but no marker is detectable in plasma — not even ribonucleic acid (RNA). A test drawn the day after exposure cannot exclude infection, even the most sensitive nucleic acid test (NAT).</p>
+      <p>Most transmitted viruses are CCR5-tropic, using the CCR5 co-receptor with cluster of differentiation 4 (CD4) to enter CD4 T cells. A small transmitted founder — often a single variant — expands in mucosa then disseminates via lymphatics. The gut-associated lymphoid tissue (GALT), which holds a large share of activated memory CD4 cells, is depleted very early, before symptoms begin, and drives much of the immune activation that follows.</p>
+      <p>Once in blood, replication is explosive. Plasma RNA rises sharply to high levels before CD8 T cell and early antibody responses contain it. That high early viraemia explains why acute infection is disproportionately infectious even while antibody tests are still negative.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>HIV is an RNA retrovirus. After entry its RNA is reverse-transcribed into deoxyribonucleic acid (DNA) and integrated as provirus. That provirus is why infection is lifelong even when plasma virus is suppressed by antiretroviral therapy (ART). Transmitted viruses are almost always CCR5-tropic; CXCR4-tropic variants tend to emerge later and are linked to faster CD4 decline.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The eclipse phase lasts about a week. A negative RNA or antigen/antibody test in that window does not exclude infection — time since exposure matters as much as the result.</p>
+      </div>
+
+      <h2 class="ct-h2">The first 2 to 4 weeks: viraemia and the acute retroviral syndrome</h2>
+      <p>Peak viraemia occurs about 2 to 3 weeks after exposure, then falls as cytotoxic CD8 T cells and early antibodies emerge. Symptoms typically start just before or at the peak — about 2 to 4 weeks after exposure — and last days to weeks.</p>
+      <p>More than half of people with acute HIV develop <span class="ct-term">acute retroviral syndrome</span>, a systemic, mononucleosis-like illness. Fever is almost universal. The classic pattern is fever plus sore throat, myalgias or arthralgias, lymphadenopathy, and a maculopapular or morbilliform rash. Headache, oral or genital ulcers, fatigue, and gastrointestinal symptoms are common. Aseptic meningitis with headache, photophobia, and lymphocytic pleocytosis occurs in a small subset.</p>
+      <p>Laboratory clues are easy to dismiss as “a virus”: leukopenia or lymphocytosis with atypical lymphocytes, mild thrombocytopenia, and elevated transaminases. The CD4 count can dip transiently during acute infection then rebound — do not anchor on a single low number at this stage.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common features of acute retroviral syndrome — prompt testing when exposure is plausible</caption>
+          <thead>
+            <tr><th>Feature</th><th>Pattern</th><th>Helpful contrast</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fever</td><td>Most common; often high</td><td>Less prominent in allergic drug rash</td></tr>
+            <tr><td>Pharyngitis</td><td>Non-exudative sore throat</td><td><em>Epstein-Barr virus</em> often has exudates and posterior nodes</td></tr>
+            <tr><td>Rash</td><td>Faint morbilliform, trunk and face</td><td>Secondary syphilis often involves palms and soles</td></tr>
+            <tr><td>Lymphadenopathy</td><td>Generalised, tender</td><td>Localised nodes suggest bacterial source</td></tr>
+            <tr><td>Oral or genital ulcers</td><td>Shallow, painful</td><td>Herpes simplex virus ulcers cluster and recur</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The differential includes <em>Epstein-Barr virus</em> infection, cytomegalovirus infection, toxoplasmosis, and syphilis seroconversion. The discriminator is timing and a focused, non-judgemental exposure history taken in private. Fever, rash, and pharyngitis 2 to 4 weeks after condomless sex or shared injection equipment is acute HIV until proven otherwise.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Fever plus sore throat plus rash plus tender nodes 2 to 4 weeks after a new exposure is acute HIV until proven otherwise. A negative heterophile test does not rule it out.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not reassure on the basis of a negative point-of-care antibody test alone when exposure was recent. Antibody may not yet be present while RNA is very high.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The patient in the vignette has fever, sore throat, rash, and tender nodes 3 weeks after a new partner. Rapid antibody test is negative. What best explains the result?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">He does not have HIV because the rapid test is sensitive for acute infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">He may be in the window before antibody appears while plasma RNA is already high</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">His symptoms are too early — acute retroviral syndrome occurs months after exposure</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A negative heterophile test makes acute HIV more likely than EBV</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Rapid antibody tests become positive weeks after RNA. In the first 2 to 4 weeks antibody may be absent while viraemia and transmissibility are highest. You need an antigen/antibody combination assay and, when suspicion is high, an HIV RNA.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">How testing catches up to the virus</h2>
+      <p>HIV tests become positive in a predictable sequence that determines which test to order.</p>
+      <p>Plasma RNA by NAT is first, detectable about 10 to 12 days after infection. HIV p24 antigen appears next, roughly 14 to 18 days, and is the earliest target of the fourth-generation antigen/antibody (Ag/Ab) combination assay. Immunoglobulin M (IgM) follows around 3 weeks, then immunoglobulin G (IgG) persists lifelong. The fourth-generation Ag/Ab assay is the recommended initial test, but it still misses the first 10 to 14 days when only RNA is present.</p>
+      <p>This sequence is formalised as <span class="ct-term">Fiebig stages</span>. You do not need to memorise every stage, but knowing the order helps interpret discordant results — for example, a reactive Ag/Ab with a negative differentiation assay often means early infection with antigen before full antibody.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Fiebig staging — order of appearance of markers after HIV infection (windows are approximate)</caption>
+          <thead>
+            <tr><th>Stage</th><th>What is detectable</th><th>Interpretation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>I</td><td>RNA positive; p24 and antibody negative</td><td>Very early; only NAT positive</td></tr>
+            <tr><td>II</td><td>RNA and p24 positive; antibody negative</td><td>Early acute; fourth-generation assay may be reactive via antigen</td></tr>
+            <tr><td>III</td><td>RNA, p24, and IgM sensitive assay positive; western blot negative</td><td>Acute; Ag/Ab reactive, differentiation often negative</td></tr>
+            <tr><td>IV</td><td>Western blot indeterminate</td><td>Early seroconversion</td></tr>
+            <tr><td>V and VI</td><td>Western blot positive</td><td>Established antibody response</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The Centers for Disease Control and Prevention (CDC) algorithm starts with a fourth-generation Ag/Ab; if reactive, follow with an HIV-1/2 antibody differentiation assay; if that is negative or indeterminate, test for HIV-1 RNA to distinguish acute infection from a false-positive screen. When suspicion is high, order RNA in parallel even if Ag/Ab is negative, and always arrange follow-up — a negative test within the window never excludes infection.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Use the right test for the timeline: RNA first, then p24 via fourth-generation assay, then antibody. If acute HIV is on your differential, order RNA.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not treat a reactive fourth-generation screen as a confirmed diagnosis, or a negative rapid antibody as a rule-out in the window period. Follow the full algorithm and counsel about repeat testing.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient had condomless exposure 10 days ago and his fourth-generation Ag/Ab is nonreactive. What do you tell him?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">He is definitely not infected and needs no further testing</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A reactive result would have confirmed infection with no further tests</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">He is still within the window period and needs repeat testing; RNA can be considered if early detection matters</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">He should wait 6 months before any repeat test</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>At 10 days even RNA may still be in eclipse and the fourth-generation assay is expected to be negative. Counsel about the window and plan repeat testing per CDC guidance. A reactive Ag/Ab always needs the full confirmatory algorithm.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">After the storm: set point and the long asymptomatic years</h2>
+      <p>After peak viraemia, plasma RNA falls to a relatively stable plateau — the <span class="ct-term">viral set point</span> — over weeks to months as CD8 T cells and target-cell limitation contain replication. That set point predicts the pace of future decline: higher set point generally means faster CD4 loss, lower set point means slower progression. The peripheral CD4 count partially rebounds but often not to baseline because gut depletion is less reversible.</p>
+      <p>What follows is called clinical latency, a misleading term. The patient may feel well for years — on average about 8 to 10 years without treatment — but the virus is not latent. HIV replicates continuously with high turnover of virus and CD4 cells and chronic immune activation. Lymphadenopathy may persist while reservoir accumulates silently.</p>
+      <p>A tiny fraction maintain low or undetectable virus without therapy — elite controllers — likely due to strong CD8 responses and protective human leukocyte antigen (HLA) alleles. They are the exception; without ART most people have ongoing replication and stepwise decline.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Elite control is rare and does not equal cure. Even controllers show ongoing activation and reservoir, and they still need monitoring and specialist input.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Clinical latency does not mean virologic latency. Absence of symptoms is not absence of replication.</p>
+      </div>
+
+      <h2 class="ct-h2">The slow decline without treatment</h2>
+      <p>Over years the CD4 count declines gradually as production fails to keep pace with destruction. Chronic immune activation, microbial translocation from damaged gut mucosa, and direct viral effects all contribute. The rate varies and is not perfectly linear, but the trend is downward.</p>
+      <p>AIDS is defined by a CD4 count below 200 cells per microlitre or an AIDS-defining illness regardless of CD4 count. Thresholds predict which opportunists become likeliest, but risk is a continuum.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>CD4 count and classic opportunistic risks — continuum, not absolute gates</caption>
+          <thead>
+            <tr><th>CD4 range (cells/µL)</th><th>Risks that classically emerge</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Below 200</td><td><em>Pneumocystis jirovecii</em> pneumonia</td></tr>
+            <tr><td>Below 100</td><td>Toxoplasma encephalitis, cryptococcal meningitis</td></tr>
+            <tr><td>Below 50</td><td>Cytomegalovirus retinitis, disseminated <em>Mycobacterium avium</em> complex</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Even before AIDS, untreated HIV raises risk of tuberculosis at any CD4 count, bacterial infections, and other complications. Modern guidance therefore recommends ART for all people with HIV, with timing driven by diagnosis, not by a CD4 threshold.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A CD4 below 200 cells per microlitre defines AIDS, but tuberculosis can occur at any CD4 count.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 38-year-old with untreated HIV has a CD4 count of 180 cells per microlitre and no symptoms. Which statement is correct?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">He does not have AIDS because he has no opportunistic infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Prophylaxis is unnecessary until CD4 falls below 50</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">He meets an AIDS-defining CD4 criterion and needs urgent linkage to HIV care and ART planning</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">His set point is no longer relevant</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A CD4 below 200 meets the AIDS definition regardless of symptoms. He needs rapid ART initiation, assessment for prophylaxis per CD4-specific guidance, and close follow-up — not watchful waiting.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Why you cannot miss acute HIV on call</h2>
+      <p>Acute infection is high-viral-load and highly actionable for the patient and the community.</p>
+      <p>For the patient, early ART preserves immune function, reduces reservoir size, and dramatically reduces onward transmission. Current practice is to start as soon as possible — often same-day when linkage is available — with baseline genotype and safety labs drawn with the first dose rather than waiting for results. A positive RNA with subsequent seroconversion also clarifies what a lone negative antibody missed.</p>
+      <p>For the community, acute infection drives a disproportionate share of transmissions because people do not yet know they are infected and virus is very high. Diagnosis enables counselling, partner notification and testing, and pre-exposure prophylaxis (PrEP) for uninfected partners. Public health can help with notification, but the overnight job is to recognise the syndrome, order the right tests, and ensure rapid follow-up.</p>
+      <p>When you suspect acute HIV: take a focused, non-judgemental exposure history; order a fourth-generation Ag/Ab plus HIV-1 RNA when suspicion is high; do not use a negative rapid antibody for reassurance in the window; and arrange next-day follow-up in primary care, infectious diseases, or sexual health clinic. PrEP is for people without HIV — a patient with acute infection needs treatment, not prevention.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Acute HIV is a high-viral-load, highly infectious state. Diagnosing it helps the patient and helps stop transmission — link urgently.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 22-year-old with fever, rash, and pharyngitis 18 days after condomless exposure has a reactive fourth-generation Ag/Ab and a nonreactive differentiation assay. Next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tell him the screen was a false positive and discharge</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat only rapid antibody in 3 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Order HIV-1 RNA to evaluate for acute infection and arrange urgent linkage to care</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start PrEP immediately</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A reactive Ag/Ab with nonreactive differentiation can be early infection with p24 before full antibody. Next step per CDC algorithm is HIV-1 RNA and rapid linkage. PrEP is not for someone who may already have HIV.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Eclipse of about a week with no detectable marker — time since exposure determines whether a negative test reassures.</li>
+        <li>Acute retroviral syndrome — fever, sore throat, myalgias, rash, nodes 2 to 4 weeks after exposure — occurs in more than half and mimics mononucleosis.</li>
+        <li>Tests turn positive in order: RNA at ~10 to 12 days, p24 antigen at ~14 to 18 days via fourth-generation assay, then antibody. Add RNA when suspicion is high.</li>
+        <li>After the peak, virus falls to a set point; patients may feel well for years but replication is continuous. Without ART, CD4 drifts down and AIDS (CD4 below 200 cells/µL or defining illness) follows.</li>
+        <li>Acute infection is highly infectious and highly actionable — diagnose with Ag/Ab plus RNA, do not rely on rapid antibody in the window, and link urgently for ART and partner services.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Branson BM, et al. Laboratory testing for the diagnosis of HIV infection: updated recommendations. Centers for Disease Control and Prevention. 2014.</li>
+          <li>Centers for Disease Control and Prevention. Laboratory testing algorithm for HIV diagnosis.</li>
+          <li>Panel on Antiretroviral Guidelines for Adults and Adolescents. Guidelines for the use of antiretroviral agents in adults and adolescents with HIV. Department of Health and Human Services.</li>
+          <li>Cohen MS, et al. Acute HIV-1 infection. <em>N Engl J Med</em>. 2011;364:1943-1954.</li>
+          <li>Fiebig EW, et al. Dynamics of HIV viremia and antibody seroconversion in plasma donors. <em>AIDS</em>. 2003;17:1871-1879.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Natural history of HIV infection and acute HIV</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

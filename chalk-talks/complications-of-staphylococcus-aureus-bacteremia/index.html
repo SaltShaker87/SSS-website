@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complications of Staphylococcus aureus bacteremia — IDSA Chalk Talk</title>
+<meta name="description" content="Why a single positive culture matters and how to hunt for endocarditis, vertebral infection and other metastatic complications.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Complications of Staphylococcus aureus bacteremia — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Bacteremia and endocarditis</p>
+        <h1 class="ct-h1">Complications of Staphylococcus aureus bacteremia</h1>
+        <p class="ct-subtitle">Why one positive bottle changes everything — and how to find endocarditis, vertebral infection and other metastatic seeding before it finds you</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man on haemodialysis via a tunneled catheter presents with fever and chills. One of two blood culture sets grows <em>Staphylococcus aureus</em> that is methicillin-susceptible (MSSA — methicillin-susceptible <em>S. aureus</em>). The catheter is removed, cefazolin is started, and he defervesces. On day 4 he reports new dull lower back pain, worse on rolling. He is afebrile, white cells are falling and repeat cultures at 72 hours are negative. The team wonders whether bed rest explains the pain.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why a single culture positive for <em>Staphylococcus aureus</em> is never a contaminant.</li>
+          <li>Distinguish uncomplicated from complicated <em>Staphylococcus aureus</em> bacteremia (SAB — <em>Staphylococcus aureus</em> bacteremia) using repeat cultures, fever curve and imaging.</li>
+          <li>List common metastatic complications and the bedside clues that trigger evaluation.</li>
+          <li>Outline the standard workup for every SAB, including repeat cultures and echocardiography.</li>
+          <li>Describe source-control principles and why duration is counted from clearance.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why a single bottle of Staphylococcus aureus is never a contaminant</h2>
+      <p>Coagulase-negative staphylococci in one bottle may be skin flora. <em>Staphylococcus aureus</em> is not. It is rarely a contaminant because when it reaches blood it brings adhesins and toxins built to stick and seed.</p>
+      <p><span class="ct-term">Staphylococcus aureus bacteremia</span> (SAB) carries measurable mortality and roughly one in three patients develops a secondary focus, even if only one set is positive or the presumed source looks obvious. The bloodstream is the highway, not the destination. Treat the first positive bottle as true bacteremia, draw repeat cultures promptly, and never document “likely contaminant” without infectious diseases (ID — infectious diseases) input.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>One bottle positive for <em>Staphylococcus aureus</em> equals bacteremia. Do not wait for the second set and do not dismiss it because the line site looks clean.</p>
+      </div>
+      <p>Risk for complications is higher with community onset, persistent positive cultures, fever beyond 72 hours, prosthetic material, haemodialysis, injection drug use and an unknown primary source. Hospital-onset line-associated bacteremia can still complicate, but community acquisition should sharpen vigilance.</p>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">One of two admission sets grows <em>S. aureus</em>. The patient is afebrile the next morning and the line site is clean. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Document as likely contaminant and repeat only if fever recurs</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Treat as true bacteremia: repeat cultures, start therapy and begin a complication workup</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait for the second set to confirm before acting</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Remove the peripheral catheter and discharge if well</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Even a single set is bacteremia. Delay wastes time during which seeding occurs, and a clean insertion site does not exclude endovascular or vertebral infection.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What makes Staphylococcus aureus so good at spreading</h2>
+      <p>A few virulence themes explain the clinical pattern:</p>
+      <ul>
+        <li><strong>Adherence.</strong> Fibronectin- and fibrinogen-binding proteins let the organism cling to damaged endothelium, thrombi and prosthetic surfaces within minutes. A structurally normal valve can still be seeded.</li>
+        <li><strong>Evasion.</strong> Protein A, capsule and intracellular survival blunt opsonisation and killing, allowing persistence despite antibiotics.</li>
+        <li><strong>Tissue destruction.</strong> Alpha-haemolysin, leukocidins and coagulase create necrosis, abscess and clot — the nidus for epidural or psoas collections.</li>
+        <li><strong>Biofilm.</strong> On catheters, valves and devices, biofilm resists immunity and drugs, so retained hardware often means persistent bacteremia.</li>
+      </ul>
+      <p>Hence SAB is rarely transient. Positive cultures or fever at 48 to 72 hours despite appropriate antibiotics are not just treatment failure — they signal an undrained focus, retained hardware or endocarditis.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Still positive at 48 to 72 hours despite appropriate therapy? Assume an undrained focus, retained hardware or endocarditis until proven otherwise.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Methicillin-susceptible and methicillin-resistant <em>S. aureus</em> (MSSA and MRSA — methicillin-susceptible and methicillin-resistant <em>S. aureus</em>) share this propensity. Resistance affects drug choice, not the risk of metastasis. Do not treat MSSA as “less worrying.”</p>
+      </div>
+
+      <h2 class="ct-h2">Uncomplicated versus complicated — sorting it out on day three</h2>
+      <p>Classification is made after 72 hours and drives duration.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Classifying Staphylococcus aureus bacteremia after initial evaluation</caption>
+          <thead>
+            <tr><th>Feature</th><th>Uncomplicated</th><th>Complicated (any one qualifies)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Follow-up cultures at 48–72 hours</td><td>Negative</td><td>Positive</td></tr>
+            <tr><td> Fever</td><td>Resolves within 72 hours</td><td>Persists beyond 72 hours</td></tr>
+            <tr><td>Metastatic focus or endocarditis</td><td>None</td><td>Any metastatic site, endocarditis or septic thrombophlebitis</td></tr>
+            <tr><td>Source</td><td>Identified and removable</td><td>Unknown, retained prosthesis or non-removable</td></tr>
+            <tr><td>Echocardiography</td><td>No vegetation (when performed)</td><td>Vegetation or perivalvular complication</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Only about one-quarter of SAB meets all uncomplicated criteria. When uncertain, treat as complicated and look harder. You cannot label uncomplicated at the first positive culture. You need repeat cultures every 48 hours until negative, documentation of fever and exam, and an echo interpreted in context. Duration is counted from the first negative culture, not admission, and not because the patient “feels fine.” Uncomplicated disease needs at least two weeks from clearance; complicated, endocarditis or deep foci need four to six weeks or longer.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Stopping at two weeks without repeat cultures or an echo. If follow-up cultures were never drawn or the echo was deferred “because the line was removed,” you have not earned the uncomplicated label.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old woman with MSSA cellulitis has negative cultures at 48 hours, defervesces by day 2, transoesophageal echocardiogram (TEE — transoesophageal echocardiogram) is negative and the source is debrided. No prosthesis. How to classify and how long?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Uncomplicated — at least 14 days from first negative culture</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Complicated — 4 to 6 weeks regardless</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Uncomplicated — 7 days is enough given rapid clearance</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cannot classify without routine spine MRI</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This meets uncomplicated criteria: cleared bacteremia, rapid defervescence, removable focus, no metastases and negative TEE without prosthesis. At least 14 days from clearance is standard; seven days is too short and routine MRI without symptoms is not required.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Where it goes: complications you must look for</h2>
+      <p>Think by territory and ask about each daily. Three buckets overlap: endovascular, musculoskeletal and visceral or pulmonary embolic.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common metastatic complications and bedside clues</caption>
+          <thead>
+            <tr><th>Territory</th><th>Complication</th><th>Clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Heart and vessels</td><td>Endocarditis, device infection, septic thrombophlebitis, mycotic aneurysm</td><td>New murmur, embolic lesions, persistent bacteremia, line-vein tenderness</td></tr>
+            <tr><td>Spine and joints</td><td>Vertebral osteomyelitis or discitis, epidural abscess, septic arthritis</td><td>New back or neck pain, radicular pain, joint swelling, weakness or sphincter change</td></tr>
+            <tr><td>Lung</td><td>Septic emboli, cavitary lesions, empyema</td><td>Pleuritic pain, dyspnoea, haemoptysis, nodular infiltrates</td></tr>
+            <tr><td>Central nervous system</td><td>Embolic stroke, brain abscess</td><td>Headache, focal deficit, confusion</td></tr>
+            <tr><td>Viscera</td><td>Psoas, splenic or renal abscess</td><td>Flank or hip pain, persistent fever, abdominal pain</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Vertebral and epidural disease is especially easy to miss in a supine inpatient and carries risk of paralysis. New mechanical, focal back pain with point tenderness in SAB is vertebral infection until proven otherwise — do not attribute it to bed rest. <em>S. aureus</em> is a leading cause of infective endocarditis (IE — infective endocarditis). It may present only as persistent bacteremia or stroke. Transthoracic echocardiogram (TTE — transthoracic echocardiogram) misses many vegetations, especially with prosthetic valves or devices, so threshold for TEE is low.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Back pain in SAB is vertebral osteomyelitis or epidural abscess until proven otherwise. Examine for tenderness, radicular features, weakness and sphincter dysfunction, and image urgently with magnetic resonance imaging (MRI — magnetic resonance imaging) if present.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Examine hands, eyes and skin daily. Janeway lesions, splinter haemorrhages, conjunctival petechiae and a new murmur upgrade you to complicated and push you toward TEE.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The haemodialysis patient reports dull lumbar pain on day 4. Repeat cultures are negative and he is afebrile. Next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure and prescribe analgesia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Spine exam and urgent MRI for focal pain or neurologic signs</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Plain lumbar X-ray to look for discitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Extend antibiotics to six weeks without imaging</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Negative cultures do not exclude vertebral seeding; pain may appear days after clearance. Examination plus MRI is the diagnostic step. Plain films are insensitive early and empiric extension misses epidural disease that may need drainage.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The workup every patient with Staphylococcus aureus bacteremia needs</h2>
+      <ol>
+        <li><strong>Repeat blood cultures every 48 hours until negative.</strong> Document the first negative date — that starts the duration clock.</li>
+        <li><strong>Daily history and exam.</strong> Ask about back or neck pain, joint pain, headache, chest or flank pain and dyspnoea. Look at line sites, joints, skin, and listen for a new murmur. Screen neurologically.</li>
+        <li><strong>Source identification and control.</strong> Remove infected catheters promptly and involve surgery or radiology for drainable collections. SAB is rarely truly from urine without seeding, so look beyond a positive urine culture.</li>
+        <li><strong>Echocardiography in almost everyone.</strong> TEE is favoured with prosthetic valve, prior endocarditis, device, persistent bacteremia or fever, community onset, injection drug use or emboli. TTE alone is insufficient in those settings.</li>
+        <li><strong>Targeted imaging for clues.</strong> MRI spine for back pain or deficits, joint aspiration for a hot joint, computed tomography (CT — computed tomography) chest for nodular infiltrates, abdominal imaging for flank or hip pain.</li>
+        <li><strong>Infectious diseases consultation.</strong> Associated with lower mortality and more appropriate workup and duration — recommended for every SAB.</li>
+      </ol>
+      <p>Definitive antibiotic choice follows susceptibility, with anti-staphylococcal beta-lactams preferred for MSSA and vancomycin or daptomycin for MRSA under pharmacy guidance. The complication hunt is independent of the drug — source control matters more than escalating antibiotics alone.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Count duration from the first negative blood culture, not the first dose. Without documented clearance you cannot start the clock.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Pulling a line and calling the job done. Line removal does not exclude endocarditis or vertebral seeding that occurred before removal. Complete repeat cultures and echo even when the source seems obvious.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 70-year-old woman with MRSA bacteremia, prosthetic aortic valve and persistent bacteremia has a negative TTE on day 2. Next cardiac imaging?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat TTE in one week</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Proceed to TEE</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cardiac CT alone is sufficient</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No further imaging needed</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Prosthetic material plus persistent bacteremia demands TEE sensitivity. TTE misses prosthetic vegetations and perivalvular abscess where early surgery may be needed.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treatment, source control and how long to treat</h2>
+      <p>Two principles: remove or drain what you can, and give enough duration to sterilise what remains.</p>
+      <h3 class="ct-h3">Source control first</h3>
+      <p>Review every piece of hardware: peripheral and central catheters, dialysis catheters, pacemaker leads, prosthetic joints and grafts. Remove infected lines; do not rely on cultures drawn through the line. Epidural, psoas and splenic abscesses need drainage when feasible. Involve surgery or interventional radiology early.</p>
+      <h3 class="ct-h3">Antibiotic principles</h3>
+      <p>The original transcript and slides were unreadable due to file corruption, so dosing details below follow current Infectious Diseases Society of America (IDSA — Infectious Diseases Society of America) guidance rather than verbatim transcript numbers, which could not be recovered. Use a definitive beta-lactam for MSSA when possible and reserve vancomycin or daptomycin for MRSA with pharmacy-guided monitoring. Early oral switch or truncating intravenous therapy because the patient “looks well” is inappropriate for complicated SAB. Rifampicin adjuncts and combination therapy are not routine for bacteremia alone.</p>
+      <h3 class="ct-h3">Duration framework</h3>
+      <ul>
+        <li><strong>Uncomplicated:</strong> at least two weeks intravenous from first negative culture, provided all criteria are met.</li>
+        <li><strong>Complicated, endocarditis or deep focus:</strong> four to six weeks or longer, dictated by site — endocarditis, vertebral osteomyelitis with or without epidural abscess and undrained prosthetic infection need the longer end.</li>
+        <li><strong>Persistent bacteremia or undrained focus:</strong> restart the clock after drainage or hardware removal.</li>
+      </ul>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Older teaching sometimes called line-related SAB that cleared quickly “uncomplicated” and gave short courses. Contemporary data raise the bar: catheter-related bacteremia without adequate echo or documented clearance should not be labelled uncomplicated to justify two weeks.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Do not count days before clearance toward the course. Five days of antibiotics before cultures cleared is not “five days of a two-week course.”</p>
+      </div>
+
+      <h2 class="ct-h2">When to worry again: persistent bacteremia, recurrence and follow-up</h2>
+      <p>Complications can declare themselves after discharge. Counsel patients that new back or joint pain, chest pain, headache, focal weakness or skin lesions in the weeks after SAB need urgent re-evaluation. Ensure handoffs include the clearance date, echo result and planned duration so truncation does not occur.</p>
+      <p>Recurrence within weeks should trigger re-assessment for occult endocarditis, vertebral infection or retained hardware. Haemodialysis, injection drug use and prosthetic material raise recurrence risk and lower the threshold for repeat imaging and ID re-consultation.</p>
+      <p>Document what you excluded: “MSSA bacteremia, line removed, TEE negative, repeat cultures negative, serial spine exams without tenderness, 14 days from clearance” communicates more safety than “SAB — improved.”</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>This page was reconstructed from standard IDSA and clinical guidance because the source transcript and slide deck were corrupted with unreadable characters (replacement bytes) and could not be recovered verbatim. Durations and principles follow current guidance; specific doses were omitted where the transcript was ambiguous. Verify against the original recording and local protocol when available.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Every <em>Staphylococcus aureus</em> positive blood culture is true bacteremia — one bottle triggers a full workup.</li>
+        <li>Classify only after 48 to 72 hours: uncomplicated requires negative repeat cultures, defervescence, no metastases, a removable source and a negative echo; otherwise it is complicated.</li>
+        <li>Examine daily by territory: heart (murmur, emboli), spine (focal back pain, weakness, sphincter change), joints, lung, brain and viscera — back pain is vertebral infection until proven otherwise.</li>
+        <li>Bundle for every SAB: repeat cultures until negative, source control and line removal, low-threshold TEE, targeted imaging for clues and ID consultation.</li>
+        <li>Count duration from first negative culture: at least two weeks for truly uncomplicated, four to six weeks or longer for complicated or deep focus; do not truncate because the patient looks well.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Liu C, Bayer A, Cosgrove SE, et al. Clinical practice guidelines by the Infectious Diseases Society of America for the treatment of methicillin-resistant <em>Staphylococcus aureus</em> infections in adults and children. <em>Clin Infect Dis</em>. 2011;52(3):e18-e55.</li>
+          <li>Fowler VG Jr, Olsen MK, Corey GR, et al. Clinical identifiers of complicated <em>Staphylococcus aureus</em> bacteremia. <em>Arch Intern Med</em>. 2003;163(17):2066-2072.</li>
+          <li>Baddour LM, Wilson WR, Bayer AS, et al. Infective endocarditis in adults: diagnosis, antimicrobial therapy, and management of complications. <em>Circulation</em>. 2015;132(15):1435-1486.</li>
+          <li>Holland TL, Arnold C, Fowler VG Jr. Clinical management of <em>Staphylococcus aureus</em> bacteremia: a review. <em>JAMA</em>. 2014;312(13):1330-1341.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Complications of Staphylococcus aureus bacteremia</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk factors for tuberculosis infection — IDSA Chalk Talk</title>
+<meta name="description" content="Who acquires tuberculosis, where transmission thrives, and who progresses from infection to disease">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Risk factors for tuberculosis infection — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Mycobacterial disease</p>
+        <h1 class="ct-h1">Risk factors for tuberculosis infection</h1>
+        <p class="ct-subtitle">From exposure to infection to disease — sorting risk by step</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+            <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 29-year-old graduate student who moved from the Philippines 8 months ago shares a two-bedroom apartment with her cousin. The cousin is admitted with 3 weeks of cough, weight loss, and cavitary pulmonary tuberculosis and is sputum smear-positive for acid-fast bacilli. The student feels well and has a clear chest radiograph, but her interferon-gamma release assay (IGRA) is positive.</p>
+        <p>She asks whether she is contagious. In the same clinic, a 62-year-old man born in the United States with no tuberculosis exposure and no immunocompromise has a routine tuberculin skin test (TST) of 11 mm for work. He also asks what it means.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Separate exposure, infection, and disease and name the key risk factor at each step.</li>
+          <li>Identify personal, contact, and environmental factors that raise the chance of acquiring <em>Mycobacterium tuberculosis</em> infection.</li>
+          <li>Identify host factors that raise the chance of progressing from latent tuberculosis infection (LTBI) to disease.</li>
+          <li>Use risk to decide who to test, which test to choose, and how to counsel a positive result.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why infection is not random</h2>
+      <p>Tuberculosis (TB) clusters. In the United States, most tuberculosis disease is not recent local spread but reactivation of infection acquired months to years earlier, often before immigration. That pattern makes risk predictable if you separate it into steps.</p>
+      <p>Think in three steps: exposure — did infectious droplet nuclei reach the airway? Infection — did inhaled <em>M. tuberculosis</em> establish latent tuberculosis infection (LTBI), where viable bacilli persist without symptoms and without infectiousness? Progression — did LTBI break containment and become disease? Each step has its own risk factors; mixing them confuses testing and counselling. Diabetes mellitus, for example, mainly raises progression risk, not acquisition risk.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p><span class="ct-term">Latent tuberculosis infection (LTBI)</span> means infection without disease. The person feels well, the chest radiograph is typically normal, and the person is not infectious. Tuberculin skin test (TST) and interferon-gamma release assay (IGRA) detect immune memory and cannot distinguish LTBI from disease.</p>
+      </div>
+
+      <h2 class="ct-h2">From exposure to infection: what has to happen</h2>
+      <p><em>M. tuberculosis</em> travels as airborne droplet nuclei, 1 to 5 microns, generated when a person with pulmonary or laryngeal tuberculosis coughs or undergoes an aerosol-generating procedure. Nuclei stay suspended for hours and are inhaled. Surface contact, fomites, or brief outdoor passing do not transmit.</p>
+      <p>Four variables decide whether exposure becomes infection: source infectiousness, duration and proximity of contact, environment, and host susceptibility. Infectiousness is highest with cavitary disease, laryngeal disease, sputum smear positivity for acid-fast bacilli, frequent cough, and delayed treatment. Effective treatment reduces infectiousness within days to weeks.</p>
+      <p>Duration matters more than a single intense encounter. Sharing air for many hours over days or weeks, especially overnight in a poorly ventilated room, is the classic exposure. Bacille Calmette-Guérin (BCG) vaccination does not reliably prevent infection and should not reassure you that exposure was harmless.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Tuberculosis requires shared air, not shared touch. Risk is hours of shared airspace with an untreated cavitary or smear-positive source — not handshakes, bedpans, or hallway passing.</p>
+      </div>
+
+      <h2 class="ct-h2">Who is most likely to acquire infection</h2>
+      <p>Ask where the person has lived, who they have breathed air with, and what that air was like.</p>
+      <p>Place of birth and prolonged residence dominate risk in the United States. Incidence varies more than 100-fold worldwide; the World Health Organization (WHO) high-burden regions include much of sub-Saharan Africa, South and Southeast Asia, parts of the Western Pacific, and Eastern Europe. Childhood or recent years spent there predicts a positive IGRA more strongly than any other single factor in many US clinics. Recent short travel is less potent than years of residence, but a prolonged household stay in a high-incidence setting can be equivalent.</p>
+      <p>Close contact with infectious tuberculosis is the highest-risk recent exposure: household contacts, roommates, and cellmates who share air with a smear-positive pulmonary case for weeks, especially overnight. Risk rises with cavitation, laryngeal involvement, and longer contact. Healthcare personnel and mycobacteriology laboratory staff carry repeated occupational exposure and should be viewed through infection control, not just personal risk.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Risk factors that raise the probability of having acquired tuberculosis infection</caption>
+          <thead>
+            <tr><th>Category</th><th>Examples</th><th>Why it matters</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Geography and birthplace</td><td>Born or prolonged residence in high-incidence country; prolonged household stay there</td><td>Years of higher exposure before present; most LTBI in the United States was acquired abroad</td></tr>
+            <tr><td>Close contact</td><td>Household or roommate contact with smear-positive, cavitary, or laryngeal tuberculosis for weeks, especially overnight</td><td>Highest per-contact risk for recent transmission</td></tr>
+            <tr><td>Congregate exposure</td><td>Correctional facility, shelter, nursing home, crowded refugee camp</td><td>More contacts, shared air, delayed diagnosis</td></tr>
+            <tr><td>Occupational</td><td>Healthcare work with tuberculosis patients, mycobacteriology laboratory work</td><td>Repeated aerosol exposure</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Birth or prolonged residence in a high-burden country is the strongest predictor of LTBI in most US clinics. Ask where someone spent the first 10 to 20 years, not just last month's travel.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Which person has the highest prior probability of true LTBI before testing?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A 25-year-old born in a low-incidence country, no exposure, TST 6 mm for school</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">A 29-year-old born in the Philippines who spent childhood there and now shares an apartment with a smear-positive cavitary case</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A 40-year-old office worker with brief hallway contact with a tuberculosis patient</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A 50-year-old with BCG vaccination as a child and no contacts</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Childhood in a high-incidence country plus recent household exposure to a highly infectious source stacks the two strongest acquisition risks. Brief hallway contact is low risk, and BCG alone does not indicate infection.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Where transmission thrives</h2>
+      <p>Crowding and poor ventilation are the two classic amplifiers. Droplet nuclei remain suspended for hours; without adequate air exchanges, concentration rises. Crowding increases susceptibles and hours of shared air. Add a delayed diagnosis of cavitary smear-positive disease and spread is efficient.</p>
+      <p>Settings to flag: correctional facilities, homeless shelters, nursing homes, and hospitals before airborne isolation. Mycobacteriology laboratories transmit when cultures are handled outside appropriate biological safety cabinets. Season matters only indirectly through winter indoor crowding.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Equating a negative TST or IGRA right after exposure with no infection. Conversion takes 2 to 8 weeks. A test done the day after contact reflects prior risk, not this exposure. For high-risk recent contacts, counsel, repeat after the window period, and involve public health.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A nurse cared for an undiagnosed cavitary tuberculosis patient on an open ward for three shifts before airborne isolation. What most increased her acquisition risk?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Handling the bedpan with gloves</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Hours of shared air in a poorly ventilated ward with a coughing, smear-positive source</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Eating in the cafeteria an hour after the patient</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Touching the chart</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Tuberculosis is airborne. Time in shared airspace with an untreated cavitary source predicts transmission; fomite or non-overlapping use of space does not.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Who progresses from infection to disease</h2>
+      <p>Most with LTBI never progress — lifetime risk without risk factors is roughly 5 to 10 percent, and half of that risk is in the first two years after infection, especially the first year. Recent infection and impaired cellular immunity are the two lenses.</p>
+      <p>Time since infection is the strongest modifier: infection within the past two years, documented conversion, or close contact in that window carries higher risk than remote LTBI. Young children under 5 years of age progress more often and more severely.</p>
+      <p>Human immunodeficiency virus (HIV) infection is the strongest immunologic driver; risk rises as CD4 count falls but is raised even with well-controlled HIV. Other deficits follow the same logic: tumor necrosis factor (TNF)-alpha inhibitors, prolonged high-dose glucocorticoids, other biologic immunosuppression, haematologic malignancy, head and neck cancer, and transplant immunosuppression. Chronic kidney disease (CKD) on dialysis, silicosis, gastrectomy, severe malnutrition with low body mass index (BMI), and poorly controlled diabetes mellitus also raise risk. Tobacco smoking, alcohol use disorder, and undernutrition are independent contributors.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Host factors that raise probability of progression from LTBI to disease</caption>
+          <thead>
+            <tr><th>Factor</th><th>Approach in clinic</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Recent infection within 2 years, documented conversion, close contact within window</td><td>Highest priority for evaluation and preventive treatment after excluding disease</td></tr>
+            <tr><td>Human immunodeficiency virus (HIV) infection, especially CD4 &lt; 200 cells per microliter</td><td>Coordinate with HIV care; assess for LTBI promptly</td></tr>
+            <tr><td>TNF-alpha inhibitors, prolonged glucocorticoids, other biologics, transplant</td><td>Screen before starting when possible</td></tr>
+            <tr><td>Age under 5 years</td><td>Urgent evaluation with paediatrics and public health</td></tr>
+            <tr><td>Dialysis-dependent CKD, silicosis, gastrectomy, malnutrition, poorly controlled diabetes</td><td>Lower threshold to evaluate and counsel</td></tr>
+            <tr><td>Tobacco smoking, alcohol use disorder, undernutrition</td><td>Address as modifiable contributors</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Recency outweighs everything. A positive IGRA after last week's household exposure means something very different from the same result with no exposure in 20 years.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>HIV status changes everything. When you find LTBI, check HIV; when you find HIV, assess for LTBI; with symptoms in either, rule out active disease first.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A person with LTBI diagnosed 10 years ago and a person with IGRA conversion after household exposure 3 months ago both have normal chest radiographs and no symptoms. Who has higher progression risk in the next year?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">The person with remote LTBI, because longer carriage means higher risk</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">The person with recent conversion, because risk concentrates in the first 2 years</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Equal risk, both have positive IGRA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Neither, because radiograph is normal</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A positive test cannot date infection alone; when infection is known to be recent, progression risk is much higher. A normal radiograph does not eliminate risk.</p>
+        </div>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Thresholds for TST interpretation and LTBI treatment regimens, including rifamycin-based short courses, are detailed in current Centers for Disease Control and Prevention (CDC) and American Thoracic Society guidance and change over time. Always rule out disease before LTBI treatment and verify drug, dose, and duration with current guidance and pharmacy.</p>
+      </div>
+
+      <h2 class="ct-h2">Using risk to guide testing, counselling, and prevention</h2>
+      <p>Decide pre-test probability before you order. In a person with no exposure risk tested for administrative reasons, a positive result is more likely false positive and leads to anxiety and treatment harms. With multiple acquisition or progression risk factors, the same result is likely true and consequential.</p>
+      <p>IGRA needs a single blood draw, does not cross-react with Bacille Calmette-Guérin (BCG), and avoids boosting; TST needs a return visit and is confounded by BCG. Prefer IGRA when BCG was given. Neither test distinguishes LTBI from disease. If symptoms or imaging suggest disease, pursue sputum microbiology and airborne precautions.</p>
+      <p>Rule out disease before labelling LTBI. Every positive IGRA or TST needs symptom review, chest imaging, and, when indicated, sputum testing. Starting LTBI treatment in undiagnosed disease risks inadequate therapy and resistance. After exclusion, prioritize recent contacts, young child contacts, persons with human immunodeficiency virus (HIV) infection, and those starting TNF-alpha inhibitors.</p>
+      <p>Counsel by risk, not just result. The student with recent household exposure to a smear-positive case and birth in a high-incidence country has high likelihood of true recent infection and sits in the two-year high-risk window — preventive treatment after excluding disease is high value with public health. The 62-year-old with no exposure and an isolated 11 mm TST done administratively has low prior probability; a likely false positive or BCG effect favours IGRA confirmation and avoidance of treatment on the TST alone.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Test for LTBI only if you would act on a positive result and after ruling out disease. Risk stratification before testing prevents false positives and focuses treatment where it matters.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Treating a positive IGRA or TST without excluding disease. Fever, cough, weight loss, night sweats, or abnormal imaging needs evaluation for disease — not LTBI labelling.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A healthy 30-year-old with no tuberculosis exposure, born in a low-incidence country, has a routine TST 11 mm and a negative IGRA. What is the best step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start preventive treatment based on TST alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Interpret TST as likely false positive given low prior probability; counsel and document IGRA and BCG history, do not treat on TST alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order chest computed tomography for all such patients</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat TST weekly</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>In low-risk persons, a borderline TST is more likely false positive, especially with prior BCG, while a negative IGRA is more specific. Broad imaging and repeated TSTs add harm.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Tuberculosis risk separates into exposure to droplet nuclei, establishment of LTBI, and progression to disease — use the same separation when counselling.</li>
+        <li>Acquisition is dominated by prolonged residence or birth in a high-incidence country and recent close contact with smear-positive, cavitary, or laryngeal disease in a crowded, poorly ventilated space. Hours of shared air, not brief contact, drives it.</li>
+        <li>Amplifiers combine crowding, poor ventilation, and delayed diagnosis: correctional facilities, shelters, nursing homes, hospitals before isolation, and laboratories without proper controls.</li>
+        <li>Progression risk is highest within two years of infection and with HIV infection, TNF-alpha inhibitors or potent immunosuppression, age under 5 years, dialysis-dependent CKD, silicosis, gastrectomy, malnutrition, poorly controlled diabetes, smoking, and alcohol use disorder.</li>
+        <li>Risk-stratify before testing: prefer IGRA when BCG was given; neither test distinguishes LTBI from disease. Always rule out disease before LTBI treatment, and prioritize recent contacts and high progression-risk patients for preventive treatment with public health.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Centers for Disease Control and Prevention. Guidelines for the treatment of latent tuberculosis infection: recommendations from the National Tuberculosis Controllers Association and CDC. <em>MMWR Recomm Rep</em>. 2020;69(1):1-11.</li>
+          <li>Centers for Disease Control and Prevention. Guidelines for preventing the transmission of <em>Mycobacterium tuberculosis</em> in health-care settings. <em>MMWR Recomm Rep</em>. 2005;54(RR-17):1-141.</li>
+          <li>Lewinsohn DM, et al. Official American Thoracic Society/Infectious Diseases Society of America/Centers for Disease Control and Prevention clinical practice guidelines: diagnosis of tuberculosis in adults and children. <em>Clin Infect Dis</em>. 2017;64(2):e1-e33.</li>
+          <li>World Health Organization. WHO consolidated guidelines on tuberculosis. Module 1: prevention — tuberculosis preventive treatment. 2nd ed. Geneva: World Health Organization; 2024.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Risk factors for tuberculosis infection</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

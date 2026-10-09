@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native vertebral osteomyelitis: diagnostic workup — IDSA Chalk Talk</title>
+<meta name="description" content="A stepwise approach to diagnosing native vertebral osteomyelitis — when to suspect it, what to order, and when to biopsy.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Native vertebral osteomyelitis: diagnostic workup — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Bone and joint infections</p>
+        <h1 class="ct-h1">Native vertebral osteomyelitis: diagnostic workup</h1>
+        <p class="ct-subtitle">When back pain is more than mechanical — how to suspect, confirm, and source the infection</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 68-year-old man with diabetes presents with 3 weeks of constant, progressive midline low back pain, worse at night and unrelieved by rest. He reports low-grade fevers and night sweats, no weakness. Two weeks ago he was treated for cellulitis. He is afebrile at 37.4°C, tender over L3–L4, neurologically intact. White blood cell count 9,200 per mm<sup>3</sup>, erythrocyte sedimentation rate (ESR) 78 mm per hour, C-reactive protein (CRP) 68 mg per L. Is this degenerative disease or something you cannot miss?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Identify the pain pattern and risk factors that raise suspicion for native vertebral osteomyelitis (NVO).</li>
+          <li>Choose the right initial tests — blood cultures, ESR/CRP, and magnetic resonance imaging (MRI) with gadolinium — and order them before antibiotics blunt the yield.</li>
+          <li>Decide when image-guided biopsy is required and when it can be safely deferred.</li>
+          <li>Complete the workup: look for epidural involvement, find the source, and avoid common pitfalls.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why native vertebral osteomyelitis is easy to miss</h2>
+      <p><span class="ct-term">Native vertebral osteomyelitis (NVO)</span> is infection of the vertebral body and disc without prior surgery or hardware. It is rising with an ageing population, diabetes, haemodialysis, and injected drug use, usually from haematogenous seeding during a bacteraemia that seemed minor — cellulitis or a urinary infection.</p>
+      <p>Back pain is present in 85 to 90 percent of cases, but clinicians often anchor on mechanical disease. Fever is absent in about half of patients and the white blood cell count is frequently normal. Classic NVO pain is insidious over weeks, constant, worse at night, unrelieved by rest, and focally tender. Neurologic deficits appear late, after epidural extension. Delay to diagnosis averages 4 to 6 weeks, during which epidural abscess, neurologic injury, and sepsis become more likely.</p>
+      <p>Think of NVO as a bloodstream infection that has lodged in the spine. You have to suspect it to image it.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Constant, progressive axial pain over weeks that is worse at night and focally tender — especially after recent bacteraemia — is vertebral osteomyelitis until proven otherwise.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>NVO favours the lumbar spine (about half of cases), then thoracic and cervical. Two contiguous bodies and the intervening disc are typically involved because one segmental artery supplies both endplates. Noncontiguous multifocal disease occurs — image generously.</p>
+      </div>
+
+      <h2 class="ct-h2">When to suspect it</h2>
+      <p>No single feature proves NVO. The 2015 Infectious Diseases Society of America (IDSA) guideline emphasises pattern recognition over thresholds.</p>
+      <p>Raise your suspicion when new axial pain coexists with fever, recent bacteraemia or endocarditis, injected drug use, haemodialysis, diabetes, immunosuppression, or a recent spinal procedure. Age over 50 and prior <em>Staphylococcus aureus</em> bacteraemia are especially strong associations. Focal spinous tenderness or percussion pain is more suggestive than diffuse spasm. New radicular pain, weakness, sensory change, or bladder dysfunction suggests epidural extension and needs emergent evaluation. Night sweats and weight loss add weight but are not required.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Features that raise suspicion for NVO</caption>
+          <thead>
+            <tr><th>Domain</th><th>Clues that increase concern</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>History</td><td>Recent bacteraemia, endocarditis, injected drug use, haemodialysis, spinal injection</td></tr>
+            <tr><td>Pain</td><td>Constant over weeks, worse at night, not relieved by rest, focal midline tenderness</td></tr>
+            <tr><td>Systemic</td><td>Fever, chills, night sweats — absent in half, so absence does not exclude</td></tr>
+            <tr><td>Hosts</td><td>Older age, diabetes, kidney disease, immunosuppression</td></tr>
+            <tr><td>Neurologic</td><td>Radiculopathy, weakness, sensory level, urinary retention</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Half of patients are afebrile with a normal white count at diagnosis. Do not use a normal temperature or white count to rule out NVO if the pain pattern fits.</p>
+      </div>
+
+      <h2 class="ct-h2">Start with blood cultures and inflammatory markers</h2>
+      <p>Before imaging and before antibiotics: draw blood cultures and check inflammatory markers. Order matters — antibiotics cut the yield dramatically.</p>
+      <p>Obtain at least two sets of blood cultures before any antimicrobial in every suspected NVO case. Cultures are positive in 40 to 60 percent overall and can establish the pathogen without biopsy when paired with compatible imaging. Yield is highest before antibiotics and during fever or rigors. If the patient is stable without progressive deficit or sepsis, hold empiric antibiotics until cultures and, if indicated, biopsy are obtained. If unstable, draw cultures first and start therapy promptly.</p>
+      <p>ESR and CRP are not diagnostic but are sensitive together. Markedly elevated ESR (often above 40 mm per hour) and CRP are present in most cases. A normal ESR plus a normal CRP makes NVO unlikely, though not impossible very early. They are also useful to track response after diagnosis. White count is poorly sensitive — do not rely on it. Add kidney and liver function, and tailor extra testing to risk: <em>Brucella</em> serology with animal or unpasteurised dairy exposure, and <em>Mycobacterium tuberculosis</em> workup for chronic or epidemiologic risk.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Starting antibiotics before cultures and MRI in a stable patient trades a day of targeted therapy for weeks of broad empiric therapy. If stable and without deficit, draw cultures, image urgently, and coordinate biopsy before the first dose.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Two sets of blood cultures before antibiotics are the highest-yield noninvasive test. If they grow <em>Staphylococcus aureus</em> or <em>Staphylococcus lugdunensis</em> with compatible MRI, you can usually skip biopsy.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The patient in the vignette is stable without deficit. ESR is 78 mm per hour and CRP is 68 mg per L. What is the best next step before imaging?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start vancomycin now, then obtain cultures</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Draw two sets of blood cultures and hold antibiotics pending urgent MRI</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Rely on the normal white count to defer cultures and get a CT</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Obtain plain radiographs to exclude NVO</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Blood cultures before antibiotics are the highest-yield test and can obviate biopsy when positive for a typical pathogen. ESR/CRP support suspicion but do not replace cultures. A normal white count does not exclude NVO and plain films are insensitive early.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Magnetic resonance imaging is the test of choice</h2>
+      <p>If you suspect NVO, obtain MRI of the relevant spine segment with gadolinium promptly, ideally within 24 hours. Sensitivity is 90 to 97 percent and MRI defines levels, disc involvement, epidural or psoas abscess, and cord compression.</p>
+      <p>Ask radiology about infection-specific findings: low T1 and high T2 marrow signal centred at endplates, endplate erosion, high T2 disc signal with loss of the intranuclear cleft and disc enhancement, and paraspinal or epidural enhancement. Contrast is key — it reveals epidural phlegmon or abscess and helps distinguish infection from degenerative change. Early infection can be MRI-negative; if suspicion remains, repeat imaging in 1 to 2 weeks.</p>
+      <p>Image generously — noncontiguous lesions occur with <em>S. aureus</em> bacteraemia. Modic type I degenerative change can mimic infection, so correlate with microbiology. When MRI is contraindicated, alternatives include contrast-enhanced computed tomography (CT) or fluorodeoxyglucose positron emission tomography with CT (FDG PET/CT). Plain radiographs lag by weeks — never use them to exclude NVO.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Typical MRI findings in NVO</caption>
+          <thead>
+            <tr><th>Structure</th><th>Findings that support infection</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Vertebral body</td><td>Low T1, high T2 marrow oedema at endplates; enhancement; endplate erosion</td></tr>
+            <tr><td>Disc</td><td>High T2 signal, enhancement, loss of cleft, reduced height</td></tr>
+            <tr><td>Soft tissues</td><td>Paraspinal or psoas phlegmon or rim-enhancing abscess; epidural enhancement</td></tr>
+            <tr><td>Pattern</td><td>Two adjacent bodies with intervening disc; skip lesions possible</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Order MRI with gadolinium, not without. Contrast is what shows the epidural collection you cannot afford to miss.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with suspected NVO has a pacemaker and cannot undergo MRI urgently. CT shows L4–L5 endplate erosion. What is the best next imaging step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Plain radiography in two weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">FDG PET/CT or nuclear scan while arranging device and spine input</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Non-contrast MRI as the definitive test</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No further imaging — CT alone confirms NVO</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>CT is less sensitive early and poorly defines epidural disease. When MRI is contraindicated, FDG PET/CT or bone scanning provides sensitive whole-spine assessment. Plain films are too late and CT alone cannot exclude epidural abscess.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When to do a biopsy and when you can skip it</h2>
+      <p>MRI suggests infection; microbiology determines therapy. The core question is whether you can identify the organism from blood or need disc or vertebral tissue.</p>
+      <p>The IDSA guideline recommends CT-guided aspiration or core biopsy when the pathogen is unknown. Send tissue for histopathology and for aerobic and anaerobic bacterial cultures, plus mycobacterial and fungal studies when risk suggests. Yield is highest before antibiotics (often 40 to 50 percent) and falls below 30 percent after exposure. A negative culture after antibiotics does not exclude NVO.</p>
+      <p>You can defer biopsy in two settings: when blood cultures are positive for a typical pathogen with compatible imaging — most clearly <em>S. aureus</em> and <em>S. lugdunensis</em> — or when the same organism is already proven from another sterile site such as endocarditis. Even then, consider whether a second pathogen could be present, especially with injected drug use.</p>
+      <p>When cultures are negative or grow likely contaminants — coagulase-negative staphylococci, <em>Cutibacterium acnes</em>, or a single bottle of viridans streptococci — do not anchor. Obtain a biopsy. If antibiotics have already been given and cultures remain negative, discuss a brief antibiotic-free interval of a few days with infectious diseases and interventional radiology if safe, and consider 16S ribosomal ribonucleic acid (RNA) polymerase chain reaction (PCR) on tissue in culture-negative cases. Reserve open biopsy for nondiagnostic percutaneous sampling with high suspicion, or when decompression is already needed — then tissue is available.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not draw cultures through an old line or biopsy through infected skin. Contaminants such as <em>Cutibacterium</em> or coagulase-negative staphylococci produce the most confusing NVO cases and lead to the wrong narrow therapy.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Tissue before treatment when safe. In a stable patient without cord compression or sepsis, the pause to get cultures, MRI, and biopsy saves weeks of empiric therapy later.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Repeat percutaneous biopsy after a first nondiagnostic result adds modest yield when antibiotics have been held, but reassess instead of reflexively repeating: was the MRI truly compatible and were cultures truly negative, or is malignancy, tuberculosis, or another mimic more likely?</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 55-year-old man with L3–L4 NVO on MRI has two sets of blood cultures positive for methicillin-susceptible <em>Staphylococcus aureus</em> before antibiotics. He is stable and neurologically intact. What about biopsy?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Defer biopsy; treat as <em>S. aureus</em> NVO and evaluate for endocarditis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urgent biopsy is still required before therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait two days of negative cultures to decide</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Hold therapy for <em>Brucella</em> serology first</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Blood cultures positive for <em>S. aureus</em> or <em>S. lugdunensis</em> with compatible MRI usually obviate biopsy. Still evaluate for endocarditis with echocardiography and assess for epidural abscess.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Tying the diagnosis together and finding the source</h2>
+      <p>Diagnosis is a synthesis of clinical, microbiologic, imaging, and when needed histopathologic data. Isolation of a pathogen from vertebral tissue or from blood with compatible imaging is strong confirmation. With negative cultures, histology showing acute or chronic inflammation or granulomas with compatible imaging can support the diagnosis after mimics are excluded.</p>
+      <p>Once NVO is strongly suspected, look backwards for the source and forwards for complications. Backwards: check skin, dentition, injection sites, lines, and urine. With <em>S. aureus</em> bacteraemia obtain echocardiography — endocarditis is common and changes management. Forwards: document neuro exam daily and involve spine surgery for any deficit or sizable epidural collection.</p>
+      <p>Consider tuberculosis and brucellosis when the course is indolent over months, paraspinal collections are large with relatively preserved discs, epidemiologic risk is present, or routine cultures stay negative. Send appropriate tests so the biopsy can be processed correctly.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>NVO sits at the intersection of bacteraemia, spine imaging, and microbiology. If you find it, chase the source backwards and the abscess forwards.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A woman with diabetes and T8–T9 NVO has methicillin-resistant <em>Staphylococcus aureus</em> bacteraemia and a small epidural phlegmon without cord compression. She remains febrile at 48 hours on appropriate therapy and is intact neurologically. What is most urgent?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Trend ESR and CRP at 48 hours</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Echocardiography and urgent spine reassessment of the epidural collection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Lumbar puncture for meningitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Early discharge if cultures clear</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>S. aureus</em> NVO has high rates of endocarditis, and epidural disease — even without deficit — can progress rapidly. Markers trend over weeks, not hours. Persistent fever warrants source and spine reassessment, not discharge.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Pitfalls that delay diagnosis or mislead you</h2>
+      <p>Four traps cause most delays. First, anchoring on degenerative disease: multilevel disc and endplate changes are common after 50 and often headlined on reports. Infection hides underneath — ask radiology specifically about marrow oedema, disc enhancement, and paraspinal inflammation when the pain is inflammatory.</p>
+      <p>Second, relying on white count or absence of fever — both normal in many confirmed cases. ESR and CRP are far more sensitive. Third, imaging too little: plain films never rule out NVO, and non-contrast CT reassures late. When you order MRI, specify “suspected NVO with recent bacteraemia” to get the right protocol. Fourth, treating before you know what you are treating: stable patients can wait hours for cultures and imaging; unstable or neurologically compromised patients cannot.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>New vertebral lesions in a patient with known malignancy are not always metastases. After recent bacteraemia or chemotherapy, infection and tumour can coexist and look similar — biopsy with histology and cultures distinguishes them.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Suspect NVO when axial pain is constant, progressive over weeks, worse at night and focally tender — especially after bacteraemia, injected drug use, haemodialysis, diabetes, or immunosuppression. Fever and leukocytosis are often absent.</li>
+        <li>In stable patients, draw two sets of blood cultures and check ESR and CRP before antibiotics and before MRI. Elevated markers support suspicion; normal ESR plus normal CRP makes NVO unlikely. Do not use white count to exclude.</li>
+        <li>MRI with gadolinium is the test of choice — look for endplate erosion, marrow oedema, disc T2 hyperintensity and enhancement, and epidural or paraspinal abscess. Use FDG PET/CT when MRI is contraindicated or equivocal.</li>
+        <li>CT-guided biopsy is indicated when the pathogen is unknown. Defer it when blood cultures already grow <em>Staphylococcus aureus</em> or <em>Staphylococcus lugdunensis</em> with compatible MRI. Hold antibiotics for biopsy when safe; yield falls sharply after they start.</li>
+        <li>Synthesize the syndrome and chase the source and the complication: echocardiography for <em>S. aureus</em> bacteraemia, daily neuro checks, and early spine surgery involvement for deficit or sizable epidural collection.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Berbari EF, Kanj SS, Kowalski TJ, et al. 2015 Infectious Diseases Society of America (IDSA) clinical practice guidelines for the diagnosis and treatment of native vertebral osteomyelitis in adults. <em>Clin Infect Dis</em>. 2015;61(6):e26-e46. Framework for blood culture, MRI, and biopsy recommendations; cited on slides.</li>
+          <li>Zimmerli W. Clinical practice. Vertebral osteomyelitis. <em>N Engl J Med</em>. 2010;362(11):1022-1029. Classic review on presentation and limited sensitivity of fever and leukocytosis.</li>
+          <li>Babic M, Simpfendorfer CS. Infections of the spine. <em>Infect Dis Clin North Am</em>. 2017;31(2):279-297. Imaging review of MRI, CT, and FDG PET/CT and mimics including Modic change and tumour.</li>
+          <li>Additional sources as cited on slide deck where recoverable — transcript and slide PDF were corrupted with replacement bytes and could not be read verbatim; content reconstructed from IDSA guidance and noted as inferred (see summary).</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Native vertebral osteomyelitis: diagnostic workup</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

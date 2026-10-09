@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach to hepatitis B serologies in patients with HIV — IDSA Chalk Talk</title>
+<meta name="description" content="How to read hepatitis B serologies in adults with HIV and choose the next step — from isolated core antibody to chronic infection.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Approach to hepatitis B serologies in patients with HIV — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">HIV and viral hepatitis</p>
+        <h1 class="ct-h1">Approach to hepatitis B serologies in patients with HIV</h1>
+        <p class="ct-subtitle">Reading the three-test panel and acting on it when HIV is in the room</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: Not recoverable — transcript corrupted</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man with newly diagnosed human immunodeficiency virus (HIV) infection has cluster of differentiation 4 (CD4) count 380 cells per microlitre and alanine aminotransferase (ALT) 38 U per L. He was born in West Africa and does not recall hepatitis or vaccines. Labs: hepatitis B surface antigen (HBsAg) negative, antibody to hepatitis B surface antigen (anti-HBs) negative, antibody to hepatitis B core antigen (anti-HBc) positive. He asks if he needs hepatitis B vaccine. A second patient, a 45-year-old woman with HIV on tenofovir disoproxil fumarate plus emtricitabine and dolutegravir, has HBsAg positive, hepatitis B virus deoxyribonucleic acid (HBV DNA) 2,100 IU per mL, and wants to stop antiretroviral therapy (ART) for bone concerns.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Interpret the hepatitis B triple panel (HBsAg, anti-HBs, anti-HBc) in adults with HIV.</li>
+          <li>Manage isolated anti-HBc — when to check HBV DNA and when to vaccinate.</li>
+          <li>Outline next steps for chronic hepatitis B and HIV coinfection.</li>
+          <li>Decide when and how to vaccinate susceptible patients with HIV.</li>
+        </ul>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">A note on reconstruction</span>
+        <p>The transcript and slides were corrupted and unreadable after repair attempts. Content below is reconstructed from IDSA, AASLD, and DHHS HIV guidance. All schedules and drug names are guideline-derived. Verify against current guidelines.</p>
+      </div>
+
+      <h2 class="ct-h2">Why hepatitis B matters more when HIV is present</h2>
+      <p>Chronic <span class="ct-term">hepatitis B virus (HBV)</span> infection and human immunodeficiency virus (HIV) share transmission routes, so coinfection is common. With HIV, HBV persists more often, HBV DNA runs higher, fibrosis is faster, and flares can follow immune reconstitution or stopping anti-HBV drugs. Liver disease remains a leading non-acquired immunodeficiency syndrome (AIDS) cause of illness.</p>
+      <p>Every person with HIV needs the hepatitis B triple panel at entry to care: HBsAg, anti-HBs, and anti-HBc (total). The CDC, AASLD, and DHHS all recommend it. The panel guides prevention and ART choice — without it you risk leaving HBV untreated or causing a flare when you later stop an anti-HBV drug.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Screen every patient with HIV with the triple panel at entry to care. Starting or switching ART without hepatitis B status risks undertreatment or a flare when you later stop tenofovir, emtricitabine, or lamivudine.</p>
+      </div>
+
+      <h2 class="ct-h2">The three tests you actually need</h2>
+      <p>For screening you need three results, ordered together.</p>
+      <ul>
+        <li><strong>Hepatitis B surface antigen (HBsAg)</strong> — surface protein of HBV. If positive, virus is present now, acute or chronic.</li>
+        <li><strong>Antibody to hepatitis B surface antigen (anti-HBs)</strong> — protective antibody. At 10 mIU per mL or higher it marks immunity, from vaccine or past infection. It cannot distinguish the two without anti-HBc.</li>
+        <li><strong>Antibody to hepatitis B core antigen (anti-HBc, total)</strong> — antibody to the internal core protein after natural infection, persisting for life. Vaccine contains only surface antigen, so vaccine alone never makes anti-HBc positive. Immunoglobulin M (IgM) anti-HBc marks acute infection and is not a screening test.</li>
+      </ul>
+      <p>HBV DNA, hepatitis B e antigen (HBeAg), antibody to hepatitis B e antigen (anti-HBe), and liver tests are follow-up tests. Order them once the panel points you. Common errors are ordering HBeAg as a screen and misreading isolated anti-HBs as infection.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Anti-HBs of at least 10 mIU per mL is the accepted protection threshold. In HIV, titres wane faster, so a positive result still prompts counselling and sometimes rechecking after vaccination series.</p>
+      </div>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>What each screening marker means</caption>
+          <thead>
+            <tr><th>Marker</th><th>If positive</th><th>If negative</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HBsAg</td><td>Virus present now</td><td>No detectable surface antigen</td></tr>
+            <tr><td>Anti-HBs</td><td>Immune — check anti-HBc to distinguish vaccine from past infection</td><td>Not immune or waned</td></tr>
+            <tr><td>Anti-HBc (total)</td><td>Prior natural infection</td><td>No prior natural infection</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="ct-h2">Reading the common patterns at a glance</h2>
+      <p>Read the panel as a row. Five rows cover almost every patient with HIV.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Interpretation of the hepatitis B triple panel</caption>
+          <thead>
+            <tr><th>HBsAg</th><th>Anti-HBs</th><th>Anti-HBc</th><th>Interpretation</th><th>Next step in HIV</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Negative</td><td>Negative</td><td>Negative</td><td>Susceptible</td><td>Vaccinate</td></tr>
+            <tr><td>Negative</td><td>Positive</td><td>Negative</td><td>Immune from vaccine</td><td>None</td></tr>
+            <tr><td>Negative</td><td>Positive</td><td>Positive</td><td>Immune from past infection</td><td>None</td></tr>
+            <tr><td>Positive</td><td>Negative</td><td>Positive</td><td>Current infection</td><td>HBV DNA, HBeAg, ALT, fibrosis; ensure HBV-active ART</td></tr>
+            <tr><td>Negative</td><td>Negative</td><td>Positive</td><td>Isolated anti-HBc</td><td>Check HBV DNA</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>HBsAg positive with anti-HBs positive is rare — usually timing or transient antigenaemia after vaccination — repeat and check HBV DNA. In HIV the isolated anti-HBc row is common, in 10 to 20 percent in several cohorts, so checking only HBsAg and anti-HBs is inadequate.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Vaccine never makes anti-HBc positive. Anti-HBc positive means prior whole virus; anti-HBs alone means vaccine only.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old man with HIV has HBsAg negative, anti-HBs positive, anti-HBc negative. What is his status?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Chronic hepatitis B</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Immune from vaccination — no further vaccine needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Past natural infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Susceptible</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Anti-HBs alone without anti-HBc is the vaccine pattern. Natural immunity produces both antibodies. Susceptible is triple negative and chronic is HBsAg positive.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The patient with isolated anti-HBc</h2>
+      <p>HBsAg negative, anti-HBs negative, anti-HBc positive is the most confusing panel. In HIV three explanations matter: resolved infection with waned anti-HBs (DNA negative), occult or low-level chronic HBV with HBsAg below detection (DNA may be positive, more common with HIV), and false positive or window period after acute infection (uncommon in asymptomatic screening).</p>
+      <p>The only arbiter is HBV DNA. Both DHHS and AASLD state isolated anti-HBc in HIV prompts HBV DNA testing.</p>
+      <ol>
+        <li><strong>HBV DNA detectable</strong> — treat as chronic HBV despite negative HBsAg. Ensure ART includes two HBV-active drugs and obtain HBeAg, ALT, and fibrosis assessment.</li>
+        <li><strong>HBV DNA undetectable</strong> — offer vaccination. Many with memory immunity will mount an anamnestic anti-HBs response; false positives develop primary immunity. A common clinic approach is a single dose then anti-HBs 4 to 8 weeks later, completing a full series if it remains below 10 mIU per mL, but a full series upfront is also acceptable if you recheck.</li>
+      </ol>
+      <p>In advanced HIV, HBsAg and anti-HBs can be falsely negative from low titres, so DNA remains the decider.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Calling isolated anti-HBc a false positive without HBV DNA. Up to a quarter of cases in some HIV cohorts have detectable DNA. Missing occult HBV leaves ART without an HBV-active backbone and risks reactivation.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Isolated anti-HBc in HIV — check HBV DNA first. DNA positive means treat as chronic; DNA negative means vaccinate and recheck anti-HBs.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The 32-year-old man in the vignette has isolated anti-HBc. What is next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure without testing</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Vaccinate without HBV DNA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Check HBV DNA; if negative, vaccinate and recheck anti-HBs 4 to 8 weeks later</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order IgM anti-HBc to screen for occult infection</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Isolated anti-HBc requires HBV DNA to exclude occult infection. IgM marks acute infection. If DNA negative, vaccinate and recheck; if positive, manage as chronic HBV with HBV-active ART.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What to do when HBsAg is positive</h2>
+      <p>A positive HBsAg means current HBV infection — in new HIV diagnosis usually chronic. Order before changing ART: HBV DNA quantitative, HBeAg and anti-HBe, ALT and aspartate aminotransferase (AST), and fibrosis assessment.</p>
+      <p>Guidelines recommend ART with two agents active against HBV — usually tenofovir plus emtricitabine or lamivudine — as part of a fully suppressive regimen with a third HIV-active drug such as an integrase strand transfer inhibitor. Choice between tenofovir disoproxil fumarate and tenofovir alafenamide balances kidney, bone, and pregnancy. Entecavir alone is not adequate HIV therapy.</p>
+      <ol>
+        <li><strong>Do not stop anti-HBV drugs.</strong> Stopping tenofovir, emtricitabine, or lamivudine in chronic HBV can cause a severe flare with liver failure weeks to months later. Keep an HBV-active backbone when switching; if stopping is unavoidable, monitor ALT and HBV DNA closely with hepatology.</li>
+        <li><strong>Do not use HIV regimens without HBV activity.</strong> Two-drug regimens omitting tenofovir and emtricitabine or lamivudine leave HBV untreated. Long-acting cabotegravir plus rilpivirine, for example, has no HBV activity and is unsuitable for HBsAg-positive patients.</li>
+      </ol>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>The woman on tenofovir disoproxil fumarate plus emtricitabine wants to stop for bone concerns. Stopping risks an HBV flare. Switch tenofovir disoproxil fumarate to tenofovir alafenamide within a complete HBV-active regimen rather than stopping.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>In HBV and HIV coinfection, ART is HBV therapy too. Every ART change is a hepatitis decision.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with HIV and chronic HBV on tenofovir plus emtricitabine plus dolutegravir asks to switch to cabotegravir plus rilpivirine. What is best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch — it covers HBV</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Do not switch to a regimen without HBV-active drugs; keep tenofovir plus emtricitabine or lamivudine</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop HBV drugs and monitor ALT</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add entecavir alone</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Cabotegravir plus rilpivirine has no HBV activity. Maintain tenofovir plus emtricitabine or lamivudine within fully suppressive ART. Entecavir alone is not adequate HIV therapy.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Vaccinating the susceptible patient with HIV</h2>
+      <p>Triple negative means susceptible — you can prevent HBV, but response is lower in HIV, especially with CD4 below 200 to 350 cells per microlitre.</p>
+      <ul>
+        <li>Vaccinate all susceptible adults with HIV regardless of CD4 count; counsel that response improves after suppression.</li>
+        <li>Options include three-dose recombinant vaccines and two-dose Heplisav-B; higher responses are reported with Heplisav-B and double-dose revaccination.</li>
+        <li>Check anti-HBs 4 to 8 weeks after the series; at least 10 mIU per mL is a response, otherwise revaccinate and recheck.</li>
+      </ul>
+      <p>Document vaccine and recall for titre. Do not accept distant history alone if panel is negative.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Seroprotection after standard-dose vaccine is lower in HIV, but Heplisav-B and double-dose revaccination report substantially higher responses. No schedule guarantees protection — the titre is part of the plan.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Vaccination in HIV is a schedule plus a titre. Give the series, check anti-HBs, and revaccinate if below 10 mIU per mL.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with HIV has triple-negative panel, CD4 180, HIV RNA 60,000. When should vaccination be offered?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Never — CD4 below 200 contraindicates vaccine</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Now, with post-series anti-HBs check and revaccination if inadequate</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Only after HBV DNA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Only if HBeAg positive</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Susceptible patients with HIV should be vaccinated without waiting, with titre check and revaccination if below 10 mIU per mL. HBV DNA is for isolated anti-HBc or chronic infection, not susceptible screening.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Screen every patient with HIV with the triple panel — triple negative is susceptible, anti-HBs alone is vaccine immunity, both antibodies positive is past infection, HBsAg positive is current infection, isolated anti-HBc needs HBV DNA.</li>
+        <li>Isolated anti-HBc is common in HIV — always check HBV DNA. DNA positive means treat as chronic HBV with HBV-active ART; DNA negative means vaccinate and recheck anti-HBs 4 to 8 weeks later.</li>
+        <li>Chronic HBV with HIV needs ART with two HBV-active drugs (tenofovir plus emtricitabine or lamivudine); never stop them without hepatology co-management and avoid regimens without HBV activity.</li>
+        <li>Susceptible patients need vaccination now with anti-HBs after the series; revaccinate if below 10 mIU per mL — Heplisav-B and double-dose strategies improve response.</li>
+        <li>Tie every ART start, switch, or hold to hepatitis B status and document it — the most preventable harm is a flare after stopping an HBV-active drug.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Panel on Antiretroviral Guidelines for Adults and Adolescents. Guidelines for the use of antiretroviral agents in adults and adolescents with HIV. Department of Health and Human Services. Updated 2024. Hepatitis B and HIV coinfection section.</li>
+          <li>Terrault NA, et al. Update on prevention, diagnosis, and treatment of chronic hepatitis B: AASLD 2018 hepatitis B guidance. <em>Hepatology</em>. 2018;67(4):1560-1599.</li>
+          <li>Conners EE, et al. Screening and testing for hepatitis B virus infection: CDC recommendations — United States, 2023. <em>MMWR Recomm Rep</em>. 2023;72(1):1-25.</li>
+          <li>Heplisav-B prescribing information and studies of response in adults with HIV.</li>
+        </ol>
+      </div>
+
+
+      <!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Approach to hepatitis B serologies in patients with HIV</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

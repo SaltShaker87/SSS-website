@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tick ID of the Midwest — IDSA Chalk Talk</title>
+<meta name="description" content="Tick-borne infections in the Midwest — recognition, testing, and treatment">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Tick ID of the Midwest — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Tick-borne infections</p>
+        <h1 class="ct-h1">Tick ID of the Midwest</h1>
+        <p class="ct-subtitle">From erythema migrans to Ehrlichia — what a Midwest resident needs in their pocket</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA Chalk Talk faculty (transcript corrupted — reconstructed from guidelines)</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man from northwestern Wisconsin presents in mid-June with 5 days of fever, headache, and myalgias. He removed an engorged tick from his thigh 10 days ago. No rash. Complete blood count (CBC) shows leukopenia 2.8 &times; 10<sup>9</sup>/L and thrombocytopenia 98 &times; 10<sup>9</sup>/L. Alanine aminotransferase (ALT) is 88 U/L and aspartate aminotransferase (AST) 76 U/L. Lyme enzyme immunoassay (EIA) is negative.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>List the three medically important ticks of the Midwest and what each transmits.</li>
+          <li>Recognize Lyme disease, anaplasmosis, and ehrlichiosis and know when to think of babesiosis and spotted fever.</li>
+          <li>Choose testing wisely — when polymerase chain reaction (PCR), smear, and serology help and when they mislead.</li>
+          <li>Start empiric doxycycline without waiting when the syndrome is high risk.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why the Midwest is tick country now</h2>
+      <p><em>Ixodes scapularis</em>, the black-legged tick, has expanded across Minnesota, Wisconsin, Iowa, Michigan, Illinois, Indiana, and Ohio over the last two decades. Wisconsin and Minnesota have the highest Lyme incidence nationally, and the same tick carries <em>Anaplasma phagocytophilum</em> and <em>Babesia microti</em>. Southward, <em>Amblyomma americanum</em> (lone star) has moved through Missouri, Kansas, and southern Iowa and Illinois with <em>Ehrlichia chaffeensis</em> and <em>E. ewingii</em>. The upper Midwest also has <em>Ehrlichia muris</em> subsp. <em>eauclairensis</em>, first described in Wisconsin and Minnesota and carried by <em>Ixodes scapularis</em>.</p>
+      <p>Most transmission is April through October, peaking for nymphal <em>Ixodes</em> late May through July. Nymphs are poppy-seed sized and cause most Lyme, anaplasma, and babesia infections because they are missed. Adults are larger and more often noticed. Co-infection with <em>Borrelia burgdorferi</em> and <em>Anaplasma</em> or <em>Babesia</em> occurs but is uncommon.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Ticks feed 36 to 72 hours. <em>Borrelia burgdorferi</em> needs at least 36 hours; <em>Anaplasma</em>, <em>Ehrlichia</em>, and <em>Babesia</em> can transmit sooner, Powassan within minutes.</p>
+      </div>
+      <p>Only about one-third of patients with proven tick-borne infection recall a bite. A febrile, cytopenic, or rash illness in tick season should prompt a tick history even without a bite report.</p>
+
+      <h2 class="ct-h2">Know the tick — three vectors that matter</h2>
+      <p>Geography narrows the differential faster than any panel.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Midwest ticks and what they transmit</caption>
+          <thead>
+            <tr><th>Tick</th><th>Habitat</th><th>Key diseases</th><th>Peak</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Ixodes scapularis</em> (black-legged)</td><td>Wooded brush, leaf litter</td><td>Lyme (<em>Borrelia burgdorferi</em>, rarely <em>Borrelia mayonii</em>), anaplasmosis (<em>Anaplasma phagocytophilum</em>), babesiosis (<em>Babesia microti</em>), <em>Ehrlichia muris eauclairensis</em></td><td>Nymph May–July, upper Midwest</td></tr>
+            <tr><td><em>Amblyomma americanum</em> (lone star)</td><td>Open woods, grass; aggressive</td><td>Ehrlichiosis (<em>Ehrlichia chaffeensis</em>, <em>E. ewingii</em>), tularemia, Heartland/Bourbon viruses, alpha-gal syndrome</td><td>Spring–summer, expanding north</td></tr>
+            <tr><td><em>Dermacentor variabilis</em> (American dog tick)</td><td>Fields, trails</td><td>Rocky Mountain spotted fever (<em>Rickettsia rickettsii</em>), tularemia</td><td>Spring–summer</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>In northern Wisconsin, Minnesota, and Michigan think <em>Ixodes scapularis</em> first. In Missouri and southern Iowa or Illinois, put <em>Amblyomma americanum</em> and ehrlichiosis at the top.</p>
+      </div>
+      
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not send ticks for pathogen testing and do not order broad tick panels because a tick was found. Tick testing does not predict infection and panels drive false positives.</p>
+      </div>
+
+      <h2 class="ct-h2">Lyme disease — most common and most overcalled</h2>
+      <p>Lyme disease from <em>Borrelia burgdorferi</em> (rarely <em>Borrelia mayonii</em> in Minnesota and Wisconsin) is the most common tick-borne infection in the region.</p>
+      <p><span class="ct-term">Erythema migrans</span> is a clinical diagnosis. It appears 3 to 30 days after the bite, expands over days, and is usually warm but not painful. Central clearing is uncommon; many lesions are uniformly erythematous, often in axilla, groin, or popliteal fossa. Fever may be present. In an endemic area, treat erythema migrans without serology — antibodies are absent early and a negative test does not rule it out.</p>
+      <p>Early disseminated disease includes multiple erythema migrans lesions, carditis with fluctuating atrioventricular block, facial nerve palsy and other cranial neuropathies, and lymphocytic meningitis. Late disease is most often large-joint oligoarthritis of the knee.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Erythema migrans in June in Wisconsin is Lyme disease. Do not swab it, do not wait for serology, and do not call it cellulitis or spider bite.</p>
+      </div>
+      <p>Beyond erythema migrans, use two-tier serology: enzyme immunoassay (EIA) then immunoblot if positive. Sensitivity is low early. Immunoglobulin M (IgM) after 30 days is usually false. Do not order blood polymerase chain reaction (PCR) for <em>Borrelia</em>.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 34-year-old woman in Iowa has a 10-cm annular expanding rash 10 days after a tick bite. No fever. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order Lyme EIA and wait for results</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Diagnose erythema migrans clinically and start therapy without serology</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Culture the lesion</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order blood PCR for Borrelia</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Erythema migrans in an endemic area is clinical. Serology is negative early and waiting delays care. Culture is not practical and blood PCR for <em>Borrelia</em> is insensitive.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Anaplasmosis and ehrlichiosis — the fever and cytopenia syndromes</h2>
+      <p>These are the fever-with-labs illnesses. Five to 14 days after the bite: fever, headache, malaise, myalgias. Rash is uncommon in anaplasmosis and variable in ehrlichiosis — absence does not exclude.</p>
+      <p>The clue is the laboratory triad: leukopenia, thrombocytopenia, and elevated transaminases. This pattern in tick season points to <em>Anaplasma phagocytophilum</em> (upper Midwest, <em>Ixodes</em>) or <em>Ehrlichia chaffeensis</em>, <em>E. ewingii</em>, or <em>Ehrlichia muris eauclairensis</em> (more southern <em>Amblyomma</em> or <em>Ixodes</em>). Severe disease includes sepsis-like illness and respiratory failure; delay harms older and immunocompromised patients.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Clues that favor anaplasmosis or ehrlichiosis</caption>
+          <thead>
+            <tr><th>Feature</th><th>Anaplasmosis / ehrlichiosis</th><th>Viral syndrome</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Leukopenia and thrombocytopenia</td><td>Typical</td><td>May occur</td></tr>
+            <tr><td>Transaminases</td><td>Elevated, mild–moderate</td><td>Variable</td></tr>
+            <tr><td>Rash</td><td>Uncommon to variable</td><td>Variable</td></tr>
+            <tr><td>Response to doxycycline</td><td>Defervescence in 24–48 hours</td><td>None</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><span class="ct-term">Polymerase chain reaction (PCR)</span> on whole blood is most sensitive in the first week before antibiotics. Blood smear may show morulae in neutrophils (anaplasmosis) or monocytes (ehrlichiosis) but sensitivity is low. Serology is retrospective — a single acute titre is often negative. Do not wait for serology to treat.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Fever plus leukopenia plus thrombocytopenia in June–September is anaplasmosis or ehrlichiosis until proven otherwise. Send PCR and smear, but start doxycycline now.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The Wisconsin man has fever, leukopenia, thrombocytopenia, and hepatitis 10 days after a tick bite with negative Lyme EIA. Best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat Lyme serology in 2 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Send whole-blood PCR for Anaplasma and Ehrlichia, examine smear for morulae, and start doxycycline</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order spotted fever serology alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start amoxicillin for Lyme</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This fits anaplasmosis. Lyme serology is negative because the illness is not Lyme and it is too early. PCR is sensitive early but treatment should not wait. Doxycycline covers <em>Anaplasma</em>, <em>Ehrlichia</em>, and <em>Borrelia</em>; amoxicillin does not cover <em>Anaplasma</em> or <em>Ehrlichia</em>.</p>
+        </div>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not wait for confirmation to treat suspected anaplasmosis, ehrlichiosis, or spotted fever. If epidemiology and syndrome fit, start doxycycline while tests are pending.</p>
+      </div>
+
+      <h2 class="ct-h2">Babesiosis, spotted fever, and tularemia — less common but high stakes</h2>
+      <p>Babesiosis from <em>Babesia microti</em> in Wisconsin and Minnesota causes fever, hemolytic anemia, thrombocytopenia, and transaminase elevation. Hemolysis with low haptoglobin, high lactate dehydrogenase (LDH), and indirect bilirubinemia distinguishes it. Asplenic and immunocompromised patients can exceed 10% parasitemia. Diagnose by <em>Babesia</em> PCR and thin smear (tetrads). Doxycycline does not treat babesiosis.</p>
+      <p>Rocky Mountain spotted fever from <em>Rickettsia rickettsii</em> presents with fever, headache, myalgias; triad is uncommon early. Rash, when present, is maculopapular to petechial on wrists and ankles. Serology is negative the first week — treat empirically with doxycycline at any age.</p>
+      <p>Tularemia from <em>Francisella tularensis</em> causes ulceroglandular disease — ulcer with tender adenopathy — and the lab must be alerted before culture.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Heartland, Bourbon (Amblyomma, Missouri/Kansas) and Powassan (Ixodes, Great Lakes) viruses cause similar cytopenias without doxycycline response; Powassan transmits within minutes.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Febrile hemolytic anemia after Ixodes exposure, especially without a spleen, is babesiosis until proven otherwise.</p>
+      </div>
+
+      <h2 class="ct-h2">Testing wisely — what helps and what misleads</h2>
+      <ul>
+        <li><strong>Asymptomatic bite or erythema migrans — no serology.</strong> Counsel or treat clinically; early serology misleads.</li>
+        <li><strong>Anaplasmosis, ehrlichiosis, babesiosis — send whole-blood PCR early plus smear for babesia.</strong> Sensitivity falls after antibiotics.</li>
+        <li><strong>Serology is retrospective.</strong> Paired titres 2–4 weeks apart confirm later, not on admission.</li>
+        <li><strong>Avoid broad panels and test of cure.</strong> Panels yield false positives; Lyme antibodies persist for years.</li>
+      </ul>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>PCR tells you what the patient has now; serology tells you what they had weeks ago. For the acutely ill, PCR and smear matter — but a negative result never delays empiric doxycycline when the story fits.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 72-year-old asplenic man in Minnesota has fever, hemoglobin 8.1 g/dL, platelets 68 &times; 10<sup>9</sup>/L, LDH high, haptoglobin undetectable, tick bite 2 weeks ago, Lyme IgG positive. Best test for the acute illness?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat Lyme EIA</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Thin smear and whole-blood PCR for Babesia microti</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Blood PCR for Borrelia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Heterophile antibody</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Hemolysis after Ixodes exposure in an asplenic patient is classic for babesiosis. Lyme IgG reflects past exposure, common in endemic areas. Blood PCR for <em>Borrelia</em> is insensitive.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treatment and prevention</h2>
+      <p><strong>Doxycycline covers what can kill quickly.</strong> Start it when anaplasmosis, ehrlichiosis, or spotted fever is possible.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Guideline-based treatment for adults (non-pregnant)</caption>
+          <thead>
+            <tr><th>Infection</th><th>First-line regimen</th><th>Duration</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Lyme, erythema migrans</td><td>Doxycycline 100 mg orally twice daily</td><td>10 days</td><td>Amoxicillin or cefuroxime in pregnancy</td></tr>
+            <tr><td>Anaplasmosis / ehrlichiosis</td><td>Doxycycline 100 mg orally twice daily</td><td>10 days or 3–5 days after defervescence</td><td>Defervescence in 24–48 h supports diagnosis</td></tr>
+            <tr><td>Babesiosis, mild–moderate</td><td>Atovaquone plus azithromycin</td><td>7–10 days</td><td>Clindamycin plus quinine if severe; check for co-infection</td></tr>
+            <tr><td>Rocky Mountain spotted fever</td><td>Doxycycline 100 mg orally twice daily</td><td>At least 5–7 days and until afebrile 2–3 days</td><td>Do not delay; drug of choice at any age</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Regimens above reflect the 2020 IDSA/American Academy of Neurology/American College of Rheumatology Lyme guideline and national rickettsial and babesiosis guidance. Verify allergies, pregnancy, renal and hepatic function, and pharmacy. <em>Borrelia mayonii</em> is treated as Lyme disease.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not use amoxicillin, cefuroxime, or azithromycin alone when anaplasmosis, ehrlichiosis, or spotted fever is in the differential. Only doxycycline covers them reliably.</p>
+      </div>
+      <p>Prevention: daily tick checks (axilla, groin, scalp), prompt removal with fine-tipped tweezers, shower after exposure, permethrin clothing, and diethyltoluamide (DEET) or picaridin. Save the tick with the date.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Single-dose doxycycline prophylaxis after a bite helps only when all are true: engorged <em>Ixodes scapularis</em> attached at least 36 hours, given within 72 hours, local <em>Borrelia</em> infection rate exceeds 20%, and no contraindication. It does not prevent anaplasmosis, babesiosis, or ehrlichiosis and most bites do not qualify.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A pregnant patient in the first trimester has erythema migrans and penicillin allergy (tolerates cephalosporins). Best therapy?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Doxycycline</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Cefuroxime (or amoxicillin after allergy clarification), avoiding doxycycline in pregnancy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Observation</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Doxycycline is avoided in pregnancy. Amoxicillin and cefuroxime are effective for erythema migrans. Azithromycin is less effective and observation delays care. Clarify the allergy and confirm with obstetrics and pharmacy.</p>
+        </div>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Counsel every patient with a tick exposure on what to watch for in the next 30 days and when to return — the bite is the exposure, not the diagnosis.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li><em>Ixodes scapularis</em> (Lyme, anaplasmosis, babesiosis), <em>Amblyomma americanum</em> (ehrlichiosis, emerging viruses), and <em>Dermacentor variabilis</em> (spotted fever) define Midwest risk — geography and season narrow the list.</li>
+        <li>Erythema migrans is clinical in an endemic area — treat without serology.</li>
+        <li>Fever with leukopenia, thrombocytopenia, and hepatitis in tick season is anaplasmosis or ehrlichiosis until proven otherwise — send PCR but start doxycycline now.</li>
+        <li>Febrile hemolytic anemia after Ixodes exposure, especially without a spleen, is babesiosis — order smear and <em>Babesia</em> PCR; doxycycline alone fails.</li>
+        <li>Do not test ticks, do not order broad panels, and do not let negative acute serology delay therapy when the syndrome fits.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Lantos PM, et al. Clinical Practice Guidelines by the Infectious Diseases Society of America (IDSA), American Academy of Neurology (AAN), and American College of Rheumatology (ACR): 2020 Guidelines for the Prevention, Diagnosis, and Treatment of Lyme Disease. <em>Clin Infect Dis</em>. 2021;72(1):e1-e48.</li>
+          <li>Biggs HM, et al. Diagnosis and Management of Tickborne Rickettsial Diseases: Rocky Mountain Spotted Fever and Other Spotted Fever Group Rickettsioses, Ehrlichioses, and Anaplasmosis. <em>MMWR Recomm Rep</em>. 2016;65(2):1-44.</li>
+          <li>Krause PJ, et al. Babesiosis Diagnosis and Management and Centers for Disease Control and Prevention (CDC) Babesiosis Guidance. 2023-2024.</li>
+          <li>Centers for Disease Control and Prevention (CDC). Tickborne Diseases of the United States: A Reference Manual for Health Care Providers. 6th ed. 2024.</li>
+          <li>Pritt BS, et al. Identification of a Novel Pathogenic Borrelia Species Causing Lyme Borreliosis. <em>Lancet Infect Dis</em>. 2016;16(5):556-564; and Emergence of <em>Ehrlichia muris eauclairensis</em> in the Upper Midwest.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Tick ID of the Midwest</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

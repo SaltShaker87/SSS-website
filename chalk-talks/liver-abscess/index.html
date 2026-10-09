@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liver abscess — IDSA Chalk Talk</title>
+<meta name="description" content="Sorting pyogenic from amebic liver abscess — diagnosis, drainage and empiric therapy for the ward.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Liver abscess — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Hepatobiliary infection</p>
+        <h1 class="ct-h1">Liver abscess</h1>
+        <p class="ct-subtitle">From fever without a source to source control — sorting pyogenic from amebic disease</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man with type 2 diabetes mellitus presents with 10 days of fever and dull right upper quadrant pain. Temperature is 39.1°C, heart rate 108 beats per minute, liver edge is tender 3 cm below the costal margin. White blood cell count is 18,200 per mm<sup>3</sup>, alkaline phosphatase is twice normal, bilirubin is normal. The team debates which antibiotics to start and whether he needs a drain tonight.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish pyogenic, amebic and other cystic liver lesions on clinical and imaging grounds.</li>
+          <li>Choose an initial diagnostic workup that secures microbiology before antibiotics when possible.</li>
+          <li>Select empiric therapy and decide when percutaneous drainage is indicated versus when medical therapy alone suffices.</li>
+          <li>Identify patients who need colon evaluation and screening for metastatic complications after <span class="ct-term">pyogenic liver abscess</span>.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">What this lesion is — and what it is not</h2>
+      <p>A liver abscess is a pus-filled cavity inside the hepatic parenchyma — not an infected simple cyst and not hepatitis. Most ward cases in the United States are <span class="ct-term">pyogenic liver abscess</span>, meaning bacterial. In returning travellers and recent immigrants, <span class="ct-term">amebic liver abscess</span> due to <em>Entamoeba histolytica</em> is the key mimic. Hydatid cysts, necrotic metastases and simple biliary cysts can look similar on one cut but need different treatment.</p>
+      <p>Pyogenic lesions are often solitary with biliary or hematogenous seeding and often multiple with portal pyemia such as diverticulitis. Amebic abscesses are classically solitary in the right lobe near the dome, without a thick wall or biliary dilation. Hydatid cysts may show daughter cysts or calcification. Diagnose abscess from a compatible syndrome plus imaging showing a fluid collection with wall enhancement and debris, plus microbiologic or serologic support — not from fever alone.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Fever plus right upper quadrant (RUQ) tenderness plus leukocytosis is common but not specific. Confirm a liver abscess with imaging before committing to drainage — a necrotic tumour and a hydatid cyst both get worse if you drain them like a pyogenic abscess.</p>
+      </div>
+
+      <h2 class="ct-h2">How infection reaches the liver</h2>
+      <p>The liver has dual blood supply, so several routes lead in. The route predicts the organism and the workup you still owe.</p>
+      <ul>
+        <li><strong>Biliary</strong> — most common identified pathway. Stones, strictures, malignant obstruction or prior endoscopic retrograde cholangiopancreatography (ERCP) seed the biliary tree. Lesions are often solitary and polymicrobial.</li>
+        <li><strong>Portal venous seeding</strong> — bowel inflammation drains to the portal vein. Diverticulitis, appendicitis or inflammatory bowel disease can shower the liver. The classic pathogen here is the <em>Streptococcus anginosus</em> group (formerly <em>Streptococcus milleri</em>) plus <em>Escherichia coli</em> and anaerobes — find it and look to the colon.</li>
+        <li><strong>Arterial bacteremia</strong> — endocarditis or other bacteremias seed via the hepatic artery.</li>
+        <li><strong>Direct extension or trauma</strong> — uncommon today.</li>
+        <li><strong>Cryptogenic</strong> — in one-third to one-half no source is found initially, which is why colon evaluation later matters.</li>
+      </ul>
+      <p>Diabetes mellitus, older age, biliary malignancy, prior biliary instrumentation and immunocompromise increase risk. Hypervirulent <em>Klebsiella pneumoniae</em> — first seen in Taiwan and now global — can cause monomicrobial abscess in otherwise healthy diabetic hosts and metastasise widely.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Hypervirulent <em>Klebsiella pneumoniae</em> liver abscess was first recognised in Taiwan and is now reported globally. It can metastasise to eye (endophthalmitis), brain and lung even after fever improves. Any patient with <em>Klebsiella</em> bacteremia and a liver lesion deserves an urgent dilated eye exam and neurologic assessment.</p>
+      </div>
+
+      <h2 class="ct-h2">Who gets which pathogen</h2>
+      <p>The likely organism guides empiric therapy and which follow-up studies matter.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Usual organisms by syndrome — use your local antibiogram to refine empiric choices</caption>
+          <thead>
+            <tr><th>Syndrome or risk factor</th><th>Usual pathogens</th><th>Clues that point this way</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Biliary source</td><td><em>E. coli</em>, <em>Klebsiella</em> spp., <em>Enterobacter</em> spp., <em>Enterococcus</em> spp., anaerobes (<em>Bacteroides</em>)</td><td>Choledocholithiasis, prior ERCP, cholangitis, cholecystitis pattern</td></tr>
+            <tr><td>Portal pyemia (bowel source)</td><td><em>Streptococcus anginosus</em> group, <em>E. coli</em>, anaerobes, <em>Fusobacterium</em></td><td>Diverticulitis, appendicitis, colorectal neoplasm</td></tr>
+            <tr><td>Bacteremic seeding / cryptogenic, especially diabetes</td><td><em>K. pneumoniae</em> (including hypervirulent), <em>Staphylococcus aureus</em> if endovascular source</td><td>Monobacteremia with <em>Klebsiella</em>, metastatic eye or central nervous system lesions</td></tr>
+            <tr><td>Amebic</td><td><em>Entamoeba histolytica</em></td><td>Travel to or residence in endemic area, subacute course, single right-lobe lesion, positive serology, no leukocytosis in pus</td></tr>
+            <tr><td>Polymicrobial (often large or ruptured)</td><td>Mixed enteric flora</td><td>Biliary-enteric fistula, prior drainage, communication with gut</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Fungi are uncommon in immunocompetent hosts; consider them only with prolonged broad-spectrum antibiotics, neutropenia or hepatosplenic candidiasis on recovery.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If blood cultures grow <em>Streptococcus anginosus</em> group, think portal source and arrange colon evaluation. If they grow <em>K. pneumoniae</em> from a liver abscess, think hypervirulent strain and look for distant seeding — especially eye and brain.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 68-year-old diabetic man has a 6 cm solitary right-lobe abscess. Blood cultures grow <em>Klebsiella pneumoniae</em>. He says his vision is blurry in one eye. What is the most urgent next action?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat abdominal computed tomography (CT) in one week to reassess size</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Urgent ophthalmology exam for endophthalmitis and assessment for other metastatic foci</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add antifungal therapy empirically</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Schedule outpatient colonoscopy in 6 months</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Hypervirulent <em>K. pneumoniae</em> can seed the eye, meninges and lung. Blurry vision in this context is endophthalmitis until proven otherwise and needs same-day dilated exam. Repeat imaging is not urgent compared with preventing irreversible vision loss. Antifungals are not indicated for monomicrobial <em>Klebsiella</em> disease.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">How it presents and how to work it up</h2>
+      <p>Most patients do not announce the diagnosis. Typical features are fever (more than 80% of pyogenic cases), right upper quadrant (RUQ) pain or pleuritic chest pain, tender hepatomegaly and malaise over days to weeks. Amebic disease is often more subacute. Jaundice is uncommon without biliary obstruction. Labs often show leukocytosis, raised alkaline phosphatase and C-reactive protein, mild transaminase elevation and hypoalbuminemia. Blood cultures are positive in about half of pyogenic cases — draw them before antibiotics when the patient is stable enough to do so without delay.</p>
+      <ul>
+        <li><strong>Ultrasound (US)</strong> — accessible, no radiation, but operator dependent and poor for dome lesions.</li>
+        <li><strong>Contrast-enhanced computed tomography (CT)</strong> — most common confirmatory study. Abscess appears as low-attenuation lesion with rim enhancement and surrounding edema. CT also shows biliary dilation, portal vein thrombosis or a bowel source.</li>
+        <li><strong>Magnetic resonance imaging (MRI)</strong> — useful when contrast is limited or to distinguish abscess from tumour or hydatid cyst.</li>
+      </ul>
+      <p>After imaging, secure microbiology. Send two sets of blood cultures before antibiotics when feasible, then arrange image-guided aspiration for Gram stain and culture when drainage is planned. Pus cultures are more often positive than blood cultures. Send <em>Entamoeba</em> serology when travel risk exists; stool microscopy is insensitive for liver disease. Amebic pus is classically “anchovy paste” — necrotic debris — and bacterial cultures are negative.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not delay blood cultures to wait for imaging, and do not start antibiotics long before you can obtain cultures if the patient is not in septic shock. If the patient is hypotensive or has signs of sepsis, give empiric therapy promptly and obtain cultures at the same time as resuscitation — do not postpone antibiotics for an aspiration that will happen hours later.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 55-year-old woman has a 4 cm liver lesion on CT with rim enhancement. She spent 6 months in Bangladesh last year and now has fever and RUQ pain for 2 weeks. Stool ova and parasite exam is negative. Which test most helps distinguish amebic from pyogenic abscess?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat stool microscopy for ova and parasites</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">White blood cell count in aspirated pus</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Serum <em>Entamoeba histolytica</em> serology plus bacterial cultures of blood and, if drained, pus</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Hepatitis C antibody</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Stool studies are negative in most amebic liver abscesses because intestinal infection may have cleared. Serology is positive in most acute amebic abscesses in non-endemic residents, and bacterial cultures are usually positive in pyogenic disease. The aspirate appearance alone is not reliable enough to decide.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Bedside management: antibiotics and drainage</h2>
+      <p>Treat pyogenic abscess like any deep abscess — antibiotics alone rarely suffice. Early interventional radiology input prevents days of poor source control.</p>
+      <h3 class="ct-h3">Empiric antibiotics</h3>
+      <p>Start therapy after cultures and tailor on results. Cover enteric gram-negative rods, streptococci and anaerobes per your hospital antibiogram. For community-onset, non-severely ill patients, guidelines often use a third-generation cephalosporin (for example ceftriaxone) plus metronidazole, or piperacillin-tazobactam when broader coverage or nosocomial risk exists. For severe sepsis, known extended-spectrum beta-lactamase (ESBL) colonisation or recent broad-spectrum antibiotics, broaden per local guidance with infectious diseases input.</p>
+      <p>Narrow quickly once susceptibilities return. Duration follows adequacy of drainage — in drained abscess, 4 to 6 weeks total is common (often 2 to 3 weeks intravenous then oral step-down when improving). Undrained cases need longer, individualised courses.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Large, multiloculated or multiple abscesses and persistent bacteremia predict slower resolution; follow clinical response and inflammatory markers rather than a calendar alone.</p>
+      </div>
+      <h3 class="ct-h3">When and how to drain</h3>
+      <ul>
+        <li><strong>Most pyogenic abscesses larger than 3 to 5 cm</strong> benefit from percutaneous catheter drainage plus antibiotics, rather than antibiotics alone. Smaller lesions (for example less than 3 cm) sometimes resolve with antibiotics and needle aspiration, but close observation and repeat imaging are essential.</li>
+        <li><strong>Percutaneous drainage</strong> under US or computed tomography (CT) guidance is first-line for accessible lesions. Needle aspiration alone fails more often for larger cavities.</li>
+        <li><strong>Surgical drainage</strong> is reserved for rupture with peritonitis, concomitant surgical pathology requiring operation, or percutaneous failure with multiloculated or difficult anatomy.</li>
+        <li><strong>Do not delay drainage</strong> for sterilisation — once empiric antibiotics are started and cultures obtained, timely drainage shortens fever duration and bacteremia.</li>
+      </ul>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Antibiotics without drainage for a 5 cm pyogenic abscess is like treating an undrained empyema — you will be treating for weeks with poor penetration. Get source control early and culture the pus.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Draining an amebic or hydatid lesion as if it were pyogenic causes harm. If epidemiologic risk, serology or imaging suggests amebic disease, treat medically first and involve infectious diseases before placing a drain. For suspected hydatid disease, do not aspirate without expert input — spillage can cause anaphylaxis and dissemination.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 70-year-old woman has a 6 cm pyogenic liver abscess with fever and leukocytosis. Blood cultures were obtained and empiric ceftriaxone plus metronidazole started. The lesion is accessible anteriorly. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue antibiotics alone and repeat CT in 2 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Refer for percutaneous catheter drainage and send aspirate for Gram stain and culture</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin empirically for all patients</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Urgent surgical resection of the involved lobe</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Abscesses larger than 3 to 5 cm, especially with systemic signs, need drainage plus antibiotics. Percutaneous catheter drainage is first-line. Routine vancomycin is not required without methicillin-resistant <em>Staphylococcus aureus</em> risk, and surgery is not first-line for unruptured accessible lesions.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Amebic liver abscess — the one you treat differently</h2>
+      <p><em>Entamoeba histolytica</em> cysts are ingested from contaminated food or water, excyst in the gut and travel via the portal vein to the liver. Weeks to months after exposure, the patient develops fever, right upper quadrant (RUQ) pain and tender hepatomegaly, often without jaundice. Imaging shows a solitary subcapsular right-lobe cavity without a thick rim. Bacterial cultures are negative.</p>
+      <p>Treatment is medical: a nitroimidazole such as metronidazole or tinidazole for 7 to 10 days, followed by a luminal agent (paromomycin, diloxanide or iodoquinol per availability) to clear intestinal carriage — even if stool studies are negative. Response is typically seen within 72 hours. Drainage is reserved for imminent rupture, left-lobe lesions threatening the pericardium, secondary bacterial infection or diagnostic uncertainty.</p>
+      <p>Serology can stay positive for years and does not mark cure. Recurrence suggests inadequate luminal therapy or re-exposure, and patients need counselling on sanitation and safe water and food for future travel.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When an abscess looks amebic, do not drain first and ask questions later. Treat with metronidazole, confirm with serology and add a luminal agent afterward — you will save the patient a procedure and a prolonged course of broad-spectrum antibiotics.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old recent immigrant from India has a solitary 7 cm right-lobe liver lesion, fever for 12 days, and negative blood cultures. <em>Entamoeba histolytica</em> serology is strongly positive. He is hemodynamically stable. What is the most appropriate initial management?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Immediate percutaneous drain plus piperacillin-tazobactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Metronidazole followed by a luminal agent, with close monitoring and no routine drainage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Albendazole alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Observation without antimicrobials</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Uncomplicated amebic liver abscess responds to nitroimidazole therapy alone; routine drainage does not improve outcomes and adds risk. Albendazole treats hydatid disease, not ameba. A luminal agent after metronidazole is needed to eliminate intestinal cysts.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Follow-up, complications and when to worry</h2>
+      <p>After antibiotics and drainage, patients often remain febrile for several days — persistence of fever alone does not mean failure if the patient is otherwise improving. Repeat imaging is usually not needed before 1 to 2 weeks unless there is clinical deterioration, and residual cavities can persist for weeks on computed tomography (CT) after clinical cure. Base re-imaging and drain removal on the clinical course and output, not on complete radiographic resolution.</p>
+      <p>Watch for rupture with peritonitis or pleural effusion, portal or hepatic vein thrombophlebitis, persistent bacteremia and metastatic seeding in <em>K. pneumoniae</em> disease. New eye pain, change in vision, headache or focal deficits in <em>Klebsiella</em> bacteremia needs emergent evaluation. For cryptogenic and especially <em>Streptococcus anginosus</em> group abscesses, arrange colon evaluation after recovery — colorectal neoplasia and diverticular disease are overrepresented, and colonoscopy is increasingly recommended once acute illness settles.</p>
+      <p>Before discharge set a clear plan: oral step-down agent, intended total duration and stopping criteria, drain care, and timing of imaging and clinic follow-up. Confirm cultures have been reviewed and therapy narrowed.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Schedule the colonoscopy after a cryptogenic pyogenic liver abscess — particularly with <em>Streptococcus anginosus</em> group or polymicrobial enteric flora. Finding the colonic lesion prevents the next abscess.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Confirm the diagnosis with imaging and do not equate every cystic lesion with pyogenic abscess — hydatid and necrotic tumour need different handling.</li>
+        <li>Secure blood cultures before antibiotics when stable, then pursue percutaneous aspiration for culture. Add <em>Entamoeba</em> serology for epidemiologic risk and avoid relying on stool studies.</li>
+        <li>Cover enteric gram-negatives, streptococci and anaerobes empirically (for example ceftriaxone plus metronidazole or piperacillin-tazobactam per severity and local resistance), then narrow on results. Total courses are typically 4 to 6 weeks with adequate drainage, individualized to response.</li>
+        <li>Drain most pyogenic abscesses larger than 3 to 5 cm percutaneously; smaller lesions may be managed with aspiration plus antibiotics under close observation. Treat amebic abscess medically with metronidazole followed by a luminal agent — drainage is the exception, not the rule.</li>
+        <li>Watch for metastatic <em>Klebsiella</em> complications (eye, brain and lung) and arrange urgent evaluation for visual or neurologic symptoms. After cryptogenic abscess, especially with <em>Streptococcus anginosus</em> group, plan outpatient colonoscopy once recovered.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Lovell DH, et al. Management of pyogenic liver abscess. <em>Clin Infect Dis</em>. Review of diagnosis, microbiology and therapy including biliary and portal sources and role of drainage.</li>
+          <li>Sharma MP, Ahuja V. Amebic liver abscess. <em>Clin Infect Dis</em>. Clinical features, serologic diagnosis and nitroimidazole plus luminal therapy; indications for selective drainage.</li>
+          <li>Siu LK, et al. Klebsiella pneumoniae liver abscess: a new invasive syndrome. <em>Lancet Infect Dis</em>. Hypervirulent <em>Klebsiella</em>, diabetes association and metastatic complications including endophthalmitis.</li>
+          <li>Centers for Disease Control and Prevention. Parasites — Amebiasis: diagnosis and treatment guidance for <em>Entamoeba histolytica</em> infection and indications for serology.</li>
+          <li>Local hospital antibiogram and hepatobiliary/interventional radiology pathways — consult for empiric choices and drainage criteria as they vary by site and resistance patterns.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Liver abscess</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnosis and Differential of Native Septic Joint Arthritis — IDSA Chalk Talk</title>
+<meta name="description" content="How to recognise a native joint infection, interpret synovial fluid, and sort it from gout, pseudogout and other mimics.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Diagnosis and Differential of Native Septic Joint Arthritis — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+<header class="ct-hero">
+        <p class="ct-eyebrow">Bone and joint infection</p>
+        <h1 class="ct-h1">Diagnosis and Differential of Native Septic Joint Arthritis</h1>
+        <p class="ct-subtitle">How to recognise a joint emergency, interpret synovial fluid, and sort it from gout, pseudogout and other mimics</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 58-year-old man with type 2 diabetes mellitus and known gout presents to the emergency department (ED) with one day of severe left knee pain and swelling. He reports no trauma, no fever at home, and a similar episode last year labelled gout and treated with prednisone. On examination his knee is warm, erythematous, markedly swollen with a large effusion, and he refuses to bear weight. Temperature is 37.6°C, heart rate 98 beats per minute, white blood cell (WBC) count 11,200 per microlitre. Radiography shows osteoarthritis with an effusion and no fracture. The junior resident says, “It is probably just gout again.”</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why acute monoarthritis is a joint emergency and list the risk factors for <span class="ct-term">native septic arthritis</span>.</li>
+          <li>Generate a focused differential for a hot, swollen native joint, including nongonococcal septic arthritis, gonococcal disease, and crystalline arthritis.</li>
+          <li>Interpret synovial fluid — white blood cell count, polymorphonuclear (PMN) percentage, Gram stain, culture, and crystals — without being fooled by overlap.</li>
+          <li>Outline a bedside workup that does not delay arthrocentesis (joint aspiration) and when to involve orthopaedics and radiology.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why a hot joint is an emergency</h2>
+      <p><span class="ct-term">Native septic arthritis</span> — infection of a native joint — destroys cartilage within days and is often bacteraemic. Mortality in contemporary series is 7 to 15 percent for nongonococcal disease, and permanent loss of function is common when drainage is delayed. This talk covers native joints only; prosthetic infection has a different workup.</p>
+      <p>Most cases are a single hot joint. The knee accounts for about half, followed by hip, shoulder, wrist, elbow and ankle. Small joints of the hands, sternoclavicular and sacroiliac joints occur with intravenous drug use and are easy to miss. Polyarticular disease in 10 to 20 percent should prompt consideration of bacteraemia, endocarditis, disseminated gonococcal infection, or rheumatoid arthritis (RA).</p>
+      <p>Seeding is usually haematogenous during transient bacteraemia from skin, urinary tract or lung, or by contiguous spread from osteomyelitis or cellulitis, or by direct inoculation after puncture or injection. Knowing the route helps you find the source after you tap.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Treat every acute monoarthritis as septic until proven otherwise. A normal temperature or peripheral white blood cell count never rules out infection.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Up to half of patients are afebrile on presentation, especially older adults, those with RA, on glucocorticoids, or with chronic kidney disease, and the peripheral white blood cell count may be normal.</p>
+      </div>
+
+      <h2 class="ct-h2">Who is at risk and which organisms to expect</h2>
+      <p>Risk is highest with advancing age, pre-existing joint disease (RA, osteoarthritis, crystal arthritis), diabetes mellitus, chronic kidney or liver disease, human immunodeficiency virus (HIV) infection, immunosuppression including tumour necrosis factor (TNF) inhibitors and glucocorticoids, intravenous drug use, skin ulcer or wound, and recent bacteraemia or joint injection. RA raises risk four- to ten-fold and may blunt the presentation.</p>
+      <p><em>Staphylococcus aureus</em> causes 30 to 50 percent of nongonococcal cases, with methicillin-resistant <em>S. aureus</em> (MRSA) increasing. Next are streptococci — group A <em>Streptococcus pyogenes</em>, group B <em>Streptococcus agalactiae</em>, and <em>Streptococcus pneumoniae</em>. Gram-negative rods such as <em>Escherichia coli</em> and <em>Pseudomonas aeruginosa</em> occur in older adults, people who inject drugs, and immunocompromised hosts. <em>Neisseria gonorrhoeae</em> is a distinct syndrome in young sexually active adults. <em>Kingella kingae</em> matters in children.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common pathogens and the clue that should make you think of them</caption>
+          <thead>
+            <tr><th>Organism</th><th>Typical host or setting</th><th>Bedside clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Staphylococcus aureus</em> (including MRSA)</td><td>Any adult, RA, diabetes mellitus, skin infection</td><td>Acute monoarthritis, often bacteraemic</td></tr>
+            <tr><td><em>Streptococcus pyogenes</em>, <em>S. agalactiae</em>, <em>S. pneumoniae</em></td><td>Skin or pharyngeal source, asplenia</td><td>Rapid onset with prominent erythema</td></tr>
+            <tr><td>Gram-negative rods (<em>E. coli</em>, <em>Pseudomonas</em> spp.)</td><td>Older adult, urinary source, intravenous drug use</td><td>Recent urinary tract infection or injection use</td></tr>
+            <tr><td><em>Neisseria gonorrhoeae</em></td><td>Young sexually active adult</td><td>Migratory polyarthralgias, tenosynovitis, pustular lesions</td></tr>
+            <tr><td>Polymicrobial</td><td>Direct inoculation, bite, contiguous infection</td><td>Puncture, surgery, or adjacent wound</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Draw two sets of blood cultures before antibiotics. They are positive in up to one third of nongonococcal septic arthritis and may be the only positive when synovial cultures are negative.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Finding crystals does not end the workup. Crystal disease and infection coexist in several percent of cases — you still need Gram stain and culture.</p>
+      </div>
+
+      <h2 class="ct-h2">What septic arthritis looks like and what it does not</h2>
+      <p>The typical picture is an acutely painful, swollen joint with effusion, warmth, erythema, and severe restriction of both active and passive range of motion. Patients splint the joint and refuse movement. Fever, tachycardia, and elevated C-reactive protein (CRP) and erythrocyte sedimentation rate (ESR) are often present, but absence does not exclude infection. A chronic, painless, slowly swollen joint without warmth points elsewhere.</p>
+      <p>Red flags include new effusion with inability to bear weight, severe pain on passive movement, overlying wound or cellulitis, and any hot joint in a high-risk host. Hip, sacroiliac and shoulder infections may hide: hip pain referred to groin or anterior thigh, pain on log-roll, or isolated loss of rotation in an older febrile adult. Shoulder or hip infection can look normal on inspection.</p>
+      <p>Peripheral markers add little. CRP and ESR reflect inflammation but do not distinguish septic from crystalline or rheumatoid disease. Procalcitonin is not reliable for joint-level diagnosis. Imaging — plain radiography, ultrasound, computed tomography (CT), or magnetic resonance imaging (MRI) — shows effusion or adjacent osteomyelitis but never replaces aspiration. A normal radiograph early is expected. Ultrasound confirms effusion and guides tap.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Hip or shoulder pain with fever and severely limited passive range of motion is a deep joint infection until proven otherwise. Arrange guided tap rather than serial radiographs.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 74-year-old woman with rheumatoid arthritis on methotrexate has two days of right wrist swelling, warmth and pain. She is afebrile with a normal peripheral white blood cell count. Which statement is most accurate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Fever is required for septic arthritis, so this is likely a rheumatoid flare</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Native septic arthritis can be afebrile with a normal white blood cell count, especially in rheumatoid arthritis — urgent arthrocentesis is needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A normal plain radiograph excludes septic arthritis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start oral prednisone for presumed flare and reassess in one week</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Up to half of adults with septic arthritis are afebrile, and RA strongly raises risk. A normal radiograph early does not exclude infection, and glucocorticoids without a tap can worsen undrained infection.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The differential you cannot skip</h2>
+      <p>Not every hot joint is infected. A short, structured differential prevents missed infection and unnecessary procedures.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Differential of acute monoarthritis or oligoarthritis in a native joint</caption>
+          <thead>
+            <tr><th>Entity</th><th>Classic picture</th><th>Key distinguishing point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nongonococcal septic arthritis</td><td>Acute monoarthritis with effusion, severe pain on passive movement</td><td>Positive Gram stain or culture, markedly high synovial PMN percentage; bacteraemic source often found</td></tr>
+            <tr><td>Gonococcal arthritis</td><td>Migratory polyarthralgias then purulent monoarthritis, tenosynovitis, pustular lesions</td><td>Young sexually active patient; nucleic acid amplification test (NAAT) at genital, rectal or pharyngeal site positive; synovial culture often negative</td></tr>
+            <tr><td>Gout and calcium pyrophosphate (CPP) disease</td><td>Acute monoarthritis, often first metatarsophalangeal (gout) or knee or wrist (CPP), prior attacks</td><td>Crystals present but infection can coexist — do not stop at crystals</td></tr>
+            <tr><td>Reactive arthritis</td><td>Sterile oligoarthritis days to weeks after diarrhoea or urethritis</td><td>Antecedent enteric or genitourinary infection, no organisms on culture</td></tr>
+            <tr><td>Rheumatoid flare or other inflammatory arthritis</td><td>Symmetrical small-joint polyarthritis, morning stiffness</td><td>Chronic pattern; still tap any single disproportionately hot joint</td></tr>
+            <tr><td>Viral, Lyme, haemarthrosis, adjacent osteomyelitis</td><td>Bilateral arthralgias, tick exposure, trauma or anticoagulation</td><td>Systemic or exposure clues, bloody aspirate with trauma, tenderness away from joint line</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Gout is the most convincing mimic. It can produce an effusion well above 50,000 WBC per microlitre, fever, and inability to bear weight — identical to infection. A prior “gout” label without prior crystal proof invites anchoring bias; tap the current episode if doubt exists. Gonococcal disease has two phases: an early bacteraemic phase with fever, migratory arthralgias, tenosynovitis and painless pustules, then a purulent monoarthritis. The triad is often incomplete. Always take a sexual history and test exposed sites; synovial culture is positive in less than half.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When a “known gout” joint looks worse than ever — new fever, marked erythema, or inability to tolerate passive motion — that is not typical gout. Tap it.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Chondrocalcinosis on radiography supports CPP disease but is neither sensitive nor specific. Its absence does not exclude pseudogout.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 24-year-old man has three days of migratory wrist and ankle pain, now a hot right knee with effusion, tender finger flexor tenosynovitis and two painless pustules on the leg. Temperature 38.1°C. Which is the most appropriate next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Label as gout and start anti-inflammatory drugs</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Consider disseminated gonococcal infection — arthrocentesis plus NAAT at genital, pharyngeal and rectal sites and blood cultures</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer arthrocentesis because synovial culture is usually diagnostic</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Obtain MRI and decide on imaging alone</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Migratory arthralgias, tenosynovitis and pustules progressing to monoarthritis is classic for disseminated gonococcal infection. Synovial cultures are insensitive, so testing must include NAAT at mucosal sites. Arthrocentesis remains essential and imaging cannot replace it.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The tap is the test</h2>
+      <p>Arthrocentesis before antibiotics — when it does not delay sepsis care — is the definitive step. For an accessible joint with effusion, aspirate with aseptic technique and send total white blood cell count with differential, Gram stain, bacterial culture, and crystal examination by polarised microscopy. Also draw blood cultures first.</p>
+      <p>Avoid aspirating through infected or ulcerated skin; choose another approach or involve radiology. Use ultrasound guidance for small or deep joints and for hip and shoulder — call for guided aspiration early rather than after failed blind attempts. Avoid injecting anaesthetic into the joint before sampling; use a skin wheal. Inoculating synovial fluid into blood culture bottles at the bedside may increase yield. For suspected gonococcal disease add genital, rectal and pharyngeal NAAT; for suspected Lyme disease add serology and consider synovial polymerase chain reaction (PCR).</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Delaying arthrocentesis to get MRI, wait for a consultant, or see if antibiotics help. Cartilage damage does not wait. If you can safely tap the joint, tap it now and involve orthopaedics in parallel.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Synovial lactate, lactate dehydrogenase (LDH) and glucose are adjuncts only. Low glucose or high lactate favours infection but overlaps with inflammatory disease and is less reliable than cell count and Gram stain.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient with suspected right hip septic arthritis has severe groin pain and cannot tolerate hip motion. Radiography is normal without overlying cellulitis. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat with oral antibiotics and reassess in 48 hours without aspiration</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Attempt blind aspiration through erythematous skin</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Urgent ultrasound- or fluoroscopy-guided arthrocentesis of the hip, with blood cultures drawn first if not yet done</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order MRI alone and decide based on fluid seen on imaging</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>The hip is deep — blind tap is unreliable and risks injury. Guided aspiration is the standard, a normal radiograph does not exclude infection, and imaging alone cannot make the diagnosis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Reading the synovial fluid without getting fooled</h2>
+      <p>No single threshold proves or excludes infection. Use cell count, differential, Gram stain, culture and crystals together with the clinical picture.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Synovial fluid patterns in a native joint — interpret in context</caption>
+          <thead>
+            <tr><th>Category</th><th>WBC per microlitre (approx.)</th><th>PMN percentage</th><th>Gram stain and culture</th><th>Crystals</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Non-inflammatory (osteoarthritis, trauma)</td><td>Less than 2,000</td><td>Less than 25</td><td>Negative</td><td>Absent</td></tr>
+            <tr><td>Inflammatory (gout, CPP disease, RA, reactive)</td><td>2,000 to 50,000</td><td>Often 50 to 75</td><td>Negative unless co-infection</td><td>May be present</td></tr>
+            <tr><td>Septic, typical nongonococcal (many exceed 50,000 but lower occurs)</td><td>Greater than 20,000 to well above 50,000</td><td>Often greater than 85 to 90</td><td>Gram stain positive 30 to 50 percent; culture usually positive</td><td>Absent or rarely coexistent</td></tr>
+            <tr><td>Gonococcal</td><td>Often 10,000 to 50,000</td><td>Often greater than 75</td><td>Gram stain minority positive; NAAT at mucosal sites key</td><td>Absent</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Teaching often cites greater than 50,000 WBC per microlitre with greater than 85 to 90 percent PMN as typical for infection. That pattern is specific enough to raise strong concern, but not sensitive: early infection, prior antibiotics, gonococcal disease and immunocompromise can present between 10,000 and 50,000, while gout can exceed 50,000. A low count reduces probability but does not rule out septic arthritis.</p>
+      <p>Gram stain is highly specific when positive but only 30 to 50 percent sensitive, so a negative stain never excludes infection. Culture yield falls after antibiotics. The most common error is closing the case when crystals are seen — assume a crystal-positive effusion is infected until cultures return if fever, high PMN percentage, risk factors, or a first attack without prior crystal proof are present. Document dual pathology when both exist and ensure drainage.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Use synovial white blood cell count and PMN percentage as probability, not a rule-out. Well above 50,000 with more than 90 percent PMN is very likely infection; below 20,000 with fewer than 50 percent PMN is less likely — but neither alone is definitive.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A negative Gram stain never rules out septic arthritis. If suspicion is high, call orthopaedics, start empiric therapy after cultures, and arrange drainage while cultures incubate.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Arthrocentesis of the vignette knee returns 68,000 WBC per microlitre with 92 percent PMN. Gram stain shows gram-positive cocci in clusters. Polarised microscopy shows a few needle-shaped, negatively birefringent crystals. Correct interpretation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Crystals prove gout, so antibiotics are not needed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Treat as septic arthritis with likely <em>Staphylococcus aureus</em> — crystals do not exclude coexistent infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Gram stain must be contamination because count is too high for infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">68,000 WBC is non-inflammatory, so gout is excluded</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Markedly elevated counts with high PMN plus gram-positive cocci in clusters favours <em>S. aureus</em> septic arthritis. Monosodium urate crystals confirm gout biochemically but can coexist with infection; anchoring on gout would delay drainage and antibiotics.</p>
+        </div>
+      </div>
+
+      <p>On call, run a short checklist: examine for effusion, pain on passive movement and extra-articular clues; decide if tap is indicated — it is for almost every new acute monoarthritis with effusion; tap before antibiotics when possible and send blood cultures; interpret the tap in context and involve orthopaedics and infectious diseases in parallel for drainage and empiric therapy guided by the local antibiogram. After the tap, document indication, fluid appearance, exactly what was sent, and who was called.</p>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Native septic arthritis destroys cartilage quickly. Treat any new hot, swollen joint with effusion and severe pain on passive movement as infected until proven otherwise — fever and leukocytosis are absent in up to half.</li>
+        <li>High-risk hosts include older age, RA, diabetes mellitus, immunosuppression, liver or kidney disease, intravenous drug use, and recent bacteraemia. <em>S. aureus</em> dominates; think gonococcal disease with migratory arthralgias, tenosynovitis and pustules in young sexually active patients.</li>
+        <li>Arthrocentesis before antibiotics is the test when safe. Send synovial white blood cell count with differential, Gram stain, culture (consider blood culture bottles), and crystals; always draw blood cultures. Use guided aspiration for deep joints.</li>
+        <li>No single synovial threshold rules infection in or out. Well above 50,000 WBC with more than 85 to 90 percent PMN is highly suggestive, but infection occurs lower and crystal disease can exceed it. A negative Gram stain never excludes infection.</li>
+        <li>Crystals do not exclude coexistent infection. If fever, high PMN, risk factors, or a first attack without prior crystal proof are present, treat as potentially septic while awaiting cultures.</li>
+        <li>Manage in parallel: urgent orthopaedic drainage, empiric antibiotics after cultures per local guidance, source workup, and clear documentation while cultures incubate.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Mathews CJ, Weston VC, Jones A, Field M, Coakley G. Bacterial septic arthritis in adults. <em>Lancet</em>. 2010;375(9717):846-855.</li>
+          <li>Margaretten ME, Kohlwes J, Moore D, Bent S. Does this adult patient have septic arthritis? <em>JAMA</em>. 2007;297(13):1478-1488.</li>
+          <li>Carpenter CR, Schuur JD, Everett WW, Pines JM. Evidence-based diagnostics: adult septic arthritis. <em>Acad Emerg Med</em>. 2011;18(8):781-796.</li>
+          <li>Ross JJ. Septic arthritis of native joints. <em>Infect Dis Clin North Am</em>. 2017;31(2):203-218.</li>
+          <li>Shirtliff ME, Mader JT. Acute septic arthritis. <em>Clin Microbiol Rev</em>. 2002;15(4):527-544.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Diagnosis and Differential of Native Septic Joint Arthritis</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

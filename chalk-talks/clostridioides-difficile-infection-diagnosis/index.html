@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clostridioides difficile infection — diagnosis — IDSA Chalk Talk</title>
+<meta name="description" content="When to test, which assay to trust, and how to handle discordant results in suspected Clostridioides difficile infection.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Clostridioides difficile infection — diagnosis — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Clostridioides difficile infection</p>
+        <h1 class="ct-h1">Clostridioides difficile infection — diagnosis</h1>
+        <p class="ct-subtitle">When to test, which assay to trust, and what a positive result actually means</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty — transcript not recoverable, reconstructed from guidelines</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 8 minutes</span>
+      </div>
+
+      
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Clostridioides difficile infection</p>
+        <h1 class="ct-h1">Clostridioides difficile infection — diagnosis</h1>
+        <p class="ct-subtitle">When to test, which assay to trust, and what a positive result actually means</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty — transcript not recoverable, reconstructed from guidelines</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 8 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 68-year-old man on ceftriaxone for pneumonia develops five watery stools overnight with mild cramping, no blood. He had one dose of senna for constipation two days ago. He is afebrile with a soft abdomen. The night nurse asks whether to send a <em>C. difficile</em> test.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Decide when diarrhoea warrants testing for <em>Clostridioides difficile</em>.</li>
+          <li>Explain what glutamate dehydrogenase (GDH), toxin enzyme immunoassay (EIA), and nucleic acid amplification test (NAAT) each detect.</li>
+          <li>Interpret concordant and discordant two-step results at the bedside.</li>
+          <li>Apply diagnostic stewardship to avoid false positives from laxatives, formed stool, and repeat testing.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Only test diarrhoea that needs explaining</h2>
+      <p><span class="ct-term">Clostridioides difficile infection</span> is a clinical diagnosis supported by a test, not made by one. <em>Clostridioides difficile</em>, formerly <em>Clostridium difficile</em>, colonises 15–30% of hospitalised adults without symptoms. In colonisation the organism and even the toxin gene may be present but little toxin is made and there is no diarrhoea. A test for the organism will therefore be positive in many people without infection. The history matters more than the assay.</p>
+      <p>Test when there is unexplained new-onset unformed stool — at least three loose stools in 24 hours that take the shape of the container (Bristol Stool Scale type 5–7) — without a more likely cause. Ask about laxatives in the past 48 hours, new enteral feeds or supplements, bowel preparation, chemotherapy, inflammatory bowel disease (IBD) flare, and ischaemic colitis. Recent antibiotics, proton pump inhibitor (PPI) use, age over 65, and prior <em>C. difficile</em> raise risk but do not justify testing formed stool or diarrhoea with a clear alternative cause.</p>
+      <p>Do not test formed stool, asymptomatic patients, or a single loose stool after a laxative. Most laboratories now reject formed specimens. Do not order a test of cure — <em>C. difficile</em> deoxyribonucleic acid (DNA) can remain detectable for weeks after recovery — and do not repeat a negative test within seven days during the same episode unless the picture changes.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If stool does not take the shape of the container, do not send it. Formed stool should not be tested for <em>C. difficile</em>.</p>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Testing because a patient is “high risk” without clinically significant diarrhoea turns colonisation into a reportable “infection” you feel obliged to treat.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">One loose stool six hours after senna, then one formed movement and no further diarrhoea. Next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send NAAT now because he is on ceftriaxone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Hold laxatives, monitor frequency and form, test only if three unformed stools develop without alternative explanation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send toxin EIA on the formed stool</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start empiric oral vancomycin</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>One loose stool after a laxative does not meet the threshold for unexplained clinically significant diarrhoea. Testing would most likely detect colonisation and drive unnecessary treatment. Correct the confounder and observe. Formed stool should not be tested, and empiric therapy without a syndrome is not indicated.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">What each assay actually detects</h2>
+      <p>Three assays dominate practice, and their targets explain their trade-offs.</p>
+      <ul>
+        <li><strong>Glutamate dehydrogenase (GDH)</strong> detects an enzyme made by all <em>C. difficile</em>, toxigenic and non-toxigenic. It is a sensitive screen for organism presence but not specific for infection.</li>
+        <li><strong>Toxin enzyme immunoassay (EIA) for toxin A/B</strong> detects free toxin protein. It is specific for disease but insensitive, typically 60–80% versus reference methods, and misses low-toxin infections.</li>
+        <li><strong>Nucleic acid amplification test (NAAT)</strong>, usually polymerase chain reaction (PCR), detects the toxin B gene (<em>tcdB</em>). It is highly sensitive for a toxigenic strain (about 90–95%) but cannot tell if toxin is being made now, so it cannot distinguish colonisation from infection and can remain positive for weeks after recovery.</li>
+      </ul>
+      <p>Reference standards — cell cytotoxicity neutralisation assay and toxigenic culture — are accurate but slow. They define how we judge routine assays, not what you wait for.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Routine assays: target and trade-off</caption>
+          <thead>
+            <tr><th>Assay</th><th>Target</th><th>Sensitivity</th><th>Specificity for infection</th><th>Positive means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Glutamate dehydrogenase (GDH)</td><td>Enzyme of <em>C. difficile</em></td><td>High</td><td>Low</td><td>Organism present</td></tr>
+            <tr><td>Toxin EIA</td><td>Free toxin</td><td>Moderate</td><td>High</td><td>Toxin present</td></tr>
+            <tr><td>Nucleic acid amplification test (NAAT)</td><td>Toxin gene DNA</td><td>Very high</td><td>Moderate</td><td>Toxigenic strain present</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>NAAT is a test for a gene, not for toxin. A positive NAAT says “a toxigenic strain is here.” Only the patient can tell you whether there is disease.</p>
+      </div>
+
+      <h2 class="ct-h2">Why most hospitals use a two-step algorithm</h2>
+      <p>A single sensitive test would suffice if every patient tested had unexplained watery diarrhoea. In practice testing is uneven and false positives cause harm — isolation, antibiotics, longer stay, and delayed diagnosis of the true cause. Most centres therefore pair sensitivity with specificity.</p>
+      <p>Know which algorithm your laboratory uses:</p>
+      <ul>
+        <li><strong>GDH plus toxin EIA with NAAT as arbiter:</strong> Both done together. Both positive suggests infection; both negative makes infection unlikely. GDH-positive and toxin-negative reflexes to NAAT — a positive NAAT then requires clinical correlation.</li>
+        <li><strong>GDH plus NAAT, or NAAT plus toxin EIA:</strong> variants on the same principle — a sensitive screen plus a specific toxin or gene test rather than NAAT alone.</li>
+      </ul>
+      <p>The 2017 Infectious Diseases Society of America (IDSA) and Society for Healthcare Epidemiology of America (SHEA) guideline advises institutions without strict criteria to ensure appropriate testing to use a stool toxin test as part of a multistep algorithm — for example GDH plus toxin EIA, GDH plus NAAT, or NAAT plus toxin EIA — rather than NAAT alone. Where stewardship is strong and only unexplained clinically significant diarrhoea is tested, NAAT alone may be acceptable, but many centres keep the algorithm because stewardship often fails overnight.</p>
+      <p>Check your record. You may see three lines — GDH, toxin, NAAT — or a single “positive by NAAT.” A single line hides whether toxin was ever sought.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Interpreting two-step results — with the patient</caption>
+          <thead>
+            <tr><th>GDH</th><th>Toxin EIA</th><th>NAAT</th><th>Interpretation</th><th>Usual step</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Negative</td><td>Negative</td><td>Negative</td><td>Infection unlikely</td><td>Look for other cause</td></tr>
+            <tr><td>Positive</td><td>Positive</td><td>Positive*</td><td>Supports infection if diarrhoea unexplained</td><td>Manage as infection</td></tr>
+            <tr><td>Positive</td><td>Negative</td><td>Positive</td><td>Toxigenic strain, toxin not detected</td><td>Clinical correlation required</td></tr>
+            <tr><td>Positive</td><td>Negative</td><td>Negative</td><td>Non-toxigenic strain</td><td>Not infection</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><em>* NAAT may not be done if GDH and toxin are both positive, per local protocol.</em></p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 74-year-old woman on levofloxacin has six watery stools in 24 hours, no laxatives, tachycardia and white cells 14,000 per microlitre. GDH positive, toxin EIA negative, NAAT positive. Best interpretation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Colonisation — toxin negative excludes infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Toxigenic strain present, toxin not detected; with significant unexplained diarrhoea treat as infection and continue evaluation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Contamination — repeat immediately</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Toxin is the only result that matters — ruled out</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Toxin EIA is specific but insensitive, so a single negative does not exclude infection. With a toxigenic strain detected and clinically significant unexplained diarrhoea with systemic features, manage as infection. The same pattern with one loose stool after laxatives would point to colonisation.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">How to handle discordant results</h2>
+      <p>“PCR positive, toxin negative” is the commonest source of confusion. It does not automatically equal infection. Patients who are NAAT-positive but toxin-negative are on average less ill and more likely to have an alternative cause than toxin-positive patients; many improve without <em>C. difficile</em> therapy.</p>
+      <p>Ask four questions:</p>
+      <ol>
+        <li><strong>Does the diarrhoea meet the threshold?</strong> Three or more unformed stools in 24 hours, new onset, unexplained.</li>
+        <li><strong>Is there a more likely cause?</strong> Active laxatives, tube feeds, bowel prep, IBD, or other medicines.</li>
+        <li><strong>Does the course fit?</strong> Fever, cramping, leukocytosis, acute kidney injury or profuse watery stool favours infection; a single loose stool does not.</li>
+        <li><strong>What does the full algorithm say?</strong> GDH-negative makes infection unlikely; GDH-positive/toxin-positive supports it; GDH-positive/toxin-negative/NAAT-positive is indeterminate.</li>
+      </ol>
+      <p>Document your reasoning: “toxigenic <em>C. difficile</em> by NAAT, toxin negative, one loose stool after prep — colonisation, not infection; monitor, no repeat test” prevents reflexive treatment by the next team.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>GDH-positive, toxin-negative, NAAT-positive is the fork in the road. Mild self-limited diarrhoea after laxatives usually means colonisation; profuse watery diarrhoea on antibiotics without alternative cause favours infection.</p>
+      </div>
+
+      <h2 class="ct-h2">Pitfalls before the specimen reaches the lab</h2>
+      <p>Most errors are pre-analytical — ordering and collection, not analysis.</p>
+      <ul>
+        <li><strong>Formed stool:</strong> Should be rejected. A formed NAAT-positive is almost always colonisation.</li>
+        <li><strong>Laxatives or bowel prep within 48 hours:</strong> Senna, bisacodyl, lactulose, polyethylene glycol and enemas cause diarrhoea that triggers testing. Hold as-needed laxatives and re-evaluate.</li>
+        <li><strong>Tube feeds:</strong> New feeds and sorbitol-containing medicines often cause loose stools — review nutrition history first.</li>
+        <li><strong>Delayed transport:</strong> Toxin degrades at room temperature, increasing false-negative toxin EIA. Send fresh stool promptly or refrigerate at 2–8°C.</li>
+        <li><strong>Repeat toxin EIAs:</strong> Serial toxin EIAs after a negative add little. If suspicion remains high, discuss a single NAAT-based retest rather than daily toxin tests.</li>
+      </ul>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Repeating toxin EIA daily “to be sure” wastes time. Use the algorithm and, if needed, a single documented NAAT-based reassessment.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Formed stool (Bristol type 3) sent “because he is high risk” returns NAAT-positive, toxin EIA-negative, one movement per day. Appropriate response?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start oral vancomycin and isolate for active infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat with a two-step algorithm</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recognise colonisation — do not treat or isolate for active infection; educate the unit and enforce rejection of formed stool</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order computed tomography for pseudomembranes</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Formed stool should never have been tested. NAAT-positive with toxin-negative from formed stool is colonisation. Treatment and isolation for active infection are not warranted. Feedback prevents recurrence.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When to repeat — and when to stop</h2>
+      <p><strong>After a negative result</strong>, do not repeat within seven days during the same episode unless diarrhoea persists without alternative cause and the first specimen was unformed and timely. A single negative NAAT has high negative predictive value. One repeat on fresh unformed stool after 48 hours may be reasonable when suspicion remains very high — document why.</p>
+      <p><strong>After a positive result</strong>, do not test for cure. Colonisation can persist for weeks to months; NAAT stays positive after symptoms resolve. Return toward baseline stool frequency and form defines response, not a negative assay. Retesting after improvement creates a new “positive” that may be mislabelled as recurrence.</p>
+      <p><strong>Suspected recurrence</strong> requires new unexplained diarrhoea after complete resolution of the prior episode. Post-infectious bowel symptoms with occasional formed stools plus a positive NAAT is not relapse.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Never order a test of cure. DNA can persist for weeks; clinical recovery is the marker of response.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Four days after treatment for toxin-positive infection the patient has two formed stools daily and mild cramping. A repeat NAAT sent “to check cure” is positive. What now?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Extend therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch antibiotics</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recognise expected DNA persistence; assess clinically and do not retreat on a test of cure</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send daily NAAT until negative</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Repeat NAAT after improvement is not a test of cure. DNA can persist for weeks; improvement in frequency, form, pain and fever defines response. Do not prolong antibiotics on the basis of a lingering positive.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Diagnostic stewardship on rounds</h2>
+      <p>Accuracy depends more on stewardship than on a new kit. Three habits help:</p>
+      <ol>
+        <li><strong>Count and characterise before ordering.</strong> How many stools in 24 hours, Bristol type, laxatives, enemas, bowel prep, or new feeds? “One loose stool after lactulose” or “formed” means do not test. Note it clearly.</li>
+        <li><strong>Know the algorithm and read every line.</strong> Does your lab report GDH, toxin, and NAAT together, or NAAT alone? When you see “positive,” find the toxin line. Teach the team: “GDH-positive, toxin-negative, NAAT-positive — correlation needed.”</li>
+        <li><strong>Protect isolation and treatment for those who need them.</strong> True infection warrants contact precautions and review of antibiotics, acid suppression, and antimotility agents. Colonisation does not — over-isolation harms too.</li>
+      </ol>
+      <p>Send fresh unformed stool promptly, avoid urine contamination, refrigerate at 2–8°C if delayed, and do not send rectal swabs unless validated. When the algorithm is negative but diarrhoea persists, revisit laxatives, feeds, and medicines that cause diarrhoea, and consider other infectious and non-infectious causes.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Requiring an order question — “three or more unformed stools in 24 hours without laxatives?” — and blocking repeats within seven days while rejecting formed stool cuts reported healthcare-onset events by 30–50%, largely by preventing detection of colonisation.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Only test unexplained new-onset watery diarrhoea — three or more unformed stools (Bristol 5–7) in 24 hours — after excluding laxatives within 48 hours, tube feeds, and other causes. Never test formed stool or send a test of cure.</li>
+        <li>GDH screens for organism, toxin EIA detects free toxin (specific but insensitive), NAAT detects the toxin gene (sensitive but cannot distinguish colonisation).</li>
+        <li>Most hospitals use a two-step algorithm, often GDH plus toxin EIA with NAAT as arbiter. Read every line; a single “positive” without toxin is incomplete.</li>
+        <li>GDH-positive, toxin-negative, NAAT-positive is indeterminate. Treat only when diarrhoea is clinically significant and unexplained; otherwise it is usually colonisation.</li>
+        <li>Do not repeat a negative test within seven days unless diarrhoea persists without explanation, and never monitor therapy with repeat testing.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>McDonald LC, Gerding DN, Johnson S, et al. Clinical Practice Guidelines for <em>Clostridium difficile</em> Infection in Adults and Children: 2017 Update by the Infectious Diseases Society of America (IDSA) and Society for Healthcare Epidemiology of America (SHEA). <em>Clin Infect Dis</em>. 2018;66(7):e1-e48.</li>
+          <li>Johnson S, Lavergne V, Skinner AM, et al. Clinical Practice Guideline by the Infectious Diseases Society of America (IDSA) and Society for Healthcare Epidemiology of America (SHEA): 2021 Focused Update Guidelines on Management of <em>Clostridioides difficile</em> Infection in Adults. <em>Clin Infect Dis</em>. 2021;73(5):e1029-e1044.</li>
+          <li>Surawicz CM, Brandt LJ, Binion DG, et al. Guidelines for Diagnosis, Treatment, and Prevention of <em>Clostridium difficile</em> Infections. <em>Am J Gastroenterol</em>. 2013;108(4):478-498.</li>
+          <li>Polage CR, Gyorke CE, Kennedy MA, et al. Overdiagnosis of <em>Clostridium difficile</em> infection in the molecular test era. <em>JAMA Intern Med</em>. 2015;175(11):1792-1801.</li>
+          <li>Planche T, Aghaizu A, Holliman R, et al. Diagnosis of <em>Clostridium difficile</em> infection by toxin detection kits: a systematic review. <em>Lancet Infect Dis</em>. 2008;8(12):777-784.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Clostridioides difficile infection — diagnosis</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

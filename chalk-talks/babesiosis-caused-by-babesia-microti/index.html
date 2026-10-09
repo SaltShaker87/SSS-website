@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Babesiosis caused by Babesia microti — IDSA Chalk Talk</title>
+<meta name="description" content="A practical guide to recognizing, diagnosing, and treating Babesia microti infection — from tick bite to severe hemolytic disease.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Babesiosis caused by Babesia microti — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Vector-borne infections</p>
+        <h1 class="ct-h1">Babesiosis caused by <em>Babesia microti</em></h1>
+        <p class="ct-subtitle">A tick-borne red cell parasite that looks like malaria but is not</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 68-year-old man from coastal Rhode Island presents in late July with 5 days of fever to 38.8°C, sweats, fatigue, and dark urine. He clears brush on weekends and recalls a tick bite 2 weeks ago. He had a splenectomy 20 years ago. Exam shows fever, mild jaundice, and tachycardia. Labs: hemoglobin 9.2 g/dL, platelets 68,000 per µL, total bilirubin 3.1 mg/dL (indirect), lactate dehydrogenase (LDH) 680 U/L, haptoglobin undetectable, creatinine 1.4 mg/dL. He was started on ceftriaxone for sepsis. What else should you send now?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Identify who is at risk for severe babesiosis and how <em>Babesia microti</em> spreads.</li>
+          <li>Recognize the clinical and lab pattern of babesiosis and distinguish it from malaria and anaplasmosis.</li>
+          <li>Choose thin blood smear versus polymerase chain reaction (PCR) and use parasitemia to guide care.</li>
+          <li>Select treatment by severity and host factors and know when exchange transfusion is considered.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why babesiosis matters on call</h2>
+      <p><em>Babesia microti</em> is an intraerythrocytic protozoan parasite — it lives inside red blood cells (RBCs) — and is the main cause of human babesiosis in the United States. It shares its vector, the black-legged tick <em>Ixodes scapularis</em>, with <em>Borrelia burgdorferi</em> (Lyme disease) and <em>Anaplasma phagocytophilum</em> (anaplasmosis). The white-footed mouse is the reservoir; deer amplify tick numbers but are not infected.</p>
+      <p>Its range has expanded beyond New England and the upper Midwest, with peak transmission May through October. Many infections are asymptomatic, but severe disease clusters predictably.</p>
+      <p>Babesiosis is also transfusion transmitted. <em>Babesia</em> survives blood banking, and asymptomatic donors have transmitted infection, leading to Food and Drug Administration (FDA) donor screening in endemic states since 2020. Think babesiosis 1 to 4 weeks after a tick bite or 1 to 9 weeks after transfusion, even without a recalled bite — more than half of patients never notice the tick.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Other species cause disease elsewhere: <em>Babesia divergens</em> in Europe and <em>Babesia duncani</em> on the US West Coast can cause similar or more fulminant illness. Unless noted, this talk refers to <em>B. microti</em> in the northeastern and midwestern United States.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Think babesiosis when fever, hemolysis, and thrombocytopenia follow summer outdoor exposure in an endemic region — especially with prior asplenia, even decades ago.</p>
+      </div>
+
+      <h2 class="ct-h2">How the parasite makes people sick</h2>
+      <p>After 36 to 72 hours of nymphal feeding, sporozoites enter blood and invade RBCs. <em>B. microti</em> divides by budding into up to four merozoites, sometimes seen as the pathognomonic tetrad or Maltese cross on Giemsa- or Wright-stained thin smear. Most infected cells show only pleomorphic ring forms that are easy to miss or confuse with <em>Plasmodium falciparum</em>.</p>
+      <p>Parasitized RBCs hemolyze intravascularly and by splenic clearance, so asplenia, age over 50 years, and immunosuppression — especially rituximab, malignancy, and HIV with low CD4 count — predispose to high parasitemia. Hemolysis raises LDH and indirect bilirubin and lowers haptoglobin; thrombocytopenia alone does not mean DIC.</p>
+      <p>One tick can carry several pathogens: 10 to 20 percent of patients also have Lyme disease. A positive Lyme test does not explain hemolysis — persistent fever or cytopenias should prompt testing for co-infection.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p><em>Babesia</em> has no liver stage. Relapse is not from dormant liver forms like <em>Plasmodium vivax</em> — it is persistent blood-stage infection when immunity is impaired or therapy is too short.</p>
+      </div>
+
+      <h2 class="ct-h2">Who gets sick and what it looks like</h2>
+      <p>Many healthy young adults have a self-limited flu-like illness or no symptoms. When symptomatic, patients report fever, chills, sweats, headache, myalgias, arthralgias, anorexia, and marked fatigue, sometimes with cough, nausea, abdominal pain, or dark urine from hemoglobinuria.</p>
+      <p>Exam may show fever, mild splenomegaly, jaundice, or pallor. Rash is not a feature — erythema migrans points to Lyme co-infection. Severe hemolysis can cause acute kidney injury, ARDS, heart failure, DIC, and shock, especially when parasitemia tops 4 to 10 percent or the spleen is absent.</p>
+      <p>Labs often flag the diagnosis before the smear: normocytic anemia with reticulocytosis, platelets often 40,000 to 100,000 per µL, and normal or low leukocytes — atypical for sepsis — plus indirect hyperbilirubinemia, high LDH, undetectable haptoglobin, and mildly raised AST and ALT. Hemolytic anemia plus thrombocytopenia in summer should put babesiosis at the top.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not anchor on bacterial sepsis. In an older or asplenic patient with summer exposure, order a stat thin smear and <em>Babesia</em> PCR on the same draw — waiting for consult costs a day.</p>
+      </div>
+
+      <h2 class="ct-h2">How to make the diagnosis</h2>
+      <p>Thin smear is fastest. On Wright- or Giemsa-stained thin smear, an experienced microscopist may see intraerythrocytic rings of varying size, occasional extracellular forms, and rarely tetrads. The smear also quantifies percent parasitemia (infected RBCs divided by total RBCs times 100), which guides severity and response. Sensitivity falls below 0.1 percent parasitemia, after antibiotics, or when the lab is not told to look for parasites. Order “thick and thin smears for malaria/babesiosis” and tell the lab you suspect <em>Babesia</em>.</p>
+      <p>Whole-blood PCR is more sensitive, distinguishes <em>B. microti</em> from <em>Plasmodium</em>, and stays positive weeks after smears turn negative — the test of choice when smear is negative but suspicion remains.</p>
+      <p>Serology detects immunoglobulin G (IgG) and helps weeks after exposure when PCR is negative. A single titer cannot separate acute from past infection; a fourfold rise or high titer with compatible illness supports recent infection, but antibody can persist for years.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Distinguishing babesiosis, malaria, and anaplasmosis</caption>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Babesiosis (<em>B. microti</em>)</th>
+              <th>Malaria</th>
+              <th>Anaplasmosis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Smear</td>
+              <td>Pleomorphic rings, tetrads, no pigment, extracellular forms</td>
+              <td>Uniform rings, hemozoin pigment, gametocytes</td>
+              <td>Neutrophilic morulae; no RBC parasites</td>
+            </tr>
+            <tr>
+              <td>Exposure</td>
+              <td>NE/Midwest US tick or transfusion; summer</td>
+              <td>Tropical travel</td>
+              <td>Same tick; summer</td>
+            </tr>
+            <tr>
+              <td>Hemolysis</td>
+              <td>Prominent: high LDH, low haptoglobin</td>
+              <td>Variable</td>
+              <td>Usually mild/absent</td>
+            </tr>
+            <tr>
+              <td>Counts</td>
+              <td>Thrombocytopenia; leukopenia or normal</td>
+              <td>Thrombocytopenia</td>
+              <td>Thrombocytopenia, leukopenia</td>
+            </tr>
+            <tr>
+              <td>Confirm</td>
+              <td>Whole-blood PCR</td>
+              <td>PCR/antigen</td>
+              <td>Whole-blood PCR</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Hemoglobinuria and spherocytes can mimic autoimmune hemolysis. The direct antiglobulin (Coombs) test is usually negative — do not start steroids before smear and PCR.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 72-year-old asplenic man with fever, hemoglobin 8.5 g/dL, platelets 55,000 per µL, LDH 900 U/L, and 2 weeks ago camping on Cape Cod has smear read as “rare rings, extracellular forms, no pigment.” What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat as <em>Plasmodium falciparum</em> malaria</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Send whole-blood PCR for <em>Babesia microti</em>, quantify parasitemia, and start empiric therapy</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order serology alone and wait</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Continue ceftriaxone only for presumed DIC</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Rings without pigment and with extracellular forms favor <em>Babesia</em>, but low parasitemia cannot be eyeballed reliably. In an asplenic older adult with hemolysis after tick exposure, send PCR, quantify parasitemia, and start therapy — serology reflects past exposure. Malaria drugs do not treat <em>Babesia</em>.</p>
+        </div>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Always quantitate parasitemia on the initial and follow-up smears. The percentage drives admission, exchange transfusion, and stop decisions.</p>
+      </div>
+
+      <h2 class="ct-h2">Treatment for the patient in front of you</h2>
+      <p>Severity and immunity set regimen and duration. Admit initially to track hemolysis and organ function — asplenic and immunocompromised patients can worsen quickly.</p>
+      <p>For mild to moderate disease in an immunocompetent host, <span class="ct-term">atovaquone plus azithromycin</span> is preferred. It matches clindamycin plus quinine for non-severe disease and is far better tolerated. Usual adult course: atovaquone 750 mg orally with a fatty meal every 12 hours plus azithromycin 500 mg day 1 then 250 mg daily, for 7 to 10 days. Symptoms and parasitemia often improve within 48 hours; smear is often negative within a week, though PCR may stay positive longer.</p>
+      <p>For severe disease — parasitemia generally 10 percent or greater, marked hemolysis, pulmonary or renal injury, hypotension, or rapid progression in an asplenic or older host — traditional guidance favors <span class="ct-term">clindamycin plus quinine</span>: clindamycin 600 mg orally every 8 hours or 300 to 600 mg intravenously every 6 hours plus quinine 650 mg orally every 8 hours. Quinine toxicity (cinchonism: tinnitus, hearing loss, vertigo, nausea, hypoglycemia, QT prolongation) often limits it, so many centers now use atovaquone plus azithromycin even for severe disease with close monitoring, reserving clindamycin/quinine for critical illness or persistent high parasitemia.</p>
+      <p>Immunocompromised, asplenic, or rituximab-exposed patients often need at least 6 weeks and until smears are negative for 2 weeks — relapse is common if you stop at 10 days. Coordinate duration with infectious diseases and pharmacy; never use a single drug alone.</p>
+      <p>Supportive care: transfuse for symptomatic anemia, protect kidneys from hemoglobinuria, watch electrocardiogram (ECG) and glucose if using quinine, and consider exchange transfusion for parasitemia 10 percent or greater with severe hemolysis or organ dysfunction. Steroids have no role.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>One tick can deliver <em>Babesia</em>, Lyme, and anaplasmosis together. Finding one should prompt testing for the others when the picture fits — each needs different therapy.</p>
+      </div>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Antibabesial regimens for adults — verify all doses with pharmacy</caption>
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Regimen (adult)</th>
+              <th>Typical duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mild to moderate, immunocompetent</td>
+              <td>Atovaquone 750 mg orally every 12 hours with food plus azithromycin 500 mg day 1 then 250 mg daily</td>
+              <td>7 to 10 days; until smear negative and better</td>
+            </tr>
+            <tr>
+              <td>Severe (≥10 percent or organ dysfunction)</td>
+              <td>Clindamycin 600 mg orally every 8 hours (or 300–600 mg intravenously every 6 hours) plus quinine 650 mg orally every 8 hours; atovaquone plus azithromycin alternative with monitoring</td>
+              <td>7 to 10 days minimum; longer if immunocompromised</td>
+            </tr>
+            <tr>
+              <td>Immunocompromised, asplenic, or B-cell depleted</td>
+              <td>Atovaquone plus azithromycin preferred; clindamycin plus quinine if critical</td>
+              <td>At least 6 weeks and until smear negative 2 weeks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 58-year-old woman with well-controlled HIV (CD4 650 per µL), 1.5 percent parasitemia, mild anemia, and no organ dysfunction has <em>B. microti</em> infection. Best initial therapy is?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Atovaquone plus azithromycin for 7 to 10 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Clindamycin plus quinine</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Chloroquine plus primaquine</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Observation because parasitemia is below 10 percent</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Mild to moderate disease in an immunocompetent host does well with atovaquone plus azithromycin. Chloroquine/primaquine targets malaria liver stages, not <em>Babesia</em>. Even low parasitemia is treated when symptomatic; 10 percent marks exchange consideration, not whether to treat.</p>
+        </div>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">An asplenic 64-year-old man has 12 percent parasitemia with ARDS and creatinine 2.3 mg/dL on atovaquone plus azithromycin. What next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop antibabesials and observe</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add doxycycline only</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Continue therapy and urgently discuss exchange transfusion</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to atovaquone alone</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Parasitemia 10 percent or greater with organ failure is the trigger to consider exchange transfusion plus ongoing antibabesials. Single-drug therapy fails; doxycycline covers anaplasmosis, not babesiosis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Follow-up, persistence, and counseling</h2>
+      <p>Repeat CBC, metabolic panel, LDH, haptoglobin, and quantitative parasitemia daily until improving. Fever often resolves in 48 to 72 hours and parasitemia falls by half in the same window. If parasitemia rises or organ injury progresses after 48 hours of adherent therapy, check adherence (atovaquone needs fatty food), absorption, and discuss regimen change or exchange with infectious diseases.</p>
+      <p>PCR can stay positive for weeks to months after smears turn negative and symptoms resolve. In an immunocompetent patient who finished 7 to 10 days, has negative smears, and feels better, do not prolong antibiotics for lingering PCR positivity. Asplenic or immunocompromised patients can have persistent smear positivity for weeks; they need serial smears and should stay on therapy at least 2 weeks past the last positive smear — often 6 weeks total — with close post-treatment monitoring.</p>
+      <p>Counsel that babesiosis is not person-to-person contagious except via transfusion and rare congenital routes. Prior infection does not guarantee lasting immunity, and transfusion deferral may apply. Emphasize tick prevention: permethrin-treated clothing, diethyltoluamide (DEET) or picaridin, daily tick checks with fine-tipped tweezers, and showering after outdoor work. No human vaccine exists.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Smear negativity, not PCR negativity, is the practical stop signal for the immunocompetent host. Use PCR to confirm and to follow the immunocompromised host, but do not chase PCR in a well patient who finished a course.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Transfusion-associated babesiosis prompted FDA donor screening in endemic states. If your patient donated or received blood in the past 3 months and now has babesiosis, notify the blood bank — lookback matters.</p>
+      </div>
+
+      <h2 class="ct-h2">Special populations and the broader differential</h2>
+      <p>Age over 50 years, asplenia, malignancy, and B-cell immunosuppression each raise risk of severe and relapsing disease. Assume higher parasitemia than the first smear shows and admit with a lower threshold; involve infectious diseases early and plan for extended therapy. Well-controlled HIV with preserved CD4 behaves like the immunocompetent host; risk tracks immunosuppression, not HIV alone.</p>
+      <p>In pregnancy, infection can be severe and rarely transmits to the newborn. Data are limited, but atovaquone plus azithromycin is generally preferred over quinine regimens; involve obstetrics and infectious diseases early. In children, use weight-based dosing — do not extrapolate adult doses.</p>
+      <p>Keep the differential broad when hemolysis and fever do not fit tick exposure. Thrombotic microangiopathies, autoimmune hemolysis, and malaria in travelers can mimic babesiosis. A patient returning from West Africa with similar rings needs urgent malaria management — pigment, gametocytes, or tropical travel without tick exposure should push you toward malaria until PCR sorts it out.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>In summer in an endemic area, “viral syndrome with thrombocytopenia” is babesiosis and anaplasmosis until proven otherwise — not a virus. A CBC and smear often beat a viral panel.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A healthy 34-year-old woman finished 10 days of atovaquone plus azithromycin for 0.8 percent <em>B. microti</em> parasitemia. She feels well, hemoglobin is rising, day-14 smear is negative but PCR is positive. What now?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Extend therapy until PCR turns negative</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Stop therapy, reassure, and follow clinically; repeat smear only if symptoms recur</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to clindamycin plus quinine for 10 more days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Proceed to exchange transfusion</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Lingering PCR after a completed course and negative smear in a well immunocompetent host reflects DNA, not necessarily viable parasites. Extend only for persistent smear positivity in immunocompromised or asplenic patients.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Suspect babesiosis in summer with fever, hemolytic anemia (high LDH, low haptoglobin, indirect bilirubin), and thrombocytopenia after tick or transfusion exposure in the NE or upper Midwest — especially with asplenia, age over 50, or B-cell immunosuppression.</li>
+        <li>Diagnose with thin smear (pleomorphic rings, rare tetrads/Maltese cross, quantitate percent parasitemia) plus whole-blood PCR for <em>B. microti</em>; single serology shows past exposure.</li>
+        <li>Treat mild to moderate disease with atovaquone plus azithromycin 7 to 10 days; reserve clindamycin plus quinine for severe disease or when atovaquone/azithromycin cannot be used — watch for quinine QT prolongation and hypoglycemia.</li>
+        <li>Consider exchange transfusion for parasitemia 10 percent or greater with organ dysfunction or refractory disease despite therapy.</li>
+        <li>Extend to at least 6 weeks and until smear-negative 2 weeks in asplenic or immunocompromised hosts prone to relapse; otherwise smear negativity ends therapy, not PCR.</li>
+        <li>Screen for Lyme and anaplasmosis co-infection, notify the blood bank for transfusion cases, and counsel on tick checks, DEET/picaridin, permethrin clothing, and prompt removal.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Vannier EG, Krause PJ. Human babesiosis. <em>N Engl J Med</em>. 2012;366(25):2397-2407.</li>
+          <li>Krause PJ, Auwaerter PG, Bannuru RR, et al. Clinical Practice Guidelines by the Infectious Diseases Society of America: 2020 Guideline on Diagnosis and Management of Babesiosis. <em>Clin Infect Dis</em>. 2021;72(2):e49-e64.</li>
+          <li>Centers for Disease Control and Prevention. Babesiosis — Resources for Health Professionals. Updated 2024. Available at CDC babesiosis website.</li>
+          <li>Wormser GP, Dattwyler RJ, Shapiro ED, et al. The clinical assessment, treatment, and prevention of Lyme disease, human granulocytic anaplasmosis, and babesiosis. <em>Clin Infect Dis</em>. 2006;43(9):1089-1134.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Babesiosis caused by Babesia microti</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

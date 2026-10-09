@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2-Drug Regimens for HIV Treatment — IDSA Chalk Talk</title>
+<meta name="description" content="When two drugs are enough for HIV treatment — and when they are not.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">2-Drug Regimens for HIV Treatment — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Human immunodeficiency virus (HIV)</p>
+        <h1 class="ct-h1">2-Drug Regimens for HIV Treatment</h1>
+        <p class="ct-subtitle">When two drugs are enough — and when they are not</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA Chalk Talk faculty (transcript corrupted — reconstructed from guidelines)</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 10 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 32-year-old man with newly diagnosed human immunodeficiency virus (HIV) infection comes for antiretroviral therapy (ART) counselling. HIV ribonucleic acid (RNA) is 42,000 copies per millilitre (copies/mL), cluster of differentiation 4 (CD4) count 580 cells per microlitre, hepatitis B surface antigen negative, creatinine 0.9 mg/dL, genotype pending. No prior ART or virologic failure and no other medicines. He asks whether two drugs could work and whether an injectable might be an option once suppressed.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Explain why three-drug ART became standard and what changed to make two-drug regimens viable.</li>
+          <li>Identify the guideline-endorsed two-drug regimens and where each fits — initial therapy, switch while suppressed, and long-acting injectable.</li>
+          <li>List the key eligibility checks and exclusions before starting or switching to a two-drug regimen, including hepatitis B virus (HBV) status and resistance history.</li>
+          <li>Apply a pre-switch checklist to decide whether a patient can safely step down to or start a two-drug regimen.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why three drugs became standard and why we are revisiting it</h2>
+      <p>Two <span class="ct-term">nucleoside reverse transcriptase inhibitors (NRTIs)</span> plus a third agent — originally a protease inhibitor, later a non-nucleoside reverse transcriptase inhibitor (NNRTI) or an <span class="ct-term">integrase strand transfer inhibitor (INSTI)</span> — became standard because under-treatment bred resistance and early agents needed partners. Triple therapy also hedged against transmitted resistance while genotype was pending. The price was extra exposure: renal and bone effects with tenofovir disoproxil fumarate, weight and metabolic signals with tenofovir alafenamide, and lifelong pill burden.</p>
+      <p>Second-generation INSTIs changed the equation. <span class="ct-term">Dolutegravir</span> has a high barrier to resistance and a long half-life. Paired with a forgiving NRTI or NNRTI, it keeps suppression without a third drug — but only the studied pairs, in the right populations, have proved non-inferior to three drugs.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The idea is not new. Early two-drug attempts with low-barrier agents failed and selected resistance. The modern two-drug regimens all include dolutegravir or long-acting cabotegravir — agents with a high resistance barrier and no need for a pharmacologic booster — plus a second agent chosen for compatibility and forgiveness, not potency alone.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Two drugs can work, but only the studied pairs count. Dolutegravir plus lamivudine, dolutegravir plus rilpivirine, and cabotegravir plus rilpivirine are not interchangeable with any other two-drug combination.</p>
+      </div>
+
+      <h2 class="ct-h2">The two-drug regimens that made it into guidelines</h2>
+      <p>As of the 2024–2026 Department of Health and Human Services (DHHS) and International Antiviral Society-USA guidelines, three two-drug strategies are endorsed, each for a different moment. All assume no active hepatitis B virus (HBV) infection needing therapy, no known resistance to the components, and no interacting medicines that lower levels.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Guideline-endorsed two-drug regimens and where they fit</caption>
+          <thead>
+            <tr><th>Regimen</th><th>Formulation and dosing</th><th>When to use</th><th>Key eligibility</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Dolutegravir plus lamivudine (DTG plus 3TC)</td><td>Dolutegravir 50 mg plus lamivudine 300 mg once daily as single tablet (Dovato)</td><td>Initial therapy in treatment-naive adults and switch while suppressed</td><td>HIV RNA below 500,000 copies/mL at start if treatment-naive; hepatitis B surface antigen negative; no major lamivudine or dolutegravir resistance; creatinine clearance at least 50 mL/min for the fixed-dose tablet</td></tr>
+            <tr><td>Dolutegravir plus rilpivirine (DTG plus RPV)</td><td>Dolutegravir 50 mg plus rilpivirine 25 mg once daily with a meal as single tablet (Juluca)</td><td>Switch only while virologically suppressed</td><td>Suppressed below 50 copies/mL for at least 6 months on stable ART; no history of virologic failure; no known INSTI or NNRTI resistance; not pregnant; take with food; avoid proton pump inhibitors</td></tr>
+            <tr><td>Cabotegravir plus rilpivirine long-acting (CAB plus RPV LA)</td><td>Cabotegravir 600 mg intramuscular plus rilpivirine 900 mg intramuscular once, then 400 mg plus 600 mg monthly or 600 mg plus 900 mg every 2 months (after initial monthly loads) — gluteal injections</td><td>Switch only while virologically suppressed — oral lead-in optional</td><td>Suppressed below 50 copies/mL on stable oral ART; no prior failure; no known cabotegravir or rilpivirine resistance; able to attend injection visits; drug interactions checked</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>No other two-drug oral pair has shown non-inferiority to triple therapy in a registrational trial. Do not extrapolate to combinations such as dolutegravir plus tenofovir alone.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Starting a two-drug regimen as rapid start before hepatitis B serologies and genotype are known risks silent compromise. If hepatitis B surface antigen is positive you need a tenofovir-containing regimen, and if transmitted NRTI or INSTI mutations are present the “two” may functionally be one.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Your clinic offers same-day ART to the patient in the vignette before hepatitis B serologies return. Which approach best balances rapid start with safety if you are considering dolutegravir plus lamivudine?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start dolutegravir plus lamivudine today and add tenofovir later only if hepatitis B surface antigen returns positive</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Start a three-drug tenofovir-containing regimen today, then step down to dolutegravir plus lamivudine once hepatitis B status, HIV RNA, and genotype support it</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Delay ART for two weeks until all results return to avoid any extra pills</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start dolutegravir plus rilpivirine today because it is also a two-drug option for naive patients</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>When you must start before hepatitis B virus results are known, a tenofovir-containing three-drug regimen covers hepatitis B virus and hedges against high HIV RNA or transmitted resistance. Dolutegravir plus rilpivirine is not for initial therapy in naive patients, and dolutegravir plus lamivudine should only start once you know hepatitis B surface antigen is negative, HIV RNA is below the threshold, and no lamivudine or dolutegravir resistance is present. Delaying ART is inferior.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Dolutegravir plus lamivudine — a starter and a switch option</h2>
+      <p><span class="ct-term">Dolutegravir plus lamivudine</span> is the only two-drug regimen with randomised data for initial therapy. GEMINI-1 and GEMINI-2 randomised treatment-naive adults to dolutegravir plus lamivudine versus dolutegravir plus tenofovir disoproxil fumarate and emtricitabine; suppression below 50 copies/mL was non-inferior through 148 weeks with no emergent INSTI resistance.</p>
+      <p>Guidelines narrow who qualifies at start: HIV RNA at or above 500,000 copies/mL, hepatitis B surface antigen positive, known M184V/I or INSTI resistance, or need for rapid start before genotype is known all point away from this pair. Creatinine clearance below 50 mL/min excludes the fixed-dose tablet, and pregnancy favours three-drug ART.</p>
+      <p>As a switch, TANGO randomised adults suppressed on tenofovir alafenamide-based triple therapy to stay or switch to dolutegravir plus lamivudine and maintained suppression with fewer renal and bone signals. Switch eligibility mirrors the naive exclusions plus no prior virologic failure and no archived NRTI or INSTI resistance.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Think of dolutegravir plus lamivudine as tenofovir-sparing, not NRTI-sparing — you still rely on lamivudine activity. Archived M184V, even from a regimen years ago, disqualifies it.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Lamivudine (3TC) and emtricitabine share the M184V pathway. A documented M184V/I on any prior genotype or a history of prolonged lamivudine or emtricitabine failure should be treated as lamivudine resistance, even if the most recent genotype shows wild type because resistant virus may be archived.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 45-year-old woman suppressed below 50 copies/mL for 18 months on bictegravir, tenofovir alafenamide, and emtricitabine asks to reduce pills because of weight gain. Hepatitis B surface antigen negative, HIV RNA history never above 20,000 copies/mL, no prior failure, genotype at diagnosis wild type, creatinine clearance 85 mL/min. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to dolutegravir plus rilpivirine because it is dosed with food and avoids NRTIs entirely</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Switch to dolutegravir plus lamivudine after confirming no archived M184V and no INSTI resistance</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to dolutegravir plus lamivudine even though genotype from 2019 showed M184V, because she is currently suppressed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add cabotegravir plus rilpivirine long-acting without confirming resistance because injections avoid daily pills</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>She is an ideal candidate for dolutegravir plus lamivudine switch: stably suppressed, no failure, no archived resistance, hepatitis B negative, and adequate renal function. Dolutegravir plus rilpivirine is also a switch option but brings a food requirement and more drug interactions, with no advantage here. Archived M184V disqualifies dolutegravir plus lamivudine even when suppressed, and cabotegravir plus rilpivirine would require full resistance and injection feasibility checks.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Dolutegravir plus rilpivirine and cabotegravir plus rilpivirine — the suppressive switch and the injectable</h2>
+      <p>Both are switch regimens for suppressed patients, not starters for viraemic patients. SWORD-1 and SWORD-2 randomised suppressed adults to stay on three-drug ART or switch to dolutegravir plus rilpivirine; ATLAS, FLAIR and ATLAS-2M did the same for long-acting cabotegravir plus rilpivirine. All were non-inferior when eligibility was respected.</p>
+      <h3 class="ct-h3">Dolutegravir plus rilpivirine oral</h3>
+      <p>Dolutegravir 50 mg plus rilpivirine 25 mg once daily with a meal — food raises rilpivirine absorption. Proton pump inhibitors are contraindicated and histamine-2 receptor blockers and antacids need spacing. Eligibility requires suppression below 50 copies/mL for at least 6 months, no prior failure, and no known INSTI or NNRTI resistance. If hepatitis B surface antigen is positive, dropping tenofovir risks flare unless hepatitis B virus is separately treated.</p>
+      <h3 class="ct-h3">Cabotegravir plus rilpivirine long-acting</h3>
+      <p>Two gluteal intramuscular injections at the same visit. An optional oral lead-in of cabotegravir 30 mg plus rilpivirine 25 mg for about 28 days was studied, but direct-to-inject is now allowed. Loading is cabotegravir 600 mg plus rilpivirine 900 mg, then 400 mg plus 600 mg monthly or 600 mg plus 900 mg every 2 months after two monthly loads. Windows are tight — late injections need an oral bridge.</p>
+      <p>Risk for confirmed virologic failure clusters with higher body mass index, prior failure, HIV-1 subtype A1 or A6, and archived rilpivirine mutations. Review all prior genotypes, confirm reliable attendance, and avoid inducers such as rifamycins, certain anticonvulsants, and systemic glucocorticoids. Pregnancy and psychiatric history warrant counselling.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Adherence does not disappear with injections — it changes shape. A patient who misses injection windows and cannot take an oral bridge is at higher risk on long-acting therapy than on daily oral ART.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Rilpivirine needs acid and food. Proton pump inhibitors and a meal-free morning dose quietly turn two active drugs into one.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 29-year-old man suppressed below 50 copies/mL for 2 years on dolutegravir, tenofovir alafenamide, and emtricitabine has well-controlled gastroesophageal reflux on omeprazole 20 mg daily. He wants cabotegravir plus rilpivirine every 2 months to avoid daily pills. Hepatitis B surface antigen negative, no prior failure, genotypes wild type, no missed visits history. What is the key barrier?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">He needs a higher CD4 count before cabotegravir plus rilpivirine can be used</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cabotegravir plus rilpivirine is only dosed monthly, not every 2 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Proton pump inhibitor use and rilpivirine exposure for the oral option are a problem, but for long-acting injections the interaction is less relevant — the real check is whether you are considering oral rilpivirine versus injectable, and to confirm genotype and injection feasibility</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cabotegravir plus rilpivirine requires a 6-month oral lead-in in all patients</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>This question tests nuance. Oral rilpivirine absorption collapses with proton pump inhibitors, making dolutegravir plus rilpivirine inappropriate on omeprazole. Long-acting injectable rilpivirine does not depend on gastric pH, so the omeprazole is not a contraindication to cabotegravir plus rilpivirine. Both every-month and every-2-month dosing exist, no CD4 threshold defines eligibility, and oral lead-in is now optional. The correct action is to verify archived genotypes, prior failure history, and injection feasibility before scheduling.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Who should not get a two-drug regimen</h2>
+      <p>Success means selecting out those who need three. Guidelines and trial exclusions converge on a short list.</p>
+      <ul>
+        <li><strong>Hepatitis B virus co-infection requiring therapy.</strong> Lamivudine alone is inadequate for hepatitis B virus and selects hepatitis B virus resistance; dropping tenofovir risks hepatitis flare on stopping. Keep tenofovir disoproxil fumarate or tenofovir alafenamide in the regimen unless hepatitis B virus is separately and fully treated and hepatology concurs.</li>
+        <li><strong>Active high-level viraemia or unknown resistance at start.</strong> Do not start dolutegravir plus lamivudine when HIV RNA is 500,000 copies/mL or higher, when baseline genotype shows M184V/I or INSTI mutations, or when you cannot yet exclude them. Treat first with a three-drug regimen and reconsider later.</li>
+        <li><strong>History of virologic failure or archived resistance.</strong> Any prior failure or documented major NRTI, NNRTI, or INSTI mutation that compromises a component disqualifies that pair, even if the current HIV RNA is undetectable.</li>
+        <li><strong>Pregnancy or trying to conceive at initiation.</strong> Data on two-drug initial therapy in pregnancy are insufficient; maintain a guideline-preferred three-drug regimen.</li>
+        <li><strong>Significant drug interactions or intolerance that underdose a component.</strong> Rilpivirine with proton pump inhibitors, carbamazepine, rifampin, rifabutin, phenytoin, or systemic dexamethasone, and dolutegravir or cabotegravir with potent inducers that lower exposure, should prompt a different strategy.</li>
+        <li><strong>Inability to meet administration requirements.</strong> Rilpivirine needs food; cabotegravir plus rilpivirine needs reliable gluteal injections, cold-chain and visit adherence, and a defined oral bridge plan for interruptions.</li>
+      </ul>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Equating “undetectable now” with “no archived resistance.” A wild-type genotype drawn while suppressed tells you nothing about proviral deoxyribonucleic acid (DNA) archive. Dig up every prior genotype, treatment history, and failure narrative before you narrow to two.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Hepatitis B status is the first branch point for every two-drug decision. If you do not know hepatitis B surface antigen, hepatitis B surface antibody, and hepatitis B core antibody, you are not ready to drop tenofovir.</p>
+      </div>
+
+      <h2 class="ct-h2">What to check before you switch or start</h2>
+      <p>Use a consistent checklist so nothing is missed.</p>
+      <ol>
+        <li><strong>Confirm the moment.</strong> Initial therapy in a naive patient (only dolutegravir plus lamivudine qualifies) versus switch while suppressed (all three possible). Never start a viraemic patient on dolutegravir plus rilpivirine or cabotegravir plus rilpivirine.</li>
+        <li><strong>Pull the full history.</strong> Every ART regimen, duration, reason for change, and every prior genotype — not just the last HIV RNA.</li>
+        <li><strong>Verify virologic status.</strong> Document HIV RNA below 50 copies/mL and months suppressed for switches, baseline HIV RNA and CD4 for naive starts, and at least 6 months suppression where required.</li>
+        <li><strong>Screen hepatitis B virus and tuberculosis therapy.</strong> Hepatitis B surface antigen, surface antibody, core antibody, hepatitis B virus DNA if needed, and current or planned rifamycin use.</li>
+        <li><strong>Check kidneys, pregnancy, and interactions.</strong> Creatinine and creatinine clearance for dolutegravir plus lamivudine, pregnancy testing where relevant, and a full review including antacids and acid blockers.</li>
+        <li><strong>Confirm feasibility.</strong> Food for rilpivirine, injection clinic capacity, travel and insurance continuity, and an oral bridge plan if injections will be more than 7 days late.</li>
+        <li><strong>Document and monitor.</strong> Record why two drugs were chosen, what was excluded, and when to recheck HIV RNA — typically 4 to 8 weeks after change, then every 3 months, with renal and hepatitis B virus monitoring if tenofovir was stopped.</li>
+      </ol>
+      <p>If any check fails, stay on three drugs. A failed two-drug switch that selects INSTI or NNRTI resistance costs more than one fewer pill saves.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 38-year-old man with HIV RNA below 50 copies/mL for 9 months on efavirenz, tenofovir disoproxil fumarate, and emtricitabine has no prior genotypes — he started therapy abroad and records are unavailable. Hepatitis B surface antigen negative, creatinine clearance 110 mL/min. He asks to switch to dolutegravir plus lamivudine to modernise therapy. What is the safest answer?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to dolutegravir plus lamivudine now because he is currently suppressed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Do not narrow to two drugs without resistance history — optimise to a guideline-preferred three-drug regimen, obtain or repeat genotype if viraemic in future, and only consider two drugs once archived resistance can be reasonably excluded</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to dolutegravir plus rilpivirine because efavirenz experience guarantees NNRTI sensitivity</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to cabotegravir plus rilpivirine long-acting because injections bypass the need for resistance history</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Without treatment or genotype history you cannot exclude archived NRTI, NNRTI, or INSTI resistance. Remaining suppressed on a failing-prone history does not prove wild type. The safe move is to switch to a contemporary three-drug regimen with a high barrier and complete the evaluation, not to narrow to two drugs where hidden resistance would leave one active agent. Long-acting cabotegravir plus rilpivirine also requires no prior failure and no known resistance.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Two drugs are enough only for specific pairs: dolutegravir plus lamivudine (initial or switch), dolutegravir plus rilpivirine (switch only), and cabotegravir plus rilpivirine long-acting (switch only).</li>
+        <li>Do not start any two-drug regimen with active hepatitis B virus needing therapy, high HIV RNA at or above 500,000 copies/mL for dolutegravir plus lamivudine naive use, known or archived resistance to either component, or prior virologic failure.</li>
+        <li>Rilpivirine needs food and acid — proton pump inhibitors contraindicate oral rilpivirine, and all rilpivirine needs inducer-free co-medicines and adherence to timing.</li>
+        <li>For injectable cabotegravir plus rilpivirine, success depends on reliable injection visits and a defined oral bridge plan; missed injections need prompt oral coverage.</li>
+        <li>When in doubt, start or stay on three drugs until hepatitis B status, genotype, pregnancy, renal function, and full history clearly support narrowing.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Panel on Antiretroviral Guidelines for Adults and Adolescents. Guidelines for the Use of Antiretroviral Agents in Adults and Adolescents Living with HIV. Department of Health and Human Services. Updated September 2024. Available at https://clinicalinfo.hiv.gov.</li>
+          <li>Cahn P, et al. Dolutegravir plus lamivudine versus dolutegravir plus tenofovir disoproxil fumarate and emtricitabine in antiretroviral-naive adults with HIV-1 infection (GEMINI-1 and GEMINI-2): week 48 results from two multicentre, double-blind, randomised, non-inferiority, phase 3 trials. <em>Lancet</em>. 2019;393(10167):143-155.</li>
+          <li>van Wyk J, et al. Switching to DTG/3TC fixed-dose combination: week 144 results of the TANGO study. <em>Clin Infect Dis</em>. 2022;75(12):2154-2162.</li>
+          <li>Llibre JM, et al. Efficacy, safety, and tolerability of dolutegravir-rilpivirine for the maintenance of virological suppression in adults with HIV-1: phase 3, randomised, non-inferiority SWORD-1 and SWORD-2 studies. <em>Lancet</em>. 2018;391(10123):839-849.</li>
+          <li>Overton ET, et al. Long-acting cabotegravir and rilpivirine dosed every 2 months in adults with HIV-1 infection (ATLAS-2M), 48-week results: a randomised, multicentre, open-label, phase 3b, non-inferiority study. <em>Lancet</em>. 2021;396(10267):1994-2005.</li>
+          <li>Saag MS, Gandhi RT, Hoy JF, et al. Antiretroviral Drugs for Treatment and Prevention of HIV Infection in Adults: 2024 Recommendations of the International Antiviral Society-USA Panel. <em>JAMA</em>. 2024;332(17):1436-1450.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">2-Drug Regimens for HIV Treatment</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

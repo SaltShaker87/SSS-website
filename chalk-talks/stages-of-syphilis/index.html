@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stages of syphilis — IDSA Chalk Talk</title>
+<meta name="description" content="A practical guide to the natural history of syphilis — how primary, secondary, latent and tertiary disease present, and how to stage infection at the bedside.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Stages of syphilis — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Sexually transmitted infections</p>
+        <h1 class="ct-h1">Stages of syphilis</h1>
+        <p class="ct-subtitle">From chancre to tertiary disease — how to recognise each stage and why staging still matters</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Sexually transmitted infections</p>
+        <h1 class="ct-h1">Stages of syphilis</h1>
+        <p class="ct-subtitle">From chancre to tertiary disease — how to recognise each stage and why staging still matters</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 29-year-old man has a painless penile ulcer for 10 days without dysuria, and for 2 days sore throat, fever, and a faint palmar rash. He has had two male partners in 3 months. Last human immunodeficiency virus (HIV) test 6 months ago was negative. RPR is 1:64.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Describe the natural history of untreated syphilis through tertiary disease.</li>
+          <li>Distinguish primary, secondary, early latent, late latent, and tertiary syphilis clinically and serologically.</li>
+          <li>Identify neurosyphilis, ocular syphilis, and otosyphilis as stage-independent emergencies.</li>
+          <li>Apply a bedside approach to staging when history is incomplete.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why staging still drives everything</h2>
+      <p>Syphilis is caused by <em>Treponema pallidum</em> subspecies <em>pallidum</em>, a spirochete that cannot be cultured routinely and spreads by contact with an infectious lesion, usually during sex. Vertical transmission can occur at any stage. Syphilis has resurged, especially among men who have sex with men (MSM), people with human immunodeficiency virus (HIV), and pregnant persons. The organism disseminates within hours and persists for years if untreated.</p>
+      <p>Stage determines infectious period, partner window, need for cerebrospinal fluid (CSF) examination, and benzathine penicillin G duration per CDC 2021 guidelines, reaffirmed 2025 — those regimens are guideline-derived and not in the corrupted transcript. Clinicians combine current findings, recalled symptoms, and serologies.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Before penicillin, one-third of untreated patients had no further disease, one-third stayed seropositive, and a minority developed tertiary disease. Antibiotics made gummas and tabes rare, but staging language remains.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Staging answers three questions: how long it has been there, who else was exposed, and what work-up to pursue.</p>
+      </div>
+
+      <h2 class="ct-h2">Primary syphilis — the chancre you can miss</h2>
+      <p>After an incubation of about 3 weeks (range 10 to 90 days), primary syphilis appears at the inoculation site. The classic <span class="ct-term">chancre</span> is a single, round, firm, painless ulcer with indurated edges, 1 to 2 cm, and painless nodes. It is highly infectious. Rapid plasma reagin (RPR) or Venereal Disease Research Laboratory (VDRL) becomes reactive and treponemal tests are positive. Without treatment it heals in 3 to 6 weeks.</p>
+      <p>It is easily missed. Painless sores are not volunteered; vaginal, cervical, rectal, or pharyngeal chancres need a focused exam and anal chancres mimic fissure. Multiple chancres occur with HIV, and a chancre can coexist with secondary lesions. A painless indurated ulcer needs syphilis and HIV screening even if painful elsewhere.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A healed chancre is not a cure. Ask about a painless sore that healed on its own in the last 3 months.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 24-year-old man has a painless indurated penile ulcer for 2 weeks with painless nodes. RPR is 1:8. What is this?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Primary syphilis — chancre heals without treatment while infection disseminates</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Herpes simplex — painful vesicular ulcers that recur</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Chancroid — soft, painful ulcer with suppurative nodes</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Latent syphilis — no lesions by definition</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Primary chancre is solitary, painless, indurated, and heals in weeks while infection disseminates. Herpes is painful vesicular, chancroid painful and suppurative, latent has no lesions.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Secondary syphilis — the great imitator</h2>
+      <p>Dissemination produces secondary syphilis, 4 to 10 weeks after the chancre; the chancre persists in one-third. Bacteraemia is high and RPR or VDRL titres are typically high. Fever, sore throat, headache, and generalised nodes often precede rash.</p>
+      <p>The rash is diffuse, symmetric, non-pruritic, often on palms and soles — copper- or ham-coloured macules or papules; moth-eaten alopecia can occur. Infectious mucosal lesions include mucous patches, snail-track ulcers, and condyloma lata — broad, moist, flat plaques perianally or oral, distinct from human papillomavirus condyloma acuminata. Hepatitis, renal disease, and ocular or neurologic symptoms can occur. Lesions resolve in weeks without cure, so many patients present only on later screening.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A non-pruritic rash including palms and soles, especially with condyloma lata or moth-eaten alopecia, should trigger same-day syphilis testing.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 31-year-old woman has fever, sore throat, and a non-pruritic papular rash on trunk, palms, and soles with painless perianal flat lesions. She had a painless ulcer 6 weeks ago. RPR is 1:128. What stage?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Primary only — no palmoplantar rash</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Secondary syphilis — disseminated disease with high titre</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tertiary — years later with gummas or aortitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Primary and secondary do not overlap</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Secondary follows 4 to 10 weeks after chancre, can overlap, with palmoplantar rash, mucous patches, condyloma lata and high titres. Tertiary is years later.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Latent syphilis — early versus late, and why 12 months matters</h2>
+      <p><span class="ct-term">Latent syphilis</span> is serologic infection without signs or symptoms. It requires that you have found no chancre, rash, condyloma lata, or neurologic, ocular, or otic findings. Distinguishing <span class="ct-term">early latent</span> from <span class="ct-term">late latent</span> is about time.</p>
+      <p>Early latent means acquisition within the last 12 months, proven only by seroconversion, fourfold nontreponemal rise, prior primary or secondary symptoms, or partner with early syphilis in the last year; these patients remain infectious. Late latent means greater than 12 months or unknown — typical when screening finds a positive treponemal test and RPR 1:4 with no prior test. Unknown duration is managed as late latent.</p>
+      <p>The cutoff sets partner windows: primary 3 months before chancre plus duration, secondary 6 months plus duration, early latent 12 months; late latent needs long-term partner evaluation. When recent infection cannot be proven, label late latent.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not call latent syphilis early because RPR is high. Early versus late requires dates — prior negative serology, prior symptoms, or exposure within 12 months — not titre.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you cannot point to a negative test, prior chancre, rash, or partner within a year, classify as late latent or unknown.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 28-year-old man is asymptomatic with reactive treponemal test, RPR 1:16. Last screen 8 months ago was negative. How to stage?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Late latent — asymptomatic</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Early latent — seroconversion within 12 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Secondary — high RPR implies rash</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Tertiary — requires years</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A negative test 8 months ago now positive proves early latent even without symptoms. Lack of symptoms alone does not define duration.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Tertiary syphilis — gummas, aorta, and the nervous system</h2>
+      <p>Without treatment, 15 to 40 percent develop tertiary disease years to decades later:</p>
+      <ul>
+        <li><strong>Gummatous</strong> — necrotic granulomas, skin, bone, or mucosa, 1 to 10 years later, mimicking tumour.</li>
+        <li><strong>Cardiovascular</strong> — aortitis of the ascending aorta and root, 10 to 30 years later, causing aneurysm and regurgitation.</li>
+        <li><strong>Late neurosyphilis</strong> — meningovascular stroke, general paresis with dementia, and tabes dorsalis with lightning pains and ataxia.</li>
+      </ul>
+      <p>Tertiary disease now appears as an older adult with positive serology and aneurysm or gumma on biopsy — you must decide if syphilis is active. Treponemal tests stay positive for life, so a reactive test alone does not prove tertiary disease; compare titres and involve cardiology or neurology early.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Tertiary disease is uncommon after penicillin and screening; gummas and cardiovascular disease are now case reports, while neurosyphilis and ocular disease remain relevant.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Tertiary disease is tissue destruction years later, not a higher titre. A lifelong positive treponemal test with low RPR is often serologic scar.</p>
+      </div>
+
+      <h2 class="ct-h2">Neurosyphilis, ocular syphilis, and otosyphilis at any stage</h2>
+      <p>Unlike classic tertiary disease, <span class="ct-term">neurosyphilis</span> can occur at any stage. Early disease is meningitis with headache, meningismus, or cranial nerve palsies, or meningovasculitis with stroke. Late disease adds parenchymal syndromes. Any patient with neurologic signs, severe headache, or unexplained stroke needs lumbar puncture with CSF VDRL, cell count, and protein; VDRL is specific but insensitive.</p>
+      <p><span class="ct-term">Ocular syphilis</span> and <span class="ct-term">otosyphilis</span> are neurologic equivalents at any stage. Ocular disease is uveitis, panuveitis, retinitis, or optic neuritis with blurred vision, redness, photophobia, or loss. Otosyphilis is sensorineural hearing loss, tinnitus, or vertigo, often bilateral. Both are missed if not asked about at every visit. When suspected, arrange urgent ophthalmology or otolaryngology and cerebrospinal fluid (CSF) evaluation; treatment follows neurosyphilis regimens.</p>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not reassure new eye pain, vision change, hearing loss, or vertigo as unrelated. They can become permanent within days and need same-day ophthalmology and infectious diseases input.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 35-year-old man with secondary syphilis (RPR 1:128) has 3 days of bilateral blurry vision, photophobia, and redness. What is next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat as secondary and watch eyes in 2 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recognise ocular syphilis, urgent ophthalmology, CSF evaluation, treat as neurosyphilis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer puncture — only tertiary affects eyes</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Topical steroids only, recheck RPR in 1 month</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Ocular and otosyphilis can occur at any stage and are neurologic equivalents needing urgent specialist and CSF evaluation, even when initial stage was early.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Putting staging into practice at the bedside</h2>
+      <p>When history is incomplete, examine genitalia, anus and perianal skin, mouth, palms and soles, scalp, nodes, eyes, and hearing. Ask about healed painless sores, prior palmoplantar rash, perianal warts, patchy hair loss, and prior tests or treatment. Retrieve prior serologies — a negative result within a year is the most powerful staging clue. In pregnancy, stage urgently for transmission risk.</p>
+      <p>Follow nontreponemal titres with the same test (RPR or VDRL); a fourfold change — for example 1:64 to 1:16 after therapy — is significant. Treponemal tests usually remain positive.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Syphilis stages at a glance</caption>
+          <thead>
+            <tr><th>Stage</th><th>Timing</th><th>Findings</th><th>Infectious by sex?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Incubation</td><td>10 to 90 days</td><td>No lesions</td><td>No</td></tr>
+            <tr><td>Primary</td><td>Around 3 weeks; heals 3 to 6 weeks</td><td>Painless ulcer, nodes</td><td>Yes — highly</td></tr>
+            <tr><td>Secondary</td><td>4 to 10 weeks after chancre</td><td>Palmoplantar rash, mucous patches, condyloma lata</td><td>Yes</td></tr>
+            <tr><td>Early latent</td><td>Within 12 months</td><td>No signs; proof within 1 year</td><td>Yes</td></tr>
+            <tr><td>Late latent / unknown</td><td>Greater than 12 months or unknown</td><td>No signs; no recent proof</td><td>Late sexual unlikely; vertical possible</td></tr>
+            <tr><td>Tertiary</td><td>Years to decades</td><td>Gummas, aortitis, late neurosyphilis</td><td>Not by sex</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Syphilis and HIV co-infection is common. CDC recommends HIV screening at syphilis diagnosis and vice versa, with repeat screening every 3 to 6 months if risk persists, and pregnant person screening at entry and again at 28 weeks and delivery if at risk.</p>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Document the last negative syphilis date, prior treatment, and timeline. Future clinicians stage from your dates.</p>
+      </div>
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 42-year-old woman at 10 weeks prenatal has reactive treponemal test, RPR 1:4, no sores or rash, and no prior test. How to stage?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Early latent — trace 3 months</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Late latent or unknown — evaluate long-term partners, urgent obstetric and infectious diseases input</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Primary — low RPR excludes latent</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">No staging in pregnancy</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Without prior negative or recent symptoms or exposure within 12 months, stage as late latent or unknown, managed as late infection. Low RPR does not exclude latency; partner assessment and prompt obstetric treatment are needed.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Primary is a painless indurated chancre; it heals in 3 to 6 weeks without therapy but infection persists.</li>
+        <li>Secondary follows 4 to 10 weeks later with non-pruritic rash often on palms and soles, mucous patches, and condyloma lata; titres are high.</li>
+        <li>Latent is asymptomatic seropositivity — early latent needs proof within 12 months, late latent or unknown means longer or unknown; never use titre alone.</li>
+        <li>Neurosyphilis, ocular and otosyphilis can occur at any stage; new neurologic, visual, or hearing symptoms need urgent specialist and CSF evaluation.</li>
+        <li>Tertiary disease — gummas, aortitis, and late neurosyphilis — is rare, years to decades later, defined by tissue destruction, not titre.</li>
+        <li>Examine genitalia, mouth, palms and soles, perianal area, eyes and hearing, ask about healed sores and prior rashes, retrieve the last negative date, and use partner windows.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Workowski KA, Bachmann LH, Chan PA, et al. Sexually transmitted infections treatment guidelines, 2021. <em>MMWR Recomm Rep</em>. 2021;70(4):1-187.</li>
+          <li>Centers for Disease Control and Prevention. Sexually transmitted infections treatment guidelines — syphilis section. Updated 2025. Accessed August 2026.</li>
+          <li>Ghanem KG, Ram S, Rice PA. The modern epidemic of syphilis. <em>N Engl J Med</em>. 2020;382(9):845-854.</li>
+          <li>Peeling RW, Mabey D, Kamb ML, et al. Syphilis. <em>Nat Rev Dis Primers</em>. 2017;3:17073.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Stages of syphilis</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

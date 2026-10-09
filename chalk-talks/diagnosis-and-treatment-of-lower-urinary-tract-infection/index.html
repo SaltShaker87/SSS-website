@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnosis and treatment of lower urinary tract infection (cystitis) in adults — IDSA Chalk Talk</title>
+<meta name="description" content="How to recognise cystitis, when a urine culture helps, and how to choose short, narrow therapy.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Diagnosis and treatment of lower urinary tract infection (cystitis) in adults — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Genitourinary infections</p>
+        <h1 class="ct-h1">Diagnosis and treatment of lower urinary tract infection (cystitis) in adults</h1>
+        <p class="ct-subtitle">When dysuria is cystitis, when it is not, and how to pick an antibiotic that works without collateral damage</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: Dr Sonal S. Munsiff</span>
+        <span class="ct-meta-item">Adapted: October 2022</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 28-year-old healthy woman presents with one day of burning on urination, hourly urgency, and mild suprapubic pressure. No fever, flank pain, or vaginal discharge. One prior urinary tract infection (UTI) two years ago treated with nitrofurantoin. She asks if she needs a urine culture and which antibiotic to take.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish cystitis from pyelonephritis and asymptomatic bacteriuria using history.</li>
+          <li>Decide when urinalysis and urine culture change management.</li>
+          <li>Select short, narrow therapy for cystitis and know when to avoid fluoroquinolones.</li>
+          <li>Adapt the approach for men, older adults, and pregnant patients and counsel on recurrence.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">What counts as cystitis — and what does not</h2>
+      <p><span class="ct-term">Cystitis</span> is infection confined to the bladder. <span class="ct-term">Pyelonephritis</span> involves the kidney and upper tract, and <span class="ct-term">asymptomatic bacteriuria</span> is bacteria without urinary symptoms. Each has a different testing threshold and treatment.</p>
+      <p>Uncomplicated cystitis in guideline terms means acute cystitis in a premenopausal, non-pregnant woman without urological abnormality. The 2010 Infectious Diseases Society of America (IDSA) guideline focuses there, but the concepts generalise. A practical bedside sort is lower versus upper tract: fever, flank or costovertebral angle pain, nausea, vomiting, or sepsis suggest upper tract.</p>
+      <p>Classic cystitis is dysuria with frequency, urgency, suprapubic discomfort, sometimes hematuria, and no fever or flank pain. New vaginal discharge or pelvic pain points to vaginitis or sexually transmitted infection. Isolated urine cloudiness, odour change, or delirium without bladder symptoms is not cystitis.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Cystitis is a symptom diagnosis first. Culture confirms it; it does not make the diagnosis alone.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>The 2010 IDSA guideline excludes recurrent cystitis, prevention, and diagnosis. The 2025 complicated UTI update reframes many infections as lower versus upper tract by systemic features rather than hidden anatomy, moving many men and older women with cystitis without systemic signs back to a short-course, lower-tract approach.</p>
+      </div>
+
+      <h2 class="ct-h2">When the history makes the diagnosis</h2>
+      <p>Ask about the four bladder symptoms — dysuria, frequency, urgency, suprapubic pain — and the red flags for upper tract or mimics. Fever, rigors, flank or back pain, and vomiting favour pyelonephritis. Vaginal discharge or pelvic pain favours vaginal causes; urethral discharge in men favours urethritis.</p>
+      <p>In a healthy young woman with classic, acute, uncomplicated cystitis you can diagnose clinically and treat without routine culture. Culture is useful when the picture is atypical, with recent antibiotics, recurrent infection, suspected resistance, in men, in pregnancy, or when pyelonephritis is possible. If you do culture, a midstream clean-catch is adequate; a single typical organism in a symptomatic patient usually reflects infection, while mixed flora most often means contamination.</p>
+      <p>Older adults need the same symptom standard. Asymptomatic bacteriuria is common with age, so do not diagnose cystitis from a positive culture in a confused or fallen patient who denies bladder symptoms. Treat the fall or delirium and look elsewhere; treat the urine only if true urinary symptoms appear.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you would treat the same patient without a urine result, do not send the urine. Decide what the result would change first.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The woman in the vignette has classic dysuria, frequency, and urgency, is afebrile, and has no flank pain or vaginal discharge. What is the most appropriate next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Send urinalysis and culture and await results before treating</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Diagnose acute cystitis clinically and offer empiric therapy without routine culture</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Prescribe ciprofloxacin because it covers both cystitis and early pyelonephritis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Order pelvic ultrasound to rule out anatomic abnormality</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Classic uncomplicated cystitis in a healthy premenopausal woman is a clinical diagnosis. Culture and imaging are not required, and fluoroquinolones are effective but carry disproportionate collateral damage for cystitis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Using the urinalysis and urine culture without being misled</h2>
+      <p>Urinalysis helps but is not definitive. Nitrites are specific when positive but insensitive, because not all uropathogens reduce nitrate and urine may not have dwelled long enough. Leukocyte esterase and pyuria show inflammation from many causes — infection, vaginitis, stones, or colonisation. A negative urinalysis with classic symptoms should not dissuade you, and a positive urinalysis without symptoms should not persuade you.</p>
+      <p>Thresholds depend on context. In symptomatic cystitis even low counts of a typical organism such as <em>Escherichia coli</em> can be meaningful, while in an asymptomatic person high counts may be colonisation. That is why you should not screen for or treat asymptomatic bacteriuria except in pregnancy and before invasive urologic procedures with expected mucosal bleeding. Everyone else — including older adults and those with diabetes or a catheter — should not be tested or treated without symptoms.</p>
+      <p>Do not order a test of cure. Urine often stays positive for days after symptoms resolve and repeat testing adds nothing. Reculture only if symptoms persist or recur.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Treating pyuria or a positive culture without urinary symptoms as a UTI. Pyuria accompanies colonisation and does not distinguish infection from asymptomatic bacteriuria.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Mixed growth with multiple organisms in a midstream sample usually means contamination during collection, not a need for broader antibiotics.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 78-year-old woman after a fall is afebrile, denies dysuria or frequency, has no flank tenderness, but urinalysis is positive for leukocyte esterase and culture grows <em>E. coli</em>. What is the best interpretation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Cystitis — treat with nitrofurantoin 100 mg twice daily for 5 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Asymptomatic bacteriuria — do not treat the urine, evaluate the fall</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Early pyelonephritis — admit for a fluoroquinolone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Contamination — repeat culture before deciding</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Without bladder symptoms or systemic signs, bacteriuria plus pyuria is colonisation. Age and a positive dip do not create cystitis. Look for the real cause of the fall.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Choosing an antibiotic — short and narrow</h2>
+      <p>Cystitis therapy is short-course by design. The bladder concentrates many agents well, so tissue levels matter less than in pyelonephritis. Regimens below are as the speaker and IDSA present them, balancing efficacy with resistance and collateral damage including <em>Clostridioides difficile</em>.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Empiric choices for acute uncomplicated cystitis</caption>
+          <thead>
+            <tr><th>Agent</th><th>Regimen as presented</th><th>When it fits best</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nitrofurantoin monohydrate/macrocrystals</td><td>100 mg by mouth twice daily for 5 days</td><td>First-line when <em>E. coli</em> is likely; low resistance, low collateral damage</td></tr>
+            <tr><td>Trimethoprim-sulfamethoxazole</td><td>160/800 mg (one double-strength tablet) by mouth twice daily for 3 days</td><td>Only if local resistance does not exceed 20% and no recent use</td></tr>
+            <tr><td>Fosfomycin trometamol</td><td>3 g single dose by mouth</td><td>When first-line agents unsuitable; slightly lower efficacy</td></tr>
+            <tr><td>Pivmecillinam (where available)</td><td>400 mg by mouth twice daily for 3–7 days</td><td>First-line in some European settings</td></tr>
+            <tr><td>Oral beta-lactams (e.g. amoxicillin-clavulanate, cefdinir, cefpodoxime)</td><td>3–7-day regimens</td><td>When first-line cannot be used; more failures and adverse effects</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Nitrofurantoin is bladder-only: high urine levels but poor blood and tissue levels, so do not use it for pyelonephritis or possible bacteraemia. It covers most <em>E. coli</em> but <em>Proteus</em>, <em>Pseudomonas</em> and <em>Serratia</em> are intrinsically resistant; resistance is common in <em>Klebsiella</em> and <em>Enterobacter</em>. It is usable with glomerular filtration rate greater than 30 mL per minute, may colour urine yellow-brown, and is best taken with food.</p>
+      <p>Trimethoprim-sulfamethoxazole carries the 20% rule: avoid it empirically when local resistance exceeds 20% or with recent exposure. Where trimethoprim alone is preferred, 100 mg twice daily for 3 days is considered equivalent. Fluoroquinolones are highly efficacious for 3 days but cause disproportionate collateral damage and should be reserved. Beta-lactams are acceptable for 3–7 days when needed. Do not use amoxicillin or ampicillin alone empirically.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Nitrofurantoin for the bladder, not the kidney. If you worry about pyelonephritis, choose a tissue-active agent.</p>
+      </div>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Fosfomycin keeps high urinary levels for over 24 hours after a single 3 g dose and often stays active against extended-spectrum beta-lactamase (ESBL)-producing Enterobacterales, making it useful for cystitis when resistance is a concern.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A healthy 24-year-old with acute cystitis asks for ciprofloxacin because it helped before. Local trimethoprim-sulfamethoxazole resistance is 18% and she has no allergy. What is best?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Agree — fluoroquinolones are first-line for best cure rates</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Recommend nitrofurantoin 100 mg twice daily for 5 days as first-line</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Give amoxicillin 500 mg three times daily for 7 days as narrowest</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Offer fosfomycin 3 g daily for 5 days for superior efficacy</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Nitrofurantoin 5 days, trimethoprim-sulfamethoxazole 3 days (when resistance under 20%), and fosfomycin single dose are first-line for cystitis. Ciprofloxacin is an alternative reserved to limit collateral damage. Amoxicillin alone is not suitable empirically.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Cystitis in men, older adults, and other edge cases</h2>
+      <p>Men need a different default. Any symptomatic UTI in a man should prompt a urine culture, consideration of prostatitis or urethritis, and usually about 7 days of a tissue-active agent. The 2025 complicated UTI framework treats systemic features, not gender alone, as the discriminator, but men still rarely have truly uncomplicated cystitis.</p>
+      <p>In older adults the same symptom threshold applies. Delirium or a fall without dysuria, frequency, urgency or suprapubic pain is not cystitis, even with a positive dip or culture. Treat the syndrome you see.</p>
+      <p>Pregnancy and pre-urologic surgery are the two exceptions where you screen for bacteriuria without symptoms. In pregnancy treat asymptomatic bacteriuria and cystitis promptly, using agents considered safer in pregnancy per obstetric and pharmacy guidance. Before invasive urologic procedures with expected mucosal bleeding, screen and treat; outside that, do not screen.</p>
+      <h3 class="ct-h3">What about diabetes and postmenopausal women?</h3>
+      <p>Well-controlled diabetes without urological complications and postmenopausal women without catheter or obstruction were outside the strict 2010 definition, but many experts manage them similarly to uncomplicated cystitis when there are no systemic features, reserving culture for recurrence or atypia.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Labeling bacteriuria in a man or older adult as uncomplicated cystitis and giving a 3-day course. Men usually need evaluation for prostatic involvement and about 7 days of a tissue-active agent; older adults need symptoms first.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Pregnancy and pre-urologic surgery are the only two reasons to look for bacteriuria without symptoms. Otherwise, find symptoms first.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 62-year-old man has two days of dysuria and frequency, no fever, no flank pain, no discharge. Urinalysis shows leukocyte esterase. What fits the talk?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Treat as uncomplicated cystitis with nitrofurantoin 5 days without culture</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Obtain a culture, consider prostatitis, and plan about 7 days of a tissue-active agent if cystitis is confirmed</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Diagnose pyelonephritis and start intravenous ceftriaxone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Reassure without antibiotics because cystitis is rare in men</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Male UTI is treated as complicated. Send a culture, consider urethritis or prostatitis, and use about 7 days of a tissue-active drug. Nitrofurantoin alone is a bladder-only agent and not ideal when prostatic involvement is possible.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Follow-up, treatment failure, and preventing the next episode</h2>
+      <p>Symptoms should improve within 24–48 hours on an active agent; no repeat testing is needed if they do. If symptoms persist past 48–72 hours or worsen, reconsider the diagnosis — urethritis, vaginitis, or early pyelonephritis — and adjust based on culture. Persistent hematuria after cure needs urologic follow-up, not another antibiotic course.</p>
+      <p>Recurrent cystitis — often three or more culture-proven episodes in 12 months or two in six months — should be documented with symptoms and cultures before labelling. For clearly intercourse-linked episodes a single post-coital dose of a previously effective agent can work; others may use patient-initiated self-treatment with a preset agent plus a culture. Daily prophylaxis for 3–12 months is an option for select patients after other measures.</p>
+      <p>Non-antibiotic measures help: adequate hydration, post-coital voiding when relevant, and vaginal estrogen for postmenopausal women with atrophic vaginitis. Cranberry data are modest and inconsistent. Methenamine hippurate may be considered as non-antibiotic prophylaxis in some settings, attending to contraindications, but it is not acute therapy.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Stewardship data show that an order set defaulting uncomplicated cystitis to nitrofurantoin 5 days with prefilled instructions improves guideline-concordant prescribing and reduces fluoroquinolone use without increasing retreatment.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Cystitis is dysuria, frequency, urgency or suprapubic pain without fever or flank pain; absence of vaginal or urethral symptoms helps exclude mimics.</li>
+        <li>Classic uncomplicated cystitis in a healthy premenopausal woman needs no routine culture; do culture men, pregnant patients, atypical or recurrent cases, and suspected pyelonephritis.</li>
+        <li>First-line: nitrofurantoin 100 mg twice daily for 5 days, or trimethoprim-sulfamethoxazole one double-strength tablet twice daily for 3 days when resistance is under 20%, or fosfomycin 3 g single dose; reserve fluoroquinolones.</li>
+        <li>Never use nitrofurantoin for pyelonephritis or bacteraemia — it does not penetrate tissue.</li>
+        <li>Treat symptoms, not cultures: pyuria plus bacteria without symptoms is asymptomatic bacteriuria — do not treat except in pregnancy and before invasive urologic procedures.</li>
+        <li>Men and patients with systemic features need culture and about 7 days of a tissue-active agent; older adults need the same symptom threshold as younger adults.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Gupta K, Hooton TM, Naber KG, et al. International clinical practice guidelines for the treatment of acute uncomplicated cystitis and pyelonephritis in women: a 2010 update by the Infectious Diseases Society of America and the European Society for Microbiology and Infectious Diseases. <em>Clin Infect Dis</em>. 2011;52(5):e103-e120.</li>
+          <li>Nicolle LE, Gupta K, Bradley SF, et al. Clinical practice guideline for the management of asymptomatic bacteriuria: 2019 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2019;68(10):e83-e110.</li>
+          <li>Anger J, Lee U, Ackerman AL, et al. Recurrent uncomplicated urinary tract infections in women: AUA/CUA/SUFU guideline. <em>J Urol</em>. 2019;202(2):282-289.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Diagnosis and treatment of lower urinary tract infection (cystitis) in adults</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

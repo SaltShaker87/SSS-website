@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cerebral mass lesions in patients with AIDS — IDSA Chalk Talk</title>
+<meta name="description" content="A practical bedside approach to ring-enhancing lesions — distinguishing toxoplasmosis, primary CNS lymphoma, and other opportunistic causes.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Cerebral mass lesions in patients with AIDS — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Central nervous system infections</p>
+        <h1 class="ct-h1">Cerebral mass lesions in patients with AIDS</h1>
+        <p class="ct-subtitle">Distinguishing toxoplasmosis from lymphoma and knowing when to treat, test, or biopsy</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 12 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 38-year-old man with human immunodeficiency virus (HIV) infection, not taking antiretroviral therapy, presents with two weeks of headache, low-grade fever, and progressive left arm weakness. His last CD4 count, six months ago, was 44 cells per microlitre. On examination he is afebrile, has mild confusion, and a left pronator drift. Contrast-enhanced magnetic resonance imaging (MRI) of the brain shows two ring-enhancing lesions in the basal ganglia and corticomedullary junction with surrounding vasogenic oedema. Serum <em>Toxoplasma gondii</em> immunoglobulin G (IgG) is positive.</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Generate a focused differential diagnosis for cerebral mass lesions in a patient with acquired immunodeficiency syndrome (AIDS).</li>
+          <li>Use CD4 count, <em>Toxoplasma</em> serology, and imaging pattern to stratify the likelihood of toxoplasmosis versus primary central nervous system lymphoma.</li>
+          <li>Apply an empiric-treatment-first algorithm for presumed toxoplasmosis and define when to pursue brain biopsy.</li>
+          <li>Outline acute therapy, secondary prophylaxis, and the role and timing of antiretroviral therapy.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why a new cerebral mass lesion in AIDS is an emergency</h2>
+      <p>In a patient with advanced human immunodeficiency virus (HIV) infection, a new focal brain lesion is never incidental. It reflects loss of immune control over latent organisms or Epstein-Barr virus (EBV)-driven lymphoproliferation, and it can progress to herniation, status epilepticus, or irreversible deficit within days. Fever, headache, focal neurologic deficit, seizure, and altered mentation are the typical subacute presentation over one to three weeks, but any one may be absent. Do not be reassured by lack of fever — many patients are afebrile.</p>
+      <p>Your first jobs are to assess airway, breathing, and neurologic stability, to look for signs of raised intracranial pressure or impending herniation, and to get urgent neuroimaging with contrast. Non-contrast computed tomography (CT) is fast if the patient is unstable, but contrast-enhanced magnetic resonance imaging (MRI) with gadolinium is the test of choice once the patient is stable enough. Labs to send immediately include CD4 count, HIV viral load, complete blood count, comprehensive metabolic panel, and <em>Toxoplasma gondii</em> immunoglobulin G (IgG). Do not wait for serology to image.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Before effective antiretroviral therapy, <em>Toxoplasma gondii</em> caused focal brain lesions in up to one-third of patients with acquired immunodeficiency syndrome (AIDS) and a CD4 count below 100 cells per microlitre who were seropositive and not receiving prophylaxis. Reactivation of latent tissue cysts, not new infection, drives disease. Primary central nervous system lymphoma, almost always EBV-associated diffuse large B-cell lymphoma, was the second most common mass lesion. Both have fallen sharply where antiretroviral therapy and trimethoprim-sulfamethoxazole prophylaxis are widely used, but they remain common in patients who are undiagnosed, out of care, or non-adherent.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A ring-enhancing lesion in a patient with AIDS is toxoplasmosis until proven otherwise — but “until proven otherwise” means you must have a concrete plan to disprove it.</p>
+      </div>
+
+      <h2 class="ct-h2">The short differential that actually matters</h2>
+      <p>At the bedside, keep the list short and ranked. In order of frequency for a true mass lesion with oedema and contrast enhancement in a patient with a CD4 count below 100 cells per microlitre:</p>
+      <ol>
+        <li><span class="ct-term">Toxoplasmosis</span> due to <em>Toxoplasma gondii</em> — often multiple lesions.</li>
+        <li><span class="ct-term">Primary central nervous system lymphoma</span> — EBV-driven, often solitary and periventricular.</li>
+        <li>Less common but important mimics: cryptococcoma due to <em>Cryptococcus neoformans</em>, tuberculoma due to <em>Mycobacterium tuberculosis</em>, bacterial brain abscess (including <em>Nocardia</em>), progressive multifocal leukoencephalopathy due to JC virus (usually non-enhancing white matter disease rather than a mass, but can confuse), and less often fungal or cytomegalovirus lesions.</li>
+      </ol>
+      <p>Progressive multifocal leukoencephalopathy and HIV encephalopathy rarely produce ring enhancement or marked mass effect. If the scan shows diffuse, non-enhancing white matter change without a discrete mass, think JC virus rather than toxoplasmosis.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Key features that favour toxoplasmosis versus primary central nervous system lymphoma</caption>
+          <thead>
+            <tr><th>Feature</th><th>Toxoplasmosis</th><th>Primary central nervous system lymphoma</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CD4 count</td><td>Typically below 100 cells per microlitre, often below 50</td><td>Typically below 50 cells per microlitre</td></tr>
+            <tr><td>Serology or virology</td><td><em>Toxoplasma</em> IgG positive in most cases; negative makes toxoplasmosis much less likely</td><td>EBV deoxyribonucleic acid (DNA) often detectable in cerebrospinal fluid (CSF) when lymphoma present</td></tr>
+            <tr><td>Number of lesions</td><td>Multiple in about two-thirds; predilection for basal ganglia, thalamus, corticomedullary junction</td><td>Solitary in more than half; predilection for periventricular white matter, corpus callosum, basal ganglia</td></tr>
+            <tr><td>Imaging clues</td><td>Ring enhancement with prominent surrounding oedema; lesions often under 4 cm. Eccentric target sign on MRI suggests toxoplasmosis but is not sensitive</td><td>Often homogeneous or patchy enhancement, sometimes with less oedema than size predicts; subependymal spread; hypermetabolic on thallium or fluorodeoxyglucose positron emission tomography (PET)</td></tr>
+            <tr><td>Response to therapy</td><td>Clinical improvement within days, radiographic shrinkage within 10 to 14 days of anti-<em>Toxoplasma</em> therapy</td><td>No response to anti-<em>Toxoplasma</em> therapy; responds to steroids, but steroids also cloud the diagnosis</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not equate “ring-enhancing” with “abscess” and reflexively start broad-spectrum antibacterial therapy. In AIDS, a bacterial abscess is uncommon compared with toxoplasmosis and lymphoma, and routine antibacterial coverage delays the right workup. Cover bacteria only when the history (e.g., endocarditis, sinus or dental source) points that way.</p>
+      </div>
+
+      <h2 class="ct-h2">Clues from history, CD4 count and serology</h2>
+      <p>Three data points do more work than any advanced scan.</p>
+      <p><strong>CD4 count and care history.</strong> A CD4 count below 100 cells per microlitre defines the risk window for toxoplasmosis; below 50 cells per microlitre raises lymphoma risk sharply. Ask explicitly about antiretroviral therapy adherence, most recent viral load, prior opportunistic infections, and prophylaxis. A patient taking daily trimethoprim-sulfamethoxazole for <em>Pneumocystis jirovecii</em> prophylaxis is substantially protected against toxoplasmosis, though not absolutely.</p>
+      <p><strong><em>Toxoplasma</em> IgG.</strong> Send it in every patient with a focal lesion. A positive result means latent infection and the capacity for reactivation — it does not prove the current lesion is toxoplasmosis, but it makes it plausible. A negative result makes toxoplasmosis unlikely; in most series fewer than 5% of toxoplasmosis cases are seronegative, and a negative result should push you early toward alternative diagnoses and biopsy planning. <em>Toxoplasma</em> IgM is not useful for reactivation disease and will mislead you.</p>
+      <p><strong>Exposure and geographic clues.</strong> Residence or travel in tuberculosis-endemic regions, known latent tuberculosis, or prior cryptococcal disease shifts the prior probability toward tuberculoma or cryptococcoma. Ask about tuberculosis contacts, prior positive tuberculin or interferon-gamma release assay, and prior cryptococcal antigen testing.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>A negative <em>Toxoplasma</em> IgG does not absolutely exclude toxoplasmosis, but it should change your threshold — be far quicker to involve neurosurgery and pursue tissue diagnosis.</p>
+      </div>
+
+      <h2 class="ct-h2">What imaging tells you — and what it cannot</h2>
+      <p>Contrast-enhanced MRI with diffusion-weighted imaging is the study of choice. Look systematically at number, location, size, enhancement pattern, oedema, mass effect, and diffusion.</p>
+      <p>Toxoplasma lesions are often multiple, relatively small, and favour the basal ganglia, thalamus, and the junction of grey and white matter. Ring enhancement is common, with striking surrounding vasogenic oedema out of proportion to the lesion core. The eccentric target sign — a small enhancing nodule along the wall of a ring-enhancing lesion — when present is quite specific for toxoplasmosis, but its absence means nothing.</p>
+      <p>Primary central nervous system lymphoma is more often solitary, larger, and periventricular with homogeneous enhancement that may cross the corpus callosum. Oedema may be less than expected for size, and there may be subependymal spread. Diffusion restriction can be prominent and may be mistaken for infarction.</p>
+      <p>Neither pattern is pathognomonic. Overlap is the rule, which is why imaging alone never makes the diagnosis. Advanced techniques such as thallium-201 single-photon emission computed tomography (SPECT), fluorodeoxyglucose PET, or magnetic resonance spectroscopy can tilt probability — lymphoma tends to be hypermetabolic and shows elevated choline and lipid/lactate peaks — but sensitivity and specificity are moderate and availability is limited. Use them as adjuncts when the result would change management, not as a substitute for tissue if the patient is not improving.</p>
+      <p>Always comment on hydrocephalus, midline shift, and herniation risk. That comment dictates whether lumbar puncture is safe.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Do not perform lumbar puncture in a patient with a mass lesion causing significant oedema, midline shift, or effacement of basilar cisterns. The yield of cerebrospinal fluid (CSF) studies is rarely worth the herniation risk. When the scan is concerning, defer lumbar puncture, treat empirically if indicated, and reassess after oedema improves.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 42-year-old woman with HIV, CD4 count 28 cells per microlitre, presents with a single 3 cm periventricular ring-enhancing lesion. <em>Toxoplasma</em> IgG is negative. What best reflects the next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start empiric anti-<em>Toxoplasma</em> therapy and reassess in 4 weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Plan for early brain biopsy and involve neurosurgery promptly; do not rely on empiric toxoplasmosis therapy alone</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Obtain <em>Toxoplasma</em> IgM to confirm acute infection</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Perform lumbar puncture for EBV polymerase chain reaction (PCR) despite marked mass effect</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>A solitary periventricular lesion with a negative <em>Toxoplasma</em> IgG in a patient with a CD4 count below 50 cells per microlitre favours lymphoma over toxoplasmosis. IgM is not informative for reactivation disease. Lumbar puncture with marked mass effect risks herniation. Early tissue diagnosis is the priority; empiric therapy for a month would dangerously delay definitive care.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">A practical diagnostic algorithm</h2>
+      <p>Residents need a bedside sequence they can run at 2 a.m. Adapt this to your institution, but the logic below reflects widely used guidance for patients with AIDS and a new mass lesion.</p>
+      <ol>
+        <li><strong>Stabilise and image.</strong> Assess for herniation, give seizure prophylaxis only if a seizure has occurred, and obtain contrast-enhanced MRI (or CT if unstable). Start dexamethasone only if there is life-threatening oedema or herniation — not reflexively for any enhancement.</li>
+        <li><strong>Send <em>Toxoplasma</em> IgG and basic labs.</strong> Also send HIV viral load, CD4 count if not recent, serum cryptococcal antigen, and blood cultures. Hold CSF studies if mass effect is present.</li>
+        <li><strong>Stratify.</strong> If the patient is <em>Toxoplasma</em> seropositive, has multiple basal ganglia lesions, and a CD4 count below 100 cells per microlitre, the pre-test probability of toxoplasmosis is high. Plan empiric anti-<em>Toxoplasma</em> therapy with close neurologic monitoring and a follow-up scan in 10 to 14 days.</li>
+        <li><strong>Consider adjuncts when the case is indeterminate.</strong> EBV DNA by polymerase chain reaction (PCR) in CSF (if lumbar puncture is safe) has reasonable sensitivity for primary central nervous system lymphoma, and a negative result does not exclude it. Thallium SPECT or PET can support lymphoma but is not definitive.</li>
+        <li><strong>Define success and failure up front.</strong> Clinical improvement should begin within 3 to 7 days of anti-<em>Toxoplasma</em> therapy; radiographic shrinkage should be evident by 10 to 14 days. Document specific deficits to track daily. No clinical or radiographic improvement by 10 to 14 days is treatment failure — proceed to biopsy.</li>
+        <li><strong>Involve neurosurgery early.</strong> Any seronegative patient, any solitary lesion where lymphoma is favoured, any lesion in an accessible location with diagnostic uncertainty, or any patient who is deteriorating despite therapy needs early neurosurgical input. Stereotactic needle biopsy is the procedure of choice; yields are high and morbidity is lower than expected when performed at experienced centres.</li>
+      </ol>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>The trial of anti-<em>Toxoplasma</em> therapy is a diagnostic test with a deadline. Mark the calendar on day one: if the patient is not clinically better within a week and radiographically better within two weeks, the test is negative.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A man with AIDS, CD4 count 38 cells per microlitre, <em>Toxoplasma</em> IgG positive, and two ring-enhancing basal ganglia lesions is started on empiric anti-<em>Toxoplasma</em> therapy. On day 4 he reports less headache and his pronator drift is improving. What is the best next step?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Stop therapy and proceed immediately to biopsy because definitive diagnosis is still lacking</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Continue empiric therapy and repeat contrast MRI at 10 to 14 days to document response</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add high-dose dexamethasone to accelerate lesion shrinkage regardless of oedema</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Switch to chemotherapy for presumed lymphoma because multiple lesions can also be lymphoma</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Early clinical improvement on day 4 is typical for toxoplasmosis and supports continuing empiric therapy. The key is to complete the time-limited trial and obtain follow-up imaging at 10 to 14 days. Routine high-dose steroids without a herniation indication will shrink lymphoma and mask the response, and premature biopsy in a responding patient adds unnecessary risk.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Treating presumed toxoplasmosis and watching for response</h2>
+      <p>Acute therapy aims to kill tachyzoites of <em>Toxoplasma gondii</em> while protecting bone marrow. The preferred regimen per current United States Department of Health and Human Services opportunistic infection guidelines is pyrimethamine plus sulfadiazine plus leucovorin. Pyrimethamine and sulfadiazine are synergistic folate antagonists; leucovorin (folinic acid) rescues human bone marrow but not the parasite.</p>
+      <p>An alternative when sulfadiazine cannot be used is pyrimethamine plus clindamycin plus leucovorin. Trimethoprim-sulfamethoxazole is an alternative that is widely available and doubles as <em>Pneumocystis jirovecii</em> prophylaxis, but many centres reserve it for mild disease or when the preferred agents are unavailable. Atovaquone, with or without pyrimethamine, is another alternative in sulfa-intolerant patients, though data are more limited. Azithromycin is not a preferred agent.</p>
+      <p>Treat the acute phase for at least six weeks before transitioning to chronic maintenance therapy, and continue maintenance until sustained immune reconstitution on antiretroviral therapy — generally a CD4 count above 200 cells per microlitre for at least six months with a suppressed viral load. Do not stop maintenance based on a single CD4 count in isolation; confirm trends and viral suppression.</p>
+      <p>Practical points that avoid harm: check baseline complete blood count, creatinine, and liver tests; recheck blood counts frequently because pyrimethamine and sulfadiazine both suppress marrow and sulfadiazine can cause rash, crystalluria, and renal injury; ensure vigorous hydration and advise patients to report rash, sore throat, or fever; avoid initial high-dose dexamethasone unless needed for mass effect, and taper any steroids as soon as neurologically safe. If the patient is seropositive and adherent to trimethoprim-sulfamethoxazole, consider whether a breakthrough lesion represents non-adherence or malabsorption rather than drug failure.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Leucovorin dosing is not “optional.” Every pyrimethamine-containing regimen requires concurrent leucovorin to prevent pancytopenia. Folate (folic acid) is not a substitute. Corticosteroids, if needed for marked oedema, should be documented as a confounder — they shrink lymphoma lesions and will make it impossible to know whether anti-<em>Toxoplasma</em> therapy was responsible for any change.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">Which statement about maintenance therapy after acute toxoplasmosis treatment is most accurate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Maintenance therapy is unnecessary if the repeat MRI shows complete resolution</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Maintenance therapy can be stopped as soon as the CD4 count reaches 150 cells per microlitre once</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Maintenance therapy is continued until sustained immune reconstitution on antiretroviral therapy, typically CD4 count above 200 cells per microlitre for at least six months with viral suppression</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin monotherapy is the preferred maintenance regimen</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Toxoplasmosis maintenance (secondary prophylaxis) prevents relapse, which remains high without immune reconstitution. Guidelines advise continuing until the CD4 count has been above 200 cells per microlitre for at least six months on suppressive antiretroviral therapy. Imaging resolution alone does not remove the risk of relapse from residual cysts.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When to pivot to lymphoma and the role of biopsy</h2>
+      <p>Think lymphoma when the IgG is negative, the lesion is solitary and periventricular, the CD4 count is very low, or there is no response to a full trial of anti-<em>Toxoplasma</em> therapy. Detectable EBV DNA in CSF increases suspicion but a negative result does not exclude lymphoma, and many patients cannot safely undergo lumbar puncture at presentation.</p>
+      <p>Do not continue empiric therapy beyond 14 days without repeat imaging. A patient who is unchanged or worse needs tissue. Stereotactic biopsy is diagnostic in most cases when performed before prolonged steroids. If you must give steroids for herniation, document the indication and involve neurosurgery quickly — every day of steroids reduces biopsy yield for lymphoma.</p>
+      <p>When lymphoma is confirmed, management shifts to high-dose methotrexate-based regimens and optimization of antiretroviral therapy, ideally in coordination with oncology and neuro-oncology. Whole-brain radiation has largely been supplanted by chemotherapy where available because of neurocognitive toxicity, especially in younger patients. Discuss goals of care early: even with therapy, prognosis is guarded and depends heavily on performance status and immune recovery.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you need steroids to save the patient, give them — but tell the next team and tell neurosurgery that the biopsy clock is now ticking faster.</p>
+      </div>
+
+      <h2 class="ct-h2">Steroids, prophylaxis and timing of antiretroviral therapy</h2>
+      <p>Three cross-cutting decisions affect every patient.</p>
+      <p><strong>Steroids.</strong> Reserve dexamethasone for substantial vasogenic oedema with midline shift, obtundation, or herniation risk. Use the lowest effective dose and taper quickly once the patient stabilises. Do not use steroids to “test” whether the lesion shrinks — both toxoplasmosis and lymphoma shrink with steroids, and you will lose your diagnostic leverage.</p>
+      <p><strong>Prophylaxis.</strong> All patients need continued prophylaxis against <em>Pneumocystis jirovecii</em> and, when indicated, against <em>Mycobacterium avium</em> complex, tailored to CD4 count and antiretroviral response. Patients who complete toxoplasmosis therapy need secondary prophylaxis with the same class of agents (pyrimethamine-based or trimethoprim-sulfamethoxazole) until immune reconstitution. Primary prophylaxis for seropositive patients with a CD4 count below 100 cells per microlitre who are not already on active therapy is generally trimethoprim-sulfamethoxazole, which also covers <em>Pneumocystis</em>.</p>
+      <p><strong>Antiretroviral therapy.</strong> Do not delay antiretroviral therapy. Start or optimise antiretroviral therapy promptly, generally within two weeks of opportunistic infection therapy, to drive immune recovery — the only durable protection against relapse. Coordinate with pharmacy for drug interactions (pyrimethamine, sulfadiazine, and many antiretrovirals are marrow-suppressive or nephrotoxic). Warn patients about immune reconstitution inflammatory syndrome, which can transiently worsen neurologic symptoms and imaging even as immunity improves.</p>
+      <p>Seizure prophylaxis deserves a brief mention: give an antiepileptic only if the patient has seized. Routine prophylaxis for a mass lesion without seizure does not improve outcomes and adds adverse effects.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Stopping toxoplasmosis prophylaxis too early is a common reason for relapse. A single CD4 count above 200 cells per microlitre during an intercurrent illness is not “immune reconstitution.” Require six months above 200 cells per microlitre with a suppressed viral load on antiretroviral therapy before discontinuing secondary prophylaxis, and confirm with your local infectious diseases team.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Immune reconstitution is the real cure for both diseases. Drugs buy you time; antiretroviral therapy and a rising CD4 count buy you survival.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 35-year-old man with AIDS, CD4 count 22 cells per microlitre, is diagnosed with presumed toxoplasmosis and is started on pyrimethamine plus sulfadiazine plus leucovorin. He has no oedema requiring steroids and his headache is improving. When should antiretroviral therapy be addressed?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Defer antiretroviral therapy until maintenance prophylaxis is completed, to avoid drug interactions</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Wait at least 8 weeks because early antiretroviral therapy always worsens neurologic disease via immune reconstitution</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Start or optimise antiretroviral therapy within about two weeks, with counselling about immune reconstitution inflammatory syndrome</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Start antiretroviral therapy only after biopsy confirmation, even if the patient is responding to empiric therapy</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Early antiretroviral therapy improves outcomes for most opportunistic infections, including toxoplasmosis. Deferral increases relapse risk and mortality. Immune reconstitution inflammatory syndrome is real but manageable and does not justify delaying therapy for weeks, especially when the patient is improving. Coordinate drug interactions with pharmacy rather than postponing antiretroviral therapy.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>A new ring-enhancing mass in AIDS is an emergency: stabilise, obtain contrast-enhanced MRI, check CD4 count and <em>Toxoplasma</em> IgG, and assess for herniation before considering lumbar puncture.</li>
+        <li>The ranked differential is <em>Toxoplasma gondii</em> first, primary central nervous system lymphoma second, then cryptococcoma, tuberculoma, and bacterial abscess; non-enhancing diffuse white matter disease points toward progressive multifocal leukoencephalopathy rather than a mass.</li>
+        <li>Use the triad of CD4 count, serology, and lesion pattern: multiple basal ganglia lesions with positive IgG favour toxoplasmosis; a solitary periventricular lesion with negative IgG favours lymphoma.</li>
+        <li>Treat high-probability toxoplasmosis empirically with a pyrimethamine-based regimen plus leucovorin, track deficits daily, and repeat imaging at 10 to 14 days — no response means proceed to stereotactic biopsy, especially if IgG is negative.</li>
+        <li>Reserve steroids for life-threatening oedema, taper quickly, and involve neurosurgery early to save the biopsy yield.</li>
+        <li>Do not delay antiretroviral therapy, continue secondary prophylaxis until sustained CD4 count above 200 cells per microlitre for at least six months with viral suppression, and give antiepileptics only after a seizure.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Panel on Guidelines for the Prevention and Treatment of Opportunistic Infections in Adults and Adolescents with HIV. Guidelines for the prevention and treatment of opportunistic infections in adults and adolescents with HIV. National Institutes of Health, Centers for Disease Control and Prevention, HIV Medicine Association, and Infectious Diseases Society of America.</li>
+          <li>Porter SB, Sande MA. Toxoplasmosis of the central nervous system in the acquired immunodeficiency syndrome. <em>N Engl J Med</em>. 1992;327(23):1643-1648.</li>
+          <li>Thurnher MM, et al. Imaging of cerebral toxoplasmosis after highly active antiretroviral therapy. <em>AJNR Am J Neuroradiol</em>. 2003;24(3):354-359.</li>
+          <li>Antinori A, et al. Epidemiology, clinical features and prognostic value of EBV DNA in CSF of patients with AIDS-related primary central nervous system lymphoma. <em>J Neurovirol</em>. 1999;5(2):98-105.</li>
+          <li>Kaplan JE, et al. Guidelines for prevention and treatment of opportunistic infections in HIV-infected adults and adolescents. <em>MMWR Recomm Rep</em>. 2009;58(RR-4):1-207.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Cerebral mass lesions in patients with AIDS</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

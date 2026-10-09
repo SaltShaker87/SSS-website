@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anaerobes — IDSA Chalk Talk</title>
+<meta name="description" content="When and how to cover obligate anaerobes &mdash; and when not to">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Anaerobes — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+
+     <header class="ct-hero">
+        <p class="ct-eyebrow">Infectious diseases</p>
+        <h1 class="ct-h1">Anaerobes</h1>
+        <p class="ct-subtitle">From mouth to colon, which infections need anaerobic coverage and when you can safely skip it</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 62-year-old man is admitted after a witnessed aspiration during an alcohol-related seizure. He is febrile to 38.4°C, has a cough with foul-smelling sputum, and a right lower lobe infiltrate on chest radiograph. The overnight team started vancomycin and piperacillin-tazobactam. On day 3 he is still febrile, blood cultures are negative, and his sputum culture grows &ldquo;mixed oral flora.&rdquo; The resident asks: does he need anaerobic coverage for aspiration pneumonia, and should we add metronidazole?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Distinguish obligate anaerobes from facultative organisms and explain where anaerobes normally live.</li>
+          <li>List the clinical syndromes where anaerobic infection is common and those where it is uncommon.</li>
+          <li>Explain why anaerobic cultures are often negative and how to collect and interpret them.</li>
+          <li>Choose empiric therapy that covers anaerobes when needed and avoid redundant double anaerobic coverage.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">What anaerobe means at the bedside</h2>
+      <p>An <span class="ct-term">obligate anaerobe</span> grows only when oxygen is absent. That is different from a <span class="ct-term">facultative anaerobe</span> such as <em>Escherichia coli</em> or <em>Staphylococcus aureus</em>, which tolerates oxygen but can also grow without it, and from an <span class="ct-term">aerobe</span>, which requires oxygen. In the human body, obligate anaerobes are not invaders. They are the normal flora of the mouth, colon, and vagina. The colon alone contains about ten to one hundred times more anaerobic bacteria than aerobic bacteria by weight.</p>
+      <p>Infection occurs when that flora is carried somewhere it does not belong. A breach of a mucosal barrier &mdash; a tooth extraction, a perforated viscus, an aspiration event, a bite, a decubitus ulcer overlying the perineum &mdash; seeds organisms into a normally sterile space. Once there, the low oxygen tension of an abscess, necrotic tissue, or obstructed bronchus lets them thrive. That is why anaerobes rarely cause infection on their own in well-oxygenated tissue. They are part of mixed, polymicrobial infections next to a mucosal surface.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Think &ldquo;where did this come from?&rdquo; If the infection sits next to mouth, colon, or vagina and involved a mucosal breach, add anaerobes to the differential. If it sits in well-perfused skin far from a mucosal surface, anaerobes are unlikely.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Naming has changed but the clinical patterns have not. <em>Propionibacterium acnes</em> is now <em>Cutibacterium acnes</em> and <em>Clostridium difficile</em> is now <em>Clostridioides difficile</em>. You will see both names on reports and in older lectures.</p>
+      </div>
+
+      <h2 class="ct-h2">The usual suspects and where they live</h2>
+      <p>You do not need to memorise every anaerobe, but you should recognise the patterns. Gram-negative rods dominate below the diaphragm; gram-positive cocci and gram-positive rods dominate above it and in soft tissue.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Common obligate anaerobes by site and clue</caption>
+          <thead>
+            <tr><th>Organism</th><th>Usual niche</th><th>Classic clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><em>Bacteroides fragilis</em> group</td><td>Colon (most common anaerobe in stool)</td><td>Intra-abdominal abscess or peritonitis after perforation; resistant to penicillin via beta-lactamase</td></tr>
+            <tr><td><em>Prevotella</em> spp., <em>Porphyromonas</em> spp.</td><td>Oral cavity and gingival crevice</td><td>Periodontal infection, aspiration pneumonia with putrid sputum, tubo-ovarian abscess</td></tr>
+            <tr><td><em>Fusobacterium nucleatum</em> and <em>Fusobacterium necrophorum</em></td><td>Oropharynx</td><td>Peritonsillar abscess, Lemierre syndrome (jugular thrombophlebitis), lung abscess</td></tr>
+            <tr><td><em>Cutibacterium acnes</em></td><td>Skin and pilosebaceous unit</td><td>Indolent prosthetic joint or shoulder hardware infection with negative routine cultures</td></tr>
+            <tr><td><em>Actinomyces</em> spp.</td><td>Oral cavity</td><td>Chronic cervicofacial, thoracic, or pelvic mass with sinus tracts and &ldquo;sulphur granules&rdquo;</td></tr>
+            <tr><td><em>Peptostreptococcus</em> spp. and other anaerobic cocci</td><td>Mouth, gut, vagina</td><td>Mixed wound, chronic sinusitis, brain abscess contiguous with sinuses or teeth</td></tr>
+            <tr><td><em>Clostridium perfringens</em> and other clostridia</td><td>Colon and soil</td><td>Gas gangrene or crepitant cellulitis after trauma or ischaemia</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><em>Clostridioides difficile</em> is an anaerobe but behaves differently &mdash; it causes toxin-mediated colitis after antibiotics rather than pyogenic abscess &mdash; and is not covered here. <em>Veillonella</em> and <em>Bacteroides thetaiotaomicron</em> and other commensals appear on sequencing reports as part of mixed flora and rarely need separate therapy.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A blood culture is reported as &ldquo;anaerobic bottle: <em>Bacteroides fragilis</em>.&rdquo; The source is unclear but the patient had recent diverticulitis with microperforation. Which statement is most accurate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">This is likely a contaminant; <em>Bacteroides</em> rarely causes bacteremia</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">This is likely true bacteremia from a colonic source and should be treated</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Repeat cultures and observe without antibiotics because anaerobes are low virulence</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add vancomycin because <em>Bacteroides</em> is gram-positive</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p><em>Bacteroides fragilis</em> is an obligate gram-negative rod and the most common anaerobic bloodstream isolate. When it grows in the anaerobic bottle, especially after an intra-abdominal breach, treat it as true infection. It is not a skin contaminant and it is not gram-positive.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">When to think anaerobes: syndromes and bedside clues</h2>
+      <p>The question on call is not &ldquo;does this patient have an anaerobe?&rdquo; but &ldquo;does this syndrome require empiric anaerobic coverage while we sort out the source?&rdquo; Use the site, the history of breach, and the smell and look of the infection.</p>
+      <p>Bedside clues that raise suspicion for anaerobes include foul-smelling or putrid discharge, visible gas on imaging or crepitus on examination, necrotic or black tissue adjacent to a mucosal surface, and infection that fails to respond to agents that lack anaerobic activity despite adequate drainage.</p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Anaerobes by syndrome: cover or not</caption>
+          <thead>
+            <tr><th>Syndrome</th><th>Anaerobic role</th><th>Approach</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Intra-abdominal perforation, appendicitis, diverticulitis with abscess, postoperative peritonitis</td><td>Expected &mdash; polymicrobial with <em>Bacteroides</em> plus facultative gram-negatives and streptococci</td><td>Always cover anaerobes; add source control</td></tr>
+            <tr><td>Aspiration pneumonia, lung abscess, necrotising pneumonia with putrid sputum</td><td>Common &mdash; oral anaerobes (<em>Prevotella</em>, <em>Fusobacterium</em>, <em>Peptostreptococcus</em>)</td><td>Cover anaerobes when there is lung necrosis, putrid sputum, or poor dentition with aspiration risk</td></tr>
+            <tr><td>Head and neck: periodontal abscess, peritonsillar abscess, chronic sinusitis, Lemierre syndrome, brain abscess contiguous with sinuses or teeth</td><td>Expected &mdash; oral anaerobes</td><td>Cover anaerobes</td></tr>
+            <tr><td>Female pelvic: bacterial vaginosis, tubo-ovarian abscess, septic abortion</td><td>Expected &mdash; <em>Prevotella</em>, <em>Bacteroides</em>, anaerobic cocci plus aerobes</td><td>Cover anaerobes</td></tr>
+            <tr><td>Skin and soft tissue: human or animal bite, diabetic foot with ischaemia or foul odour, Fournier gangrene, decubitus ulcer with gas</td><td>Mixed infection when near mouth or perineum, or with necrosis</td><td>Cover anaerobes when wound is near oral or colonic flora, or has gas or necrosis</td></tr>
+            <tr><td>Cellulitis without bite, without foul odour, without necrosis; simple erysipelas</td><td>Uncommon &mdash; usually <em>Streptococcus pyogenes</em> or <em>Staphylococcus aureus</em></td><td>Anaerobic coverage not routinely needed</td></tr>
+            <tr><td>Aspiration pneumonitis (chemical, early, no infiltrate or low-grade fever only) and most acute aspiration events with small volume without necrosis</td><td>Uncommon early; colonization, not infection</td><td>Antibiotics not routinely indicated; if you treat, do not double-cover anaerobes</td></tr>
+            <tr><td>Urinary tract infection, uncomplicated</td><td>Rare as sole cause</td><td>Do not add anaerobic coverage</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Foul smell, gas, necrosis, and &ldquo;next to a mucosa&rdquo; are more reliable than fever or white count for suspecting anaerobes. The culture may take days. Cover based on syndrome on day one and narrow when you have surgical cultures.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Chasing &ldquo;mixed oral or mixed anaerobic flora&rdquo; on a sputum or wound swab that was not sampled cleanly. A superficial swab of an open ulcer or expectorated sputum will always grow mixed anaerobes because that is what skin and mouth contain. Treat the syndrome, not the swab report.</p>
+      </div>
+
+      <h2 class="ct-h2">When anaerobic coverage is not needed</h2>
+      <p>Overcovering wastes spectrum, selects for <em>Clostridioides difficile</em>, and can double-cover anaerobes without benefit. Residents often continue an anti-anaerobic agent because &ldquo;it can&rsquo;t hurt.&rdquo; It can.</p>
+      <p>Typical situations where routine anaerobic coverage adds little include uncomplicated cellulitis or erysipelas without bite or perineal involvement, isolated community-acquired pneumonia without aspiration risk factors or putrid sputum, early chemical aspiration pneumonitis after a witnessed small-volume event, and uncomplicated cystitis. For aspiration, guidelines emphasise that pneumonitis in the first hours is chemical injury; many patients improve without antibiotics, and routine addition of clindamycin or metronidazole to standard community-acquired pneumonia therapy is not recommended unless lung abscess or necrotising features develop.</p>
+      <p>Another common error is double anaerobic coverage: for example, piperacillin-tazobactam already covers anaerobes, so adding metronidazole is redundant. The same is true for carbapenems (meropenem, imipenem, ertapenem) and for amoxicillin-clavulanate or ampicillin-sulbactam in appropriate syndromes. Adding a second anaerobic agent does not improve outcomes and increases nausea, neuropathy risk with prolonged metronidazole, and <em>Clostridioides difficile</em> risk. The exception is when a second agent is needed for a different reason, such as adding metronidazole for <em>Clostridioides difficile</em> therapy while the primary beta-lactam is for another infection &mdash; discuss with pharmacy.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If your regimen already contains piperacillin-tazobactam, a carbapenem, amoxicillin-clavulanate, or ampicillin-sulbactam, you already have anaerobic coverage. Adding metronidazole or clindamycin is double coverage. Stop, do not stack.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient has mild, non-purulent right leg cellulitis after a shaving nick, no bite, no crepitus, no foul odour. She is well perfused. Which coverage is most appropriate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Streptococci and <em>Staphylococcus aureus</em> &mdash; for example, cefazolin &mdash; without routine anaerobic coverage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Add metronidazole because all skin infections have anaerobes</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Piperacillin-tazobactam plus clindamycin plus metronidazole for broad coverage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Clindamycin alone for toxin suppression in cellulitis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Non-purulent cellulitis without risk factors is usually streptococcal or staphylococcal. Routine anaerobic coverage is not needed and triple coverage adds harm without benefit. Clindamycin for toxin suppression is for necrotising infection or toxin-mediated disease, not routine cellulitis.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Making the microbiologic diagnosis</h2>
+      <p>Anaerobic culture is harder to obtain than routine culture and fails more often. That failure is usually your fault, not the lab&rsquo;s. Oxygen kills obligate anaerobes quickly. A swab that sits in air, a specimen that was not transported in anaerobic medium, or a sample taken after antibiotics were given will be falsely negative.</p>
+      <p>For best yield, send fluid or tissue, not a swab. Aspirate an abscess with a needle into an anaerobic transport vial, or send a bite of tissue at debridement, and carry it to the lab promptly. Blood cultures remain the highest-yield aerobic and anaerobic test when bacteraemia is possible: the laboratory draws into both an aerobic bottle and an anaerobic bottle; <em>Fusobacterium</em> and <em>Bacteroides</em> often grow in the anaerobic bottle first. Warn the lab when you suspect anaerobes so they hold cultures longer and process them appropriately.</p>
+      <p>Expect Gram stain to be your early guide. Anaerobes have characteristic shapes but are reported simply as &ldquo;gram-negative rods&rdquo; or &ldquo;gram-positive cocci in chains.&rdquo; Correlate with site. Growth takes 48 hours to many days and final identification plus susceptibility may take a week or may never return. <em>Cutibacterium acnes</em> is notorious for growing only after many days, often dismissed as contamination until it grows repeatedly from hardware-associated samples. <em>Actinomyces</em> may show branching gram-positive rods and &ldquo;sulphur granules&rdquo; on histology before culture returns.</p>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Routine anaerobic susceptibility testing is often not performed unless bloodstream infection, deep hardware infection, or treatment failure occurs, because many isolates remain susceptible to metronidazole and carbapenems. When <em>Bacteroides</em> isolates fail therapy, request susceptibility specifically. Resistance to clindamycin and moxifloxacin is increasingly common among <em>Bacteroides</em> spp.</p>
+      </div>
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Sending a superficial wound swab labelled &ldquo;anaerobic culture&rdquo; and then treating the list of four organisms that return. Surface colonisation is not deep infection. Deep tissue or aspirated pus plus Gram stain from the operating room guides therapy; surface swabs mislead.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A diabetic foot ulcer with foul odour and undermined edges is debrided. What is the best specimen for anaerobic culture?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A surface swab rolled across the ulcer surface</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Expectorated sputum contaminated with oral flora</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Deep tissue or curetted base of the ulcer sent in anaerobic transport, or aspirated pus</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">A urine culture</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Anaerobes are killed by oxygen and swabs capture colonising skin and oral flora. Deep tissue or aspirated pus placed promptly into anaerobic transport is the most reliable. Surface swabs and expectorated sputum overrepresent colonization.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Choosing therapy and avoiding double coverage</h2>
+      <p>Therapy follows two principles: cover the anaerobes expected at that site and achieve source control. Antibiotics without drainage rarely cure an anaerobic abscess because pus is poorly penetrated and oxygen tension remains too low.</p>
+      <p>Agents with reliable anaerobic activity include metronidazole (excellent for most anaerobes, including <em>Bacteroides</em>, but inactive against aerobes, so it must be combined with other agents when aerobes are also expected), beta-lactam with beta-lactamase inhibitor combinations such as amoxicillin-clavulanate, ampicillin-sulbactam, and piperacillin-tazobactam, carbapenems, and, with more variable resistance, clindamycin. Cefoxitin has anaerobic activity but is rarely first line in 2026 due to narrower gram-negative coverage. Agents without anaerobic activity include aminoglycosides, aztreonam, trimethoprim-sulfamethoxazole, and most quinolones except moxifloxacin.</p>
+      <p>For intra-abdominal infection, targeted regimens such as piperacillin-tazobactam, ertapenem or meropenem, or cefepime plus metronidazole cover both the gram-negative aerobic component and anaerobes. For aspiration-related lung abscess, amoxicillin-clavulanate or ampicillin-sulbactam, or clindamycin when beta-lactam allergic and susceptible, are typical outpatient or inpatient options; broader hospital regimens use piperacillin-tazobactam or a cephalosporin plus metronidazole. For bite wounds, amoxicillin-clavulanate is preferred (covering <em>Pasteurella</em>, oral anaerobes, and staphylococci); clindamycin alone is a poor substitute for bite wounds because it misses <em>Pasteurella</em>.</p>
+      <p>Duration follows source control and syndrome rather than organism name alone. Uncomplicated intra-abdominal infection with adequate source control may require only a short course (on the order of four days after procedure in trials), whereas undrained abscess, lung abscess, or <em>Actinomyces</em> disease requires weeks to months. Always check the current guideline and local antibiogram for your institution; resistance patterns and recommended agents evolve.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Metronidazole covers anaerobes beautifully but covers nothing aerobic. It is always a partner drug. Pair it with an agent that handles the aerobic fellow travellers (for example, levofloxacin or a cephalosporin) when you choose it outside a beta-lactam and beta-lactamase inhibitor or carbapenem.</p>
+      </div>
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p><em>Bacteroides fragilis</em> is almost uniformly resistant to penicillin alone because it produces a beta-lactamase. Penicillin G or amoxicillin alone is therefore inadequate for suspected <em>Bacteroides</em> infection, even though it is excellent for <em>Actinomyces</em> and many oral anaerobes. Clindamycin resistance in the <em>Bacteroides fragilis</em> group has risen substantially, so it is no longer a reliable empiric single agent for intra-abdominal infection.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A patient on piperacillin-tazobactam for perforated diverticulitis with an abscess asks why metronidazole is not added. What is the best explanation?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Metronidazole is always needed for synergy with any beta-lactam</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Anaerobes do not cause diverticulitis</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Piperacillin-tazobactam already provides anaerobic coverage; adding metronidazole would be redundant double coverage</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Metronidazole is inactive against <em>Bacteroides</em></button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Piperacillin-tazobactam, carbapenems, amoxicillin-clavulanate, and ampicillin-sulbactam already cover anaerobes. Adding metronidazole does not broaden useful activity and increases adverse effects. Metronidazole is active against <em>Bacteroides</em>, but stacking it is not needed here.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Putting it together: three cases on call</h2>
+      <p><strong>Case 1 &mdash; perforated colon.</strong> A 48-year-old with fever and peritonitis after a sigmoid perforation has a computed tomography scan showing free fluid and free air. Intraoperative cultures are pending. Empiric regimen with anaerobic plus aerobic coverage (for example, piperacillin-tazobactam or ertapenem or cefepime plus metronidazole) plus prompt surgical source control is the standard. Do not wait for cultures.</p>
+      <p><strong>Case 2 &mdash; the aspiration case from the vignette.</strong> Small-volume aspiration with chemical pneumonitis alone may not need antibiotics at all if the patient is not deteriorating. When there is fever, purulent or putrid sputum, leukocytosis, and a new infiltrate evolving over days, it has become aspiration pneumonia or lung abscess and oral anaerobes must be covered. In the vignette, mixed oral flora on expectorated sputum is expected, not diagnostic, and blood cultures help. Amoxicillin-clavulanate or ampicillin-sulbactam would cover oral anaerobes without vancomycin or double anaerobic coverage, unless there are separate risk factors for methicillin-resistant <em>Staphylococcus aureus</em> or resistant gram-negatives. Reassess for abscess: if cavitary, many weeks of therapy may be needed, not days.</p>
+      <p><strong>Case 3 &mdash; foul diabetic foot.</strong> A 59-year-old with a plantar ulcer, underlying osteomyelitis on imaging, foul odour, and gas tracking along tissue planes has a limb-threatening infection. This syndrome requires anaerobic coverage plus coverage for aerobic gram-positives and gram-negatives, plus urgent surgery and debridement. A superficial swab is not helpful; deep tissue after debridement and bone biopsy guide narrowing.</p>
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>When you are unsure whether anaerobes matter, ask two questions: was there a mucosal breach near this site, and is there an undrained collection of pus? &ldquo;Yes&rdquo; to both is a strong cue to cover and to get a surgeon or interventional radiologist involved.</p>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Obligate anaerobes live in the mouth, colon, and vagina. Infection follows a mucosal breach into a low-oxygen space and is usually polymicrobial.</li>
+        <li>Classic sites are intra-abdominal perforation and abscess, aspiration-related lung abscess and necrotising pneumonia, head and neck and brain abscess contiguous with teeth or sinuses, pelvic abscess, and bite or foul diabetic foot and genital necrotising infections.</li>
+        <li>Clues are foul or putrid drainage, gas or crepitus, necrosis next to a mucosa, and failure of aerobic-only therapy. Routine cellulitis, small-volume aspiration pneumonitis, and cystitis do not routinely need anaerobic coverage.</li>
+        <li>Diagnosis favours fluid or tissue in anaerobic transport and blood cultures with an anaerobic bottle; Gram stain is the early guide. Growth takes days and swabs mislead.</li>
+        <li>Agents with reliable anaerobic activity are metronidazole, beta-lactam and beta-lactamase inhibitor combinations, and carbapenems. Do not double-cover: piperacillin-tazobactam, carbapenems, amoxicillin-clavulanate, and ampicillin-sulbactam already cover anaerobes.</li>
+        <li>There is no abscess too small to drain. Source control plus syndrome-appropriate antibiotics determines duration. Review current guidance and your local antibiogram before fixing a course.</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Brook I. Spectrum and treatment of anaerobic infections. <em>J Infect Chemother</em>. 2016;22(1):1-13.</li>
+          <li>Sawyer RG, et al. Trial of short-course antimicrobial therapy for intraabdominal infection. <em>N Engl J Med</em>. 2015;372(21):1996-2005.</li>
+          <li>Stevens DL, Bisno AL, Chambers HF, et al. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2014;59(2):e10-e52.</li>
+          <li>Mandell LA, Niederman MS. Aspiration pneumonia. <em>N Engl J Med</em>. 2019;380(7):651-663.</li>
+          <li>Baron EJ, Miller JM, Weinstein MP, et al. A guide to utilization of the microbiology laboratory for diagnosis of infectious diseases: 2013 recommendations by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2013;57(4):e22-e121.</li>
+        </ol>
+      </div>
+
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Anaerobes</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>

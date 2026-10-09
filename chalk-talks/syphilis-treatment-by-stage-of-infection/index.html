@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syphilis treatment by stage of infection — IDSA Chalk Talk</title>
+<meta name="description" content="Stage-based penicillin regimens for syphilis — from early infection to neurosyphilis, ocular disease, and pregnancy.">
+
+<!-- =========================================================
+     STYLE:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     This block is byte-for-byte identical in all 60 files.
+     check_style.py will fail the build if it is modified.
+     ========================================================= -->
+<style>
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --desktop:        #008080;
+  --silver:         #c0c0c0;
+  --silver-light:   #dfdfdf;
+  --silver-dark:    #808080;
+  --edge-dark:      #0a0a0a;
+  --navy:           #000080;
+  --navy-bright:    #1084d0;
+  --paper:          #ffffff;
+  --ink:            #14161a;
+  --ink-soft:       #4a4f57;
+  --olive:          #808000;
+  --maroon:         #800000;
+  --forest:         #006030;
+
+  --pearl-fill:     #fffce6;
+  --caution-fill:   #fff2f0;
+  --note-fill:      #eef2ff;
+  --vignette-fill:  #f4f4f0;
+
+  --font-ui:        Tahoma, "Segoe UI", "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --font-read:      Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-data:      "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono:      "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  --read:           68ch;
+  --gap:            1.25rem;
+  --radius:         0;
+}
+
+/* ---------- BEVELS (the Win95 look) ---------- */
+.ct-window, .ct-tbtn, .ct-menu-btn, .ct-quiz-opt, .ct-totop {
+  box-shadow: inset -1px -1px var(--edge-dark), inset 1px 1px var(--paper),
+              inset -2px -2px var(--silver-dark), inset 2px 2px var(--silver-light);
+}
+.ct-toc, .ct-status-cell, .ct-table-wrap, .ct-figure {
+  box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+              inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light);
+}
+
+/* ---------- RESET / BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0;
+  background: var(--desktop);
+  font-family: var(--font-read);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+:focus-visible { outline: 2px dotted var(--edge-dark); outline-offset: 2px; }
+
+/* ---------- WINDOW SHELL ---------- */
+.ct-desktop { padding: clamp(0px, 2vw, 28px); }
+.ct-window {
+  max-width: 1120px; margin: 0 auto;
+  background: var(--silver);
+  padding: 3px;
+}
+.ct-titlebar {
+  display: flex; align-items: center; gap: .5rem;
+  background: linear-gradient(90deg, var(--navy), var(--navy-bright));
+  color: var(--paper);
+  font-family: var(--font-ui); font-weight: 700; font-size: .84rem;
+  padding: .3rem .35rem .3rem .5rem;
+}
+.ct-titlebar-text { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: .01em; }
+.ct-titlebar-buttons { display: flex; gap: 2px; flex: 0 0 auto; }
+.ct-tbtn {
+  width: 20px; height: 18px; background: var(--silver); border: 0;
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700; line-height: 1;
+  color: var(--ink); cursor: default;
+}
+.ct-menubar {
+  display: flex; flex-wrap: wrap; gap: .15rem;
+  padding: .2rem .3rem; background: var(--silver);
+  border-bottom: 1px solid var(--silver-dark);
+  position: sticky; top: 0; z-index: 20;
+}
+.ct-menu-btn {
+  background: var(--silver); border: 0; padding: .3rem .7rem;
+  font-family: var(--font-ui); font-size: .8rem; color: var(--ink); cursor: pointer;
+}
+.ct-menu-btn:active { box-shadow: inset 1px 1px var(--silver-dark), inset -1px -1px var(--paper),
+                                  inset 2px 2px var(--edge-dark), inset -2px -2px var(--silver-light); }
+
+/* ---------- LAYOUT ---------- */
+.ct-body { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 0; background: var(--silver); }
+.ct-sidebar { padding: .75rem .5rem .75rem .75rem; }
+.ct-main {
+  background: var(--paper);
+  padding: clamp(1.1rem, 3vw, 2.6rem) clamp(1.1rem, 3.5vw, 3rem);
+  min-width: 0;
+}
+.ct-main > * { max-width: var(--read); }
+@media (max-width: 820px) {
+  .ct-body { grid-template-columns: 1fr; }
+  .ct-sidebar { padding: .6rem; }
+  .ct-toc { position: static !important; max-height: 42vh; }
+}
+
+/* ---------- TABLE OF CONTENTS ---------- */
+.ct-toc {
+  position: sticky; top: 2.6rem;
+  background: var(--paper); padding: .6rem .5rem;
+  font-family: var(--font-ui); font-size: .8rem;
+  max-height: calc(100vh - 5rem); overflow-y: auto;
+}
+.ct-toc-title { margin: 0 0 .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ct-toc-list { list-style: none; margin: 0; padding: 0; }
+.ct-toc-list li { margin: 0 0 .12rem; }
+.ct-toc-link {
+  display: block; padding: .28rem .4rem; color: var(--ink);
+  text-decoration: none; line-height: 1.35; border-left: 3px solid transparent;
+}
+.ct-toc-link:hover { background: var(--silver-light); }
+.ct-toc-link.ct-is-active { background: var(--navy); color: var(--paper); border-left-color: var(--navy-bright); }
+
+/* ---------- TYPE ---------- */
+.ct-eyebrow {
+  font-family: var(--font-ui); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--maroon);
+  margin: 0 0 .35rem;
+}
+.ct-h1 { font-family: var(--font-ui); font-size: clamp(1.5rem, 3.6vw, 2.1rem); line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+.ct-subtitle { font-size: 1.03rem; color: var(--ink-soft); margin: 0 0 1rem; font-style: italic; }
+.ct-h2 {
+  font-family: var(--font-ui); font-size: 1.24rem; line-height: 1.3;
+  margin: 2.6rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 2px solid var(--silver); scroll-margin-top: 3.2rem;
+}
+.ct-h3 { font-family: var(--font-ui); font-size: 1.02rem; margin: 1.6rem 0 .5rem; color: var(--maroon); }
+.ct-main p { margin: 0 0 1rem; }
+.ct-main ul, .ct-main ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+.ct-main li { margin-bottom: .4rem; }
+.ct-main a { color: var(--navy); }
+.ct-term { font-weight: 700; border-bottom: 1px dotted var(--silver-dark); }
+.ct-hero { margin-bottom: 1.4rem; }
+.ct-section { margin: 0; }
+
+/* ---------- METADATA STRIP ---------- */
+.ct-meta {
+  display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+  font-family: var(--font-ui); font-size: .74rem; color: var(--ink-soft);
+  padding: .5rem .7rem; background: var(--silver-light);
+  border-left: 4px solid var(--silver-dark); margin: 0 0 1.6rem;
+}
+.ct-meta-item { white-space: nowrap; }
+
+/* ---------- CALLOUTS ---------- */
+.ct-objectives, .ct-vignette, .ct-pearl, .ct-caution, .ct-note {
+  padding: .9rem 1.1rem; margin: 1.4rem 0; border-left: 5px solid var(--silver-dark);
+  background: var(--silver-light);
+}
+.ct-objectives { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-vignette  { background: var(--vignette-fill); border-left-color: var(--silver-dark); font-family: var(--font-data); font-size: .95rem; }
+.ct-pearl     { background: var(--pearl-fill); border-left-color: var(--olive); }
+.ct-caution   { background: var(--caution-fill); border-left-color: var(--maroon); }
+.ct-note      { background: var(--note-fill); border-left-color: var(--navy); }
+.ct-callout-label, .ct-vignette-label {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; color: var(--ink-soft);
+}
+.ct-pearl .ct-callout-label { color: var(--olive); }
+.ct-caution .ct-callout-label { color: var(--maroon); }
+.ct-objectives .ct-callout-label, .ct-note .ct-callout-label { color: var(--navy); }
+.ct-objectives ul, .ct-pearl ul, .ct-caution ul, .ct-note ul { margin-bottom: 0; }
+.ct-objectives p:last-child, .ct-vignette p:last-child, .ct-pearl p:last-child,
+.ct-caution p:last-child, .ct-note p:last-child { margin-bottom: 0; }
+
+/* ---------- TABLES ---------- */
+.ct-table-wrap { max-width: 100%; overflow-x: auto; background: var(--paper); padding: 2px; margin: 1.5rem 0; }
+.ct-table { width: 100%; border-collapse: collapse; font-family: var(--font-data); font-size: .87rem; }
+.ct-table caption {
+  caption-side: top; text-align: left; font-family: var(--font-ui); font-size: .72rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); padding: .5rem .6rem;
+}
+.ct-table th, .ct-table td { padding: .5rem .65rem; border: 1px solid var(--silver); text-align: left; vertical-align: top; }
+.ct-table thead th { background: var(--silver-light); font-weight: 700; }
+.ct-table tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ---------- FIGURES ---------- */
+.ct-figure { margin: 1.6rem 0; padding: .5rem; background: var(--paper); max-width: 100%; }
+.ct-figure-img { display: block; width: 100%; height: auto; }
+.ct-figcaption { font-family: var(--font-ui); font-size: .75rem; color: var(--ink-soft); padding: .5rem .3rem 0; }
+
+/* ---------- SELF-CHECK ---------- */
+.ct-quiz { margin: 1.8rem 0; padding: 1rem 1.1rem; background: var(--silver-light); border-left: 5px solid var(--forest); }
+.ct-quiz-q { font-family: var(--font-data); font-weight: 700; margin: 0 0 .8rem !important; }
+.ct-quiz-options { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.ct-quiz-options li { margin-bottom: .35rem; }
+.ct-quiz-opt {
+  display: block; width: 100%; text-align: left; background: var(--silver);
+  border: 0; padding: .55rem .7rem; font-family: var(--font-data); font-size: .9rem;
+  color: var(--ink); cursor: pointer;
+}
+.ct-quiz-opt:hover:not(:disabled) { background: var(--silver-light); }
+.ct-quiz-opt:disabled { cursor: default; }
+.ct-quiz-opt.ct-is-correct { background: #d8f0e0; box-shadow: inset 0 0 0 2px var(--forest); font-weight: 700; }
+.ct-quiz-opt.ct-is-wrong   { background: #f6dcd8; box-shadow: inset 0 0 0 2px var(--maroon); text-decoration: line-through; }
+.ct-quiz-explain { background: var(--paper); padding: .7rem .8rem; font-size: .93rem; border-left: 3px solid var(--forest); }
+.ct-quiz-explain p:last-child { margin-bottom: 0; }
+
+/* ---------- REFERENCES / FOOTER ---------- */
+.ct-refs { margin-top: 2.6rem; }
+.ct-ref-list { font-family: var(--font-data); font-size: .8rem; color: var(--ink-soft); padding-left: 1.3rem; }
+.ct-ref-list li { margin-bottom: .5rem; }
+.ct-disclaimer {
+  margin-top: 2rem; padding-top: .9rem; border-top: 1px solid var(--silver);
+  font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft);
+}
+.ct-statusbar { display: flex; gap: 3px; padding: 3px; background: var(--silver); font-family: var(--font-ui); font-size: .72rem; color: var(--ink-soft); }
+.ct-status-cell { padding: .25rem .5rem; background: var(--silver); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-status-cell:first-child { flex: 1 1 auto; }
+.ct-progress { flex: 0 0 110px; text-align: center; }
+.ct-totop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 30;
+  background: var(--silver); border: 0; padding: .5rem .8rem;
+  font-family: var(--font-ui); font-size: .75rem; cursor: pointer; display: none;
+}
+.ct-totop.ct-is-active { display: block; }
+
+/* ---------- PRINT ---------- */
+@media print {
+  body { background: var(--paper); font-size: 11pt; }
+  .ct-desktop { padding: 0; }
+  .ct-window { max-width: none; padding: 0; box-shadow: none; }
+  .ct-titlebar, .ct-menubar, .ct-sidebar, .ct-statusbar, .ct-totop { display: none !important; }
+  .ct-body { display: block; }
+  .ct-main { padding: 0; }
+  .ct-main > * { max-width: none; }
+  .ct-h2 { page-break-after: avoid; }
+  .ct-quiz, .ct-figure, .ct-table-wrap, .ct-pearl, .ct-caution { page-break-inside: avoid; }
+  .ct-quiz-explain { display: block !important; }
+  .ct-main a { text-decoration: none; color: var(--ink); }
+}
+</style>
+<!-- ===== STYLE:END ===== -->
+</head>
+<body>
+<div class="ct-desktop">
+<div class="ct-window">
+
+  <div class="ct-titlebar">
+    <span class="ct-titlebar-text">Syphilis treatment by stage of infection — Chalk Talk</span>
+    <span class="ct-titlebar-buttons">
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">_</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">□</button>
+      <button class="ct-tbtn" type="button" aria-hidden="true" tabindex="-1">×</button>
+    </span>
+  </div>
+
+  <nav class="ct-menubar" aria-label="Page tools">
+    <a class="ct-menu-btn" href="../" style="text-decoration:none">◀ All Chalk Talks</a>
+    <button class="ct-menu-btn" type="button" data-action="top">Top</button>
+    <button class="ct-menu-btn" type="button" data-action="answers">Show all answers</button>
+    <button class="ct-menu-btn" type="button" data-action="print">Print</button>
+  </nav>
+
+  <div class="ct-body">
+    <aside class="ct-sidebar">
+      <nav class="ct-toc" aria-label="Contents">
+        <p class="ct-toc-title">Contents</p>
+        <ul class="ct-toc-list"></ul>
+      </nav>
+    </aside>
+
+    <main class="ct-main">
+
+<!-- ===== CONTENT:BEGIN — everything below this line is yours to write ===== -->
+      <header class="ct-hero">
+        <p class="ct-eyebrow">Sexually transmitted infections</p>
+        <h1 class="ct-h1">Syphilis treatment by stage of infection</h1>
+        <p class="ct-subtitle">Choose the right penicillin, dose, and duration — and never miss the nervous system</p>
+      </header>
+
+      <div class="ct-meta">
+        <span class="ct-meta-item">Source: IDSA Chalk Talk series</span>
+        <span class="ct-meta-item">Original speaker: IDSA faculty</span>
+        <span class="ct-meta-item">Adapted: August 2026</span>
+        <span class="ct-meta-item">Read time: 9 minutes</span>
+      </div>
+
+      <div class="ct-vignette">
+        <span class="ct-vignette-label">Case</span>
+        <p>A 29-year-old man presents with a diffuse papulosquamous rash involving the trunk, palms, and soles for one week, sore throat, and generalized lymphadenopathy. He recalls a painless penile ulcer six weeks ago that healed untreated. Rapid plasma reagin (RPR) is 1:64 with positive treponemal antibody, human immunodeficiency virus (HIV) screen is pending, and he denies headache, vision change, eye pain, hearing loss, tinnitus, or vertigo. He has no penicillin allergy and is not pregnant. How do you stage and treat him?</p>
+      </div>
+
+      <div class="ct-objectives">
+        <span class="ct-callout-label">By the end of this talk you will be able to</span>
+        <ul>
+          <li>Stage syphilis using history, examination, and prior serology to select the correct regimen and duration.</li>
+          <li>Choose benzathine penicillin G, aqueous crystalline penicillin G, or procaine penicillin G with probenecid for early, late, and central nervous system disease.</li>
+          <li>Manage syphilis in pregnancy, penicillin allergy, Jarisch-Herxheimer reaction, serologic follow-up, and partner management, and recognise neurosyphilis, ocular, and otosyphilis at any stage.</li>
+        </ul>
+      </div>
+
+      <h2 class="ct-h2">Why staging decides the regimen</h2>
+      <p>Syphilis is caused by <em>Treponema pallidum</em> subspecies <em>pallidum</em>, which remains fully sensitive to penicillin. What changes is where organisms live and how slowly they divide. Early disease has numerous extracellular treponemes cured by a depot penicillin that stays above treponemicidal levels for one to two weeks. Late disease has sparse, tissue-sequestered organisms that need weeks of exposure, and central nervous system (CNS), ocular, or otologic infection needs an intravenous regimen that crosses the blood-brain barrier.</p>
+      <p>The Centers for Disease Control and Prevention (CDC) divides syphilis into primary (painless chancre), secondary (disseminated rash often on palms and soles, mucous patches, condylomata lata, systemic symptoms), early latent (asymptomatic, acquired within 12 months), late latent (acquired more than 12 months ago or unknown), tertiary (gummas, cardiovascular), and neurosyphilis, ocular, and otosyphilis, which can occur at any stage. If you cannot prove acquisition within 12 months from history, prior serology, or documented signs, treat as late latent.</p>
+      <p>The transcript and slide deck for this talk were corrupted and could not be recovered verbatim despite repair attempts. Doses and durations below are therefore derived from the CDC 2021 sexually transmitted infections treatment guidelines reaffirmed in 2025 — no numbers are invented from the transcript.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p><em>Treponema pallidum</em> divides every 30 to 33 hours. Benzathine penicillin G releases penicillin slowly for 2 to 3 weeks, which is why one dose covers early disease but not late latent disease, and why nontreponemal titers fall slowly.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Treatment is stage, not titer. A rapid plasma reagin (RPR) of 1:128 does not need more penicillin than 1:4 — the titer guides follow-up, not the number of injections.</p>
+      </div>
+
+      <h2 class="ct-h2">Early syphilis — primary, secondary, and early latent</h2>
+      <p>Early syphilis is primary, secondary, or early latent within 12 months. Primary is a painless chancre with adenopathy; secondary adds rash (often palms and soles), mucous patches, alopecia, condylomata lata, and systemic symptoms; early latent is asymptomatic with new seroconversion, fourfold titer rise, or documented exposure within 12 months.</p>
+      <p>For nonpregnant adults with early syphilis and no CNS, ocular, or otologic involvement, give <span class="ct-term">benzathine penicillin G</span> 2.4 million units intramuscular single dose as two 1.2-million-unit injections at separate sites. Extra doses do not improve outcomes.</p>
+      <p>On treatment day, verify allergy history, actively screen for neurologic, ocular, and otologic symptoms — headache, vision change, eye pain or redness, hearing loss, tinnitus, vertigo, facial droop, gait change, or cognitive change. If any are present, evaluate for neurosyphilis or ocular or otosyphilis instead. Without such symptoms, lumbar puncture and cerebrospinal fluid (CSF) examination are not required. Obtain a baseline nontreponemal titer — rapid plasma reagin (RPR) or Venereal Disease Research Laboratory (VDRL) — using the same assay and laboratory you will use for follow-up.</p>
+      <p>Counsel about the Jarisch-Herxheimer reaction — fever, myalgias, headache, and transient rash flare within 2 to 12 hours from treponemal lysis. It is not allergy, resolves within 24 hours, and does not preclude future penicillin. In pregnancy it can trigger uterine contractions, but do not delay treatment.</p>
+      <p>For true penicillin allergy without CNS, ocular, or otologic disease, doxycycline 100 mg orally twice daily for 14 days is the CDC alternative. Azithromycin is not recommended due to widespread <em>T. pallidum</em> resistance; ceftriaxone data are insufficient to replace benzathine penicillin.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>If you cannot prove acquisition within 12 months, do not call it early latent. Treat as late latent — undertreatment is the error to avoid.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">The vignette patient has secondary syphilis with healed chancre history, palmoplantar rash, RPR 1:64, and no neurologic, ocular, or otologic symptoms. No allergy. What is correct today?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Benzathine penicillin G 2.4 million units intramuscular weekly for three weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Benzathine penicillin G 2.4 million units intramuscular single dose</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Aqueous crystalline penicillin G 18 to 24 million units per day intravenously for 10 to 14 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Doxycycline 100 mg twice daily for 14 days to avoid an injection</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Secondary syphilis is early disease. One dose of benzathine penicillin G 2.4 million units suffices. Three doses are for late latent, intravenous therapy is for neurosyphilis or ocular or otosyphilis, and doxycycline is only for true penicillin allergy without CNS involvement.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Late latent, syphilis of unknown duration, and tertiary syphilis without neurosyphilis</h2>
+      <p>Late latent syphilis is asymptomatic infection acquired more than 12 months ago. Many patients present with positive treponemal and nontreponemal tests but no symptoms or prior results to date the infection — treat as late latent when duration is unknown. This also includes uncomplicated tertiary syphilis without neurosyphilis or cardiovascular disease requiring subspecialty care.</p>
+      <p>Give benzathine penicillin G 2.4 million units intramuscular weekly for three weeks, total 7.2 million units, at seven-day intervals. If a dose is one to two days late, give it and keep the schedule. If more than nine days elapse between doses, many experts restart the series. Examine for gummas, aortic regurgitation, and neurologic or ocular symptoms before starting; any concern moves you to the intravenous pathway. Routine CSF examination is not required without neurologic, ocular, or otologic signs, but have a low threshold if titer is high or follow-up will be unreliable. For true allergy without CNS involvement, doxycycline 100 mg twice daily for 28 days is the alternative; pregnancy and CNS disease require desensitization and penicillin.</p>
+
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption>Treatment by stage for nonpregnant adults (CDC 2021, reaffirmed 2025 — guideline-derived as transcript not recoverable)</caption>
+          <thead>
+            <tr><th>Stage</th><th>Recommended regimen</th><th>Key notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Primary, secondary, or early latent (within 12 months)</td><td>Benzathine penicillin G 2.4 million units intramuscular single dose</td><td>Screen for CNS, ocular, and otologic symptoms; no routine lumbar puncture</td></tr>
+            <tr><td>Late latent, unknown duration, or tertiary without neurosyphilis</td><td>Benzathine penicillin G 2.4 million units intramuscular weekly for 3 weeks (7.2 million units)</td><td>7-day intervals; if more than 9 days between doses, consider restarting</td></tr>
+            <tr><td>Neurosyphilis, ocular syphilis, or otosyphilis (any stage)</td><td>Aqueous crystalline penicillin G 18 to 24 million units per day intravenously as 3 to 4 million units every 4 hours for 10 to 14 days</td><td>Alternative: procaine penicillin G 2.4 million units intramuscular daily plus probenecid 500 mg orally four times daily for 10 to 14 days</td></tr>
+            <tr><td>Pregnancy, any stage</td><td>Same stage-based penicillin regimen; intravenous for CNS, ocular, or otologic disease</td><td>Benzathine is the only effective fetal therapy; desensitize if allergic</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Benzathine, procaine, and aqueous crystalline penicillin G are not interchangeable. Benzathine does not reach treponemicidal levels in cerebrospinal fluid (CSF) and must never be used alone for neurosyphilis, ocular, or otosyphilis.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 38-year-old woman has RPR 1:8 and positive treponemal antibody, no prior syphilis testing, no ulcers or rash in the past year, and no neurologic, ocular, or otologic symptoms. Duration unknown, no penicillin allergy. What is appropriate?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Benzathine penicillin G 2.4 million units intramuscular single dose</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Benzathine penicillin G 2.4 million units intramuscular weekly for three weeks</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Doxycycline 100 mg twice daily for 14 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Lumbar puncture is mandatory before treating late latent syphilis</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>When duration cannot be proven within 12 months, treat as late latent with three weekly benzathine doses. One dose would undertreat, doxycycline is not indicated without allergy and is contraindicated in pregnancy, and routine CSF examination is not required without neurologic, ocular, or otologic findings.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Neurosyphilis, ocular syphilis, and otosyphilis at any stage</h2>
+      <p>Neurosyphilis, ocular, and otosyphilis can occur at any stage and are defined by site, not titer. Early presentations with headache, meningismus, stroke in a young adult, uveitis, or sensorineural hearing loss are now more common than late dementia or tabes and are often missed.</p>
+      <p>Screen every patient for headache, vision change, eye pain or redness, hearing loss, tinnitus, vertigo, or gait change. Any positive symptom needs same-day ophthalmology for ocular disease or audiology or otolaryngology for otologic disease, plus infectious diseases or neurology input.</p>
+      <p>Treat with aqueous crystalline penicillin G 18 to 24 million units per day intravenously as 3 to 4 million units every four hours or continuous infusion for 10 to 14 days. Alternative is procaine penicillin G 2.4 million units intramuscular daily plus probenecid 500 mg orally four times daily for 10 to 14 days. Some experts add benzathine after the course, but CDC considers the 10- to 14-day intravenous course definitive. Do not delay ocular or otologic treatment awaiting CSF results — CSF-VDRL can be negative while ocular disease is present, and delay risks permanent vision or hearing loss.</p>
+
+      <div class="ct-caution">
+        <span class="ct-callout-label">Common pitfall</span>
+        <p>Giving benzathine alone for syphilis with new vision or hearing symptoms because the rash looks early. Benzathine does not treat the CNS, eye, or inner ear — ocular or otologic symptoms mean the intravenous pathway and urgent specialty referral, often admission.</p>
+      </div>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>Neurosyphilis can occur at any titer and any stage. Do not use a low RPR to rule it out, and do not wait for CSF-VDRL to treat ocular syphilis.</p>
+      </div>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 32-year-old man with secondary syphilis (RPR 1:32) develops painless left eye redness, photophobia, and blurred vision two days later. No allergy. What is next?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Benzathine penicillin G single dose and recheck vision in one week</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Admit for aqueous crystalline penicillin G intravenously, urgent ophthalmology, and CSF evaluation</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Topical corticosteroid drops and defer syphilis treatment</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Doxycycline 100 mg twice daily for 28 days</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>Ocular syphilis is treated as neurosyphilis with intravenous aqueous penicillin, not benzathine. Urgent ophthalmology and CSF evaluation are needed, but do not delay intravenous therapy for vision-threatening disease.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">Syphilis in pregnancy</h2>
+      <p>Use the same stage-based penicillin regimen as for nonpregnant adults, but benzathine penicillin G is the only regimen with proven fetal efficacy — no alternative reliably treats the fetus. If a pregnant patient reports penicillin allergy, do not substitute doxycycline, amoxicillin, or ceftriaxone; obtain detailed history, involve allergy and maternal-fetal medicine, and desensitize then treat with penicillin, including for neurosyphilis or ocular or otosyphilis where the intravenous regimen is needed.</p>
+      <p>Screen at first prenatal visit and repeat in third trimester and at delivery in high-prevalence settings or with risk factors. Counsel that Jarisch-Herxheimer can cause fever, uterine contractions, and fetal decelerations, most often after the second trimester — monitor contractions and coordinate obstetric care but do not delay treatment. Sonographic signs such as hepatomegaly, hydrops, or placentomegaly suggest congenital infection, but normal ultrasound does not exclude it or change the need for penicillin. Arrange monthly nontreponemal titers until delivery and treat partners promptly to prevent reinfection.</p>
+
+      <div class="ct-note">
+        <span class="ct-callout-label">Background</span>
+        <p>Congenital syphilis has risen sharply. Missed screening, delayed treatment, and non-penicillin regimens in pregnancy are preventable contributors.</p>
+      </div>
+
+      <h2 class="ct-h2">If penicillin cannot be used and how to counsel about Jarisch-Herxheimer</h2>
+      <p>More than 90 percent of reported penicillin allergies are not confirmed. Distinguish immediate hypersensitivity (anaphylaxis, airway involvement, angioedema, urticaria within one hour) from delayed rash or remote childhood events. For nonpregnant adults with primary, secondary, early latent, or late latent syphilis without CNS, ocular, or otologic involvement and true severe allergy, CDC alternatives are doxycycline 100 mg orally twice daily for 14 days (early) or 28 days (late or unknown duration). Azithromycin is not an option; ceftriaxone data are limited and tetracyclines are contraindicated in pregnancy.</p>
+      <p>For neurosyphilis, ocular, otosyphilis, and any syphilis in pregnancy, there is no adequate substitute — desensitize in a monitored setting then give penicillin. For Jarisch-Herxheimer, explain onset 2 to 12 hours after the first dose, fever, chills, myalgias, headache, and transient rash accentuation lasting less than 24 hours, managed with antipyretics and fluids. It is not allergy and does not predict future reactions.</p>
+
+      <div class="ct-pearl">
+        <span class="ct-callout-label">Pearl</span>
+        <p>In pregnancy and for neurosyphilis, ocular, or otosyphilis, there is no acceptable penicillin substitute. Desensitize and use penicillin — do not reach for doxycycline to avoid the procedure.</p>
+      </div>
+
+      <h2 class="ct-h2">Serologic follow-up, partner management, and human immunodeficiency virus (HIV) co-infection</h2>
+      <p>Treponemal tests remain positive for life and do not measure response. Follow only the nontreponemal titer — RPR or VDRL — with the same laboratory. For early syphilis expect at least a fourfold decline (for example 1:64 to 1:16) within 6 to 12 months; for late latent or unknown duration, decline is slower over 12 to 24 months. Failure to decline or a fourfold rise suggests reinfection or failure.</p>
+      <p>After neurosyphilis, repeat CSF every six months until white cells normalise, relying on cell count more than CSF-VDRL. For partners, treat presumptively sex partners from the past 90 days for primary, secondary, or early latent syphilis even if serology is negative; beyond 90 days manage by serology and follow-up. Coordinate with the health department for partner notification. Test every patient for HIV and other sexually transmitted infections — HIV does not change dose or duration, but syphilis increases HIV transmission.</p>
+
+      <div class="ct-quiz">
+        <p class="ct-quiz-q">A 24-year-old pregnant patient at 18 weeks has secondary syphilis, RPR 1:32, and reports anaphylaxis to amoxicillin as a teenager. No ocular or neurologic symptoms. What is correct?</p>
+        <ul class="ct-quiz-options">
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Doxycycline 100 mg twice daily for 14 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Ceftriaxone 1 g intramuscular daily for 10 days</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="true">Desensitize to penicillin and give benzathine penicillin G 2.4 million units intramuscular single dose</button></li>
+          <li><button class="ct-quiz-opt" type="button" data-correct="false">Azithromycin 2 g single dose</button></li>
+        </ul>
+        <div class="ct-quiz-explain" hidden>
+          <p>In pregnancy only benzathine penicillin reliably treats the fetus. Azithromycin and doxycycline are contraindicated due to resistance and fetal risk, and ceftriaxone does not replace penicillin for fetal therapy. Desensitize then give penicillin; early syphilis needs a single 2.4-million-unit dose with obstetric monitoring for Jarisch-Herxheimer.</p>
+        </div>
+      </div>
+
+      <h2 class="ct-h2">The five-minute version</h2>
+      <ul>
+        <li>Stage first: primary, secondary, and early latent within 12 months get benzathine penicillin G 2.4 million units intramuscular single dose; late latent, unknown duration, or tertiary without neurosyphilis get 2.4 million units weekly for three weeks.</li>
+        <li>Any neurologic, ocular, or otologic symptom at any stage means neurosyphilis therapy — aqueous crystalline penicillin G 18 to 24 million units per day intravenously for 10 to 14 days, not benzathine alone.</li>
+        <li>Benzathine, procaine, and aqueous crystalline penicillin G are not interchangeable; only the intravenous formulation reliably reaches the central nervous system.</li>
+        <li>In pregnancy benzathine penicillin G is the only effective fetal therapy — desensitize if allergic, warn about Jarisch-Herxheimer, and coordinate obstetric care.</li>
+        <li>Follow nontreponemal titers (RPR or VDRL) with the same assay, expect fourfold decline in 6 to 12 months (early) or 12 to 24 months (late), treat partners from the past 90 days presumptively for early syphilis, and test every patient for human immunodeficiency virus (HIV).</li>
+      </ul>
+
+      <h2 class="ct-h2">References</h2>
+      <div class="ct-refs">
+        <ol class="ct-ref-list">
+          <li>Workowski KA, Bachmann LH, Chan PA, et al. Sexually transmitted infections treatment guidelines, 2021. <em>MMWR Recomm Rep</em>. 2021;70(4):1-187. Syphilis sections reaffirmed in CDC STI guidelines update 2025.</li>
+          <li>Centers for Disease Control and Prevention. Syphilis treatment recommendations and clinical guidance [internet]. CDC sexually transmitted infections treatment guidelines. Updated 2025.</li>
+          <li>Clement ME, Okeke NL, Hicks CB. Treatment of syphilis: a systematic review. <em>JAMA</em>. 2014;312(18):1905-1917.</li>
+        </ol>
+      </div>
+
+<!-- ===== CONTENT:END ===== -->
+
+      <footer class="ct-disclaimer">
+        <p>Educational use only. Adapted from a publicly presented chalk talk for internal medicine
+        residents; this page is not a clinical guideline and does not replace institutional protocols,
+        antibiogram data, or pharmacy review. Verify all doses before prescribing.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="ct-statusbar">
+    <span class="ct-status-cell">Syphilis treatment by stage of infection</span>
+    <span class="ct-status-cell ct-progress">0% read</span>
+    <span class="ct-status-cell">Salt Shaker Studio</span>
+  </div>
+
+</div>
+</div>
+
+<button class="ct-totop" type="button" data-action="top">▲ Top</button>
+
+<!-- =========================================================
+     SCRIPT:BEGIN — DO NOT EDIT ANYTHING BETWEEN THESE MARKERS.
+     ========================================================= -->
+<script>
+(function () {
+  "use strict";
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+  }
+
+  // --- Build the table of contents from the H2s actually present ---
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".ct-main .ct-h2"));
+  var list = document.querySelector(".ct-toc-list");
+  var links = [];
+  heads.forEach(function (h, i) {
+    if (!h.id) { h.id = slug(h.textContent) || ("section-" + i); }
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "ct-toc-link";
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  // --- Highlight the section you are in + reading progress ---
+  var progress = document.querySelector(".ct-progress");
+  var totop = document.querySelector(".ct-totop");
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var current = -1;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 80) { current = i; }
+    }
+    links.forEach(function (a, i) { a.classList.toggle("ct-is-active", i === current); });
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(100, Math.round((y / max) * 100)) : 100;
+    if (progress) { progress.textContent = pct + "% read"; }
+    if (totop) { totop.classList.toggle("ct-is-active", y > 600); }
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+
+  // --- Self-check questions ---
+  document.addEventListener("click", function (e) {
+    var opt = e.target.closest(".ct-quiz-opt");
+    if (opt) {
+      var quiz = opt.closest(".ct-quiz");
+      var chosen = opt.getAttribute("data-correct") === "true";
+      quiz.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+        b.disabled = true;
+        if (b.getAttribute("data-correct") === "true") { b.classList.add("ct-is-correct"); }
+      });
+      if (!chosen) { opt.classList.add("ct-is-wrong"); }
+      var ex = quiz.querySelector(".ct-quiz-explain");
+      if (ex) { ex.hidden = false; }
+      return;
+    }
+
+    var btn = e.target.closest("[data-action]");
+    if (!btn) { return; }
+    var action = btn.getAttribute("data-action");
+
+    if (action === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (action === "print") {
+      window.print();
+    } else if (action === "answers") {
+      var showing = btn.getAttribute("data-on") === "true";
+      document.querySelectorAll(".ct-quiz").forEach(function (q) {
+        var ex = q.querySelector(".ct-quiz-explain");
+        if (ex) { ex.hidden = showing; }
+        q.querySelectorAll(".ct-quiz-opt").forEach(function (b) {
+          if (b.getAttribute("data-correct") === "true") {
+            b.classList.toggle("ct-is-correct", !showing);
+          }
+          b.disabled = !showing;
+        });
+      });
+      btn.setAttribute("data-on", showing ? "false" : "true");
+      btn.textContent = showing ? "Show all answers" : "Hide all answers";
+    }
+  });
+
+  update();
+})();
+</script>
+<!-- ===== SCRIPT:END ===== -->
+</body>
+</html>
