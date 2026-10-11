@@ -260,7 +260,7 @@
         </div>
         <div class="feedback" id="feedback" aria-live="polite">Pick an answer. You get feedback right away, the same way the app does.</div>
         <div class="quiz-foot">
-          <a href="/abg/">Full cases in ABG ▶</a>
+          <a href="abg-detail.html" target="_blank" rel="noopener">Full cases in ABG ▶</a>
           <button type="button" class="btn btn-sm" id="nextCase">Next case ▸</button>
         </div>
       </div>
@@ -272,8 +272,8 @@
     <h2 class="sec-h" id="h-software"><span class="pix" data-pix="floppy"></span>Our Software</h2>
     <div class="tabs" role="tablist" aria-label="Filter software" id="filterTabs">
       <button type="button" role="tab" aria-selected="true" data-f="all">All<span class="n">7</span></button>
-      <button type="button" role="tab" aria-selected="false" data-f="live">Released<span class="n">3</span></button>
-      <button type="button" role="tab" aria-selected="false" data-f="dev">In development<span class="n">3</span></button>
+      <button type="button" role="tab" aria-selected="false" data-f="live">Released<span class="n">4</span></button>
+      <button type="button" role="tab" aria-selected="false" data-f="dev">In development<span class="n">2</span></button>
       <button type="button" role="tab" aria-selected="false" data-f="idea">Ideas<span class="n">1</span></button>
     </div>
     <div class="shelf">
@@ -331,18 +331,18 @@
         </article>
 
         <!-- SCRUBBOARD -->
-        <article class="card" data-status="dev">
+        <article class="card" data-status="live">
           <div class="titlebar"><img class="t-icon" src="images/web/scrubboard-logo.png" alt=""><span class="t-text">Scrubboard.exe</span></div>
           <div class="win-body">
             <div class="card-head">
               <a href="scrubboard.html" aria-label="Scrubboard details"><img class="card-logo" src="images/web/scrubboard-logo.png" width="256" height="256" alt="Scrubboard logo"></a>
-              <div><span class="badge dev">In development · v0.1</span><h3>Scrubboard: Copy Without Patient Info</h3></div>
+              <div><span class="badge beta">Beta · v0.1</span><h3>Scrubboard: Copy Without Patient Info</h3></div>
             </div>
             <p>Copy part of a note, click once, and paste it without the patient's name, date of birth, record number, phone or address. Diagnoses and meds stay. Runs offline on Windows, Mac and Ubuntu.</p>
-            <div class="meter" style="--c:var(--dev)"><span>Pre-release</span><span>60%</span><span class="meter-track" role="img" aria-label="Development progress: 60 percent"><i style="--p:60%"></i></span></div>
+            <div class="meter" style="--c:var(--beta)"><span>Beta · Windows, Mac + Ubuntu</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent, beta"><i style="--p:100%"></i></span></div>
             <div class="btn-row">
-              <a class="btn btn-sm btn-primary" href="scrubboard.html">Details</a>
-              <span class="btn btn-sm" aria-disabled="true">⬇ Coming Soon</span>
+              <a class="btn btn-sm btn-primary" href="scrubboard.html#download">⬇ Download Beta</a>
+              <a class="btn btn-sm" href="scrubboard.html">Details</a>
             </div>
           </div>
         </article>
@@ -577,7 +577,7 @@
         <div class="win-body">
           <div class="task done"><span class="box"></span><span class="t">AUC v1.0 Release</span></div>
           <div class="task wip"><span class="box"></span><span class="t">AUC QI Study Data Collection</span><span class="state">in progress</span></div>
-          <div class="task wip"><span class="box"></span><span class="t">Scrubboard v0.1 Pre-release</span><span class="state">in progress</span></div>
+          <div class="task done"><span class="box"></span><span class="t">Scrubboard v0.1 Beta</span></div>
           <div class="task"><span class="box"></span><span class="t">Scrubboard Public Release</span><span class="state">planned</span></div>
           <div class="task"><span class="box"></span><span class="t">ABG Full Release</span><span class="state">planned</span></div>
           <div class="task"><span class="box"></span><span class="t">ABX Alpha Release</span><span class="state">planned</span></div>
@@ -898,7 +898,7 @@
   var NEWS = [
     ['ABG is live on Google Play', 'Free on Android, and Expert Mode is in the browser too. <a href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">Get it</a>'],
     ['AUC v1.0 is out', 'Download it for an Ubuntu PC or a DGX Spark. <a href="auc-detail.html#download">Download</a>'],
-    ['Scrubboard preview', 'Screenshots and details are up. <a href="scrubboard.html">Take a look</a>'],
+    ['Scrubboard beta is out', 'Free for Windows, Mac and Ubuntu. <a href="scrubboard.html#download">Download</a>'],
     ['ABX prototype in testing', 'Built in Godot. <a href="https://discord.gg/b4jsEnW2jZ">Get notified on Discord</a>']
   ];
   var balloon = document.getElementById('balloon');
