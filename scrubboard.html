@@ -12,7 +12,7 @@
 
   gtag('config', 'G-3FL2L4G5CM');
 </script>
-<meta name="description" content="Scrubboard from Salt Shaker Studio: copy part of a patient note, click once, and paste it without names, dates of birth, record numbers or phone numbers. Runs offline on Windows, Mac and Ubuntu. Coming soon.">
+<meta name="description" content="Scrubboard from Salt Shaker Studio: copy part of a patient note, click once, and paste it without names, dates of birth, record numbers or phone numbers. Runs offline on Windows, Mac and Ubuntu. Free beta download.">
 <link rel="canonical" href="https://www.saltshakerstudio.net/scrubboard.html">
 <title>Scrubboard: Copy Without Patient Info — Salt Shaker Studio</title>
 <link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
@@ -52,12 +52,8 @@
   .rk ul{margin-left:18px;font-size:14px;line-height:1.6}
   .rk li{margin-bottom:4px}
 
-  /* coming-soon download buttons */
+  /* download buttons */
   .dl-main .btn-dl{flex:1 1 180px}
-  .btn-dl.soon{cursor:not-allowed;color:var(--muted);background:var(--face);border-color:#b9bec8;box-shadow:0 3px 0 #b9bec8}
-  .btn-dl.soon:active{transform:none}
-  .btn-dl.soon .os{font-weight:600;color:var(--ink)}
-  .soon-tag{background:var(--idea)}
   .yours-tag{background:var(--dev)}
   .btn-dl.is-yours{border-color:var(--dev);box-shadow:0 3px 0 var(--dev)}
 
@@ -83,17 +79,50 @@
       <div class="detail-top">
         <img class="detail-logo" src="images/web/scrubboard-logo.png" width="256" height="256" alt="Scrubboard logo">
         <div>
-          <span class="badge dev">Coming soon · v0.1 preview</span>
+          <span class="badge beta">Beta · v0.1</span>
           <h1>Scrubboard: Copy Without Patient Info</h1>
           <p>Copy part of a note, click once, and paste it without the patient's name, birthday, record number or phone number. The diagnoses and medications stay, so the text is still useful. Everything happens on your own computer.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="#download">⬇ Downloads (coming soon)</a>
+            <a class="btn btn-primary" href="#download">⬇ Download</a>
             <a class="btn" href="#how">How it works</a>
           </div>
         </div>
       </div>
 
       <div class="detail-body">
+
+        <!-- ============ DOWNLOAD ============
+             Windows and Mac download the installer straight from the latest
+             GitHub release (/releases/latest/download/<file>), so a new release
+             with the same file names needs no change here. Ubuntu goes to the
+             releases page. -->
+        <h2 id="download">Download</h2>
+        <p class="muted">Beta · version 0.1 · free</p>
+
+        <div class="dl-panel" id="dlPanel">
+          <div class="dl-status">
+            <span class="ico" aria-hidden="true"><span class="pix" data-pix="computer"></span></span>
+            <div>
+              <p><strong>Scrubboard is in beta.</strong></p>
+              <p class="muted">It works, but expect rough edges. Each download is about 350–500 MB, because the detector is included.</p>
+            </div>
+          </div>
+          <div class="dl-main" id="dlMain">
+            <a class="btn btn-primary btn-dl" data-os="windows" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard-Setup.exe">
+              ⬇ Windows
+              <small>Windows 10 or 11 · .exe · no admin rights needed</small>
+            </a>
+            <a class="btn btn-primary btn-dl" data-os="mac" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard.pkg">
+              ⬇ Mac
+              <small>Apple silicon (M1 or newer) · macOS 12+ · .pkg</small>
+            </a>
+            <a class="btn btn-primary btn-dl" data-os="linux" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest" target="_blank" rel="noopener">
+              ⬇ Ubuntu
+              <small>Ubuntu 22.04 or newer · .deb · opens the releases page</small>
+            </a>
+          </div>
+          <p class="muted dl-alt"><a href="https://github.com/SaltShaker87/ScrubBoard" target="_blank" rel="noopener">View the source on GitHub</a> · <a href="https://discord.gg/b4jsEnW2jZ">Report a bug on Discord</a></p>
+        </div>
 
         <hr class="divider">
 
@@ -263,45 +292,6 @@
 
         <hr class="divider">
 
-        <!-- ============ DOWNLOAD ============
-             COMING SOON. PrivateCopy is still a private repo, so these are
-             <span>s, not links. To switch them on once the repo is public and
-             a release is tagged, turn each span into an <a class="btn btn-primary btn-dl">
-             with href set to
-               https://github.com/SaltShaker87/PrivateCopy/releases/latest/download/<file>
-             where <file> is Scrubboard-Setup.exe, Scrubboard.pkg or scrubboard_amd64.deb,
-             and swap the "COMING SOON" tags out. -->
-        <h2 id="download">Download</h2>
-        <p class="muted">Version 0.1 · coming soon · free</p>
-
-        <div class="dl-panel" id="dlPanel">
-          <div class="dl-status">
-            <span class="ico" aria-hidden="true" id="dlIcon"><span class="pix" data-pix="calendar"></span></span>
-            <div aria-live="polite">
-              <p id="dlHeadline"><strong>Scrubboard isn't ready to download yet.</strong></p>
-              <p id="dlDetail" class="muted">It will come for Windows, Mac and Ubuntu. Each download is about 500 MB, because the detector is included.</p>
-            </div>
-          </div>
-          <div class="dl-main" id="dlMain">
-            <span class="btn btn-dl soon" data-os="windows" aria-disabled="true">
-              <span class="soon-tag">COMING SOON</span>
-              <span class="os">Windows</span>
-              <small>Windows 10 or 11 · .exe · no admin rights needed</small>
-            </span>
-            <span class="btn btn-dl soon" data-os="mac" aria-disabled="true">
-              <span class="soon-tag">COMING SOON</span>
-              <span class="os">Mac</span>
-              <small>Apple silicon (M1 or newer) · macOS 12+ · .pkg</small>
-            </span>
-            <span class="btn btn-dl soon" data-os="linux" aria-disabled="true">
-              <span class="soon-tag">COMING SOON</span>
-              <span class="os">Ubuntu</span>
-              <small>Ubuntu 22.04 or newer · .deb</small>
-            </span>
-          </div>
-          <p class="muted dl-alt">Want to know when it's out? <a href="https://discord.gg/b4jsEnW2jZ">Get notified on Discord</a>.</p>
-        </div>
-
         <h2 id="requirements">What You'll Need</h2>
         <ul class="reqs">
           <li><strong>A regular computer:</strong> Windows 10/11, a Mac with Apple silicon (macOS 12 or newer), or Ubuntu 22.04 or newer. 8 GB of memory is enough.</li>
@@ -389,9 +379,8 @@
 <script src="js/site.js"></script>
 
 <script>
-/* ============ DOWNLOADS (coming soon) ============
-   Only reorders and highlights the button for this visitor's computer.
-   There are no live links until the first public release. */
+/* ============ DOWNLOADS ============
+   Reorders and highlights the button for this visitor's computer. */
 (function(){
   var main = document.getElementById('dlMain');
   if (!main) return;
