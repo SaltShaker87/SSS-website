@@ -1,0 +1,724 @@
+{
+  "slug": "oviva-2019",
+  "topic": "Bone & joint",
+  "one_liner": "Noninferior at 1 year: {{n:failure_oral}} oral vs {{n:failure_iv}} IV treatment failure (risk difference {{n:risk_diff}} pp).",
+  "one_liner_plain": "Oral therapy noninferior to IV at 1 year",
+  "arms": {
+    "oral": "intervention",
+    "intravenous": "comparator"
+  },
+  "citation": {
+    "title": "Oral versus Intravenous Antibiotics for Bone and Joint Infection",
+    "short_name": "OVIVA",
+    "authors": "Li HK, Rombach I, Zambellas R, et al.",
+    "journal": "N Engl J Med",
+    "year": 2019,
+    "volume_pages": "380(5):425-436",
+    "pmid": "30699315",
+    "doi": "10.1056/NEJMoa1710926",
+    "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30699315/",
+    "doi_url": "https://doi.org/10.1056/NEJMoa1710926"
+  },
+  "sections": {
+    "background": "Complex bone and joint infections were long managed with surgery plus a prolonged course of intravenous antibiotics, a habit rooted in a widely cited review from decades ago that declared osteomyelitis was rarely controlled without weeks of parenteral therapy. But intravenous therapy brings catheter risks, inconvenience, and higher cost, and earlier comparative evidence was too thin to change practice. OVIVA was designed to test, pragmatically, whether oral antibiotics could replace intravenous therapy during the first weeks of treatment without losing effectiveness.",
+    "methods": {
+      "design": "Multicenter, open-label, parallel-group, randomized, controlled noninferiority trial (26 U.K. sites); participants were randomly assigned equally, stratified by center. Blinding was not used, because a 6-week intravenous placebo would have been unethical.",
+      "population": "Adults older than 18 years being treated for acute or chronic bone or joint infection: native osteomyelitis, native joint infection, prosthetic joint infection, orthopedic fixation-device infection, or vertebral osteomyelitis. 1054 participants were randomized (527 per group); 60.6% had metalware-related infection.",
+      "n_total_id": "n_total",
+      "intervention": "Oral antibiotics to complete the first 6 weeks of therapy, chosen by an accredited infection specialist (up to 5 consecutive days of intravenous therapy were allowed for unrelated intercurrent infections).",
+      "comparator": "Intravenous antibiotics for the first 6 weeks of therapy; adjunctive oral agents such as rifampin were permitted at the infection specialist's discretion.",
+      "primary_endpoint": "Definite treatment failure within 1 year after randomization, defined by clinical, microbiologic, or histologic criteria and adjudicated by an end-point committee blinded to trial-group assignment.",
+      "follow_up": "Clinical follow-up for definite treatment failure to 1 year.",
+      "noninferiority_margin_id": "margin"
+    },
+    "results": "Among the 1054 participants (527 per group), end-point data were available for 96.3%; missing data (3.7%) were imputed. Definite treatment failure occurred in 13.2% of the oral group versus 14.6% of the intravenous group. The intention-to-treat difference was -1.4 percentage points (90% CI -4.9 to 2.2; 95% CI -5.6 to 2.9), meeting noninferiority against a 7.5-percentage-point margin. Serious adverse events were similar (27.7% intravenous vs 26.2% oral; P=0.58), catheter complications favored the oral strategy (9.4% vs 1.0%), early discontinuation was less common with oral therapy (12.8% vs 18.9%; P=0.006), and C. difficile-associated diarrhea was comparable (1.7% vs 1.0%; P=0.30). Median hospital stay was shorter with the oral strategy (11 vs 14 days), and total treatment duration did not differ (71 vs 78 days; P=0.63).",
+    "conclusions": "In OVIVA, oral antibiotic therapy was noninferior to intravenous antibiotic therapy when used during the first 6 weeks for complex orthopedic infection, as assessed by treatment failure at 1 year. The authors note that the results challenge a widely accepted standard of care, and that oral therapy was associated with shorter hospital stays and fewer complications than intravenous therapy.",
+    "limitations": "The trial was necessarily open-label, because exposing participants to 6 weeks of intravenous placebo would have been unethical; objective end points and blinded adjudication minimized potential bias. Follow-up lasted 1 year, so later treatment failures cannot be ruled out. Attribution of some serious adverse events was subjective. Oral therapy may not be appropriate for every patient, for example those with poor enteral absorption or pathogens resistant to oral agents.",
+    "practice_impact": "OVIVA supports oral antibiotic therapy for appropriately selected patients with bone and joint infection, delivering the same 1-year failure risk with shorter hospital stays and fewer catheter complications. It challenged the long-held default to intravenous therapy and, in the authors' words, helps \"challenge a widely accepted standard of care\". Choosing and monitoring the oral regimen still requires an infection specialist. Educational summary, not medical advice."
+  },
+  "numbers": [
+    {
+      "id": "n_total",
+      "label": "Participants randomized",
+      "value": 1054,
+      "unit": "participants",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Among the 1054 participants (527 in each group), end-point data were available for 1015 (96.3%).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "n_per_arm",
+      "label": "Participants per group",
+      "value": 527,
+      "unit": "participants",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Among the 1054 participants (527 in each group), end-point data were available for 1015 (96.3%).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "endpoint_n",
+      "label": "Participants with end-point data",
+      "value": 1015,
+      "unit": "participants",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Among the 1054 participants (527 in each group), end-point data were available for 1015 (96.3%).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "endpoint_pct",
+      "label": "End-point data available",
+      "value": 96.3,
+      "unit": "%",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Among the 1054 participants (527 in each group), end-point data were available for 1015 (96.3%).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "missing_n",
+      "label": "Missing end-point data",
+      "value": 39,
+      "unit": "participants",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Missing end-point data (39 participants, 3.7%) were imputed.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "missing_pct",
+      "label": "Missing end-point data",
+      "value": 3.7,
+      "unit": "%",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Missing end-point data (39 participants, 3.7%) were imputed.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "failure_oral",
+      "label": "Definite treatment failure at 1 year, oral group",
+      "value": 13.2,
+      "unit": "%",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "failure_iv",
+      "label": "Definite treatment failure at 1 year, intravenous group",
+      "value": 14.6,
+      "unit": "%",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "fail_n_oral",
+      "label": "Treatment failures, oral group",
+      "value": 67,
+      "unit": "participants",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "eval_n_oral",
+      "label": "Participants with end-point data, oral group",
+      "value": 509,
+      "unit": "participants",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "fail_n_iv",
+      "label": "Treatment failures, intravenous group",
+      "value": 74,
+      "unit": "participants",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "eval_n_iv",
+      "label": "Participants with end-point data, intravenous group",
+      "value": 506,
+      "unit": "participants",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "risk_diff",
+      "label": "Risk difference (oral minus intravenous)",
+      "value": -1.4,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": -4.9,
+      "ci_high": 2.2,
+      "source_quote": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "rd_ci90_low",
+      "label": "Risk difference, 90% CI lower limit",
+      "value": -4.9,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "rd_ci90_high",
+      "label": "Risk difference, 90% CI upper limit",
+      "value": 2.2,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "rd_ci95_low",
+      "label": "Risk difference, 95% CI lower limit",
+      "value": -5.6,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "rd_ci95_high",
+      "label": "Risk difference, 95% CI upper limit",
+      "value": 2.9,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "margin",
+      "label": "Noninferiority margin",
+      "value": 7.5,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "In the analysis of the risk of the primary end point, the noninferiority margin was 7.5 percentage points.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "margin_original",
+      "label": "Original noninferiority margin",
+      "value": 5,
+      "unit": "pp",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The original 5-percentage-point margin was consequently considered too restrictive and therefore, by consensus, the investigators adjusted the noninferiority margin to 7.5 percentage points on the absolute risk difference scale",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "ci_level",
+      "label": "Confidence level of the primary analysis",
+      "value": 90,
+      "unit": "%",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Noninferiority was met if the upper limit of two-sided 90% confidence interval around the unadjusted absolute difference in risk (i.e., the risk in the oral group minus the risk in the intravenous group) was less than 7.5 percentage points",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "sae_iv",
+      "label": "Serious adverse events, intravenous group",
+      "value": 27.7,
+      "unit": "%",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The between-group difference in the incidence of serious adverse events was not significant (146 of 527 participants [27.7%] in the intravenous group and 138 of 527 [26.2%] in the oral group; P = 0.58).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "sae_oral",
+      "label": "Serious adverse events, oral group",
+      "value": 26.2,
+      "unit": "%",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The between-group difference in the incidence of serious adverse events was not significant (146 of 527 participants [27.7%] in the intravenous group and 138 of 527 [26.2%] in the oral group; P = 0.58).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "sae_p",
+      "label": "P value, serious adverse events",
+      "value": 0.58,
+      "unit": "",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The between-group difference in the incidence of serious adverse events was not significant (146 of 527 participants [27.7%] in the intravenous group and 138 of 527 [26.2%] in the oral group; P = 0.58).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "cath_oral",
+      "label": "IV catheter complications, oral group",
+      "value": 1.0,
+      "unit": "%",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Catheter complications, analyzed as a secondary end point, were more common in the intravenous group (9.4% vs. 1.0%).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "cath_iv",
+      "label": "IV catheter complications, intravenous group",
+      "value": 9.4,
+      "unit": "%",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Catheter complications, analyzed as a secondary end point, were more common in the intravenous group (9.4% vs. 1.0%).",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "early_oral",
+      "label": "Early discontinuation of assigned strategy, oral group",
+      "value": 12.8,
+      "unit": "%",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Early discontinuation of the randomly assigned treatment strategy was more common in the intravenous group than in the oral group (99 of 523 participants [18.9%] vs. 67 of 523 [12.8%], P = 0.006)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "early_iv",
+      "label": "Early discontinuation of assigned strategy, intravenous group",
+      "value": 18.9,
+      "unit": "%",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Early discontinuation of the randomly assigned treatment strategy was more common in the intravenous group than in the oral group (99 of 523 participants [18.9%] vs. 67 of 523 [12.8%], P = 0.006)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "early_p",
+      "label": "P value, early discontinuation",
+      "value": 0.006,
+      "unit": "",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Early discontinuation of the randomly assigned treatment strategy was more common in the intravenous group than in the oral group (99 of 523 participants [18.9%] vs. 67 of 523 [12.8%], P = 0.006)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "cdiff_oral",
+      "label": "C. difficile-associated diarrhea, oral group",
+      "value": 1.0,
+      "unit": "%",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "There was no significant difference in the incidence of C. difficile-associated diarrhea (9 of 523 [1.7%] in the intravenous group and 5 of 523 [1.0%] in the oral group, P = 0.30)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "cdiff_iv",
+      "label": "C. difficile-associated diarrhea, intravenous group",
+      "value": 1.7,
+      "unit": "%",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "There was no significant difference in the incidence of C. difficile-associated diarrhea (9 of 523 [1.7%] in the intravenous group and 5 of 523 [1.0%] in the oral group, P = 0.30)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "cdiff_p",
+      "label": "P value, C. difficile-associated diarrhea",
+      "value": 0.3,
+      "unit": "",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "There was no significant difference in the incidence of C. difficile-associated diarrhea (9 of 523 [1.7%] in the intravenous group and 5 of 523 [1.0%] in the oral group, P = 0.30)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "stay_oral",
+      "label": "Median hospital stay, oral group",
+      "value": 11,
+      "unit": "days",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "stay_iv",
+      "label": "Median hospital stay, intravenous group",
+      "value": 14,
+      "unit": "days",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "stay_oral_iqr_low",
+      "label": "Hospital stay IQR low, oral group",
+      "value": 8,
+      "unit": "days",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "stay_oral_iqr_high",
+      "label": "Hospital stay IQR high, oral group",
+      "value": 20,
+      "unit": "days",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "stay_iv_iqr_low",
+      "label": "Hospital stay IQR low, intravenous group",
+      "value": 11,
+      "unit": "days",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "stay_iv_iqr_high",
+      "label": "Hospital stay IQR high, intravenous group",
+      "value": 21,
+      "unit": "days",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "duration_oral",
+      "label": "Median total duration of therapy, oral group",
+      "value": 71,
+      "unit": "days",
+      "arm": "oral",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "the median total duration of therapy was 78 days (interquartile range, 42 to 99) in the intravenous group and 71 days (interquartile range, 43 to 94) in the oral group (P = 0.63)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "duration_iv",
+      "label": "Median total duration of therapy, intravenous group",
+      "value": 78,
+      "unit": "days",
+      "arm": "intravenous",
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "the median total duration of therapy was 78 days (interquartile range, 42 to 99) in the intravenous group and 71 days (interquartile range, 43 to 94) in the oral group (P = 0.63)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "duration_p",
+      "label": "P value, total duration of therapy",
+      "value": 0.63,
+      "unit": "",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "the median total duration of therapy was 78 days (interquartile range, 42 to 99) in the intravenous group and 71 days (interquartile range, 43 to 94) in the oral group (P = 0.63)",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "centers",
+      "label": "U.K. centers",
+      "value": 26,
+      "unit": "sites",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "We enrolled adults who were being treated for bone or joint infection at 26 U.K. centers.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "age_min",
+      "label": "Minimum age for inclusion",
+      "value": 18,
+      "unit": "years",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Eligible participants were older than 18 years of age, provided written informed consent",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "rand_days",
+      "label": "Randomization window after surgery",
+      "value": 7,
+      "unit": "days",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "Participants began their randomly assigned treatment strategy as soon as possible (but no more than 7 days) after definitive surgical intervention",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "bridge_days",
+      "label": "IV days allowed in the oral group for unrelated infections",
+      "value": 5,
+      "unit": "days",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "In the oral group, up to 5 consecutive days of intravenous antibiotics were allowed for unrelated intercurrent infections.",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "weeks",
+      "label": "Duration of randomly assigned therapy",
+      "value": 6,
+      "unit": "weeks",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "participants were randomly assigned to receive either intravenous or oral antibiotics to complete the first 6 weeks of therapy",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "follow_years",
+      "label": "Primary end-point follow-up",
+      "value": 1,
+      "unit": "years",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "The primary end point was definitive treatment failure within 1 year after randomization",
+      "source": "paper",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "metalware_pct",
+      "label": "Metalware-related infection",
+      "value": 60.6,
+      "unit": "%",
+      "arm": null,
+      "ci_low": null,
+      "ci_high": null,
+      "source_quote": "639 of the 1054 participants (60.6%) had metalware-related infection",
+      "source": "paper",
+      "status": "VERIFIED"
+    }
+  ],
+  "figures": [
+    {
+      "id": "f_primary_failure",
+      "type": "bar",
+      "title": "Definite treatment failure at 1 year",
+      "number_ids": [
+        "failure_oral",
+        "failure_iv"
+      ],
+      "y_label": "Definite treatment failure (%)",
+      "caption": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "alt": "Bar chart comparing definite treatment failure at 1 year: 13.2 percent in the oral group versus 14.6 percent in the intravenous group.",
+      "series_labels": [
+        "Oral",
+        "Intravenous"
+      ]
+    },
+    {
+      "id": "f_risk_diff",
+      "type": "forest",
+      "title": "Risk difference (oral minus intravenous)",
+      "number_ids": [
+        "risk_diff"
+      ],
+      "margin_id": "margin",
+      "ci_label": "90% CI",
+      "caption": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "alt": "Forest plot of the intention-to-treat risk difference: -1.4 percentage points, 90 percent confidence interval -4.9 to 2.2, with the 7.5 percentage-point noninferiority margin drawn on the right.",
+      "y_label": "oral minus IV, percentage points (left favors oral)"
+    },
+    {
+      "id": "f_catheter",
+      "type": "bar",
+      "title": "Intravenous catheter complications (secondary end point)",
+      "number_ids": [
+        "cath_oral",
+        "cath_iv"
+      ],
+      "y_label": "Participants (%)",
+      "caption": "Catheter complications, analyzed as a secondary end point, were more common in the intravenous group (9.4% vs. 1.0%).",
+      "alt": "Bar chart comparing intravenous catheter complications: 1.0 percent in the oral group versus 9.4 percent in the intravenous group.",
+      "series_labels": [
+        "Oral",
+        "Intravenous"
+      ]
+    },
+    {
+      "id": "f_hosp_stay",
+      "type": "bar",
+      "title": "Median hospital stay (secondary analysis)",
+      "number_ids": [
+        "stay_oral",
+        "stay_iv"
+      ],
+      "y_label": "Median days",
+      "caption": "The median hospital stay was significantly longer in the intravenous group than in the oral group (14 days [interquartile range, 11 to 21] vs. 11 days [interquartile range, 8 to 20], P<0.001)",
+      "alt": "Bar chart comparing median hospital stay: 11 days in the oral group versus 14 days in the intravenous group.",
+      "series_labels": [
+        "Oral",
+        "Intravenous"
+      ]
+    }
+  ],
+  "hero_findings": [
+    {
+      "number_id": "failure_oral",
+      "figure_id": "f_primary_failure",
+      "headline": "Definite treatment failure at 1 year - oral group (intravenous: 14.6%)"
+    },
+    {
+      "number_id": "risk_diff",
+      "figure_id": "f_risk_diff",
+      "headline": "Risk difference (oral minus intravenous) with 90% CI -4.9 to 2.2; noninferiority margin: 7.5 pp"
+    },
+    {
+      "number_id": "cath_oral",
+      "figure_id": "f_catheter",
+      "headline": "IV catheter complications - oral strategy (intravenous group: 9.4%)"
+    },
+    {
+      "number_id": "stay_oral",
+      "figure_id": "f_hosp_stay",
+      "headline": "Median hospital stay - oral group (intravenous group: 14 days)"
+    }
+  ],
+  "must_include_map": [
+    {
+      "excerpt": "In the analysis of the risk of the primary end point, the noninferiority margin was 7.5 percentage points.",
+      "section": "methods"
+    },
+    {
+      "excerpt": "The intention-to-treat analysis showed a difference in the risk of definitive treatment failure (oral group vs. intravenous group) of -1.4 percentage points (90% confidence interval [CI], -4.9 to 2.2; 95% CI, -5.6 to 2.9), indicating noninferiority.",
+      "section": "results"
+    },
+    {
+      "excerpt": "Treatment failure occurred in 74 of 506 participants (14.6%) in the intravenous group and 67 of 509 participants (13.2%) in the oral group.",
+      "section": "results"
+    },
+    {
+      "excerpt": "Catheter complications, analyzed as a secondary end point, were more common in the intravenous group (9.4% vs. 1.0%).",
+      "section": "results"
+    },
+    {
+      "excerpt": "The between-group difference in the incidence of serious adverse events was not significant (146 of 527 participants [27.7%] in the intravenous group and 138 of 527 [26.2%] in the oral group; P = 0.58).",
+      "section": "results"
+    },
+    {
+      "excerpt": "Oral antibiotic therapy was noninferior to intravenous antibiotic therapy when used during the first 6 weeks for complex orthopedic infection, as assessed by treatment failure at 1 year.",
+      "section": "conclusions"
+    },
+    {
+      "excerpt": "Oral therapy was associated with shorter hospital stays and fewer complications than intravenous therapy.",
+      "section": "conclusions"
+    },
+    {
+      "excerpt": "In this trial, with regard to treatment failure assessed at 1 year, oral antibiotic therapy was non-inferior to intravenous antibiotic therapy when used during the first 6 weeks of treatment for bone and joint infection; our results thereby challenge a widely accepted standard of care.",
+      "section": "practice_impact"
+    }
+  ]
+}
