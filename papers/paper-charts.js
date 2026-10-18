@@ -6,8 +6,10 @@
   const byId=Object.fromEntries(p.numbers.map(n=>[n.id,n]));
   const fv=n=>n.value==null?'—':(n.decimals!=null?Number(n.value).toFixed(n.decimals):n.value);
   if(window.Chart){Chart.defaults.font.family='"IBM Plex Sans",system-ui,sans-serif';Chart.defaults.color='#141a24';}
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target._draw&&e.target._draw();io.unobserve(e.target);}}),{threshold:.3});
-  document.querySelectorAll('.reveal').forEach(el=>{el._obs=1;io.observe(el);});
+  // Any visible pixel counts. A 30% rule never fires for a window taller than the screen,
+  // which hid the whole results section and every chart on this page.
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target._draw&&e.target._draw();io.unobserve(e.target);}}),{threshold:0});
+  document.querySelectorAll('.reveal').forEach(el=>{io.observe(el);});
   p.figures.forEach(f=>{
    const fig=document.querySelector(`[data-figure="${f.id}"]`); if(!fig) return;
    const nums=f.number_ids.map(id=>byId[id]||{id,label:id,value:null,status:'MISSING'});
@@ -38,7 +40,8 @@
      if(reduce){b.textContent=t+u;return;} let s=null;const step=ts=>{s??=ts;const k=Math.min(1,(ts-s)/1200);b.textContent=(t*k).toFixed(dec)+u;if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);
     }
    };
-   const host=fig.closest('.reveal')||fig; const prev=host._draw; host._draw=()=>{prev&&prev();draw();}; if(!host._obs){host._obs=1;io.observe(host);}
+   // Draw when this chart scrolls into view, not when the whole section does.
+   fig._draw=draw; io.observe(fig);
   });
  };
 })();
