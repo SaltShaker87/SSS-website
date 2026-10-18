@@ -52,6 +52,9 @@
     globe: [E, '.....kkkkkk.....', '...kkllnnllkk...', '..klllnnnlllk...', '.kllnnnnnllllk..', '.klllnnnlllnlk..',
       'kllllnnllllnnlk.', 'klllllnllllnnlk.', 'kllllllllnnnllk.', 'klllllllnnnnllk.', '.klllllllnnnlk..',
       '.kllllllllnllk..', '..klllllllllk...', '...kklllllkk....', '.....kkkkk......', E],
+    flask: [E, '......kkkk......', '......kwwk......', '......kwwk......', '......kwwk......', '.....kwwwwk.....',
+      '....kwwwwwwk....', '...kwwwwwwwwk...', '..kyyyyyyyyyyk..', '..kyywyyyyyyyk..', '.kyyyyyyyywyyyk.',
+      '.kyyyyyyyyyyyyk.', '.kyyywyyyyyyyyk.', '.kooooooooooook.', '..kkkkkkkkkkkk..', E],
     play: [E, E, E, '......kk........', '......knk.......', '......knnk......', '......knnnk.....', '......knnnnk....',
       '......knnnnnk...', '......knnnnk....', '......knnnk.....', '......knnk......', '......knk.......',
       '......kk........', E, E]

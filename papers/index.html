@@ -46,6 +46,16 @@
   .paper-grid h3{font:700 18px/1.2 var(--font-display);margin:8px 0 4px}
   .paper-grid p{font-size:14px;color:var(--ink-2);margin:0 0 10px}
   .paper-grid p b{color:var(--ink)}
+  .papers-crumb{margin:0 0 10px}
+  .topic-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .topic-jump a{display:inline-flex;align-items:center;gap:6px;font:600 13px/1 var(--font-body);color:var(--ink);text-decoration:none;
+    background:var(--paper);border:2px solid var(--edge);border-radius:99px;padding:5px 10px;box-shadow:0 2px 0 var(--edge)}
+  .topic-jump a:hover{background:var(--salt)}
+  .topic-jump .n,.topic-h .n{font:600 12px/1 var(--font-mono);color:var(--muted)}
+  .topic-group{margin-top:34px;scroll-margin-top:16px}
+  .topic-h{font-size:clamp(22px,2.6vw,28px);margin-bottom:0;flex-wrap:wrap;row-gap:4px}
+  .topic-h .pix{width:24px;height:24px}
+  .topic-h .n{color:#fff;opacity:.75;text-shadow:none}
 </style>
 </head>
 <body>
@@ -61,25 +71,27 @@
       <span class="t-btns"><span class="t-btn t-min" aria-hidden="true"></span><span class="t-btn t-max" aria-hidden="true"></span><button type="button" class="t-btn t-close" aria-label="Close"></button></span>
     </div>
     <div class="win-body">
+      <p class="papers-crumb"><a class="btn btn-sm" href="/seasoning-lab/">‹ Seasoning Lab</a></p>
       <h1>Landmark ID papers, visualized</h1>
       <p>Practice-changing infectious diseases trials, each with a short animated video and recreated charts. Educational summaries, not medical advice.</p>
+      <nav class="topic-jump" id="topicJump" aria-label="Jump to a topic" hidden></nav>
     </div>
   </section>
 
   <div class="paper-grid">
  <!-- PAPER CARDS -->
  <!-- card snippet (one per paper; data-slug must be unique):
- <a class="window card" data-slug="{{slug}}" href="/papers/{{slug}}/">
+ <a class="window card" data-slug="{{slug}}" data-topic="{{topic}}" data-year="{{year}}" href="/papers/{{slug}}/">
   <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">{{short_name}}.paper</span></div>
   <img src="/papers/{{slug}}/poster.jpg" alt="{{short_name}} video thumbnail" loading="lazy">
   <div class="win-body"><span class="tag">{{topic}}</span><h3>{{short_name}} ({{year}})</h3><p>{{title}}</p><p><b>{{one_liner}}</b></p></div>
  </a> -->
-        <a class="window card" data-slug="poet-2019" href="/papers/poet-2019/">
+        <a class="window card" data-slug="poet-2019" data-topic="Bacteremia &amp; duration" data-year="2019" href="/papers/poet-2019/">
   <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">POET.paper</span></div>
   <img src="/papers/poet-2019/poster.jpg" alt="POET video thumbnail" loading="lazy">
   <div class="win-body"><span class="tag">Bacteremia &amp; duration</span><h3>POET (2019)</h3><p>Partial Oral versus Intravenous Antibiotic Treatment of Endocarditis</p><p><b>Oral step-down was noninferior: primary outcome 9.0% oral vs 12.1% IV, with hospital stay 3 days vs 19 days.</b></p></div>
  </a>
-        <a class="window card" data-slug="oviva-2019" href="/papers/oviva-2019/">
+        <a class="window card" data-slug="oviva-2019" data-topic="Bone &amp; joint" data-year="2019" href="/papers/oviva-2019/">
   <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">OVIVA.paper</span></div>
   <img src="/papers/oviva-2019/poster.jpg" alt="OVIVA video thumbnail" loading="lazy">
   <div class="win-body"><span class="tag">Bone &amp; joint</span><h3>OVIVA (2019)</h3><p>Oral versus Intravenous Antibiotics for Bone and Joint Infection</p><p><b>Noninferior at 1 year: 13.2% oral vs 14.6% IV treatment failure (risk difference &minus;1.4 pp).</b></p></div>
@@ -116,12 +128,12 @@
     <a href="/"><span class="pix" data-pix="computer"></span>Home</a>
     <a href="/#portfolio"><span class="pix" data-pix="floppy"></span>All Software</a>
     <a href="/#devblog"><span class="pix" data-pix="notepad"></span>Dev Blog</a>
+    <a href="/seasoning-lab/"><span class="pix" data-pix="flask"></span>Seasoning Lab</a>
     <hr>
     <a href="/abg-detail.html"><img class="t-icon" src="/images/web/abg-logo.jpg" alt="" width="22" height="22" style="width:22px;height:22px">ABG</a>
     <a href="/auc-detail.html"><img class="t-icon" src="/images/web/auc-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">AUC</a>
     <a href="/crm.html"><img class="t-icon" src="/images/web/crm-logo.jpg" alt="" width="22" height="22" style="width:22px;height:22px">CRM</a>
     <a href="/scrubboard.html"><img class="t-icon" src="/images/web/scrubboard-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">Scrubboard</a>
-    <a href="/papers/" aria-current="page"><span class="pix" data-pix="folder"></span>ID Papers</a>
     <hr>
     <a href="https://discord.gg/b4jsEnW2jZ"><span class="pix" data-pix="mail"></span>Discord</a>
     <a href="/abg/"><span class="pix" data-pix="play"></span>Play ABG</a>
@@ -133,12 +145,40 @@
   <button type="button" class="btn start-btn" id="startBtn" aria-expanded="false" aria-controls="startMenu"><span class="pix" data-pix="shaker"></span>Start</button>
   <div class="task-links">
     <a href="/"><span class="pix" data-pix="computer"></span><span class="label">Home</span></a>
-    <a class="optional" href="/#portfolio"><span class="pix" data-pix="floppy"></span><span class="label">Software</span></a>
+    <a class="optional" href="/seasoning-lab/"><span class="pix" data-pix="flask"></span><span class="label">Seasoning Lab</span></a>
     <a href="/papers/" aria-current="page"><span class="pix" data-pix="folder"></span><span class="label">ID Papers</span></a>
   </div>
   <div class="tray"><span class="clock" id="clock">--:--</span></div>
 </div>
 
+<script>
+/* Groups the paper cards by topic (A to Z, newest first inside each topic) and adds jump links.
+   Cards stay in the HTML above, so the page still lists every paper without JavaScript. */
+(function(){
+  var grid=document.querySelector('.paper-grid'); if(!grid) return;
+  var cards=[].slice.call(grid.querySelectorAll('.card[data-slug]')); if(!cards.length) return;
+  var groups={};
+  cards.forEach(function(c){
+    var tag=c.querySelector('.tag'), t=c.getAttribute('data-topic')||(tag&&tag.textContent)||'Other';
+    (groups[t]=groups[t]||[]).push(c);
+  });
+  var topics=Object.keys(groups).sort(function(a,b){return a.localeCompare(b);});
+  var jump=document.getElementById('topicJump'), frag=document.createDocumentFragment();
+  topics.forEach(function(t){
+    var id='topic-'+t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''), n=groups[t].length;
+    var sec=document.createElement('section'); sec.className='topic-group'; sec.id=id; sec.setAttribute('aria-labelledby',id+'-h');
+    var h=document.createElement('h2'); h.className='sec-h topic-h'; h.id=id+'-h';
+    h.innerHTML='<span class="pix" data-pix="folder"></span>'; h.appendChild(document.createTextNode(t+' '));
+    var hn=document.createElement('span'); hn.className='n'; hn.textContent=n+(n===1?' paper':' papers'); h.appendChild(hn);
+    var g=document.createElement('div'); g.className='paper-grid';
+    groups[t].sort(function(a,b){return (+b.getAttribute('data-year')||0)-(+a.getAttribute('data-year')||0);}).forEach(function(c){g.appendChild(c);});
+    sec.appendChild(h); sec.appendChild(g); frag.appendChild(sec);
+    if(jump){var a=document.createElement('a'); a.href='#'+id; a.textContent=t+' '; var an=document.createElement('span'); an.className='n'; an.textContent=n; a.appendChild(an); jump.appendChild(a);}
+  });
+  grid.parentNode.replaceChild(frag,grid);
+  if(jump&&topics.length>1) jump.hidden=false;
+})();
+</script>
 <script src="/js/site.js"></script>
 </body>
 </html>

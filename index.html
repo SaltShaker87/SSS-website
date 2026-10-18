@@ -202,6 +202,15 @@
     .reader,.is-enhanced .reader{padding:22px 18px;max-height:none}
     .post h3{font-size:22px}
   }
+  /* ============ SEASONING LAB promo ============ */
+  .sl-promo .win-body{flex-direction:row;gap:22px;align-items:center;flex-wrap:wrap}
+  .sl-text{flex:1;min-width:240px}
+  .sl-text h3{font:700 24px/1.15 var(--font-display);margin:8px 0 6px}
+  .sl-text p{max-width:60ch;margin:0 0 14px;color:var(--ink-2)}
+  .sl-dir{width:290px;flex:none;margin:0;padding:12px 14px;background:var(--paper);border:2px solid var(--edge);border-radius:8px;
+    box-shadow:inset 2px 2px 0 var(--hairline);font:500 12px/1.7 var(--font-mono);color:var(--ink);white-space:pre}
+  @media (max-width:640px){ .sl-dir{display:none} }
+
   @media (max-width:640px){
     section.block{padding-block:28px}
     .hero-logo{width:150px;margin-bottom:24px}
@@ -395,6 +404,33 @@
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEASONING LAB ============ -->
+  <section class="block" id="lab" aria-labelledby="h-lab">
+    <h2 class="sec-h" id="h-lab"><span class="pix" data-pix="flask"></span>Seasoning Lab</h2>
+    <div class="window sl-promo">
+      <div class="titlebar">
+        <span class="pix t-icon" data-pix="flask"></span><span class="t-text">SeasoningLab.exe</span>
+        <span class="t-btns" aria-hidden="true"><span class="t-btn t-min"></span><span class="t-btn t-max"></span></span>
+      </div>
+      <div class="win-body">
+        <div class="sl-text">
+          <span class="badge live">Free · new</span>
+          <h3>Infectious diseases, well seasoned</h3>
+          <p>Our ID learning corner. Landmark trials boiled down to a short video, the numbers that matter, and charts redrawn from the published data. Chalk talks are next on the stove.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/seasoning-lab/">▶ Enter the Lab</a>
+            <a class="btn" href="/papers/">Landmark papers</a>
+          </div>
+        </div>
+        <pre class="sl-dir" aria-hidden="true">C:\LAB&gt; dir
+
+PAPERS       &lt;DIR&gt;  ready
+CHALK_TALKS  &lt;DIR&gt;  simmering
+README.TXT          salt to taste</pre>
       </div>
     </div>
   </section>
@@ -707,11 +743,11 @@
   <div class="sm-items">
     <a href="#hero"><span class="pix" data-pix="computer"></span>Home</a>
     <a href="#portfolio"><span class="pix" data-pix="floppy"></span>Software</a>
+    <a href="#lab"><span class="pix" data-pix="flask"></span>Seasoning Lab</a>
     <a href="#devblog"><span class="pix" data-pix="notepad"></span>Dev Blog</a>
     <a href="#roadmap"><span class="pix" data-pix="calendar"></span>Roadmap</a>
     <a href="#testimonials"><span class="pix" data-pix="chat"></span>Guestbook</a>
     <a href="#about"><span class="pix" data-pix="person"></span>About</a>
-    <a href="/papers/"><span class="pix" data-pix="folder"></span>ID Papers</a>
     <hr>
     <a href="https://discord.gg/b4jsEnW2jZ"><span class="pix" data-pix="mail"></span>Discord</a>
     <a href="/abg/"><span class="pix" data-pix="play"></span>Play ABG</a>
@@ -723,6 +759,7 @@
   <button type="button" class="btn start-btn" id="startBtn" aria-expanded="false" aria-controls="startMenu"><span class="pix" data-pix="shaker"></span>Start</button>
   <div class="task-links">
     <a href="#portfolio" data-for="portfolio"><span class="pix" data-pix="floppy"></span><span class="label">Software</span></a>
+    <a href="#lab" data-for="lab"><span class="pix" data-pix="flask"></span><span class="label">Lab</span></a>
     <a href="#devblog" data-for="devblog"><span class="pix" data-pix="notepad"></span><span class="label">Dev Blog</span></a>
     <a class="optional" href="#roadmap" data-for="roadmap"><span class="pix" data-pix="calendar"></span><span class="label">Roadmap</span></a>
     <a class="optional" href="#testimonials" data-for="testimonials"><span class="pix" data-pix="chat"></span><span class="label">Guestbook</span></a>
