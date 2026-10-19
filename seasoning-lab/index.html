@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FL2L4G5CM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3FL2L4G5CM');
+</script>
+<meta name="description" content="Seasoning Lab: Salt Shaker Studio's infectious diseases learning corner. Landmark trials visualized, with chalk talks on the way.">
+<link rel="canonical" href="https://www.saltshakerstudio.net/seasoning-lab/">
+<title>Seasoning Lab | Salt Shaker Studio</title>
+<meta property="og:title" content="Seasoning Lab | Salt Shaker Studio">
+<meta property="og:description" content="Seasoning Lab: Salt Shaker Studio's infectious diseases learning corner. Landmark trials visualized, with chalk talks on the way.">
+<meta property="og:url" content="https://www.saltshakerstudio.net/seasoning-lab/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Salt Shaker Studio">
+<meta property="og:image" content="https://www.saltshakerstudio.net/images/web/sss-logo.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/images/web/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/images/web/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/images/web/apple-touch-icon.png">
+<meta name="theme-color" content="#0a4650">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+  .lab-page{padding-block:32px 8px}
+  .sl-intro .win-body{flex-direction:row;gap:22px;align-items:center;flex-wrap:wrap}
+  .sl-intro-text{flex:1;min-width:240px}
+  .sl-intro h1{font:700 clamp(30px,4.4vw,44px)/1.05 var(--font-display);letter-spacing:.3px;text-wrap:balance;margin:0 0 8px}
+  .sl-intro p{max-width:60ch;margin:0;font-size:16px;color:var(--ink-2)}
+  .sl-flask{width:96px;height:96px;flex:none;filter:drop-shadow(4px 4px 0 var(--edge))}
+  .sl-shelves{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:22px;margin-top:22px}
+  .sl-shelf{width:100%}
+  .sl-shelf .win-body{align-items:flex-start;text-align:left;gap:10px}
+  .sl-shelf h2{font:700 24px/1.15 var(--font-display);margin:2px 0 0}
+  .sl-shelf p{margin:0;color:var(--ink-2);max-width:56ch}
+  .sl-stats{font:600 13px/1.4 var(--font-mono);color:var(--muted);margin:0}
+  .sl-latest{list-style:none;margin:0;padding:0;width:100%;display:grid;gap:6px}
+  .sl-latest a{display:flex;gap:10px;align-items:center;padding:6px 8px;background:var(--paper);border:2px solid var(--edge);border-radius:8px;color:var(--ink);text-decoration:none}
+  .sl-latest a:hover{background:var(--notice)}
+  .sl-latest img{width:64px;aspect-ratio:16/9;object-fit:cover;border:2px solid var(--edge);border-radius:4px;flex:none}
+  .sl-latest b{font-weight:600}
+  .sl-latest small{display:block;color:var(--muted);font-size:12px}
+  .sl-soon{opacity:.92}
+  .sl-soon .titlebar{filter:grayscale(.6)}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<main class="wrap lab-page" id="main" tabindex="-1">
+
+  <section class="window sl-intro">
+    <div class="titlebar"><span class="pix t-icon" data-pix="flask"></span><span class="t-text">SeasoningLab.exe</span><span class="t-btns"><span class="t-btn t-min" aria-hidden="true"></span><span class="t-btn t-max" aria-hidden="true"></span><button type="button" class="t-btn t-close" aria-label="Close"></button></span></div>
+    <div class="win-body">
+      <div class="sl-intro-text">
+        <h1>Seasoning Lab</h1>
+        <p>Our infectious diseases learning corner. Pick a shelf: practice-changing trials boiled down to the numbers that matter, with more recipes on the stove. Educational content, not medical advice.</p>
+      </div>
+      <span class="pix sl-flask" data-pix="flask" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <div class="sl-shelves">
+    <section class="window sl-shelf" aria-labelledby="sl-papers-h">
+      <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">papers.dir</span></div>
+      <div class="win-body">
+        <span class="badge live">Open</span>
+        <h2 id="sl-papers-h">Landmark ID papers</h2>
+        <p>One trial per page: a short video, the key numbers, and charts redrawn from the published data, grouped by topic.</p>
+        <p class="sl-stats" id="slPaperStats" hidden></p>
+        <ul class="sl-latest" id="slLatest" aria-label="Latest papers" hidden></ul>
+        <div class="btn-row"><a class="btn btn-primary" href="/papers/">▶ Browse papers</a></div>
+      </div>
+    </section>
+
+    <section class="window sl-shelf sl-soon" aria-labelledby="sl-chalk-h">
+      <div class="titlebar"><span class="pix t-icon" data-pix="notepad"></span><span class="t-text">chalk-talks.dir</span></div>
+      <div class="win-body">
+        <span class="badge dev">Simmering</span>
+        <h2 id="sl-chalk-h">ID chalk talks</h2>
+        <p>Bite-size, phone-friendly teaching pages for residents: a case, the key pearls, and a few self-check questions. Coming soon.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer" id="connect">
+    <div class="connect">
+      <a class="btn btn-sm" href="https://x.com/SalShakerStudio"><span class="brand-ico" style="--bg:#000"><img src="/images/social/x.svg" alt=""></span>X</a>
+      <a class="btn btn-sm" href="https://discord.gg/b4jsEnW2jZ"><span class="brand-ico" style="--bg:#5865F2"><img src="/images/social/discord.svg" alt=""></span>Discord</a>
+      <a class="btn btn-sm" href="https://www.linkedin.com/in/arman8514581"><span class="brand-ico" style="--bg:#0A66C2"><img src="/images/social/linkedin.png" alt=""></span>LinkedIn</a>
+      <!-- Email is assembled in js/site.js (no @ in the HTML); see index.html. -->
+      <a class="btn btn-sm" href="#connect" data-email-user="saltshakerstudio" data-email-domain="protonmail.com"><span class="brand-ico" style="--bg:var(--salt)"><span class="pix" data-pix="mail"></span></span>Email</a>
+    </div>
+    <div class="badges88" aria-hidden="true">
+      <span class="b88 b88-net" title="Best viewed with Netscape Navigator 4.0"><span class="b88-l"><span class="pix" data-pix="globe"></span></span><span class="b88-r"><b>Netscape</b><i>Now!</i></span></span>
+      <span class="b88 b88-res" title="Optimized for 800×600"><span class="b88-l"><span class="pix" data-pix="computer"></span></span><span class="b88-r"><b>800×600</b><i>optimized</i></span></span>
+      <span class="b88 b88-html" title="Valid HTML 4.01"><span class="b88-l"><span class="pix" data-pix="folder"></span></span><span class="b88-r"><b>Valid</b><i>HTML 4.01</i></span></span>
+      <span class="b88 b88-note" title="Made with Notepad"><span class="b88-l"><span class="pix" data-pix="notepad"></span></span><span class="b88-r"><b>Made with</b><i>Notepad</i></span></span>
+      <span class="b88 b88-y2k" title="Y2K compliant"><span class="b88-l"><span class="pix" data-pix="calendar"></span></span><span class="b88-r"><b>Y2K</b><i>compliant</i></span></span>
+      <span class="b88 b88-caf" title="Powered by caffeine"><span class="b88-l"><span class="pix" data-pix="cup"></span></span><span class="b88-r"><b>Powered by</b><i>caffeine</i></span></span>
+    </div>
+    <div>You are visitor <span class="counter" id="hit-counter">00000001</span></div>
+    <p>© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
+    Educational content for medical professionals. Not for medical advice.</p>
+  </footer>
+</main>
+
+<!-- ============ START MENU ============ -->
+<nav class="start-menu" id="startMenu" aria-label="Start menu" hidden>
+  <div class="sm-stripe">SaltShaker<b>OS</b></div>
+  <div class="sm-items">
+    <a href="/"><span class="pix" data-pix="computer"></span>Home</a>
+    <a href="/#portfolio"><span class="pix" data-pix="floppy"></span>All Software</a>
+    <a href="/#devblog"><span class="pix" data-pix="notepad"></span>Dev Blog</a>
+    <a aria-current="page" href="/seasoning-lab/"><span class="pix" data-pix="flask"></span>Seasoning Lab</a>
+    <hr>
+    <a href="/abg-detail.html"><img class="t-icon" src="/images/web/abg-logo.jpg" alt="" width="22" height="22" style="width:22px;height:22px">ABG</a>
+    <a href="/auc-detail.html"><img class="t-icon" src="/images/web/auc-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">AUC</a>
+    <a href="/crm.html"><img class="t-icon" src="/images/web/crm-logo.jpg" alt="" width="22" height="22" style="width:22px;height:22px">CRM</a>
+    <a href="/scrubboard.html"><img class="t-icon" src="/images/web/scrubboard-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">Scrubboard</a>
+    <hr>
+    <a href="https://discord.gg/b4jsEnW2jZ"><span class="pix" data-pix="mail"></span>Discord</a>
+    <a href="/abg/"><span class="pix" data-pix="play"></span>Play ABG</a>
+  </div>
+</nav>
+
+<!-- ============ TASKBAR ============ -->
+<div class="taskbar" role="navigation" aria-label="Site navigation taskbar">
+  <button type="button" class="btn start-btn" id="startBtn" aria-expanded="false" aria-controls="startMenu"><span class="pix" data-pix="shaker"></span>Start</button>
+  <div class="task-links">
+    <a href="/"><span class="pix" data-pix="computer"></span><span class="label">Home</span></a>
+    <a href="/seasoning-lab/" aria-current="page"><span class="pix" data-pix="flask"></span><span class="label">Seasoning Lab</span></a>
+    <a href="/papers/"><span class="pix" data-pix="folder"></span><span class="label">ID Papers</span></a>
+  </div>
+  <div class="tray"><span class="clock" id="clock">--:--</span></div>
+</div>
+
+<script src="/js/site.js"></script>
+<script>
+/* Reads the papers shelf so this page's count and "fresh from the oven" list never need editing by hand. */
+(function(){
+  var stats=document.getElementById('slPaperStats'), list=document.getElementById('slLatest');
+  if(!stats||!window.fetch||!window.DOMParser) return;
+  fetch('/papers/').then(function(r){return r.ok?r.text():Promise.reject(r.status);}).then(function(html){
+    var doc=new DOMParser().parseFromString(html,'text/html');
+    var cards=[].slice.call(doc.querySelectorAll('.card[data-slug]')); if(!cards.length) return;
+    var topics={}; cards.forEach(function(c){topics[c.getAttribute('data-topic')||'Other']=1;});
+    var nt=Object.keys(topics).length;
+    stats.textContent=cards.length+(cards.length===1?' paper':' papers')+' · '+nt+(nt===1?' topic':' topics'); stats.hidden=false;
+    // Cards are appended in the order papers are added, so the last ones are the newest.
+    cards.slice(-3).reverse().forEach(function(c){
+      var h=c.querySelector('h3'), img=c.querySelector('img'), li=document.createElement('li'), a=document.createElement('a');
+      a.href=c.getAttribute('href');
+      if(img){var i=document.createElement('img'); i.src=img.getAttribute('src'); i.alt=''; i.loading='lazy'; a.appendChild(i);}
+      var t=document.createElement('span'), b=document.createElement('b'), sm=document.createElement('small');
+      b.textContent=h?h.textContent:c.getAttribute('data-slug'); sm.textContent=c.getAttribute('data-topic')||'';
+      t.appendChild(b); t.appendChild(sm); a.appendChild(t); li.appendChild(a); list.appendChild(li);
+    });
+    list.hidden=false;
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

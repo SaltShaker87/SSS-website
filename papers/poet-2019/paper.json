@@ -1,0 +1,938 @@
+{
+ "slug": "poet-2019",
+ "topic": "Bacteremia & duration",
+ "one_liner": "Oral step-down was noninferior: primary outcome {{n:primary_oral}} oral vs {{n:primary_iv}} IV, with hospital stay {{n:los_oral}} vs {{n:los_iv}}.",
+ "one_liner_plain": "Oral step-down was noninferior to IV for endocarditis",
+ "citation": {
+  "title": "Partial Oral versus Intravenous Antibiotic Treatment of Endocarditis",
+  "short_name": "POET",
+  "authors": "Iversen K, Ihlemann N, Gill SU, et al.",
+  "journal": "N Engl J Med",
+  "year": 2019,
+  "pmid": "30152252",
+  "doi": "10.1056/NEJMoa1808312",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30152252/",
+  "doi_url": "https://doi.org/10.1056/NEJMoa1808312"
+ },
+ "sections": {
+  "background": "Left-sided infective endocarditis is classically treated with up to 6 weeks of IV antibiotics. The authors note that in-hospital mortality ranges from 15% to more than 45% and that most complications happen early, so for many patients the main reason to stay in hospital after the first phase is just to finish the IV course. Outpatient IV therapy is an option, but it brings catheter logistics and monitoring burdens. Evidence for oral step-down in left-sided endocarditis was sparse, so POET tested it head to head.",
+  "methods": {
+   "design": "Nationwide, investigator-initiated, multicenter, randomized, unblinded noninferiority trial at cardiac centers in Denmark (July 2011 to August 2017). Events were judged by an adjudication committee unaware of treatment assignment. 1:1 web-based randomization, stratified by site.",
+   "population": "{{n:n_total}} stable adults (18+) with left-sided endocarditis (native or prosthetic valve) meeting modified Duke criteria, with blood cultures positive for streptococci, Enterococcus faecalis, Staphylococcus aureus, or coagulase-negative staphylococci. Out of {{n:screened}} screened, {{n:enrolled_pct}} were enrolled.",
+   "n_total_id": "n_total",
+   "intervention": "Switch to oral antibiotics ({{n:n_oral}} patients), discharged to outpatient care if feasible and seen 2 to 3 times a week. Every oral regimen paired two drugs from different classes with different mechanisms and metabolism, chosen by species and MIC testing (EUCAST); drug levels were measured on day 1 and day 5. The specific combinations are in the supplement (data needed).",
+   "comparator": "Continue IV antibiotics in hospital ({{n:n_iv}} patients) per ESC guidelines with Danish modifications.",
+   "primary_endpoint": "Composite of all-cause mortality, unplanned cardiac surgery, clinically evident embolic events, or relapse of bacteremia with the primary pathogen. Noninferiority margin: {{n:ni_margin}} (risk difference), {{n:power}} power.",
+   "follow_up": "From randomization until {{n:followup_months}} after antibiotics ended; visits at 1 week and 1, 3 and 6 months. No patients were lost to follow-up.",
+   "noninferiority_margin_id": "ni_margin",
+   "extra_rows": [
+    {
+     "label": "Key eligibility",
+     "text": "Stable condition with a good response to at least {{n:min_iv_days}} of IV antibiotics (and at least 7 days after valve surgery, if done); no abscess or valve problem needing surgery on transesophageal echo before randomization; at least 10 days of planned treatment left."
+    },
+    {
+     "label": "Sites",
+     "text": "Cardiac centers across Denmark; the article text doesn't give the number of sites (data needed)."
+    },
+    {
+     "label": "Who was enrolled",
+     "text": "{{n:male_pct}} men, mean age {{n:age_mean}}; {{n:coex_pct}} had a major coexisting condition; a prosthetic valve was affected in {{n:prosth_pct}}; {{n:presurg_pct}} had valve surgery before randomization. No patient had MRSA. Median {{n:dx_to_rand}} from diagnosis to randomization."
+    },
+    {
+     "label": "Pathogens",
+     "text": "Streptococci were most common ({{n:strep_iv}} IV / {{n:strep_oral}} oral), then E. faecalis ({{n:efae_iv}} / {{n:efae_oral}}), S. aureus ({{n:sa_iv}} / {{n:sa_oral}}), and coagulase-negative staph ({{n:cons_iv}} / {{n:cons_oral}})."
+    }
+   ]
+  },
+  "results": [
+   "After randomization, antibiotics ran a median {{n:days_iv}} (IV) vs {{n:days_oral}} (oral), P=0.48. But hospital stay after randomization (not a prespecified outcome) dropped from {{n:los_iv}} to {{n:los_oral}}, and {{n:outpt_pct}} of the oral group were treated partly or entirely as outpatients.",
+   "The primary composite outcome happened in {{n:primary_iv}} on IV vs {{n:primary_oral}} on oral: a difference of {{n:primary_diff}} (95% CI −3.4 to 9.6; P=0.40). The lower bound of the CI stayed well inside the 10-point margin, so oral was noninferior. The odds ratio was {{n:primary_or}} (95% CI 0.37 to 1.36).",
+   "By component: deaths {{n:mort_iv}} vs {{n:mort_oral}} (HR {{n:mort_hr}}, 95% CI 0.21 to 1.32); unplanned surgery {{n:surg_iv}} vs {{n:surg_oral}}; embolic events {{n:emb_iv}} vs {{n:emb_oral}}; relapse of bacteremia {{n:rel_iv}} vs {{n:rel_oral}}. Six patients (three per arm) had two events.",
+   "Robustness: per protocol, {{n:pp_oral}} of oral patients had an event (difference {{n:pp_diff}}, 95% CI −3.2 to 9.2). Counting the {{n:crossover}} oral-to-IV crossovers as failures, the difference was {{n:sens_diff}} (95% CI −5.6 to 7.5), still noninferior.",
+   "Safety: adverse antibiotic effects in {{n:ae_iv}} (IV) vs {{n:ae_oral}} (oral), P=0.66, mostly allergy, bone marrow suppression, and GI effects. In {{n:subther}} oral patients one of the two drugs ran below target (rifampicin, moxifloxacin, linezolid, or dicloxacillin), but the partner drug was adequate and none had a primary outcome event. Regimen changes were more common on IV ({{n:switch_iv}}) than oral ({{n:switch_oral}}).",
+   "The paper doesn't define formal secondary efficacy outcomes in the main text. The extra outcomes above are components, sensitivity analyses, and safety data."
+  ],
+  "conclusions": "In stable patients with left-sided endocarditis, switching to oral antibiotics was noninferior to continuing IV treatment, and it cut the hospital stay sharply. Noninferior means \"not meaningfully worse\" by the pre-set 10-point margin, not \"better\", even though the oral group's rate was numerically lower.",
+  "limitations": "Only left-sided endocarditis caused by four bacterial groups; results may not apply to the 25 to 30% caused by other bacteria or to culture-negative cases. Only five people who inject drugs were enrolled, only 22% had S. aureus, and nobody had MRSA or other resistant phenotypes. Strict entry criteria (only 20% of screened patients were randomized), possible referral bias, an unblinded design, and outpatient discharge left to patient and physician choice. Done in Denmark, a low-resistance setting.",
+  "practice_impact": "Within the article, the authors say clinicians should use the trial's strict entry criteria when deciding to shift a patient from IV to oral therapy, and that a larger share of left-sided endocarditis patients may be candidates for partial oral therapy. They don't consider pharmacokinetics a barrier as long as two well-absorbed, susceptibility-matched drugs are used and gut uptake is normal. Guideline changes after 2019 aren't in this article (data needed)."
+ },
+ "numbers": [
+  {
+   "id": "n_total",
+   "label": "Adults randomized",
+   "value": 400,
+   "unit": "",
+   "source_quote": "we assigned 400 adults in stable condition who had endocarditis on the left side of the heart",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_iv",
+   "label": "IV arm",
+   "value": 199,
+   "unit": "",
+   "source_quote": "to continue intravenous treatment (199 patients) or to switch to oral antibiotic treatment (201 patients)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "n_oral",
+   "label": "Oral arm",
+   "value": 201,
+   "unit": "",
+   "source_quote": "to continue intravenous treatment (199 patients) or to switch to oral antibiotic treatment (201 patients)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "primary_iv_n",
+   "label": "Primary outcome events, IV",
+   "value": 24,
+   "unit": "",
+   "source_quote": "The primary composite outcome occurred in 24 patients (12.1%) in the intravenously treated group and in 18 (9.0%) in the orally treated group",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "primary_oral_n",
+   "label": "Primary outcome events, oral",
+   "value": 18,
+   "unit": "",
+   "source_quote": "The primary composite outcome occurred in 24 patients (12.1%) in the intravenously treated group and in 18 (9.0%) in the orally treated group",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "primary_iv",
+   "label": "Primary outcome, IV (continued IV)",
+   "value": 12.1,
+   "unit": "%",
+   "source_quote": "The primary composite outcome occurred in 24 patients (12.1%) in the intravenously treated group and in 18 (9.0%) in the orally treated group",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "primary_oral",
+   "label": "Primary outcome, oral (switched)",
+   "value": 9.0,
+   "unit": "%",
+   "source_quote": "The primary composite outcome occurred in 24 patients (12.1%) in the intravenously treated group and in 18 (9.0%) in the orally treated group",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral",
+   "decimals": 1
+  },
+  {
+   "id": "primary_diff",
+   "label": "Between-group difference (IV minus oral)",
+   "value": 3.1,
+   "unit": " pp",
+   "source_quote": "between-group difference, 3.1 percentage points; 95% confidence interval, −3.4 to 9.6; P = 0.40), which met noninferiority criteria.",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": -3.4,
+   "ci_high": 9.6
+  },
+  {
+   "id": "primary_p",
+   "label": "P value, primary outcome",
+   "value": 0.4,
+   "unit": "",
+   "source_quote": "between-group difference, 3.1 percentage points; 95% confidence interval, −3.4 to 9.6; P = 0.40",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "days_iv",
+   "label": "Median days of antibiotics after randomization, IV",
+   "value": 19,
+   "unit": " days",
+   "source_quote": "antibiotic treatment was completed after a median of 19 days (interquartile range, 14 to 25) in the intravenously treated group and 17 days (interquartile range, 14 to 25) in the orally treated group (P = 0.48)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "days_oral",
+   "label": "Median days of antibiotics after randomization, oral",
+   "value": 17,
+   "unit": " days",
+   "source_quote": "antibiotic treatment was completed after a median of 19 days (interquartile range, 14 to 25) in the intravenously treated group and 17 days (interquartile range, 14 to 25) in the orally treated group (P = 0.48)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "days_p",
+   "label": "P value, treatment duration",
+   "value": 0.48,
+   "unit": "",
+   "source_quote": "antibiotic treatment was completed after a median of 19 days (interquartile range, 14 to 25) in the intravenously treated group and 17 days (interquartile range, 14 to 25) in the orally treated group (P = 0.48)",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "min_iv_days",
+   "label": "Minimum IV days before randomization",
+   "value": 10,
+   "unit": " days",
+   "source_quote": "In all patients, antibiotic treatment was administered intravenously for at least 10 days.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "followup_months",
+   "label": "Follow-up after treatment completed",
+   "value": 6,
+   "unit": " months",
+   "source_quote": "from the time of randomization until 6 months after antibiotic treatment was completed.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "ni_margin",
+   "label": "Noninferiority margin",
+   "value": 10,
+   "unit": " pp",
+   "source_quote": "A risk difference (i.e., a noninferiority margin) of 10 percentage points was chosen",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "power",
+   "label": "Planned power",
+   "value": 90,
+   "unit": "%",
+   "source_quote": "to provide a power of 90% to confirm noninferiority",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "primary_or",
+   "label": "Odds ratio, primary outcome (oral vs IV)",
+   "value": 0.72,
+   "unit": "",
+   "source_quote": "18 (9.0%) in the orally treated group (odds ratio, 0.72; 95% confidence interval [CI], 0.37 to 1.36)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": 0.37,
+   "ci_high": 1.36
+  },
+  {
+   "id": "primary_total_n",
+   "label": "Primary outcome events, both arms",
+   "value": 42,
+   "unit": "",
+   "source_quote": "The primary composite outcome occurred in a total of 42 patients (10.5%)",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "mort_iv",
+   "label": "All-cause mortality, IV",
+   "value": 6.5,
+   "unit": "%",
+   "source_quote": "All-cause mortality 13 (6.5) 7 (3.5) 3.0 (−1.4 to 7.7) 0.53 (0.21 to 1.32)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv",
+   "n_events": 13
+  },
+  {
+   "id": "mort_oral",
+   "label": "All-cause mortality, oral",
+   "value": 3.5,
+   "unit": "%",
+   "source_quote": "All-cause mortality 13 (6.5) 7 (3.5) 3.0 (−1.4 to 7.7) 0.53 (0.21 to 1.32)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral",
+   "n_events": 7
+  },
+  {
+   "id": "mort_diff",
+   "label": "All-cause mortality difference (IV minus oral)",
+   "value": 3.0,
+   "unit": " pp",
+   "source_quote": "All-cause mortality 13 (6.5) 7 (3.5) 3.0 (−1.4 to 7.7) 0.53 (0.21 to 1.32)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": -1.4,
+   "ci_high": 7.7,
+   "decimals": 1
+  },
+  {
+   "id": "mort_hr",
+   "label": "All-cause mortality hazard ratio",
+   "value": 0.53,
+   "unit": "",
+   "source_quote": "All-cause mortality 13 (6.5) 7 (3.5) 3.0 (−1.4 to 7.7) 0.53 (0.21 to 1.32)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": 0.21,
+   "ci_high": 1.32
+  },
+  {
+   "id": "surg_iv",
+   "label": "Unplanned cardiac surgery, IV",
+   "value": 3.0,
+   "unit": "%",
+   "source_quote": "Unplanned cardiac surgery 6 (3.0) 6 (3.0) 0 (−3.3 to 3.4) 0.99 (0.32 to 3.07)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv",
+   "n_events": 6,
+   "decimals": 1
+  },
+  {
+   "id": "surg_oral",
+   "label": "Unplanned cardiac surgery, oral",
+   "value": 3.0,
+   "unit": "%",
+   "source_quote": "Unplanned cardiac surgery 6 (3.0) 6 (3.0) 0 (−3.3 to 3.4) 0.99 (0.32 to 3.07)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral",
+   "n_events": 6,
+   "decimals": 1
+  },
+  {
+   "id": "surg_hr",
+   "label": "Unplanned surgery hazard ratio",
+   "value": 0.99,
+   "unit": "",
+   "source_quote": "Unplanned cardiac surgery 6 (3.0) 6 (3.0) 0 (−3.3 to 3.4) 0.99 (0.32 to 3.07)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": 0.32,
+   "ci_high": 3.07
+  },
+  {
+   "id": "emb_iv",
+   "label": "Embolic event, IV",
+   "value": 1.5,
+   "unit": "%",
+   "source_quote": "Embolic event 3 (1.5) 3 (1.5) 0 (−2.4 to 2.4) 0.97 (0.20 to 4.82)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv",
+   "n_events": 3
+  },
+  {
+   "id": "emb_oral",
+   "label": "Embolic event, oral",
+   "value": 1.5,
+   "unit": "%",
+   "source_quote": "Embolic event 3 (1.5) 3 (1.5) 0 (−2.4 to 2.4) 0.97 (0.20 to 4.82)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral",
+   "n_events": 3
+  },
+  {
+   "id": "emb_hr",
+   "label": "Embolic event hazard ratio",
+   "value": 0.97,
+   "unit": "",
+   "source_quote": "Embolic event 3 (1.5) 3 (1.5) 0 (−2.4 to 2.4) 0.97 (0.20 to 4.82)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": 0.2,
+   "ci_high": 4.82
+  },
+  {
+   "id": "rel_iv",
+   "label": "Relapse of bacteremia, IV",
+   "value": 2.5,
+   "unit": "%",
+   "source_quote": "Relapse of the positive blood culture† 5 (2.5) 5 (2.5) 0 (−3.1 to 3.1) 0.97 (0.28 to 3.33)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv",
+   "n_events": 5
+  },
+  {
+   "id": "rel_oral",
+   "label": "Relapse of bacteremia, oral",
+   "value": 2.5,
+   "unit": "%",
+   "source_quote": "Relapse of the positive blood culture† 5 (2.5) 5 (2.5) 0 (−3.1 to 3.1) 0.97 (0.28 to 3.33)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral",
+   "n_events": 5
+  },
+  {
+   "id": "rel_hr",
+   "label": "Relapse hazard ratio",
+   "value": 0.97,
+   "unit": "",
+   "source_quote": "Relapse of the positive blood culture† 5 (2.5) 5 (2.5) 0 (−3.1 to 3.1) 0.97 (0.28 to 3.33)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": 0.28,
+   "ci_high": 3.33
+  },
+  {
+   "id": "two_outcomes",
+   "label": "Patients with two outcome events",
+   "value": 6,
+   "unit": "",
+   "source_quote": "Six patients, three in each group, had two outcomes.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "pp_oral",
+   "label": "Per-protocol primary outcome, oral",
+   "value": 9.1,
+   "unit": "%",
+   "source_quote": "in the per-protocol analysis, the primary composite outcome occurred in 24 of 199 patients (12.1%) in the intravenously treated group and in 18 of 197 (9.1%) in the orally treated group",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "pp_diff",
+   "label": "Per-protocol difference (IV minus oral)",
+   "value": 3.0,
+   "unit": " pp",
+   "source_quote": "between-group difference, 3.0 percentage points; 95% CI, –3.2 to 9.2",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": -3.2,
+   "ci_high": 9.2,
+   "decimals": 1
+  },
+  {
+   "id": "sens_oral_n",
+   "label": "Sensitivity analysis events, oral (crossovers counted as failures)",
+   "value": 22,
+   "unit": "",
+   "source_quote": "the primary outcome occurred in 24 of 199 patients in the intravenously treated group and in 22 of 201 patients in the orally treated group",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sens_diff",
+   "label": "Sensitivity difference, crossovers as failures",
+   "value": 1.2,
+   "unit": " pp",
+   "source_quote": "between-group difference, 1.2 percentage points; 95% CI, –5.6 to 7.5",
+   "source": "paper",
+   "status": "VERIFIED",
+   "ci_low": -5.6,
+   "ci_high": 7.5
+  },
+  {
+   "id": "los_iv",
+   "label": "Median hospital stay after randomization, IV",
+   "value": 19,
+   "unit": " days",
+   "source_quote": "the median length of stay in the hospital (not a prespecified outcome) was 19 days (interquartile range, 14 to 25) in the intravenously treated group and 3 days (interquartile range, 1 to 10) in the orally treated group (P<0.001)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "los_oral",
+   "label": "Median hospital stay after randomization, oral",
+   "value": 3,
+   "unit": " days",
+   "source_quote": "the median length of stay in the hospital (not a prespecified outcome) was 19 days (interquartile range, 14 to 25) in the intravenously treated group and 3 days (interquartile range, 1 to 10) in the orally treated group (P<0.001)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "outpt_pct",
+   "label": "Oral-arm patients treated partly/fully as outpatients",
+   "value": 80,
+   "unit": "%",
+   "source_quote": "In the orally treated group, 160 patients (80%) were partially or completely treated as outpatients.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "ae_iv",
+   "label": "Adverse antibiotic effects, IV",
+   "value": 6,
+   "unit": "%",
+   "source_quote": "in 12 patients (6%) in the intravenously treated group and in 10 (5%) in the orally treated group (P = 0.66)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "ae_oral",
+   "label": "Adverse antibiotic effects, oral",
+   "value": 5,
+   "unit": "%",
+   "source_quote": "in 12 patients (6%) in the intravenously treated group and in 10 (5%) in the orally treated group (P = 0.66)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "ae_p",
+   "label": "P value, adverse effects",
+   "value": 0.66,
+   "unit": "",
+   "source_quote": "in 12 patients (6%) in the intravenously treated group and in 10 (5%) in the orally treated group (P = 0.66)",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "switch_iv",
+   "label": "Switched to a different IV regimen, IV arm",
+   "value": 22,
+   "unit": "%",
+   "source_quote": "43 patients (22%) in the intravenously treated group were switched to a different intravenous antibiotic regimen",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "switch_oral",
+   "label": "Switched to a different oral regimen, oral arm",
+   "value": 12,
+   "unit": "%",
+   "source_quote": "24 (12%) in the orally treated group were switched to a different oral regimen (P<0.01)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "crossover",
+   "label": "Crossed over oral to IV",
+   "value": 4,
+   "unit": "",
+   "source_quote": "Four patients crossed over from the orally treated group to the intravenously treated group",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "subther",
+   "label": "Oral patients with one drug below target level",
+   "value": 7,
+   "unit": "",
+   "source_quote": "In seven patients in the orally treated group, the plasma concentration of one of the two administered antibiotics was not at the most effective level",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "screened",
+   "label": "Patients screened",
+   "value": 1954,
+   "unit": "",
+   "source_quote": "a total of 1954 patients who were referred to a cardiac center because of suspected endocarditis were screened for inclusion",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "enrolled_pct",
+   "label": "Share of screened patients enrolled",
+   "value": 20,
+   "unit": "%",
+   "source_quote": "400 patients (20%) with endocarditis on the left side of the heart",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "male_pct",
+   "label": "Men",
+   "value": 77,
+   "unit": "%",
+   "source_quote": "The majority of patients were men (77%), and the mean age was 67 years.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "age_mean",
+   "label": "Mean age",
+   "value": 67,
+   "unit": " yr",
+   "source_quote": "The majority of patients were men (77%), and the mean age was 67 years.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "coex_pct",
+   "label": "At least one major coexisting condition",
+   "value": 35,
+   "unit": "%",
+   "source_quote": "139 patients (35%) had at least one major coexisting medical condition",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "prosth_pct",
+   "label": "Prosthetic valve affected",
+   "value": 27,
+   "unit": "%",
+   "source_quote": "in 27% (107 patients), a previously inserted prosthetic valve was affected",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "presurg_pct",
+   "label": "Valve surgery before randomization",
+   "value": 38,
+   "unit": "%",
+   "source_quote": "Before randomization, 152 of the 400 enrolled patients (38%) had undergone valve surgery",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dx_to_rand",
+   "label": "Median days from diagnosis to randomization (both arms)",
+   "value": 17,
+   "unit": " days",
+   "source_quote": "The median time from the diagnosis of endocarditis of the left side of the heart to randomization was 17 days",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "strep_iv",
+   "label": "Streptococcus, IV",
+   "value": 52.3,
+   "unit": "%",
+   "source_quote": "Streptococcus 104 (52.3) 92 (45.8)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "strep_oral",
+   "label": "Streptococcus, oral",
+   "value": 45.8,
+   "unit": "%",
+   "source_quote": "Streptococcus 104 (52.3) 92 (45.8)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "efae_iv",
+   "label": "E. faecalis, IV",
+   "value": 23.1,
+   "unit": "%",
+   "source_quote": "Enterococcus faecalis 46 (23.1) 51 (25.4)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "efae_oral",
+   "label": "E. faecalis, oral",
+   "value": 25.4,
+   "unit": "%",
+   "source_quote": "Enterococcus faecalis 46 (23.1) 51 (25.4)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "sa_iv",
+   "label": "S. aureus, IV",
+   "value": 20.1,
+   "unit": "%",
+   "source_quote": "Staphylococcus aureus‡ 40 (20.1) 47 (23.4)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv"
+  },
+  {
+   "id": "sa_oral",
+   "label": "S. aureus, oral",
+   "value": 23.4,
+   "unit": "%",
+   "source_quote": "Staphylococcus aureus‡ 40 (20.1) 47 (23.4)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "cons_iv",
+   "label": "Coagulase-negative staph, IV",
+   "value": 5.0,
+   "unit": "%",
+   "source_quote": "Coagulase-negative staphylococci 10 (5.0) 13 (6.5)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "iv",
+   "decimals": 1
+  },
+  {
+   "id": "cons_oral",
+   "label": "Coagulase-negative staph, oral",
+   "value": 6.5,
+   "unit": "%",
+   "source_quote": "Coagulase-negative staphylococci 10 (5.0) 13 (6.5)",
+   "source": "paper",
+   "status": "VERIFIED",
+   "arm": "oral"
+  },
+  {
+   "id": "oral_regimens",
+   "label": "Specific oral regimens (drug combinations and doses)",
+   "value": null,
+   "unit": "",
+   "source_quote": "",
+   "source": "paper",
+   "status": "MISSING",
+   "note": "In Supplementary Tables S2/S10, not in the article text."
+  },
+  {
+   "id": "n_sites",
+   "label": "Number of participating sites",
+   "value": null,
+   "unit": "",
+   "source_quote": "",
+   "source": "paper",
+   "status": "MISSING",
+   "note": "Text says \"cardiac centers in Denmark\" without a count."
+  }
+ ],
+ "figures": [
+  {
+   "id": "fig_primary",
+   "type": "bar",
+   "title": "Primary composite outcome",
+   "number_ids": [
+    "primary_iv",
+    "primary_oral"
+   ],
+   "y_label": "% of patients",
+   "caption": "Primary composite outcome: \"occurred in 24 patients (12.1%) in the intravenously treated group and in 18 (9.0%) in the orally treated group.\"",
+   "alt": "Bar chart: primary outcome 12.1% with IV versus 9.0% with oral treatment",
+   "series_labels": [
+    "Continued IV",
+    "Switched to oral"
+   ]
+  },
+  {
+   "id": "fig_diff",
+   "type": "forest",
+   "title": "Between-group difference vs the noninferiority margin",
+   "number_ids": [
+    "primary_diff",
+    "pp_diff",
+    "sens_diff"
+   ],
+   "margin_id": "ni_margin",
+   "margin_direction": -1,
+   "y_label": "percentage points (IV minus oral; right favors oral)",
+   "caption": "ITT \"3.1 percentage points (95% CI, –3.4 to 9.6)\"; per protocol \"3.0 percentage points; 95% CI, –3.2 to 9.2\"; crossovers as failures \"1.2 percentage points; 95% CI, –5.6 to 7.5\". Red dashed line: the \"noninferiority margin of 10 percentage points\", drawn at −10 because a difference below −10 would mean oral was worse.",
+   "alt": "Forest plot: all three CIs lie to the right of the −10 margin line",
+   "series_labels": [
+    "ITT",
+    "Per protocol",
+    "Crossovers = failure"
+   ]
+  },
+  {
+   "id": "fig_components",
+   "type": "grouped",
+   "title": "The four components of the primary outcome",
+   "number_ids": [
+    "mort_iv",
+    "mort_oral",
+    "surg_iv",
+    "surg_oral",
+    "emb_iv",
+    "emb_oral",
+    "rel_iv",
+    "rel_oral"
+   ],
+   "groups": [
+    {
+     "label": "Death",
+     "ids": [
+      "mort_iv",
+      "mort_oral"
+     ]
+    },
+    {
+     "label": "Unplanned surgery",
+     "ids": [
+      "surg_iv",
+      "surg_oral"
+     ]
+    },
+    {
+     "label": "Embolic event",
+     "ids": [
+      "emb_iv",
+      "emb_oral"
+     ]
+    },
+    {
+     "label": "Bacteremia relapse",
+     "ids": [
+      "rel_iv",
+      "rel_oral"
+     ]
+    }
+   ],
+   "series_labels": [
+    "Continued IV",
+    "Switched to oral"
+   ],
+   "y_label": "% of patients",
+   "caption": "From Table 2 (number (percent) per arm). Six patients, three in each group, had two outcomes, so components add up to more than the composite.",
+   "alt": "Grouped bars: death 6.5 vs 3.5%, surgery 3.0 vs 3.0%, embolism 1.5 vs 1.5%, relapse 2.5 vs 2.5%"
+  },
+  {
+   "id": "fig_los",
+   "type": "bar",
+   "title": "Median hospital stay after randomization",
+   "number_ids": [
+    "los_iv",
+    "los_oral"
+   ],
+   "series_labels": [
+    "Continued IV",
+    "Switched to oral"
+   ],
+   "y_label": "days",
+   "caption": "\"19 days (interquartile range, 14 to 25) in the intravenously treated group and 3 days (interquartile range, 1 to 10) in the orally treated group (P<0.001)\". Not a prespecified outcome.",
+   "alt": "Bar chart: 19 vs 3 days"
+  },
+  {
+   "id": "fig_days",
+   "type": "bar",
+   "title": "Median days of antibiotics after randomization",
+   "number_ids": [
+    "days_iv",
+    "days_oral"
+   ],
+   "y_label": "days",
+   "caption": "\"a median of 19 days (interquartile range, 14 to 25) in the intravenously treated group and 17 days ... in the orally treated group (P=0.48)\"",
+   "alt": "Bar chart: median 19 days IV vs 17 days oral",
+   "series_labels": [
+    "Continued IV",
+    "Switched to oral"
+   ]
+  },
+  {
+   "id": "fig_ae",
+   "type": "bar",
+   "title": "Adverse antibiotic effects",
+   "number_ids": [
+    "ae_iv",
+    "ae_oral"
+   ],
+   "series_labels": [
+    "Continued IV",
+    "Switched to oral"
+   ],
+   "y_label": "% of patients",
+   "caption": "\"12 patients (6%) in the intravenously treated group and in 10 (5%) in the orally treated group (P = 0.66)\"",
+   "alt": "Bar chart: 6% vs 5%"
+  },
+  {
+   "id": "fig_pathogens",
+   "type": "grouped",
+   "title": "Pathogens at baseline",
+   "number_ids": [
+    "strep_iv",
+    "strep_oral",
+    "efae_iv",
+    "efae_oral",
+    "sa_iv",
+    "sa_oral",
+    "cons_iv",
+    "cons_oral"
+   ],
+   "groups": [
+    {
+     "label": "Streptococci",
+     "ids": [
+      "strep_iv",
+      "strep_oral"
+     ]
+    },
+    {
+     "label": "E. faecalis",
+     "ids": [
+      "efae_iv",
+      "efae_oral"
+     ]
+    },
+    {
+     "label": "S. aureus",
+     "ids": [
+      "sa_iv",
+      "sa_oral"
+     ]
+    },
+    {
+     "label": "CoNS",
+     "ids": [
+      "cons_iv",
+      "cons_oral"
+     ]
+    }
+   ],
+   "series_labels": [
+    "Continued IV",
+    "Switched to oral"
+   ],
+   "y_label": "% of arm",
+   "caption": "From Table 1. Patients could have more than one pathogen. No patient had MRSA.",
+   "alt": "Grouped bars of pathogen share per arm"
+  }
+ ],
+ "hero_findings": [
+  {
+   "number_id": "primary_iv",
+   "headline": "primary outcome: stayed on IV",
+   "figure_id": "fig_primary"
+  },
+  {
+   "number_id": "primary_oral",
+   "headline": "primary outcome: switched to oral. Noninferior.",
+   "figure_id": "fig_primary"
+  },
+  {
+   "number_id": "ni_margin",
+   "headline": "noninferiority margin. The whole CI (−3.4 to 9.6) stayed inside it.",
+   "figure_id": "fig_diff"
+  },
+  {
+   "number_id": "los_oral",
+   "headline": "median days in hospital after switching to oral (vs 19 on IV)",
+   "figure_id": "fig_los"
+  }
+ ],
+ "must_include_map": [
+  {
+   "excerpt": "changing to oral antibiotic treatment was noninferior...",
+   "section": "conclusions"
+  },
+  {
+   "excerpt": "The primary outcome was a composite...",
+   "section": "methods"
+  },
+  {
+   "excerpt": "administered intravenously for at least 10 days",
+   "section": "results"
+  }
+ ],
+ "video_figures": [
+  "fig_primary",
+  "fig_components",
+  "fig_diff",
+  "fig_los"
+ ],
+ "km_note": "Figure 2 is a Kaplan-Meier plot with a numbers-at-risk table, but the text gives no cumulative event percentages at intermediate time points, so no curve was recreated (points would have to be read off the image).",
+ "source_text": [
+  "../../source/poet.txt",
+  "../../source/poet.raw.txt"
+ ]
+}
