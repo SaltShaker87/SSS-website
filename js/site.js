@@ -172,7 +172,8 @@
   }
 
   /* Window close buttons: the program is, of course, not responding */
-  var closers = document.querySelectorAll('.titlebar .t-close');
+  /* The Install with AI dialog has its own close button. Skip it here. */
+  var closers = document.querySelectorAll('.titlebar .t-close:not([data-ai-close])');
   for (var c = 0; c < closers.length; c++) {
     closers[c].addEventListener('click', function () {
       dialog('Salt Shaker Studio',
@@ -280,6 +281,81 @@
       start();
     }
   })();
+
+  /* ---------- Install with AI ----------
+     The prompt is already in the page (a <dialog>), so crawlers can read it.
+     This only opens, copies, and closes that dialog. */
+  var aiDialog = document.getElementById('installAiDialog');
+  var aiOpen = document.getElementById('installAiOpen');
+  if (aiDialog && aiOpen) {
+    var aiPrompt = document.getElementById('installAiPrompt');
+    var aiCopy = document.getElementById('installAiCopy');
+    var aiStatus = document.getElementById('installAiStatus');
+    var aiTimer = null;
+
+    function aiPromptText() {
+      return (aiPrompt ? aiPrompt.textContent : '').replace(/[ \t]+\n/g, '\n').replace(/\n[ \t]+/g, '\n').trim();
+    }
+    function resetAiCopy() {
+      clearTimeout(aiTimer);
+      if (aiCopy) aiCopy.textContent = 'Copy';
+      if (aiStatus) aiStatus.textContent = '';
+    }
+    function markAiCopied() {
+      if (aiCopy) aiCopy.textContent = 'Copied!';
+      if (aiStatus) aiStatus.textContent = 'Copied!';
+      clearTimeout(aiTimer);
+      aiTimer = setTimeout(resetAiCopy, 2000);
+    }
+    function legacyCopy(text) {
+      var area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.left = '-9999px';
+      aiDialog.appendChild(area);
+      area.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      area.remove();
+      return ok;
+    }
+    function openAi() {
+      resetAiCopy();
+      if (typeof aiDialog.showModal === 'function') aiDialog.showModal();
+      else aiDialog.setAttribute('open', '');
+      aiDialog.focus();
+    }
+    function closeAi() {
+      if (typeof aiDialog.close === 'function' && aiDialog.open) aiDialog.close();
+      else {
+        aiDialog.removeAttribute('open');
+        aiOpen.focus();
+      }
+    }
+
+    aiOpen.addEventListener('click', openAi);
+    aiDialog.addEventListener('close', function () { aiOpen.focus(); });
+    aiDialog.addEventListener('click', function (e) {
+      if (e.target === aiDialog || (e.target.closest && e.target.closest('[data-ai-close]'))) closeAi();
+    });
+    if (aiCopy) {
+      aiCopy.addEventListener('click', function () {
+        var text = aiPromptText();
+        if (!text) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markAiCopied, function () {
+            if (legacyCopy(text)) markAiCopied();
+            else if (aiStatus) aiStatus.textContent = 'Select the prompt and copy it manually.';
+          });
+        } else if (legacyCopy(text)) {
+          markAiCopied();
+        } else if (aiStatus) {
+          aiStatus.textContent = 'Select the prompt and copy it manually.';
+        }
+      });
+    }
+  }
 
   window.SSS = { paintIcons: paintIcons, reducedMotion: reducedMotion };
 })();

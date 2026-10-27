@@ -14,6 +14,36 @@
 </script>
 <meta name="description" content="Local-first CCC feedback tool for internal medicine residencies. Evidence-checked AI milestone summaries. Linux installer for Ubuntu and NVIDIA DGX Spark.">
 <link rel="canonical" href="https://www.saltshakerstudio.net/auc-detail.html">
+<link rel="describedby" href="/llms.txt" type="text/plain">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AUC: Assessments Under Curve",
+  "description": "Local-first CCC feedback tool for internal medicine residencies. Evidence-checked AI milestone summaries. Linux installer for Ubuntu and NVIDIA DGX Spark.",
+  "operatingSystem": "Linux",
+  "applicationCategory": "MedicalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://github.com/SaltShaker87/resident-evaluations-auc/releases/latest",
+  "url": "https://www.saltshakerstudio.net/auc-detail.html",
+  "image": "https://www.saltshakerstudio.net/images/web/auc-logo.png",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Arman Yalcin",
+    "jobTitle": "Infectious Disease Physician",
+    "url": "https://www.saltshakerstudio.net/#about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Salt Shaker Studio",
+    "url": "https://www.saltshakerstudio.net/"
+  }
+}
+</script>
 <title>AUC: Assessments Under Curve — Salt Shaker Studio</title>
 <meta property="og:title" content="AUC: Assessments Under Curve — Salt Shaker Studio">
 <meta property="og:description" content="Local-first CCC feedback tool for internal medicine residencies. Evidence-checked AI milestone summaries. Linux installer for Ubuntu and NVIDIA DGX Spark.">
@@ -51,9 +81,11 @@
           <span class="badge live">Released · PGY-1</span>
           <h1>AUC: Assessments Under Curve</h1>
           <p>A local-first feedback tool for internal medicine residency programs. Log CCC observations, track follow-ups, and draft ACGME milestone summaries with an AI that runs on your own machine and has to quote your notes word-for-word.</p>
+          <p class="dl-facts">Free · Linux only · Ubuntu 22.04 or newer, NVIDIA DGX Spark, or HP ZGX Nano (.deb) · other Linux (.AppImage)</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="#download">⬇ Download for Linux</a>
-            <a class="btn" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn btn-primary" href="#download">Download for Linux (.deb or AppImage)</a>
+            <button type="button" class="btn" id="installAiOpen" aria-haspopup="dialog" aria-controls="installAiDialog">Install with AI</button>
+            <a class="btn" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">View AUC on GitHub</a>
           </div>
         </div>
       </div>
@@ -80,18 +112,18 @@
           <div class="dl-main" id="dlMain">
             <a class="btn btn-primary btn-dl" id="dlArm" data-asset="deb-aarch64"
                href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.deb">
-              ⬇ DGX Spark / HP ZGX Nano
-              <small>ARM · .deb · <span data-size="deb-aarch64">3.2 MB</span></small>
+              Download AUC for ARM Linux (.deb)
+              <small>NVIDIA DGX Spark or HP ZGX Nano · <span data-size="deb-aarch64">3.2 MB</span></small>
             </a>
             <a class="btn btn-primary btn-dl" id="dlX86" data-asset="deb-x86_64"
                href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.deb">
-              ⬇ Ubuntu PC
-              <small>Intel or AMD · .deb · <span data-size="deb-x86_64">3.3 MB</span></small>
+              Download AUC for Ubuntu PC (.deb)
+              <small>Intel or AMD · <span data-size="deb-x86_64">3.3 MB</span></small>
             </a>
           </div>
           <p class="muted dl-alt">Not on Ubuntu, or the .deb won't open? Use the AppImage instead:
-            <a data-asset="appimage-aarch64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.AppImage">ARM</a> ·
-            <a data-asset="appimage-x86_64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.AppImage">Intel/AMD</a>.
+            <a data-asset="appimage-aarch64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-aarch64.AppImage">Download the ARM AppImage</a> ·
+            <a data-asset="appimage-x86_64" href="https://github.com/SaltShaker87/resident-evaluations-auc/releases/download/v1.0.1/AUC-Installer-1.0.1-linux-x86_64.AppImage">Download the Intel or AMD AppImage</a>.
           </p>
         </div>
 
@@ -291,6 +323,24 @@
   </div>
   <div class="tray"><span class="clock" id="clock">--:--</span></div>
 </div>
+
+<dialog class="ai-dialog" id="installAiDialog" role="dialog" aria-modal="true" aria-labelledby="installAiTitle" tabindex="-1">
+  <div class="window">
+    <div class="titlebar">
+      <span class="t-text" id="installAiTitle">Install with AI</span>
+      <span class="t-btns"><button type="button" class="t-btn t-close" data-ai-close aria-label="Close"></button></span>
+    </div>
+    <div class="win-body">
+      <p class="ai-lead">Copy this and paste it to an AI assistant on the Linux computer where you want AUC installed.</p>
+      <pre class="ai-prompt" id="installAiPrompt">Install AUC (free, by Salt Shaker Studio) on this computer. AUC runs on Linux only; there is no macOS or Windows build yet. Open https://github.com/SaltShaker87/resident-evaluations-auc/releases/latest and check this computer's CPU architecture and Linux distribution before you choose a file. On Ubuntu 22.04 or newer, an NVIDIA DGX Spark, or an HP ZGX Nano, download the .deb that matches the CPU: aarch64 for ARM, or x86_64 for Intel or AMD. On another Linux distribution, or if the .deb will not open, download the matching .AppImage instead. Only download from github.com/SaltShaker87. Ask me before approving any security prompts. More info: https://www.saltshakerstudio.net/auc-detail.html</pre>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="installAiCopy">Copy</button>
+        <button type="button" class="btn" data-ai-close>Close</button>
+      </div>
+      <p class="ai-status" id="installAiStatus" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
 
 <script src="js/site.js"></script>
 

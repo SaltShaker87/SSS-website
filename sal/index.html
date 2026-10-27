@@ -15,6 +15,35 @@
     <title>SAL: Hyponatremia Cases — Sodium Correction Practice</title>
     <meta name="description" content="Practice hyponatremia cases online. SAL walks you through sodium and fluid decisions in guided cases — an early Salt Shaker Studio prototype." />
     <link rel="canonical" href="https://www.saltshakerstudio.net/sal/" />
+    <link rel="describedby" href="/llms.txt" type="text/plain" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SAL: Hyponatremia Learning App",
+      "description": "Practice hyponatremia cases online. SAL walks you through sodium and fluid decisions in guided cases. It is an early Salt Shaker Studio prototype, free in the browser, with no install and no account.",
+      "operatingSystem": "Web browser",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://www.saltshakerstudio.net/sal/",
+      "image": "https://www.saltshakerstudio.net/images/web/sal-logo.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Arman Yalcin",
+        "jobTitle": "Infectious Disease Physician",
+        "url": "https://www.saltshakerstudio.net/#about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Salt Shaker Studio",
+        "url": "https://www.saltshakerstudio.net/"
+      }
+    }
+    </script>
     <meta property="og:title" content="SAL: Hyponatremia Cases — Sodium Correction Practice" />
     <meta property="og:description" content="Practice hyponatremia cases online. SAL walks you through sodium and fluid decisions in guided cases — an early Salt Shaker Studio prototype." />
     <meta property="og:url" content="https://www.saltshakerstudio.net/sal/" />
@@ -32,9 +61,23 @@
         box-shadow:inset -1px -1px #0a0a0a, inset 1px 1px #fff;
       }
       .sss-more a{color:#000080;text-decoration:underline}
+      /* Off the game canvas. Rebuilding the Vite app overwrites this file. */
+      .agent-summary{
+        position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+        clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0;
+        pointer-events:none;
+      }
     </style>
   </head>
   <body>
+    <!--
+      Readable summary for crawlers. It stays out of the game canvas.
+      Rebuilding the Vite app overwrites index.html and drops this block.
+    -->
+    <div class="agent-summary">
+      <p>SAL is a free early prototype from Salt Shaker Studio for medical trainees. It walks you through hyponatremia: guided cases about sodium and fluid decisions, one step at a time. Play it in the browser on this page. There is no install and no account.</p>
+      <p>Free · browser only · no install. <a tabindex="-1" href="/">Salt Shaker Studio</a> · <a tabindex="-1" href="/abg-detail.html">ABG, the acid-base app</a></p>
+    </div>
     <nav class="sss-more" aria-label="More from Salt Shaker Studio">
       More from Salt Shaker Studio:
       <a href="/">Salt Shaker Studio home</a> ·

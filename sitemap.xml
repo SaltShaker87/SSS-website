@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Public pages only. Homepage hash sections (#devblog, #portfolio) and
-       host paths like /cdn-cgi/l/email-protection are not listed. -->
+       host paths like /cdn-cgi/l/email-protection are not listed.
+       /llms.txt is a text file for agents, not an HTML page, so it is not listed. -->
   <url>
     <loc>https://www.saltshakerstudio.net/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/auc-detail.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/scrubboard.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/abg-detail.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/crm.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/abg/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/sal/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </url>
   <url>
     <loc>https://www.saltshakerstudio.net/seasoning-lab/</loc>
