@@ -14,6 +14,40 @@
 </script>
 <meta name="description" content="Free beta download for Windows, Mac and Ubuntu. Copy a note and paste it without names, birth dates, record numbers or phones. Runs offline.">
 <link rel="canonical" href="https://www.saltshakerstudio.net/scrubboard.html">
+<link rel="describedby" href="/llms.txt" type="text/plain">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Scrubboard",
+  "description": "Free beta download for Windows, Mac and Ubuntu. Copy a note and paste it without names, birth dates, record numbers or phones. Runs offline.",
+  "operatingSystem": "Windows 10, Windows 11, macOS 12, Ubuntu 22.04",
+  "applicationCategory": "MedicalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": [
+    "https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard-Setup.exe",
+    "https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard.pkg",
+    "https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/scrubboard_amd64.deb"
+  ],
+  "url": "https://www.saltshakerstudio.net/scrubboard.html",
+  "image": "https://www.saltshakerstudio.net/images/web/scrubboard-logo.png",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Arman Yalcin",
+    "jobTitle": "Infectious Disease Physician",
+    "url": "https://www.saltshakerstudio.net/#about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Salt Shaker Studio",
+    "url": "https://www.saltshakerstudio.net/"
+  }
+}
+</script>
 <title>Scrubboard: Copy Without Patient Info — Salt Shaker Studio</title>
 <meta property="og:title" content="Scrubboard: Copy Without Patient Info — Salt Shaker Studio">
 <meta property="og:description" content="Free beta download for Windows, Mac and Ubuntu. Copy a note and paste it without names, birth dates, record numbers or phones. Runs offline.">
@@ -89,8 +123,10 @@
           <span class="badge beta">Beta · v0.1</span>
           <h1>Scrubboard: Copy Without Patient Info</h1>
           <p>Copy part of a note, click once, and paste it without the patient's name, birthday, record number or phone number. The diagnoses and medications stay, so the text is still useful. Everything happens on your own computer.</p>
+          <p class="dl-facts">Free · Windows 10 or 11 (.exe) / macOS 12 or newer, Apple silicon (.pkg) / Ubuntu 22.04 or newer (.deb)</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="#download">⬇ Download</a>
+            <a class="btn btn-primary" href="#download">Download Scrubboard</a>
+            <button type="button" class="btn" id="installAiOpen" aria-haspopup="dialog" aria-controls="installAiDialog">Install with AI</button>
             <a class="btn" href="#how">How it works</a>
           </div>
         </div>
@@ -99,10 +135,9 @@
       <div class="detail-body">
 
         <!-- ============ DOWNLOAD ============
-             Windows and Mac download the installer straight from the latest
-             GitHub release (/releases/latest/download/<file>), so a new release
-             with the same file names needs no change here. Ubuntu goes to the
-             releases page. -->
+             Windows, Mac, and Ubuntu download straight from the latest GitHub
+             release (/releases/latest/download/<file>). Those three file names
+             do not include the version, so a new release keeps the same links. -->
         <h2 id="download">Download</h2>
         <p class="muted">Beta · version 0.1 · free</p>
 
@@ -116,16 +151,16 @@
           </div>
           <div class="dl-main" id="dlMain">
             <a class="btn btn-primary btn-dl" data-os="windows" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard-Setup.exe">
-              ⬇ Windows
-              <small>Windows 10 or 11 · .exe · no admin rights needed</small>
+              Download Scrubboard for Windows (.exe)
+              <small>Windows 10 or 11 · no admin rights needed</small>
             </a>
             <a class="btn btn-primary btn-dl" data-os="mac" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard.pkg">
-              ⬇ Mac
-              <small>Apple silicon (M1 or newer) · macOS 12+ · .pkg</small>
+              Download Scrubboard for Mac (.pkg)
+              <small>Apple silicon (M1 or newer) · macOS 12 or newer</small>
             </a>
-            <a class="btn btn-primary btn-dl" data-os="linux" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest" target="_blank" rel="noopener">
-              ⬇ Ubuntu
-              <small>Ubuntu 22.04 or newer · .deb · opens the releases page</small>
+            <a class="btn btn-primary btn-dl" data-os="linux" href="https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/scrubboard_amd64.deb">
+              Download Scrubboard for Ubuntu (.deb)
+              <small>Ubuntu 22.04 or newer · amd64</small>
             </a>
           </div>
           <p class="muted dl-alt"><a href="https://github.com/SaltShaker87/ScrubBoard" target="_blank" rel="noopener">View the source on GitHub</a> · <a href="https://discord.gg/b4jsEnW2jZ">Report a bug on Discord</a></p>
@@ -384,6 +419,24 @@
   </div>
   <div class="tray"><span class="clock" id="clock">--:--</span></div>
 </div>
+
+<dialog class="ai-dialog" id="installAiDialog" role="dialog" aria-modal="true" aria-labelledby="installAiTitle" tabindex="-1">
+  <div class="window">
+    <div class="titlebar">
+      <span class="t-text" id="installAiTitle">Install with AI</span>
+      <span class="t-btns"><button type="button" class="t-btn t-close" data-ai-close aria-label="Close"></button></span>
+    </div>
+    <div class="win-body">
+      <p class="ai-lead">Copy this and paste it to an AI assistant on the computer where you want Scrubboard installed.</p>
+      <pre class="ai-prompt" id="installAiPrompt">Install Scrubboard (free, by Salt Shaker Studio) on this computer. On Windows 10 or 11, download https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard-Setup.exe and run it. On macOS 12 or newer with Apple silicon (M1 or newer), download https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard.pkg and open it. On Ubuntu 22.04 or newer (amd64), download https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/scrubboard_amd64.deb and install it. Only download from github.com/SaltShaker87. Ask me before approving any security prompts. More info: https://www.saltshakerstudio.net/scrubboard.html</pre>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="installAiCopy">Copy</button>
+        <button type="button" class="btn" data-ai-close>Close</button>
+      </div>
+      <p class="ai-status" id="installAiStatus" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
 
 <script src="js/site.js"></script>
 

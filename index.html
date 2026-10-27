@@ -14,6 +14,43 @@
 </script>
 <meta name="description" content="Play ABG free in the browser or on Google Play. Medical games and tools by Dr. Arman Yalcin, an infectious disease physician.">
 <link rel="canonical" href="https://www.saltshakerstudio.net/">
+<link rel="describedby" href="/llms.txt" type="text/plain">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.saltshakerstudio.net/#organization",
+      "name": "Salt Shaker Studio",
+      "url": "https://www.saltshakerstudio.net/",
+      "description": "Medical games and tools by Dr. Arman Yalcin, an infectious disease physician.",
+      "logo": "https://www.saltshakerstudio.net/images/web/sss-logo.jpg",
+      "founder": { "@id": "https://www.saltshakerstudio.net/#arman-yalcin" },
+      "sameAs": [
+        "https://x.com/SalShakerStudio",
+        "https://discord.gg/b4jsEnW2jZ"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.saltshakerstudio.net/#arman-yalcin",
+      "name": "Dr. Arman Yalcin",
+      "honorificSuffix": "MD",
+      "jobTitle": "Infectious Disease Physician",
+      "description": "Infectious disease physician based in Boston who founded Salt Shaker Studio.",
+      "url": "https://www.saltshakerstudio.net/#about",
+      "image": "https://www.saltshakerstudio.net/images/web/arman-photo.jpg",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Boston, MA"
+      },
+      "sameAs": "https://www.linkedin.com/in/arman8514581",
+      "worksFor": { "@id": "https://www.saltshakerstudio.net/#organization" }
+    }
+  ]
+}
+</script>
 <title>Salt Shaker Studio — Medical Games and Tools</title>
 <meta property="og:title" content="Salt Shaker Studio — Medical Games and Tools">
 <meta property="og:description" content="Play ABG free in the browser or on Google Play. Medical games and tools by Dr. Arman Yalcin, an infectious disease physician.">
@@ -110,9 +147,11 @@
   .card.feature-card{grid-column:span 2}
   .feature-card .win-body{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 22px;align-content:start}
   .feature-card .card-logo{width:112px;height:112px;border-radius:20px}
-  .feature-card .card-head{grid-row:1 / span 4;align-self:start}
+  .feature-card .card-head{grid-row:1 / span 5;align-self:start}
   .feature-card h3{font-size:24px}
   .feature-card p{font-size:15px;max-width:54ch}
+  .card p.dl-facts,.feature-card p.dl-facts{font:600 12px/1.45 var(--font-mono);color:var(--ink);margin:0;max-width:62ch}
+  .card .btn{white-space:normal;text-align:center;height:auto;padding-top:8px;padding-bottom:8px}
   .feature-card .meter,.feature-card .btn-row{grid-column:2}
   .feature-card .meter{margin-top:6px}
   .card.idea{grid-column:span 2;border-style:dashed;box-shadow:none;background:transparent}
@@ -302,10 +341,11 @@
             <div class="card-head"><a href="abg-detail.html" aria-label="ABG details"><img class="card-logo" src="images/web/abg-logo.jpg" width="256" height="256" alt="ABG logo"></a></div>
             <div><span class="badge live">Playable now</span><h3>ABG: The Acid-Base Learning App</h3></div>
             <p>Master blood gas interpretation through interactive cases and instant feedback, from step-by-step tutoring all the way to the no-hints Expert Mode.</p>
+            <p class="dl-facts">Free · Android (Google Play) or the browser</p>
             <div class="meter" style="--c:var(--live)"><span>Released · web + Android</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent, released"><i style="--p:100%"></i></span></div>
             <div class="btn-row">
               <a class="btn btn-primary" href="/abg/">▶ Play Free</a>
-              <a class="btn" href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">Get it on Google Play</a>
+              <a class="btn" href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US" target="_blank" rel="noopener">Get it on Google Play for Android</a>
               <a class="btn" href="abg-detail.html">Details</a>
             </div>
           </div>
@@ -320,9 +360,10 @@
               <div><span class="badge live">Released · PGY-1</span><h3>AUC: Assessments Under Curve</h3></div>
             </div>
             <p>A private, locally hosted tool for residency programs: log CCC feedback, import MedHub evaluations, and draft ACGME milestone summaries with an on-device AI whose every quote is checked against your notes.</p>
+            <p class="dl-facts">Free · Linux only (.deb or AppImage)</p>
             <div class="meter" style="--c:var(--live)"><span>Released · Linux</span><span>v1.0</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent, released"><i style="--p:100%"></i></span></div>
             <div class="btn-row">
-              <a class="btn btn-sm btn-primary" href="auc-detail.html#download">⬇ Download</a>
+              <a class="btn btn-sm btn-primary" href="auc-detail.html#download">Download for Linux</a>
               <a class="btn btn-sm" href="auc-detail.html">Details</a>
               <a class="btn btn-sm" href="https://github.com/SaltShaker87/resident-evaluations-auc" target="_blank" rel="noopener">GitHub</a>
             </div>
@@ -338,9 +379,10 @@
               <div><span class="badge live">Complete</span><h3>CRM: Clinical Reasoning Model</h3></div>
             </div>
             <p>A small language model fine-tuned on 511 physician-annotated clinical cases. Walks through a differential step by step, with fewer hallucinations than the base model.</p>
+            <p class="dl-facts">Free · model on Hugging Face · no installer</p>
             <div class="meter" style="--c:var(--live)"><span>Proof of concept</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent"><i style="--p:100%"></i></span></div>
             <div class="btn-row">
-              <a class="btn btn-sm btn-primary" href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">HuggingFace</a>
+              <a class="btn btn-sm btn-primary" href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">View CRM on Hugging Face</a>
               <a class="btn btn-sm" href="crm.html">Learn More</a>
             </div>
           </div>
@@ -355,9 +397,10 @@
               <div><span class="badge beta">Beta · v0.1</span><h3>Scrubboard: Copy Without Patient Info</h3></div>
             </div>
             <p>Copy part of a note, click once, and paste it without the patient's name, date of birth, record number, phone or address. Diagnoses and meds stay. Runs offline on Windows, Mac and Ubuntu.</p>
+            <p class="dl-facts">Free · Windows 10 or 11 (.exe) / macOS 12+ Apple silicon (.pkg) / Ubuntu 22.04+ (.deb)</p>
             <div class="meter" style="--c:var(--beta)"><span>Beta · Windows, Mac + Ubuntu</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent, beta"><i style="--p:100%"></i></span></div>
             <div class="btn-row">
-              <a class="btn btn-sm btn-primary" href="scrubboard.html#download">⬇ Download Beta</a>
+              <a class="btn btn-sm btn-primary" href="scrubboard.html#download">Download the beta</a>
               <a class="btn btn-sm" href="scrubboard.html">Details</a>
             </div>
           </div>
@@ -372,6 +415,7 @@
               <div><span class="badge proto">Prototype</span><h3>SAL: Hyponatremia Learning App</h3></div>
             </div>
             <p>Navigate sodium and fluid management through guided clinical cases and decision trees. Infinite generated questions for medicine's most confusing electrolyte.</p>
+            <p class="dl-facts">Free · browser prototype · no install</p>
             <div class="meter" style="--c:var(--proto)"><span>Prototype</span><span>50%</span><span class="meter-track" role="img" aria-label="Development progress: 50 percent"><i style="--p:50%"></i></span></div>
             <div class="btn-row">
               <a class="btn btn-sm btn-primary" href="/sal/">▶ Try Prototype</a>

@@ -30,6 +30,7 @@
   </script>
   <meta name="description" content="Play ABG from Salt Shaker Studio. Interpret blood gases through interactive cases, stepwise tutoring, and a no-hints Expert Mode.">
   <link rel="canonical" href="https://www.saltshakerstudio.net/abg/">
+  <link rel="describedby" href="/llms.txt" type="text/plain">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -58,9 +59,23 @@
       position:fixed;left:0;right:0;bottom:0;z-index:2147483647;
     }
     .sss-more a{color:#000080}
+    /* Off the game canvas. Rebuilding the Flutter app overwrites this file. */
+    .agent-summary{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0;
+      pointer-events:none;
+    }
   </style>
 </head>
 <body>
+  <!--
+    Readable summary for crawlers. It stays out of the game canvas.
+    Rebuilding the Flutter app overwrites index.html and drops this block.
+  -->
+  <div class="agent-summary">
+    <p>ABG is a free acid-base learning game from Salt Shaker Studio for medical students and residents. You practice blood gases in the browser: a tutor walks you through each case one step at a time, then Expert Mode gives you the numbers with no hints. There is no account. The Google Play app requires an Android phone or tablet. iOS is not available yet.</p>
+    <p>Free · Android (Google Play) or the browser. <a tabindex="-1" href="/abg-detail.html">ABG details</a> · <a tabindex="-1" href="https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&amp;hl=en_US">Get ABG on Google Play for Android</a> · <a tabindex="-1" href="/">Salt Shaker Studio</a></p>
+  </div>
   <nav class="sss-more" aria-label="More from Salt Shaker Studio">
     More from Salt Shaker Studio:
     <a href="/">studio home</a> ·
