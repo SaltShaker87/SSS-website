@@ -1,0 +1,356 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaperPage",
+  "type": "object",
+  "required": [
+    "slug",
+    "citation",
+    "sections",
+    "numbers",
+    "figures",
+    "hero_findings",
+    "must_include_map"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "one_liner": {
+      "type": "string",
+      "description": "Index card finding; must reuse a verified number id in {{n:id}} form"
+    },
+    "citation": {
+      "type": "object",
+      "required": [
+        "title",
+        "journal",
+        "year"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "string"
+        },
+        "journal": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "pmid": {
+          "type": "string"
+        },
+        "doi": {
+          "type": "string"
+        },
+        "pubmed_url": {
+          "type": "string"
+        },
+        "doi_url": {
+          "type": "string"
+        },
+        "volume_pages": {
+          "type": "string"
+        }
+      }
+    },
+    "sections": {
+      "type": "object",
+      "properties": {
+        "background": {
+          "type": "string"
+        },
+        "methods": {
+          "type": "object",
+          "properties": {
+            "design": {
+              "type": "string"
+            },
+            "population": {
+              "type": "string"
+            },
+            "n_total_id": {
+              "type": "string"
+            },
+            "intervention": {
+              "type": "string"
+            },
+            "comparator": {
+              "type": "string"
+            },
+            "primary_endpoint": {
+              "type": "string"
+            },
+            "follow_up": {
+              "type": "string"
+            },
+            "noninferiority_margin_id": {
+              "type": "string"
+            }
+          }
+        },
+        "results": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "One paragraph, or an array of paragraphs"
+        },
+        "conclusions": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "string"
+        },
+        "practice_impact": {
+          "type": "string"
+        }
+      }
+    },
+    "numbers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "value",
+          "source_quote",
+          "source",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "description": "Printed straight after the value, so word units need a leading space: \"%\", \" pp\", \" days\""
+          },
+          "arm": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ci_low": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "ci_high": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "source_quote": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "source": {
+            "enum": [
+              "paste",
+              "paper"
+            ]
+          },
+          "derived": {
+            "type": "boolean"
+          },
+          "formula": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "VERIFIED",
+              "UNVERIFIED",
+              "MISSING"
+            ]
+          },
+          "decimals": {
+            "type": "integer",
+            "description": "Fixed decimals for display (keeps 9.0 from showing as 9)"
+          }
+        }
+      }
+    },
+    "figures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "title",
+          "number_ids",
+          "caption"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "bar",
+              "grouped",
+              "forest",
+              "km",
+              "bignumber",
+              "donut",
+              "waffle"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "number_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "series_labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "y_label": {
+            "type": "string"
+          },
+          "km_points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "arm": {
+                  "type": "string"
+                },
+                "t": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Only if supplied by Arman; never invented"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "alt": {
+            "type": "string"
+          },
+          "groups": {
+            "type": "array",
+            "description": "grouped only",
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "ids"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "margin_id": {
+            "type": "string",
+            "description": "forest only: numbers[].id of the noninferiority margin; line drawn only if VERIFIED"
+          },
+          "margin_direction": {
+            "enum": [
+              1,
+              -1
+            ],
+            "description": "forest only: -1 draws the margin on the negative side"
+          },
+          "ci_label": {
+            "type": "string",
+            "description": "Data-table CI header when not 95% (e.g. \"90% CI\")"
+          }
+        }
+      }
+    },
+    "hero_findings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "number_id": {
+            "type": "string"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "figure_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "must_include_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "excerpt": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "one_liner_plain": {
+      "type": "string",
+      "description": "Short plain-text finding for the <title> and taskbar, no {{n:id}} tokens"
+    },
+    "arms": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "intervention",
+          "comparator"
+        ]
+      },
+      "description": "Maps numbers[].arm values to chart colour roles, e.g. {\"oral\":\"intervention\",\"intravenous\":\"comparator\"}"
+    }
+  }
+}
