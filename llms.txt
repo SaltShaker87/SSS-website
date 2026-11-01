@@ -6,13 +6,13 @@ The site is static HTML at https://www.saltshakerstudio.net/. Computer installer
 
 ## Apps
 
-- [ABG: The Acid-Base Learning App](https://www.saltshakerstudio.net/abg-detail.html): Free. Android on Google Play (https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&hl=en_US) or play in the browser (https://www.saltshakerstudio.net/abg/). Blood-gas cases with tutoring, then a no-hints Expert Mode. No account. iOS is not available yet.
+- [ABG: The Acid-Base Learning App](https://www.saltshakerstudio.net/abg-detail.html): Free acid-base game. Android on Google Play (https://play.google.com/store/apps/details?id=com.saltshakerstudio.abgtrainer&hl=en_US) or play in the browser (https://www.saltshakerstudio.net/abg/). Tutoring first, then a no-hints Expert Mode. No account. iOS is not available yet.
 - [SAL: Hyponatremia Learning App](https://www.saltshakerstudio.net/sal/): Free early prototype. Browser only, no install (https://www.saltshakerstudio.net/sal/). Guided cases on sodium and fluid decisions.
 - [Scrubboard](https://www.saltshakerstudio.net/scrubboard.html): Free beta. Windows 10 or 11 .exe (https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard-Setup.exe), macOS 12 or newer Apple silicon .pkg (https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard.pkg), Ubuntu 22.04 or newer amd64 .deb (https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/scrubboard_amd64.deb). Cleans copied notes on your own computer.
-- [AUC: Assessments Under Curve](https://www.saltshakerstudio.net/auc-detail.html): Free. Linux only. .deb and .AppImage on the latest release (https://github.com/SaltShaker87/resident-evaluations-auc/releases/latest). Check CPU architecture and distribution before choosing a file. Local residency feedback tool. No macOS or Windows build yet.
+- [AUC: Assessments Under Curve](https://www.saltshakerstudio.net/auc-detail.html): Free. Linux only. .deb and .AppImage on the latest release (https://github.com/SaltShaker87/resident-evaluations-auc/releases/latest). Check CPU architecture and distribution before choosing a file. Local-first CCC feedback for internal medicine residencies, with evidence-checked AI milestone summaries. Ubuntu and NVIDIA DGX Spark. No macOS or Windows build yet.
 - [CRM: Clinical Reasoning Model](https://www.saltshakerstudio.net/crm.html): Free. Model weights on Hugging Face (https://huggingface.co/ploppy2/Clinical-Reasoning-Test1). No installer on this site. Differential diagnosis model trained on 511 physician-annotated cases.
 
 ## Optional
 
-- [Seasoning Lab](https://www.saltshakerstudio.net/seasoning-lab/): Free infectious-diseases learning corner, with landmark trials.
-- [Landmark papers](https://www.saltshakerstudio.net/papers/): Short pages on published trials.
+- [Seasoning Lab](https://www.saltshakerstudio.net/seasoning-lab/): Free infectious-diseases learning corner. Landmark trials with a short video and charts redrawn from the data. Chalk talks for residents are on the way.
+- [Landmark papers](https://www.saltshakerstudio.net/papers/): Short pages on published trials, each with an animated video and recreated charts.
