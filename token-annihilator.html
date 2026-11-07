@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Free, open-source beta. Counts every token your local models use (Ollama, vLLM, llama.cpp, NIM) and shows what the cloud would have billed. One Python file.">
+<link rel="canonical" href="https://www.saltshakerstudio.net/token-annihilator.html">
+<link rel="describedby" href="/llms.txt" type="text/plain">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Token Annihilator Dashboard",
+  "description": "Free, open-source beta. Counts every token your local models use (Ollama, vLLM, llama.cpp, NIM) and shows what the cloud would have billed. One Python file.",
+  "operatingSystem": "Linux",
+  "applicationCategory": "DeveloperApplication",
+  "softwareVersion": "1.0.6",
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "codeRepository": "https://github.com/SaltShaker87/token-annihilation-dashboard",
+  "downloadUrl": "https://github.com/SaltShaker87/token-annihilation-dashboard",
+  "url": "https://www.saltshakerstudio.net/token-annihilator.html",
+  "image": "https://www.saltshakerstudio.net/images/web/token-annihilator-logo.png",
+  "screenshot": "https://www.saltshakerstudio.net/images/token-annihilator-shot-dashboard.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Arman Yalcin",
+    "jobTitle": "Infectious Disease Physician",
+    "url": "https://www.saltshakerstudio.net/#about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Salt Shaker Studio",
+    "url": "https://www.saltshakerstudio.net/"
+  }
+}
+</script>
+<title>Token Annihilator Dashboard — Salt Shaker Studio</title>
+<meta property="og:title" content="Token Annihilator Dashboard — Salt Shaker Studio">
+<meta property="og:description" content="Free, open-source beta. Counts every token your local models use (Ollama, vLLM, llama.cpp, NIM) and shows what the cloud would have billed. One Python file.">
+<meta property="og:url" content="https://www.saltshakerstudio.net/token-annihilator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Salt Shaker Studio">
+<meta property="og:image" content="https://www.saltshakerstudio.net/images/web/token-annihilator-logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/web/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
+<meta name="theme-color" content="#0a4650">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* The dashboard itself is dark, so the screenshot stage matches it */
+  .shot-stage{background:#0d1117}
+
+  /* the dark logo needs a dark tile, not the usual white one */
+  .detail-logo.dark-logo{background:#0d1117}
+
+  /* 3 steps */
+  .steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .step3{background:#fff;padding:16px;border:1.5px solid var(--hairline);border-radius:var(--r)}
+  .step3 .num{display:grid;place-items:center;width:28px;height:28px;margin-bottom:8px;border-radius:6px;font:700 15px var(--font-display);color:#fff;background:var(--title-a)}
+  .detail-body .step3 h3{margin:0 0 4px;font:700 17px var(--font-display);letter-spacing:.3px}
+  .step3 p{font-size:14px;line-height:1.55;margin:0}
+
+  /* backends table */
+  .backends{width:100%;border-collapse:collapse;margin:12px 0 16px;font-size:14px;background:var(--paper);border:1.5px solid var(--hairline);border-radius:var(--r);overflow:hidden}
+  .backends th,.backends td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+  .backends th{font:600 12px var(--font-mono);letter-spacing:.4px;text-transform:uppercase;background:var(--face)}
+  .backends tr:last-child td{border-bottom:0}
+  .table-scroll{overflow-x:auto}
+
+  @media (max-width:640px){
+    .steps3{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<main class="wrap narrow" id="main" tabindex="-1">
+
+  <article class="window" aria-label="Token Annihilator Dashboard Details">
+    <div class="titlebar">
+      <img class="t-icon" src="images/web/token-annihilator-logo.png" alt="">
+      <span class="t-text">TokenAnnihilator.exe — Details</span>
+      <span class="t-btns"><span class="t-btn t-min" aria-hidden="true"></span><span class="t-btn t-max" aria-hidden="true"></span><button type="button" class="t-btn t-close" aria-label="Close"></button></span>
+    </div>
+    <div class="win-body">
+
+      <div class="detail-top">
+        <img class="detail-logo dark-logo" src="images/web/token-annihilator-logo.png" width="256" height="256" alt="Token Annihilator logo: a little chip breathing out dollar signs">
+        <div>
+          <span class="badge beta">Beta · v1.0.6</span>
+          <h1>Token Annihilator Dashboard</h1>
+          <p>Your local GPU is out there running tokens that a cloud provider would have happily billed you for. This keeps score, with maximum drama: a live odometer, a model leaderboard, 27 trophies, and a running total of the cloud invoices you never paid.</p>
+          <p class="dl-facts">Free · Open source (MIT) · One Python 3.8+ file, no dependencies · Built on an NVIDIA DGX Spark</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://github.com/SaltShaker87/token-annihilation-dashboard" target="_blank" rel="noopener">View on GitHub</a>
+            <button type="button" class="btn" id="installAiOpen" aria-haspopup="dialog" aria-controls="installAiDialog">Install with AI</button>
+            <a class="btn" href="#how">How it works</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-body">
+
+        <p class="notice"><strong>A side project for local-AI nerds.</strong> Everything else on this site is for medicine. This one isn't. It's for anyone running models on their own hardware who wants to see the numbers. No patient data goes anywhere near it.</p>
+
+        <!-- ============ INSTALL ============ -->
+        <h2 id="install">Install</h2>
+        <p class="muted">Beta · version 1.0.6 · free · MIT license</p>
+
+        <div class="dl-panel">
+          <div class="dl-status">
+            <span class="ico" aria-hidden="true"><span class="pix" data-pix="computer"></span></span>
+            <div>
+              <p><strong>The Token Annihilator is in beta.</strong></p>
+              <p class="muted">It works, but expect rough edges. It's one Python file with nothing to <code>pip install</code>. Built and tested on Linux (a DGX Spark).</p>
+            </div>
+          </div>
+          <p>Try it in the foreground first:</p>
+          <pre class="term">git clone https://github.com/SaltShaker87/token-annihilation-dashboard ~/token-annihilation-dashboard
+cd ~/token-annihilation-dashboard
+python3 token_annihilator.py</pre>
+          <p>Then open <code>http://&lt;your-tailscale-ip&gt;:11480</code>. It binds to your Tailscale IP if <code>tailscale</code> is installed, otherwise <code>127.0.0.1:11480</code>.</p>
+          <p>To keep it running, install it as a systemd user service (no sudo). If you use vLLM, or llama-server logs somewhere other than the default, edit the <code>Environment=</code> lines in the unit file first:</p>
+          <pre class="term">mkdir -p ~/.config/systemd/user
+cp token-annihilator.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now token-annihilator
+loginctl enable-linger "$USER"   # keep running after logout</pre>
+          <p class="muted dl-alt"><a href="https://github.com/SaltShaker87/token-annihilation-dashboard" target="_blank" rel="noopener">Source and full README on GitHub</a> · <a href="https://github.com/SaltShaker87/token-annihilation-dashboard/releases" target="_blank" rel="noopener">Releases</a> · <a href="https://discord.gg/b4jsEnW2jZ">Report a bug on Discord</a></p>
+        </div>
+
+        <hr class="divider">
+
+        <!-- ============ WHY ============ -->
+        <h2>Why?</h2>
+        <p>Running models on your own hardware feels free, and in a way it is: no per-token bill. But it's easy to forget how much work that GPU is doing. The Token Annihilator counts every token your local models use and prices it against what Claude, GPT, Gemini and Grok would have charged for the same work.</p>
+        <p>It's also an excuse to celebrate. Hitting 10 million tokens gets a full-screen party with confetti.</p>
+
+        <hr class="divider">
+
+        <!-- ============ HOW ============ -->
+        <h2 id="how">How It Works</h2>
+        <div class="steps3">
+          <div class="step3">
+            <span class="num">1</span>
+            <h3>Point</h3>
+            <p>Point your client at the counting proxy (Ollama on <code>:11435</code> instead of <code>:11434</code>). llama.cpp needs no change; its log is read directly.</p>
+          </div>
+          <div class="step3">
+            <span class="num">2</span>
+            <h3>Run</h3>
+            <p>Use your models like normal. The proxy forwards each request and reads the token count on the way back.</p>
+          </div>
+          <div class="step3">
+            <span class="num">3</span>
+            <h3>Gloat</h3>
+            <p>Open the dashboard on <code>:11480</code> and watch the odometer roll.</p>
+          </div>
+        </div>
+
+        <h3>Supported backends</h3>
+        <div class="table-scroll">
+          <table class="backends">
+            <thead><tr><th>Backend</th><th>How it's counted</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Ollama</strong></td><td>Proxy on <code>:11435</code> in front of <code>:11434</code>. On by default.</td></tr>
+              <tr><td><strong>vLLM</strong></td><td>Proxy on <code>:8001</code> opens automatically once vLLM answers on <code>:8000</code>.</td></tr>
+              <tr><td><strong>llama.cpp</strong></td><td>Reads llama-server's log file. Never connects to the server.</td></tr>
+              <tr><td><strong>NVIDIA NIM / NeMo, TensorRT-LLM, Triton, SGLang, LM Studio, ONNX Runtime</strong></td><td>Any OpenAI-compatible server, listed in <code>OPENAI_PROXIES</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted">Your inference servers are never modified. Everything fails open: if counting breaks, your request still goes through. If the dashboard dies, point your client back at the real port and carry on.</p>
+
+        <hr class="divider">
+
+        <!-- ============ SCREENSHOTS ============ -->
+        <h2>Screenshots</h2>
+        <p class="muted">From a real DGX Spark, a few weeks in.</p>
+        <div class="shot-slider" id="shotSlider">
+
+          <div class="shot-stage" role="tabpanel" id="shotPanel" aria-label="Screenshot">
+            <img class="shot is-active" id="shot-0" src="images/token-annihilator-shot-dashboard.jpg" decoding="async"
+                 alt="The dashboard: an odometer reading 8,017,820 tokens, a tokens-per-second gauge, $71.51 saved versus Claude Opus 5.5 with comparisons to other cloud models, and a year-long calendar of daily usage">
+            <img class="shot" id="shot-1" src="images/token-annihilator-shot-leaderboard.jpg" decoding="async"
+                 alt="The current killing spree panel with 5,017,334 tokens and $20.73 saved, past sprees below it, and a model leaderboard ranking local models by tokens, requests and speed">
+            <img class="shot" id="shot-2" src="images/token-annihilator-shot-trophies.jpg" decoding="async"
+                 alt="The trophy case with 27 of 27 trophies unlocked, including Speed Demon at 254 tokens per second, Night Owl, Week of Wrath and Iron Streak">
+          </div>
+
+          <div class="shot-side">
+            <div class="shot-nav" id="shotNav" role="tablist" aria-orientation="vertical" aria-label="Screenshots" aria-controls="shotPanel">
+              <button type="button" class="shot-nav-item is-active" role="tab" aria-selected="true" data-i="0">
+                <span class="shot-nav-title">The dashboard</span>
+                <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+              </button>
+              <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="1">
+                <span class="shot-nav-title">Sprees &amp; leaderboard</span>
+                <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+              </button>
+              <button type="button" class="shot-nav-item" role="tab" aria-selected="false" tabindex="-1" data-i="2">
+                <span class="shot-nav-title">Trophy case</span>
+                <span class="shot-progress"><span class="shot-progress-fill"></span></span>
+              </button>
+            </div>
+            <div class="shot-bar">
+              <button type="button" class="btn" id="shotPrev" aria-label="Previous screenshot">&lsaquo;</button>
+              <button type="button" class="btn" id="shotNext" aria-label="Next screenshot">&rsaquo;</button>
+              <span class="shot-counter" id="shotCounter">01 / 03</span>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="divider">
+
+        <!-- ============ FEATURES ============ -->
+        <h2>Features</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <h3>Live Odometer</h3>
+            <p>An all-time count of tokens obliterated that never resets, plus a live tokens-per-second gauge and a "Now annihilating" card.</p>
+          </div>
+          <div class="feature">
+            <h3>Cloud Invoices Eradicated</h3>
+            <p>What the same tokens would have cost on Claude Opus 5.5, Fable 5.1, Sonnet 5.5, GPT-6, Gemini 3.1 Pro and Grok 4.7. Prices live in an editable <code>prices.json</code>.</p>
+          </div>
+          <div class="feature">
+            <h3>Model Leaderboard</h3>
+            <p>The apex predators: tokens, requests, average and best speed, and biggest single answer for every model you run.</p>
+          </div>
+          <div class="feature">
+            <h3>27 Trophies</h3>
+            <p>Personal records like Speed Demon, Night Owl, Week of Wrath and Iron Streak.</p>
+          </div>
+          <div class="feature">
+            <h3>Milestone Parties</h3>
+            <p>Full-screen celebrations with confetti at 1M and 10M tokens, every 100M, every 1B, and every $100 saved.</p>
+          </div>
+          <div class="feature">
+            <h3>Killing Sprees</h3>
+            <p>Track a run of work, end it when you like, and past sprees rest in "the mass graves". Nothing is ever deleted.</p>
+          </div>
+          <div class="feature">
+            <h3>Share Card</h3>
+            <p>Make a 1200×630 image of your stats to download, copy, or share from your phone.</p>
+          </div>
+          <div class="feature">
+            <h3>One-Click Updates</h3>
+            <p>An Update button checks GitHub when you open the page. It only installs official releases, refuses to overwrite your edits, and keeps a backup.</p>
+          </div>
+          <div class="feature">
+            <h3>Year Calendar</h3>
+            <p>A GitHub-style calendar of tokens per day for the last year, in NVIDIA green. Filter everything by 24 hours up to all time.</p>
+          </div>
+        </div>
+
+        <p class="notice"><strong>About the savings.</strong> The dollar amounts are estimates from public list prices (checked 2026-10-28, sources in <code>prices.json</code>). They don't count your electricity or your hardware. They're for bragging, not for accounting.</p>
+
+        <hr class="divider">
+
+        <h2 id="requirements">What You'll Need</h2>
+        <ul class="reqs">
+          <li><strong>Linux with Python 3.8 or newer.</strong> Built on an NVIDIA DGX Spark, but it's plain Python with no dependencies.</li>
+          <li><strong>At least one local model runtime:</strong> Ollama, vLLM, llama.cpp, or any OpenAI-compatible server.</li>
+          <li><strong>Optional:</strong> Tailscale, so you can check the dashboard from your phone.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <!-- Related -->
+        <h2>More from Salt Shaker Studio</h2>
+        <div class="btn-row more-links">
+          <a class="btn btn-sm" href="/">Salt Shaker Studio home</a>
+          <a class="btn btn-sm" href="scrubboard.html">Scrubboard: clean copied notes</a>
+          <a class="btn btn-sm" href="auc-detail.html">AUC: residency feedback tool</a>
+          <a class="btn btn-sm" href="abg-detail.html">ABG: acid-base learning app</a>
+          <a class="btn btn-sm" href="crm.html">CRM: clinical reasoning model</a>
+          <a class="btn btn-sm" href="/papers/">Landmark ID papers: videos and charts</a>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+<footer class="site-footer" id="connect">
+  <div class="connect">
+    <a class="btn btn-sm" href="https://x.com/SalShakerStudio"><span class="brand-ico" style="--bg:#000"><img src="images/social/x.svg" alt=""></span>X</a>
+    <a class="btn btn-sm" href="https://discord.gg/b4jsEnW2jZ"><span class="brand-ico" style="--bg:#5865F2"><img src="images/social/discord.svg" alt=""></span>Discord</a>
+    <a class="btn btn-sm" href="https://www.linkedin.com/in/arman8514581"><span class="brand-ico" style="--bg:#0A66C2"><img src="images/social/linkedin.png" alt=""></span>LinkedIn</a>
+    <!-- Email is assembled in js/site.js (no @ in the HTML); see index.html. -->
+    <a class="btn btn-sm" href="#connect" data-email-user="saltshakerstudio" data-email-domain="protonmail.com"><span class="brand-ico" style="--bg:var(--salt)"><span class="pix" data-pix="mail"></span></span>Email</a>
+  </div>
+  <div class="badges88" aria-hidden="true">
+    <span class="b88 b88-net" title="Best viewed with Netscape Navigator 4.0"><span class="b88-l"><span class="pix" data-pix="globe"></span></span><span class="b88-r"><b>Netscape</b><i>Now!</i></span></span>
+    <span class="b88 b88-res" title="Optimized for 800×600"><span class="b88-l"><span class="pix" data-pix="computer"></span></span><span class="b88-r"><b>800×600</b><i>optimized</i></span></span>
+    <span class="b88 b88-html" title="Valid HTML 4.01"><span class="b88-l"><span class="pix" data-pix="folder"></span></span><span class="b88-r"><b>Valid</b><i>HTML 4.01</i></span></span>
+    <span class="b88 b88-note" title="Made with Notepad"><span class="b88-l"><span class="pix" data-pix="notepad"></span></span><span class="b88-r"><b>Made with</b><i>Notepad</i></span></span>
+    <span class="b88 b88-y2k" title="Y2K compliant"><span class="b88-l"><span class="pix" data-pix="calendar"></span></span><span class="b88-r"><b>Y2K</b><i>compliant</i></span></span>
+    <span class="b88 b88-caf" title="Powered by caffeine"><span class="b88-l"><span class="pix" data-pix="cup"></span></span><span class="b88-r"><b>Powered by</b><i>caffeine</i></span></span>
+  </div>
+  <div>You are visitor <span class="counter" id="hit-counter">00000001</span></div>
+  <p>© 2025–2026 Salt Shaker Studio. Made with ❤ and HTML.<br>
+  Educational content for medical professionals. Not for medical advice.</p>
+</footer>
+</main>
+
+<!-- ============ START MENU ============ -->
+<nav class="start-menu" id="startMenu" aria-label="Start menu" hidden>
+  <div class="sm-stripe">SaltShaker<b>OS</b></div>
+  <div class="sm-items">
+    <a href="/"><span class="pix" data-pix="computer"></span>Home</a>
+    <a href="/#portfolio"><span class="pix" data-pix="floppy"></span>All Software</a>
+    <a href="/#devblog"><span class="pix" data-pix="notepad"></span>Dev Blog</a>
+    <a href="/seasoning-lab/"><span class="pix" data-pix="flask"></span>Seasoning Lab</a>
+    <hr>
+    <a href="abg-detail.html"><img class="t-icon" src="images/web/abg-logo.jpg" alt="" width="22" height="22" style="width:22px;height:22px">ABG</a>
+    <a href="auc-detail.html"><img class="t-icon" src="images/web/auc-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">AUC</a>
+    <a href="crm.html"><img class="t-icon" src="images/web/crm-logo.jpg" alt="" width="22" height="22" style="width:22px;height:22px">CRM</a>
+    <a href="scrubboard.html"><img class="t-icon" src="images/web/scrubboard-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">Scrubboard</a>
+    <a href="token-annihilator.html" aria-current="page"><img class="t-icon" src="images/web/token-annihilator-logo.png" alt="" width="22" height="22" style="width:22px;height:22px">Token Annihilator</a>
+    <hr>
+    <a href="https://discord.gg/b4jsEnW2jZ"><span class="pix" data-pix="mail"></span>Discord</a>
+    <a href="/abg/"><span class="pix" data-pix="play"></span>Play ABG</a>
+  </div>
+</nav>
+
+<!-- ============ TASKBAR ============ -->
+<div class="taskbar" role="navigation" aria-label="Site navigation taskbar">
+  <button type="button" class="btn start-btn" id="startBtn" aria-expanded="false" aria-controls="startMenu"><span class="pix" data-pix="shaker"></span>Start</button>
+  <div class="task-links">
+    <a href="/"><span class="pix" data-pix="computer"></span><span class="label">Home</span></a>
+    <a class="optional" href="/#portfolio"><span class="pix" data-pix="floppy"></span><span class="label">Software</span></a>
+    <a class="optional" href="/#devblog"><span class="pix" data-pix="notepad"></span><span class="label">Dev Blog</span></a>
+    <a href="token-annihilator.html" aria-current="page"><img class="t-icon" src="images/web/token-annihilator-logo.png" alt=""><span class="label">Token Annihilator</span></a>
+  </div>
+  <div class="tray"><span class="clock" id="clock">--:--</span></div>
+</div>
+
+<dialog class="ai-dialog" id="installAiDialog" role="dialog" aria-modal="true" aria-labelledby="installAiTitle" tabindex="-1">
+  <div class="window">
+    <div class="titlebar">
+      <span class="t-text" id="installAiTitle">Install with AI</span>
+      <span class="t-btns"><button type="button" class="t-btn t-close" data-ai-close aria-label="Close"></button></span>
+    </div>
+    <div class="win-body">
+      <p class="ai-lead">Copy this and paste it to an AI coding assistant on the Linux machine that runs your local models.</p>
+      <pre class="ai-prompt" id="installAiPrompt">Install the Token Annihilator Dashboard (free, MIT license, by Salt Shaker Studio) on this Linux machine. It needs Python 3.8 or newer and nothing else. Run: git clone https://github.com/SaltShaker87/token-annihilation-dashboard ~/token-annihilation-dashboard. Read its README.md before changing anything. Before editing the Environment= lines in token-annihilator.service, ask me which local model runtimes I use (Ollama, vLLM, llama.cpp, NVIDIA NIM, or another OpenAI-compatible server) and where my llama-server log is, if I use llama.cpp. Then install it as a systemd user service: copy token-annihilator.service to ~/.config/systemd/user/, run systemctl --user daemon-reload, then systemctl --user enable --now token-annihilator. Do not use sudo, and do not change or restart my model servers. Only download from github.com/SaltShaker87. When it is running, tell me the dashboard address (port 11480) and which port each of my clients should use. More info: https://www.saltshakerstudio.net/token-annihilator.html</pre>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="installAiCopy">Copy</button>
+        <button type="button" class="btn" data-ai-close>Close</button>
+      </div>
+      <p class="ai-status" id="installAiStatus" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>
