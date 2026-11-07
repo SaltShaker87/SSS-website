@@ -2,7 +2,7 @@
 
 > Free medical games and tools by Dr. Arman Yalcin, an infectious disease physician in Boston. Educational content for medical professionals. Not medical advice.
 
-The site is static HTML at https://www.saltshakerstudio.net/. Computer installers are only on github.com/SaltShaker87. Ask before approving any security prompts. Scrubboard and AUC each include an Install with AI prompt in the page HTML.
+The site is static HTML at https://www.saltshakerstudio.net/. Computer installers are only on github.com/SaltShaker87. Ask before approving any security prompts. Scrubboard, AUC and the Token Annihilator Dashboard each include an Install with AI prompt in the page HTML.
 
 ## Apps
 
@@ -11,6 +11,7 @@ The site is static HTML at https://www.saltshakerstudio.net/. Computer installer
 - [Scrubboard](https://www.saltshakerstudio.net/scrubboard.html): Free beta. Windows 10 or 11 .exe (https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard-Setup.exe), macOS 12 or newer Apple silicon .pkg (https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/Scrubboard.pkg), Ubuntu 22.04 or newer amd64 .deb (https://github.com/SaltShaker87/ScrubBoard/releases/latest/download/scrubboard_amd64.deb). Cleans copied notes on your own computer.
 - [AUC: Assessments Under Curve](https://www.saltshakerstudio.net/auc-detail.html): Free. Linux only. .deb and .AppImage on the latest release (https://github.com/SaltShaker87/resident-evaluations-auc/releases/latest). Check CPU architecture and distribution before choosing a file. Local-first CCC feedback for internal medicine residencies, with evidence-checked AI milestone summaries. Ubuntu and NVIDIA DGX Spark. No macOS or Windows build yet.
 - [CRM: Clinical Reasoning Model](https://www.saltshakerstudio.net/crm.html): Free. Model weights on Hugging Face (https://huggingface.co/ploppy2/Clinical-Reasoning-Test1). No installer on this site. Differential diagnosis model trained on 511 physician-annotated cases.
+- [Token Annihilator Dashboard](https://www.saltshakerstudio.net/token-annihilator.html): Free open-source beta (MIT). A side project, not a medical tool. Linux, Python 3.8 or newer, no dependencies. Install with git clone https://github.com/SaltShaker87/token-annihilation-dashboard and run it as a systemd user service (see the README). Counts tokens used by local models (Ollama, vLLM, llama.cpp, NVIDIA NIM and other OpenAI-compatible servers) and estimates what cloud APIs would have charged. Never modifies the model servers.
 
 ## Optional
 
