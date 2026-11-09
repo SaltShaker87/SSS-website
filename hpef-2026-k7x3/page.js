@@ -182,6 +182,9 @@
   function whenOf(session) {
     var date = parseISODate(session.date);
     if (!date) {
+      if (/^\s*tbd\s*$/i.test(String(session.date || ""))) {
+        return { dow: "Date", md: "TBD", long: "Date to be announced" };
+      }
       var raw = session.date ? String(session.date) : "Date needed";
       return { dow: "Date", md: raw, long: raw };
     }
@@ -192,16 +195,26 @@
     };
   }
 
-  function compareSessions(a, b) {
-    var da = parseISODate(a.date);
-    var db = parseISODate(b.date);
-    var ta = da ? da.getTime() : 8640000000000000;
-    var tb = db ? db.getTime() : 8640000000000000;
-    return ta - tb;
+  // Dated sessions go in date order. A session without a real date ("TBD")
+  // stays right after the session above it in course.js.
+  function sortSessions(sessions) {
+    var keyed = [];
+    var lastTime = -8640000000000000;
+    for (var i = 0; i < sessions.length; i++) {
+      var date = parseISODate(sessions[i].date);
+      if (date) lastTime = date.getTime();
+      keyed.push({ session: sessions[i], time: lastTime, undated: date ? 0 : 1, index: i });
+    }
+    keyed.sort(function (a, b) {
+      return (a.time - b.time) || (a.undated - b.undated) || (a.index - b.index);
+    });
+    var out = [];
+    for (var k = 0; k < keyed.length; k++) out.push(keyed[k].session);
+    return out;
   }
 
   function withIds(sessions) {
-    var sorted = sessions.slice().sort(compareSessions);
+    var sorted = sortSessions(sessions);
     var counts = {};
     var items = [];
     for (var i = 0; i < sorted.length; i++) {
