@@ -81,8 +81,37 @@ var HPEF_COURSE = {
     },
     {
       date: "2026-11-19",
-      title: "Beyond Andragogy; Project Check-in",
-      speaker: "Dr. Arman Yalcin"
+      title: "Beyond Andragogy: Motivation, Bloom’s Taxonomy, Experiential, Transformative, and Social Learning",
+      speaker: "Dr. Arman Yalcin",
+      overview: "Last session we covered Knowles’ original model of andragogy. This time we’ll see how the field has built on it, using a guide written specifically for medical educators.\n\nThe main reading is a long, dense article with a lot of important concepts that we’ll utilize throughout the year. Make sure you budget enough time to read it slowly.\n\nAssignments are the same format as last time. Please read the whole article, but each of you will lead a discussion on one part. Explain it in your own words and bring a real example from your own teaching or learning. Then we’ll open it up for group discussion.",
+      readings: [
+        {
+          title: "Taylor and Hamdy, \"Adult learning theories: Implications for learning and teaching in medical education: AMEE Guide No. 83\" (Medical Teacher 2013)",
+          url: "https://www.vumc.org/faculty/sites/default/files/Medical%20Education/Adult%20learning%20theories%20Implications%20for%20learning%20and%20teaching%20in%20medical%20education%20AMEE%20Guide%20No%2083.pdf",
+          note: "Free PDF. You only need to read up through page e6 (346). After that, the authors attempt to synthesize all of the previously discussed learning theories in a grand unified theory; this part is optional."
+        }
+      ],
+      optional: [
+        {
+          title: "Selections from Knowles, The Adult Learner, Chapter 5 (start in the middle of page 59)",
+          note: "After 1980, Knowles added two new assumptions to his model: the need to know and motivation. Riddhi and Matias will find this especially useful for their topics."
+        }
+      ],
+      assignments: [
+        { fellow: "Riddhi — The need to know", questions: ["How do teachers influence this? Any tips?"] },
+        { fellow: "Matias — Motivation to learn", questions: ["What factors influence this? How does internal vs. external motivation play out in residency?"] },
+        { fellow: "Nutch — Transformative learning", questions: ["What does it take for a learner to change how they see things, not just what they know?"] },
+        { fellow: "Alex — Experiential learning and reflection (Kolb’s cycle, Schön’s reflective practice)", questions: ["How do we turn clinical experience into actual learning?"] },
+        { fellow: "Manasa — Bloom’s taxonomy", questions: ["How is this relevant to us as designers of curricula?"] },
+        { fellow: "Lama — Social theories of learning", questions: ["How does social context affect learning? Any examples?"] },
+        { fellow: "Marcus — Duality and multiplicity", questions: ["How is this relevant to medical education?"] }
+      ],
+      wrapUp: "Which of these theories best explains how you learned to be a doctor?",
+      references: [
+        { title: "Geller, \"Tolerance for Ambiguity: An Ethics-Based Criterion for Medical Student Selection,\" Academic Medicine 2013", url: "http://www.ncbi.nlm.nih.gov/pubmed/23524934" },
+        { title: "Simpkin and Schwartzstein, \"Tolerating Uncertainty: The Next Medical Revolution?\" NEJM 2016", url: "https://doi.org/10.1056/NEJMp1606402" },
+        { title: "Freed et al., \"From Monotony to Motivation: Effective Presentation of Epidemiological Data,\" Academic Medicine 2019", url: "https://doi.org/10.1097/ACM.0000000000002978" }
+      ]
     },
     {
       date: "2026-12-03",
