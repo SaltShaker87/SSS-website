@@ -309,13 +309,17 @@
         '<span class="t-text">' + esc(item.when.md) + "</span>" +
         '<span class="t-btns" aria-hidden="true"><span class="t-btn t-min"></span><span class="t-btn t-max"></span></span>' +
         "</div>" +
-        '<div class="win-body">' +
+        '<details class="win-body session-toggle">' +
+        '<summary class="session-summary">' +
         '<p class="session-when">' + badge + esc(item.when.long) + "</p>" +
         "<h2>" + esc(name) + "</h2>" +
         speaker +
+        '<span class="toggle-hint" aria-hidden="true"></span>' +
+        "</summary>" +
+        '<div class="session-body">' +
         body +
         '<p class="jump-back"><a href="#schedule">Back to schedule</a></p>' +
-        "</div></article>";
+        "</div></details></article>";
     }
     return html;
   }
@@ -371,6 +375,24 @@
       window.SSS.paintIcons(schedule);
       window.SSS.paintIcons(sessions);
     }
+
+    // Open the session a link points to (schedule links, "Jump to the next session", shared URLs).
+    function openSession(id) {
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target || !sessions.contains(target)) return;
+      var details = target.querySelector("details.session-toggle");
+      if (details) details.open = true;
+      target.scrollIntoView();
+    }
+    schedule.addEventListener("click", function (event) {
+      var link = event.target.closest ? event.target.closest('a[href^="#"]') : null;
+      if (link) openSession(link.getAttribute("href").slice(1));
+    });
+    window.addEventListener("hashchange", function () {
+      openSession(decodeURIComponent(location.hash.slice(1)));
+    });
+    if (location.hash) openSession(decodeURIComponent(location.hash.slice(1)));
   }
 
   if (typeof document !== "undefined") {

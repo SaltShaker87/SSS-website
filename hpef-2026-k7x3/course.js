@@ -77,7 +77,24 @@ var HPEF_COURSE = {
       date: "2026-11-05",
       title: "Adult Learning Theory",
       speaker: "Dr. Arman Yalcin",
-      overview: "We'll go back to the original source: Malcolm Knowles, The Modern Practice of Adult Education (1980), Chapter 4, \"What Is Andragogy?\""
+      overview: "We'll go back to the OG source: Malcolm Knowles, The Modern Practice of Adult Education (1980), Chapter 4, \"What Is Andragogy?\" (about 20 pages).\n\nPlease read the whole chapter, and each of you will lead a discussion on one part. Explain it in your own words and bring a real example from your own teaching. Then we'll open it up for group discussion.",
+      readings: [
+        {
+          title: "Knowles, The Modern Practice of Adult Education (1980), Chapter 4, \"What Is Andragogy?\"",
+          url: "https://archive.org/details/modernpracticeof0000know_j2r4",
+          note: "Free on the Internet Archive. Just make a free account and click the \"Borrow\" button. Let me know if you have any trouble getting access."
+        }
+      ],
+      assignments: [
+        { fellow: "Matias — Origins of pedagogy, the teacher-led model", questions: ["Where do you still see this model in how we teach today?"] },
+        { fellow: "Riddhi — Why adults resisted it and how andragogy emerged", questions: ["What changed about how you learned once you left medical school?"] },
+        { fellow: "Marcus — Self-concept: from dependence to self-direction", questions: ["Are your learners self-directed? When are they not?"] },
+        { fellow: "Lama — Experience as a resource for learning", questions: ["How do you use a learner's past cases or experience when you teach?"] },
+        { fellow: "Manasa — Readiness to learn comes from social roles", questions: ["What makes a learner suddenly want to learn a topic?"] },
+        { fellow: "Alex — Orientation: from subject-centered to problem-centered", questions: ["Compare teaching a topic as a lecture vs. teaching it from a patient case."] },
+        { fellow: "Nutch — Exhibit 4: pedagogy vs. andragogy as a spectrum", questions: ["Where do residents sit on that spectrum? Does it change by PGY year?"] }
+      ],
+      wrapUp: "Do our trainees actually fit Knowles' \"adult learner\"?"
     },
     {
       date: "2026-11-19",
