@@ -352,6 +352,10 @@ footer p { margin: 0 0 0.4rem; }
 .hero-head h1 { margin-bottom: 0; max-width: 36rem; }
 .hero-logo { width: 84px; height: 84px; border-radius: 18px; border: 1px solid var(--line); background: #fff; flex: none; }
 @media (max-width: 560px) { .hero-logo { width: 60px; height: 60px; border-radius: 14px; } .hero-head { gap: 0.85rem; } }
+.site-nav .nav-inner { align-items: center; }
+.wordmark { display: inline-flex; align-items: center; gap: 0.45rem; }
+.nav-logo { width: 24px; height: 24px; border-radius: 6px; border: 1px solid var(--line); background: #fff; flex: none; }
+@media (max-width: 560px) { .site-nav .nav-inner { gap: 0.4rem 0.8rem; } .site-nav a { font-size: 0.9rem; } }
 </style>
 </head>
 <body>
@@ -361,8 +365,8 @@ footer p { margin: 0 0 0.4rem; }
   </div>
   <nav class="site-nav" aria-label="AUC pages">
     <div class="nav-inner">
-      <a class="wordmark" href="/">Salt Shaker Studio</a>
-      <a href="auc-detail.html">AUC home and download</a>
+      <a class="wordmark" href="auc-detail.html"><img class="nav-logo" src="images/web/auc-logo.png" width="24" height="24" alt="">AUC</a>
+      <a href="auc-detail.html#download">Download</a>
       <a href="auc-tutorial.html">Tutorial</a>
       <a href="auc-accuracy.html" aria-current="page">Accuracy record</a>
     </div>
