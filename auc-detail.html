@@ -53,6 +53,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
+<style>
+/* Links to the tutorial and accuracy record (this page only). */
+.detail-top p.guide-links{font-size:14px;margin:0 0 14px}
+.guide-card{display:flex;flex-direction:column;color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+.guide-card:hover,.guide-card:focus-visible{border-color:var(--title-b);transform:translateY(-2px)}
+.guide-card p{flex:1}
+.guide-go{margin-top:10px;font-weight:600;font-size:14px;color:var(--title-a)}
+</style>
 </head>
 <body>
 
@@ -75,6 +83,7 @@
           <h1>AUC: Assessments Under Curve</h1>
           <p>A local-first feedback tool for internal medicine residency programs. Log CCC observations, track follow-ups, and draft ACGME milestone summaries with an AI that runs on your own machine and has to quote your notes word-for-word.</p>
           <p class="dl-facts">Free · Linux only · Ubuntu 22.04 or newer, NVIDIA DGX Spark, or HP ZGX Nano (.deb) · other Linux (.AppImage)</p>
+          <p class="guide-links">New to AUC? <a href="auc-tutorial.html">Step-by-step tutorial</a> · Wondering if you can trust it? <a href="auc-accuracy.html">Accuracy record</a></p>
           <div class="btn-row">
             <a class="btn btn-primary" href="#download">Download for Linux (.deb or AppImage)</a>
             <button type="button" class="btn" id="installAiOpen" aria-haspopup="dialog" aria-controls="installAiDialog">Install with AI</button>
@@ -219,6 +228,23 @@
         </div>
 
         <p class="notice"><strong>Suggested levels are drafts.</strong> They are for Clinical Competency Committee discussion, not final determinations.</p>
+
+        <hr class="divider">
+
+        <!-- ============ GUIDES ============ -->
+        <h2 id="guides">Guides and Proof</h2>
+        <div class="features-grid">
+          <a class="feature guide-card" href="auc-tutorial.html">
+            <h3>Step-by-Step Tutorial</h3>
+            <p>A plain-language guide with pictures: signing in, AI summaries, and advisor packets. No computer skills needed.</p>
+            <span class="guide-go">Open the tutorial →</span>
+          </a>
+          <a class="feature guide-card" href="auc-accuracy.html">
+            <h3>Accuracy Record (v1.1.0)</h3>
+            <p>How version 1.1.0 was checked: the model test, 37 packets, the quote check, and a reviewer's findings. Includes a blank form to repeat the check at your program.</p>
+            <span class="guide-go">Read the record →</span>
+          </a>
+        </div>
 
         <hr class="divider">
 

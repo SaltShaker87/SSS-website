@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AUC 1.1.0 accuracy record | Salt Shaker Studio</title>
+  <meta name="description" content="A record of how Assessments Under Curve version 1.1.0 was checked on 10 November 2026, for residency programs considering the system.">
+  <link rel="canonical" href="https://www.saltshakerstudio.net/auc-accuracy.html">
+  <meta property="og:title" content="AUC 1.1.0 accuracy record">
+  <meta property="og:description" content="How Assessments Under Curve version 1.1.0 was checked, in plain language, with a blank form to repeat the check.">
+  <meta property="og:url" content="https://www.saltshakerstudio.net/auc-accuracy.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Salt Shaker Studio">
+  <meta property="og:image" content="https://www.saltshakerstudio.net/images/web/auc-logo.png">
+  <link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/web/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
+  <meta name="theme-color" content="#0b1f8f">
+  <style>
+
+:root {
+  --ink: #1c2430;
+  --muted: #4d5968;
+  --bg: #f6f3ee;
+  --paper: #fffcf8;
+  --line: #d8d2c6;
+  --accent: #1a5c58;
+  --accent-dark: #0e3f3c;
+  --accent-soft: #e7f2f0;
+  --warn-bg: #f8f1df;
+  --warn-ink: #5c4a1a;
+  --ok: #1d5c3a;
+  --ok-bg: #e7f3eb;
+  --code-bg: #eef1f3;
+  --title-a: #0b1f8f;   /* Salt Shaker Studio title-bar gradient */
+  --title-b: #1f82e0;
+  --shadow: 0 1px 2px rgba(28, 36, 48, 0.06);
+  --measure: 46rem;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+a { color: var(--accent-dark); }
+a:hover { color: var(--accent); }
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--paper);
+  padding: 0.5rem 1rem;
+}
+.skip:focus { left: 0.5rem; top: 0.5rem; z-index: 10; }
+.banner {
+  background: linear-gradient(90deg, var(--title-a), var(--title-b));
+  color: #fff;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.banner-inner, .nav-inner, .wrap, .foot-inner {
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 0.65rem 1.4rem;
+}
+.banner a { color: inherit; text-decoration: none; }
+.banner a:hover { text-decoration: underline; }
+.site-nav {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  align-items: baseline;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+.wordmark {
+  font-weight: 650;
+  color: var(--accent-dark);
+  text-decoration: none;
+  margin-right: auto;
+}
+.wordmark:hover { text-decoration: underline; }
+.site-nav a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--accent-dark); }
+.site-nav a[aria-current="page"] { font-weight: 650; }
+.hero {
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 2.2rem 1.4rem 0.4rem;
+}
+.kicker {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 0.55rem;
+}
+h1 {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: 2.05rem;
+  line-height: 1.22;
+  font-weight: 600;
+  margin: 0 0 0.7rem;
+  max-width: 28rem;
+}
+.lede {
+  max-width: var(--measure);
+  font-size: 1.12rem;
+  color: var(--ink);
+  margin: 0 0 1.1rem;
+}
+.meta {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+.wrap { padding-top: 1.3rem; padding-bottom: 3rem; }
+.prose, .toc + .prose { max-width: var(--measure); }
+.layout {
+  display: grid;
+  grid-template-columns: 14.5rem minmax(0, 1fr);
+  gap: 2.2rem;
+  align-items: start;
+  min-width: 0;
+}
+.prose, .toc, pre, table { max-width: 100%; min-width: 0; }
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 800px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; }
+}
+.toc {
+  position: sticky;
+  top: 3.4rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  padding: 0.2rem 0 1rem;
+}
+h2, h3 { scroll-margin-top: 4rem; }
+.toc h2 {
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+.toc ol {
+  margin: 0;
+  padding: 0 0 0 1.15rem;
+  color: var(--muted);
+}
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+h2 {
+  font-family: Georgia, "Iowan Old Style", Palatino, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 2.3rem 0 0.7rem;
+  max-width: 28ch;
+  text-transform: none;
+  letter-spacing: normal;
+  color: inherit;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 650;
+  margin: 1.5rem 0 0.45rem;
+}
+p { margin: 0 0 0.95rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.3rem; }
+li { margin: 0 0 0.35rem; }
+.glance {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.15rem 0.35rem;
+  margin: 1.3rem 0 1.5rem;
+  box-shadow: var(--shadow);
+  max-width: var(--measure);
+}
+.glance h2 { margin-top: 0; font-size: 1.15rem; }
+.note, .warn, .okbox {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 0.85rem 1rem 0.3rem;
+  margin: 1rem 0 1.2rem;
+  box-shadow: var(--shadow);
+}
+.warn { background: var(--warn-bg); border-color: #e4d6a8; }
+.okbox { background: var(--ok-bg); border-color: #c6e0d0; }
+.note p:last-child, .warn p:last-child, .okbox p:last-child, .glance p:last-child { margin-bottom: 0.55rem; }
+.note strong, .warn strong { display: inline; }
+table {
+  width: 100%;
+  max-width: 46rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: var(--paper);
+  margin: 0 0 1.2rem;
+  box-shadow: var(--shadow);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  background: var(--accent-soft);
+  font-weight: 650;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+tr:last-child td { border-bottom: 0; }
+code, kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background: var(--code-bg);
+  padding: 0.08em 0.32em;
+  border-radius: 3px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+pre code { overflow-wrap: anywhere; }
+@media (max-width: 800px) {
+  code, kbd { overflow-wrap: anywhere; }
+}
+pre {
+  background: #1c2430;
+  color: #eef2f4;
+  padding: 0.95rem 1.05rem;
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 0 0 1.15rem;
+  box-shadow: var(--shadow);
+}
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.shot {
+  border: 1px dashed #9aa7a5;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  padding: 1.6rem 1rem;
+  text-align: center;
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+}
+.shot strong { display: block; font-weight: 650; }
+.shot span { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem; }
+.worksheet {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 1.2rem 1.3rem 1.6rem;
+  margin: 1rem 0 2rem;
+  box-shadow: var(--shadow);
+}
+.worksheet h2 { margin-top: 0; }
+.field {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr);
+  gap: 0.35rem 0.8rem;
+  align-items: end;
+  margin: 0 0 0.65rem;
+}
+.field label { font-size: 0.92rem; color: var(--muted); }
+.field input[type="text"], .worksheet input.line, .worksheet textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #8b93a0;
+  background: transparent;
+  font: inherit;
+  padding: 0.2rem 0.15rem;
+  color: var(--ink);
+}
+.worksheet textarea {
+  border: 1px solid var(--line);
+  min-height: 4.2rem;
+  padding: 0.45rem 0.55rem;
+  margin-top: 0.25rem;
+}
+.check table { max-width: none; box-shadow: none; }
+.check th:nth-child(2),
+.check th:nth-child(3),
+.check td:nth-child(2),
+.check td:nth-child(3) { text-align: center; width: 4.2rem; }
+.check td:first-child { width: auto; }
+.sig {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+footer {
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.foot-inner { padding-top: 1.2rem; padding-bottom: 1.6rem; }
+footer p { margin: 0 0 0.4rem; }
+@media (max-width: 640px) {
+  h1 { font-size: 1.7rem; max-width: none; }
+  .field, .sig { grid-template-columns: 1fr; }
+}
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .banner, .site-nav, .skip, .no-print { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  .hero, .wrap, .foot-inner { padding-left: 0; padding-right: 0; max-width: none; }
+  .layout { display: block; }
+  .toc { display: none; }
+  .glance, .note, .warn, .okbox, .worksheet, table, pre {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .worksheet { break-before: page; }
+  h2, h3 { break-after: avoid; }
+  pre { white-space: pre-wrap; border: 1px solid #ccc; color: #000; background: #f4f4f4; }
+}
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="banner">
+    <div class="banner-inner"><a href="/">Salt Shaker Studio</a></div>
+  </div>
+  <nav class="site-nav" aria-label="AUC pages">
+    <div class="nav-inner">
+      <a class="wordmark" href="/">Salt Shaker Studio</a>
+      <a href="auc-detail.html">AUC home and download</a>
+      <a href="auc-tutorial.html">Tutorial</a>
+      <a href="auc-accuracy.html" aria-current="page">Accuracy record</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <p class="kicker">AUC, version 1.1.0</p>
+    <h1>Accuracy record for Assessments Under Curve</h1>
+    <p class="lede">A plain-language record of a check run on 10 November 2026, for residency programs that are considering Assessments Under Curve (AUC) for their Clinical Competency Committee (CCC).</p>
+    <p class="meta">Dr. Arman Yalcin, Salt Shaker Studio. Test run on an NVIDIA DGX Spark. This page reports counts and yes-or-no findings only. It does not include resident data, advisor names, study codes, or comment text.</p>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="glance" aria-labelledby="glance-h">
+      <h2 id="glance-h">At a glance</h2>
+      <ul>
+        <li>The model <code>nemotron-3.5-bolt:latest</code> passed the built-in fitness check and was judged usable.</li>
+        <li>On a private copy of one program's database, 37 advisor packets were generated in about 3 minutes, with no failures.</li>
+        <li>The validation log recorded 1 dropped quote, 0 competency sections discarded, and 0 truncations.</li>
+        <li>A physician reviewer (the developer) found the packet headers, rating counts, quotes, statements, and layout to be in order.</li>
+        <li>These results come from a single program on a single day, early in the academic year, when most residents still had little evaluation data. They are a starting point, not a multi-site study. A blank form at the end of this page is there so another program can repeat the check on its own machine.</li>
+      </ul>
+    </section>
+
+    <h2 id="what">What was being checked</h2>
+    <p>AUC (Assessments Under Curve) is a local web app for an internal medicine residency Clinical Competency Committee. Programs import evaluations from MedHub, keep committee notes, and use a local artificial intelligence (AI) model to draft milestone summaries aligned to the Accreditation Council for Graduate Medical Education (ACGME). Version 1.1.0 adds review periods and advisor packets. All data stays on the local machine. The language model runs locally through Ollama. Nothing in this check required sending resident comments off the computer that hosts AUC.</p>
+    <p>A review period is the date range a summary covers for one resident, ending on a cutoff date. The period starts the day after that resident's previous packet. If they have no previous packet, it starts the day after the last CCC meeting in the current academic year at which they were discussed. If neither of those applies, it starts on 23 June. A MedHub comment counts toward the period if the rotation it belongs to ended in that range. An "All time" view reproduces the older behaviour, with no period filter.</p>
+    <p>Advisor packets are prepared on the Packets page. The committee picks a meeting date (the cutoff defaults to 7 days before that date), adds the presenting advisors (their advisees come with them), and can optionally press "Randomize within each advisor." Randomization may be used once per meeting and cannot be undone. Changing a resident's group by hand requires a reason. "Generate all" then builds one packet at a time in the background. A packet can later be withheld, with a reason. Withheld packets are removed from that advisor's downloadable zip file, but the committee can still download them one at a time.</p>
+    <p>Each packet is a PDF file. The header lists the resident, their postgraduate year (PGY) at the cutoff, the advisor, the review period, and counts of comments, evaluators, and rotations. It also carries the label "AI generated draft. Not reviewed or edited." For each of the six ACGME competencies, the packet shows a count of MedHub milestone ratings plus Strengths and Growth areas backed by word-for-word quotations, or the wording "Not enough evidence in this review period." A "Previously" block and a 21 sub-competency appendix follow. A footer appears on every page. Study codes are not printed. Residents with few comments also get a caution: "Few evaluations were available for this period."</p>
+    <p>A safeguard runs before a statement is kept: if its supporting quotes are not exact copies of the source comments, the statement is dropped.</p>
+
+    <h2 id="system">System under test</h2>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Date of check</td><td>10 November 2026</td></tr>
+        <tr><td>Hardware</td><td>NVIDIA DGX Spark (GB10), ARM processor (aarch64), 121 GB memory</td></tr>
+        <tr><td>App version</td><td>AUC 1.1.0</td></tr>
+        <tr><td>Summary model</td><td><code>nemotron-3.5-bolt:latest</code></td></tr>
+        <tr><td>Retrieval engine</td><td>NVIDIA Nemotron, with embeddings <code>nvidia/nemotron-3-embed-1b</code> and an ACGME index of 42 entries</td></tr>
+        <tr><td>Packet format version</td><td>See the packet footer (not recorded in this write-up)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="method">How the test was run</h2>
+    <p>Machine health was checked with <code>preflight.sh</code>. Model fitness was checked with <code>check-model.sh</code> and the <code>--show-output</code> flag, which uses only made-up test comments. The live features were then exercised on a private copy of the program's database, not on the copy the committee uses day to day. The copy matched the original (26 tables, 631 rows). It was opened as a second instance of the app on a separate port and was deleted after the check.</p>
+
+    <h2 id="preflight">Machine health</h2>
+    <p>Preflight reported 24 checks passed, 1 warning, and 0 failures. The warning was "No database yet." It is harmless in this setup. When preflight is run by hand it does not read the app's settings file, so it looks for the database in the default folder inside the app. The real database was in the configured data folder, and the running app was using it.</p>
+
+    <h2 id="model">Model fitness</h2>
+    <p>The model under test was <code>nemotron-3.5-bolt:latest</code>. The check-model script ran three sub-competency generations and two advisor-packet competency generations, the same way the app does. Results:</p>
+    <table>
+      <thead>
+        <tr><th>Check</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Structured output the app can parse</td><td>3 of 3 replies parsed</td></tr>
+        <tr><td>Quotes copied word for word</td><td>7 of 7 snippets were exact copies; 3 of 3 sections kept their narrative</td></tr>
+        <tr><td>Usable milestone levels suggested</td><td>Yes (levels 3, 3, and 3 on the three test sections)</td></tr>
+        <tr><td>Packet Strengths and Growth areas</td><td>2 of 2 competencies kept both statements; 5 of 5 quotes exact</td></tr>
+        <tr><td>Time</td><td>4.0 seconds per section, or about 1.4 minutes for a full 21-section report and about 1.8 minutes for an advisor packet</td></tr>
+        <tr><td>Verdict from the script</td><td>Usable</td></tr>
+      </tbody>
+    </table>
+    <p>The 1.8-minute figure is an estimate for a packet that has comments for the model to write about. It is the figure to plan around when residents have a full period of evaluations. It is not what a batch will take when most packets have no comments.</p>
+
+    <h2 id="resident">Resident page</h2>
+    <p>On the test copy, the current review period showed sensible dates and counts, and those counts matched what was in MedHub for the same dates. A warning about a stale MedHub import displayed correctly. Generating a summary with MedHub comments only finished all 21 sections. Sixteen of those sections said there was no evidence in the period. That was expected: the resident chosen for this check had few evaluations. Switching the period picker to "All time" still showed the full history.</p>
+
+    <h2 id="packets">Advisor packets</h2>
+    <p>Creating a meeting auto-filled the cutoff 7 days before the meeting date. Adding presenting advisors brought their advisees with them. "Randomize within each advisor" split those advisees across the two groups (in one example, 2 versus 1 out of 3, which is as even as three advisees can be). The button locked after it was used. Changing a group by hand prompted for a reason.</p>
+    <p>Pressing "Generate all" produced 37 packets in about 3 minutes, with 0 failures. That is much faster than the 1.8-minute estimate above because most residents had no comments yet in the period, so the model had little or nothing to write and many packets completed in seconds. Once residents have a full period of evaluations, a batch of this size would be expected to take much longer. Planning should use the check-model estimate of about 1.8 minutes per advisor packet, or about 2 minutes per resident with comments.</p>
+
+    <h2 id="review">Reviewer checks of the packet PDF</h2>
+    <p>One physician, who is also the developer of AUC, reviewed generated packets on the test copy. Findings:</p>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Check</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>a</td><td>Header is right: resident, advisor, review period, cutoff, and PGY year, with plausible counts</td><td>Yes</td></tr>
+        <tr><td>b</td><td>The label "AI generated draft. Not reviewed or edited." appears at the top</td><td>Yes</td></tr>
+        <tr><td>c</td><td>Rating counts for each competency roughly match MedHub for the same dates</td><td>Yes</td></tr>
+        <tr><td>d</td><td>Of the six competencies, Strengths or Growth areas appear where there is evidence, and "Not enough evidence" appears where there is not</td><td>Yes, and the balance looked appropriate</td></tr>
+        <tr><td>e</td><td>Sampled quotes are word-for-word matches to MedHub</td><td>Yes</td></tr>
+        <tr><td>f</td><td>Statements fairly reflect the comments and do not claim things the comments do not support</td><td>Yes</td></tr>
+        <tr><td>g</td><td>Layout: nothing cut off, no heading left alone at the bottom of a page, no quote split oddly across pages</td><td>Yes, no layout problems</td></tr>
+        <tr><td>h</td><td>Footer on every page, and no study code printed anywhere</td><td>Yes</td></tr>
+        <tr><td>i</td><td>Residents with few comments are handled with no-evidence wording</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+    <p>Withholding a packet, with a reason, removed it from the advisor's zip file. The withheld packet could still be downloaded on its own, which is the intended behaviour so the committee can still look at it.</p>
+
+    <h2 id="log">Validation log</h2>
+    <p>After generation, the summary validation log was read for counts only. It sits in the data directory at <code>logs/summary_validation.log</code>. The log recorded 1 dropped quote (a quote that was not an exact copy, which the safeguard is meant to catch), 0 competency sections discarded, and 0 truncations. No section was cut off for being too long, which is consistent with this model's context window being large enough for these packets.</p>
+
+    <h2 id="limits">Limitations</h2>
+    <p>This is a record from one residency program, on one test day, on one machine. Most residents had little MedHub data in the period, which is expected early in the academic year. That means the batch was a strong test of empty-packet handling and of the workflow, and a weaker test of long, comment-rich packets. Timing for residents with a full set of evaluations is an estimate from the check-model script, not a measurement from this batch.</p>
+    <p>The packet review was done by one physician, who is also the developer. An independent reviewer at another program may weigh wording differently. Programs that adopt AUC should run the same checks on their own data, with their own model choice, before they rely on packets in a meeting or in a study.</p>
+
+    <h2 id="repeat">Repeat this check</h2>
+    <p>Print this section, or fill it in on a copy of the page, each time you repeat the check. Use a private test copy of your database, not the copy your committee uses day to day. The <a href="auc-tutorial.html#tech">tutorial</a> walks through that setup, in its section for the person who looks after the AUC computer. Record the packet format version from the footer of a generated packet. Do not paste resident comments, names, or study codes into this form.</p>
+
+    <form class="worksheet" action="#" method="get" onsubmit="return false;">
+      <h2>Validation worksheet</h2>
+      <p class="meta">Leave the packet format version blank until you can copy it from a packet footer.</p>
+
+      <div class="field"><label for="r-date">Date of check</label><input id="r-date" name="date" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-program">Program (optional)</label><input id="r-program" name="program" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-app">App version</label><input id="r-app" name="app_version" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-model">Model</label><input id="r-model" name="model" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-engine">Retrieval engine</label><input id="r-engine" name="engine" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-format">Packet format version</label><input id="r-format" name="packet_format" type="text" placeholder="from packet footer" autocomplete="off"></div>
+      <div class="field"><label for="r-hw">Hardware (optional)</label><input id="r-hw" name="hardware" type="text" autocomplete="off"></div>
+
+      <h3>Machine health (<code>preflight.sh</code>)</h3>
+      <div class="field"><label for="r-pass">Checks passed</label><input id="r-pass" name="passed" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-warn">Warnings</label><input id="r-warn" name="warnings" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-fail">Failures</label><input id="r-fail" name="failures" type="text" autocomplete="off"></div>
+      <label for="r-warn-notes">Notes on any warning</label>
+      <textarea id="r-warn-notes" name="warning_notes"></textarea>
+
+      <h3>Model fitness (<code>check-model.sh</code> with <code>--show-output</code>)</h3>
+      <div class="field"><label for="r-json">Structured replies parsed</label><input id="r-json" name="json" type="text" placeholder="for example, 3 / 3" autocomplete="off"></div>
+      <div class="field"><label for="r-quotes">Verbatim quotes</label><input id="r-quotes" name="quotes" type="text" placeholder="for example, 7 / 7 exact" autocomplete="off"></div>
+      <div class="field"><label for="r-narr">Sections that kept their narrative</label><input id="r-narr" name="narrative" type="text" placeholder="for example, 3 / 3" autocomplete="off"></div>
+      <div class="field"><label for="r-levels">Milestone levels suggested</label><input id="r-levels" name="levels" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-pkt">Packet competencies that kept both statements</label><input id="r-pkt" name="packet_comp" type="text" placeholder="for example, 2 / 2" autocomplete="off"></div>
+      <div class="field"><label for="r-pquotes">Packet quotes exact</label><input id="r-pquotes" name="packet_quotes" type="text" placeholder="for example, 5 / 5" autocomplete="off"></div>
+      <div class="field"><label for="r-sec">Seconds per section</label><input id="r-sec" name="sec_per_section" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-est">Estimated time per advisor packet</label><input id="r-est" name="est_packet" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-verdict">Script verdict</label><input id="r-verdict" name="verdict" type="text" autocomplete="off"></div>
+
+      <h3>Generation counts (test copy only)</h3>
+      <div class="field"><label for="r-n">Packets generated</label><input id="r-n" name="packets" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-nf">Failures</label><input id="r-nf" name="packet_failures" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-time">Time taken</label><input id="r-time" name="time_taken" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-drop">Dropped quotes in the validation log</label><input id="r-drop" name="dropped" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-disc">Competency sections discarded</label><input id="r-disc" name="discarded" type="text" autocomplete="off"></div>
+      <div class="field"><label for="r-trunc">Truncations</label><input id="r-trunc" name="truncated" type="text" autocomplete="off"></div>
+
+      <h3>Reviewer checklist (open a packet from the test copy)</h3>
+      <p class="meta">Mark yes or no. In the notes, record only counts or a short judgment. Do not write comment text or names.</p>
+      <div class="check">
+        <table>
+          <thead>
+            <tr><th>Check</th><th>Yes</th><th>No</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>a. Is the header right: resident, advisor, review period, cutoff, and PGY year? Do the counts look plausible?</td>
+              <td><input type="checkbox" name="a_yes" aria-label="Check a, yes"></td>
+              <td><input type="checkbox" name="a_no" aria-label="Check a, no"></td>
+              <td><input class="line" type="text" name="a_notes" aria-label="Check a notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>b. Does "AI generated draft. Not reviewed or edited." appear at the top?</td>
+              <td><input type="checkbox" name="b_yes" aria-label="Check b, yes"></td>
+              <td><input type="checkbox" name="b_no" aria-label="Check b, no"></td>
+              <td><input class="line" type="text" name="b_notes" aria-label="Check b notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>c. Do the rating counts for each competency roughly match MedHub for the same dates?</td>
+              <td><input type="checkbox" name="c_yes" aria-label="Check c, yes"></td>
+              <td><input type="checkbox" name="c_no" aria-label="Check c, no"></td>
+              <td><input class="line" type="text" name="c_notes" aria-label="Check c notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>d. Out of the six competencies, how many have Strengths or Growth areas, and how many say "Not enough evidence"?</td>
+              <td><input type="checkbox" name="d_yes" aria-label="Check d, yes"></td>
+              <td><input type="checkbox" name="d_no" aria-label="Check d, no"></td>
+              <td><input class="line" type="text" name="d_notes" placeholder="Record the two counts here" aria-label="Check d notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>e. Pick three quotes and find each one in MedHub. Are they word for word?</td>
+              <td><input type="checkbox" name="e_yes" aria-label="Check e, yes"></td>
+              <td><input type="checkbox" name="e_no" aria-label="Check e, no"></td>
+              <td><input class="line" type="text" name="e_notes" aria-label="Check e notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>f. Do the statements fairly reflect the comments, or do they claim things the comments do not support?</td>
+              <td><input type="checkbox" name="f_yes" aria-label="Check f, yes"></td>
+              <td><input type="checkbox" name="f_no" aria-label="Check f, no"></td>
+              <td><input class="line" type="text" name="f_notes" aria-label="Check f notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>g. Layout: is anything cut off, is a heading stranded alone at the bottom of a page, or is a quote split oddly across pages?</td>
+              <td><input type="checkbox" name="g_yes" aria-label="Check g, yes"></td>
+              <td><input type="checkbox" name="g_no" aria-label="Check g, no"></td>
+              <td><input class="line" type="text" name="g_notes" aria-label="Check g notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>h. Is the footer on every page, and is there no study code (like R012) printed anywhere?</td>
+              <td><input type="checkbox" name="h_yes" aria-label="Check h, yes"></td>
+              <td><input type="checkbox" name="h_no" aria-label="Check h, no"></td>
+              <td><input class="line" type="text" name="h_notes" aria-label="Check h notes" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td>i. Do residents with few comments show "Few evaluations were available for this period."?</td>
+              <td><input type="checkbox" name="i_yes" aria-label="Check i, yes"></td>
+              <td><input type="checkbox" name="i_no" aria-label="Check i, no"></td>
+              <td><input class="line" type="text" name="i_notes" aria-label="Check i notes" autocomplete="off"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Withholding</h3>
+      <p>Withhold one packet, give a reason, and download that advisor's zip again. Is the withheld packet gone from the zip, while still available on its own row?</p>
+      <div class="field"><label for="r-withhold">Yes or no, plus a short note</label><input id="r-withhold" name="withhold" type="text" autocomplete="off"></div>
+
+      <h3>Overall judgment</h3>
+      <label for="r-judge">Is this model and this app version fit for use in your program? What, if anything, still worries you?</label>
+      <textarea id="r-judge" name="judgment"></textarea>
+
+      <div class="sig">
+        <div class="field" style="grid-template-columns: 1fr;"><label for="r-reviewer">Reviewer</label><input id="r-reviewer" name="reviewer" type="text" autocomplete="off"></div>
+        <div class="field" style="grid-template-columns: 1fr;"><label for="r-signed">Date signed</label><input id="r-signed" name="signed" type="text" autocomplete="off"></div>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <p>AUC (Assessments Under Curve) is a free, open-source project of <a href="/">Salt Shaker Studio</a>, by Dr. Arman Yalcin. <a href="auc-detail.html">Download AUC</a>.</p>
+      <p>Related: <a href="auc-tutorial.html">Step-by-step tutorial</a>. This record describes a check of version 1.1.0 on 10 November 2026. It is not a multi-site validation study.</p>
+    </div>
+  </footer>
+</body>
+</html>
