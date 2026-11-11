@@ -346,25 +346,40 @@ footer p { margin: 0 0 0.4rem; }
   pre { white-space: pre-wrap; border: 1px solid #ccc; color: #000; background: #f4f4f4; }
 }
 
-  </style>
+  .banner-inner a { display: inline-flex; align-items: center; gap: 0.55rem; }
+.banner-logo { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.85); object-fit: cover; flex: none; }
+.hero-head { display: flex; align-items: center; gap: 1.1rem; margin: 0 0 0.7rem; }
+.hero-head h1 { margin-bottom: 0; max-width: 36rem; }
+.hero-logo { width: 84px; height: 84px; border-radius: 18px; border: 1px solid var(--line); background: #fff; flex: none; }
+@media (max-width: 560px) { .hero-logo { width: 60px; height: 60px; border-radius: 14px; } .hero-head { gap: 0.85rem; } }
+.site-nav .nav-inner { align-items: center; }
+.wordmark { display: inline-flex; align-items: center; gap: 0.45rem; }
+.nav-logo { width: 24px; height: 24px; border-radius: 6px; border: 1px solid var(--line); background: #fff; flex: none; }
+@media (max-width: 560px) { .site-nav .nav-inner { gap: 0.4rem 0.8rem; } .site-nav a { font-size: 0.9rem; } }
+</style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <div class="banner">
-    <div class="banner-inner"><a href="/">Salt Shaker Studio</a></div>
+    <div class="banner-inner"><a href="/"><img class="banner-logo" src="images/web/sss-logo.jpg" width="28" height="28" alt="">Salt Shaker Studio</a></div>
   </div>
   <nav class="site-nav" aria-label="AUC pages">
     <div class="nav-inner">
-      <a class="wordmark" href="/">Salt Shaker Studio</a>
-      <a href="auc-detail.html">AUC home and download</a>
+      <a class="wordmark" href="auc-detail.html"><img class="nav-logo" src="images/web/auc-logo.png" width="24" height="24" alt="">AUC</a>
+      <a href="auc-detail.html#download">Download</a>
       <a href="auc-tutorial.html">Tutorial</a>
       <a href="auc-accuracy.html" aria-current="page">Accuracy record</a>
     </div>
   </nav>
 
   <header class="hero">
-    <p class="kicker">AUC, version 1.1.0</p>
-    <h1>Accuracy record for Assessments Under Curve</h1>
+    <div class="hero-head">
+      <img class="hero-logo" src="images/web/auc-logo.png" width="84" height="84" alt="AUC logo">
+      <div>
+        <p class="kicker">AUC, version 1.1.0</p>
+        <h1>Accuracy record for Assessments Under Curve</h1>
+      </div>
+    </div>
     <p class="lede">A plain-language record of a check run on 10 November 2026, for residency programs that are considering Assessments Under Curve (AUC) for their Clinical Competency Committee (CCC).</p>
     <p class="meta">Dr. Arman Yalcin, Salt Shaker Studio. Test run on an NVIDIA DGX Spark. This page reports counts and yes-or-no findings only. It does not include resident data, advisor names, study codes, or comment text.</p>
   </header>
