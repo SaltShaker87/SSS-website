@@ -77,10 +77,8 @@ h1 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, ser
 .prose { max-width: var(--measure); min-width: 0; }
 @media (max-width: 800px) {
   .layout { grid-template-columns: minmax(0, 1fr); }
-  .toc { position: static; }
 }
 .toc { position: sticky; top: 3.4rem; font-size: 0.88rem; line-height: 1.45; padding: 0.2rem 0 1rem; min-width: 0; }
-.toc h2 { font-family: inherit; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
 .toc h3 { font-size: 0.8rem; color: var(--accent); margin: 0.8rem 0 0.25rem; }
 .toc ol { margin: 0; padding: 0 0 0 1.15rem; color: var(--muted); }
 .toc li { margin: 0 0 0.2rem; }
@@ -182,6 +180,19 @@ footer p { margin: 0 0 0.4rem; }
 .wordmark { display: inline-flex; align-items: center; gap: 0.45rem; }
 .nav-logo { width: 24px; height: 24px; border-radius: 6px; border: 1px solid var(--line); background: #fff; flex: none; }
 @media (max-width: 560px) { .site-nav .nav-inner { gap: 0.4rem 0.8rem; } .site-nav a { font-size: 0.9rem; } }
+@media (max-width: 800px) { .toc { position: static; } }
+.toc summary { font-size: 0.75rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; list-style: none; pointer-events: none; }
+.toc summary::-webkit-details-marker { display: none; }
+.toc-more { list-style: none; margin: 0; padding: 0; }
+@media (max-width: 800px) {
+  .toc { padding-bottom: 0.4rem; }
+  .toc-box { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 0 1rem; }
+  .toc-box[open] { padding-bottom: 0.8rem; }
+  .toc summary { pointer-events: auto; cursor: pointer; margin: 0; padding: 0.85rem 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--accent-dark); }
+  .toc summary::after { content: "Show"; font-size: 0.8rem; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--accent); }
+  .toc-box[open] summary::after { content: "Hide"; }
+  .layout { gap: 1.2rem; }
+}
 </style>
 </head>
 <body>
@@ -213,7 +224,8 @@ footer p { margin: 0 0 0.4rem; }
   <div class="wrap">
     <div class="layout">
       <nav class="toc" aria-label="Contents">
-        <h2>On this page</h2>
+        <details class="toc-box" open>
+        <summary>On this page</summary>
         <p class="toc-first"><a href="#start">Before you start</a></p>
         <h3>Part 1. Find your way</h3>
         <ol start="1">
@@ -239,10 +251,11 @@ footer p { margin: 0 0 0.4rem; }
           <li><a href="#check-packet">Check a packet</a></li>
         </ol>
         <h3>More</h3>
-        <ol start="15">
+        <ul class="toc-more">
           <li><a href="#words">Words to know</a></li>
           <li><a href="#tech">For the person who looks after the AUC computer</a></li>
-        </ol>
+        </ul>
+        </details>
       </nav>
 
       <main id="main" class="prose">
@@ -591,5 +604,25 @@ grep -c "TRUNCATED" ~/auc-packet-test/logs/summary_validation.log</code></pre>
       <p>Related: <a href="auc-accuracy.html">Accuracy record for version 1.1.0</a>. All people in the pictures on this page are made up.</p>
     </div>
   </footer>
+<script>
+// On phones, start the contents list closed and close it again after a link is tapped.
+(function () {
+  var box = document.querySelector('.toc-box');
+  if (!box || !window.matchMedia) return;
+  var phone = window.matchMedia('(max-width: 800px)');
+  if (phone.matches) box.removeAttribute('open');
+  box.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!phone.matches || !link) return;
+    var target = document.getElementById(link.getAttribute('href').slice(1));
+    if (!target) return;
+    // Close the list first, then scroll, so the jump lands in the right place.
+    e.preventDefault();
+    box.removeAttribute('open');
+    history.pushState(null, '', link.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
 </body>
 </html>
