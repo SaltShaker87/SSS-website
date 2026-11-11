@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to use AUC: a step-by-step tutorial | Salt Shaker Studio</title>
+  <meta name="description" content="A plain-language, step-by-step guide to AUC (Assessments Under Curve) with pictures: signing in, AI summaries, and advisor packets for your CCC.">
+  <link rel="canonical" href="https://www.saltshakerstudio.net/auc-tutorial.html">
+  <meta property="og:title" content="How to use AUC: a step-by-step tutorial">
+  <meta property="og:description" content="A plain-language guide to AUC with pictures: signing in, AI summaries, and advisor packets.">
+  <meta property="og:url" content="https://www.saltshakerstudio.net/auc-tutorial.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Salt Shaker Studio">
+  <meta property="og:image" content="https://www.saltshakerstudio.net/images/auc-shot-summary-draft.webp">
+  <link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/web/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
+  <meta name="theme-color" content="#0b1f8f">
+  <style>
+:root {
+  --ink: #1c2430;
+  --muted: #4d5968;
+  --bg: #f6f3ee;
+  --paper: #fffcf8;
+  --line: #d8d2c6;
+  --accent: #1a5c58;
+  --accent-dark: #0e3f3c;
+  --accent-soft: #e7f2f0;
+  --warn-bg: #f8f1df;
+  --warn-ink: #5c4a1a;
+  --ok: #1d5c3a;
+  --ok-bg: #e7f3eb;
+  --code-bg: #eef1f3;
+  --title-a: #0b1f8f;   /* Salt Shaker Studio title-bar gradient */
+  --title-b: #1f82e0;
+  --shadow: 0 1px 2px rgba(28, 36, 48, 0.06);
+  --measure: 46rem;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+a { color: var(--accent-dark); }
+a:hover { color: var(--accent); }
+.skip { position: absolute; left: -999px; top: 0; background: var(--paper); padding: 0.5rem 1rem; }
+.skip:focus { left: 0.5rem; top: 0.5rem; z-index: 10; }
+.banner {
+  background: linear-gradient(90deg, var(--title-a), var(--title-b));
+  color: #fff;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.banner-inner, .nav-inner, .wrap, .foot-inner { max-width: 58rem; margin: 0 auto; padding: 0.65rem 1.4rem; }
+.banner a { color: inherit; text-decoration: none; }
+.banner a:hover { text-decoration: underline; }
+.site-nav { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.nav-inner { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; align-items: baseline; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+.wordmark { font-weight: 650; color: var(--accent-dark); text-decoration: none; margin-right: auto; }
+.wordmark:hover { text-decoration: underline; }
+.site-nav a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--accent-dark); }
+.site-nav a[aria-current="page"] { font-weight: 650; }
+.hero { max-width: 58rem; margin: 0 auto; padding: 2.2rem 1.4rem 0.4rem; }
+.kicker { color: var(--accent); font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 0.55rem; }
+h1 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif; font-size: 2.05rem; line-height: 1.22; font-weight: 600; margin: 0 0 0.7rem; max-width: 30rem; }
+.lede { max-width: var(--measure); font-size: 1.12rem; margin: 0 0 1.1rem; }
+.meta { color: var(--muted); font-size: 0.92rem; margin: 0; }
+.wrap { padding-top: 1.3rem; padding-bottom: 3rem; }
+.layout { display: grid; grid-template-columns: 14.5rem minmax(0, 1fr); gap: 2.2rem; align-items: start; min-width: 0; }
+.prose { max-width: var(--measure); min-width: 0; }
+@media (max-width: 800px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; }
+}
+.toc { position: sticky; top: 3.4rem; font-size: 0.88rem; line-height: 1.45; padding: 0.2rem 0 1rem; min-width: 0; }
+.toc h2 { font-family: inherit; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
+.toc h3 { font-size: 0.8rem; color: var(--accent); margin: 0.8rem 0 0.25rem; }
+.toc ol { margin: 0; padding: 0 0 0 1.15rem; color: var(--muted); }
+.toc li { margin: 0 0 0.2rem; }
+.toc-first { margin: 0; }
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+h2, h3 { scroll-margin-top: 4.2rem; }
+h2 { font-family: Georgia, "Iowan Old Style", Palatino, serif; font-size: 1.55rem; font-weight: 600; line-height: 1.3; margin: 2.6rem 0 0.4rem; }
+h3 { font-size: 1.1rem; font-weight: 650; margin: 1.5rem 0 0.45rem; }
+p { margin: 0 0 0.95rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.3rem; }
+li { margin: 0 0 0.4rem; }
+
+/* Parts and steps */
+.part-label { color: var(--accent); font-size: 0.8rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; margin: 2.8rem 0 0; }
+.part-label + h2 { margin-top: 0.15rem; }
+.part-intro { color: var(--muted); }
+.step {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.05rem 1.2rem 0.35rem;
+  margin: 0 0 1.2rem;
+  box-shadow: var(--shadow);
+}
+.step > h3 { display: flex; gap: 0.7rem; align-items: center; margin: 0 0 0.7rem; font-size: 1.15rem; }
+.num {
+  flex: none;
+  width: 2.1rem; height: 2.1rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: inline-grid; place-items: center;
+  font-weight: 700; font-size: 1rem;
+}
+.step ol, .step ul { padding-left: 1.4rem; }
+.step ol > li::marker { font-weight: 650; color: var(--accent); }
+.btn-name { font-weight: 650; background: var(--accent-soft); padding: 0.05em 0.4em; border-radius: 4px; white-space: nowrap; }
+.pic { margin: 0.4rem 0 1.1rem; }
+.pic a { display: block; }
+.pic img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #151c28; }
+.pic.small img { max-width: 24rem; margin: 0 auto; }
+.pic.paper img { max-width: 30rem; margin: 0 auto; background: #fff; }
+.pic figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 0.4rem; }
+
+.glance { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--accent); padding: 1rem 1.15rem 0.35rem; margin: 1.3rem 0 1.5rem; box-shadow: var(--shadow); max-width: var(--measure); }
+.glance h2 { margin-top: 0; font-size: 1.15rem; }
+.note, .warn, .okbox { border: 1px solid var(--line); background: var(--paper); padding: 0.75rem 1rem 0.2rem; margin: 0.6rem 0 1.1rem; border-radius: 6px; }
+.warn { background: var(--warn-bg); border-color: #e4d6a8; color: var(--warn-ink); }
+.okbox { background: var(--ok-bg); border-color: #c6e0d0; }
+.box-label { font-weight: 700; display: block; margin-bottom: 0.15rem; }
+.note p:last-child, .warn p:last-child, .okbox p:last-child, .glance p:last-child { margin-bottom: 0.55rem; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: var(--paper); margin: 0 0 1.2rem; box-shadow: var(--shadow); }
+th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--line); }
+th { background: var(--accent-soft); font-weight: 650; font-size: 0.82rem; letter-spacing: 0.03em; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { white-space: nowrap; font-weight: 650; }
+dl.words { margin: 0 0 1rem; }
+dl.words dt { font-weight: 650; margin-top: 0.7rem; }
+dl.words dd { margin: 0.1rem 0 0 0; }
+
+code, kbd { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.86em; background: var(--code-bg); padding: 0.08em 0.32em; border-radius: 3px; overflow-wrap: anywhere; }
+pre { background: #1c2430; color: #eef2f4; padding: 0.95rem 1.05rem; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.84rem; line-height: 1.5; margin: 0 0 1.15rem; white-space: pre-wrap; overflow-wrap: anywhere; border-radius: 4px; }
+pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+details.tech { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; margin: 0.8rem 0 1.2rem; box-shadow: var(--shadow); }
+details.tech > summary { cursor: pointer; padding: 0.85rem 1.1rem; font-weight: 650; list-style-position: inside; }
+details.tech > summary:hover { color: var(--accent-dark); }
+details.tech[open] > summary { border-bottom: 1px solid var(--line); }
+details.tech > .inner { padding: 0.3rem 1.1rem 0.6rem; }
+details.tech h3 { margin-top: 1.3rem; }
+
+footer { border-top: 1px solid var(--line); background: var(--paper); color: var(--muted); font-size: 0.9rem; }
+.foot-inner { padding-top: 1.2rem; padding-bottom: 1.6rem; }
+footer p { margin: 0 0 0.4rem; }
+@media (max-width: 640px) {
+  h1 { font-size: 1.7rem; max-width: none; }
+  .step { padding-left: 0.9rem; padding-right: 0.9rem; }
+  td:first-child { white-space: normal; }
+}
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .banner, .site-nav, .skip, .toc { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  .hero, .wrap, .foot-inner { padding-left: 0; padding-right: 0; max-width: none; }
+  .layout { display: block; }
+  .step, .glance, .note, .warn, .okbox, table, pre, .pic { box-shadow: none; break-inside: avoid; }
+  details.tech > .inner { display: block; }
+  h2, h3 { break-after: avoid; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="banner">
+    <div class="banner-inner"><a href="/">Salt Shaker Studio</a></div>
+  </div>
+  <nav class="site-nav" aria-label="AUC pages">
+    <div class="nav-inner">
+      <a class="wordmark" href="/">Salt Shaker Studio</a>
+      <a href="auc-detail.html">AUC home and download</a>
+      <a href="auc-tutorial.html" aria-current="page">Tutorial</a>
+      <a href="auc-accuracy.html">Accuracy record</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <p class="kicker">AUC tutorial · version 1.1</p>
+    <h1>How to use AUC, step by step</h1>
+    <p class="lede">A simple guide with pictures. You do not need any computer skills. Go through it in order the first time. After that, jump to the part you need.</p>
+    <p class="meta">Every name and comment in the pictures is made up. No real resident or advisor appears on this page. The AI text in the pictures was written by the real AI model, from those made-up comments. Click any picture to see it bigger.</p>
+  </header>
+
+  <div class="wrap">
+    <div class="layout">
+      <nav class="toc" aria-label="Contents">
+        <h2>On this page</h2>
+        <p class="toc-first"><a href="#start">Before you start</a></p>
+        <h3>Part 1. Find your way</h3>
+        <ol start="1">
+          <li><a href="#sign-in">Sign in</a></li>
+          <li><a href="#home">The Residents screen</a></li>
+          <li><a href="#menu">The menu at the top</a></li>
+        </ol>
+        <h3>Part 2. AI summaries</h3>
+        <ol start="4">
+          <li><a href="#import">Add new MedHub evaluations</a></li>
+          <li><a href="#model">Choose the AI model</a></li>
+          <li><a href="#summary">Make a summary</a></li>
+          <li><a href="#check-summary">Check and save it</a></li>
+        </ol>
+        <h3>Part 3. Advisor packets</h3>
+        <ol start="8">
+          <li><a href="#meeting">Start a meeting</a></li>
+          <li><a href="#advisors">Add the advisors</a></li>
+          <li><a href="#groups">Groups (study only)</a></li>
+          <li><a href="#generate">Make the packets</a></li>
+          <li><a href="#download">Download and hand out</a></li>
+          <li><a href="#withhold">Hold a packet back</a></li>
+          <li><a href="#check-packet">Check a packet</a></li>
+        </ol>
+        <h3>More</h3>
+        <ol start="15">
+          <li><a href="#words">Words to know</a></li>
+          <li><a href="#tech">For the person who looks after the AUC computer</a></li>
+        </ol>
+      </nav>
+
+      <main id="main" class="prose">
+        <section class="glance" aria-labelledby="start">
+          <h2 id="start">Before you start</h2>
+          <ul>
+            <li><strong>AUC lives on one computer</strong> in your program. You open it in a web browser, like a website.</li>
+            <li><strong>Ask the person who set it up</strong> for two things: the web address to open, and the password.</li>
+            <li><strong>Everything stays on that computer.</strong> The AI runs there too. Nothing goes to the internet.</li>
+            <li><strong>Please keep it that way.</strong> Do not copy resident names, comments, or packets into email, chat apps, or online AI tools.</li>
+            <li><strong>The AI writes drafts, not decisions.</strong> People on your committee always make the final call.</li>
+          </ul>
+        </section>
+
+        <!-- ===================== PART 1 ===================== -->
+        <p class="part-label">Part 1</p>
+        <h2>Find your way around</h2>
+        <p class="part-intro">Three short steps to feel at home.</p>
+
+        <section class="step" aria-labelledby="sign-in">
+          <h3 id="sign-in"><span class="num">1</span>Sign in</h3>
+          <ol>
+            <li>Open your web browser (for example Chrome, Edge, Firefox, or Safari).</li>
+            <li>Go to the AUC address you were given.</li>
+            <li>Type the password, then press <span class="btn-name">Sign In</span>.</li>
+          </ol>
+          <figure class="pic small">
+            <a href="images/auc-shot-sign-in.webp"><img src="images/auc-shot-sign-in.webp" width="800" height="704" loading="lazy" alt="The AUC sign-in box, with one password field and a Sign In button."></a>
+            <figcaption>The sign-in box. Everyone in your program uses the same password.</figcaption>
+          </figure>
+          <div class="note"><p><span class="box-label">Forgot the password?</span>Ask the person who looks after the AUC computer. They can reset it.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="home">
+          <h3 id="home"><span class="num">2</span>The Residents screen</h3>
+          <p>After you sign in, you see every resident in your program. This is the home screen.</p>
+          <figure class="pic">
+            <a href="images/auc-shot-residents.webp"><img src="images/auc-shot-residents.webp" width="1600" height="662" loading="lazy" alt="The Residents screen: a search box, PGY filter buttons, and a grid of six made-up residents."></a>
+            <figcaption>The Residents screen, with made-up residents.</figcaption>
+          </figure>
+          <ul>
+            <li><strong>Click a name</strong> to open that resident's page.</li>
+            <li><strong>Type in the search box</strong> to find someone fast.</li>
+            <li><strong>Click PGY-1, PGY-2, or PGY-3</strong> to see one year only.</li>
+          </ul>
+          <p>A resident's page has their notes, to-do items, MedHub ratings and comments, and AI summaries. You can also pick their <strong>advisor</strong> there. Packets in Part 3 need every resident to have an advisor.</p>
+        </section>
+
+        <section class="step" aria-labelledby="menu">
+          <h3 id="menu"><span class="num">3</span>The menu at the top</h3>
+          <p>The bar at the top of every screen takes you anywhere in AUC.</p>
+          <table>
+            <thead><tr><th scope="col">Menu</th><th scope="col">What it is for</th></tr></thead>
+            <tbody>
+              <tr><td>Residents</td><td>Your list of residents. The home screen.</td></tr>
+              <tr><td>Follow-Ups</td><td>To-do items for residents that are still open.</td></tr>
+              <tr><td>MedHub Import</td><td>Bring in new evaluations from MedHub (step 4).</td></tr>
+              <tr><td>Study Data</td><td>For research only. Most people can skip it.</td></tr>
+              <tr><td>Packets</td><td>Make PDF packets for an advisor meeting (Part 3).</td></tr>
+              <tr><td>Settings</td><td>Choose the AI model, add advisors, and make backups.</td></tr>
+              <tr><td>Start CCC</td><td>Use it during a committee meeting to note what was discussed.</td></tr>
+              <tr><td>Log Out</td><td>Sign out when you are done, especially on a shared computer.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ===================== PART 2 ===================== -->
+        <p class="part-label">Part 2</p>
+        <h2>Get an AI summary for one resident</h2>
+        <p class="part-intro">The AI reads a resident's evaluations and writes a short draft for each ACGME milestone. You read it, fix it, and save it.</p>
+
+        <section class="step" aria-labelledby="import">
+          <h3 id="import"><span class="num">4</span>Add new MedHub evaluations</h3>
+          <p>AUC only knows the evaluations you give it. Add fresh ones before a meeting.</p>
+          <ol>
+            <li>In MedHub, run the <strong>Evaluation Questions Summary</strong> report for one form and a date range.</li>
+            <li>Save that page from your browser: <strong>File</strong>, then <strong>Save Page As</strong>, as a web page.</li>
+            <li>In AUC, click <span class="btn-name">MedHub Import</span> in the top menu.</li>
+            <li>Drag the saved file into the dotted box, or click the box to find it.</li>
+            <li>AUC shows you what is in the file. Nothing is saved until you say yes.</li>
+          </ol>
+          <figure class="pic">
+            <a href="images/auc-shot-medhub-import.webp"><img src="images/auc-shot-medhub-import.webp" width="1600" height="900" loading="lazy" alt="The MedHub Import screen with a dotted drop box and a list of past imports."></a>
+            <figcaption>The MedHub Import screen. Past imports are listed below the drop box.</figcaption>
+          </figure>
+          <div class="okbox"><p><span class="box-label">Good to know</span>Dates that overlap are fine. AUC never adds the same evaluation twice.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="model">
+          <h3 id="model"><span class="num">5</span>Choose the AI model (once)</h3>
+          <ol>
+            <li>Click <span class="btn-name">Settings</span>, then <span class="btn-name">AI &amp; Summaries</span>.</li>
+            <li>Under <strong>Default Ollama model</strong>, pick the model the person who set up AUC told you to use.</li>
+            <li>Check that <strong>ACGME reference index</strong> says <strong>Ready</strong>.</li>
+          </ol>
+          <figure class="pic">
+            <a href="images/auc-shot-settings-model.webp"><img src="images/auc-shot-settings-model.webp" width="1600" height="719" loading="lazy" alt="Settings, AI and Summaries: a model drop-down, a retrieval engine drop-down, and a green Ready label for the ACGME index."></a>
+            <figcaption>Settings, AI &amp; Summaries. The green <strong>Ready</strong> means AUC can match comments to milestones.</figcaption>
+          </figure>
+          <div class="note"><p><span class="box-label">Why again?</span>Each browser remembers its own choice. If you use a new computer or a new browser, pick the model again.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="summary">
+          <h3 id="summary"><span class="num">6</span>Make a summary</h3>
+          <ol>
+            <li>Open the resident's page and scroll down to <strong>AI Summaries</strong>.</li>
+            <li>Leave <strong>Covering</strong> on <strong>Current review period</strong>. That is the time since their last review. (See <a href="#words">Words to know</a>.)</li>
+            <li>Under <strong>Evidence</strong>, choose <strong>MedHub comments only</strong>, or include your committee's notes too.</li>
+            <li>Check the line under the boxes. It shows the dates and how many comments the AI will read.</li>
+            <li>Press <span class="btn-name">Generate Summary</span>. A bar shows how far along it is.</li>
+          </ol>
+          <figure class="pic">
+            <a href="images/auc-shot-summary-picker.webp"><img src="images/auc-shot-summary-picker.webp" width="1600" height="700" loading="lazy" alt="The AI Summaries box set to Current review period and MedHub comments only, showing 8 comments from 4 evaluators, with a progress bar at 18 of 21."></a>
+            <figcaption>Halfway through: 18 of 21 milestone sections are done.</figcaption>
+          </figure>
+          <p>It usually takes a minute or two. A resident with no comments is done in a few seconds.</p>
+          <div class="note"><p><span class="box-label">Want to see everything?</span>Set <strong>Covering</strong> to <strong>All time</strong>. That shows the resident's whole history, not just this review period.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="check-summary">
+          <h3 id="check-summary"><span class="num">7</span>Check the summary and save it</h3>
+          <p>The draft has 21 boxes, one for each ACGME milestone. Each box can show:</p>
+          <ul>
+            <li><strong>A short paragraph</strong> written by the AI. You can change the words.</li>
+            <li><strong>A suggested level</strong> from 1 to 5. It is only a suggestion for your committee to discuss. You can change it.</li>
+            <li><strong>Supporting evidence</strong>: the exact words from the evaluations, with who wrote them and when.</li>
+            <li><strong>Grey boxes</strong> that say <em>No evidence in this review period</em>. That is normal when a resident has only a few evaluations.</li>
+          </ul>
+          <figure class="pic">
+            <a href="images/auc-shot-summary-draft.webp"><img src="images/auc-shot-summary-draft.webp" width="1600" height="1000" loading="lazy" alt="An AI draft. Patient Care 1, History, has a suggested level of 2, one sentence of text, and the matching quote below it. The next two milestones are grey and say no evidence in this review period."></a>
+            <figcaption>The top of a draft. The quote under the paragraph is the evaluator's exact words.</figcaption>
+          </figure>
+          <div class="okbox"><p><span class="box-label">Why you can trust the quotes</span>AUC checks every quote, word for word, against the real evaluations. If a quote does not match exactly, AUC throws it out before you ever see it.</p></div>
+          <p>When you are happy with it, press <span class="btn-name">Approve &amp; Save</span> at the bottom. If you do not want it, press <span class="btn-name">Discard</span>.</p>
+          <div class="warn"><p><span class="box-label">Careful</span>Press one of those two buttons before you leave the page. If you leave first, the draft will not come back and you will need to make it again.</p></div>
+        </section>
+
+        <!-- ===================== PART 3 ===================== -->
+        <p class="part-label">Part 3</p>
+        <h2>Make packets for an advisor meeting</h2>
+        <p class="part-intro">A packet is a short PDF about one resident, for their advisor to bring to a meeting. AUC makes one for every advisee in a few clicks. Packets are AI drafts. Nothing is sent to anyone. You download the files and hand them out yourself.</p>
+
+        <section class="step" aria-labelledby="meeting">
+          <h3 id="meeting"><span class="num">8</span>Start a meeting</h3>
+          <ol>
+            <li>Click <span class="btn-name">Packets</span> in the top menu.</li>
+            <li>In <strong>New meeting on</strong>, pick the date of the advisor meeting.</li>
+            <li>The <strong>Cutoff date</strong> fills itself in, 7 days earlier. Packets only use evaluations up to that day.</li>
+            <li>Press <span class="btn-name">Open</span>.</li>
+          </ol>
+          <p>To come back to a meeting later, choose it under <strong>Open a meeting</strong>.</p>
+          <figure class="pic">
+            <a href="images/auc-shot-packets-meeting.webp"><img src="images/auc-shot-packets-meeting.webp" width="1600" height="1000" loading="lazy" alt="The Packets screen after opening a meeting on 15 December 2026, with the cutoff date set to 8 December, a yellow warning about an old MedHub import, and two advisors ticked under Presenting advisors."></a>
+            <figcaption>A meeting is open. The yellow box says the last MedHub import is old.</figcaption>
+          </figure>
+          <div class="warn"><p><span class="box-label">See a yellow box?</span>It means your newest MedHub evaluations are older than the cutoff date. Do <a href="#import">step 4</a> first, so advisors do not see evaluations in MedHub that are missing from the packet.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="advisors">
+          <h3 id="advisors"><span class="num">9</span>Add the advisors who are presenting</h3>
+          <ol>
+            <li>Under <strong>Presenting advisors</strong>, tick each advisor who is presenting.</li>
+            <li>Press <span class="btn-name">Add advisor</span>. Each advisor's residents come with them.</li>
+          </ol>
+          <p>Each resident now has a row. It shows their review period, how many comments they have, and a <strong>Few evaluations</strong> tag if there is not much to go on.</p>
+          <div class="note"><p><span class="box-label">No advisors in the list?</span>Add them in <strong>Settings</strong>, under <strong>Advisors</strong>. Then choose each resident's advisor on the resident's page.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="groups">
+          <h3 id="groups"><span class="num">10</span>Groups (only if you are in a study)</h3>
+          <p><strong>Not part of a research study? Skip this step.</strong> AUC makes packets for everyone either way.</p>
+          <p>If you are in a study, your study plan says whether each resident's packet goes out <strong>first</strong> or <strong>later</strong>. AUC can split them for you:</p>
+          <ol>
+            <li>Press <span class="btn-name">Randomize within each advisor</span>.</li>
+            <li>AUC asks if you are sure. Press <strong>OK</strong>.</li>
+            <li>Each advisor's residents are split evenly into <strong>Packet first</strong> and <strong>Packet delayed</strong>. You see this in the <strong>Group</strong> column.</li>
+          </ol>
+          <figure class="pic">
+            <a href="images/auc-shot-packets-randomized.webp"><img src="images/auc-shot-packets-randomized.webp" width="1600" height="1125" loading="lazy" alt="After randomizing: the button now says Randomized, and each made-up resident has Packet first or Packet delayed in the Group column."></a>
+            <figcaption>After randomizing. The button now just says <strong>Randomized</strong> and cannot be pressed again.</figcaption>
+          </figure>
+          <div class="warn"><p><span class="box-label">Only once</span>You can randomize only once per meeting, and you cannot undo it. If you must move one resident to the other group, change it in the drop-down. AUC will ask you to type a short reason.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="generate">
+          <h3 id="generate"><span class="num">11</span>Make the packets</h3>
+          <ol>
+            <li>Check that the model next to the button is the one you were told to use.</li>
+            <li>Press <span class="btn-name">Generate all</span>.</li>
+            <li>AUC makes one packet at a time. A bar shows how many are ready. You can leave the page and come back.</li>
+          </ol>
+          <p>Allow about 2 minutes for each resident who has comments. Residents with no comments are done in seconds.</p>
+          <figure class="pic">
+            <a href="images/auc-shot-packets-ready.webp"><img src="images/auc-shot-packets-ready.webp" width="1600" height="1125" loading="lazy" alt="All packets made: the bar says 6 of 6 ready, and each row says Ready with PDF, Withhold, and Generate again buttons."></a>
+            <figcaption>All done: <strong>6 of 6 ready</strong>. Each row has <strong>PDF</strong>, <strong>Withhold</strong>, and <strong>Generate again</strong> buttons.</figcaption>
+          </figure>
+          <div class="note"><p><span class="box-label">A row says Failed?</span>Press <span class="btn-name">Generate again</span> on that row. If it keeps failing, tell the person who looks after the AUC computer.</p></div>
+        </section>
+
+        <section class="step" aria-labelledby="download">
+          <h3 id="download"><span class="num">12</span>Download and hand them out</h3>
+          <ul>
+            <li><span class="btn-name">Zip of 3 packets</span> next to an advisor's name downloads that advisor's packets in one file.</li>
+            <li><span class="btn-name">Zip of the whole meeting</span> downloads every packet, in one folder per advisor.</li>
+            <li><span class="btn-name">PDF</span> on a row downloads just that one packet.</li>
+          </ul>
+          <p>A packet looks like this. The top says who it is for and which dates it covers. Then each of the six competencies has its MedHub ratings, <strong>Strengths</strong>, and <strong>Growth areas</strong>, each backed by exact quotes.</p>
+          <figure class="pic paper">
+            <a href="images/auc-shot-packet-pdf.webp"><img src="images/auc-shot-packet-pdf.webp" width="1100" height="1424" loading="lazy" alt="Page 1 of a packet PDF for a made-up resident: the header, a note that it is an AI generated draft, and the Patient Care, Medical Knowledge, and Systems-Based Practice sections."></a>
+            <figcaption>Page 1 of a packet. The blue box says it is an AI draft that nobody has edited.</figcaption>
+          </figure>
+        </section>
+
+        <section class="step" aria-labelledby="withhold">
+          <h3 id="withhold"><span class="num">13</span>Hold a packet back</h3>
+          <p>Sometimes a packet should not go out, for example if the advisor is away.</p>
+          <ol>
+            <li>Press <span class="btn-name">Withhold</span> on that resident's row.</li>
+            <li>Type one line saying why, and press <strong>OK</strong>.</li>
+          </ol>
+          <p>That packet is now left out of every zip. Your committee can still open it with its own <span class="btn-name">PDF</span> button.</p>
+          <figure class="pic">
+            <a href="images/auc-shot-packets-withheld.webp"><img src="images/auc-shot-packets-withheld.webp" width="1600" height="1125" loading="lazy" alt="A withheld packet: the first row shows the reason in orange, and the advisor's zip button now says Zip of 2 packets."></a>
+            <figcaption>The first packet is withheld. The reason shows on the row, and the zip button now says <strong>2 packets</strong>, not 3.</figcaption>
+          </figure>
+        </section>
+
+        <section class="step" aria-labelledby="check-packet">
+          <h3 id="check-packet"><span class="num">14</span>Check a packet before you hand it out</h3>
+          <p>Open one or two packets on the AUC computer and ask:</p>
+          <ol>
+            <li>Is the name, advisor, PGY year, and date range right?</li>
+            <li>Does the top say <em>AI generated draft. Not reviewed or edited.</em>?</li>
+            <li>Do the rating counts roughly match MedHub for the same dates?</li>
+            <li>Pick three quotes and find them in MedHub. Are they word for word?</li>
+            <li>Is everything the AI says actually backed up by the comments?</li>
+            <li>Does the page look right, with nothing cut off?</li>
+          </ol>
+          <p>Write down only yes, no, or a number. Do not copy comments off the computer. There is a printable form for this in the <a href="auc-accuracy.html#repeat">accuracy record</a>.</p>
+        </section>
+
+        <!-- ===================== WORDS ===================== -->
+        <h2 id="words">Words to know</h2>
+        <dl class="words">
+          <dt>CCC</dt>
+          <dd>Clinical Competency Committee. The group that reviews how each resident is doing.</dd>
+          <dt>Advisor</dt>
+          <dd>The faculty member who presents a resident at the meeting.</dd>
+          <dt>Review period</dt>
+          <dd>The dates a summary or packet looks at. It starts the day after the resident's last packet. If they have never had one, it starts after the last CCC meeting this year where they were discussed. If neither happened, it starts on 23 June. It ends on the cutoff date.</dd>
+          <dt>Cutoff date</dt>
+          <dd>The last day of evaluations a packet uses. Usually 7 days before the meeting.</dd>
+          <dt>Packet</dt>
+          <dd>A short PDF about one resident, made by the AI for their advisor.</dd>
+          <dt>Withhold</dt>
+          <dd>Keep one packet out of the downloads, with a reason.</dd>
+          <dt>PGY</dt>
+          <dd>Postgraduate year. PGY-1 is the first year of residency.</dd>
+          <dt>Model</dt>
+          <dd>The AI program that writes the drafts. It runs on your AUC computer, not on the internet.</dd>
+        </dl>
+
+        <!-- ===================== TECH ===================== -->
+        <h2 id="tech">For the person who looks after the AUC computer</h2>
+        <p>Most people can stop here. This part is for whoever installed AUC. It covers checking that the computer and AI are healthy, and practising on a safe copy before the first real meeting. It uses the terminal (the text window where you type commands).</p>
+
+        <details class="tech">
+          <summary>Check the computer and the AI model</summary>
+          <div class="inner">
+            <p>On the AUC computer, open a terminal and run these one at a time. They use only made-up test comments, so the output is safe to share.</p>
+            <pre><code>cd ~/.local/share/auc/app/current
+
+bash preflight.sh
+
+bash check-model.sh &lt;model-name&gt; --show-output</code></pre>
+            <p>Replace <code>&lt;model-name&gt;</code> with the exact name in Settings, under <strong>Default Ollama model</strong>. The <a href="auc-accuracy.html">accuracy record</a> used <code>nemotron-3.5-bolt:latest</code>.</p>
+            <ul>
+              <li><strong>preflight.sh</strong> should show many checks passed and no failures. A warning that says "No database yet" can be a false alarm when you run it by hand. Check that the real app (usually on port 3000) opens and lets you sign in.</li>
+              <li><strong>check-model.sh</strong> takes a few minutes. It should say the replies parsed, the quotes were exact, the levels were usable, and packet Strengths and Growth areas were kept. Its verdict should be <strong>usable</strong>.</li>
+            </ul>
+            <div class="warn"><p><span class="box-label">Copying commands</span>Do not wrap a command in backticks (the <code>`</code> character) before you paste it. The terminal may try to run the wrong thing and show a confusing error.</p></div>
+          </div>
+        </details>
+
+        <details class="tech">
+          <summary>Practise on a safe test copy</summary>
+          <div class="inner">
+            <p>Randomizing cannot be undone, so try Packets on a copy first, never on the database your committee uses every day.</p>
+            <h3>1. Make the copy</h3>
+            <p>From the app folder, run:</p>
+            <pre><code>mkdir -p ~/auc-packet-test
+
+backend/venv/bin/python -c "import sqlite3,os; s=sqlite3.connect(os.path.expanduser('~/.local/share/auc/data/auc.db')); d=sqlite3.connect(os.path.expanduser('~/auc-packet-test/auc.db')); s.backup(d); d.close(); print('copied')"</code></pre>
+            <p>It should print <code>copied</code> and nothing else. If you installed from a git checkout, change the first path to point at your real <code>auc.db</code>.</p>
+            <h3>2. Start the copy on a second address</h3>
+            <p>In a <strong>second terminal</strong>, run this and leave the window open:</p>
+            <pre><code>cd ~/.local/share/auc/app/current &amp;&amp; AUC_DATA_DIR=$HOME/auc-packet-test AUC_PORT=3001 bash run.sh</code></pre>
+            <p>Open <code>http://localhost:3001</code> (or the computer's address with <code>:3001</code> at the end). Sign in with your usual password and choose the model in Settings again. Until you are done, use only port 3001.</p>
+            <h3>3. Count problems in the log</h3>
+            <p>After making packets on the copy, count these lines. The commands print numbers only.</p>
+            <pre><code>grep -c "DROPPED QUOTE" ~/auc-packet-test/logs/summary_validation.log
+grep -cE "COMPETENCY.*DISCARDED" ~/auc-packet-test/logs/summary_validation.log
+grep -c "TRUNCATED" ~/auc-packet-test/logs/summary_validation.log</code></pre>
+            <ul>
+              <li><strong>DROPPED QUOTE</strong>: a quote was not exact, so AUC threw it out. A few is normal.</li>
+              <li><strong>DISCARDED</strong>: a whole competency section was thrown out.</li>
+              <li><strong>TRUNCATED</strong>: the AI's answer was cut off, often because it was too long for the model.</li>
+            </ul>
+            <p>A 0 is a clean result. On the real app, the log is in <code>~/.local/share/auc/data/logs/</code>.</p>
+            <h3>4. Clean up</h3>
+            <p>The test folder is a full copy of resident data. In the window running port 3001, press <kbd>Ctrl</kbd>+<kbd>C</kbd> and wait for it to stop. Then, after checking that this is the test folder and not your real one, run:</p>
+            <pre><code>rm -rf ~/auc-packet-test</code></pre>
+            <p>Open the real app on port 3000. It should still work, and Packets should not show your test meeting. If the test meeting shows up there, stop and sort that out before a real meeting.</p>
+            <div class="note"><p><span class="box-label">Taking screenshots?</span>Never publish a screenshot that shows a real resident or advisor. Use a fresh, empty test copy with made-up names, like the pictures on this page.</p></div>
+          </div>
+        </details>
+
+        <details class="tech">
+          <summary>Where the app and data live</summary>
+          <div class="inner">
+            <p>A normal install keeps the app in <code>~/.local/share/auc/app/current</code>. The scripts <code>preflight.sh</code>, <code>check-model.sh</code>, and <code>run.sh</code> are in that folder. The data, including the database, is in <code>~/.local/share/auc/data</code>, set in <code>~/.config/auc/auc.env</code>.</p>
+            <p>A git checkout is laid out differently. It has an <code>auc/</code> folder. Run the same scripts from whichever folder actually contains them.</p>
+          </div>
+        </details>
+
+        <details class="tech">
+          <summary>Before a research study: write down four things</summary>
+          <div class="inner">
+            <p>If packets are part of a study, write these down before you randomize, and do not change them until the study ends:</p>
+            <ul>
+              <li><strong>Model</strong>: the exact name, for example <code>nemotron-3.5-bolt:latest</code></li>
+              <li><strong>Retrieval engine</strong>: for example NVIDIA Nemotron (in Settings, AI &amp; Summaries)</li>
+              <li><strong>App version</strong>: for example 1.1.0</li>
+              <li><strong>Packet format version</strong>: copy it from the bottom of any packet page</li>
+            </ul>
+            <p>Import a fresh MedHub report before you make packets for a real meeting. For a worked example of this whole check, with one program's results and a blank form, see the <a href="auc-accuracy.html">accuracy record</a>.</p>
+          </div>
+        </details>
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-inner">
+      <p>AUC (Assessments Under Curve) is a free, open-source project of <a href="/">Salt Shaker Studio</a>, by Dr. Arman Yalcin. <a href="auc-detail.html">Download AUC</a>.</p>
+      <p>Related: <a href="auc-accuracy.html">Accuracy record for version 1.1.0</a>. All people in the pictures on this page are made up.</p>
+    </div>
+  </footer>
+</body>
+</html>
