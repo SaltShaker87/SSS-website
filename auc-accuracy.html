@@ -145,7 +145,6 @@ pre {
 }
 @media (max-width: 800px) {
   .layout { grid-template-columns: minmax(0, 1fr); }
-  .toc { position: static; }
 }
 .toc {
   position: sticky;
@@ -356,6 +355,21 @@ footer p { margin: 0 0 0.4rem; }
 .wordmark { display: inline-flex; align-items: center; gap: 0.45rem; }
 .nav-logo { width: 24px; height: 24px; border-radius: 6px; border: 1px solid var(--line); background: #fff; flex: none; }
 @media (max-width: 560px) { .site-nav .nav-inner { gap: 0.4rem 0.8rem; } .site-nav a { font-size: 0.9rem; } }
+@media (max-width: 800px) { .toc { position: static; } }
+@media (max-width: 640px) {
+  /* Reviewer checklist: one card per check, with Yes, No, and Notes on a row under the question. */
+  .check table, .check tbody, .check tr, .check td { display: block; width: auto; }
+  .check thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .check tr { display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 0.5rem 1.1rem; align-items: center; padding: 0.8rem 0.75rem; border-bottom: 1px solid var(--line); }
+  .check td { padding: 0; border: 0; }
+  .check td:first-child { grid-column: 1 / -1; }
+  .check td:nth-child(2), .check td:nth-child(3), .check td:nth-child(4) { display: flex; align-items: center; gap: 0.4rem; width: auto; text-align: left; font-size: 0.9rem; color: var(--muted); }
+  .check td:nth-child(2)::before { content: "Yes"; }
+  .check td:nth-child(3)::before { content: "No"; }
+  .check td:nth-child(4)::before { content: "Notes"; }
+  .check input[type="checkbox"] { width: 1.25rem; height: 1.25rem; margin: 0; }
+  .check td:nth-child(4) input { flex: 1; min-width: 0; }
+}
 </style>
 </head>
 <body>
