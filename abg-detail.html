@@ -65,6 +65,11 @@
   .store-badge--apple{padding:12px}
   .store-badge--apple img{width:145px}
   .store-badge--apple small{display:block;line-height:1;margin-top:8px;font:600 10px var(--font-mono);letter-spacing:.5px;color:var(--muted)}
+  /* Scan-to-install QR for desktop visitors; phones already have the badge link. */
+  .store-qr{display:flex;align-items:center;gap:14px;margin:12px 0 0 12px}
+  .store-qr img{width:132px;height:132px;padding:6px;background:#fff;border-radius:6px;image-rendering:pixelated}
+  .store-qr p{margin:0;max-width:24ch;font-size:.95rem;color:var(--muted)}
+  @media (hover:none),(pointer:coarse),(max-width:760px){.store-qr{display:none}}
 </style>
 </head>
 <body>
@@ -108,6 +113,10 @@
             <img src="images/app-store-badge.svg" alt="" width="120" height="40">
             <small>COMING SOON</small>
           </span>
+        </div>
+        <div class="store-qr">
+          <img src="images/abg-play-qr.svg" alt="QR code linking to ABG on Google Play" width="132" height="132">
+          <p>On a computer? Scan with your Android phone's camera to open ABG on Google Play.</p>
         </div>
 
         <hr class="divider">
