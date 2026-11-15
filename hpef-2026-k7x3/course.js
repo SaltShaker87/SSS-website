@@ -190,12 +190,6 @@ var HPEF_COURSE = {
       speaker: "Megan Koster"
     },
     {
-      date: "2027-01-14",
-      title: "Effective Teaching Strategies; Chalk Talks",
-      speaker: "Dr. W. Graham Carlos",
-      overview: "The date of this session may change."
-    },
-    {
       date: "2027-01-28",
       title: "Conveying & Receiving Feedback",
       speaker: "Dr. Meredith Atkins"
