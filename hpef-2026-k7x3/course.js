@@ -102,7 +102,7 @@ var HPEF_COURSE = {
     },
     {
       date: "2026-11-19",
-      title: "Beyond Andragogy: Motivation, Bloom’s Taxonomy, Experiential, Transformative, and Social Learning",
+      title: "Beyond Andragogy: Motivation, Bloom’s Taxonomy, Experiential, Transformative, and Social Learning; Project check-in",
       speaker: "Dr. Arman Yalcin",
       overview: "Last session we covered Knowles’ original model of andragogy. This time we’ll see how the field has built on it, using a guide written specifically for medical educators.\n\nThe main reading is a long, dense article with a lot of important concepts that we’ll utilize throughout the year. Make sure you budget enough time to read it slowly.\n\nAssignments are the same format as last time. Please read the whole article, but each of you will lead a discussion on one part. Explain it in your own words and bring a real example from your own teaching or learning. Then we’ll open it up for group discussion.",
       readings: [
@@ -140,7 +140,7 @@ var HPEF_COURSE = {
       speaker: "Dr. Arman Yalcin"
     },
     {
-      date: "TBD",
+      date: "2026-12-17",
       title: "Foundations of AI & Large Language Models in Medicine",
       speaker: "Dr. Arman Yalcin",
       overview: "This session gets everyone to the same starting point on AI: what it actually is, how a large language model like ChatGPT produces an answer, and why the same AI can behave very differently depending on the app it’s built into. No technical background needed.\n\nBefore the session, please sign up for ChatGPT for Clinicians at https://chatgpt.com/plans/clinicians. It’s free; you verify with your NPI and medical license, and it takes a few minutes. If verification doesn’t work for you, a free ChatGPT, Claude, or Gemini account is fine. Please don’t enter any patient information for these activities; make up your cases.\n\nInstead of a reading discussion, each of you will make something with AI and show it off to the group in 2 to 3 minutes. Details are under Assignments below. Please email me 2 or 3 screenshots the day before in case the Wi-Fi doesn’t cooperate.",
@@ -179,11 +179,6 @@ var HPEF_COURSE = {
       ]
     },
     {
-      date: "2026-12-17",
-      title: "Procedural Education; Adult Learning Themes",
-      speaker: "Megan Koster + Dr. Arman Yalcin"
-    },
-    {
       date: "2026-12-31",
       title: "No session (New Year's Eve)",
       speaker: "",
@@ -191,8 +186,8 @@ var HPEF_COURSE = {
     },
     {
       date: "2027-01-14",
-      title: "Effective Teaching Strategies; Chalk Talks",
-      speaker: "Dr. W. Graham Carlos"
+      title: "Procedural Education",
+      speaker: "Megan Koster"
     },
     {
       date: "2027-01-28",
@@ -201,7 +196,7 @@ var HPEF_COURSE = {
     },
     {
       date: "2027-02-11",
-      title: "Microskills in Teaching; Make It Stick Ch. 3 & 4",
+      title: "Microskills in Teaching",
       speaker: "Dr. Chris Smith + Dr. Arman Yalcin"
     },
     {
@@ -236,8 +231,8 @@ var HPEF_COURSE = {
     },
     {
       date: "2027-05-20",
-      title: "Foundations of AI & Large Language Models in Medicine",
-      speaker: "Dr. Arman Yalcin"
+      title: "TBD",
+      speaker: ""
     }
   ]
 };
