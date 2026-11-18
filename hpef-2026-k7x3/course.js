@@ -191,6 +191,9 @@ var HPEF_COURSE = {
         { title: "Nartthanarung et al., \"Comparative Impact of ChatGPT and Conventional Search Tools on Clinical Reasoning Performance,\" Advances in Medical Education and Practice 2026", url: "https://doi.org/10.2147/AMEP.S603679" },
         { title: "Kwan et al., \"Instant Feedback on Feedback: Usage of Large Language Models to Automate Quality Assessment of Narrative Feedback in Diagnostic Radiology Residency,\" IAMSE 2026", url: "https://julnet.swoogo.com/iamse2026/session/4198837/instant-feedback-on-feedback-usage-of-large-language-models-to-automate-quality-assessment-of-narrative-feedback-in-diagnostic-radiology-residencyepas-in-the-era-of-cbme" },
         { title: "OpenAI, \"Making ChatGPT better for clinicians\" (2026)", url: "https://openai.com/index/making-chatgpt-better-for-clinicians/" }
+      ],
+      files: [
+        { label: "Slides", file: "files/2026-12-17-ai-llm-basics.html" }
       ]
     },
     {

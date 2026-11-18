@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Under the Hood: AI and Large Language Models · HPEF</title>
+<style>
+:root{
+  --navy:#13294B; --navy-2:#1E3A66; --crimson:#A51C30; --crimson-soft:#F6E3E6;
+  --gold:#B8862B; --gold-soft:#F7EED9; --paper:#FAF8F4; --ink:#1C2430; --muted:#5B6575;
+  --line:#E3DED5; --white:#fff;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans: "Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0D1A30;overflow:hidden;font-family:var(--sans);color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1600px;height:900px;position:relative;transform-origin:center center;flex:none;background:var(--paper);box-shadow:0 20px 80px rgba(0,0,0,.45)}
+.slide{position:absolute;inset:0;padding:84px 110px 90px;display:none;flex-direction:column;overflow:hidden;background:var(--paper)}
+.slide.active{display:flex;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.notes{display:none}
+
+/* running footer */
+.slide::after{content:attr(data-foot);position:absolute;left:110px;bottom:38px;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.slide.dark::after,.slide.title::after{color:rgba(255,255,255,.55)}
+.kicker{font-size:20px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson);margin-bottom:18px}
+h1{font-family:var(--serif);font-weight:600;font-size:66px;line-height:1.08;color:var(--navy);letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:56px;line-height:1.1;color:var(--navy);letter-spacing:-.005em;margin-bottom:40px}
+h3{font-family:var(--sans);font-weight:700;font-size:28px;color:var(--navy);margin-bottom:10px}
+p,li{font-size:30px;line-height:1.42}
+.lead{font-size:34px;line-height:1.4;color:var(--ink);max-width:1200px}
+.muted{color:var(--muted)}
+.small{font-size:24px;line-height:1.4}
+.xsmall{font-size:20px;line-height:1.4}
+ul.clean{list-style:none}
+ul.clean li{position:relative;padding-left:36px;margin-bottom:18px}
+ul.clean li::before{content:"";position:absolute;left:0;top:17px;width:14px;height:14px;border-radius:3px;background:var(--crimson)}
+.grow{flex:1}
+.row{display:flex;gap:36px}
+.col{flex:1;min-width:0}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:34px 36px}
+.card p{font-size:26px}
+.tag{display:inline-block;font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.tag.crimson{background:var(--crimson-soft);color:var(--crimson)}
+.tag.gold{background:var(--gold-soft);color:#8A6116}
+.tag.navy{background:#E3E9F3;color:var(--navy)}
+.rule{height:4px;width:96px;background:var(--gold);border-radius:2px;margin:30px 0}
+
+/* title + dark section slides */
+.slide.title,.slide.dark{background:var(--navy);color:#fff}
+.slide.title h1,.slide.dark h1,.slide.dark h2{color:#fff}
+.slide.title{justify-content:center}
+.slide.title h1{font-size:80px;max-width:1380px}
+.slide.title .sub{font-family:var(--serif);font-style:italic;font-size:38px;color:#DCC28F;margin-top:26px}
+.slide.title .meta{margin-top:70px;font-size:24px;line-height:1.6;color:rgba(255,255,255,.82)}
+.slide.title .band{position:absolute;right:0;top:0;bottom:0;width:22px;background:linear-gradient(var(--crimson) 0 64%,var(--gold) 64% 100%)}
+.slide.dark{justify-content:center}
+.slide.dark .num{font-family:var(--serif);font-size:200px;line-height:1;color:var(--gold);opacity:.9}
+.slide.dark h1{font-size:92px;margin-top:10px}
+.slide.dark .sub{font-size:32px;color:rgba(255,255,255,.75);margin-top:26px;max-width:1250px;line-height:1.4}
+.slide.dark .time{position:absolute;right:110px;top:84px;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#DCC28F}
+
+/* statement slides */
+.slide.statement{justify-content:center}
+.slide.statement .big{font-family:var(--serif);font-size:76px;line-height:1.15;color:var(--navy);max-width:1300px}
+.slide.statement .big em{color:var(--crimson);font-style:normal}
+
+/* demo + discussion */
+.slide.demo{background:var(--gold-soft)}
+.slide.demo .kicker{color:#8A6116}
+.slide.discuss{background:#F3E6E8}
+.demo-list{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px}
+.demo-item{background:#fff;border-radius:18px;padding:30px 34px;border:1px solid #EADBB8}
+.demo-item .n{font-family:var(--serif);font-size:48px;color:var(--gold);line-height:1}
+.demo-item h3{margin-top:12px}
+.demo-item p{font-size:24px;color:var(--muted)}
+.quote{font-family:var(--serif);font-size:52px;line-height:1.25;color:var(--navy);border-left:8px solid var(--crimson);padding-left:40px;max-width:1300px}
+
+/* objectives / agenda */
+.agenda{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:6px}
+.agenda .step{background:#fff;border:1px solid var(--line);border-top:6px solid var(--navy);border-radius:14px;padding:24px 22px 26px}
+.agenda .step .n{font-family:var(--serif);font-size:44px;color:var(--crimson);line-height:1}
+.agenda .step h3{font-size:24px;margin:12px 0 6px}
+.agenda .step p{font-size:20px;color:var(--muted);line-height:1.35}
+.objectives{margin-top:46px}
+.objectives li{font-size:27px;margin-bottom:12px}
+
+/* poll */
+.poll{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:0}
+.poll .big{font-family:var(--serif);font-size:54px;color:var(--crimson);line-height:1}
+.poll p{font-size:22px;margin-top:10px;line-height:1.3}
+
+/* nested circles */
+.nest{position:relative;width:640px;height:640px;flex:none}
+.nest .ring{position:absolute;border-radius:50%;display:flex;justify-content:center;font-weight:700;letter-spacing:.02em}
+.nest .ring span{margin-top:20px;font-size:22px}
+.legend dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;align-items:baseline}
+.legend dt{font-weight:700;font-size:25px;color:var(--navy);white-space:nowrap}
+.legend dd{font-size:25px;line-height:1.35;color:var(--ink)}
+.legend dd b{color:var(--crimson)}
+
+/* comparison */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.vs .card h3{font-size:32px;margin:14px 0 18px}
+.vs .card li{font-size:25px;margin-bottom:12px}
+
+/* next word demo */
+.nw{display:flex;gap:48px;align-items:stretch}
+.nw-left{flex:1.1}
+.sentence{font-family:var(--serif);font-size:44px;line-height:1.3;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 36px;min-height:184px}
+.sentence .blank{display:inline-block;min-width:200px;border-bottom:4px solid var(--crimson);color:var(--crimson);text-align:center;transition:all .2s}
+.sentence .blank.wrong{color:#fff;background:var(--crimson);border-radius:8px;border-bottom-color:transparent;padding:0 10px}
+.controls{margin-top:30px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-size:24px;font-weight:600;padding:16px 28px;border-radius:12px;border:none;cursor:pointer;background:var(--navy);color:#fff}
+.btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.temp{display:flex;align-items:center;gap:16px;font-size:22px;color:var(--muted)}
+.temp input{width:240px;accent-color:var(--crimson)}
+.temp b{color:var(--navy);min-width:44px;display:inline-block;font-variant-numeric:tabular-nums}
+.tally{margin-top:22px;font-size:22px;color:var(--muted)}
+.bars{flex:1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 32px}
+.bars h3{font-size:22px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.bar{display:grid;grid-template-columns:170px 1fr 72px;align-items:center;gap:14px;margin-bottom:13px;font-size:23px}
+.bar .lab{font-weight:600;color:var(--navy);text-align:right}
+.bar .lab.bad{color:var(--crimson)}
+.bar .track{height:26px;background:#EEF1F5;border-radius:6px;overflow:hidden}
+.bar .fill{height:100%;background:var(--navy);border-radius:6px;transition:width .35s ease}
+.bar .fill.bad{background:var(--crimson)}
+.bar .pct{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}
+.bar.picked .lab{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px}
+
+/* tokens */
+.tokens{display:flex;flex-wrap:wrap;gap:10px;font-family:"Consolas","SFMono-Regular",Menlo,monospace;font-size:40px;margin:10px 0 30px}
+.tokens span{padding:10px 14px;border-radius:10px;color:var(--navy)}
+.tokens span:nth-child(4n+1){background:#E3E9F3}
+.tokens span:nth-child(4n+2){background:var(--gold-soft)}
+.tokens span:nth-child(4n+3){background:var(--crimson-soft)}
+.tokens span:nth-child(4n+4){background:#E4F0EA}
+
+/* training timeline */
+.timeline{display:grid;grid-template-columns:1fr 1fr 1fr 0.8fr;gap:0;margin-top:10px;position:relative}
+.timeline .st{padding:0 26px 0 0;position:relative}
+.timeline .dot{width:30px;height:30px;border-radius:50%;background:var(--navy);border:6px solid #C9D3E3;position:relative;z-index:2}
+.timeline .st.end .dot{background:var(--crimson);border-color:#EBC3CA}
+.timeline::before{content:"";position:absolute;left:14px;right:40px;top:13px;height:4px;background:#C9D3E3}
+.timeline h3{margin-top:26px;font-size:28px}
+.timeline .ai{font-size:23px;line-height:1.4;margin-top:10px}
+.timeline .md{min-height:100px;font-size:21px;line-height:1.4;margin-top:14px;color:#8A6116;background:var(--gold-soft);border-radius:10px;padding:12px 16px}
+
+/* context window */
+.ctx{display:flex;gap:56px;align-items:center}
+.window{flex:none;width:640px;background:#fff;border:3px solid var(--navy);border-radius:18px;padding:28px 30px;position:relative}
+.window .lbl{position:absolute;top:-19px;left:24px;background:var(--navy);color:#fff;font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:8px}
+.msg{font-size:21px;line-height:1.35;padding:12px 16px;border-radius:12px;margin:12px 0;max-width:88%}
+.msg.u{background:#E3E9F3;margin-left:auto}
+.msg.a{background:#F3F1EC}
+.msg.s{background:var(--gold-soft);color:#6E4E10;max-width:100%;font-style:italic}
+.msg.f{background:var(--crimson-soft);color:var(--crimson);max-width:100%}
+
+/* car diagram */
+.car-wrap{display:flex;gap:40px;align-items:center}
+.car-wrap svg{flex:none}
+.car-key{display:flex;flex-direction:column;gap:18px;flex:1}
+.key{display:flex;gap:20px;align-items:flex-start;padding:20px 24px;border-radius:16px;background:#fff;border:2px solid transparent;cursor:pointer;transition:border-color .2s,opacity .2s}
+.key .sw{width:22px;height:22px;border-radius:6px;flex:none;margin-top:8px}
+.key h3{font-size:28px;margin-bottom:4px}
+.key p{font-size:22px;color:var(--muted);line-height:1.35}
+.car-wrap.focus .key{opacity:.45}
+.car-wrap.focus .key.on{opacity:1;border-color:var(--navy)}
+svg .part{transition:opacity .25s}
+.car-wrap.focus svg .part{opacity:.18}
+.car-wrap.focus.f-engine svg .p-engine,.car-wrap.focus.f-fuel svg .p-fuel,.car-wrap.focus.f-car svg .p-car,.car-wrap.focus.f-driver svg .p-driver{opacity:1}
+
+/* three parts detail */
+.part-head{display:flex;align-items:center;gap:22px;margin-bottom:34px}
+.part-head .chip{width:70px;height:70px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex:none}
+.part-head h2{margin:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.facts .card{padding:28px 32px}
+.facts .card h3{font-size:24px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
+.facts .card p{font-size:27px;line-height:1.38}
+
+.harness{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.harness .card{padding:24px 28px}
+.harness .card .what{font-size:20px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.harness .card h3{font-size:29px;margin:8px 0 6px}
+.harness .card p{font-size:23px;color:var(--muted);line-height:1.35}
+
+/* same engine table */
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:23px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+table.cmp th{background:var(--navy);color:#fff;text-align:left;font-weight:600;padding:18px 22px;font-size:21px;letter-spacing:.04em}
+table.cmp td{padding:16px 22px;border-top:1px solid var(--line);vertical-align:top;line-height:1.35}
+table.cmp td:first-child{font-weight:700;color:var(--navy);width:270px}
+table.cmp td .yes{color:#1F7A4D;font-weight:700}
+table.cmp td .no{color:var(--crimson);font-weight:700}
+
+/* intern analogy */
+.map{display:grid;grid-template-columns:1fr 70px 1fr;row-gap:22px;align-items:center}
+.map .l,.map .r{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 26px;font-size:26px;line-height:1.3}
+.map .l b,.map .r b{color:var(--navy)}
+.map .arrow{text-align:center;font-size:34px;color:var(--gold)}
+.map .h{font-size:20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:none;border:none;padding:0 4px}
+
+/* agent loop */
+.loop{display:flex;gap:56px;align-items:center}
+.loop svg{flex:none}
+
+/* failure modes */
+.fails{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.fails .card{padding:26px 28px;border-top:6px solid var(--crimson)}
+.fails .card h3{font-size:27px}
+.fails .card p{font-size:22px;line-height:1.38;color:var(--ink)}
+.fails .card .fix{margin-top:12px;font-size:21px;color:#1F7A4D;font-weight:600}
+
+/* PHI */
+.phi{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.phi .card{padding:28px 30px}
+.phi .card h3{font-size:28px;margin:14px 0 10px}
+.phi .card p{font-size:24px;line-height:1.4}
+.banner{margin-top:34px;background:var(--crimson);color:#fff;border-radius:16px;padding:24px 34px;font-size:30px;font-weight:600;display:flex;align-items:center;gap:20px}
+
+/* prompt anatomy */
+.ratf{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:34px}
+.ratf > div{border-radius:14px;padding:20px 22px;background:#fff;border:1px solid var(--line);border-top:5px solid var(--crimson)}
+.ratf .L{font-family:var(--serif);font-size:44px;line-height:1;color:var(--crimson)}
+.ratf h3{font-size:26px;margin:0 0 6px}
+.ratf p{font-size:21px;color:var(--muted);line-height:1.3}
+.prompts{display:grid;grid-template-columns:0.7fr 1.3fr;gap:24px}
+.pbox{border-radius:16px;padding:22px 26px;font-family:"Consolas","SFMono-Regular",Menlo,monospace;font-size:20px;line-height:1.5;background:#fff;border:1px solid var(--line)}
+.pbox .h{font-family:var(--sans);font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.pbox.bad .h{color:var(--crimson)}
+.pbox.good .h{color:#1F7A4D}
+.pbox mark{background:var(--gold-soft);color:var(--ink);padding:0 3px;border-radius:4px}
+
+/* takeaways */
+.take{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.take .card{padding:36px 34px}
+.take .n{font-family:var(--serif);font-size:72px;line-height:1;color:var(--gold)}
+.take h3{font-size:32px;margin-top:16px;line-height:1.25}
+.take p{font-size:25px;color:var(--muted);margin-top:10px}
+
+
+/* interactive poll */
+.poll .popt{font-family:var(--sans);color:var(--ink);background:#fff;border-radius:18px;padding:26px 24px;text-align:center;border:2px solid #E7CDD2;cursor:pointer;transition:transform .12s,border-color .2s,box-shadow .2s}
+.poll .popt:hover{border-color:var(--crimson);box-shadow:0 6px 18px rgba(165,28,48,.12)}
+.poll .popt:active{transform:scale(.98)}
+.poll .popt.bump{animation:bump .3s ease}
+@keyframes bump{50%{transform:scale(1.04)}}
+.pchart{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;height:250px;margin-top:22px;border-bottom:3px solid #D9BFC4}
+.pcol{display:flex;align-items:flex-end;justify-content:center}
+.pbar{width:58%;height:0;min-height:0;background:var(--crimson);border-radius:10px 10px 0 0;position:relative;transition:height .4s cubic-bezier(.2,.8,.2,1)}
+.pbar .pn{position:absolute;left:0;right:0;top:-46px;text-align:center;font-family:var(--serif);font-size:38px;color:var(--navy);font-variant-numeric:tabular-nums}
+.phint{margin-top:16px;font-size:19px;color:var(--muted)}
+.plink{font:inherit;color:var(--crimson);background:none;border:none;text-decoration:underline;cursor:pointer;padding:0}
+.xp{font-family:var(--serif);font-size:56px;line-height:1;color:#1F7A4D;margin-bottom:14px}
+.reveal-wrap{position:relative}
+.pbox.good.hidden mark{background:transparent;color:transparent}
+.pbox.good .cover{position:absolute;inset:0;border-radius:16px;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;color:#fff;font-family:var(--sans);transition:opacity .35s}
+.pbox.good .cover b{font-size:28px}
+.pbox.good .cover span{font-size:19px;color:#C9D3E3}
+.pbox.good:not(.hidden) .cover{opacity:0;pointer-events:none}
+/* research */
+.research{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.research .card{padding:22px 26px;display:flex;flex-direction:column}
+.research .src{font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.research h3{font-size:24px;line-height:1.25;margin:8px 0 8px}
+.research p{font-size:19px;line-height:1.38;color:var(--ink)}
+.research .find{margin-top:auto;padding-top:10px;font-size:18px;font-weight:600;color:var(--crimson)}
+.research .card.ours{background:var(--navy);border-color:var(--navy)}
+.research .card.ours .src{color:#DCC28F}
+.research .card.ours h3{color:#fff}
+.research .card.ours p{color:#DCE3EE}
+.research .card.ours .find{color:#DCC28F}
+
+/* why it matters */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why .card{padding:24px 28px;border-top:6px solid var(--navy)}
+.why .card .n{font-family:var(--serif);font-size:40px;line-height:1;color:var(--gold)}
+.why .card h3{font-size:27px;margin:10px 0 8px;line-height:1.2}
+.why .card p{font-size:21px;line-height:1.38;color:var(--ink)}
+.why .card.extra{border-top-color:var(--gold);background:var(--gold-soft)}
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:end;flex:1}
+.ladder .rung{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 30px;display:flex;flex-direction:column;border-top:8px solid var(--navy)}
+.ladder .rung:nth-child(1){min-height:380px}
+.ladder .rung:nth-child(2){min-height:470px;border-top-color:var(--gold)}
+.ladder .rung:nth-child(3){min-height:560px;border-top-color:var(--crimson)}
+.ladder .lvl{font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ladder h3{font-family:var(--serif);font-weight:600;font-size:40px;margin:6px 0 12px}
+.ladder p{font-size:22px;line-height:1.38}
+.ladder .need{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:20px;line-height:1.38;color:var(--muted)}
+.ladder .need b{color:var(--navy)}
+.ladder .part{display:inline-block;margin-top:12px}
+
+/* chrome: progress, counter, nav, notes, help */
+#progress{position:fixed;left:0;bottom:0;height:5px;background:var(--crimson);width:0;transition:width .3s;z-index:20}
+#counter{position:fixed;right:18px;bottom:14px;font:600 14px var(--sans);color:rgba(130,140,155,.85);z-index:20;font-variant-numeric:tabular-nums}
+#navbtns{position:fixed;right:18px;bottom:40px;display:flex;gap:8px;z-index:20;opacity:0;transition:opacity .3s}
+body:hover #navbtns{opacity:1}
+#navbtns button{width:42px;height:42px;border-radius:50%;border:none;background:rgba(19,41,75,.85);color:#fff;font-size:20px;cursor:pointer}
+#notesPanel{position:fixed;left:0;right:0;bottom:0;max-height:40vh;overflow:auto;background:rgba(10,20,38,.96);color:#E8ECF2;padding:22px 34px 30px;font-size:18px;line-height:1.55;z-index:30;display:none;border-top:3px solid var(--gold)}
+#notesPanel.show{display:block}
+#notesPanel h4{font:700 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#DCC28F;margin-bottom:8px}
+#notesPanel p,#notesPanel li{font-size:18px;line-height:1.55;margin-bottom:8px}
+#notesPanel ul{padding-left:22px}
+#help{position:fixed;inset:0;background:rgba(5,12,24,.8);display:none;align-items:center;justify-content:center;z-index:40}
+#help.show{display:flex}
+#help .box{background:#fff;border-radius:16px;padding:34px 40px;font-size:18px;line-height:1.9;color:var(--ink);min-width:460px}
+#help h4{font:700 22px var(--serif);color:var(--navy);margin-bottom:10px}
+#help kbd{display:inline-block;min-width:34px;text-align:center;font:600 15px var(--sans);background:#EEF1F5;border:1px solid #CCD3DD;border-bottom-width:3px;border-radius:6px;padding:1px 8px;margin-right:12px}
+#blackout{position:fixed;inset:0;background:#000;z-index:35;display:none}
+#blackout.show{display:block}
+
+@media print{
+  @page{size:1600px 900px;margin:0}
+  html,body{overflow:visible;background:#fff;height:auto}
+  #viewport{position:static;display:block}
+  #stage{transform:none!important;width:auto;height:auto;box-shadow:none;background:none}
+  .slide{position:relative;display:flex!important;width:1600px;height:900px;page-break-after:always;break-after:page;animation:none}
+  #progress,#counter,#navbtns,#notesPanel,#help,#blackout{display:none!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- 1 TITLE -->
+<section class="slide title" data-title="Title">
+  <div class="band"></div>
+  <div class="kicker" style="color:#DCC28F">Health Professions Education Fellowship</div>
+  <h1>Under the Hood:<br>What AI and Large Language Models Actually Are</h1>
+  <div class="sub">The engine, the fuel, and the car around it</div>
+  <div class="meta">Arman Yalcin · Infectious Diseases<br>Mount Auburn Hospital · 2026–2027</div>
+  <aside class="notes">
+    <p>Welcome. Today is about the basics: what AI is, how a large language model works, and the vocabulary you need to make sense of the next five years of headlines and hospital rollouts.</p>
+    <p>Set expectations: no math, no coding. If you can explain a lab test to an intern, you can understand this.</p>
+    <p>Keyboard: arrows to move, N for notes, P for presenter view, F for full screen, B to blank the screen.</p>
+  </aside>
+</section>
+
+<!-- 2 ROADMAP -->
+<section class="slide" data-title="Today" data-foot="Today">
+  <div class="kicker">Today</div>
+  <h2>Five stops, and your demos along the way</h2>
+  <div class="agenda">
+    <div class="step"><div class="n">1</div><h3>What is AI?</h3><p>The family tree, and the two kinds you meet at work</p></div>
+    <div class="step"><div class="n">2</div><h3>How an LLM works</h3><p>Next-word prediction, training, memory</p></div>
+    <div class="step"><div class="n">3</div><h3>Engine, fuel, car</h3><p>Model, runtime, harness</p></div>
+    <div class="step"><div class="n">4</div><h3>Where it breaks</h3><p>Failure modes and over-reliance</p></div>
+    <div class="step"><div class="n">5</div><h3>Driving well</h3><p>Prompting and verifying as an educator</p></div>
+  </div>
+  <ul class="clean objectives">
+    <li>Explain to an intern, in plain language, how a large language model produces an answer</li>
+    <li>Tell the difference between the model, the runtime, and the harness, and why it matters</li>
+    <li>Name the main ways these tools fail, and how to teach around them</li>
+  </ul>
+  <aside class="notes">
+    <p>Walk through the five parts quickly. Point out that each of them prepared a small demo, and those demos are slotted in where they illustrate the idea we just covered. Their demos are the most important part of the session.</p>
+    <p>Objectives are deliberately modest. This is the foundation session; the goal is a shared vocabulary.</p>
+  </aside>
+</section>
+
+<!-- 3 POLL -->
+<section class="slide discuss" data-title="Warm-up poll" data-foot="Warm-up">
+  <div class="kicker">Warm-up · show of hands</div>
+  <h2 style="margin-bottom:30px">How often do you use an AI tool right now?</h2>
+  <div class="poll" id="poll">
+    <button class="popt" data-i="0"><div class="big">0</div><p>Never, or only to try it once</p></button>
+    <button class="popt" data-i="1"><div class="big">1×</div><p>Now and then, for something specific</p></button>
+    <button class="popt" data-i="2"><div class="big">7×</div><p>Most weeks</p></button>
+    <button class="popt" data-i="3"><div class="big">∞</div><p>Every day, for real work</p></button>
+  </div>
+  <div class="pchart" id="pchart" aria-live="polite">
+    <div class="pcol"><div class="pbar"><span class="pn">0</span></div></div>
+    <div class="pcol"><div class="pbar"><span class="pn">0</span></div></div>
+    <div class="pcol"><div class="pbar"><span class="pn">0</span></div></div>
+    <div class="pcol"><div class="pbar"><span class="pn">0</span></div></div>
+  </div>
+  <div class="phint">Click an option once per hand · Shift-click to take one back · <button class="plink" id="pollReset">Reset</button></div>
+  <aside class="notes">
+    <p>Ask for a show of hands for each option and click that card once per raised hand. The bars below build as you go.</p>
+    <p>Misclicked? Shift-click the card to subtract one. Reset clears all four.</p>
+    <p>Comment on the shape: is the room mostly occasional users, or already daily? This tells you how fast to move through Part 2.</p>
+  </aside>
+</section>
+
+<!-- 3b EXPERIENCES -->
+<section class="slide discuss" data-title="Your experiences" data-foot="Warm-up">
+  <div class="kicker">Warm-up · open discussion</div>
+  <h2>What has AI done for you so far?</h2>
+  <div class="row">
+    <div class="col card"><div class="xp">✓</div><h3>Surprisingly right</h3><p class="small">A time it saved you real time or got something genuinely hard right.</p></div>
+    <div class="col card"><div class="xp" style="color:var(--crimson)">✗</div><h3>Confidently wrong</h3><p class="small">A time it sounded sure and was wrong. How did you catch it?</p></div>
+    <div class="col card"><div class="xp" style="color:var(--gold)">?</div><h3>Your learners</h3><p class="small">How have you seen students or residents use it, for better or worse?</p></div>
+  </div>
+  <aside class="notes">
+    <p>Take two or three stories per column; don’t try to get everyone. Five to seven minutes total.</p>
+    <p>Bookmark any confidently wrong story and call back to it on the "Why it makes things up" slide.</p>
+    <p>The third column is the educator lens: it sets up the over-reliance discussion in Part 4, and leads straight into the next slide on why this matters for us.</p>
+  </aside>
+</section>
+
+<!-- WHY 1 STATEMENT -->
+<section class="slide statement" data-title="Why learn this?" data-foot="Why it matters">
+  <div class="kicker">Why learn how it works?</div>
+  <div class="big">Your learners are already using AI, <em>with or without you</em>.</div>
+  <div class="rule"></div>
+  <div class="row" style="max-width:1340px">
+    <p class="col small">They use it to study, to write, and to look things up at 2 AM.</p>
+    <p class="col small">Few of them were ever taught how it works or where it fails.</p>
+    <p class="col small">You can’t coach someone on a tool you don’t understand yourself.</p>
+  </div>
+  <aside class="notes">
+    <p>Pick up from the third column of the last slide: whatever stories they just told about their learners, that’s already happening on our wards.</p>
+    <p>The point of today isn’t to turn anyone into an AI enthusiast. It’s that “I don’t really use it” stopped being an option for educators once our learners started using it every day.</p>
+  </aside>
+</section>
+
+<!-- WHY 2 REASONS -->
+<section class="slide" data-title="Why it’s your business" data-foot="Why it matters">
+  <div class="kicker">Why learn how it works?</div>
+  <h2 style="margin-bottom:28px">Why this matters for you as an educator</h2>
+  <div class="why">
+    <div class="card"><div class="n">1</div><h3>Your learners use it</h3><p>They’ll bring “ChatGPT said…” to rounds. You need to know when to trust it, and how to coach them.</p></div>
+    <div class="card"><div class="n">2</div><h3>It can make teaching materials</h3><p>Cases, quiz questions, and explanations at any level, in minutes. A strong first draft, if you know how to steer it.</p></div>
+    <div class="card"><div class="n">3</div><h3>Knowing its limits makes you better</h3><p>Design assignments that still build the skill, and catch its errors before your learners do.</p></div>
+    <div class="card"><div class="n">4</div><h3>Building needs the basics</h3><p>An education tool that runs on local AI, so learner data stays private? You can’t build it, or even ask for it, without knowing how the parts fit.</p></div>
+    <div class="card extra"><div class="n">5</div><h3>You’ll set the rules</h3><p>Programs need policies on AI for assignments, evaluations, and letters. Good rules come from people who understand the tool.</p></div>
+    <div class="card extra"><div class="n">6</div><h3>You’re the role model</h3><p>Learners copy how you use it. Checking the output out loud teaches more than any policy.</p></div>
+  </div>
+  <aside class="notes">
+    <p>1. Learners: the “ChatGPT said…” moment is coming to every one of us. Part 4 has a case built around it.</p>
+    <p>2. Materials: this is where most educators get the biggest payoff right away. Cases, MCQs, the same concept explained to a student and to an attending. Several of the bonus demos today are exactly this.</p>
+    <p>3. Limits: once you know how it fails, you can design around it instead of banning it. That makes you a more effective educator, not just a safer user.</p>
+    <p>4. Building: AUC is my example. It runs on local hardware so resident evaluations never leave the building. I couldn’t have built it, or even known it was possible, without understanding model vs. runtime vs. harness (Part 3).</p>
+    <p>5 and 6 (gold) are bonus reasons. Policy: someone in every program is going to write the rule on AI for ITE prep, reflections, and letters; better if it’s someone who gets it. Role model: this is hidden curriculum, which comes back in Dr. Farid’s session in March.</p>
+  </aside>
+</section>
+
+<!-- WHY 3 LADDER -->
+<section class="slide" data-title="Use, make, build" data-foot="Why it matters">
+  <div class="kicker">Why learn how it works?</div>
+  <h2 style="margin-bottom:26px">The more you want to do, the more you need to know</h2>
+  <div class="ladder">
+    <div class="rung">
+      <div class="lvl">Level 1</div>
+      <h3>Use it</h3>
+      <p>Ask it questions, check its answers, and coach learners who use it.</p>
+      <div class="need"><b>You need to know:</b> how it predicts, and where it breaks.<br><span class="tag navy part">Parts 2 and 4</span></div>
+    </div>
+    <div class="rung">
+      <div class="lvl">Level 2</div>
+      <h3>Make with it</h3>
+      <p>Teaching cases, board-style questions, handouts, and explanations for each learner level.</p>
+      <div class="need"><b>You need to know:</b> how to steer it, and how to check what comes back.<br><span class="tag gold part">Part 5</span></div>
+    </div>
+    <div class="rung">
+      <div class="lvl">Level 3</div>
+      <h3>Build with it</h3>
+      <p>Tools for your program, like a feedback or evaluation system that runs on the hospital’s own computers.</p>
+      <div class="need"><b>You need to know:</b> model vs. runtime vs. harness, and local vs. cloud.<br><span class="tag crimson part">Part 3</span></div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Most of the room will live on levels 1 and 2, and that’s fine. Each level needs everything below it.</p>
+    <p>Point at the tags: this is also a map of today. Every part of the session is there because one of these levels needs it.</p>
+    <p>Level 3 is where projects like AUC sit. If anyone’s fellowship project might end up there, today is the vocabulary they’ll need to talk to IT about it.</p>
+  </aside>
+</section>
+
+<!-- 4 SECTION 1 -->
+<section class="slide dark" data-title="Part 1: What is AI?">
+  <div class="time">About 10 minutes</div>
+  <div class="num">1</div>
+  <h1>What is AI?</h1>
+  <div class="sub">A big umbrella term. Most of the excitement is about one small corner of it.</div>
+  <aside class="notes"><p>Transition: before we talk about ChatGPT specifically, let’s place it on the map.</p></aside>
+</section>
+
+<!-- 5 NESTED -->
+<section class="slide" data-title="The family tree" data-foot="1 · What is AI?">
+  <div class="kicker">The family tree</div>
+  <div class="row" style="align-items:center;gap:60px;margin-top:-10px">
+    <div class="nest" aria-hidden="true">
+      <div class="ring" style="inset:0;background:#E3E9F3;color:var(--navy)"><span>Artificial intelligence</span></div>
+      <div class="ring" style="inset:62px;background:#C9D5E8;color:var(--navy)"><span>Machine learning</span></div>
+      <div class="ring" style="inset:124px;background:#9FB3D3;color:var(--navy)"><span>Deep learning</span></div>
+      <div class="ring" style="inset:186px;background:var(--navy-2);color:#fff"><span>Generative AI</span></div>
+      <div class="ring" style="inset:248px;background:var(--crimson);color:#fff;align-items:center"><span style="margin:0;font-size:26px">LLMs</span></div>
+    </div>
+    <div class="legend grow">
+      <h2 style="margin-bottom:30px">Each circle is a type of the one around it</h2>
+      <dl>
+        <dt>AI</dt><dd>Any computer doing something we’d call “smart”</dd>
+        <dt>Machine learning</dt><dd>Learns patterns from examples instead of hand-written rules</dd>
+        <dt>Deep learning</dt><dd>Machine learning using very large layered networks</dd>
+        <dt>Generative AI</dt><dd>Deep learning that <b>makes new things</b>: text, images, audio</dd>
+        <dt>LLM</dt><dd>Generative AI for <b>language</b>. ChatGPT, Claude, Gemini.</dd>
+      </dl>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>The key idea: “AI” is a huge category. A sepsis alert, a radiology flagging tool, and ChatGPT are all AI, but they are very different animals.</p>
+    <p>Rule-based example to contrast with machine learning: an old-school drug interaction checker is a lookup table written by people. Machine learning instead learns the pattern from thousands of examples.</p>
+    <p>LLM stands for large language model. “Large” refers to the size of the model and the amount of text it learned from.</p>
+  </aside>
+</section>
+
+<!-- 6 NARROW VS GENERAL -->
+<section class="slide" data-title="Two kinds you meet at work" data-foot="1 · What is AI?">
+  <div class="kicker">Two kinds you already meet at work</div>
+  <h2>Specialist tools vs. general-purpose assistants</h2>
+  <div class="vs">
+    <div class="card">
+      <span class="tag navy">Narrow AI</span>
+      <h3>Does one job, tested for that job</h3>
+      <ul class="clean">
+        <li>Flags a possible PE or brain bleed on a CT</li>
+        <li>Sepsis or deterioration early-warning scores</li>
+        <li>Reorders the radiology worklist by urgency</li>
+      </ul>
+      <p class="small muted" style="margin-top:10px">Usually FDA-cleared for a specific use. Been around for years.</p>
+    </div>
+    <div class="card" style="border-color:#E7CDD2">
+      <span class="tag crimson">Large language models</span>
+      <h3>Does almost any text task, tested for none</h3>
+      <ul class="clean">
+        <li>Drafts notes, letters, teaching cases, exam questions</li>
+        <li>Summarizes papers, explains concepts at any level</li>
+        <li>Increasingly reads images and documents too</li>
+      </ul>
+      <p class="small muted" style="margin-top:10px">Flexible and fluent. Responsibility for checking sits with you.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Radiology fellows likely live with narrow AI daily. Ask them: what tools are in your workflow right now? How often do you override them?</p>
+    <p>The contrast that matters: narrow tools are validated for one specific task. LLMs are general-purpose, so nobody has validated them for the specific thing you are about to ask. That shifts the checking burden onto the user.</p>
+  </aside>
+</section>
+
+<!-- 7 SECTION 2 -->
+<section class="slide dark" data-title="Part 2: How an LLM works">
+  <div class="time">About 20 minutes</div>
+  <div class="num">2</div>
+  <h1>How does an LLM work?</h1>
+  <div class="sub">One trick, repeated very fast: predict the next word.</div>
+  <aside class="notes"><p>This is the most important conceptual section. If they leave understanding only one thing, it should be next-word prediction.</p></aside>
+</section>
+
+<!-- 8 NEXT WORD DEMO -->
+<section class="slide" data-title="Next-word prediction (live)" data-foot="2 · How an LLM works">
+  <div class="kicker">Try it · the one trick</div>
+  <h2 style="margin-bottom:30px">It picks the next word from a list of likely options</h2>
+  <div class="nw">
+    <div class="nw-left">
+      <div class="sentence">A patient with MRSA bacteremia should be started on IV <span class="blank" id="nwBlank">&nbsp;</span></div>
+      <div class="controls">
+        <button class="btn" id="nwGo">Predict next word</button>
+        <button class="btn ghost" id="nwReset">Reset</button>
+        <label class="temp">Randomness <input type="range" id="nwTemp" min="0.1" max="2" step="0.1" value="0.7"> <b id="nwTempVal">0.7</b></label>
+      </div>
+      <div class="tally" id="nwTally">Click a few times. Then turn the randomness up and try again.</div>
+    </div>
+    <div class="bars" id="nwBars"><h3>Model’s options for the next word</h3></div>
+  </div>
+  <p class="xsmall muted" style="margin-top:22px">Illustrative numbers for teaching. Real models weigh tens of thousands of options at every step.</p>
+  <aside class="notes">
+    <p>Click “Predict next word” five or six times at the default setting. Vancomycin wins most of the time, daptomycin sometimes.</p>
+    <p>Now drag randomness toward 2.0 and click again until cefazolin or nafcillin shows up (they turn red). Those are fluent, plausible-sounding, and wrong for MRSA. The model did not “decide” to be wrong; it rolled the dice on a low-probability word.</p>
+    <p>Takeaway: every answer is built one word at a time, each one a weighted guess. That is why the same question can give different answers, and it is the seed of hallucination.</p>
+    <p>The official term for the randomness dial is “temperature”. Most chat apps set it for you.</p>
+  </aside>
+</section>
+
+<!-- 9 TOKENS -->
+<section class="slide" data-title="Tokens" data-foot="2 · How an LLM works">
+  <div class="kicker">Small print</div>
+  <h2>Actually, it predicts word-pieces called tokens</h2>
+  <div class="tokens" aria-label="Example of text split into tokens">
+    <span>Pse</span><span>udom</span><span>onas</span><span>&nbsp;aer</span><span>ug</span><span>inosa</span><span>&nbsp;is</span><span>&nbsp;resistant</span><span>&nbsp;to</span><span>&nbsp;ert</span><span>apenem</span>
+  </div>
+  <div class="row">
+    <div class="col card"><h3>Rule of thumb</h3><p>One token is about ¾ of an English word. Common words are one token; rare medical terms get chopped up.</p></div>
+    <div class="col card"><h3>Why you’ll hear it</h3><p>Limits, speed, and price are all counted in tokens. “This chat is too long” means too many tokens.</p></div>
+  </div>
+  <p class="xsmall muted" style="margin-top:22px">Split shown is illustrative; each model chops text a little differently.</p>
+  <aside class="notes">
+    <p>Keep this light. The point is vocabulary: when they see “tokens” in pricing, limits, or a paper, they know it means chunks of text.</p>
+    <p>Fun aside: because it sees word pieces rather than letters, older models famously struggled to count letters in a word.</p>
+  </aside>
+</section>
+
+<!-- 10 TRAINING -->
+<section class="slide" data-title="How it's trained" data-foot="2 · How an LLM works">
+  <div class="kicker">How it learned</div>
+  <h2>Training looks a lot like medical training</h2>
+  <div class="timeline">
+    <div class="st">
+      <div class="dot"></div>
+      <h3>1 · Pretraining</h3>
+      <p class="ai">Reads a huge library of text: web pages, books, articles. Learns to predict the next word.</p>
+      <p class="md">Like the preclinical years: absorbing everything, not yet useful at the bedside.</p>
+    </div>
+    <div class="st">
+      <div class="dot"></div>
+      <h3>2 · Instruction tuning</h3>
+      <p class="ai">Trained on examples of good question-and-answer conversations.</p>
+      <p class="md">Like clerkships: learning how to actually talk to people and answer the question asked.</p>
+    </div>
+    <div class="st">
+      <div class="dot"></div>
+      <h3>3 · Human feedback</h3>
+      <p class="ai">People rate answers; the model is nudged toward the ones rated better.</p>
+      <p class="md">Like attending feedback: shapes style, safety, and helpfulness.</p>
+    </div>
+    <div class="st end">
+      <div class="dot"></div>
+      <h3>Then: frozen</h3>
+      <p class="ai">Its knowledge stops at a <b>cutoff date</b>. It does not learn from your chats.</p>
+      <p class="md">Like a graduate who never reads another journal.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>The analogy is not perfect but it sticks. The important end point: once training finishes, the model’s built-in knowledge is frozen. It knows nothing that happened after its cutoff unless the app looks it up for it (that’s the harness, coming up).</p>
+    <p>Step 3 also explains a failure mode we’ll discuss later: because it was rewarded for answers people liked, it can lean toward telling you what you want to hear.</p>
+    <p>“Does it learn from my chats?” Not in real time. Some companies may use conversations to train future versions depending on settings; ChatGPT for Clinicians says it does not.</p>
+  </aside>
+</section>
+
+<!-- 11 CONTEXT WINDOW -->
+<section class="slide" data-title="Context window" data-foot="2 · How an LLM works">
+  <div class="kicker">Its working memory</div>
+  <div class="ctx">
+    <div class="window">
+      <div class="lbl">What the model can see</div>
+      <div class="msg s">Hidden instructions from the app: “You are a helpful assistant…”</div>
+      <div class="msg u">Explain the Duke criteria to a third-year student.</div>
+      <div class="msg a">Sure. The Duke criteria help decide whether a patient has endocarditis…</div>
+      <div class="msg f">📎 uploaded-paper.pdf (the whole text is pasted in here)</div>
+      <div class="msg u">Now write 3 quiz questions on it.</div>
+    </div>
+    <div class="grow">
+      <h2>The context window is the chart open in front of it</h2>
+      <ul class="clean">
+        <li>Each time, the model re-reads the <b>whole conversation</b> to write the next reply</li>
+        <li>If it isn’t in the window, the model can’t see it</li>
+        <li>Windows are big but finite. Very long chats get fuzzy at the edges</li>
+        <li>A new chat is a blank chart, unless the app adds “memory”</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Clinical framing: the model is like a consultant who only knows what’s in the chart you hand them. Nothing else. They will not remember the patient tomorrow unless someone writes it in.</p>
+    <p>Notice the yellow line at the top: apps quietly add their own instructions before your message. That’s part of the harness. Two apps using the same model can behave differently partly because of those hidden instructions.</p>
+    <p>“Memory” features in ChatGPT work by saving notes and pasting them back into the window. The model itself still remembers nothing.</p>
+  </aside>
+</section>
+
+<!-- 12 DEMO A -->
+<section class="slide demo" data-title="Fellow demos: how it works" data-foot="Fellow demos">
+  <div class="kicker">Your turn · fellow demos</div>
+  <h2>Show us what you found</h2>
+  <div class="demo-list">
+    <div class="demo-item"><div class="n">A1</div><h3>Same question, three answers</h3><p>What changed between regenerations, and what stayed the same?</p></div>
+    <div class="demo-item"><div class="n">A2</div><h3>Explain it three ways</h3><p>One concept for a student, an intern, and an attending. Which was best?</p></div>
+    <div class="demo-item"><div class="n">A3</div><h3>What do you know about last week?</h3><p>With web search off, then on. Where did the answer come from?</p></div>
+    <div class="demo-item" style="background:transparent;border-style:dashed"><h3 style="margin-top:0">For each demo</h3><p>Two to three minutes: what you asked, what came back, one thing that surprised you.</p></div>
+  </div>
+  <aside class="notes">
+    <p>Call on whoever prepared A1, A2, A3 (check the assignment list). Keep each to about three minutes.</p>
+    <p>Tie back: A1 is next-word randomness. A2 shows it can shift register on request. A3 sets up the next section: the model’s knowledge is frozen, but the app around it can go look things up.</p>
+  </aside>
+</section>
+
+<!-- 13 HALLUCINATION STATEMENT -->
+<section class="slide statement" data-title="Why it makes things up" data-foot="2 · How an LLM works">
+  <div class="kicker">Why it makes things up</div>
+  <div class="big">It was trained to produce text that <em>sounds right</em>. Being right is a side effect.</div>
+  <div class="rule"></div>
+  <div class="row" style="max-width:1340px">
+    <p class="col small">No built-in fact checker. It doesn’t look things up unless the app makes it.</p>
+    <p class="col small">Gaps get filled with plausible text: references, doses, guideline years.</p>
+    <p class="col small">It sounds equally confident when it’s right and when it’s wrong.</p>
+  </div>
+  <aside class="notes">
+    <p>This connects the next-word demo to hallucination. A fabricated citation is just a very plausible sequence of words: real-sounding authors, a real journal, a believable year.</p>
+    <p>Newer models and better harnesses (web search, citations) have made this much less common, but not zero. The confident tone is the trap, especially for learners.</p>
+  </aside>
+</section>
+
+<!-- 14 SECTION 3 -->
+<section class="slide dark" data-title="Part 3: Engine, fuel, car">
+  <div class="time">About 20 minutes</div>
+  <div class="num">3</div>
+  <h1>The engine, the fuel, and the car</h1>
+  <div class="sub">Model, runtime, and harness: three words that explain why “ChatGPT” means so many different things.</div>
+  <aside class="notes"><p>Transition: so far we’ve talked about the model. But nobody uses a model directly. You use a product built around one. That’s what this section is about.</p></aside>
+</section>
+
+<!-- 15 CAR DIAGRAM -->
+<section class="slide" data-title="The analogy" data-foot="3 · Engine, fuel, car">
+  <div class="kicker">The analogy · click a part</div>
+  <div class="car-wrap" id="carWrap">
+    <svg width="780" height="560" viewBox="0 0 780 560" role="img" aria-label="Diagram of a car: the engine is the model, the fuel is the runtime, the car body is the harness, and the driver is you">
+      <!-- ground -->
+      <line x1="20" y1="452" x2="760" y2="452" stroke="#D8D2C6" stroke-width="3" stroke-linecap="round"/>
+      <!-- car body (harness) -->
+      <g class="part p-car">
+        <path d="M70 380 Q62 320 120 304 L250 284 L330 196 Q350 176 380 176 L560 176 Q590 176 608 198 L668 284 L712 298 Q742 308 742 344 L742 380 Q742 400 722 400 L90 400 Q70 400 70 380 Z" fill="#13294B"/>
+        <path d="M352 206 Q362 196 378 196 L460 196 L460 280 L280 280 Z" fill="#DCE5F2"/>
+        <path d="M476 196 L556 196 Q574 196 586 212 L636 280 L476 280 Z" fill="#DCE5F2"/>
+        <rect x="88" y="330" width="34" height="16" rx="5" fill="#F4D58D"/>
+        <rect x="716" y="324" width="20" height="18" rx="4" fill="#E06B7C"/>
+        <!-- wheels -->
+        <g><circle cx="200" cy="400" r="54" fill="#1C2430"/><circle cx="200" cy="400" r="24" fill="#9AA6B8"/></g>
+        <g><circle cx="606" cy="400" r="54" fill="#1C2430"/><circle cx="606" cy="400" r="24" fill="#9AA6B8"/></g>
+      </g>
+      <!-- engine (model) under hood, front = left -->
+      <g class="part p-engine">
+        <rect x="120" y="300" width="128" height="72" rx="10" fill="#A51C30"/>
+        <rect x="136" y="288" width="22" height="16" rx="3" fill="#A51C30"/>
+        <rect x="170" y="288" width="22" height="16" rx="3" fill="#A51C30"/>
+        <rect x="204" y="288" width="22" height="16" rx="3" fill="#A51C30"/>
+        <text x="184" y="344" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">MODEL</text>
+      </g>
+      <!-- fuel tank + line (runtime) -->
+      <g class="part p-fuel">
+        <path d="M250 330 L455 330" stroke="#B8862B" stroke-width="7" stroke-dasharray="14 10" stroke-linecap="round" fill="none"/>
+        <rect x="455" y="300" width="120" height="54" rx="12" fill="#B8862B"/>
+        <text x="515" y="334" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#fff">FUEL</text>
+      </g>
+      <!-- driver (you) -->
+      <g class="part p-driver">
+        <circle cx="400" cy="222" r="17" fill="#B8862B"/>
+        <path d="M374 280 Q374 248 400 246 Q426 248 426 280 Z" fill="#B8862B"/>
+        <circle cx="356" cy="262" r="15" fill="none" stroke="#13294B" stroke-width="6"/>
+      </g>
+      <!-- labels -->
+      <g font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="700">
+        <g class="part p-engine"><line x1="150" y1="290" x2="110" y2="110" stroke="#A51C30" stroke-width="2.5"/><text x="40" y="96" fill="#A51C30">Engine = model</text></g>
+        <g class="part p-driver"><line x1="400" y1="200" x2="400" y2="96" stroke="#8A6116" stroke-width="2.5"/><text x="400" y="80" text-anchor="middle" fill="#8A6116">Driver = you</text></g>
+        <g class="part p-car"><line x1="660" y1="250" x2="690" y2="110" stroke="#13294B" stroke-width="2.5"/><text x="600" y="96" fill="#13294B">Car = harness</text></g>
+        <g class="part p-fuel"><line x1="403" y1="336" x2="403" y2="500" stroke="#8A6116" stroke-width="2.5"/><text x="403" y="530" text-anchor="middle" fill="#8A6116">Fuel = runtime</text></g>
+      </g>
+    </svg>
+    <div class="car-key">
+      <div class="key" data-f="engine"><div class="sw" style="background:var(--crimson)"></div><div><h3>Engine = the model</h3><p>The trained LLM. All the raw power, but on its own it just sits on a stand.</p></div></div>
+      <div class="key" data-f="fuel"><div class="sw" style="background:var(--gold)"></div><div><h3>Fuel = the runtime</h3><p>The computers and electricity that actually run the engine, every time you hit enter.</p></div></div>
+      <div class="key" data-f="car"><div class="sw" style="background:var(--navy)"></div><div><h3>Car = the harness</h3><p>Everything that turns raw power into a trip: steering, wheels, GPS, trunk, seatbelts.</p></div></div>
+      <div class="key" data-f="driver"><div class="sw" style="background:#E1C27E"></div><div><h3>Driver = you</h3><p>Your prompt is the steering. You decide where it goes, and you’re responsible for the drive.</p></div></div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Click each part on the right to spotlight it. Click again to show the whole car.</p>
+    <p>The key message: an engine on a stand goes nowhere. What you experience as “ChatGPT” is a whole car: an engine (the model), fuel to run it (the runtime), and a body built around it (the harness).</p>
+    <p>Why I added the driver: it reminds them that the human steers and is accountable, which is the theme for Part 5.</p>
+  </aside>
+</section>
+
+<!-- 16 ENGINE -->
+<section class="slide" data-title="Engine = model" data-foot="3 · Engine, fuel, car">
+  <div class="part-head">
+    <div class="chip" style="background:var(--crimson)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="4" y="8" width="14" height="10" rx="2"/><path d="M7 8V5h3v3M12 8V5h3v3M18 11h3v4h-3"/></svg></div>
+    <h2>The engine is the model</h2>
+  </div>
+  <div class="facts">
+    <div class="card"><h3>What it is</h3><p>A very large file of numbers (called <b>weights</b>) produced by training. GPT-5.4, Claude, Gemini, and Llama are engines.</p></div>
+    <div class="card"><h3>What it does</h3><p>One thing only: given some text, predict the next token. Over and over.</p></div>
+    <div class="card"><h3>What it can’t do alone</h3><p>Search the web, open your files, remember you, or check its work. All of that is added by the car.</p></div>
+    <div class="card"><h3>Why it matters</h3><p>Bigger, newer engines reason better and know more. But a great engine in a bad car is still a bad ride.</p></div>
+  </div>
+  <aside class="notes">
+    <p>When people say “GPT-5” or “Claude Opus” they’re naming an engine. Companies release new engines every few months.</p>
+    <p>Llama is worth naming because it’s an “open-weight” model: anyone can download the engine and run it on their own computer. That’s how hospitals can run AI without sending data outside.</p>
+  </aside>
+</section>
+
+<!-- 17 FUEL -->
+<section class="slide" data-title="Fuel = runtime" data-foot="3 · Engine, fuel, car">
+  <div class="part-head">
+    <div class="chip" style="background:var(--gold)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M3 21h13M7 8h5M15 10h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg></div>
+    <h2>The fuel is the runtime</h2>
+  </div>
+  <div class="facts">
+    <div class="card"><h3>What it is</h3><p>The hardware and software that load the engine and run it: specialized chips (GPUs) in a data center, or even a laptop.</p></div>
+    <div class="card"><h3>Every reply burns fuel</h3><p>Each token is computed fresh. Longer answers and longer chats use more.</p></div>
+    <div class="card"><h3>Where you feel it</h3><p>Speed, “you’ve hit your limit,” free vs. paid tiers, and outages when the data center is overloaded.</p></div>
+    <div class="card"><h3>Where it runs = where your data goes</h3><p>Cloud runtime: your text travels to the company’s servers. Local runtime: it never leaves the building.</p></div>
+  </div>
+  <aside class="notes">
+    <p>Tokens are like gallons: companies price and limit usage by tokens. Free tiers are a small tank.</p>
+    <p>The last box is the one that matters for medicine. Where the runtime sits determines where patient data would go. That’s why some hospitals are interested in running open-weight engines on their own machines.</p>
+    <p>Personal aside if you like: I run models on my own GPU machines at home. Same engines, my own fuel.</p>
+  </aside>
+</section>
+
+<!-- 18 HARNESS -->
+<section class="slide" data-title="Car = harness" data-foot="3 · Engine, fuel, car">
+  <div class="part-head" style="margin-bottom:28px">
+    <div class="chip" style="background:var(--navy)"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M3 16v-3l2-5h14l2 5v3H3z"/><circle cx="7.5" cy="16.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg></div>
+    <h2>The car is the harness</h2>
+  </div>
+  <div class="harness">
+    <div class="card"><div class="what">Steering wheel</div><h3>The chat box</h3><p>How you give it direction</p></div>
+    <div class="card"><div class="what">Owner’s manual</div><h3>Hidden instructions</h3><p>Rules the app gives the model before you type</p></div>
+    <div class="card"><div class="what">GPS</div><h3>Web and literature search</h3><p>Lets it look things up past its cutoff</p></div>
+    <div class="card"><div class="what">Trunk</div><h3>File uploads</h3><p>Papers, PDFs, images you bring along</p></div>
+    <div class="card"><div class="what">Glovebox notebook</div><h3>Memory</h3><p>Saved notes pasted back into new chats</p></div>
+    <div class="card"><div class="what">Seatbelts and airbags</div><h3>Safety rules and citations</h3><p>Guardrails, refusals, “show your sources”</p></div>
+  </div>
+  <p class="small" style="margin-top:28px"><b style="color:var(--navy)">The wheels are its tools:</b> the parts that touch the real world, like running a search, reading a file, or writing to a document.</p>
+  <aside class="notes">
+    <p>On your original framing (wheels = harness): the wheels are a great piece of it, the part that touches the road. I widen it to “the whole car around the engine” so it can hold all of these features.</p>
+    <p>Most of what differs between ChatGPT, OpenEvidence, the AI in Epic, and Claude is the harness, not just the engine.</p>
+  </aside>
+</section>
+
+<!-- 19 SAME ENGINE -->
+<section class="slide" data-title="Same engine, different cars" data-foot="3 · Engine, fuel, car">
+  <div class="kicker">Why this matters</div>
+  <h2>Same engine family, very different cars</h2>
+  <table class="cmp">
+    <thead><tr><th>Car (harness)</th><th>What it adds</th><th>Clinical search with citations</th><th>OK for patient information?</th></tr></thead>
+    <tbody>
+      <tr><td>ChatGPT, free</td><td>General chat, web search, file upload</td><td><span class="no">No</span> (general web)</td><td><span class="no">No</span></td></tr>
+      <tr><td>ChatGPT for Clinicians</td><td>Clinical search, deep research, CME credit, starter prompts</td><td><span class="yes">Yes</span></td><td><span class="no">Not by default</span>: only with a signed agreement <i>and</i> hospital approval</td></tr>
+      <tr><td>Hospital-approved tool</td><td>Connected to the record, set up by the institution</td><td>Varies</td><td><span class="yes">Yes</span>, within hospital policy</td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:30px">So when a learner says <b style="color:var(--crimson)">“ChatGPT said…”</b>, the teaching question is: <b style="color:var(--navy)">which car were you driving?</b></p>
+  <aside class="notes">
+    <p>ChatGPT for Clinicians is built on GPT-5.4 according to OpenAI. The free consumer version uses OpenAI models too, but the car is different: different search, different hidden instructions, different privacy terms.</p>
+    <p>Hospital row: ask the group what Mount Auburn / BILH currently has approved. Check before the session so you can name it.</p>
+  </aside>
+</section>
+
+<!-- 21 AGENTS -->
+<section class="slide" data-title="When the car drives itself" data-foot="3 · Engine, fuel, car">
+  <div class="kicker">Where things are heading</div>
+  <div class="loop">
+    <svg width="560" height="540" viewBox="0 0 560 540" aria-label="The agent loop: plan, use a tool, check the result, adjust, repeat">
+      <circle cx="280" cy="280" r="178" fill="none" stroke="#E2C98F" stroke-width="6"/>
+      <path d="M-13 -12 L13 0 L-13 12 z" fill="#B8862B" transform="translate(405.9 154.1) rotate(45)"/><path d="M-13 -12 L13 0 L-13 12 z" fill="#B8862B" transform="translate(405.9 405.9) rotate(135)"/><path d="M-13 -12 L13 0 L-13 12 z" fill="#B8862B" transform="translate(154.1 405.9) rotate(225)"/><path d="M-13 -12 L13 0 L-13 12 z" fill="#B8862B" transform="translate(154.1 154.1) rotate(315)"/>
+      <g font-family="Segoe UI,Arial,sans-serif" font-weight="700" text-anchor="middle">
+        <rect x="185" y="71" width="190" height="62" rx="14" fill="#13294B"/><text x="280" y="111" fill="#fff" font-size="24">Plan</text>
+        <rect x="363" y="249" width="190" height="62" rx="14" fill="#A51C30"/><text x="458" y="289" fill="#fff" font-size="24">Use a tool</text>
+        <rect x="185" y="427" width="190" height="62" rx="14" fill="#13294B"/><text x="280" y="467" fill="#fff" font-size="24">Check result</text>
+        <rect x="7" y="249" width="190" height="62" rx="14" fill="#13294B"/><text x="102" y="289" fill="#fff" font-size="24">Adjust</text>
+        <text x="280" y="275" fill="#13294B" font-size="30">Goal</text>
+        <text x="280" y="307" fill="#5B6575" font-size="17" font-weight="600">repeat until done</text>
+      </g>
+    </svg>
+    <div class="grow">
+      <h2>When the car drives itself: agents</h2>
+      <p class="lead" style="font-size:30px">An <b>agent</b> is a harness that lets the model take many steps on its own: search, read, write, check, and try again.</p>
+      <ul class="clean" style="margin-top:28px">
+        <li><b>Deep research</b>: reads dozens of sources and writes a report</li>
+        <li><b>Coding agents</b>: build and test software from plain-English requests</li>
+      </ul>
+      <p class="small muted" style="margin-top:12px">More autonomy means more power and more to supervise.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Same engine, but the harness keeps handing the model’s output back to it along with the results of tools, in a loop. That’s all an “agent” is.</p>
+    <p>Personal example if you want: the apps I’ve built were made this way, with a coding agent doing the typing while I direct and check. I’m not a programmer by training.</p>
+    <p>Teaching link: more autonomy is like giving a senior resident more independence. Great when supervised well, risky when not.</p>
+  </aside>
+</section>
+
+<!-- 22 DEMO B -->
+<section class="slide demo" data-title="Fellow demos: the car matters" data-foot="Fellow demos">
+  <div class="kicker">Your turn · fellow demos</div>
+  <h2>Show us how the car changes the ride</h2>
+  <div class="demo-list">
+    <div class="demo-item"><div class="n">B1</div><h3>Same question, two cars</h3><p>Regular ChatGPT vs. ChatGPT for Clinicians. What differed?</p></div>
+    <div class="demo-item"><div class="n">B2</div><h3>Tell it who you are</h3><p>Same question before and after setting custom instructions.</p></div>
+    <div class="demo-item"><div class="n">B3</div><h3>Hand it a paper</h3><p>Upload a published article. How good was the summary? What did it miss?</p></div>
+    <div class="demo-item"><div class="n">B4</div><h3>Show it an image</h3><p>A public teaching image. What did it see, and what did it miss?</p></div>
+  </div>
+  <aside class="notes">
+    <p>B1 is the headline demo for this section: same engine family, different car.</p>
+    <p>B2 shows the hidden-instructions idea. B3 shows the context window (the paper becomes part of the chart in front of it). B4 is a natural one for the radiology fellows: images are a newer ability, and this is a good moment for them to compare it with the narrow AI tools they use.</p>
+  </aside>
+</section>
+
+<!-- 23 SECTION 4 -->
+<section class="slide dark" data-title="Part 4: Where it breaks">
+  <div class="time">About 15 minutes</div>
+  <div class="num">4</div>
+  <h1>Where it breaks</h1>
+  <div class="sub">Knowing the failure modes is what separates a safe user from a lucky one.</div>
+  <aside class="notes"><p>Transition: now that we know how it works, the ways it fails become predictable rather than mysterious.</p></aside>
+</section>
+
+<!-- 24 FAILURE MODES -->
+<section class="slide" data-title="Five failure modes" data-foot="4 · Where it breaks">
+  <div class="kicker">Five failure modes</div>
+  <h2 style="margin-bottom:30px">Each one follows from how it works</h2>
+  <div class="fails">
+    <div class="card"><h3>Making things up</h3><p>Fabricated references, doses, or guideline details, delivered confidently.</p><div class="fix">Check anything you’d act on</div></div>
+    <div class="card"><h3>Agreeing with you</h3><p>Leans toward the answer you seem to want, even when your premise is wrong.</p><div class="fix">Ask it to argue the other side</div></div>
+    <div class="card"><h3>Out of date</h3><p>Knowledge stops at its cutoff. New guidelines and drugs may be missing.</p><div class="fix">Use a car with search and citations</div></div>
+    <div class="card"><h3>Bias</h3><p>Reflects gaps and stereotypes in the text it learned from.</p><div class="fix">Watch who’s missing from the examples</div></div>
+    <div class="card"><h3>Privacy</h3><p>What you type goes to the runtime. Patient details may leave the hospital.</p><div class="fix">Hospital-approved tools only</div></div>
+    <div class="card" style="border-top-color:var(--gold);background:var(--gold-soft)"><h3>And for learners</h3><p>Over-reliance: skipping the thinking the exercise was meant to build.</p><div class="fix" style="color:#8A6116">Design for it, don’t just ban it</div></div>
+  </div>
+  <aside class="notes">
+    <p>Tie each back: making things up comes from next-word prediction; agreeing comes from human-feedback training; out of date is the frozen engine; privacy is where the runtime lives.</p>
+    <p>The sixth box is the one most relevant to them as educators. Ask: how would you redesign an assignment so it still builds the skill when learners have AI?</p>
+  </aside>
+</section>
+
+<!-- 26 CASE DISCUSSION -->
+<section class="slide discuss" data-title="Case: the drug interaction" data-foot="4 · Where it breaks">
+  <div class="kicker">Discussion · 8 minutes</div>
+  <div class="quote">“I checked the interaction on ChatGPT. It said there’s no concern.”</div>
+  <p class="small muted" style="margin:22px 0 40px 48px">Your intern, 2 AM, starting a new medication</p>
+  <div class="row">
+    <div class="col card"><h3>What do you ask first?</h3><p class="small">Which car? What exactly did they type? Did it cite a source?</p></div>
+    <div class="col card"><h3>What do you role-model?</h3><p class="small">How you would check it, out loud, in under a minute.</p></div>
+    <div class="col card"><h3>What’s the teaching point?</h3><p class="small">Not “never use AI.” Something more useful than that.</p></div>
+  </div>
+  <aside class="notes">
+    <p>Let them run this. Strong answers usually land on: don’t shame the use, ask what they asked and which tool, verify with a primary source (pharmacist, Lexicomp, UpToDate), and teach the habit of verifying anything you’d act on.</p>
+    <p>Push them on the third box: what’s a policy you’d actually set for your residents? “Never use it” is unenforceable and wastes a teaching moment.</p>
+  </aside>
+</section>
+
+<!-- 27 DEMO C -->
+<section class="slide demo" data-title="Fellow demos: catching it out" data-foot="Fellow demos">
+  <div class="kicker">Your turn · fellow demos</div>
+  <h2>Show us where it slipped</h2>
+  <div class="demo-list">
+    <div class="demo-item"><div class="n">C1</div><h3>Check the references</h3><p>Asked for citations, then looked each one up. How many were real?</p></div>
+    <div class="demo-item"><div class="n">C2</div><h3>The wrong premise</h3><p>Asked a question with a built-in error. Did it push back or play along?</p></div>
+    <div class="demo-item"><div class="n">C3</div><h3>Quiz writer</h3><p>Generated exam questions on a topic you teach. Would you use them?</p></div>
+    <div class="demo-item" style="background:transparent;border-style:dashed"><h3 style="margin-top:0">Listen for</h3><p>Did the tool sound any less confident when it was wrong?</p></div>
+  </div>
+  <aside class="notes">
+    <p>C1 is the classic hallucination demo. Expect better results than a couple of years ago, especially in a car with clinical search. If everything checked out, that’s a useful finding too: ask what was different about the car.</p>
+    <p>C2 demonstrates the “agreeing with you” failure mode. C3 bridges to Part 5: it’s a first draft; how much editing did it need?</p>
+  </aside>
+</section>
+
+<!-- 28 SECTION 5 -->
+<section class="slide dark" data-title="Part 5: Driving well">
+  <div class="time">About 10 minutes</div>
+  <div class="num">5</div>
+  <h1>Driving well</h1>
+  <div class="sub">You steer with the prompt. You stay responsible for where it goes.</div>
+  <aside class="notes"><p>Transition: we’ve covered how it works and how it fails. Last piece: how to use it well as an educator.</p></aside>
+</section>
+
+<!-- 29 PROMPT ANATOMY -->
+<section class="slide" data-title="Anatomy of a good prompt" data-foot="5 · Driving well">
+  <div class="kicker">Steering</div>
+  <h2 style="margin-bottom:28px">Give it what you’d give a new colleague</h2>
+  <div class="ratf">
+    <div><h3>Role</h3><p>Who you are</p></div>
+    <div><h3>Audience</h3><p>Who it’s for, and their level</p></div>
+    <div><h3>Task</h3><p>Exactly what to make</p></div>
+    <div><h3>Format</h3><p>Length, structure, style</p></div>
+    <div><h3>Check</h3><p>Ask it to flag uncertainty</p></div>
+  </div>
+  <div class="prompts" style="grid-template-columns:0.75fr 1.25fr">
+    <div class="pbox bad"><div class="h">Before</div>Write some questions about endocarditis.</div>
+    <div class="pbox good hidden reveal-wrap" id="afterBox"><div class="h">After</div><mark>I’m an internal medicine chief resident.</mark> <mark>My audience is PGY-1s on their first ward month.</mark> <mark>Write 4 board-style multiple-choice questions on diagnosing endocarditis,</mark> <mark>each with one best answer, a short explanation, and no “all of the above.”</mark> <mark>Flag any point where guidelines have recently changed.</mark><div class="cover" id="afterCover" role="button" tabindex="0"><b>What would you add?</b><span>Click to reveal the improved prompt</span></div></div>
+  </div>
+  <aside class="notes">
+    <p>Show the weak prompt first and ask the group: what would you add to get something usable? Collect answers, then click the navy box to reveal the improved version. Map their suggestions onto the five words on top.</p>
+    <p>The fifth step (Check) is new this year: ask it to tell you where it’s unsure. It won’t always know, but it helps.</p>
+    <p>Optional: run the “after” prompt live in ChatGPT for Clinicians and critique the output together using the item-writing principles from earlier in the course.</p>
+  </aside>
+</section>
+
+<!-- 30 FIRST DRAFT -->
+<section class="slide statement" data-title="First draft, never final" data-foot="5 · Driving well">
+  <div class="kicker">The rule of thumb</div>
+  <div class="big">AI writes the <em>first draft</em>.<br>You sign the final one.</div>
+  <div class="rule"></div>
+  <div class="row" style="max-width:1340px">
+    <p class="col small"><b style="color:var(--navy)">Verify</b> anything you’d act on or teach, against a primary source.</p>
+    <p class="col small"><b style="color:var(--navy)">Disclose</b> to learners when materials were AI-assisted.</p>
+    <p class="col small"><b style="color:var(--navy)">Model it</b>: let learners watch you check the output.</p>
+  </div>
+  <aside class="notes">
+    <p>Same principle as supervising a resident: you can delegate the task, not the responsibility.</p>
+    <p>Disclosure is a norm worth setting early in their careers as educators. It also models honesty for learners.</p>
+  </aside>
+</section>
+
+<!-- 31 TAKEAWAYS -->
+<section class="slide" data-title="Three things to keep" data-foot="Wrap-up">
+  <div class="kicker">If you remember three things</div>
+  <h2>Three things to keep</h2>
+  <div class="take">
+    <div class="card"><div class="n">1</div><h3>It predicts. It doesn’t look things up.</h3><p>Unless the car around it does the looking.</p></div>
+    <div class="card"><div class="n">2</div><h3>The car matters as much as the engine.</h3><p>Ask which tool, not just “what did the AI say.”</p></div>
+    <div class="card"><div class="n">3</div><h3>You’re the attending.</h3><p>First draft from the tool, final call from you.</p></div>
+  </div>
+  <aside class="notes"><p>Read these out and then move straight to the go-around.</p></aside>
+</section>
+
+<!-- RESEARCH -->
+<section class="slide" data-title="Current research" data-foot="Where the evidence is">
+  <div class="kicker">Where the evidence is</div>
+  <h2 style="margin-bottom:26px">What the research says so far</h2>
+  <div class="research">
+    <div class="card"><div class="src">Meta-analysis · 2026</div><h3>20 randomized trials, 1,413 learners</h3><p>Generative AI improved immediate knowledge and skills scores. Almost no data on long-term retention.</p><div class="find">Promising, but short-term</div></div>
+    <div class="card"><div class="src">Adv Med Educ Pract · 2026</div><h3>ChatGPT vs. Google and PubMed for case reasoning</h3><p>Crossover trial, 46 second-year students. Reasoning improved with both tools; neither clearly won.</p><div class="find">A tool, not a shortcut</div></div>
+    <div class="card"><div class="src">JMIR Med Educ · 2026</div><h3>ChatGPT inside team trauma simulations</h3><p>Pilot RCT, 41 students. No gain in decisions or teamwork; AI teams talked less and deferred to the tool.</p><div class="find">Over-reliance is real</div></div>
+    <div class="card"><div class="src">Perspect Med Educ · 2026</div><h3>AI-generated vs. real teaching cases</h3><p>RCT, 386 learners. Test scores were similar, but non-inferiority wasn’t shown and AI cases felt less realistic.</p><div class="find">Close, not equal</div></div>
+    <div class="card"><div class="src">Queen’s University · IAMSE 2026</div><h3>AI grading the quality of narrative feedback</h3><p>2,766 radiology EPA comments. Fine-tuned GPT models rated feedback quality with high accuracy.</p><div class="find">Feedback on our feedback</div></div>
+    <div class="card ours"><div class="src">Here at Mount Auburn</div><h3>AUC: residency evaluation tracker</h3><p>Built by Arman. Runs fully offline on local hardware, so resident evaluation data never leaves the building.</p><div class="find">The runtime choice, in practice</div></div>
+  </div>
+  <aside class="notes">
+    <p>Big picture: early randomized evidence is encouraging for short-term learning, but follow-up is short, interventions vary, and the trials that looked at real teamwork found over-reliance.</p>
+    <p>Meta-analysis: 20 RCTs, 1,413 participants, positive pooled effects on immediate knowledge and clinical skills; long-term retention barely studied.</p>
+    <p>Kasetsart crossover (Nartthanarung et al.): both ChatGPT and conventional search improved clinical reasoning; authors could not attribute gains to one tool.</p>
+    <p>Turku trauma pilot (Pakkasjärvi et al.): unstructured ChatGPT access did not help; teams deferred to the tool and talked less. Students received no prompting training, which is exactly what today’s session addresses.</p>
+    <p>Perspectives on Medical Education RCT (Zuo et al.): Gemini-generated, expert-reviewed surgical cases vs. real cases; scores 4.61 vs. 4.95 out of 10, non-inferiority not demonstrated.</p>
+    <p>Queen’s (Kwan et al.): fine-tuned GPT-4o/4.1 scored narrative EPA feedback on the QuAL instrument; directly relevant to the radiology fellows and to how CCCs could use AI.</p>
+    <p>AUC: talk about your project here. Tie it back to the runtime slide: running locally is how you keep evaluation data private.</p>
+    <p>Close by thanking the group, especially for the demos.</p>
+  </aside>
+</section>
+
+</div></div>
+
+<div id="progress"></div>
+<div id="counter"></div>
+<div id="navbtns"><button id="prevBtn" aria-label="Previous slide">‹</button><button id="nextBtn" aria-label="Next slide">›</button></div>
+<div id="notesPanel"><h4>Speaker notes</h4><div id="notesBody"></div></div>
+<div id="blackout"></div>
+<div id="help"><div class="box">
+  <h4>Presenting</h4>
+  <div><kbd>→</kbd> / <kbd>Space</kbd> next &nbsp; <kbd>←</kbd> previous</div>
+  <div><kbd>F</kbd> full screen</div>
+  <div><kbd>P</kbd> presenter view (notes, timer, next slide) in a new window</div>
+  <div><kbd>N</kbd> show notes on this screen</div>
+  <div><kbd>B</kbd> blank screen</div>
+  <div><kbd>Home</kbd> / <kbd>End</kbd> first / last slide</div>
+  <div><kbd>?</kbd> this help</div>
+  <div style="margin-top:10px;color:#5B6575;font-size:15px">To save as PDF: print (Ctrl+P), landscape, no margins.</div>
+</div></div>
+
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let cur = 0, presenter = null, startTime = null;
+
+  function fit(){
+    const s = Math.min(window.innerWidth/1600, window.innerHeight/900);
+    stage.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit); fit();
+
+  function notesHTML(i){ const n = slides[i].querySelector('.notes'); return n ? n.innerHTML : '<p>(No notes)</p>'; }
+  function titleOf(i){ return i < total ? (slides[i].dataset.title || ('Slide ' + (i+1))) : 'End of deck'; }
+
+  function show(i){
+    cur = Math.max(0, Math.min(total-1, i));
+    slides.forEach((s,k)=>s.classList.toggle('active', k===cur));
+    document.getElementById('progress').style.width = ((cur+1)/total*100) + '%';
+    document.getElementById('counter').textContent = (cur+1) + ' / ' + total;
+    document.getElementById('notesBody').innerHTML = notesHTML(cur);
+    try{ history.replaceState(null,'','#' + (cur+1)); }catch(e){}
+    updatePresenter();
+  }
+  function next(){ show(cur+1); }
+  function prev(){ show(cur-1); }
+
+  function onKey(e){
+    const t = e.target;
+    const tag = t && t.tagName;
+    if(tag === 'INPUT' && (e.key.startsWith('Arrow'))) return;
+    if((tag === 'BUTTON' || tag === 'INPUT') && (e.key === ' ' || e.key === 'Enter')) return;
+    const k = e.key;
+    if(['ArrowRight','PageDown',' ','Enter','ArrowDown'].includes(k)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','PageUp','Backspace','ArrowUp'].includes(k)){ e.preventDefault(); prev(); }
+    else if(k === 'Home'){ show(0); }
+    else if(k === 'End'){ show(total-1); }
+    else if(k === 'f' || k === 'F'){ toggleFull(); }
+    else if(k === 'n' || k === 'N'){ document.getElementById('notesPanel').classList.toggle('show'); }
+    else if(k === 'b' || k === 'B' || k === '.'){ document.getElementById('blackout').classList.toggle('show'); }
+    else if(k === 'p' || k === 'P'){ openPresenter(); }
+    else if(k === '?' ){ document.getElementById('help').classList.toggle('show'); }
+    else if(k === 'Escape'){ document.getElementById('help').classList.remove('show'); document.getElementById('blackout').classList.remove('show'); }
+  }
+  document.addEventListener('keydown', onKey);
+  document.getElementById('nextBtn').onclick = next;
+  document.getElementById('prevBtn').onclick = prev;
+  document.getElementById('help').onclick = () => document.getElementById('help').classList.remove('show');
+  document.getElementById('blackout').onclick = () => document.getElementById('blackout').classList.remove('show');
+
+  function toggleFull(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  }
+
+  // touch swipe
+  let tx = null;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', e => { if(tx===null) return; const dx = e.changedTouches[0].clientX - tx; if(Math.abs(dx) > 60){ dx < 0 ? next() : prev(); } tx = null; });
+
+  // presenter view
+  function openPresenter(){
+    if(presenter && !presenter.closed){ presenter.focus(); return; }
+    presenter = window.open('', 'hpefPresenter', 'width=1100,height=760');
+    if(!presenter){ alert('Allow pop-ups to open presenter view.'); return; }
+    startTime = Date.now();
+    const d = presenter.document;
+    d.open();
+    d.write('<!DOCTYPE html><html><head><title>Presenter view</title><style>' +
+      'body{margin:0;font-family:"Segoe UI",-apple-system,Arial,sans-serif;background:#0F1E36;color:#E8ECF2;display:flex;flex-direction:column;height:100vh}' +
+      'header{display:flex;align-items:center;gap:24px;padding:16px 26px;background:#13294B;border-bottom:3px solid #B8862B}' +
+      '#t{font-size:34px;font-weight:700;font-variant-numeric:tabular-nums;color:#fff}#c{font-size:18px;color:#DCC28F}' +
+      'button{font:600 16px "Segoe UI",Arial,sans-serif;padding:10px 18px;border-radius:9px;border:none;background:#2A4B7C;color:#fff;cursor:pointer}' +
+      '.sp{flex:1}main{display:flex;flex:1;min-height:0}' +
+      '#notes{flex:1.6;padding:26px 32px;overflow:auto;font-size:22px;line-height:1.55}#notes p,#notes li{margin:0 0 14px}' +
+      'aside{flex:1;padding:26px;border-left:1px solid #24395C;background:#0B1730}' +
+      '.lbl{font:700 12px "Segoe UI",Arial;letter-spacing:.14em;text-transform:uppercase;color:#DCC28F;margin-bottom:6px}' +
+      '#now{font-size:26px;font-weight:700;margin-bottom:28px;color:#fff}#nx{font-size:20px;color:#AFC0D9}' +
+      '</style></head><body><header><div id="t">0:00</div><div id="c"></div><button id="r">Reset timer</button><div class="sp"></div>' +
+      '<button id="pv">‹ Prev</button><button id="nv">Next ›</button></header><main><div id="notes"></div>' +
+      '<aside><div class="lbl">Now</div><div id="now"></div><div class="lbl">Next</div><div id="nx"></div></aside></main></body></html>');
+    d.close();
+    d.getElementById('pv').onclick = prev;
+    d.getElementById('nv').onclick = next;
+    d.getElementById('r').onclick = () => { startTime = Date.now(); tick(); };
+    d.addEventListener('keydown', onKey);
+    updatePresenter();
+    tick();
+  }
+  function tick(){
+    if(!presenter || presenter.closed) return;
+    const s = Math.floor((Date.now()-startTime)/1000);
+    const el = presenter.document.getElementById('t');
+    if(el) el.textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+    setTimeout(tick, 1000);
+  }
+  function updatePresenter(){
+    if(!presenter || presenter.closed) return;
+    const d = presenter.document;
+    const g = id => d.getElementById(id);
+    if(!g('notes')) return;
+    g('notes').innerHTML = notesHTML(cur);
+    g('now').textContent = (cur+1) + '. ' + titleOf(cur);
+    g('nx').textContent = cur+1 < total ? (cur+2) + '. ' + titleOf(cur+1) : 'End of deck';
+    g('c').textContent = 'Slide ' + (cur+1) + ' of ' + total;
+  }
+
+  // car diagram focus
+  const carWrap = document.getElementById('carWrap');
+  let focused = null;
+  carWrap.querySelectorAll('.key').forEach(k => k.addEventListener('click', () => {
+    const f = k.dataset.f;
+    carWrap.className = 'car-wrap';
+    carWrap.querySelectorAll('.key').forEach(x => x.classList.remove('on'));
+    if(focused === f){ focused = null; return; }
+    focused = f;
+    carWrap.classList.add('focus', 'f-' + f);
+    k.classList.add('on');
+  }));
+
+  // next-word demo
+  const options = [
+    {w:'vancomycin', p:.58, bad:false},
+    {w:'daptomycin', p:.22, bad:false},
+    {w:'antibiotics', p:.09, bad:false},
+    {w:'cefazolin', p:.04, bad:true},
+    {w:'linezolid', p:.03, bad:false},
+    {w:'nafcillin', p:.02, bad:true},
+    {w:'fluids', p:.02, bad:false}
+  ];
+  const barsEl = document.getElementById('nwBars');
+  options.forEach((o,i) => {
+    const row = document.createElement('div');
+    row.className = 'bar'; row.id = 'nwb' + i;
+    row.innerHTML = '<div class="lab' + (o.bad?' bad':'') + '">' + o.w + '</div><div class="track"><div class="fill' + (o.bad?' bad':'') + '"></div></div><div class="pct"></div>';
+    barsEl.appendChild(row);
+  });
+  const temp = document.getElementById('nwTemp');
+  const tempVal = document.getElementById('nwTempVal');
+  const blank = document.getElementById('nwBlank');
+  const tally = document.getElementById('nwTally');
+  let counts = {};
+  function dist(){
+    const T = parseFloat(temp.value);
+    const w = options.map(o => Math.pow(o.p, 1/T));
+    const s = w.reduce((a,b)=>a+b,0);
+    return w.map(x => x/s);
+  }
+  function render(){
+    tempVal.textContent = parseFloat(temp.value).toFixed(1);
+    const d = dist();
+    d.forEach((p,i) => {
+      const row = document.getElementById('nwb'+i);
+      row.querySelector('.fill').style.width = (p*100) + '%';
+      const pct = p*100;
+      row.querySelector('.pct').textContent = (pct < 1 ? '<1' : Math.round(pct)) + '%';
+    });
+  }
+  function pick(){
+    const d = dist(); let r = Math.random(), i = 0;
+    for(; i < d.length-1; i++){ r -= d[i]; if(r <= 0) break; }
+    const o = options[i];
+    blank.textContent = o.w;
+    blank.classList.toggle('wrong', o.bad);
+    document.querySelectorAll('.bar').forEach(b => b.classList.remove('picked'));
+    document.getElementById('nwb'+i).classList.add('picked');
+    counts[o.w] = (counts[o.w]||0) + 1;
+    const n = Object.values(counts).reduce((a,b)=>a+b,0);
+    tally.textContent = n + ' tries: ' + Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([w,c]) => w + ' ×' + c).join(', ');
+  }
+  document.getElementById('nwGo').onclick = pick;
+  document.getElementById('nwReset').onclick = () => { counts = {}; blank.innerHTML = '&nbsp;'; blank.classList.remove('wrong'); document.querySelectorAll('.bar').forEach(b => b.classList.remove('picked')); tally.textContent = 'Click a few times. Then turn the randomness up and try again.'; };
+  temp.addEventListener('input', render);
+  render();
+
+
+  // poll
+  const pollCounts=[0,0,0,0];
+  const pbars=document.querySelectorAll('#pchart .pbar');
+  function renderPoll(){
+    const m=Math.max(1,...pollCounts);
+    pbars.forEach((b,i)=>{ b.style.height=(pollCounts[i]/m*190)+'px'; b.querySelector('.pn').textContent=pollCounts[i]; });
+  }
+  document.querySelectorAll('#poll .popt').forEach(btn=>btn.addEventListener('click',e=>{
+    const i=+btn.dataset.i;
+    pollCounts[i]=Math.max(0,pollCounts[i]+(e.shiftKey?-1:1));
+    btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
+    renderPoll(); btn.blur();
+  }));
+  document.getElementById('pollReset').onclick=()=>{ pollCounts.fill(0); renderPoll(); };
+  renderPoll();
+
+  // prompt reveal
+  const afterBox=document.getElementById('afterBox');
+  const cover=document.getElementById('afterCover');
+  cover.addEventListener('click',()=>afterBox.classList.remove('hidden'));
+  cover.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.stopPropagation(); afterBox.classList.remove('hidden'); } });
+  afterBox.addEventListener('dblclick',()=>afterBox.classList.add('hidden'));
+
+  // start
+  const h = parseInt((location.hash||'').slice(1), 10);
+  show(isNaN(h) ? 0 : h-1);
+})();
+</script>
+</body>
+</html>
