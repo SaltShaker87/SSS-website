@@ -137,7 +137,22 @@ var HPEF_COURSE = {
     {
       date: "2026-12-03",
       title: "Assessment & Evaluation in Medical Education; Making Good Surveys",
-      speaker: "Dr. Arman Yalcin"
+      speaker: "Dr. Arman Yalcin",
+      overview: "This session will be about how to design high-quality surveys for medical education research, which is an extremely common and useful tool. Most, if not all, of you will be using one for your projects.\n\nI’ll ask each of you to design a survey and present it to the group. Try to use the concepts in the readings to build your survey (I’ll be making one too). I’d suggest designing a survey for your project if that applies, but a survey on any topic is fine for this exercise. Together we’ll go through each other’s surveys and improve them as a group.\n\nYou can use whichever software you prefer. I personally like Google Forms. Microsoft Forms is another option that’s built into our work email and software. There’s also SurveyMonkey.",
+      readings: [
+        {
+          title: "Artino, \"Designing Better Surveys for Education and Research\" (Harvard Medical School blog, 2019)",
+          url: "https://learn.hms.harvard.edu/insights/all-insights/designing-better-surveys-education-and-research"
+        },
+        {
+          title: "Rickards, Magee, and Artino, \"You Can’t Fix by Analysis What You’ve Spoiled by Design: Developing Survey Instruments and Collecting Validity Evidence\" (Journal of Graduate Medical Education 2012)",
+          url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3546565/",
+          note: "Free on PubMed Central."
+        }
+      ],
+      assignments: [
+        { fellow: "Everyone — Design a survey", questions: ["Build a short survey, ideally one you could use for your project, using the concepts from the readings.", "Be ready to walk us through it. We’ll improve each one together as a group."] }
+      ]
     },
     {
       date: "2026-12-17",
