@@ -1,0 +1,96 @@
+Q_N = "A total of 24,966 participants received one dose of the RSVPreF3 OA vaccine (12,467 participants) or placebo (12,499)."
+Q_FU = "Over a median follow-up of 6.7 months, vaccine efficacy against RT-PCR–confirmed RSV-related lower respiratory tract disease was 82.6%"
+Q_VE = "vaccine efficacy against RT-PCR–confirmed RSV-related lower respiratory tract disease was 82.6% (96.95% confidence interval [CI], 57.9 to 94.1), with 7 cases (1.0 per 1000 participant-years) in the vaccine group and 40 cases (5.8 per 1000 participant-years) in the placebo group."
+Q_VE2 = "Vaccine efficacy was 94.1% (95% CI, 62.4 to 99.9) against severe RSV-related lower respiratory tract disease (assessed on the basis of clinical signs or by the investigator) and 71.7% (95% CI, 56.2 to 82.3) against RSVrelated acute respiratory infection."
+Q_SUB = "Vaccine efficacy was similar against the RSV A and B subtypes (for RSV-related lower respiratory tract disease: 84.6% and 80.9%, respectively; for RSV-related acute respiratory infection: 71.9% and 70.6%, respectively)."
+Q_REACT = "pain was the most common injection-site reaction for which data were solicited (in 60.9% of the participants in the vaccine group and in 9.3% of those in the placebo group), and fatigue was the most common solicited systemic reaction (in 33.6% and 16.1%,"
+Q_SAE = "During this period, 4.2% of the vaccine recipients and 4.0% of the placebo recipients reported a serious adverse event"
+Q_CRIT = "The criterion for meeting the primary objective was a lower limit of the confidence interval around the efficacy estimate of more than 20%."
+Q_CONC = "A single dose of the RSVPreF3 OA vaccine had an acceptable safety profile and pre- vented RSV-related acute respiratory infection and lower respiratory tract disease and severe RSV-related lower respiratory tract disease in adults 60 years of age or older"
+
+SPEC = dict(
+ slug="aresvi-006-2023", pdf="aresvi-006-2023", topic="Vaccines & RSV",
+ short_name="AReSVi-006", taskbar_label="AReSVi-006",
+ title="Respiratory Syncytial Virus Prefusion F Protein Vaccine in Older Adults",
+ h1="AReSVi-006: RSV Prefusion F Protein Vaccine in Older Adults",
+ authors="Papi A, Ison MG, Langley JM, et al.", journal="N Engl J Med", year=2023, volume_pages="388(7):595-608",
+ pmid="36791160", doi="10.1056/NEJMoa2209604",
+ seo_title="AReSVi-006 (NEJM 2023): RSV Vaccine in Adults 60 and Older",
+ seo_desc="AReSVi-006: one dose of the adjuvanted RSVPreF3 OA vaccine was 82.6% effective against RSV lower respiratory tract disease in adults 60 and older. Video and charts.",
+ one_liner="{{n:ve}} efficacy against RSV lower respiratory tract disease: {{n:cases_vax}} cases with vaccine vs {{n:cases_pbo}} with placebo.",
+ one_liner_plain="One dose of an adjuvanted RSV prefusion F vaccine protected adults 60 and older",
+ arms={"vax": "intervention", "pbo": "comparator"},
+ related=[("/papers/matisse-2023/", "MATISSE: maternal RSV vaccine to protect infants"), ("/papers/c4591001-2020/", "C4591001: BNT162b2 mRNA Covid-19 vaccine")],
+ sections=dict(
+  background="Respiratory syncytial virus (RSV) causes acute respiratory infection, lower respiratory tract disease, complications, and deaths in older adults, yet decades of vaccine attempts had failed and no RSV vaccine was licensed. The breakthrough was structural: stabilizing the RSV fusion (F) protein in its prefusion shape, which exposes the epitopes targeted by neutralizing antibodies and is now recognized as important for a potent response. AReSVi-006 tested a single dose of an AS01E-adjuvanted prefusion F vaccine (RSVPreF3 OA) in adults 60 and older.",
+  methods={
+   "Design": "Ongoing, international, randomized (1:1), placebo-controlled phase 3 trial; vaccination before the RSV season.",
+   "Population": "Adults 60 years of age or older, including those with stable chronic conditions. {{n:n_total}} received a dose ({{n:n_vax}} vaccine, {{n:n_pbo}} placebo).",
+   "Intervention": "One intramuscular dose of RSVPreF3 OA (RSV prefusion F protein with the AS01E adjuvant).",
+   "Comparator": "Placebo (saline).",
+   "Primary endpoint": "Efficacy against RT-PCR-confirmed RSV-related lower respiratory tract disease during one RSV season. Success required the lower limit of the confidence interval to be above 20%.",
+   "Follow-up": "Median 6.7 months for efficacy; safety through 6 months and beyond.",
+  },
+  results=[
+   "Over a median of 6.7 months, there were {{n:cases_vax}} cases of RSV lower respiratory tract disease in the vaccine group and {{n:cases_pbo}} in the placebo group ({{n:rate_vax}} vs {{n:rate_pbo}} per 1000 participant-years): vaccine efficacy {{n:ve}} (96.95% CI 57.9 to 94.1), comfortably clearing the 20% bar.",
+   {"quote": Q_VE},
+   {"fig": "f_cases"}, {"fig": "f_ve"},
+   "Efficacy was {{n:ve_sev}} against severe RSV lower respiratory tract disease and {{n:ve_ari}} against any RSV acute respiratory infection. It was similar for RSV A and RSV B ({{n:ve_a}} and {{n:ve_b}} against lower respiratory tract disease), across age groups, and in people with coexisting conditions.",
+   "The vaccine was more reactogenic than placebo, mostly with transient, mild-to-moderate reactions: injection-site pain in {{n:pain_vax}} versus {{n:pain_pbo}}, fatigue in {{n:fat_vax}} versus {{n:fat_pbo}}. Serious adverse events were similar ({{n:sae_vax}} vs {{n:sae_pbo}}).",
+   {"fig": "f_react"},
+  ],
+  conclusions="A single dose of the RSVPreF3 OA vaccine had an acceptable safety profile and prevented RSV-related acute respiratory infection, lower respiratory tract disease, and severe lower respiratory tract disease in adults 60 years of age or older, regardless of RSV subtype and coexisting conditions.",
+  limitations="Few participants were 80 or older or frail, and the trial could not detect rare side effects. This report covers one RSV season; durability and the value of revaccination needed longer follow-up. The trial ran during the second year of the Covid-19 pandemic, when public health measures reduced RSV spread and shifted the season earlier, so the investigators enlarged the trial and started vaccinating in May.",
+  practice_impact="AReSVi-006 led to the first licensed RSV vaccine for older adults (Arexvy) in 2023. Together with the bivalent RSVpreF vaccine trial (RENOIR), it made RSV vaccination a routine conversation for adults 60 and older, with guidance focused on those at higher risk of severe disease.",
+ ),
+ numbers=[
+  dict(id="n_total", label="Participants dosed", value=24966, unit=" participants", source_quote=Q_N),
+  dict(id="n_vax", label="Received vaccine", value=12467, unit=" participants", source_quote=Q_N),
+  dict(id="n_pbo", label="Received placebo", value=12499, unit=" participants", source_quote=Q_N),
+  dict(id="fu", label="Median efficacy follow-up", value=6.7, unit=" months", source_quote=Q_FU),
+  dict(id="cases_vax", label="RSV lower respiratory tract disease cases, vaccine", value=7, unit="", arm="vax", source_quote=Q_VE),
+  dict(id="cases_pbo", label="RSV lower respiratory tract disease cases, placebo", value=40, unit="", arm="pbo", source_quote=Q_VE),
+  dict(id="rate_vax", label="Cases per 1000 participant-years, vaccine", value=1.0, decimals=1, unit="", arm="vax", source_quote=Q_VE),
+  dict(id="rate_pbo", label="Cases per 1000 participant-years, placebo", value=5.8, unit="", arm="pbo", source_quote=Q_VE),
+  dict(id="ve", label="RSV lower respiratory tract disease (primary)", value=82.6, unit="%", ci_low=57.9, ci_high=94.1, source_quote=Q_VE),
+  dict(id="ve_sev", label="Severe RSV lower respiratory tract disease", value=94.1, unit="%", ci_low=62.4, ci_high=99.9, source_quote=Q_VE2),
+  dict(id="ve_ari", label="RSV acute respiratory infection", value=71.7, unit="%", ci_low=56.2, ci_high=82.3, source_quote=Q_VE2),
+  dict(id="ve_a", label="Lower respiratory tract disease, RSV A", value=84.6, unit="%", source_quote=Q_SUB),
+  dict(id="ve_b", label="Lower respiratory tract disease, RSV B", value=80.9, unit="%", source_quote=Q_SUB),
+  dict(id="crit", label="Required lower confidence limit", value=20, unit="%", source_quote=Q_CRIT),
+  dict(id="pain_vax", label="Injection-site pain, vaccine", value=60.9, unit="%", arm="vax", source_quote=Q_REACT),
+  dict(id="pain_pbo", label="Injection-site pain, placebo", value=9.3, unit="%", arm="pbo", source_quote=Q_REACT),
+  dict(id="fat_vax", label="Fatigue, vaccine", value=33.6, unit="%", arm="vax", source_quote=Q_REACT),
+  dict(id="fat_pbo", label="Fatigue, placebo", value=16.1, unit="%", arm="pbo", source_quote=Q_REACT),
+  dict(id="sae_vax", label="Serious adverse events, vaccine", value=4.2, unit="%", arm="vax", source_quote=Q_SAE),
+  dict(id="sae_pbo", label="Serious adverse events, placebo", value=4.0, decimals=1, unit="%", arm="pbo", source_quote=Q_SAE),
+ ],
+ figures=[
+  dict(id="f_cases", type="bar", title="RSV lower respiratory tract disease cases (primary end point)", number_ids=["cases_vax", "cases_pbo"], series_labels=["RSVPreF3 OA vaccine", "Placebo"], y_label="Cases", caption=Q_VE,
+       alt="Bar chart: 7 cases of RSV lower respiratory tract disease in the vaccine group versus 40 in the placebo group."),
+  dict(id="f_ve", type="forest", title="Vaccine efficacy by outcome", number_ids=["ve", "ve_sev", "ve_ari"], series_labels=["Lower respiratory tract disease", "Severe LRTD", "Acute respiratory infection"],
+       ci_label="CI (96.95% primary; 95% others)", y_label="Vaccine efficacy (%)", caption=Q_VE2,
+       alt="Interval plot of vaccine efficacy: 82.6 percent against lower respiratory tract disease (96.95 percent CI 57.9 to 94.1), 94.1 percent against severe disease (95 percent CI 62.4 to 99.9), and 71.7 percent against acute respiratory infection (95 percent CI 56.2 to 82.3)."),
+  dict(id="f_react", type="grouped", title="Solicited reactions and serious adverse events", number_ids=["pain_vax", "pain_pbo", "fat_vax", "fat_pbo", "sae_vax", "sae_pbo"],
+       groups=[{"label": "Injection-site pain", "ids": ["pain_vax", "pain_pbo"]}, {"label": "Fatigue", "ids": ["fat_vax", "fat_pbo"]}, {"label": "Serious adverse event", "ids": ["sae_vax", "sae_pbo"]}],
+       series_labels=["Vaccine", "Placebo"], y_label="Participants (%)", caption=Q_REACT,
+       alt="Grouped bar chart: injection-site pain 60.9 versus 9.3 percent, fatigue 33.6 versus 16.1 percent, serious adverse events 4.2 versus 4.0 percent, vaccine versus placebo."),
+ ],
+ hero=[
+  ("ve", "Vaccine efficacy against RSV lower respiratory tract disease (96.95% CI 57.9 to 94.1)", "f_ve",
+   "Vaccine efficacy against RSV lower respiratory tract disease: {{n:ve}}.", None),
+  ("cases_pbo", "RSV lower respiratory tract disease cases with placebo, versus {{n:cases_vax}} with vaccine", "f_cases",
+   "{{n:cases_pbo}} cases with placebo. {{n:cases_vax}} with the vaccine.", [("cases_vax", "Vaccine"), ("cases_pbo", "Placebo")]),
+  ("ve_sev", "Vaccine efficacy against severe RSV lower respiratory tract disease (95% CI 62.4 to 99.9)", "f_ve",
+   "Against severe disease: {{n:ve_sev}}.", None),
+  ("pain_vax", "Injection-site pain with vaccine (placebo: {{n:pain_pbo}}), mostly mild and brief", "f_react",
+   "The trade-off: a sore arm in {{n:pain_vax}}, mostly mild and brief.", [("pain_vax", "Vaccine"), ("pain_pbo", "Placebo")]),
+ ],
+ who_id="n_total", who_label="adults 60 years of age or older", who_design="Phase 3, placebo-controlled, international · one dose before the RSV season",
+ vo_title="RSV in older adults: could one shot prevent it?",
+ vo_who="AReSVi-006 vaccinated {{n:n_total}} adults aged 60 and older.",
+ video_outro="One dose of an adjuvanted RSV prefusion F vaccine protected adults 60 and older, and became the first licensed RSV vaccine.",
+ vo_outro="The vaccine was 82.6% effective. N Engl J Med, 2023. Scroll for the full breakdown.",
+ must_include=[(Q_VE, "results"), (Q_VE2, "results"), (Q_CRIT, "methods")],
+ broll=["Older adult rolling up a sleeve in a bright pharmacy, faces out of focus, no text", "Autumn leaves outside a window in soft light, no text"],
+)

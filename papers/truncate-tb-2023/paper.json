@@ -1,0 +1,259 @@
+{
+ "slug": "truncate-tb-2023",
+ "topic": "TB",
+ "one_liner": "Noninferior at week 96: {{n:bdq}} with the 8-week bedaquiline-linezolid strategy vs {{n:std}} with standard treatment, in {{n:dur_bdq}} vs {{n:dur_std}} of treatment.",
+ "one_liner_plain": "An 8-week bedaquiline-linezolid strategy was noninferior to 6 months of standard TB treatment",
+ "arms": {
+  "bdq": "intervention",
+  "std": "comparator",
+  "rif": "neutral"
+ },
+ "citation": {
+  "title": "Treatment Strategy for Rifampin-Susceptible Tuberculosis",
+  "short_name": "TRUNCATE-TB",
+  "authors": "Paton NI, Cousins C, Suresh C, et al.",
+  "journal": "N Engl J Med",
+  "year": 2023,
+  "volume_pages": "388(10):873-887",
+  "pmid": "36808186",
+  "doi": "10.1056/NEJMoa2212537",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36808186/",
+  "doi_url": "https://doi.org/10.1056/NEJMoa2212537"
+ },
+ "sections": {
+  "background": "Drug-susceptible tuberculosis is treated with the same 6-month rifampin-based regimen for almost everyone, even though many people would be cured with less. That means overtreating the majority to prevent relapse in a minority, and long courses strain both patients and programs. TRUNCATE-TB tested a different idea: treat everyone briefly with a potent 8-week regimen, extend treatment for anyone still clinically sick, monitor after treatment, and retreat the few who relapse. The question was whether this strategy, not just a regimen, could match standard care.",
+  "methods": {
+   "design": "Adaptive, open-label, multigroup noninferiority trial at clinics in Indonesia, the Philippines, Thailand, Uganda, and India. Four strategy groups had different 8-week initial regimens; noninferiority was assessed in the two groups that completed enrollment.",
+   "population": "Adults with rifampin-susceptible pulmonary tuberculosis; {{n:n_total}} were in the intention-to-treat population, and only {{n:lost}} withdrew consent or were lost to follow-up.",
+   "intervention": "Strategy: an 8-week initial regimen, either high-dose rifampin plus linezolid or bedaquiline plus linezolid (each with isoniazid, pyrazinamide, and ethambutol), extended for persistent clinical disease, then monitoring and retreatment (at least 24 weeks of standard treatment) for relapse.",
+   "comparator": "Standard treatment: rifampin and isoniazid for 24 weeks, with pyrazinamide and ethambutol for the first 8 weeks.",
+   "primary_endpoint": "Composite of death, ongoing treatment, or active disease at week 96. Relapse that was retreated and resolved by week 96 counted as part of the strategy, not as a failure.",
+   "follow-up": "96 weeks."
+  },
+  "results": "A primary-outcome event occurred in {{n:std}} of the standard-treatment group, {{n:bdq}} of the bedaquiline-linezolid strategy group, and {{n:rif}} of the rifampin-linezolid strategy group. So the bedaquiline-linezolid strategy met noninferiority (adjusted difference {{n:bdq_diff}}; 97.5% CI &minus;3.4 to 5.1), while the rifampin-linezolid strategy did not (adjusted difference {{n:rif_diff}}; 97.5% CI 1.7 to 13.2). The payoff was time on treatment. Mean total treatment duration, including any extension and retreatment, was {{n:dur_std}} with standard care, {{n:dur_rif}} in the rifampin-linezolid strategy, and {{n:dur_bdq}} in the bedaquiline-linezolid strategy. Grade 3 or 4 adverse events and serious adverse events were similar across the three groups.",
+  "conclusions": "A strategy of initial treatment with an 8-week bedaquiline-linezolid regimen was noninferior to standard 6-month treatment for tuberculosis with respect to clinical outcomes at week 96, with a much shorter total duration of treatment and no evident safety concerns.",
+  "limitations": "The trial was open-label, though standardized assessments, a prespecified outcome algorithm, and negligible attrition limited bias. No participants with HIV were enrolled, so the strategy needs testing in that group. Clinics were mainly in Asia. The strategy depends on close follow-up to catch relapse and on retreatment of at least 24 weeks for those who relapse, which programs must be able to deliver. Bedaquiline is a key drug for drug-resistant TB, so using it for drug-susceptible disease raises stewardship questions.",
+  "practice_impact": "TRUNCATE-TB reframed TB treatment as a strategy rather than a fixed 6-month course: treat briefly, extend if needed, monitor, and retreat the minority who relapse. It did not change routine first-line treatment overnight, but it showed most people with TB can be cured in about 2 months, and it provides a framework for future short regimens and treatment-monitoring biomarkers."
+ },
+ "numbers": [
+  {
+   "id": "n_total",
+   "label": "Participants (intention to treat)",
+   "value": 674,
+   "unit": " participants",
+   "source_quote": "Of the 674 participants in the intention-to-treat population, 4 (0.6%) withdrew consent or were lost to follow-up.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "lost",
+   "label": "Withdrew or lost to follow-up",
+   "value": 0.6,
+   "unit": "%",
+   "source_quote": "Of the 674 participants in the intention-to-treat population, 4 (0.6%) withdrew consent or were lost to follow-up.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "margin",
+   "label": "Noninferiority margin",
+   "value": 12,
+   "unit": " percentage points",
+   "source_quote": "The noninferiority margin was 12 percentage points.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "bdq",
+   "label": "Bedaquiline-linezolid strategy",
+   "value": 5.8,
+   "unit": "%",
+   "arm": "bdq",
+   "source_quote": "11 of the 189 participants (5.8%) in the strategy group with an initial bedaquiline–linezolid regimen (adjusted difference, 0.8 percentage points; 97.5% CI, −3.4 to 5.1; noninferiority met).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "std",
+   "label": "Standard treatment",
+   "value": 3.9,
+   "unit": "%",
+   "arm": "std",
+   "source_quote": "A primary-outcome event occurred in 7 of the 181 participants (3.9%) in the standard-treatment group",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rif",
+   "label": "Rifampin-linezolid strategy",
+   "value": 11.4,
+   "unit": "%",
+   "arm": "rif",
+   "source_quote": "21 of the 184 participants (11.4%) in the strategy group with an initial rifampin–linezolid regimen (adjusted difference, 7.4 percentage points; 97.5% confidence interval [CI], 1.7 to 13.2; noninferiority not met)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "bdq_diff",
+   "label": "Bedaquiline-linezolid vs standard",
+   "value": 0.8,
+   "unit": " percentage points",
+   "ci_low": -3.4,
+   "ci_high": 5.1,
+   "source_quote": "11 of the 189 participants (5.8%) in the strategy group with an initial bedaquiline–linezolid regimen (adjusted difference, 0.8 percentage points; 97.5% CI, −3.4 to 5.1; noninferiority met).",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rif_diff",
+   "label": "Rifampin-linezolid vs standard",
+   "value": 7.4,
+   "unit": " percentage points",
+   "ci_low": 1.7,
+   "ci_high": 13.2,
+   "source_quote": "21 of the 184 participants (11.4%) in the strategy group with an initial rifampin–linezolid regimen (adjusted difference, 7.4 percentage points; 97.5% confidence interval [CI], 1.7 to 13.2; noninferiority not met)",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dur_bdq",
+   "label": "Bedaquiline-linezolid strategy",
+   "value": 85,
+   "unit": " days",
+   "arm": "bdq",
+   "source_quote": "The mean total duration of treatment was 180 days in the standard-treatment group, 106 days in the rifampin–linezolid strategy group, and 85 days in the bedaquiline– linezolid strategy group.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dur_std",
+   "label": "Standard treatment",
+   "value": 180,
+   "unit": " days",
+   "arm": "std",
+   "source_quote": "The mean total duration of treatment was 180 days in the standard-treatment group, 106 days in the rifampin–linezolid strategy group, and 85 days in the bedaquiline– linezolid strategy group.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dur_rif",
+   "label": "Rifampin-linezolid strategy",
+   "value": 106,
+   "unit": " days",
+   "arm": "rif",
+   "source_quote": "The mean total duration of treatment was 180 days in the standard-treatment group, 106 days in the rifampin–linezolid strategy group, and 85 days in the bedaquiline– linezolid strategy group.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  }
+ ],
+ "figures": [
+  {
+   "id": "f_primary",
+   "type": "bar",
+   "title": "Death, ongoing treatment, or active disease at week 96 (primary outcome)",
+   "number_ids": [
+    "bdq",
+    "std",
+    "rif"
+   ],
+   "series_labels": [
+    "Bedaquiline-linezolid strategy",
+    "Standard 6 months",
+    "Rifampin-linezolid strategy"
+   ],
+   "y_label": "Participants with a primary-outcome event (%)",
+   "caption": "A primary-outcome event occurred in 7 of the 181 participants (3.9%) in the standard-treatment group",
+   "alt": "Bar chart: primary-outcome events in 5.8 percent with the bedaquiline-linezolid strategy, 3.9 percent with standard treatment, and 11.4 percent with the rifampin-linezolid strategy."
+  },
+  {
+   "id": "f_diff",
+   "type": "forest",
+   "title": "Adjusted difference vs standard treatment, against the 12-point margin",
+   "number_ids": [
+    "bdq_diff",
+    "rif_diff"
+   ],
+   "series_labels": [
+    "Bedaquiline-linezolid",
+    "Rifampin-linezolid"
+   ],
+   "margin_id": "margin",
+   "ci_label": "97.5% CI",
+   "y_label": "Strategy minus standard, percentage points (left favors strategy)",
+   "caption": "21 of the 184 participants (11.4%) in the strategy group with an initial rifampin–linezolid regimen (adjusted difference, 7.4 percentage points; 97.5% confidence interval [CI], 1.7 to 13.2; noninferiority not met)",
+   "alt": "Forest plot: bedaquiline-linezolid 0.8 percentage points (97.5 percent CI -3.4 to 5.1), inside the 12-point margin; rifampin-linezolid 7.4 (97.5 percent CI 1.7 to 13.2), whose upper limit crosses the margin."
+  },
+  {
+   "id": "f_dur",
+   "type": "bar",
+   "title": "Mean total duration of treatment",
+   "number_ids": [
+    "dur_bdq",
+    "dur_std",
+    "dur_rif"
+   ],
+   "series_labels": [
+    "Bedaquiline-linezolid strategy",
+    "Standard 6 months",
+    "Rifampin-linezolid strategy"
+   ],
+   "y_label": "Mean days of treatment",
+   "caption": "The mean total duration of treatment was 180 days in the standard-treatment group, 106 days in the rifampin–linezolid strategy group, and 85 days in the bedaquiline– linezolid strategy group.",
+   "alt": "Bar chart: mean total treatment duration 85 days with the bedaquiline-linezolid strategy, 180 days with standard treatment, and 106 days with the rifampin-linezolid strategy."
+  }
+ ],
+ "hero_findings": [
+  {
+   "number_id": "bdq",
+   "figure_id": "f_primary",
+   "headline": "Primary-outcome events with the bedaquiline-linezolid strategy (standard treatment: 3.9%)"
+  },
+  {
+   "number_id": "bdq_diff",
+   "figure_id": "f_diff",
+   "headline": "Adjusted difference vs standard (97.5% CI &minus;3.4 to 5.1), inside the 12 percentage points margin"
+  },
+  {
+   "number_id": "dur_bdq",
+   "figure_id": "f_dur",
+   "headline": "Mean total treatment with the bedaquiline-linezolid strategy (standard: 180 days)"
+  }
+ ],
+ "must_include_map": [
+  {
+   "excerpt": "11 of the 189 participants (5.8%) in the strategy group with an initial bedaquiline–linezolid regimen (adjusted difference, 0.8 percentage points; 97.5% CI, −3.4 to 5.1; noninferiority met).",
+   "section": "results"
+  },
+  {
+   "excerpt": "The noninferiority margin was 12 percentage points.",
+   "section": "methods"
+  },
+  {
+   "excerpt": "A strategy involving initial treatment with an 8-week bedaquiline–linezolid regimen was noninferior to standard treatment for tuberculosis with respect to clinical outcomes. The strategy was associated with a shorter total duration of treatment and with no evident safety concerns.",
+   "section": "conclusions"
+  }
+ ]
+}

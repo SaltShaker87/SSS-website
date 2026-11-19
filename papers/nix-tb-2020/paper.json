@@ -1,0 +1,270 @@
+{
+ "slug": "nix-tb-2020",
+ "topic": "TB",
+ "one_liner": "{{n:fav}} favourable outcome with 26 weeks of all-oral BPaL in XDR or complicated MDR tuberculosis.",
+ "one_liner_plain": "Six months of all-oral BPaL cured 90% of highly drug-resistant TB",
+ "arms": {
+  "bpal": "intervention",
+  "hist": "comparator"
+ },
+ "citation": {
+  "title": "Treatment of Highly Drug-Resistant Pulmonary Tuberculosis",
+  "short_name": "Nix-TB",
+  "authors": "Conradie F, Diacon AH, Ngubane N, et al.",
+  "journal": "N Engl J Med",
+  "year": 2020,
+  "volume_pages": "382(10):893-902",
+  "pmid": "32130813",
+  "doi": "10.1056/NEJMoa1901814",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32130813/",
+  "doi_url": "https://doi.org/10.1056/NEJMoa1901814"
+ },
+ "sections": {
+  "background": "Extensively drug-resistant tuberculosis (XDR-TB) had few treatment options and dismal results: in South Africa, published treatment success averaged 14%. Regimens for drug-resistant TB ran 18 months to over 2 years, used up to 7 drugs including injectables, and caused moderate to severe adverse events in many patients. Nix-TB tested something radically simpler: three oral drugs with strong anti-TB activity and little pre-existing resistance, bedaquiline (B), pretomanid (Pa), and linezolid (L), for just 26 weeks.",
+  "methods": {
+   "design": "Open-label, single-arm study at three South African sites. There was no randomized control group, because no standard regimen for XDR-TB existed and outcomes were so poor.",
+   "population": "{{n:n_total}} patients with XDR-TB, or MDR-TB that was treatment-intolerant or not responding to treatment; {{n:hiv}} were living with HIV.",
+   "intervention": "Bedaquiline 400 mg daily for 2 weeks then 200 mg three times weekly, plus pretomanid 200 mg daily, plus linezolid 1200 mg daily (adjusted for toxicity), all by mouth for 26 weeks. The first 44 participants started linezolid as 600 mg twice daily.",
+   "comparator": "None (single-arm). Context came from historical outcomes in South Africa.",
+   "primary_endpoint": "Unfavourable outcome (treatment failure or relapse) 6 months after the end of treatment; favourable meant clinical resolution and negative culture with no prior unfavourable classification.",
+   "follow-up": "To 6 months after the end of treatment for the primary end point."
+  },
+  "results": "In the intention-to-treat analysis, {{n:fav_n}} of the {{n:n_total}} patients ({{n:fav}}; 95% CI 82.7 to 94.9%) had a favourable outcome 6 months after finishing treatment. That included {{n:xdr}} of patients with XDR-TB and {{n:mdr}} of those with MDR-TB. There were {{n:early_deaths}} deaths early in treatment; otherwise unfavourable outcomes were rare: one withdrawal, one death during follow-up without relapse, two relapses (one followed by death), and one loss to follow-up. The cost was linezolid toxicity. Peripheral neuropathy affected {{n:neuro}} of patients and myelosuppression {{n:myelo}}; {{n:g3}} had grade 3 or higher adverse events. These were manageable but often required linezolid dose reductions or interruptions: only {{n:lzd_full}} completed 26 weeks of 1200 mg daily without an interruption or reduction.",
+  "conclusions": "BPaL is a viable option for tuberculosis patients with highly resistant forms of TB, provided adequate safety management is available. The authors note that treatment success of 90% in this historically hard-to-treat group was in the range of standard therapy for drug-susceptible TB.",
+  "limitations": "There was no randomized control group, so the comparison with historical outcomes is indirect, and bedaquiline and linezolid were themselves improving outcomes in routine care during the study. The trial was small and run at three South African sites. Linezolid toxicity was common at 1200 mg daily, which left the right dose and duration as open questions.",
+  "practice_impact": "Nix-TB led to the approval of pretomanid as part of BPaL and changed drug-resistant TB treatment from years of injections to 6 months of pills. The linezolid toxicity it exposed drove the follow-up ZeNix trial of lower doses and shorter linezolid courses, and BPaL-based regimens (BPaLM) are now WHO-recommended for MDR/rifampicin-resistant TB."
+ },
+ "numbers": [
+  {
+   "id": "n_total",
+   "label": "Patients enrolled",
+   "value": 109,
+   "unit": " patients",
+   "source_quote": "We present the efficacy and safety outcomes for all 109 patients enrolled in the trial followed to the predefined primary endpoint, six months after the end of treatment.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "hiv",
+   "label": "Living with HIV",
+   "value": 51.4,
+   "unit": "%",
+   "source_quote": "56 (51.4%) participants were HIV positive",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "fav_n",
+   "label": "Patients with a favourable outcome",
+   "value": 98,
+   "unit": "",
+   "source_quote": "In the intent to treat analysis, 98 patients (90%), (95% CI 82.7-94.9%) had a favourable outcome at 6 months after the end of treatment.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "fav",
+   "label": "All patients",
+   "value": 90,
+   "unit": "%",
+   "arm": "bpal",
+   "ci_low": 82.7,
+   "ci_high": 94.9,
+   "source_quote": "In the intent to treat analysis, 98 patients (90%), (95% CI 82.7-94.9%) had a favourable outcome at 6 months after the end of treatment.",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "xdr",
+   "label": "XDR-TB",
+   "value": 89,
+   "unit": "%",
+   "arm": "bpal",
+   "source_quote": "A favourable outcome 6 months after the completion of therapy was found in 98 patients (90%), including 63 (89%) XDR-TB patients. Thirty-eight patients enrolled in the Nix-TB Trial had MDR-TB, with 35 (92%) favourable outcomes.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "mdr",
+   "label": "MDR-TB (intolerant or nonresponsive)",
+   "value": 92,
+   "unit": "%",
+   "arm": "bpal",
+   "source_quote": "A favourable outcome 6 months after the completion of therapy was found in 98 patients (90%), including 63 (89%) XDR-TB patients. Thirty-eight patients enrolled in the Nix-TB Trial had MDR-TB, with 35 (92%) favourable outcomes.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "hist",
+   "label": "Historical XDR-TB treatment success in South Africa (average)",
+   "value": 14,
+   "unit": "%",
+   "arm": "hist",
+   "source_quote": "The published successful treatment rate of XDR-TB across South Africa was low and consistent, averaging 14%, with a range of 2% to 22%.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "early_deaths",
+   "label": "Deaths early in treatment",
+   "value": 6,
+   "unit": "",
+   "source_quote": "Six patients died during the early stages of treatment, one withdrew during treatment, one died during follow-up without evidence of relapse, one relapsed, one relapsed and subsequently died during follow up and one was lost to follow-up.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "neuro",
+   "label": "Peripheral neuropathy",
+   "value": 81,
+   "unit": "%",
+   "arm": "bpal",
+   "source_quote": "The expected linezolid toxicities of peripheral neuropathy (experienced by 81% of patients) and myelosuppression (48%), while common, were manageable, often requiring reductions of dose and/or interruptions in linezolid.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "myelo",
+   "label": "Myelosuppression",
+   "value": 48,
+   "unit": "%",
+   "arm": "bpal",
+   "source_quote": "The expected linezolid toxicities of peripheral neuropathy (experienced by 81% of patients) and myelosuppression (48%), while common, were manageable, often requiring reductions of dose and/or interruptions in linezolid.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "g3",
+   "label": "Grade 3 or higher adverse events",
+   "value": 57,
+   "unit": "%",
+   "arm": "bpal",
+   "source_quote": "Sixty-two (57%) had TEAEs of grade 3 or more, similar by HIV status",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "lzd_full",
+   "label": "Completed full-dose linezolid with no interruption or reduction",
+   "value": 15,
+   "unit": "%",
+   "arm": "bpal",
+   "source_quote": "16 (15%) completed 26 weeks at a 1200 mg total daily dose of linezolid with no interruptions or dose reductions.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  }
+ ],
+ "figures": [
+  {
+   "id": "f_fav",
+   "type": "bar",
+   "title": "Favourable outcome 6 months after treatment (primary end point)",
+   "number_ids": [
+    "fav",
+    "xdr",
+    "mdr"
+   ],
+   "series_labels": [
+    "All patients",
+    "XDR-TB",
+    "MDR-TB"
+   ],
+   "y_label": "Favourable outcome (%)",
+   "caption": "A favourable outcome 6 months after the completion of therapy was found in 98 patients (90%), including 63 (89%) XDR-TB patients. Thirty-eight patients enrolled in the Nix-TB Trial had MDR-TB, with 35 (92%) favourable outcomes.",
+   "alt": "Bar chart: favourable outcome in 90 percent of all patients, 89 percent with XDR-TB, and 92 percent with MDR-TB."
+  },
+  {
+   "id": "f_hist",
+   "type": "bar",
+   "title": "XDR-TB: Nix-TB vs historical treatment success in South Africa (not a randomized comparison)",
+   "number_ids": [
+    "xdr",
+    "hist"
+   ],
+   "series_labels": [
+    "Nix-TB (BPaL), XDR-TB",
+    "Historical average"
+   ],
+   "y_label": "Treatment success (%)",
+   "caption": "The published successful treatment rate of XDR-TB across South Africa was low and consistent, averaging 14%, with a range of 2% to 22%.",
+   "alt": "Bar chart: 89 percent favourable outcome for XDR-TB with BPaL in Nix-TB versus a historical average treatment success of 14 percent in South Africa."
+  },
+  {
+   "id": "f_tox",
+   "type": "bar",
+   "title": "The price: linezolid toxicity",
+   "number_ids": [
+    "neuro",
+    "myelo",
+    "g3",
+    "lzd_full"
+   ],
+   "series_labels": [
+    "Peripheral neuropathy",
+    "Myelosuppression",
+    "Grade ≥3 adverse events",
+    "Full linezolid dose, no changes"
+   ],
+   "y_label": "Patients (%)",
+   "caption": "The expected linezolid toxicities of peripheral neuropathy (experienced by 81% of patients) and myelosuppression (48%), while common, were manageable, often requiring reductions of dose and/or interruptions in linezolid.",
+   "alt": "Bar chart: peripheral neuropathy in 81 percent, myelosuppression in 48 percent, grade 3 or higher adverse events in 57 percent, and only 15 percent completed full-dose linezolid without changes."
+  }
+ ],
+ "hero_findings": [
+  {
+   "number_id": "fav",
+   "figure_id": "f_fav",
+   "headline": "Favourable outcome 6 months after 26 weeks of all-oral BPaL (95% CI 82.7 to 94.9%)"
+  },
+  {
+   "number_id": "xdr",
+   "figure_id": "f_hist",
+   "headline": "Favourable outcome in XDR-TB with BPaL (historical South African average: 14%, not a randomized comparison)"
+  },
+  {
+   "number_id": "neuro",
+   "figure_id": "f_tox",
+   "headline": "Peripheral neuropathy from linezolid (myelosuppression: 48%)"
+  }
+ ],
+ "must_include_map": [
+  {
+   "excerpt": "In the intent to treat analysis, 98 patients (90%), (95% CI 82.7-94.9%) had a favourable outcome at 6 months after the end of treatment.",
+   "section": "results"
+  },
+  {
+   "excerpt": "The expected linezolid toxicities of peripheral neuropathy (experienced by 81% of patients) and myelosuppression (48%), while common, were manageable, often requiring reductions of dose and/or interruptions in linezolid.",
+   "section": "results"
+  },
+  {
+   "excerpt": "These results suggest that B-Pa-L is a viable option for tuberculosis patients with highly resistant forms of TB, provided adequate safety management is available.",
+   "section": "conclusions"
+  }
+ ]
+}

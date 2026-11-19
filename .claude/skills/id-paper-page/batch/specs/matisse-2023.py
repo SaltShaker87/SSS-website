@@ -1,0 +1,102 @@
+Q_N = "Overall, 3682 maternal participants received vaccine and 3676 received placebo; 3570 and 3558 infants, respectively, were evaluated."
+Q_SEV = "Medically attended severe lower respiratory tract illness occurred within 90 days after birth in 6 infants of women in the vaccine group and 33 infants of women in the placebo group (vaccine efficacy, 81.8%; 99.5% CI, 40.6 to 96.3)"
+Q_SEV180 = "19 cases and 62 cases, respectively, occurred within 180 days after birth (vaccine efficacy, 69.4%; 97.58% CI, 44.3 to 84.1)."
+Q_LRTI = "Medically attended RSV-associated lower respiratory tract illness occurred within 90 days after birth in 24 infants of women in the vaccine group and 56 infants of women in the placebo group (vaccine efficacy, 57.1%; 99.5% CI, 14.7 to 79.8)"
+Q_HOSP90 = "Vaccine efficacy was 67.7% (99.17% CI, 15.9 to 89.5) with respect to RSV-associated hospitalization within 90 days after birth"
+Q_HOSP180 = "was 56.8% (99.17% CI, 10.1 to 80.7) with respect to RSV-associated hospitalization within 180 days after birth"
+Q_AE = "The incidences of adverse events reported within 1 month after injection or within 1 month after birth were similar in the vaccine group (13.8% of women and 37.1% of infants) and the placebo group (13.1% and 34.5%, respectively)."
+Q_DES = "In this phase 3, double-blind trial conducted in 18 countries, we randomly assigned, in a 1:1 ratio, pregnant women at 24 through 36 weeks’ gestation to receive a single intramuscular injection of 120 μg of a bivalent RSV prefusion F protein– based (RSVpreF) vaccine or placebo."
+Q_CRIT = "A lower boundary of the confidence interval for vaccine efficacy (99.5% confidence interval [CI] at 90 days; 97.58% CI at later intervals) greater than 20% was considered to meet the success criterion"
+Q_CONC = "RSVpreF vaccine administered during pregnancy was effective against medically attended severe RSV-associated lower respiratory tract illness in infants, and no safety concerns were identified."
+
+SPEC = dict(
+ slug="matisse-2023", pdf="matisse-2023", topic="Vaccines & RSV",
+ short_name="MATISSE", taskbar_label="MATISSE",
+ title="Bivalent Prefusion F Vaccine in Pregnancy to Prevent RSV Illness in Infants",
+ h1="MATISSE: Bivalent RSV Prefusion F Vaccine in Pregnancy to Protect Infants",
+ authors="Kampmann B, Madhi SA, Munjal I, et al.", journal="N Engl J Med", year=2023, volume_pages="388(16):1451-1464",
+ pmid="37018474", doi="10.1056/NEJMoa2216480",
+ seo_title="MATISSE (NEJM 2023): Maternal RSV Vaccine to Protect Infants",
+ seo_desc="MATISSE: one dose of the RSVpreF vaccine in pregnancy was 81.8% effective against severe RSV lower respiratory tract illness in infants within 90 days of birth. Video and charts.",
+ one_liner="Severe RSV illness in infants by 90 days: {{n:sev_vax}} cases after maternal vaccination vs {{n:sev_pbo}} with placebo (efficacy {{n:ve_sev90}}).",
+ one_liner_plain="Vaccinating mothers during pregnancy protected infants from severe RSV illness",
+ arms={"vax": "intervention", "pbo": "comparator"},
+ related=[("/papers/aresvi-006-2023/", "AReSVi-006: RSV vaccine in older adults"), ("/papers/c4591001-2020/", "C4591001: BNT162b2 mRNA Covid-19 vaccine")],
+ sections=dict(
+  background="RSV is a leading cause of lower respiratory tract illness and hospitalization in young infants, and the first months of life are the most dangerous. Infants are too young to be vaccinated well themselves, but antibodies made by a vaccinated mother cross the placenta. MATISSE tested whether a single dose of a bivalent RSV prefusion F (RSVpreF) vaccine given during pregnancy could protect newborns through their first months.",
+  methods={
+   "Design": "Phase 3, randomized (1:1), double-blind, placebo-controlled trial in 18 countries; this is the prespecified interim analysis.",
+   "Population": "Healthy pregnant women at 24 through 36 weeks' gestation and their infants. {{n:n_vax}} women received vaccine and {{n:n_pbo}} placebo; {{n:inf_vax}} and {{n:inf_pbo}} infants were evaluated.",
+   "Intervention": "A single intramuscular injection of 120 &micro;g bivalent RSVpreF vaccine (RSV A and B prefusion F proteins).",
+   "Comparator": "Placebo injection.",
+   "Primary endpoint": "Two primary end points in infants: medically attended <b>severe</b> RSV lower respiratory tract illness, and medically attended RSV lower respiratory tract illness of any severity, each within 90, 120, 150, and 180 days after birth.",
+   "Follow-up": "Infants through 24 months of age for safety (first trial year); efficacy through 180 days and beyond.",
+  },
+  methods_note="Success required the lower boundary of the confidence interval for vaccine efficacy to be above 20% (99.5% CI at 90 days; 97.58% CI at later intervals).",
+  results=[
+   "Within 90 days of birth, medically attended severe RSV lower respiratory tract illness occurred in {{n:sev_vax}} infants in the vaccine group and {{n:sev_pbo}} in the placebo group: vaccine efficacy {{n:ve_sev90}} (99.5% CI 40.6 to 96.3). By 180 days it was {{n:sev180_vax}} versus {{n:sev180_pbo}} cases, efficacy {{n:ve_sev180}}.",
+   {"quote": Q_SEV},
+   {"fig": "f_sev"}, {"fig": "f_ve"},
+   "The second primary end point, RSV lower respiratory tract illness of any severity, fell short: {{n:lrti_vax}} versus {{n:lrti_pbo}} cases within 90 days, efficacy {{n:ve_lrti90}} (99.5% CI 14.7 to 79.8), which did not meet the statistical success criterion. Efficacy against RSV-associated hospitalization was {{n:ve_hosp90}} within 90 days and {{n:ve_hosp180}} within 180 days.",
+   "No safety signals were detected in mothers or in infants and toddlers up to 24 months. Adverse events within 1 month were similar: {{n:ae_w_vax}} versus {{n:ae_w_pbo}} of women and {{n:ae_i_vax}} versus {{n:ae_i_pbo}} of infants.",
+   {"fig": "f_ae"},
+  ],
+  conclusions="RSVpreF vaccine given during pregnancy was effective against medically attended severe RSV lower respiratory tract illness in infants, with protection strongest in the first 90 days and still present at 180 days. No safety concerns were identified. Efficacy against RSV illness of any severity did not meet the prespecified success criterion.",
+  limitations="Women with high-risk pregnancies, including those at current risk of preterm birth, with multiple pregnancies, or with a previous infant with a significant congenital anomaly, were excluded, though their babies may be at higher risk of severe RSV. Data from low-income countries, where the vaccine could matter most, were limited. The trial was not powered to compare efficacy by RSV subgroup, and this was an interim analysis.",
+  practice_impact="MATISSE led to the first maternal RSV vaccine (Abrysvo), giving families a second way to protect newborns alongside the infant monoclonal antibody nirsevimab. U.S. approval limited use to 32 through 36 weeks' gestation and timed vaccination to the RSV season, partly because of a numerical, nonsignificant imbalance in preterm births, so the choice between maternal vaccine and infant antibody is now a standard prenatal conversation.",
+ ),
+ numbers=[
+  dict(id="n_vax", label="Women who received vaccine", value=3682, unit="", source_quote=Q_N),
+  dict(id="n_pbo", label="Women who received placebo", value=3676, unit="", source_quote=Q_N),
+  dict(id="inf_vax", label="Infants evaluated, vaccine group", value=3570, unit="", source_quote=Q_N),
+  dict(id="inf_pbo", label="Infants evaluated, placebo group", value=3558, unit="", source_quote=Q_N),
+  dict(id="countries", label="Countries", value=18, unit=" countries", source_quote=Q_DES),
+  dict(id="crit", label="Required lower confidence limit for efficacy", value=20, unit="%", source_quote=Q_CRIT),
+  dict(id="sev_vax", label="Severe RSV LRTI by 90 days, vaccine group", value=6, unit="", arm="vax", source_quote=Q_SEV),
+  dict(id="sev_pbo", label="Severe RSV LRTI by 90 days, placebo group", value=33, unit="", arm="pbo", source_quote=Q_SEV),
+  dict(id="ve_sev90", label="Severe RSV LRTI, 90 days", value=81.8, unit="%", ci_low=40.6, ci_high=96.3, source_quote=Q_SEV),
+  dict(id="sev180_vax", label="Severe RSV LRTI by 180 days, vaccine group", value=19, unit="", arm="vax", source_quote=Q_SEV180),
+  dict(id="sev180_pbo", label="Severe RSV LRTI by 180 days, placebo group", value=62, unit="", arm="pbo", source_quote=Q_SEV180),
+  dict(id="ve_sev180", label="Severe RSV LRTI, 180 days", value=69.4, unit="%", ci_low=44.3, ci_high=84.1, source_quote=Q_SEV180),
+  dict(id="lrti_vax", label="RSV LRTI (any severity) by 90 days, vaccine group", value=24, unit="", arm="vax", source_quote=Q_LRTI),
+  dict(id="lrti_pbo", label="RSV LRTI (any severity) by 90 days, placebo group", value=56, unit="", arm="pbo", source_quote=Q_LRTI),
+  dict(id="ve_lrti90", label="RSV LRTI any severity, 90 days (criterion not met)", value=57.1, unit="%", ci_low=14.7, ci_high=79.8, source_quote=Q_LRTI),
+  dict(id="ve_hosp90", label="RSV hospitalization, 90 days", value=67.7, unit="%", ci_low=15.9, ci_high=89.5, source_quote=Q_HOSP90),
+  dict(id="ve_hosp180", label="RSV hospitalization, 180 days", value=56.8, unit="%", ci_low=10.1, ci_high=80.7, source_quote=Q_HOSP180),
+  dict(id="ae_w_vax", label="Women, vaccine", value=13.8, unit="%", arm="vax", source_quote=Q_AE),
+  dict(id="ae_w_pbo", label="Women, placebo", value=13.1, unit="%", arm="pbo", source_quote=Q_AE),
+  dict(id="ae_i_vax", label="Infants, vaccine", value=37.1, unit="%", arm="vax", source_quote=Q_AE),
+  dict(id="ae_i_pbo", label="Infants, placebo", value=34.5, unit="%", arm="pbo", source_quote=Q_AE),
+ ],
+ figures=[
+  dict(id="f_sev", type="grouped", title="Infants with medically attended severe RSV lower respiratory tract illness", number_ids=["sev_vax", "sev_pbo", "sev180_vax", "sev180_pbo"],
+       groups=[{"label": "Within 90 days", "ids": ["sev_vax", "sev_pbo"]}, {"label": "Within 180 days", "ids": ["sev180_vax", "sev180_pbo"]}], series_labels=["Maternal vaccine", "Placebo"],
+       y_label="Infant cases", caption=Q_SEV180,
+       alt="Grouped bar chart of severe RSV lower respiratory tract illness: 6 versus 33 infant cases within 90 days and 19 versus 62 within 180 days, vaccine versus placebo."),
+  dict(id="f_ve", type="forest", title="Vaccine efficacy in infants by outcome and time", number_ids=["ve_sev90", "ve_sev180", "ve_lrti90", "ve_hosp90", "ve_hosp180"],
+       series_labels=["Severe LRTI, 90 d", "Severe LRTI, 180 d", "Any LRTI, 90 d", "Hospitalization, 90 d", "Hospitalization, 180 d"], ci_label="CI (99.5%, 97.58%, or 99.17%)",
+       y_label="Vaccine efficacy (%)", caption=Q_LRTI,
+       alt="Interval plot of vaccine efficacy: severe illness 81.8 percent at 90 days and 69.4 percent at 180 days; any-severity illness 57.1 percent at 90 days with a lower bound of 14.7 percent; hospitalization 67.7 percent at 90 days and 56.8 percent at 180 days."),
+  dict(id="f_ae", type="grouped", title="Adverse events within 1 month of injection or birth", number_ids=["ae_w_vax", "ae_w_pbo", "ae_i_vax", "ae_i_pbo"],
+       groups=[{"label": "Women", "ids": ["ae_w_vax", "ae_w_pbo"]}, {"label": "Infants", "ids": ["ae_i_vax", "ae_i_pbo"]}], series_labels=["Vaccine", "Placebo"],
+       y_label="Participants with an adverse event (%)", caption=Q_AE,
+       alt="Grouped bar chart: adverse events in 13.8 versus 13.1 percent of women and 37.1 versus 34.5 percent of infants, vaccine versus placebo."),
+ ],
+ hero=[
+  ("ve_sev90", "Efficacy against severe RSV lower respiratory tract illness in infants within 90 days (99.5% CI 40.6 to 96.3)", "f_ve",
+   "Efficacy against severe RSV illness in the first 90 days: {{n:ve_sev90}}.", None),
+  ("sev_pbo", "Severe RSV illness by 90 days in infants of placebo recipients, versus {{n:sev_vax}} after maternal vaccination", "f_sev",
+   "{{n:sev_pbo}} severe cases with placebo. {{n:sev_vax}} after maternal vaccination.", [("sev_vax", "Vaccine"), ("sev_pbo", "Placebo")]),
+  ("ve_sev180", "Efficacy against severe RSV illness still present at 180 days (97.58% CI 44.3 to 84.1)", "f_ve",
+   "Still {{n:ve_sev180}} at 180 days.", None),
+  ("ve_lrti90", "Efficacy against RSV illness of any severity at 90 days: did not meet the success criterion", "f_ve",
+   "Against illness of any severity: {{n:ve_lrti90}}, short of the success criterion.", None),
+ ],
+ who_id="n_vax", who_label="pregnant women vaccinated (plus {{n:n_pbo}} given placebo) in 18 countries", who_design="Phase 3, double-blind, placebo-controlled · one dose at 24-36 weeks' gestation",
+ vo_title="Can vaccinating mothers in pregnancy protect newborns from RSV?",
+ vo_who="MATISSE vaccinated {{n:n_vax}} pregnant women, and {{n:n_pbo}} received placebo.",
+ video_outro="A single RSV vaccine dose in pregnancy protected newborns from severe RSV illness, most strongly in the first 90 days.",
+ vo_outro="Maternal RSVpreF vaccine protected infants from severe RSV. N Engl J Med, 2023. Scroll for the full breakdown.",
+ must_include=[(Q_SEV, "results"), (Q_LRTI, "results"), (Q_CONC, "conclusions")],
+ broll=["Newborn's hand holding a parent's finger in soft window light, no text", "Pregnant person's silhouette by a window at golden hour, no text"],
+)

@@ -1,0 +1,417 @@
+{
+ "slug": "doxypep-2023",
+ "topic": "STI prevention",
+ "one_liner": "STIs per quarter: {{n:prep_doxy}} with doxy-PEP vs {{n:prep_sc}} with standard care in the PrEP cohort (relative risk {{n:prep_rr}}).",
+ "one_liner_plain": "Doxycycline after condomless sex cut bacterial STIs by about two thirds",
+ "arms": {
+  "doxy": "intervention",
+  "sc": "comparator"
+ },
+ "citation": {
+  "title": "Postexposure Doxycycline to Prevent Bacterial Sexually Transmitted Infections",
+  "short_name": "DoxyPEP",
+  "authors": "Luetkemeyer AF, Donnell D, Dombrowski JC, et al.",
+  "journal": "N Engl J Med",
+  "year": 2023,
+  "volume_pages": "388(14):1296-1306",
+  "pmid": "37018493",
+  "doi": "10.1056/NEJMoa2211934",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37018493/",
+  "doi_url": "https://doi.org/10.1056/NEJMoa2211934"
+ },
+ "sections": {
+  "background": "Gonorrhea, chlamydia, and syphilis rates have climbed for years among men who have sex with men (MSM), and condom promotion and screening alone had not turned the curve. Doxycycline is cheap, well tolerated, and active against all three. Taking a single dose after sex, the way HIV PEP works, could prevent infections before they take hold. DoxyPEP tested that idea in people already in HIV care or on HIV PrEP who had recently had an STI.",
+  "methods": {
+   "design": "Open-label, randomized (2:1) trial in two cohorts, run at sites in San Francisco and Seattle. An independent data and safety monitoring board stopped the standard-care groups early after both cohorts crossed the stopping boundary for effectiveness.",
+   "population": "MSM and transgender women who had gonorrhea, chlamydia, or syphilis in the past year and were either taking HIV PrEP (PrEP cohort) or living with HIV (PLWH cohort). {{n:n_total}} were enrolled ({{n:n_prep}} PrEP, {{n:n_plwh}} PLWH).",
+   "intervention": "Doxycycline 200 mg taken within 72 hours after condomless sex (doxy-PEP).",
+   "comparator": "Standard care without doxycycline.",
+   "primary_endpoint": "Incidence of at least one bacterial STI (gonorrhea, chlamydia, or syphilis) per quarterly follow-up visit, with STI testing every 3 months.",
+   "follow-up": "Quarterly visits; the primary antimicrobial-resistance outcomes tracked tetracycline resistance in N. gonorrhoeae and S. aureus."
+  },
+  "results": "In the PrEP cohort, an STI was diagnosed at {{n:prep_doxy}} of quarterly visits with doxy-PEP versus {{n:prep_sc}} with standard care, an absolute difference of {{n:prep_diff}} and a relative risk of {{n:prep_rr}} (95% CI 0.24 to 0.46). The PLWH cohort looked almost the same: {{n:plwh_doxy}} versus {{n:plwh_sc}} (relative risk {{n:plwh_rr}}). All three infections fell. In the PrEP cohort the relative risks were {{n:gc_prep}} for gonorrhea, {{n:ct_prep}} for chlamydia, and {{n:sy_prep}} for syphilis. The effect was weakest for gonorrhea, which is often tetracycline-resistant already. Safety was reassuring: {{n:g3}} grade 3 adverse events and no serious adverse events were attributed to doxycycline. Resistance signals were mixed and small. Among the few gonorrhea cultures available, tetracycline-resistant gonorrhea was found in {{n:tr_doxy}} of 13 in the doxycycline groups and {{n:tr_sc}} of 16 with standard care, and overall doxycycline-resistant S. aureus was similar ({{n:sa_doxy}} vs {{n:sa_sc}}). About {{n:nnt}} people need to use doxy-PEP to prevent one quarter with an STI.",
+  "conclusions": "The combined incidence of gonorrhea, chlamydia, and syphilis was about two thirds lower with doxycycline postexposure prophylaxis than with standard care, supporting its use among MSM and transgender women with recent bacterial STIs, regardless of HIV status.",
+  "limitations": "Adherence was hard to measure because it depended on recalled condomless sex and event-driven doses. Tetracycline susceptibility results were available for only 17% of gonorrhea end points, so the resistance data are thin. Fewer than 5% of participants were transgender women, the trial was open-label, and it ran in two West Coast cities, so acceptability and STI rates may differ elsewhere. It did not enroll cisgender women.",
+  "practice_impact": "DoxyPEP moved doxycycline after sex from an idea to guideline-backed practice: U.S. CDC guidance now recommends offering doxy-PEP to MSM and transgender women with a bacterial STI in the past year. The open questions are the ones the trial could not settle: long-term resistance in gonorrhea, S. aureus, and the gut microbiome."
+ },
+ "numbers": [
+  {
+   "id": "n_total",
+   "label": "Participants enrolled",
+   "value": 501,
+   "unit": " participants",
+   "source_quote": "Of 501 participants (327 in the PrEP cohort and 174 in the PLWH cohort)",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_prep",
+   "label": "PrEP cohort",
+   "value": 327,
+   "unit": " participants",
+   "source_quote": "Of 501 participants (327 in the PrEP cohort and 174 in the PLWH cohort)",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_plwh",
+   "label": "PLWH cohort",
+   "value": 174,
+   "unit": " participants",
+   "source_quote": "Of 501 participants (327 in the PrEP cohort and 174 in the PLWH cohort)",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "prep_doxy",
+   "label": "PrEP cohort: doxy-PEP",
+   "value": 10.7,
+   "unit": "%",
+   "arm": "doxy",
+   "source_quote": "In the PrEP cohort, an STI was diagnosed in 61 of 570 quarterly visits (10.7%) in the doxycycline group and 82 of 257 quarterly visits (31.9%) in the standard-care group, for an absolute difference of −21.2 percentage points and a relative risk of 0.34",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "prep_sc",
+   "label": "PrEP cohort: standard care",
+   "value": 31.9,
+   "unit": "%",
+   "arm": "sc",
+   "source_quote": "In the PrEP cohort, an STI was diagnosed in 61 of 570 quarterly visits (10.7%) in the doxycycline group and 82 of 257 quarterly visits (31.9%) in the standard-care group, for an absolute difference of −21.2 percentage points and a relative risk of 0.34",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "prep_diff",
+   "label": "Absolute difference, PrEP cohort",
+   "value": -21.2,
+   "unit": " percentage points",
+   "source_quote": "In the PrEP cohort, an STI was diagnosed in 61 of 570 quarterly visits (10.7%) in the doxycycline group and 82 of 257 quarterly visits (31.9%) in the standard-care group, for an absolute difference of −21.2 percentage points and a relative risk of 0.34",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "prep_rr",
+   "label": "Any STI",
+   "value": 0.34,
+   "ci_low": 0.24,
+   "ci_high": 0.46,
+   "source_quote": "for an absolute difference of −21.2 percentage points and a relative risk of 0.34 (95% confidence interval [CI], 0.24 to 0.46; P<0.001)",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "plwh_doxy",
+   "label": "PLWH cohort: doxy-PEP",
+   "value": 11.8,
+   "unit": "%",
+   "arm": "doxy",
+   "source_quote": "In the PLWH cohort, at least one STI was diagnosed in 36 of 305 quarterly visits (11.8%) in the doxycycline group and 39 of 128 quarterly visits (30.5%) in the standard-care group, for an absolute difference of −18.7 percentage points",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "plwh_sc",
+   "label": "PLWH cohort: standard care",
+   "value": 30.5,
+   "unit": "%",
+   "arm": "sc",
+   "source_quote": "In the PLWH cohort, at least one STI was diagnosed in 36 of 305 quarterly visits (11.8%) in the doxycycline group and 39 of 128 quarterly visits (30.5%) in the standard-care group, for an absolute difference of −18.7 percentage points",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "plwh_diff",
+   "label": "Absolute difference, PLWH cohort",
+   "value": -18.7,
+   "unit": " percentage points",
+   "source_quote": "In the PLWH cohort, at least one STI was diagnosed in 36 of 305 quarterly visits (11.8%) in the doxycycline group and 39 of 128 quarterly visits (30.5%) in the standard-care group, for an absolute difference of −18.7 percentage points",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "plwh_rr",
+   "label": "Any STI",
+   "value": 0.38,
+   "ci_low": 0.24,
+   "ci_high": 0.6,
+   "source_quote": "for an absolute difference of −18.7 percentage points and a relative risk of 0.38 (95% CI, 0.24 to 0.60; P<0.001)",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "gc_prep",
+   "label": "Gonorrhea",
+   "value": 0.45,
+   "ci_low": 0.32,
+   "ci_high": 0.65,
+   "source_quote": "in the PrEP cohort, the relative risks were 0.45 (95% CI, 0.32 to 0.65) for gonorrhea, 0.12 (95% CI, 0.05 to 0.25) for chlamydia, and 0.13 (95% CI, 0.03 to 0.59) for syphilis",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "ct_prep",
+   "label": "Chlamydia",
+   "value": 0.12,
+   "ci_low": 0.05,
+   "ci_high": 0.25,
+   "source_quote": "in the PrEP cohort, the relative risks were 0.45 (95% CI, 0.32 to 0.65) for gonorrhea, 0.12 (95% CI, 0.05 to 0.25) for chlamydia, and 0.13 (95% CI, 0.03 to 0.59) for syphilis",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sy_prep",
+   "label": "Syphilis",
+   "value": 0.13,
+   "ci_low": 0.03,
+   "ci_high": 0.59,
+   "source_quote": "in the PrEP cohort, the relative risks were 0.45 (95% CI, 0.32 to 0.65) for gonorrhea, 0.12 (95% CI, 0.05 to 0.25) for chlamydia, and 0.13 (95% CI, 0.03 to 0.59) for syphilis",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "gc_plwh",
+   "label": "Gonorrhea",
+   "value": 0.43,
+   "ci_low": 0.26,
+   "ci_high": 0.71,
+   "source_quote": "in the PLWH cohort, the relative risks were 0.43 (95% CI, 0.26 to 0.71), 0.26 (95% CI, 0.12 to 0.57), and 0.23 (95% CI, 0.04 to 1.29), respectively.",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "ct_plwh",
+   "label": "Chlamydia",
+   "value": 0.26,
+   "ci_low": 0.12,
+   "ci_high": 0.57,
+   "source_quote": "in the PLWH cohort, the relative risks were 0.43 (95% CI, 0.26 to 0.71), 0.26 (95% CI, 0.12 to 0.57), and 0.23 (95% CI, 0.04 to 1.29), respectively.",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sy_plwh",
+   "label": "Syphilis",
+   "value": 0.23,
+   "ci_low": 0.04,
+   "ci_high": 1.29,
+   "source_quote": "in the PLWH cohort, the relative risks were 0.43 (95% CI, 0.26 to 0.71), 0.26 (95% CI, 0.12 to 0.57), and 0.23 (95% CI, 0.04 to 1.29), respectively.",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "g3",
+   "label": "Grade 3 adverse events attributed to doxycycline",
+   "value": 5,
+   "unit": "",
+   "source_quote": "Five grade 3 adverse events and no serious adverse events were attributed to doxycycline.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "tr_doxy",
+   "label": "Tetracycline-resistant gonorrhea, doxycycline groups (of 13 cultures)",
+   "value": 5,
+   "unit": "",
+   "arm": "doxy",
+   "source_quote": "Of the participants with gonorrhea culture available, tetracycline-resistant gonorrhea occurred in 5 of 13 in the doxycycline groups and 2 of 16 in the standard-care groups.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "tr_sc",
+   "label": "Tetracycline-resistant gonorrhea, standard care (of 16 cultures)",
+   "value": 2,
+   "unit": "",
+   "arm": "sc",
+   "source_quote": "Of the participants with gonorrhea culture available, tetracycline-resistant gonorrhea occurred in 5 of 13 in the doxycycline groups and 2 of 16 in the standard-care groups.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sa_doxy",
+   "label": "Doxycycline-resistant S. aureus overall, doxycycline groups",
+   "value": 5,
+   "unit": "%",
+   "arm": "doxy",
+   "source_quote": "doxycycline-resistant S. aureus isolated between the doxycycline groups and the standard-care groups (5% and 4%, respectively).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sa_sc",
+   "label": "Doxycycline-resistant S. aureus overall, standard care",
+   "value": 4,
+   "unit": "%",
+   "arm": "sc",
+   "source_quote": "doxycycline-resistant S. aureus isolated between the doxycycline groups and the standard-care groups (5% and 4%, respectively).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "nnt",
+   "label": "Number needed to treat (per quarter with an STI prevented)",
+   "value": 5,
+   "unit": "",
+   "source_quote": "The number needed to treat is approximately 5 to prevent a quarter with an STI end-point event",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  }
+ ],
+ "figures": [
+  {
+   "id": "f_primary",
+   "type": "grouped",
+   "title": "Quarterly visits with at least one STI (primary end point)",
+   "number_ids": [
+    "prep_doxy",
+    "prep_sc",
+    "plwh_doxy",
+    "plwh_sc"
+   ],
+   "groups": [
+    {
+     "label": "PrEP cohort",
+     "ids": [
+      "prep_doxy",
+      "prep_sc"
+     ]
+    },
+    {
+     "label": "People living with HIV",
+     "ids": [
+      "plwh_doxy",
+      "plwh_sc"
+     ]
+    }
+   ],
+   "series_labels": [
+    "Doxy-PEP",
+    "Standard care"
+   ],
+   "y_label": "Quarterly visits with an STI (%)",
+   "caption": "In the PLWH cohort, at least one STI was diagnosed in 36 of 305 quarterly visits (11.8%) in the doxycycline group and 39 of 128 quarterly visits (30.5%) in the standard-care group, for an absolute difference of −18.7 percentage points",
+   "alt": "Grouped bar chart: STIs at 10.7 versus 31.9 percent of quarterly visits in the PrEP cohort and 11.8 versus 30.5 percent in the PLWH cohort, doxy-PEP versus standard care."
+  },
+  {
+   "id": "f_rr_prep",
+   "type": "forest",
+   "title": "Relative risk by infection: PrEP cohort",
+   "number_ids": [
+    "prep_rr",
+    "gc_prep",
+    "ct_prep",
+    "sy_prep"
+   ],
+   "null_value": 1,
+   "y_label": "Relative risk (left of 1 favors doxy-PEP)",
+   "caption": "in the PrEP cohort, the relative risks were 0.45 (95% CI, 0.32 to 0.65) for gonorrhea, 0.12 (95% CI, 0.05 to 0.25) for chlamydia, and 0.13 (95% CI, 0.03 to 0.59) for syphilis",
+   "alt": "Forest plot for the PrEP cohort: any STI 0.34, gonorrhea 0.45, chlamydia 0.12, syphilis 0.13, all with intervals below 1."
+  },
+  {
+   "id": "f_rr_plwh",
+   "type": "forest",
+   "title": "Relative risk by infection: people living with HIV",
+   "number_ids": [
+    "plwh_rr",
+    "gc_plwh",
+    "ct_plwh",
+    "sy_plwh"
+   ],
+   "null_value": 1,
+   "y_label": "Relative risk (left of 1 favors doxy-PEP)",
+   "caption": "in the PLWH cohort, the relative risks were 0.43 (95% CI, 0.26 to 0.71), 0.26 (95% CI, 0.12 to 0.57), and 0.23 (95% CI, 0.04 to 1.29), respectively.",
+   "alt": "Forest plot for the PLWH cohort: any STI 0.38, gonorrhea 0.43, chlamydia 0.26, syphilis 0.23 with an interval up to 1.29 that crosses 1."
+  }
+ ],
+ "hero_findings": [
+  {
+   "number_id": "prep_doxy",
+   "figure_id": "f_primary",
+   "headline": "Quarterly visits with an STI on doxy-PEP, PrEP cohort (standard care: 31.9%)"
+  },
+  {
+   "number_id": "plwh_doxy",
+   "figure_id": "f_primary",
+   "headline": "Quarterly visits with an STI on doxy-PEP, people living with HIV (standard care: 30.5%)"
+  },
+  {
+   "number_id": "ct_prep",
+   "figure_id": "f_rr_prep",
+   "headline": "Relative risk of chlamydia with doxy-PEP, PrEP cohort; gonorrhea fell less (0.45)"
+  },
+  {
+   "number_id": "nnt",
+   "figure_id": null,
+   "headline": "About this many people on doxy-PEP prevent one quarter with an STI"
+  }
+ ],
+ "must_include_map": [
+  {
+   "excerpt": "for an absolute difference of −21.2 percentage points and a relative risk of 0.34 (95% confidence interval [CI], 0.24 to 0.46; P<0.001)",
+   "section": "results"
+  },
+  {
+   "excerpt": "for an absolute difference of −18.7 percentage points and a relative risk of 0.38 (95% CI, 0.24 to 0.60; P<0.001)",
+   "section": "results"
+  },
+  {
+   "excerpt": "The combined incidence of gonorrhea, chlamydia, and syphilis was lower by two thirds with doxycycline postexposure prophylaxis than with standard care, a finding that supports its use among MSM with recent bacterial STIs.",
+   "section": "conclusions"
+  }
+ ]
+}

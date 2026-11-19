@@ -1,0 +1,100 @@
+Q_N = "MODIFY I and MODIFY II, involving 2655 adults receiving oral standard-of-care antibiotics for primary or recurrent C. difficile infection."
+Q_M1 = "(MODIFY I: 17% [67 of 386] vs. 28% [109 of 395]; adjusted difference, −10.1 percentage points; 95% confidence interval [CI], −15.9 to −4.3; P<0.001;"
+Q_M2 = "MODIFY II: 16% [62 of 395] vs. 26% [97 of 378]; adjusted difference, −9.9 percentage points; 95% CI, −15.5 to −4.3; P<0.001)"
+Q_C1 = "(MODIFY I: 16% [61 of 383] vs. 28% [109 of 395]; adjusted difference, −11.6 percentage points; 95% CI, −17.4 to −5.9; P<0.001;"
+Q_C2 = "MODIFY II: 15% [58 of 390] vs. 26% [97 of 378]; adjusted difference, −10.7 percentage points; 95% CI, −16.4 to −5.1; P<0.001)"
+Q_CURE = "The rates of initial clinical cure were 80% with bezlotoxumab alone, 73% with actoxumab plus bezlotoxumab, and 80% with placebo; the rates of sustained cure (initial clinical cure without recurrent infection in 12 weeks) were 64%, 58%, and 54%, respectively."
+Q_NNT = "The number needed to treat to prevent one episode of recurrent C. difficile infection was 10; it was 6 among participants 65 years of age or older and those with previous C. difficile infection."
+Q_RISK = "Our trials included a substantial percentage of participants (77%) who had one or more risk factors for recurrent C. difficile infection or for adverse outcomes related to C. difficile infection"
+Q_SITES = "MODIFY I and MODIFY II were randomized, double-blind, placebo-controlled trials conducted at 322 sites in 30 countries"
+Q_CONC = "Among participants receiving antibiotic treatment for primary or recurrent C. difficile infection, bezlotoxumab was associated with a substantially lower rate of recurrent infection than placebo and had a safety profile similar to that of placebo."
+
+SPEC = dict(
+ slug="modify-2017", pdf="modify-i-ii-2017", topic="C. diff",
+ short_name="MODIFY I/II", taskbar_label="MODIFY",
+ title="Bezlotoxumab for Prevention of Recurrent Clostridium difficile Infection",
+ h1="MODIFY I and II: Bezlotoxumab for Prevention of Recurrent <i>Clostridium difficile</i> Infection",
+ authors="Wilcox MH, Gerding DN, Poxton IR, et al.", journal="N Engl J Med", year=2017, volume_pages="376(4):305-317",
+ pmid="28121498", doi="10.1056/NEJMoa1602615",
+ seo_title="MODIFY I/II Trials (NEJM 2017): Bezlotoxumab for Recurrent C. diff",
+ seo_desc="MODIFY I and II: a single infusion of bezlotoxumab, an antibody against C. difficile toxin B, cut 12-week recurrence by about 10 percentage points. Video and charts.",
+ one_liner="12-week recurrence {{n:m1_bez}} with bezlotoxumab vs {{n:m1_pbo}} with placebo in MODIFY I (and {{n:m2_bez}} vs {{n:m2_pbo}} in MODIFY II).",
+ one_liner_plain="A single bezlotoxumab infusion lowered C. difficile recurrence",
+ arms={"bez": "intervention", "pbo": "comparator", "combo": "neutral"},
+ related=[("/papers/gbd-amr-2022/", "GBD AMR: the global burden of resistance"), ("/papers/yahav-2019/", "7 vs 14 days for gram-negative bacteremia")],
+ sections=dict(
+  background="<i>C. difficile</i> is the most common cause of infectious diarrhea in hospitalized patients in high-income countries, and recurrence after antibiotic treatment is common. Antibiotics treat the episode but keep disrupting the gut flora that would normally hold <i>C. difficile</i> in check. Actoxumab and bezlotoxumab are human monoclonal antibodies that neutralize toxin A and toxin B. MODIFY I and II tested whether a single infusion, added to standard antibiotics, could prevent the next episode.",
+  methods={
+   "Design": "Two double-blind, randomized, placebo-controlled phase 3 trials at 322 sites in 30 countries (2011 to 2015). Randomization was stratified by the standard-of-care antibiotic and by hospitalization status.",
+   "Population": "{{n:n_total}} adults receiving oral standard-of-care antibiotics (metronidazole, vancomycin, or fidaxomicin) for primary or recurrent <i>C. difficile</i> infection.",
+   "Intervention": "A single 60-minute IV infusion of bezlotoxumab 10 mg/kg, or actoxumab plus bezlotoxumab (10 mg/kg each). An actoxumab-alone arm in MODIFY I was stopped after a planned interim analysis.",
+   "Comparator": "Placebo infusion, on top of the same standard-of-care antibiotics.",
+   "Primary endpoint": "Recurrent infection (a new episode after initial clinical cure) within 12 weeks after the infusion, in the modified intention-to-treat population.",
+   "Follow-up": "12 weeks after infusion.",
+  },
+  methods_note="{{n:risk}} of participants had at least one risk factor for recurrence or a bad outcome, such as age 65 or older, a previous episode, compromised immunity, or severe infection.",
+  results=[
+   "In both trials, recurrence was lower with bezlotoxumab than with placebo: {{n:m1_bez}} versus {{n:m1_pbo}} in MODIFY I (adjusted difference {{n:m1_diff}}) and {{n:m2_bez}} versus {{n:m2_pbo}} in MODIFY II (adjusted difference {{n:m2_diff}}). Adding actoxumab gave similar reductions ({{n:c1_diff}} and {{n:c2_diff}}) without improving efficacy.",
+   {"quote": Q_M1 + " " + Q_M2},
+   {"fig": "f_primary"}, {"fig": "f_diff"},
+   "Bezlotoxumab did not change how many people got better from the current episode (initial clinical cure {{n:cure_bez}} with bezlotoxumab, {{n:cure_pbo}} with placebo). What it changed was what came next: sustained cure, meaning cure without recurrence over 12 weeks, was {{n:sus_bez}} versus {{n:sus_pbo}} (actoxumab plus bezlotoxumab: {{n:sus_combo}}).",
+   {"fig": "f_cure"},
+   "The number needed to treat to prevent one recurrence was {{n:nnt}} overall, and {{n:nnt_hi}} among participants aged 65 or older and those with a previous episode. Adverse event rates were similar across groups; the most common were diarrhea and nausea.",
+  ],
+  conclusions="Among people receiving antibiotics for primary or recurrent <i>C. difficile</i> infection, a single infusion of bezlotoxumab was associated with a substantially lower rate of recurrence than placebo and had a safety profile similar to placebo. Adding actoxumab did not improve efficacy.",
+  limitations="The standard-of-care antibiotic was chosen by investigators rather than standardized (randomization was stratified by it, and the effect did not depend on it). The timing of the infusion relative to symptom onset varied widely. Severity at baseline is probably underestimated, because most participants were already on antibiotics when it was assessed. Other prevention strategies such as fecal microbiota transplantation were not allowed, so combined effects are unknown, and the number of people exposed to bezlotoxumab was too small to detect rare harms.",
+  practice_impact="MODIFY made toxin neutralization a recurrence-prevention tool: bezlotoxumab was approved and later recommended as an adjunct for patients with recurrent <i>C. difficile</i> or a high risk of recurrence. It mattered most for older patients and those with prior episodes (number needed to treat 6). Prescribing information later added caution in patients with heart failure, and the manufacturer has since discontinued the product, but MODIFY remains the proof that preventing recurrence is possible without changing the antibiotic.",
+ ),
+ numbers=[
+  dict(id="n_total", label="Adults enrolled across both trials", value=2655, unit=" adults", source_quote=Q_N),
+  dict(id="sites", label="Sites", value=322, unit=" sites", source_quote=Q_SITES),
+  dict(id="m1_bez", label="Recurrence, MODIFY I: bezlotoxumab", value=17, unit="%", arm="bez", source_quote=Q_M1),
+  dict(id="m1_pbo", label="Recurrence, MODIFY I: placebo", value=28, unit="%", arm="pbo", source_quote=Q_M1),
+  dict(id="m1_diff", label="MODIFY I: bezlotoxumab", value=-10.1, unit=" percentage points", ci_low=-15.9, ci_high=-4.3, source_quote=Q_M1),
+  dict(id="m2_bez", label="Recurrence, MODIFY II: bezlotoxumab", value=16, unit="%", arm="bez", source_quote=Q_M2),
+  dict(id="m2_pbo", label="Recurrence, MODIFY II: placebo", value=26, unit="%", arm="pbo", source_quote=Q_M2),
+  dict(id="m2_diff", label="MODIFY II: bezlotoxumab", value=-9.9, unit=" percentage points", ci_low=-15.5, ci_high=-4.3, source_quote=Q_M2),
+  dict(id="c1_diff", label="MODIFY I: actoxumab + bezlotoxumab", value=-11.6, unit=" percentage points", ci_low=-17.4, ci_high=-5.9, source_quote=Q_C1),
+  dict(id="c2_diff", label="MODIFY II: actoxumab + bezlotoxumab", value=-10.7, unit=" percentage points", ci_low=-16.4, ci_high=-5.1, source_quote=Q_C2),
+  dict(id="cure_bez", label="Initial clinical cure, bezlotoxumab", value=80, unit="%", arm="bez", source_quote=Q_CURE),
+  dict(id="cure_combo", label="Initial clinical cure, actoxumab + bezlotoxumab", value=73, unit="%", arm="combo", source_quote=Q_CURE),
+  dict(id="cure_pbo", label="Initial clinical cure, placebo", value=80, unit="%", arm="pbo", source_quote=Q_CURE),
+  dict(id="sus_bez", label="Sustained cure, bezlotoxumab", value=64, unit="%", arm="bez", source_quote=Q_CURE),
+  dict(id="sus_pbo", label="Sustained cure, placebo", value=54, unit="%", arm="pbo", source_quote=Q_CURE),
+  dict(id="sus_combo", label="Sustained cure, actoxumab + bezlotoxumab", value=58, unit="%", arm="combo", source_quote=Q_CURE),
+  dict(id="nnt", label="Number needed to treat, overall", value=10, unit="", source_quote=Q_NNT),
+  dict(id="nnt_hi", label="Number needed to treat, age ≥65 or previous C. difficile", value=6, unit="", source_quote=Q_NNT),
+  dict(id="risk", label="Participants with ≥1 risk factor", value=77, unit="%", source_quote=Q_RISK),
+ ],
+ figures=[
+  dict(id="f_primary", type="grouped", title="Recurrent C. difficile infection within 12 weeks (primary end point)", number_ids=["m1_bez", "m1_pbo", "m2_bez", "m2_pbo"],
+       groups=[{"label": "MODIFY I", "ids": ["m1_bez", "m1_pbo"]}, {"label": "MODIFY II", "ids": ["m2_bez", "m2_pbo"]}], series_labels=["Bezlotoxumab", "Placebo"],
+       y_label="Recurrence within 12 weeks (%)", caption=Q_M2,
+       alt="Grouped bar chart: recurrence 17 versus 28 percent in MODIFY I and 16 versus 26 percent in MODIFY II, bezlotoxumab versus placebo."),
+  dict(id="f_diff", type="forest", title="Adjusted difference in recurrence vs placebo", number_ids=["m1_diff", "m2_diff", "c1_diff", "c2_diff"],
+       series_labels=["MODIFY I: bezlotoxumab", "MODIFY II: bezlotoxumab", "MODIFY I: + actoxumab", "MODIFY II: + actoxumab"],
+       y_label="Percentage points vs placebo (left of 0 favors antibody)", caption=Q_C1,
+       alt="Forest plot of adjusted differences in recurrence versus placebo: bezlotoxumab -10.1 and -9.9 percentage points, actoxumab plus bezlotoxumab -11.6 and -10.7, all with intervals below zero."),
+  dict(id="f_cure", type="grouped", title="Initial cure vs sustained cure (combined data)", number_ids=["cure_bez", "cure_pbo", "sus_bez", "sus_pbo"],
+       groups=[{"label": "Initial clinical cure", "ids": ["cure_bez", "cure_pbo"]}, {"label": "Sustained cure at 12 weeks", "ids": ["sus_bez", "sus_pbo"]}], series_labels=["Bezlotoxumab", "Placebo"],
+       y_label="Participants (%)", caption=Q_CURE,
+       alt="Grouped bar chart: initial clinical cure 80 versus 80 percent and sustained cure 64 versus 54 percent, bezlotoxumab versus placebo."),
+ ],
+ hero=[
+  ("m1_bez", "Recurrence within 12 weeks with bezlotoxumab, MODIFY I (placebo: {{n:m1_pbo}})", "f_primary",
+   "MODIFY I recurrence: {{n:m1_bez}} with bezlotoxumab versus {{n:m1_pbo}} with placebo.", [("m1_bez", "Bezlotoxumab"), ("m1_pbo", "Placebo")]),
+  ("m2_bez", "Recurrence within 12 weeks with bezlotoxumab, MODIFY II (placebo: {{n:m2_pbo}})", "f_primary",
+   "MODIFY II: {{n:m2_bez}} versus {{n:m2_pbo}}. The same result twice.", [("m2_bez", "Bezlotoxumab"), ("m2_pbo", "Placebo")]),
+  ("sus_bez", "Sustained cure at 12 weeks with bezlotoxumab (placebo: {{n:sus_pbo}})", "f_cure",
+   "Sustained cure: {{n:sus_bez}} versus {{n:sus_pbo}}.", [("sus_bez", "Bezlotoxumab"), ("sus_pbo", "Placebo")]),
+  ("nnt_hi", "Number needed to treat in people aged 65+ or with a previous episode (overall: {{n:nnt}})", None,
+   "Number needed to treat: {{n:nnt}} overall, {{n:nnt_hi}} in older patients or after a previous episode.", None),
+ ],
+ who_id="n_total", who_label="adults on antibiotics for primary or recurrent C. difficile infection", who_design="Two double-blind, placebo-controlled phase 3 trials · 322 sites in 30 countries",
+ vo_title="C. difficile keeps coming back. Can an antibody against its toxin stop that?",
+ vo_who="MODIFY I and II enrolled {{n:n_total}} adults being treated for C. difficile.",
+ video_outro="One infusion of bezlotoxumab, an antibody against toxin B, lowered 12-week recurrence; the benefit was largest in high-risk patients.",
+ vo_outro="Bezlotoxumab lowered recurrence. N Engl J Med, 2017. Scroll for the full breakdown.",
+ must_include=[(Q_M1, "results"), (Q_M2, "results"), (Q_CONC, "conclusions")],
+ broll=["Slow push-in on an IV infusion pump in a quiet hospital room, no text", "Lab technician placing a culture plate into an anaerobic chamber, no text"],
+)
