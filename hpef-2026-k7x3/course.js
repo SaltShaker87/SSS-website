@@ -151,7 +151,14 @@ var HPEF_COURSE = {
         }
       ],
       assignments: [
-        { fellow: "Everyone — Design a survey", questions: ["Build a short survey, ideally one you could use for your project, using the concepts from the readings.", "Be ready to walk us through it. We’ll improve each one together as a group."] }
+        {
+          fellow: "Everyone",
+          questions: [
+            "Go to https://www.mededportal.org, find a medical education study that has a survey, and be ready to discuss what you liked or did not like about it.",
+            "Build a short survey, ideally one you could use for your project, using the concepts from the readings.",
+            "Be ready to walk us through it. We’ll improve each one together as a group."
+          ]
+        }
       ]
     },
     {
