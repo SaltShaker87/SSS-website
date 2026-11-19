@@ -304,6 +304,7 @@
       if (session.overview && String(session.overview).trim()) {
         body += section("Overview", '<div class="overview">' + paragraphs(session.overview) + "</div>");
       }
+      if (files.length) body += section(plural(files.length, "File", "Files"), fileList(files));
       if (readings.length) body += section(plural(readings.length, "Main reading", "Main readings"), readingList(readings));
       if (optional.length) body += section(plural(optional.length, "Optional reading", "Optional readings"), readingList(optional));
       if (assignments.length) body += section(plural(assignments.length, "Assignment", "Assignments"), assignmentList(assignments));
@@ -313,7 +314,6 @@
       if (references.length) {
         body += section(plural(references.length, "Other article referenced", "Other articles referenced"), readingList(references));
       }
-      if (files.length) body += section(plural(files.length, "File", "Files"), fileList(files));
       if (!hasDetails(session)) body += '<p class="notice soon">Details coming soon.</p>';
 
       html += '<article class="' + classes + '" id="' + esc(item.id) + '" tabindex="-1">' +
