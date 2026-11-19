@@ -1,0 +1,108 @@
+Q_N = "A total of 43,548 participants underwent randomization, of whom 43,448 received injections: 21,720 with BNT162b2 and 21,728 with placebo."
+Q_VE = "There were 8 cases of Covid-19 with onset at least 7 days after the second dose among participants assigned to receive BNT162b2 and 162 cases among those assigned to placebo; BNT162b2 was 95% effective in preventing Covid-19 (95% credible interval, 90.3 to 97.6)."
+Q_SEV = "Among 10 cases of severe Covid-19 with onset after the first dose, 9 occurred in placebo recipients and 1 in a BNT162b2 recipient."
+Q_D1 = "Between the first dose and the second dose, 39 cases in the BNT162b2 group and 82 cases in the placebo group were observed, resulting in a vaccine efficacy of 52% (95% CI, 29.5 to 68.4) during this interval"
+Q_PAIN = "Pain was reported less frequently among participants older than 55 years of age (71% reported pain after the first dose; 66% after the second dose) than among younger participants (83% after the first dose; 78% after the second dose)."
+Q_SYS = "The most commonly reported systemic events were fatigue and headache (59% and 52%, respectively, after the second dose, among younger vaccine recipients; 51% and 39% among older recipients)"
+Q_SYSP = "although fatigue and headache were also reported by many placebo recipients (23% and 24%, respectively, after the second dose, among younger vaccine recipients; 17% and 14% among older recipients)"
+Q_SAE = "The incidence of serious adverse events was similar in the vaccine and placebo groups (0.6% and 0.5%, respectively)."
+Q_SITES = "43,548 persons 16 years of age or older underwent randomization at 152 sites worldwide"
+Q_DOSE = "we randomly assigned persons 16 years of age or older in a 1:1 ratio to receive two doses, 21 days apart, of either placebo or the BNT162b2 vaccine candidate (30 μg per dose)."
+Q_CONC = "A two-dose regimen of BNT162b2 conferred 95% protection against Covid-19 in persons 16 years of age or older. Safety over a median of 2 months was similar to that of other viral vaccines."
+
+SPEC = dict(
+ slug="c4591001-2020", pdf="c4591001-2020", topic="COVID-19",
+ short_name="C4591001", taskbar_label="BNT162b2",
+ title="Safety and Efficacy of the BNT162b2 mRNA Covid-19 Vaccine",
+ h1="C4591001: Safety and Efficacy of the BNT162b2 mRNA Covid-19 Vaccine",
+ authors="Polack FP, Thomas SJ, Kitchin N, et al.", journal="N Engl J Med", year=2020, volume_pages="383(27):2603-2615",
+ pmid="33301246", doi="10.1056/NEJMoa2034577",
+ seo_title="BNT162b2 mRNA Covid-19 Vaccine Trial (NEJM 2020)",
+ seo_desc="The C4591001 trial: two doses of the BNT162b2 mRNA vaccine were 95% effective against Covid-19, with 8 vs 162 cases. Video and charts from the published trial.",
+ one_liner="{{n:ve}} vaccine efficacy: {{n:cases_vax}} Covid-19 cases with BNT162b2 vs {{n:cases_pbo}} with placebo.",
+ one_liner_plain="Two doses of BNT162b2 were 95% effective against Covid-19",
+ arms={"vax": "intervention", "pbo": "comparator"},
+ related=[("/papers/aresvi-006-2023/", "AReSVi-006: RSV vaccine in older adults"), ("/papers/recovery-dexamethasone-2021/", "RECOVERY: dexamethasone for Covid-19")],
+ sections=dict(
+  background="By late 2020, SARS-CoV-2 had infected tens of millions of people, and safe, effective vaccines were needed urgently. BNT162b2 is a lipid nanoparticle-formulated, nucleoside-modified RNA vaccine that encodes a prefusion-stabilized, membrane-anchored version of the full-length SARS-CoV-2 spike protein. C4591001 was its pivotal efficacy trial: could a never-before-licensed vaccine platform prevent Covid-19, and was it safe?",
+  methods={
+   "Design": "Ongoing multinational, placebo-controlled, observer-blinded pivotal efficacy trial (phase 2/3 portion) at 152 sites in the United States, Argentina, Brazil, South Africa, Germany, and Turkey; 1:1 randomization.",
+   "Population": "People 16 years of age or older, including those with stable chronic medical conditions. {{n:n_rand}} underwent randomization; {{n:n_vax}} received BNT162b2 and {{n:n_pbo}} received placebo.",
+   "Intervention": "Two doses of BNT162b2 (30 &micro;g per dose), given intramuscularly 21 days apart.",
+   "Comparator": "Two doses of saline placebo, 21 days apart.",
+   "Primary endpoint": "Efficacy against laboratory-confirmed Covid-19 with onset at least 7 days after the second dose, and safety (reactogenicity and adverse events).",
+   "Follow-up": "A median of 2 months after the second dose for the main safety data set; the trial was designed to follow participants for 2 years.",
+  },
+  methods_note="Efficacy was estimated with a Bayesian model, which is why the interval around the headline number is a <i>credible</i> interval rather than a confidence interval.",
+  results=[
+   "There were {{n:cases_vax}} cases of Covid-19 with onset at least 7 days after the second dose in the vaccine group and {{n:cases_pbo}} in the placebo group. That works out to {{n:ve}} vaccine efficacy (95% credible interval 90.3 to 97.6), and similar efficacy (generally 90 to 100%) held across subgroups by age, sex, race, ethnicity, body-mass index, and coexisting conditions.",
+   {"quote": Q_VE},
+   {"fig": "f_cases"}, {"fig": "f_ve"},
+   "Protection started early. Between the first and second doses, efficacy was already {{n:ve_d1}} ({{n:d1_vax}} vs {{n:d1_pbo}} cases). Of the 10 cases of severe Covid-19 after the first dose, {{n:sev_pbo}} were in placebo recipients and {{n:sev_vax}} in a vaccine recipient.",
+   {"fig": "f_severe"},
+   "Reactogenicity was mostly short-lived and mild to moderate. Injection-site pain was the most common local reaction: {{n:pain_y1}} of younger participants after dose 1 and {{n:pain_o1}} of those older than 55. Fatigue and headache were the most common systemic events, more frequent after dose 2 (younger recipients: {{n:fat_y}} and {{n:head_y}}), though many placebo recipients reported them too ({{n:fat_yp}} and {{n:head_yp}}). Serious adverse events were similar: {{n:sae_vax}} versus {{n:sae_pbo}}.",
+   {"fig": "f_sys"},
+  ],
+  conclusions="A two-dose regimen of BNT162b2 conferred 95% protection against Covid-19 in people 16 years of age or older, and safety over a median of 2 months was similar to that of other viral vaccines.",
+  limitations="With about 19,000 participants per group in the main safety subset, the trial could not reliably detect less common adverse events. Follow-up was a median of 2 months after dose 2, so longer-term safety and the duration of protection were unknown. The report does not address whether vaccination prevents asymptomatic infection, and the high efficacy left too few breakthrough cases to establish a correlate of protection. Keeping a placebo group for the planned 2 years became ethically and practically impossible once the vaccine was authorized.",
+  practice_impact="C4591001 was the first phase 3 efficacy result for an mRNA vaccine, and it led straight to emergency authorization and mass vaccination in late 2020. It proved the mRNA platform at scale and set the template for rapid, large, event-driven vaccine trials.",
+ ),
+ numbers=[
+  dict(id="n_rand", label="Participants randomized", value=43548, unit=" participants", source_quote=Q_N),
+  dict(id="n_vax", label="Received BNT162b2", value=21720, unit=" participants", source_quote=Q_N),
+  dict(id="n_pbo", label="Received placebo", value=21728, unit=" participants", source_quote=Q_N),
+  dict(id="sites", label="Trial sites", value=152, unit=" sites", source_quote=Q_SITES),
+  dict(id="cases_vax", label="Covid-19 cases ≥7 days after dose 2, BNT162b2", value=8, unit="", arm="vax", source_quote=Q_VE),
+  dict(id="cases_pbo", label="Covid-19 cases ≥7 days after dose 2, placebo", value=162, unit="", arm="pbo", source_quote=Q_VE),
+  dict(id="ve", label="After dose 2 (primary end point)", value=95, unit="%", ci_low=90.3, ci_high=97.6, source_quote=Q_VE),
+  dict(id="d1_vax", label="Cases between doses, BNT162b2", value=39, unit="", arm="vax", source_quote=Q_D1),
+  dict(id="d1_pbo", label="Cases between doses, placebo", value=82, unit="", arm="pbo", source_quote=Q_D1),
+  dict(id="ve_d1", label="Between dose 1 and dose 2", value=52, unit="%", ci_low=29.5, ci_high=68.4, source_quote=Q_D1),
+  dict(id="sev_vax", label="Severe Covid-19 after dose 1, BNT162b2", value=1, unit="", arm="vax", source_quote=Q_SEV),
+  dict(id="sev_pbo", label="Severe Covid-19 after dose 1, placebo", value=9, unit="", arm="pbo", source_quote=Q_SEV),
+  dict(id="pain_y1", label="Injection-site pain after dose 1, age 16-55", value=83, unit="%", arm="vax", source_quote=Q_PAIN),
+  dict(id="pain_y2", label="Injection-site pain after dose 2, age 16-55", value=78, unit="%", arm="vax", source_quote=Q_PAIN),
+  dict(id="pain_o1", label="Injection-site pain after dose 1, age >55", value=71, unit="%", arm="vax", source_quote=Q_PAIN),
+  dict(id="pain_o2", label="Injection-site pain after dose 2, age >55", value=66, unit="%", arm="vax", source_quote=Q_PAIN),
+  dict(id="fat_y", label="Fatigue after dose 2, younger vaccine recipients", value=59, unit="%", arm="vax", source_quote=Q_SYS),
+  dict(id="head_y", label="Headache after dose 2, younger vaccine recipients", value=52, unit="%", arm="vax", source_quote=Q_SYS),
+  dict(id="fat_o", label="Fatigue after dose 2, older vaccine recipients", value=51, unit="%", arm="vax", source_quote=Q_SYS),
+  dict(id="head_o", label="Headache after dose 2, older vaccine recipients", value=39, unit="%", arm="vax", source_quote=Q_SYS),
+  dict(id="fat_yp", label="Fatigue after dose 2, younger placebo recipients", value=23, unit="%", arm="pbo", source_quote=Q_SYSP),
+  dict(id="head_yp", label="Headache after dose 2, younger placebo recipients", value=24, unit="%", arm="pbo", source_quote=Q_SYSP),
+  dict(id="fat_op", label="Fatigue after dose 2, older placebo recipients", value=17, unit="%", arm="pbo", source_quote=Q_SYSP),
+  dict(id="head_op", label="Headache after dose 2, older placebo recipients", value=14, unit="%", arm="pbo", source_quote=Q_SYSP),
+  dict(id="sae_vax", label="Serious adverse events, BNT162b2", value=0.6, unit="%", arm="vax", source_quote=Q_SAE),
+  dict(id="sae_pbo", label="Serious adverse events, placebo", value=0.5, unit="%", arm="pbo", source_quote=Q_SAE),
+ ],
+ figures=[
+  dict(id="f_cases", type="bar", title="Covid-19 cases with onset at least 7 days after dose 2", number_ids=["cases_vax", "cases_pbo"], series_labels=["BNT162b2", "Placebo"], y_label="Cases", caption=Q_VE,
+       alt="Bar chart: 8 Covid-19 cases in the BNT162b2 group versus 162 in the placebo group."),
+  dict(id="f_ve", type="forest", title="Vaccine efficacy after dose 2 and between doses", number_ids=["ve", "ve_d1"], series_labels=["After dose 2", "Between doses"], ci_label="95% interval",
+       y_label="Vaccine efficacy (%)", caption=Q_D1,
+       alt="Interval plot: vaccine efficacy 95 percent (95 percent credible interval 90.3 to 97.6) after dose 2 and 52 percent (95 percent CI 29.5 to 68.4) between doses."),
+  dict(id="f_severe", type="bar", title="Severe Covid-19 after the first dose", number_ids=["sev_vax", "sev_pbo"], series_labels=["BNT162b2", "Placebo"], y_label="Severe cases", caption=Q_SEV,
+       alt="Bar chart: 1 severe Covid-19 case with BNT162b2 versus 9 with placebo."),
+  dict(id="f_sys", type="grouped", title="Fatigue and headache after dose 2 (reactogenicity subset)", number_ids=["fat_y", "fat_yp", "head_y", "head_yp", "fat_o", "fat_op", "head_o", "head_op"],
+       groups=[{"label": "Fatigue, 16-55 y", "ids": ["fat_y", "fat_yp"]}, {"label": "Headache, 16-55 y", "ids": ["head_y", "head_yp"]}, {"label": "Fatigue, >55 y", "ids": ["fat_o", "fat_op"]}, {"label": "Headache, >55 y", "ids": ["head_o", "head_op"]}],
+       series_labels=["BNT162b2", "Placebo"], y_label="Participants reporting (%)", caption=Q_SYS,
+       alt="Grouped bar chart after dose 2: fatigue 59 versus 23 percent and headache 52 versus 24 percent in younger participants; fatigue 51 versus 17 percent and headache 39 versus 14 percent in older participants, vaccine versus placebo."),
+ ],
+ hero=[
+  ("ve", "Vaccine efficacy against Covid-19 from 7 days after dose 2 (95% credible interval 90.3 to 97.6)", "f_ve",
+   "BNT162b2 was {{n:ve}} effective against Covid-19.", None),
+  ("cases_pbo", "Covid-19 cases in the placebo group, versus {{n:cases_vax}} with BNT162b2", "f_cases",
+   "{{n:cases_pbo}} cases with placebo. Just {{n:cases_vax}} with the vaccine.", [("cases_vax", "BNT162b2"), ("cases_pbo", "Placebo")]),
+  ("ve_d1", "Efficacy already seen between dose 1 and dose 2", "f_ve",
+   "Protection started early: {{n:ve_d1}} efficacy between the two doses.", None),
+  ("sev_pbo", "Severe Covid-19 cases after dose 1 in placebo recipients, versus {{n:sev_vax}} with BNT162b2", "f_severe",
+   "Severe Covid-19: {{n:sev_pbo}} cases with placebo, {{n:sev_vax}} with the vaccine.", [("sev_vax", "BNT162b2"), ("sev_pbo", "Placebo")]),
+ ],
+ who_id="n_rand", who_label="participants aged 16 or older, randomized 1:1", who_design="Observer-blinded, placebo-controlled · 152 sites · two 30 μg doses, 21 days apart",
+ vo_title="Could a new mRNA vaccine prevent Covid-19?",
+ vo_who="The trial randomized {{n:n_rand}} people aged 16 and older.",
+ video_outro="The first mRNA vaccine efficacy result: 95% protection, and it launched mass Covid-19 vaccination.",
+ vo_outro="Two doses of BNT162b2 gave 95% protection. N Engl J Med, 2020. Scroll for the full breakdown.",
+ must_include=[(Q_VE, "results"), (Q_SEV, "results"), (Q_CONC, "conclusions")],
+ broll=["Gloved hands drawing a vaccine dose into a syringe, soft teal light, no text", "Row of vials on a lab rack under cool light, shallow depth of field, no text"],
+)

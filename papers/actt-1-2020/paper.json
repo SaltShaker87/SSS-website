@@ -1,0 +1,418 @@
+{
+ "slug": "actt-1-2020",
+ "topic": "COVID-19",
+ "one_liner": "Faster recovery: median {{n:rec_rdv}} with remdesivir vs {{n:rec_pbo}} with placebo (rate ratio for recovery {{n:rr_rec}}).",
+ "one_liner_plain": "Remdesivir shortened time to recovery in hospitalized Covid-19",
+ "arms": {
+  "rdv": "intervention",
+  "pbo": "comparator"
+ },
+ "citation": {
+  "title": "Remdesivir for the Treatment of Covid-19 — Final Report",
+  "short_name": "ACTT-1",
+  "authors": "Beigel JH, Tomashek KM, Dodd LE, et al.",
+  "journal": "N Engl J Med",
+  "year": 2020,
+  "volume_pages": "383(19):1813-1826",
+  "pmid": "32445440",
+  "doi": "10.1056/NEJMoa2007764",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32445440/",
+  "doi_url": "https://doi.org/10.1056/NEJMoa2007764"
+ },
+ "sections": {
+  "background": "Early in the pandemic, several drugs had been tried against Covid-19, but no antiviral had been shown to work. Remdesivir, an inhibitor of the viral RNA-dependent RNA polymerase, was an early candidate because it inhibits SARS-CoV-2 in vitro. ACTT-1 was the NIH-sponsored, double-blind, placebo-controlled test of whether it actually helped hospitalized patients. This page covers the final report.",
+  "methods": {
+   "design": "Double-blind, randomized, placebo-controlled trial at 60 trial sites and 13 subsites in the United States, Europe, and Asia; randomization stratified by site and disease severity.",
+   "population": "Adults hospitalized with Covid-19 and evidence of lower respiratory tract infection. {{n:n_total}} underwent randomization ({{n:n_rdv}} to remdesivir, {{n:n_pbo}} to placebo).",
+   "intervention": "Intravenous remdesivir: 200 mg loading dose on day 1, then 100 mg daily for up to 9 more days.",
+   "comparator": "Matching placebo for up to 10 days. Both groups received standard supportive care.",
+   "primary_endpoint": "Time to recovery: the first day, within 28 days after enrollment, in category 1, 2, or 3 of the eight-category ordinal scale (discharged, or hospitalized only for infection-control or other nonmedical reasons).",
+   "follow-up": "Daily assessment through day 29. The primary outcome was originally day-15 clinical status and was changed to time to recovery in response to outside evidence that Covid-19 can run a longer course."
+  },
+  "results": "Remdesivir shortened recovery: a median of {{n:rec_rdv}} versus {{n:rec_pbo}} with placebo (rate ratio for recovery {{n:rr_rec}}; 95% CI 1.12 to 1.49; P&lt;0.001). Patients on remdesivir were also more likely to be better on the ordinal scale at day 15 (odds ratio {{n:or15}}). The benefit was clearest in patients on low-flow oxygen (ordinal score 5; rate ratio {{n:rr_os5}}). Confidence intervals were wide for patients not on oxygen, on high-flow oxygen, or on mechanical ventilation or ECMO, where the rate ratio was {{n:rr_os7}}. Kaplan-Meier mortality by day 29 was {{n:m29_rdv}} with remdesivir versus {{n:m29_pbo}} with placebo (hazard ratio {{n:hr29}}; 95% CI 0.52 to 1.03), a difference that was not statistically significant. Serious adverse events were less common with remdesivir ({{n:sae_rdv}} vs {{n:sae_pbo}}), and the initial hospital stay was shorter (median {{n:stay_rdv}} vs {{n:stay_pbo}}).",
+  "conclusions": "Remdesivir was superior to placebo in shortening the time to recovery in adults hospitalized with Covid-19 and lower respiratory tract infection. The authors suggest it may also have prevented progression to more severe respiratory disease and reduced the use of scarce hospital resources.",
+  "limitations": "The mortality difference did not reach statistical significance. Subgroup estimates outside the low-flow oxygen group had wide confidence intervals, and the median recovery time for ventilated patients could not be estimated, suggesting follow-up was too short for that group. A normal saline placebo was used at some sites because matching placebo ran short, with the infusions masked to keep the blind.",
+  "practice_impact": "ACTT-1 was the first double-blind trial to show that an antiviral helps hospitalized Covid-19 patients. Remdesivir became a standard option for inpatients, especially those on low-flow oxygen, and the benefit persisted after adjusting for steroid use, suggesting it may add to dexamethasone."
+ },
+ "numbers": [
+  {
+   "id": "n_total",
+   "label": "Patients randomized",
+   "value": 1062,
+   "unit": " patients",
+   "source_quote": "A total of 1062 patients underwent randomization (with 541 assigned to remdesivir and 521 to placebo).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_rdv",
+   "label": "Assigned to remdesivir",
+   "value": 541,
+   "unit": " patients",
+   "source_quote": "A total of 1062 patients underwent randomization (with 541 assigned to remdesivir and 521 to placebo).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_pbo",
+   "label": "Assigned to placebo",
+   "value": 521,
+   "unit": " patients",
+   "source_quote": "A total of 1062 patients underwent randomization (with 541 assigned to remdesivir and 521 to placebo).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sites",
+   "label": "Trial sites",
+   "value": 60,
+   "unit": " sites",
+   "source_quote": "There were 60 trial sites and 13 subsites in the United States (45 sites), Denmark (8), the United Kingdom (5), Greece (4), Germany (3), Korea (2), Mexico (2), Spain (2), Japan (1), and Singapore (1).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rec_rdv",
+   "label": "Median time to recovery, remdesivir",
+   "value": 10,
+   "unit": " days",
+   "arm": "rdv",
+   "ci_low": 9,
+   "ci_high": 11,
+   "source_quote": "Those who received remdesivir had a median recovery time of 10 days (95% confidence interval [CI], 9 to 11), as compared with 15 days (95% CI, 13 to 18) among those who received placebo (rate ratio for recovery, 1.29; 95% CI, 1.12 to 1.49; P<0.001, by a log-rank test).",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rec_pbo",
+   "label": "Median time to recovery, placebo",
+   "value": 15,
+   "unit": " days",
+   "arm": "pbo",
+   "ci_low": 13,
+   "ci_high": 18,
+   "source_quote": "Those who received remdesivir had a median recovery time of 10 days (95% confidence interval [CI], 9 to 11), as compared with 15 days (95% CI, 13 to 18) among those who received placebo (rate ratio for recovery, 1.29; 95% CI, 1.12 to 1.49; P<0.001, by a log-rank test).",
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rr_rec",
+   "label": "Overall",
+   "value": 1.29,
+   "ci_low": 1.12,
+   "ci_high": 1.49,
+   "source_quote": "Those who received remdesivir had a median recovery time of 10 days (95% confidence interval [CI], 9 to 11), as compared with 15 days (95% CI, 13 to 18) among those who received placebo (rate ratio for recovery, 1.29; 95% CI, 1.12 to 1.49; P<0.001, by a log-rank test).",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "or15",
+   "label": "Odds ratio for better clinical status at day 15",
+   "value": 1.5,
+   "ci_low": 1.2,
+   "ci_high": 1.9,
+   "source_quote": "the patients who received remdesivir were found to be more likely than those who received placebo to have clinical improvement at day 15 (odds ratio, 1.5; 95% CI, 1.2 to 1.9, after adjustment for actual disease severity)",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rr_os4",
+   "label": "Score 4: no oxygen",
+   "value": 1.29,
+   "ci_low": 0.91,
+   "ci_high": 1.83,
+   "source_quote": "among patients with a baseline score of 4 and those with a baseline score of 6, the rate ratio estimates for recovery were 1.29 (95% CI, 0.91 to 1.83) and 1.09 (95% CI, 0.76 to 1.57), respectively.",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rr_os5",
+   "label": "Score 5: low-flow oxygen",
+   "value": 1.45,
+   "ci_low": 1.18,
+   "ci_high": 1.79,
+   "source_quote": "The rate ratio for recovery was largest among patients with a baseline ordinal score of 5 (rate ratio for recovery, 1.45; 95% CI, 1.18 to 1.79)",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rr_os6",
+   "label": "Score 6: high-flow oxygen or noninvasive ventilation",
+   "value": 1.09,
+   "ci_low": 0.76,
+   "ci_high": 1.57,
+   "source_quote": "among patients with a baseline score of 4 and those with a baseline score of 6, the rate ratio estimates for recovery were 1.29 (95% CI, 0.91 to 1.83) and 1.09 (95% CI, 0.76 to 1.57), respectively.",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rr_os7",
+   "label": "Score 7: mechanical ventilation or ECMO",
+   "value": 0.98,
+   "ci_low": 0.7,
+   "ci_high": 1.36,
+   "source_quote": "For those receiving mechanical ventilation or ECMO at enrollment (baseline ordinal score of 7), the rate ratio for recovery was 0.98 (95% CI, 0.70 to 1.36).",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "m15_rdv",
+   "label": "Mortality by day 15, remdesivir",
+   "value": 6.7,
+   "unit": "%",
+   "arm": "rdv",
+   "source_quote": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "m15_pbo",
+   "label": "Mortality by day 15, placebo",
+   "value": 11.9,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "m29_rdv",
+   "label": "Mortality by day 29, remdesivir",
+   "value": 11.4,
+   "unit": "%",
+   "arm": "rdv",
+   "source_quote": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "m29_pbo",
+   "label": "Mortality by day 29, placebo",
+   "value": 15.2,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "hr29",
+   "label": "Hazard ratio for death by day 29",
+   "value": 0.73,
+   "ci_low": 0.52,
+   "ci_high": 1.03,
+   "source_quote": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "unit": "",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sae_rdv",
+   "label": "Serious adverse events, remdesivir",
+   "value": 24.6,
+   "unit": "%",
+   "arm": "rdv",
+   "source_quote": "Serious adverse events were reported in 131 of the 532 patients who received remdesivir (24.6%) and in 163 of the 516 patients who received placebo (31.6%).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sae_pbo",
+   "label": "Serious adverse events, placebo",
+   "value": 31.6,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "Serious adverse events were reported in 131 of the 532 patients who received remdesivir (24.6%) and in 163 of the 516 patients who received placebo (31.6%).",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "stay_rdv",
+   "label": "Median initial hospital stay, remdesivir",
+   "value": 12,
+   "unit": " days",
+   "arm": "rdv",
+   "source_quote": "a shorter length of initial hospital stay (median, 12 days vs. 17 days)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "stay_pbo",
+   "label": "Median initial hospital stay, placebo",
+   "value": 17,
+   "unit": " days",
+   "arm": "pbo",
+   "source_quote": "a shorter length of initial hospital stay (median, 12 days vs. 17 days)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  }
+ ],
+ "figures": [
+  {
+   "id": "f_rec",
+   "type": "bar",
+   "title": "Median time to recovery (primary outcome)",
+   "number_ids": [
+    "rec_rdv",
+    "rec_pbo"
+   ],
+   "series_labels": [
+    "Remdesivir",
+    "Placebo"
+   ],
+   "y_label": "Median days to recovery",
+   "caption": "Those who received remdesivir had a median recovery time of 10 days (95% confidence interval [CI], 9 to 11), as compared with 15 days (95% CI, 13 to 18) among those who received placebo (rate ratio for recovery, 1.29; 95% CI, 1.12 to 1.49; P<0.001, by a log-rank test).",
+   "alt": "Bar chart: median time to recovery was 10 days with remdesivir and 15 days with placebo."
+  },
+  {
+   "id": "f_sub",
+   "type": "forest",
+   "title": "Rate ratio for recovery by baseline ordinal score",
+   "number_ids": [
+    "rr_rec",
+    "rr_os4",
+    "rr_os5",
+    "rr_os6",
+    "rr_os7"
+   ],
+   "null_value": 1,
+   "series_labels": [
+    "Overall",
+    "Score 4",
+    "Score 5",
+    "Score 6",
+    "Score 7"
+   ],
+   "y_label": "Rate ratio for recovery (right of 1 favors remdesivir)",
+   "caption": "among patients with a baseline score of 4 and those with a baseline score of 6, the rate ratio estimates for recovery were 1.29 (95% CI, 0.91 to 1.83) and 1.09 (95% CI, 0.76 to 1.57), respectively.",
+   "alt": "Forest plot of rate ratios for recovery: overall 1.29, score 4 1.29, score 5 1.45, score 6 1.09, score 7 0.98; only the overall and score 5 intervals exclude 1."
+  },
+  {
+   "id": "f_mort",
+   "type": "grouped",
+   "title": "Kaplan-Meier mortality by day 15 and day 29",
+   "number_ids": [
+    "m15_rdv",
+    "m15_pbo",
+    "m29_rdv",
+    "m29_pbo"
+   ],
+   "groups": [
+    {
+     "label": "By day 15",
+     "ids": [
+      "m15_rdv",
+      "m15_pbo"
+     ]
+    },
+    {
+     "label": "By day 29",
+     "ids": [
+      "m29_rdv",
+      "m29_pbo"
+     ]
+    }
+   ],
+   "series_labels": [
+    "Remdesivir",
+    "Placebo"
+   ],
+   "y_label": "Mortality (%)",
+   "caption": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "alt": "Grouped bar chart of mortality: 6.7 versus 11.9 percent by day 15 and 11.4 versus 15.2 percent by day 29, remdesivir versus placebo."
+  },
+  {
+   "id": "f_sae",
+   "type": "bar",
+   "title": "Serious adverse events",
+   "number_ids": [
+    "sae_rdv",
+    "sae_pbo"
+   ],
+   "series_labels": [
+    "Remdesivir",
+    "Placebo"
+   ],
+   "y_label": "Patients with a serious adverse event (%)",
+   "caption": "Serious adverse events were reported in 131 of the 532 patients who received remdesivir (24.6%) and in 163 of the 516 patients who received placebo (31.6%).",
+   "alt": "Bar chart: serious adverse events in 24.6 percent with remdesivir and 31.6 percent with placebo."
+  }
+ ],
+ "hero_findings": [
+  {
+   "number_id": "rec_rdv",
+   "figure_id": "f_rec",
+   "headline": "Median time to recovery with remdesivir (placebo: 15 days); rate ratio 1.29"
+  },
+  {
+   "number_id": "rr_os5",
+   "figure_id": "f_sub",
+   "headline": "Rate ratio for recovery in patients on low-flow oxygen, the clearest benefit"
+  },
+  {
+   "number_id": "m29_rdv",
+   "figure_id": "f_mort",
+   "headline": "Mortality by day 29 with remdesivir (placebo: 15.2%); hazard ratio 0.73, not significant"
+  },
+  {
+   "number_id": "stay_rdv",
+   "figure_id": null,
+   "headline": "Median initial hospital stay with remdesivir (placebo: 17 days)"
+  }
+ ],
+ "must_include_map": [
+  {
+   "excerpt": "Those who received remdesivir had a median recovery time of 10 days (95% confidence interval [CI], 9 to 11), as compared with 15 days (95% CI, 13 to 18) among those who received placebo (rate ratio for recovery, 1.29; 95% CI, 1.12 to 1.49; P<0.001, by a log-rank test).",
+   "section": "results"
+  },
+  {
+   "excerpt": "Kaplan-Meier estimates of mortality by day 15 were 6.7% in the remdesivir group and 11.9% in the placebo group (hazard ratio, 0.55; 95% CI, 0.36 to 0.83); the estimates by day 29 were 11.4% and 15.2% in two groups, respectively (hazard ratio, 0.73; 95% CI, 0.52 to 1.03).",
+   "section": "results"
+  },
+  {
+   "excerpt": "Our data show that remdesivir was superior to placebo in shortening the time to recovery in adults who were hospitalized with Covid-19 and had evidence of lower respiratory tract infection.",
+   "section": "conclusions"
+  }
+ ]
+}

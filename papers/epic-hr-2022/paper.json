@@ -1,0 +1,539 @@
+{
+ "slug": "epic-hr-2022",
+ "topic": "COVID-19",
+ "one_liner": "Hospitalization or death by day 28: {{n:fin_nmv}} with nirmatrelvir-ritonavir vs {{n:fin_pbo}} with placebo ({{n:rrr}} relative risk reduction).",
+ "one_liner_plain": "Nirmatrelvir plus ritonavir cut Covid-19 hospitalization or death by about 89% in high-risk outpatients",
+ "arms": {
+  "nmv": "intervention",
+  "pbo": "comparator"
+ },
+ "citation": {
+  "title": "Oral Nirmatrelvir for High-Risk, Nonhospitalized Adults with Covid-19",
+  "short_name": "EPIC-HR",
+  "authors": "Hammond J, Leister-Tebbe H, Gardner A, et al.",
+  "journal": "N Engl J Med",
+  "year": 2022,
+  "volume_pages": "386(15):1397-1408",
+  "pmid": "35172054",
+  "doi": "10.1056/NEJMoa2118542",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/35172054/",
+  "doi_url": "https://doi.org/10.1056/NEJMoa2118542"
+ },
+ "sections": {
+  "background": "By late 2021, outpatients at high risk of severe Covid-19 had few good options: monoclonal antibodies had to be given by infusion or injection in a health care setting and could lose activity against new variants. Nirmatrelvir is an oral inhibitor of the SARS-CoV-2 main protease (Mpro) with broad activity against human coronaviruses in the lab. It is paired with low-dose ritonavir, a pharmacokinetic enhancer that keeps nirmatrelvir levels up. EPIC-HR tested whether a 5-day oral course could keep high-risk patients out of hospital.",
+  "methods": {
+   "design": "Phase 2-3, double-blind, randomized, placebo-controlled trial (1:1) across sites in the United States, Europe, Latin America, Africa, and Asia.",
+   "population": "Symptomatic, unvaccinated, nonhospitalized adults with confirmed SARS-CoV-2 infection, symptom onset no more than 5 days before randomization, and at least one risk factor for progression to severe Covid-19. {{n:n_total}} underwent randomization ({{n:n_nmv}} nirmatrelvir plus ritonavir, {{n:n_pbo}} placebo).",
+   "intervention": "Nirmatrelvir 300 mg plus ritonavir 100 mg by mouth every 12 hours for 5 days.",
+   "comparator": "Matching placebo every 12 hours for 5 days.",
+   "primary_endpoint": "Covid-19-related hospitalization or death from any cause through day 28, in patients treated within 3 days of symptom onset who had not received and were not expected to receive monoclonal antibodies (modified intention-to-treat population).",
+   "follow-up": "Efficacy through day 28; safety information collected through day 34."
+  },
+  "results": "In the final primary analysis (treatment within 3 days of symptoms), {{n:fin_nmv}} of the nirmatrelvir group versus {{n:fin_pbo}} of the placebo group were hospitalized for Covid-19 or died through day 28: a difference of {{n:diff}} (95% CI &minus;7.78 to &minus;3.84; P&lt;0.001) and a {{n:rrr}} relative risk reduction. The effect held at every look: the interim analysis showed {{n:int_nmv}} versus {{n:int_pbo}} ({{n:int_rrr}} relative risk reduction), and patients who started within 5 days had {{n:d5_nmv}} versus {{n:d5_pbo}} ({{n:d5_rrr}} relative risk reduction). Across the trial there were {{n:death_nmv}} deaths with nirmatrelvir plus ritonavir and {{n:death_pbo}} with placebo. Viral load at day 5 was lower with nirmatrelvir plus ritonavir (adjusted mean difference {{n:vl}} when started within 3 days). Treatment-emergent adverse events were similar overall ({{n:ae_nmv}} vs {{n:ae_pbo}}), serious adverse events were less common ({{n:sae_nmv}} vs {{n:sae_pbo}}), and dysgeusia ({{n:dys_nmv}} vs {{n:dys_pbo}}) and diarrhea ({{n:dia_nmv}} vs {{n:dia_pbo}}) were more frequent with the active drug.",
+  "conclusions": "Treating symptomatic, high-risk, unvaccinated outpatients with nirmatrelvir plus ritonavir lowered the risk of progression to severe Covid-19 by 89% compared with placebo, without evident safety concerns. The benefit held whether treatment started within 3 days or within 5 days of symptoms.",
+  "limitations": "The trial enrolled only unvaccinated people (vaccinated high-risk patients were studied separately in EPIC-SR), and recruitment ended on December 9, 2021, so the absolute benefit in today's mostly vaccinated or previously infected patients may be smaller. Ritonavir carries important drug interactions: nirmatrelvir plus ritonavir is contraindicated with certain drugs because of the risk of serious adverse events, and others need dose adjustment or a pause.",
+  "practice_impact": "EPIC-HR made oral nirmatrelvir plus ritonavir a first-line treatment for high-risk outpatients with mild-to-moderate Covid-19, started as early as possible and within 5 days of symptoms. It moved early treatment from infusion chairs to a pharmacy pickup, with a drug-interaction check as the key safety step."
+ },
+ "numbers": [
+  {
+   "id": "n_total",
+   "label": "Patients randomized",
+   "value": 2246,
+   "unit": " patients",
+   "source_quote": "A total of 2246 patients underwent randomization; 1120 patients received nirmatrelvir plus ritonavir (nirmatrelvir group) and 1126 received placebo (placebo group).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_nmv",
+   "label": "Received nirmatrelvir plus ritonavir",
+   "value": 1120,
+   "unit": " patients",
+   "source_quote": "A total of 2246 patients underwent randomization; 1120 patients received nirmatrelvir plus ritonavir (nirmatrelvir group) and 1126 received placebo (placebo group).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "n_pbo",
+   "label": "Received placebo",
+   "value": 1126,
+   "unit": " patients",
+   "source_quote": "A total of 2246 patients underwent randomization; 1120 patients received nirmatrelvir plus ritonavir (nirmatrelvir group) and 1126 received placebo (placebo group).",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "fin_nmv",
+   "label": "Final analysis, within 3 days: nirmatrelvir",
+   "value": 0.72,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "5 of 697 patients (0.72%) in the nirmatrelvir group and 44 of 682 (6.45%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "fin_pbo",
+   "label": "Final analysis, within 3 days: placebo",
+   "value": 6.45,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "5 of 697 patients (0.72%) in the nirmatrelvir group and 44 of 682 (6.45%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "diff",
+   "label": "Final analysis, within 3 days",
+   "value": -5.81,
+   "unit": " percentage points",
+   "ci_low": -7.78,
+   "ci_high": -3.84,
+   "source_quote": "corresponding to a difference of -5.81 percentage points (95% CI, -7.78 to -3.84; P<0.001) and an 88.9% relative risk reduction in Covid-19-related hospitalization or death from any cause.",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "rrr",
+   "label": "Relative risk reduction (final, within 3 days)",
+   "value": 88.9,
+   "unit": "%",
+   "source_quote": "corresponding to a difference of -5.81 percentage points (95% CI, -7.78 to -3.84; P<0.001) and an 88.9% relative risk reduction in Covid-19-related hospitalization or death from any cause.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "int_nmv",
+   "label": "Interim analysis, within 3 days: nirmatrelvir",
+   "value": 0.77,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "the incidence was 0.77% (3 of 389 patients) in the nirmatrelvir group, with 0 deaths, as compared with 7.01% (27 of 385 patients) in the placebo group, with 7 deaths.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "int_pbo",
+   "label": "Interim analysis, within 3 days: placebo",
+   "value": 7.01,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "the incidence was 0.77% (3 of 389 patients) in the nirmatrelvir group, with 0 deaths, as compared with 7.01% (27 of 385 patients) in the placebo group, with 7 deaths.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "int_diff",
+   "label": "Interim analysis, within 3 days",
+   "value": -6.32,
+   "unit": " percentage points",
+   "ci_low": -9.04,
+   "ci_high": -3.59,
+   "source_quote": "lower in the nirmatrelvir group than in the placebo group by 6.32 percentage points (95% confidence interval [CI], -9.04 to -3.59; P<0.001; relative risk reduction, 89.1%)",
+   "derived": true,
+   "formula": "paper reports the incidence as lower by 6.32 percentage points; shown as nirmatrelvir minus placebo = -6.32",
+   "arm": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "int_rrr",
+   "label": "Relative risk reduction (interim)",
+   "value": 89.1,
+   "unit": "%",
+   "source_quote": "lower in the nirmatrelvir group than in the placebo group by 6.32 percentage points (95% confidence interval [CI], -9.04 to -3.59; P<0.001; relative risk reduction, 89.1%)",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "d5_nmv",
+   "label": "Final analysis, within 5 days: nirmatrelvir",
+   "value": 0.77,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "In the final analysis of this population, 8 of 1039 patients (0.77%) in the nirmatrelvir group and 66 of 1046 (6.31%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28 (P<0.001), corresponding to an 87.8% relative risk reduction",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "d5_pbo",
+   "label": "Final analysis, within 5 days: placebo",
+   "value": 6.31,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "In the final analysis of this population, 8 of 1039 patients (0.77%) in the nirmatrelvir group and 66 of 1046 (6.31%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28 (P<0.001), corresponding to an 87.8% relative risk reduction",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "d5_rrr",
+   "label": "Relative risk reduction (within 5 days)",
+   "value": 87.8,
+   "unit": "%",
+   "source_quote": "In the final analysis of this population, 8 of 1039 patients (0.77%) in the nirmatrelvir group and 66 of 1046 (6.31%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28 (P<0.001), corresponding to an 87.8% relative risk reduction",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "death_nmv",
+   "label": "Deaths, nirmatrelvir plus ritonavir",
+   "value": 0,
+   "unit": "",
+   "arm": "nmv",
+   "source_quote": "with 0 deaths occurring in the group that received nirmatrelvir plus ritonavir and 13 deaths occurring in the placebo group.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "death_pbo",
+   "label": "Deaths, placebo",
+   "value": 13,
+   "unit": "",
+   "arm": "pbo",
+   "source_quote": "with 0 deaths occurring in the group that received nirmatrelvir plus ritonavir and 13 deaths occurring in the placebo group.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "vl",
+   "label": "Adjusted mean difference in viral load at day 5",
+   "value": -0.868,
+   "unit": " log10 copies/mL",
+   "source_quote": "The viral load was lower with nirmaltrelvir plus ritonavir than with placebo at day 5 of treatment, with an adjusted mean difference of -0.868 log10 copies per milliliter when treatment was initiated within 3 days after the onset of symptoms.",
+   "arm": null,
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "ae_nmv",
+   "label": "Any adverse event, nirmatrelvir",
+   "value": 22.6,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "ae_pbo",
+   "label": "Any adverse event, placebo",
+   "value": 23.9,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sae_nmv",
+   "label": "Serious adverse events, nirmatrelvir",
+   "value": 1.6,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "sae_pbo",
+   "label": "Serious adverse events, placebo",
+   "value": 6.6,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dc_nmv",
+   "label": "Discontinued for adverse events, nirmatrelvir",
+   "value": 2.1,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dc_pbo",
+   "label": "Discontinued for adverse events, placebo",
+   "value": 4.2,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dys_nmv",
+   "label": "Dysgeusia, nirmatrelvir",
+   "value": 5.6,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "Dysgeusia (5.6% vs. 0.3%) and diarrhea (3.1% vs. 1.6%) occurred more frequently with nirmatrelvir plus ritonavir than with placebo.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dys_pbo",
+   "label": "Dysgeusia, placebo",
+   "value": 0.3,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "Dysgeusia (5.6% vs. 0.3%) and diarrhea (3.1% vs. 1.6%) occurred more frequently with nirmatrelvir plus ritonavir than with placebo.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dia_nmv",
+   "label": "Diarrhea, nirmatrelvir",
+   "value": 3.1,
+   "unit": "%",
+   "arm": "nmv",
+   "source_quote": "Dysgeusia (5.6% vs. 0.3%) and diarrhea (3.1% vs. 1.6%) occurred more frequently with nirmatrelvir plus ritonavir than with placebo.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  },
+  {
+   "id": "dia_pbo",
+   "label": "Diarrhea, placebo",
+   "value": 1.6,
+   "unit": "%",
+   "arm": "pbo",
+   "source_quote": "Dysgeusia (5.6% vs. 0.3%) and diarrhea (3.1% vs. 1.6%) occurred more frequently with nirmatrelvir plus ritonavir than with placebo.",
+   "ci_low": null,
+   "ci_high": null,
+   "source": "paper",
+   "status": "VERIFIED"
+  }
+ ],
+ "figures": [
+  {
+   "id": "f_primary",
+   "type": "bar",
+   "title": "Covid-19 hospitalization or death through day 28 (primary end point, final analysis)",
+   "number_ids": [
+    "fin_nmv",
+    "fin_pbo"
+   ],
+   "series_labels": [
+    "Nirmatrelvir + ritonavir",
+    "Placebo"
+   ],
+   "y_label": "Patients (%)",
+   "caption": "5 of 697 patients (0.72%) in the nirmatrelvir group and 44 of 682 (6.45%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28",
+   "alt": "Bar chart: 0.72 percent with nirmatrelvir plus ritonavir versus 6.45 percent with placebo were hospitalized for Covid-19 or died through day 28."
+  },
+  {
+   "id": "f_windows",
+   "type": "grouped",
+   "title": "The same result at every analysis",
+   "number_ids": [
+    "int_nmv",
+    "int_pbo",
+    "fin_nmv",
+    "fin_pbo",
+    "d5_nmv",
+    "d5_pbo"
+   ],
+   "groups": [
+    {
+     "label": "Interim, ≤3 days",
+     "ids": [
+      "int_nmv",
+      "int_pbo"
+     ]
+    },
+    {
+     "label": "Final, ≤3 days",
+     "ids": [
+      "fin_nmv",
+      "fin_pbo"
+     ]
+    },
+    {
+     "label": "Final, ≤5 days",
+     "ids": [
+      "d5_nmv",
+      "d5_pbo"
+     ]
+    }
+   ],
+   "series_labels": [
+    "Nirmatrelvir + ritonavir",
+    "Placebo"
+   ],
+   "y_label": "Hospitalized or died by day 28 (%)",
+   "caption": "In the final analysis of this population, 8 of 1039 patients (0.77%) in the nirmatrelvir group and 66 of 1046 (6.31%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28 (P<0.001), corresponding to an 87.8% relative risk reduction",
+   "alt": "Grouped bar chart: interim 0.77 versus 7.01 percent, final within 3 days 0.72 versus 6.45 percent, final within 5 days 0.77 versus 6.31 percent, nirmatrelvir versus placebo."
+  },
+  {
+   "id": "f_diff",
+   "type": "forest",
+   "title": "Absolute difference in hospitalization or death (nirmatrelvir minus placebo)",
+   "number_ids": [
+    "int_diff",
+    "diff"
+   ],
+   "series_labels": [
+    "Interim",
+    "Final"
+   ],
+   "y_label": "Percentage points (left of 0 favors nirmatrelvir)",
+   "caption": "lower in the nirmatrelvir group than in the placebo group by 6.32 percentage points (95% confidence interval [CI], -9.04 to -3.59; P<0.001; relative risk reduction, 89.1%)",
+   "alt": "Forest plot: interim difference -6.32 percentage points (95 percent CI -9.04 to -3.59) and final -5.81 (95 percent CI -7.78 to -3.84), both entirely below zero."
+  },
+  {
+   "id": "f_ae",
+   "type": "grouped",
+   "title": "Treatment-emergent adverse events",
+   "number_ids": [
+    "ae_nmv",
+    "ae_pbo",
+    "sae_nmv",
+    "sae_pbo",
+    "dc_nmv",
+    "dc_pbo",
+    "dys_nmv",
+    "dys_pbo",
+    "dia_nmv",
+    "dia_pbo"
+   ],
+   "groups": [
+    {
+     "label": "Any",
+     "ids": [
+      "ae_nmv",
+      "ae_pbo"
+     ]
+    },
+    {
+     "label": "Serious",
+     "ids": [
+      "sae_nmv",
+      "sae_pbo"
+     ]
+    },
+    {
+     "label": "Led to stopping",
+     "ids": [
+      "dc_nmv",
+      "dc_pbo"
+     ]
+    },
+    {
+     "label": "Dysgeusia",
+     "ids": [
+      "dys_nmv",
+      "dys_pbo"
+     ]
+    },
+    {
+     "label": "Diarrhea",
+     "ids": [
+      "dia_nmv",
+      "dia_pbo"
+     ]
+    }
+   ],
+   "series_labels": [
+    "Nirmatrelvir + ritonavir",
+    "Placebo"
+   ],
+   "y_label": "Patients (%)",
+   "caption": "(any adverse event, 22.6% with nirmatrelvir plus ritonavir vs. 23.9% with placebo; serious adverse events, 1.6% vs. 6.6%; and adverse events leading to discontinuation of the drugs or placebo, 2.1% vs. 4.2%)",
+   "alt": "Grouped bar chart of adverse events, nirmatrelvir versus placebo: any 22.6 versus 23.9, serious 1.6 versus 6.6, leading to discontinuation 2.1 versus 4.2, dysgeusia 5.6 versus 0.3, diarrhea 3.1 versus 1.6 percent."
+  }
+ ],
+ "hero_findings": [
+  {
+   "number_id": "fin_nmv",
+   "figure_id": "f_primary",
+   "headline": "Hospitalized for Covid-19 or died by day 28 with nirmatrelvir plus ritonavir (placebo: 6.45%)"
+  },
+  {
+   "number_id": "rrr",
+   "figure_id": "f_diff",
+   "headline": "Relative risk reduction in Covid-19 hospitalization or death (final analysis, treated within 3 days)"
+  },
+  {
+   "number_id": "death_pbo",
+   "figure_id": null,
+   "headline": "Deaths in the placebo group, versus 0 with nirmatrelvir plus ritonavir"
+  },
+  {
+   "number_id": "dys_nmv",
+   "figure_id": "f_ae",
+   "headline": "Dysgeusia with nirmatrelvir plus ritonavir (placebo: 0.3%), the most noticeable side effect"
+  }
+ ],
+ "must_include_map": [
+  {
+   "excerpt": "5 of 697 patients (0.72%) in the nirmatrelvir group and 44 of 682 (6.45%) in the placebo group were hospitalized for Covid-19 or died from any cause through day 28",
+   "section": "results"
+  },
+  {
+   "excerpt": "corresponding to a difference of -5.81 percentage points (95% CI, -7.78 to -3.84; P<0.001) and an 88.9% relative risk reduction in Covid-19-related hospitalization or death from any cause.",
+   "section": "results"
+  },
+  {
+   "excerpt": "Treatment of symptomatic Covid-19 with nirmatrelvir plus ritonavir resulted in a risk of progression to severe Covid-19 that was 89% lower than the risk with placebo, without evident safety concerns.",
+   "section": "conclusions"
+  }
+ ]
+}
