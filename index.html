@@ -177,6 +177,9 @@
   .post p{max-width:64ch;margin-bottom:14px;font-size:16px;line-height:1.7}
   .post p > strong:first-child{display:block;font:700 16px var(--font-display);letter-spacing:.3px;color:var(--title-a);margin-top:20px}
   .post p > strong:first-child + br{display:none}
+  .post-fig{margin:16px 0}
+  .post-fig img{width:100%;height:auto;border:2px solid var(--edge);border-radius:8px}
+  .post-fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 
   /* ============ ROADMAP ============ */
   .road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
@@ -516,6 +519,44 @@ README.TXT          salt to taste</pre>
              Section text. A bold label at the start of a paragraph becomes a small heading.</p>
            </article>
            ============================================= -->
+
+          <article class="post" id="post-2026-11-24">
+            <time datetime="2026-11-24">Nov 24, 2026</time>
+            <h3>Four Ways to Serve Inkling 2 Mini on a DGX Spark</h3>
+            <p>Not an app announcement again. This one is for the people who run models at home and want to know which runtime to pick.</p>
+            <p>I served Thinking Machines' Inkling 2 Mini four different ways on my DGX Spark: SGLang, vLLM, Maya and TensorFold. Same box, same coding prompts, thinking turned off. The short version: TensorFold was the fastest for one person and started up in seconds, SGLang kept up once four people were using it at once, and Maya used the least memory but was the slowest.</p>
+            <p><strong>1. The Overview</strong><br>
+            All four runtimes on one page.</p>
+            <figure class="post-fig">
+              <picture>
+                <source type="image/webp" srcset="images/inkling-runtimes-overview-960.webp 960w, images/inkling-runtimes-overview-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px">
+                <img src="images/inkling-runtimes-overview-960.webp" width="1600" height="2316" loading="lazy" decoding="async"
+                     alt="Infographic comparing four runtimes for Inkling 2 Mini on a DGX Spark. TensorFold is fastest for one user at 58.2 tokens per second and first to the first token at 187 ms. It ties SGLang at about 108 tokens per second with four users. Maya uses the least GPU memory at 22.7 GiB.">
+              </picture>
+              <figcaption>Same box, same Godot GDScript coding prompts, thinking off, Nov 22 to Nov 24, 2026. TensorFold was fastest for one user (58.2 tok/s vs 53.0 for SGLang), answered first (187 ms), tied SGLang with four users (about 108 tok/s) and started in 37 seconds. SGLang still read long prompts slightly faster. vLLM ran a few percent behind SGLang. Maya used the least memory (22.7 GiB) but was the slowest. TensorFold and SGLang run the same NVFP4/MXFP8 checkpoint. Maya runs a different 4-bit GGUF.</figcaption>
+            </figure>
+            <p><strong>2. The Top Three, Side by Side</strong><br>
+            TensorFold, SGLang and Maya, all run on the same day.</p>
+            <figure class="post-fig">
+              <picture>
+                <source type="image/webp" srcset="images/inkling-runtimes-three-way-960.webp 960w, images/inkling-runtimes-three-way-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px">
+                <img src="images/inkling-runtimes-three-way-960.webp" width="1600" height="2967" loading="lazy" decoding="async"
+                     alt="Bar charts comparing TensorFold, SGLang and Maya on Nov 24, 2026. TensorFold: 58.2 tokens per second for one user, 108.4 with four users, 187 ms to first token, 39.2 GiB GPU memory, 37 s start. SGLang: 53.0, 108.0, 256 ms, 51.4 GiB, 236 s. Maya: 46.4, 65.4, 408 ms, 22.7 GiB, 60 s.">
+              </picture>
+              <figcaption>Same-day head-to-head. TensorFold (Mia's AI Lab recipe, Zig engine) was 10% faster than SGLang for one user and 27% quicker to the first token. It matched SGLang with four users, held about 24% less GPU memory and started six times faster. SGLang kept a 3 to 6% edge reading 8K and 32K-token prompts. Maya was the leanest at 22.7 GiB but the slowest at everything. TensorFold ran with 4 streams, a 128K context and an fp8 KV cache, because its default 8&times;262K setup didn't fit next to the memory reserved for other services. Caveat: with reasoning set to none, TensorFold still writes a little reasoning text, and those tokens count toward its speed.</figcaption>
+            </figure>
+            <p><strong>3. Trying to Tune It</strong><br>
+            Before trying other runtimes, I tried to squeeze more out of the fast ones. It mostly didn't work, which is also a result.</p>
+            <figure class="post-fig">
+              <picture>
+                <source type="image/webp" srcset="images/inkling-runtimes-tuning-960.webp 960w, images/inkling-runtimes-tuning-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px">
+                <img src="images/inkling-runtimes-tuning-960.webp" width="1600" height="2381" loading="lazy" decoding="async"
+                     alt="Two tuning experiments on Inkling 2 Mini. Shorter speculative drafts of 5 or 3 tokens failed to start on both vLLM and SGLang, and drafting with 7 tokens was 37% faster than no drafting. A 12-step SGLang flag hill-climb gave no real gain: about 52.3 vs 52.2 tokens per second in the confirmation rounds.">
+              </picture>
+              <figcaption>Inkling's drafter only works with 7 draft tokens. vLLM and SGLang both refused to start with 5 or 3, and drafting itself was worth about 37% (50.5 vs 36.9 tok/s for one user). Then we changed 12 SGLang server flags one at a time and kept whatever helped. In the confirmation rounds the "best" setup beat stock by 0.1 tok/s, well inside the roughly &plusmn;3 tok/s noise. Stock SGLang was already close to its ceiling on this box.</figcaption>
+            </figure>
+            <p>These are numbers from one machine, so your mileage will vary. If you have a Spark and get different results, tell me. Discord and email are at the bottom of the page.</p>
+          </article>
 
           <article class="post" id="post-2026-10-27">
             <time datetime="2026-10-27">Oct 27, 2026</time>
