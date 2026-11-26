@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
+<script>document.documentElement.classList.add('js-reveal')</script>
 <style>
   .pp{display:grid;gap:22px}
   .pp .window{width:100%}
@@ -48,10 +49,11 @@
   .pp .btn{white-space:normal;height:auto;max-width:100%;min-width:0;padding-top:8px;padding-bottom:8px;text-align:center}
   .pp th{width:28%;overflow-wrap:normal;word-break:normal;hyphens:auto}
   .pp details{margin-top:8px}
-  .pp details summary{cursor:pointer;font-weight:600}
-  .reveal{opacity:0;transform:translateY(16px);transition:.5s}
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  .pp details summary{cursor:pointer;font-weight:600;min-height:28px}
+  .js-reveal .reveal{opacity:0;transform:translateY(16px);transition:.5s}
+  .js-reveal .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.js-reveal .reveal,.reveal{opacity:1;transform:none;transition:none}}
+  @media print{.reveal{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -165,8 +167,8 @@
 </div>
 
 <script src="/js/site.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.2/dist/chart.umd.min.js" integrity="sha384-wFIO1nJgUOP2XDesMi2Xqyej8+jLnzOfBrJbdvz7Pp+UI88xOiL08fKFupi2KqR0" crossorigin="anonymous"></script>
 <script src="../paper-charts.js"></script>
-<script>fetch('paper.json').then(r=>r.json()).then(renderPaperCharts);</script>
+<script>fetch('paper.json').then(r=>r.json()).then(renderPaperCharts).catch(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})});</script>
 </body>
 </html>

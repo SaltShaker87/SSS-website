@@ -95,12 +95,12 @@ npx remotion render PaperVideo out/<slug>.mp4 --props=../papers/<slug>/paper.jso
    `PaperVideo.tsx` renders the title, one scene per hero finding, and "what changed". Add any other storyboard scene (PICO, chart draws) to it before rendering, and set `durationInFrames` to match.
    Fallback if Remotion isn't available: animate the charts page-section at 1920×1080 with Playwright `recordVideo`, then `ffmpeg -i in.webm -c:v libx264 -pix_fmt yuv420p video.mp4`.
 5.3 Voiceover (optional): TTS from the storyboard VO lines; mux with ffmpeg. Also write captions `video.vtt` from the VO lines.
-5.4 Poster: `ffmpeg -ss 2 -i video.mp4 -frames:v 1 poster.jpg` (also used as index thumbnail).
+5.4 Poster: `ffmpeg -ss 2 -i video.mp4 -frames:v 1 poster.jpg` for the video `poster` and `og:image`. Also write `poster-640.webp` (640x360, WebP quality 82) for the papers index and Seasoning Lab thumbnails.
 5.5 Optional AI b-roll (Sora/Veo/Runway etc.): **only** non-data atmosphere shots (microscope, hospital corridor, pills). Never let a generative model draw charts, numbers, or text. Pass it the "B-roll prompts" section of the storyboard.
 
 ### Step 6: Update the index
 6.1 `papers/index.html` already exists. Only if it's absent, create it from `templates/papers-index.html`.
-6.2 Append the card snippet (inside `<!-- PAPER CARDS -->`, after the existing cards) with title, short name, topic, year, one-line finding (must reuse a verified number), and thumbnail `poster.jpg`. Fill **both** `data-topic` and `data-year` on the `<a class="window card">`: the index script groups cards by `data-topic` (A to Z) and sorts by `data-year`, and the hub's "latest papers" list takes the last cards in the file, so always append at the end. `data-topic` must match the `.tag` text exactly. Don't duplicate the slug; if it exists, replace that card in place. Leave the other cards alone.
+6.2 Append the card snippet (inside `<!-- PAPER CARDS -->`, after the existing cards) with title, short name, topic, year, one-line finding (must reuse a verified number), and thumbnail `poster-640.webp` (`width="640"` `height="360"`). Fill **both** `data-topic` and `data-year` on the `<a class="window card">`: the index script groups cards by `data-topic` (A to Z) and sorts by `data-year`, and the hub's "latest papers" list takes the last cards in the file, so always append at the end. `data-topic` must match the `.tag` text exactly. Don't duplicate the slug; if it exists, replace that card in place. Leave the other cards alone.
 6.3 Topics: Bacteremia & duration · Endocarditis · Bone & joint · HIV · COVID-19 · Hepatitis · Fungal · C. diff · TB · Vaccines & RSV · STI prevention · Resistance & stewardship. If none fits, ask Arman rather than forcing one.
 6.4 Add `https://www.saltshakerstudio.net/papers/<slug>/` to `sitemap.xml` with today's date as `<lastmod>`.
 

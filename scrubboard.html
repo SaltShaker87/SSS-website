@@ -64,8 +64,8 @@
   .ba{background:var(--paper);padding:14px 16px;font-size:15px;line-height:1.65;border:1.5px solid var(--hairline);border-radius:var(--r)}
   .ba p{margin:0}
   .ba-label{display:inline-block;margin-bottom:8px;padding:0 8px;border-radius:99px;font:600 10px/1.7 var(--font-mono);letter-spacing:.4px;color:#fff}
-  .ba-before .ba-label{background:var(--proto)}
-  .ba-after .ba-label{background:var(--live)}
+  .ba-before .ba-label{background:color-mix(in srgb,var(--proto) 75%,#000)}
+  .ba-after .ba-label{background:color-mix(in srgb,var(--live) 75%,#000)}
   .ba mark{background:var(--salt);color:var(--ink);padding:0 3px;border-radius:3px;font:500 13px var(--font-mono)}
   .ba-note{margin-top:10px}
 
@@ -213,13 +213,13 @@
         <div class="shot-slider" id="shotSlider">
 
           <div class="shot-stage" role="tabpanel" id="shotPanel" aria-label="Screenshot">
-            <img class="shot is-active" id="shot-0" src="images/scrubboard-shot-before-after.png" decoding="async"
+            <img class="shot is-active" id="shot-0" src="images/scrubboard-shot-before-after.webp" width="1200" height="750" decoding="async"
                  alt="Preview: a clinic note on the left and the same note pasted into an AI assistant on the right, with the name, dates, record number and phone replaced by labels, and a notification saying 6 details were removed">
-            <img class="shot" id="shot-1" src="images/scrubboard-shot-mac-services.png" decoding="async"
+            <img class="shot" id="shot-1" src="images/scrubboard-shot-mac-services.webp" width="1200" height="750" decoding="async"
                  alt="Preview: on a Mac, selected note text with the right-click menu open at Services, Scrubboard: Copy without patient info">
-            <img class="shot" id="shot-2" src="images/scrubboard-shot-windows-tray.png" decoding="async"
+            <img class="shot" id="shot-2" src="images/scrubboard-shot-windows-tray.webp" width="1200" height="750" decoding="async"
                  alt="Preview: on Windows, the Scrubboard menu next to the clock with Clean my clipboard, Clean every copy automatically, Extra-careful mode and Quit">
-            <img class="shot" id="shot-3" src="images/scrubboard-shot-installer.png" decoding="async"
+            <img class="shot" id="shot-3" src="images/scrubboard-shot-installer.webp" width="1200" height="750" decoding="async"
                  alt="Preview: the installer's Important: please read page, with a checkbox saying I understand that Scrubboard can miss things and I will check the text myself">
           </div>
 

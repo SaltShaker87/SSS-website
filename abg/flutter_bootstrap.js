@@ -53,4 +53,12 @@ _flutter.loader.load({
   serviceWorkerSettings: {
     serviceWorkerVersion: "3055899015" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */,
   },
+  onEntrypointLoaded: async function (engineInitializer) {
+    const appRunner = await engineInitializer.initializeEngine({
+      canvasKitBaseUrl: "canvaskit/",
+      fontFallbackBaseUrl: "fallback_fonts/",
+      hostElement: document.getElementById("flutter-host"),
+    });
+    await appRunner.runApp();
+  },
 });

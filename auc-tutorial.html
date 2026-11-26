@@ -12,6 +12,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Salt Shaker Studio">
   <meta property="og:image" content="https://www.saltshakerstudio.net/images/auc-shot-summary-draft.webp">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="images/web/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
@@ -79,7 +80,7 @@ h1 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, ser
   .layout { grid-template-columns: minmax(0, 1fr); }
 }
 .toc { position: sticky; top: 3.4rem; font-size: 0.88rem; line-height: 1.45; padding: 0.2rem 0 1rem; min-width: 0; }
-.toc h3 { font-size: 0.8rem; color: var(--accent); margin: 0.8rem 0 0.25rem; }
+.toc .toc-h { font-size: 0.8rem; color: var(--accent); margin: 0.8rem 0 0.25rem; font-weight: 700; }
 .toc ol { margin: 0; padding: 0 0 0 1.15rem; color: var(--muted); }
 .toc li { margin: 0 0 0.2rem; }
 .toc-first { margin: 0; }
@@ -227,20 +228,20 @@ footer p { margin: 0 0 0.4rem; }
         <details class="toc-box" open>
         <summary>On this page</summary>
         <p class="toc-first"><a href="#start">Before you start</a></p>
-        <h3>Part 1. Find your way</h3>
+        <p class="toc-h">Part 1. Find your way</p>
         <ol start="1">
           <li><a href="#sign-in">Sign in</a></li>
           <li><a href="#home">The Residents screen</a></li>
           <li><a href="#menu">The menu at the top</a></li>
         </ol>
-        <h3>Part 2. AI summaries</h3>
+        <p class="toc-h">Part 2. AI summaries</p>
         <ol start="4">
           <li><a href="#import">Add new MedHub evaluations</a></li>
           <li><a href="#model">Choose the AI model</a></li>
           <li><a href="#summary">Make a summary</a></li>
           <li><a href="#check-summary">Check and save it</a></li>
         </ol>
-        <h3>Part 3. Advisor packets</h3>
+        <p class="toc-h">Part 3. Advisor packets</p>
         <ol start="8">
           <li><a href="#meeting">Start a meeting</a></li>
           <li><a href="#advisors">Add the advisors</a></li>
@@ -250,7 +251,7 @@ footer p { margin: 0 0 0.4rem; }
           <li><a href="#withhold">Hold a packet back</a></li>
           <li><a href="#check-packet">Check a packet</a></li>
         </ol>
-        <h3>More</h3>
+        <p class="toc-h">More</p>
         <ul class="toc-more">
           <li><a href="#words">Words to know</a></li>
           <li><a href="#tech">For the person who looks after the AUC computer</a></li>
@@ -276,7 +277,7 @@ footer p { margin: 0 0 0.4rem; }
         <p class="part-intro">Three short steps to feel at home.</p>
 
         <section class="step" aria-labelledby="sign-in">
-          <h3 id="sign-in"><span class="num">1</span>Sign in</h3>
+          <h3 id="sign-in"><span class="num">1</span> Sign in</h3>
           <ol>
             <li>Open your web browser (for example Chrome, Edge, Firefox, or Safari).</li>
             <li>Go to the AUC address you were given.</li>
@@ -290,7 +291,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="home">
-          <h3 id="home"><span class="num">2</span>The Residents screen</h3>
+          <h3 id="home"><span class="num">2</span> The Residents screen</h3>
           <p>After you sign in, you see every resident in your program. This is the home screen.</p>
           <figure class="pic">
             <a href="images/auc-shot-residents.webp"><img src="images/auc-shot-residents.webp" width="1600" height="662" loading="lazy" alt="The Residents screen: a search box, PGY filter buttons, and a grid of six made-up residents."></a>
@@ -305,7 +306,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="menu">
-          <h3 id="menu"><span class="num">3</span>The menu at the top</h3>
+          <h3 id="menu"><span class="num">3</span> The menu at the top</h3>
           <p>The bar at the top of every screen takes you anywhere in AUC.</p>
           <table>
             <thead><tr><th scope="col">Menu</th><th scope="col">What it is for</th></tr></thead>
@@ -328,7 +329,7 @@ footer p { margin: 0 0 0.4rem; }
         <p class="part-intro">The AI reads a resident's evaluations and writes a short draft for each ACGME milestone. You read it, fix it, and save it.</p>
 
         <section class="step" aria-labelledby="import">
-          <h3 id="import"><span class="num">4</span>Add new MedHub evaluations</h3>
+          <h3 id="import"><span class="num">4</span> Add new MedHub evaluations</h3>
           <p>AUC only knows the evaluations you give it. Add fresh ones before a meeting.</p>
           <ol>
             <li>In MedHub, run the <strong>Evaluation Questions Summary</strong> report for one form and a date range.</li>
@@ -345,7 +346,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="model">
-          <h3 id="model"><span class="num">5</span>Choose the AI model (once)</h3>
+          <h3 id="model"><span class="num">5</span> Choose the AI model (once)</h3>
           <ol>
             <li>Click <span class="btn-name">Settings</span>, then <span class="btn-name">AI &amp; Summaries</span>.</li>
             <li>Under <strong>Default Ollama model</strong>, pick the model the person who set up AUC told you to use.</li>
@@ -359,7 +360,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="summary">
-          <h3 id="summary"><span class="num">6</span>Make a summary</h3>
+          <h3 id="summary"><span class="num">6</span> Make a summary</h3>
           <ol>
             <li>Open the resident's page and scroll down to <strong>AI Summaries</strong>.</li>
             <li>Leave <strong>Covering</strong> on <strong>Current review period</strong>. That is the time since their last review. (See <a href="#words">Words to know</a>.)</li>
@@ -376,7 +377,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="check-summary">
-          <h3 id="check-summary"><span class="num">7</span>Check the summary and save it</h3>
+          <h3 id="check-summary"><span class="num">7</span> Check the summary and save it</h3>
           <p>The draft has 21 boxes, one for each ACGME milestone. Each box can show:</p>
           <ul>
             <li><strong>A short paragraph</strong> written by the AI. You can change the words.</li>
@@ -399,7 +400,7 @@ footer p { margin: 0 0 0.4rem; }
         <p class="part-intro">A packet is a short PDF about one resident, for their advisor to bring to a meeting. AUC makes one for every advisee in a few clicks. Packets are AI drafts. Nothing is sent to anyone. You download the files and hand them out yourself.</p>
 
         <section class="step" aria-labelledby="meeting">
-          <h3 id="meeting"><span class="num">8</span>Start a meeting</h3>
+          <h3 id="meeting"><span class="num">8</span> Start a meeting</h3>
           <ol>
             <li>Click <span class="btn-name">Packets</span> in the top menu.</li>
             <li>In <strong>New meeting on</strong>, pick the date of the advisor meeting.</li>
@@ -415,7 +416,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="advisors">
-          <h3 id="advisors"><span class="num">9</span>Add the advisors who are presenting</h3>
+          <h3 id="advisors"><span class="num">9</span> Add the advisors who are presenting</h3>
           <ol>
             <li>Under <strong>Presenting advisors</strong>, tick each advisor who is presenting.</li>
             <li>Press <span class="btn-name">Add advisor</span>. Each advisor's residents come with them.</li>
@@ -425,7 +426,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="groups">
-          <h3 id="groups"><span class="num">10</span>Groups (only if you are in a study)</h3>
+          <h3 id="groups"><span class="num">10</span> Groups (only if you are in a study)</h3>
           <p><strong>Not part of a research study? Skip this step.</strong> AUC makes packets for everyone either way.</p>
           <p>If you are in a study, your study plan says whether each resident's packet goes out <strong>first</strong> or <strong>later</strong>. AUC can split them for you:</p>
           <ol>
@@ -441,7 +442,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="generate">
-          <h3 id="generate"><span class="num">11</span>Make the packets</h3>
+          <h3 id="generate"><span class="num">11</span> Make the packets</h3>
           <ol>
             <li>Check that the model next to the button is the one you were told to use.</li>
             <li>Press <span class="btn-name">Generate all</span>.</li>
@@ -456,7 +457,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="download">
-          <h3 id="download"><span class="num">12</span>Download and hand them out</h3>
+          <h3 id="download"><span class="num">12</span> Download and hand them out</h3>
           <ul>
             <li><span class="btn-name">Zip of 3 packets</span> next to an advisor's name downloads that advisor's packets in one file.</li>
             <li><span class="btn-name">Zip of the whole meeting</span> downloads every packet, in one folder per advisor.</li>
@@ -470,7 +471,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="withhold">
-          <h3 id="withhold"><span class="num">13</span>Hold a packet back</h3>
+          <h3 id="withhold"><span class="num">13</span> Hold a packet back</h3>
           <p>Sometimes a packet should not go out, for example if the advisor is away.</p>
           <ol>
             <li>Press <span class="btn-name">Withhold</span> on that resident's row.</li>
@@ -484,7 +485,7 @@ footer p { margin: 0 0 0.4rem; }
         </section>
 
         <section class="step" aria-labelledby="check-packet">
-          <h3 id="check-packet"><span class="num">14</span>Check a packet before you hand it out</h3>
+          <h3 id="check-packet"><span class="num">14</span> Check a packet before you hand it out</h3>
           <p>Open one or two packets on the AUC computer and ask:</p>
           <ol>
             <li>Is the name, advisor, PGY year, and date range right?</li>

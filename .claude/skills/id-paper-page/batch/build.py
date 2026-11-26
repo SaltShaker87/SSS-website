@@ -249,7 +249,7 @@ Rules: every number = paper.json value; primary vs secondary end points labeled 
 
     card = f'''        <a class="window card" data-slug="{slug}" data-topic="{S["topic"].replace("&", "&amp;")}" data-year="{S["year"]}" href="/papers/{slug}/">
   <div class="titlebar"><span class="pix t-icon" data-pix="folder"></span><span class="t-text">{S["short_name"]}.paper</span></div>
-  <img src="/papers/{slug}/poster.jpg" alt="{S["short_name"]} video thumbnail" loading="lazy">
+  <img src="/papers/{slug}/poster-640.webp" alt="{S["short_name"]} video thumbnail" width="640" height="360" loading="lazy">
   <div class="win-body"><span class="tag">{S["topic"].replace("&", "&amp;")}</span><h3>{S["short_name"]} ({S["year"]})</h3><p>{S["title"]}</p><p><b>{render(S["one_liner"], True).replace("<b>", "").replace("</b>", "")}</b></p></div>
  </a>
 '''

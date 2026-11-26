@@ -155,7 +155,7 @@
     cards.slice(-3).reverse().forEach(function(c){
       var h=c.querySelector('h3'), img=c.querySelector('img'), li=document.createElement('li'), a=document.createElement('a');
       a.href=c.getAttribute('href');
-      if(img){var i=document.createElement('img'); i.src=img.getAttribute('src'); i.alt=''; i.loading='lazy'; a.appendChild(i);}
+      if(img){var i=document.createElement('img'); var src=img.getAttribute('src')||''; i.src=src.replace(/poster\.jpg$/,'poster-640.webp'); i.alt=''; i.width=640; i.height=360; i.loading='lazy'; a.appendChild(i);}
       var t=document.createElement('span'), b=document.createElement('b'), sm=document.createElement('small');
       b.textContent=h?h.textContent:c.getAttribute('data-slug'); sm.textContent=c.getAttribute('data-topic')||'';
       t.appendChild(b); t.appendChild(sm); a.appendChild(t); li.appendChild(a); list.appendChild(li);
