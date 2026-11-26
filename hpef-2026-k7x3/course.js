@@ -129,7 +129,7 @@ var HPEF_COURSE = {
       ],
       wrapUp: "Which of these theories best explains how you learned to be a doctor?",
       references: [
-        { title: "Geller, \"Tolerance for Ambiguity: An Ethics-Based Criterion for Medical Student Selection,\" Academic Medicine 2013", url: "http://www.ncbi.nlm.nih.gov/pubmed/23524934" },
+        { title: "Geller, \"Tolerance for Ambiguity: An Ethics-Based Criterion for Medical Student Selection,\" Academic Medicine 2013", url: "https://pubmed.ncbi.nlm.nih.gov/23524934/" },
         { title: "Simpkin and Schwartzstein, \"Tolerating Uncertainty: The Next Medical Revolution?\" NEJM 2016", url: "https://doi.org/10.1056/NEJMp1606402" },
         { title: "Freed et al., \"From Monotony to Motivation: Effective Presentation of Epidemiological Data,\" Academic Medicine 2019", url: "https://doi.org/10.1097/ACM.0000000000002978" }
       ]

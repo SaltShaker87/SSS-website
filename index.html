@@ -178,6 +178,7 @@
   .post p > strong:first-child{display:block;font:700 16px var(--font-display);letter-spacing:.3px;color:var(--title-a);margin-top:20px}
   .post p > strong:first-child + br{display:none}
   .post-fig{margin:16px 0}
+  .post-fig a{display:block}
   .post-fig img{width:100%;height:auto;border:2px solid var(--edge);border-radius:8px}
   .post-fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 
@@ -205,7 +206,7 @@
   .av{width:40px;height:40px;flex:none;border-radius:10px;border:2px solid var(--edge);display:grid;place-items:center;font:700 15px var(--font-display);color:#fff;background:var(--c)}
   .who-name{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-weight:600;font-size:14px;line-height:1.3}
   .who-role{display:block;font-size:12px;color:var(--muted)}
-  .verified{font:600 10px/1.6 var(--font-mono);color:#fff;background:var(--live);border-radius:99px;padding:0 7px;letter-spacing:.3px}
+  .verified{font:600 10px/1.6 var(--font-mono);color:#fff;background:color-mix(in srgb,var(--live) 75%,#000);border-radius:99px;padding:0 7px;letter-spacing:.3px}
   .sign .win-body{justify-content:center;align-items:flex-start;gap:12px}
   .sign p{font-size:15px}
 
@@ -267,7 +268,7 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<div class="wrap" id="main" tabindex="-1">
+<main class="wrap" id="main" tabindex="-1">
 
   <!-- ============ HERO ============ -->
   <header class="hero" id="hero">
@@ -377,7 +378,7 @@
             <p class="dl-facts">Free · model on Hugging Face · no installer</p>
             <div class="meter" style="--c:var(--live)"><span>Proof of concept</span><span>100%</span><span class="meter-track" role="img" aria-label="Development progress: 100 percent"><i style="--p:100%"></i></span></div>
             <div class="btn-row">
-              <a class="btn btn-sm btn-primary" href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1">View CRM on Hugging Face</a>
+              <a class="btn btn-sm btn-primary" href="https://huggingface.co/SaltShakerStudio/Clinical-Reasoning-Test1">View CRM on Hugging Face</a>
               <a class="btn btn-sm" href="crm.html">Learn More</a>
             </div>
           </div>
@@ -440,7 +441,7 @@
           <div class="win-body">
             <div class="card-head">
               <a href="token-annihilator.html" aria-label="Token Annihilator details"><img class="card-logo" src="images/web/token-annihilator-logo.png" width="256" height="256" alt="Token Annihilator logo" style="background:#0d1117"></a>
-              <div><span class="badge beta">Beta · v1.0.6</span><h3>Token Annihilator Dashboard</h3></div>
+              <div><span class="badge beta">Beta · v1.0.10</span><h3>Token Annihilator Dashboard</h3></div>
             </div>
             <p>A side project for local-AI nerds. Counts every token your own models use (Ollama, vLLM, llama.cpp, NIM) and shows what the cloud would have billed you, with trophies, a leaderboard and confetti.</p>
             <p class="dl-facts">Free · Open source (MIT) · One Python file · Linux, built on a DGX Spark</p>
@@ -528,32 +529,38 @@ README.TXT          salt to taste</pre>
             <p><strong>1. The Overview</strong><br>
             All four runtimes on one page.</p>
             <figure class="post-fig">
+              <a href="images/inkling-runtimes-overview-1600.webp" target="_blank" rel="noopener">
               <picture>
                 <source type="image/webp" srcset="images/inkling-runtimes-overview-960.webp 960w, images/inkling-runtimes-overview-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px">
                 <img src="images/inkling-runtimes-overview-960.webp" width="1600" height="2316" loading="lazy" decoding="async"
                      alt="Infographic comparing four runtimes for Inkling 2 Mini on a DGX Spark. TensorFold is fastest for one user at 58.2 tokens per second and first to the first token at 187 ms. It ties SGLang at about 108 tokens per second with four users. Maya uses the least GPU memory at 22.7 GiB.">
               </picture>
-              <figcaption>Same box, same Godot GDScript coding prompts, thinking off, Nov 22 to Nov 24, 2026. TensorFold was fastest for one user (58.2 tok/s vs 53.0 for SGLang), answered first (187 ms), tied SGLang with four users (about 108 tok/s) and started in 37 seconds. SGLang still read long prompts slightly faster. vLLM ran a few percent behind SGLang. Maya used the least memory (22.7 GiB) but was the slowest. TensorFold and SGLang run the same NVFP4/MXFP8 checkpoint. Maya runs a different 4-bit GGUF.</figcaption>
+              </a>
+              <figcaption>Same box, same Godot GDScript coding prompts, thinking off, Nov 22 to Nov 24, 2026. TensorFold was fastest for one user (58.2 tok/s vs 53.0 for SGLang), answered first (187 ms), tied SGLang with four users (about 108 tok/s) and started in 37 seconds. SGLang still read long prompts slightly faster. vLLM ran a few percent behind SGLang. Maya used the least memory (22.7 GiB) but was the slowest. TensorFold and SGLang run the same NVFP4/MXFP8 checkpoint. Maya runs a different 4-bit GGUF. Tap to open full size.</figcaption>
             </figure>
             <p><strong>2. The Top Three, Side by Side</strong><br>
             TensorFold, SGLang and Maya, all run on the same day.</p>
             <figure class="post-fig">
+              <a href="images/inkling-runtimes-three-way-1600.webp" target="_blank" rel="noopener">
               <picture>
                 <source type="image/webp" srcset="images/inkling-runtimes-three-way-960.webp 960w, images/inkling-runtimes-three-way-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px">
                 <img src="images/inkling-runtimes-three-way-960.webp" width="1600" height="2967" loading="lazy" decoding="async"
                      alt="Bar charts comparing TensorFold, SGLang and Maya on Nov 24, 2026. TensorFold: 58.2 tokens per second for one user, 108.4 with four users, 187 ms to first token, 39.2 GiB GPU memory, 37 s start. SGLang: 53.0, 108.0, 256 ms, 51.4 GiB, 236 s. Maya: 46.4, 65.4, 408 ms, 22.7 GiB, 60 s.">
               </picture>
-              <figcaption>Same-day head-to-head. TensorFold (Mia's AI Lab recipe, Zig engine) was 10% faster than SGLang for one user and 27% quicker to the first token. It matched SGLang with four users, held about 24% less GPU memory and started six times faster. SGLang kept a 3 to 6% edge reading 8K and 32K-token prompts. Maya was the leanest at 22.7 GiB but the slowest at everything. TensorFold ran with 4 streams, a 128K context and an fp8 KV cache, because its default 8&times;262K setup didn't fit next to the memory reserved for other services. Caveat: with reasoning set to none, TensorFold still writes a little reasoning text, and those tokens count toward its speed.</figcaption>
+              </a>
+              <figcaption>Same-day head-to-head. TensorFold (Mia's AI Lab recipe, Zig engine) was 10% faster than SGLang for one user and 27% quicker to the first token. It matched SGLang with four users, held about 24% less GPU memory and started six times faster. SGLang kept a 3 to 6% edge reading 8K and 32K-token prompts. Maya was the leanest at 22.7 GiB but the slowest at everything. TensorFold ran with 4 streams, a 128K context and an fp8 KV cache, because its default 8&times;262K setup didn't fit next to the memory reserved for other services. Caveat: with reasoning set to none, TensorFold still writes a little reasoning text, and those tokens count toward its speed. Tap to open full size.</figcaption>
             </figure>
             <p><strong>3. Trying to Tune It</strong><br>
             Before trying other runtimes, I tried to squeeze more out of the fast ones. It mostly didn't work, which is also a result.</p>
             <figure class="post-fig">
+              <a href="images/inkling-runtimes-tuning-1600.webp" target="_blank" rel="noopener">
               <picture>
                 <source type="image/webp" srcset="images/inkling-runtimes-tuning-960.webp 960w, images/inkling-runtimes-tuning-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 800px">
                 <img src="images/inkling-runtimes-tuning-960.webp" width="1600" height="2381" loading="lazy" decoding="async"
                      alt="Two tuning experiments on Inkling 2 Mini. Shorter speculative drafts of 5 or 3 tokens failed to start on both vLLM and SGLang, and drafting with 7 tokens was 37% faster than no drafting. A 12-step SGLang flag hill-climb gave no real gain: about 52.3 vs 52.2 tokens per second in the confirmation rounds.">
               </picture>
-              <figcaption>Inkling's drafter only works with 7 draft tokens. vLLM and SGLang both refused to start with 5 or 3, and drafting itself was worth about 37% (50.5 vs 36.9 tok/s for one user). Then we changed 12 SGLang server flags one at a time and kept whatever helped. In the confirmation rounds the "best" setup beat stock by 0.1 tok/s, well inside the roughly &plusmn;3 tok/s noise. Stock SGLang was already close to its ceiling on this box.</figcaption>
+              </a>
+              <figcaption>Inkling's drafter only works with 7 draft tokens. vLLM and SGLang both refused to start with 5 or 3, and drafting itself was worth about 37% (50.5 vs 36.9 tok/s for one user). Then we changed 12 SGLang server flags one at a time and kept whatever helped. In the confirmation rounds the "best" setup beat stock by 0.1 tok/s, well inside the roughly &plusmn;3 tok/s noise. Stock SGLang was already close to its ceiling on this box. Tap to open full size.</figcaption>
             </figure>
             <p>These are numbers from one machine, so your mileage will vary. If you have a Spark and get different results, tell me. Discord and email are at the bottom of the page.</p>
           </article>
@@ -636,7 +643,7 @@ README.TXT          salt to taste</pre>
             The fine-tuned model correctly identified hypothyroidism, flagged Hashimoto's as a likely cause, and walked through a logical flow: symptoms → testing → treatment. Basic? Sure. But correct. That's not nothing.</p>
             <p><strong>3. This Is a Proof of Concept, Not a Product</strong><br>
             To be very clear: this is early and experimental. Training data is limited to 511 cases, the base model is 3B parameters, and there's a long road ahead. What I wanted to know was whether this direction was even worth pursuing. The answer seems to be yes. Next steps include expanding the dataset, upgrading the base model, and cleaning up the hedging language the outputs love to pepper in. Nobody needs a model that qualifies every sentence with "however, it is important to note that I am an AI."</p>
-            <p>Model is live on HuggingFace if you want to poke at it: <a href="https://huggingface.co/ploppy2/Clinical-Reasoning-Test1" target="_blank" rel="noopener">huggingface.co/ploppy2/Clinical-Reasoning-Test1</a></p>
+            <p>Model is live on HuggingFace if you want to poke at it: <a href="https://huggingface.co/SaltShakerStudio/Clinical-Reasoning-Test1" target="_blank" rel="noopener">huggingface.co/SaltShakerStudio/Clinical-Reasoning-Test1</a></p>
           </article>
 
           <article class="post" id="post-2026-03-31">
@@ -847,7 +854,7 @@ README.TXT          salt to taste</pre>
     Educational content for medical professionals. Not for medical advice.</p>
     <p class="fine">Steam and the Steam logo are trademarks of Valve Corporation. All other marks are property of their respective owners.</p>
   </footer>
-</div>
+</main>
 
 <!-- ============ START MENU ============ -->
 <nav class="start-menu" id="startMenu" aria-label="Start menu" hidden>
@@ -974,13 +981,16 @@ README.TXT          salt to taste</pre>
   function openPost(i, updateHash) {
     [].forEach.call(posts, function (p, j) { p.hidden = j !== i; });
     buttons.forEach(function (b, j) { b.setAttribute('aria-selected', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
+    reader.setAttribute('aria-labelledby', buttons[i].id);
     reader.scrollTop = 0;
     if (updateHash) { try { history.replaceState(null, '', '#' + posts[i].id); } catch (err) {} }
   }
   [].forEach.call(posts, function (p, i) {
     var b = document.createElement('button');
     b.type = 'button';
+    b.id = 'tab-' + p.id;
     b.setAttribute('role', 'tab');
+    b.setAttribute('aria-controls', 'reader');
     b.innerHTML = '<time>' + p.querySelector('time').textContent + '</time><b>' + p.querySelector('h3').textContent + '</b>';
     b.addEventListener('click', function () { openPost(i, true); });
     list.appendChild(b);
@@ -997,6 +1007,8 @@ README.TXT          salt to taste</pre>
     buttons[next].focus();
   });
   blog.classList.add('is-enhanced');
+  reader.setAttribute('role', 'tabpanel');
+  reader.tabIndex = 0;
   function postFromHash() {
     for (var i = 0; i < posts.length; i++) if ('#' + posts[i].id === location.hash) return i;
     return -1;
